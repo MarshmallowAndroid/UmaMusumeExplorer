@@ -1,0 +1,6 @@
+[submodule "ClHcaSharp"]
+	path = ClHcaSharp
+	url = https://github.com/MarshmallowAndroid/ClHcaSharp
+[submodule "CriWareTools"]
+	path = CriWareTools
+	url = https://github.com/MarshmallowAndroid/CriWareTools

@@ -8,4 +8,9 @@
     <PackageReference Include="NAudio.Core" Version="2.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ClHcaSharp\ClHcaSharp\ClHcaSharp.csproj" />
+    <ProjectReference Include="..\CriWareTools\CriWareFormats\CriWareFormats.csproj" />
+  </ItemGroup>
+
 </Project>
