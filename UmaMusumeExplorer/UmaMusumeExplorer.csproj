@@ -11,6 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AssetStudio\AssetStudioUtility\AssetStudioUtility.csproj" />
+    <ProjectReference Include="..\AssetStudio\AssetStudio\AssetStudio.csproj" />
+    <ProjectReference Include="..\AssetStudio\Texture2DDecoderWrapper\Texture2DDecoderWrapper.csproj" />
     <ProjectReference Include="..\UmaMusumeAudio\UmaMusumeAudio.csproj" />
     <ProjectReference Include="..\UmaMusumeFiles\UmaMusumeFiles.csproj" />
   </ItemGroup>

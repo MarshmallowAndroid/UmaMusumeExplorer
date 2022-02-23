@@ -35,7 +35,7 @@ namespace PlayerGui
             this.raceMusicTabPage = new System.Windows.Forms.TabPage();
             this.raceSimulatorControl1 = new PlayerGui.Controls.RaceMusicSimulator.RaceMusicSimulatorControl();
             this.characterInfoTabPage = new System.Windows.Forms.TabPage();
-            this.characterInfoControl1 = new PlayerGui.Controls.CharacterInfo.CharacterInfoControl();
+            this.characterInfoControl = new PlayerGui.Controls.CharacterInfo.CharacterInfoControl();
             this.tabControl.SuspendLayout();
             this.audioPlayerTabPage.SuspendLayout();
             this.raceMusicTabPage.SuspendLayout();
@@ -82,7 +82,7 @@ namespace PlayerGui
             this.raceMusicTabPage.Location = new System.Drawing.Point(4, 24);
             this.raceMusicTabPage.Name = "raceMusicTabPage";
             this.raceMusicTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.raceMusicTabPage.Size = new System.Drawing.Size(979, 640);
+            this.raceMusicTabPage.Size = new System.Drawing.Size(192, 72);
             this.raceMusicTabPage.TabIndex = 1;
             this.raceMusicTabPage.Text = "Race Music Simulator";
             this.raceMusicTabPage.UseVisualStyleBackColor = true;
@@ -93,12 +93,12 @@ namespace PlayerGui
             this.raceSimulatorControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.raceSimulatorControl1.Location = new System.Drawing.Point(3, 3);
             this.raceSimulatorControl1.Name = "raceSimulatorControl1";
-            this.raceSimulatorControl1.Size = new System.Drawing.Size(973, 634);
+            this.raceSimulatorControl1.Size = new System.Drawing.Size(186, 66);
             this.raceSimulatorControl1.TabIndex = 0;
             // 
             // characterInfoTabPage
             // 
-            this.characterInfoTabPage.Controls.Add(this.characterInfoControl1);
+            this.characterInfoTabPage.Controls.Add(this.characterInfoControl);
             this.characterInfoTabPage.Location = new System.Drawing.Point(4, 24);
             this.characterInfoTabPage.Name = "characterInfoTabPage";
             this.characterInfoTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -107,14 +107,14 @@ namespace PlayerGui
             this.characterInfoTabPage.Text = "Character Info";
             this.characterInfoTabPage.UseVisualStyleBackColor = true;
             // 
-            // characterInfoControl1
+            // characterInfoControl
             // 
-            this.characterInfoControl1.BackColor = System.Drawing.SystemColors.Control;
-            this.characterInfoControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.characterInfoControl1.Location = new System.Drawing.Point(3, 3);
-            this.characterInfoControl1.Name = "characterInfoControl1";
-            this.characterInfoControl1.Size = new System.Drawing.Size(973, 634);
-            this.characterInfoControl1.TabIndex = 0;
+            this.characterInfoControl.BackColor = System.Drawing.SystemColors.Control;
+            this.characterInfoControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.characterInfoControl.Location = new System.Drawing.Point(3, 3);
+            this.characterInfoControl.Name = "characterInfoControl";
+            this.characterInfoControl.Size = new System.Drawing.Size(973, 634);
+            this.characterInfoControl.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -123,7 +123,7 @@ namespace PlayerGui
             this.ClientSize = new System.Drawing.Size(1011, 692);
             this.Controls.Add(this.tabControl);
             this.Name = "MainForm";
-            this.Text = "Uma Musume Basic Reader";
+            this.Text = "Uma Musume Explorer";
             this.tabControl.ResumeLayout(false);
             this.audioPlayerTabPage.ResumeLayout(false);
             this.raceMusicTabPage.ResumeLayout(false);
@@ -139,7 +139,7 @@ namespace PlayerGui
         private System.Windows.Forms.TabPage audioPlayerTabPage;
         private PlayerGui.Controls.AudioPlayer.AudioPlayerControl audioPlayerControl1;
         private System.Windows.Forms.TabPage characterInfoTabPage;
-        private Controls.CharacterInfo.CharacterInfoControl characterInfoControl1;
+        private Controls.CharacterInfo.CharacterInfoControl characterInfoControl;
     }
 }
 

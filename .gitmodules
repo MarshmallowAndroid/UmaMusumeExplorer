@@ -4,3 +4,6 @@
 [submodule "CriWareTools"]
 	path = CriWareTools
 	url = https://github.com/MarshmallowAndroid/CriWareTools
+[submodule "AssetStudio"]
+	path = AssetStudio
+	url = https://github.com/Perfare/AssetStudio
