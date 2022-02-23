@@ -12,6 +12,7 @@ using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using Image = SixLabors.ImageSharp.Image;
 using SixLabors.ImageSharp.Processing;
+using open.imaging.S3TC;
 
 namespace PlayerGui.Controls.CharacterInfo
 {
@@ -103,13 +104,15 @@ namespace PlayerGui.Controls.CharacterInfo
             SerializedFile targetAsset = assetsManager.assetsFileList.Where(
                 a => ((NamedObject)a.Objects.Where(o => o.type == ClassIDType.Texture2D).First()).m_Name == imageString).First();
             Texture2D texture = (Texture2D)targetAsset.Objects.Where(o => o.type == ClassIDType.Texture2D).First();
-            Image<Bgra32> image = texture.ConvertToImage(true);
+            Image<Bgra32> image = ConvertToImage(texture, true);
+            image.Mutate(o => o.Resize((int)(image.Width * 1.10f), image.Height));
 
             if (charaBitmap != null)
             {
                 charaBitmap.Dispose();
             }
-            charaBitmap = new(image.ConvertToBgra32Bytes(), texture.m_Width, texture.m_Height);
+
+            charaBitmap = new(ConvertToBgra32Bytes(image), texture.m_Width, texture.m_Height);
             pictureBox1.Image = charaBitmap.Bitmap;
         }
 
@@ -134,13 +137,22 @@ namespace PlayerGui.Controls.CharacterInfo
             return System.Drawing.Color.FromArgb(a, r, g, b);
         }
 
-        private Image<Bgra32> ConvertToImage(Texture2D m_Texture2D, bool flip)
+        private unsafe Image<Bgra32> ConvertToImage(Texture2D m_Texture2D, bool flip)
         {
-            var converter = new Texture2DConverter(m_Texture2D);
             var buff = BigArrayPool<byte>.Shared.Rent(m_Texture2D.m_Width * m_Texture2D.m_Height * 4);
+            var buff2 = BigArrayPool<byte>.Shared.Rent(m_Texture2D.image_data.Size);
+            m_Texture2D.image_data.GetData(buff2);
+
             try
             {
-                if (converter.DecodeTexture2D(buff))
+                fixed (byte* data = buff2)
+                {
+                    fixed (byte* image = buff)
+                    {
+                        DXT5Decoder.Decode((uint)m_Texture2D.m_Width, (uint)m_Texture2D.m_Height, data, image);
+                    }
+                }
+                if (buff.Length > 0)
                 {
                     var image = Image.LoadPixelData<Bgra32>(buff, m_Texture2D.m_Width, m_Texture2D.m_Height);
                     if (flip)
@@ -155,6 +167,15 @@ namespace PlayerGui.Controls.CharacterInfo
             {
                 BigArrayPool<byte>.Shared.Return(buff);
             }
+        }
+
+        private static byte[] ConvertToBgra32Bytes(Image<Bgra32> image)
+        {
+            if (image.DangerousTryGetSinglePixelMemory(out var pixelMemory))
+            {
+                return MemoryMarshal.AsBytes(pixelMemory.Span).ToArray();
+            }
+            return null;
         }
     }
 

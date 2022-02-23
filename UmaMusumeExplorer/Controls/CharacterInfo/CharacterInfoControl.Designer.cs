@@ -74,8 +74,8 @@ namespace PlayerGui.Controls.CharacterInfo
             // 
             this.pictureBox1.Location = new System.Drawing.Point(11, 22);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(108, 120);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.Size = new System.Drawing.Size(120, 120);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
@@ -83,7 +83,7 @@ namespace PlayerGui.Controls.CharacterInfo
             // 
             this.characterVoiceNameLabel.AutoSize = true;
             this.characterVoiceNameLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.characterVoiceNameLabel.Location = new System.Drawing.Point(125, 59);
+            this.characterVoiceNameLabel.Location = new System.Drawing.Point(137, 59);
             this.characterVoiceNameLabel.Name = "characterVoiceNameLabel";
             this.characterVoiceNameLabel.Size = new System.Drawing.Size(100, 25);
             this.characterVoiceNameLabel.TabIndex = 0;
@@ -93,7 +93,7 @@ namespace PlayerGui.Controls.CharacterInfo
             // 
             this.characterNameLabel.AutoSize = true;
             this.characterNameLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.characterNameLabel.Location = new System.Drawing.Point(125, 22);
+            this.characterNameLabel.Location = new System.Drawing.Point(137, 22);
             this.characterNameLabel.Name = "characterNameLabel";
             this.characterNameLabel.Size = new System.Drawing.Size(104, 37);
             this.characterNameLabel.TabIndex = 0;
