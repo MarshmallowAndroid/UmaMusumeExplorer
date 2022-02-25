@@ -66,6 +66,7 @@ namespace PlayerGui.Controls.CharacterInfo
                     imagePaths.Add(UmaFileHelper.GetPath(item));
             }
 
+            AssetStudio.Progress.Default = new AssetStudioProgress(loadingBackgroundWorker.ReportProgress);
             UnityTextureHelpers.LoadFiles(imagePaths.ToArray());
 
             List<PictureBox> charaIcons = new();
