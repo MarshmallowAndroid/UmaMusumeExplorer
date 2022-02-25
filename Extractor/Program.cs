@@ -23,10 +23,10 @@ namespace Extractor
                 var gameFiles = connection.Table<GameFile>().ToList();
                 gameFiles.Sort((gf1, gf2) => { return string.Compare(gf1.Name, gf2.Name); });
 
-                int fileNumber = 1;
+                //int fileNumber = 1;
                 foreach (var gameFile in gameFiles)
                 {
-                    Task.Run(() => Console.WriteLine("Processing file {0} of {1}...", fileNumber, gameFiles.Count));
+                    //Task.Run(() => Console.WriteLine("Processing file {0} of {1}...", fileNumber, gameFiles.Count));
 
                     string dataFileName = gameFile.Hash;
                     string dataFilePath = Path.Combine(dataDirectory, dataFileName[..2], dataFileName);
@@ -43,7 +43,7 @@ namespace Extractor
 
                     if (!File.Exists(realFilePath) && File.Exists(dataFilePath)) File.Copy(dataFilePath, realFilePath);
                     
-                    fileNumber++;
+                    //fileNumber++;
                 }
             }
         }
