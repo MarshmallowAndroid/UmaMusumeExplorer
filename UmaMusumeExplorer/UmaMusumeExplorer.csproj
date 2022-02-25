@@ -5,18 +5,22 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="NAudio.WinForms" Version="2.0.1" />
-    <PackageReference Include="SixLabors.ImageSharp" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AssetStudio\AssetStudioUtility\AssetStudioUtility.csproj" />
     <ProjectReference Include="..\AssetStudio\AssetStudio\AssetStudio.csproj" />
-    <ProjectReference Include="..\open.imaging.S3TC\open.imaging.S3TC.csproj" />
     <ProjectReference Include="..\UmaMusumeAudio\UmaMusumeAudio.csproj" />
     <ProjectReference Include="..\UmaMusumeFiles\UmaMusumeFiles.csproj" />
   </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="mkdir $(OutDir)x64\&#xD;&#xA;copy $(SolutionDir)AssetStudio\Texture2DDecoderNative\bin\x64\$(Configuration)\Texture2DDecoderNative.dll $(OutDir)x64\" />
+  </Target>
 
 </Project>
