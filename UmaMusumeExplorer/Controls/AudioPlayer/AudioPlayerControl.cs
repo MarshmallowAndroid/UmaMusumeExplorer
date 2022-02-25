@@ -31,7 +31,10 @@ namespace PlayerGui.Controls.AudioPlayer
         public AudioPlayerControl()
         {
             InitializeComponent();
+        }
 
+        private void AudioPlayerControl_Load(object sender, EventArgs e)
+        {
             fileListView.Columns[0].Width = (int)(fileListView.Width * (float)0.80);
             fileListView.Columns[1].Width = -2;
 

@@ -15,6 +15,10 @@ namespace UmaMusumeExplorer.Controls
         private static IEnumerable<RaceBgmPattern> raceBgmPatterns;
         private static IEnumerable<CharaData> charaDatas;
 
+        private static IEnumerable<TextData> charaNameTextDatas;
+        private static IEnumerable<TextData> charaNameKatakanaTextDatas;
+        private static IEnumerable<TextData> charaVoiceNameTextDatas;
+
         public static IEnumerable<GameAsset> BgmGameFiles
         {
             get
@@ -56,6 +60,39 @@ namespace UmaMusumeExplorer.Controls
                     charaDatas = UmaFileHelper.GetInfoDatabaseRows<CharaData>();
 
                 return charaDatas;
+            }
+        }
+
+        public static IEnumerable<TextData> CharaNameTextDatas
+        {
+            get
+            {
+                if (charaNameTextDatas == null)
+                    charaNameTextDatas = UmaFileHelper.GetInfoDatabaseRows<TextData>(td => td.Category == 170);
+
+                return charaNameTextDatas;
+            }
+        }
+
+        public static IEnumerable<TextData> CharaNameKatakanaTextDatas
+        {
+            get
+            {
+                if (charaNameKatakanaTextDatas == null)
+                    charaNameKatakanaTextDatas = UmaFileHelper.GetInfoDatabaseRows<TextData>(td => td.Category == 182);
+
+                return charaNameKatakanaTextDatas;
+            }
+        }
+
+        public static IEnumerable<TextData> CharaVoiceNameTextDatas
+        {
+            get
+            {
+                if (charaVoiceNameTextDatas == null)
+                    charaVoiceNameTextDatas = UmaFileHelper.GetInfoDatabaseRows<TextData>(td => td.Category == 7);
+
+                return charaVoiceNameTextDatas;
             }
         }
     }

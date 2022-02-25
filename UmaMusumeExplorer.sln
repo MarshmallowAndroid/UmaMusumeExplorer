@@ -23,8 +23,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssetStudio.PInvoke", "Asse
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "open.imaging.S3TC", "open.imaging.S3TC\open.imaging.S3TC.csproj", "{7219D0EC-D5F2-4894-A468-44DFD0E11A2D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Texture2DDecoderWrapper", "AssetStudio\Texture2DDecoderWrapper\Texture2DDecoderWrapper.csproj", "{5023F80C-484D-49E5-9357-E81D64D86E9A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -155,18 +153,6 @@ Global
 		{7219D0EC-D5F2-4894-A468-44DFD0E11A2D}.Release|x64.Build.0 = Release|x64
 		{7219D0EC-D5F2-4894-A468-44DFD0E11A2D}.Release|x86.ActiveCfg = Release|x86
 		{7219D0EC-D5F2-4894-A468-44DFD0E11A2D}.Release|x86.Build.0 = Release|x86
-		{5023F80C-484D-49E5-9357-E81D64D86E9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5023F80C-484D-49E5-9357-E81D64D86E9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5023F80C-484D-49E5-9357-E81D64D86E9A}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{5023F80C-484D-49E5-9357-E81D64D86E9A}.Debug|x64.Build.0 = Debug|Any CPU
-		{5023F80C-484D-49E5-9357-E81D64D86E9A}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{5023F80C-484D-49E5-9357-E81D64D86E9A}.Debug|x86.Build.0 = Debug|Any CPU
-		{5023F80C-484D-49E5-9357-E81D64D86E9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5023F80C-484D-49E5-9357-E81D64D86E9A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5023F80C-484D-49E5-9357-E81D64D86E9A}.Release|x64.ActiveCfg = Release|Any CPU
-		{5023F80C-484D-49E5-9357-E81D64D86E9A}.Release|x64.Build.0 = Release|Any CPU
-		{5023F80C-484D-49E5-9357-E81D64D86E9A}.Release|x86.ActiveCfg = Release|Any CPU
-		{5023F80C-484D-49E5-9357-E81D64D86E9A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

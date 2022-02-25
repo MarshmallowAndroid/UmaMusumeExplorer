@@ -29,111 +29,97 @@ namespace PlayerGui.Controls.CharacterInfo
         /// </summary>
         private void InitializeComponent()
         {
-            this.characterSelectComboBox = new System.Windows.Forms.ComboBox();
-            this.characterSelectLabel = new System.Windows.Forms.Label();
-            this.informationGroupBox = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.characterVoiceNameLabel = new System.Windows.Forms.Label();
-            this.characterNameLabel = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.informationGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.loadingProgressBar = new System.Windows.Forms.ProgressBar();
+            this.loadingBackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.charactersPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.selectLabel = new System.Windows.Forms.Label();
+            this.goButton = new System.Windows.Forms.Button();
+            this.selectNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.selectNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
-            // characterSelectComboBox
+            // loadingProgressBar
             // 
-            this.characterSelectComboBox.FormattingEnabled = true;
-            this.characterSelectComboBox.Location = new System.Drawing.Point(67, 3);
-            this.characterSelectComboBox.Name = "characterSelectComboBox";
-            this.characterSelectComboBox.Size = new System.Drawing.Size(194, 23);
-            this.characterSelectComboBox.TabIndex = 0;
-            this.characterSelectComboBox.SelectedIndexChanged += new System.EventHandler(this.CharacterSelectComboBox_SelectedIndexChanged);
+            this.loadingProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.loadingProgressBar.Location = new System.Drawing.Point(223, 215);
+            this.loadingProgressBar.Name = "loadingProgressBar";
+            this.loadingProgressBar.Size = new System.Drawing.Size(281, 23);
+            this.loadingProgressBar.TabIndex = 3;
             // 
-            // characterSelectLabel
+            // loadingBackgroundWorker
             // 
-            this.characterSelectLabel.AutoSize = true;
-            this.characterSelectLabel.Location = new System.Drawing.Point(3, 6);
-            this.characterSelectLabel.Name = "characterSelectLabel";
-            this.characterSelectLabel.Size = new System.Drawing.Size(58, 15);
-            this.characterSelectLabel.TabIndex = 1;
-            this.characterSelectLabel.Text = "Character";
+            this.loadingBackgroundWorker.WorkerReportsProgress = true;
+            this.loadingBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.LoadingBackgroundWorker_DoWork);
+            this.loadingBackgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.LoadingBackgroundWorker_ProgressChanged);
+            this.loadingBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.LoadingBackgroundWorker_RunWorkerCompleted);
             // 
-            // informationGroupBox
+            // charactersPanel
             // 
-            this.informationGroupBox.Controls.Add(this.pictureBox1);
-            this.informationGroupBox.Controls.Add(this.characterVoiceNameLabel);
-            this.informationGroupBox.Controls.Add(this.characterNameLabel);
-            this.informationGroupBox.Location = new System.Drawing.Point(3, 32);
-            this.informationGroupBox.Name = "informationGroupBox";
-            this.informationGroupBox.Size = new System.Drawing.Size(655, 319);
-            this.informationGroupBox.TabIndex = 2;
-            this.informationGroupBox.TabStop = false;
-            this.informationGroupBox.Text = "Information";
+            this.charactersPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.charactersPanel.AutoScroll = true;
+            this.charactersPanel.Location = new System.Drawing.Point(0, 32);
+            this.charactersPanel.Name = "charactersPanel";
+            this.charactersPanel.Size = new System.Drawing.Size(727, 389);
+            this.charactersPanel.TabIndex = 4;
             // 
-            // pictureBox1
+            // selectLabel
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(11, 22);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(120, 120);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.selectLabel.AutoSize = true;
+            this.selectLabel.Location = new System.Drawing.Point(3, 5);
+            this.selectLabel.Name = "selectLabel";
+            this.selectLabel.Size = new System.Drawing.Size(68, 15);
+            this.selectLabel.TabIndex = 5;
+            this.selectLabel.Text = "Select by ID";
             // 
-            // characterVoiceNameLabel
+            // goButton
             // 
-            this.characterVoiceNameLabel.AutoSize = true;
-            this.characterVoiceNameLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.characterVoiceNameLabel.Location = new System.Drawing.Point(137, 59);
-            this.characterVoiceNameLabel.Name = "characterVoiceNameLabel";
-            this.characterVoiceNameLabel.Size = new System.Drawing.Size(100, 25);
-            this.characterVoiceNameLabel.TabIndex = 0;
-            this.characterVoiceNameLabel.Text = "CV.？？？";
+            this.goButton.Location = new System.Drawing.Point(203, 3);
+            this.goButton.Name = "goButton";
+            this.goButton.Size = new System.Drawing.Size(75, 23);
+            this.goButton.TabIndex = 7;
+            this.goButton.Text = "Go";
+            this.goButton.UseVisualStyleBackColor = true;
+            this.goButton.Click += new System.EventHandler(this.GoButton_Click);
             // 
-            // characterNameLabel
+            // selectNumericUpDown
             // 
-            this.characterNameLabel.AutoSize = true;
-            this.characterNameLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.characterNameLabel.Location = new System.Drawing.Point(137, 22);
-            this.characterNameLabel.Name = "characterNameLabel";
-            this.characterNameLabel.Size = new System.Drawing.Size(104, 37);
-            this.characterNameLabel.TabIndex = 0;
-            this.characterNameLabel.Text = "？？？";
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(267, 3);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(190, 23);
-            this.progressBar1.TabIndex = 3;
+            this.selectNumericUpDown.Location = new System.Drawing.Point(77, 3);
+            this.selectNumericUpDown.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.selectNumericUpDown.Name = "selectNumericUpDown";
+            this.selectNumericUpDown.Size = new System.Drawing.Size(120, 23);
+            this.selectNumericUpDown.TabIndex = 8;
             // 
             // CharacterInfoControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.informationGroupBox);
-            this.Controls.Add(this.characterSelectLabel);
-            this.Controls.Add(this.characterSelectComboBox);
+            this.Controls.Add(this.selectNumericUpDown);
+            this.Controls.Add(this.goButton);
+            this.Controls.Add(this.loadingProgressBar);
+            this.Controls.Add(this.selectLabel);
+            this.Controls.Add(this.charactersPanel);
             this.Name = "CharacterInfoControl";
-            this.Size = new System.Drawing.Size(829, 552);
+            this.Size = new System.Drawing.Size(730, 424);
             this.Load += new System.EventHandler(this.CharacterInfoControl_Load);
-            this.informationGroupBox.ResumeLayout(false);
-            this.informationGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.selectNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox characterSelectComboBox;
-        private System.Windows.Forms.Label characterSelectLabel;
-        private System.Windows.Forms.GroupBox informationGroupBox;
-        private System.Windows.Forms.Label characterNameLabel;
-        private System.Windows.Forms.Label characterVoiceNameLabel;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ProgressBar loadingProgressBar;
+        private System.ComponentModel.BackgroundWorker loadingBackgroundWorker;
+        private System.Windows.Forms.FlowLayoutPanel charactersPanel;
+        private System.Windows.Forms.Label selectLabel;
+        private System.Windows.Forms.Button goButton;
+        private System.Windows.Forms.NumericUpDown selectNumericUpDown;
     }
 }

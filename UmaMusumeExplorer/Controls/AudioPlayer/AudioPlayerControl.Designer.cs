@@ -38,6 +38,7 @@ namespace PlayerGui.Controls.AudioPlayer
             this.loadingProgressBar = new System.Windows.Forms.ProgressBar();
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.leftPanel = new System.Windows.Forms.Panel();
+            this.loadingFileNameLabel = new System.Windows.Forms.Label();
             this.rightPanel = new System.Windows.Forms.Panel();
             this.saveButton = new System.Windows.Forms.Button();
             this.timeLengthLabel = new System.Windows.Forms.Label();
@@ -50,7 +51,6 @@ namespace PlayerGui.Controls.AudioPlayer
             this.nextBankButton = new System.Windows.Forms.Button();
             this.playButton = new System.Windows.Forms.Button();
             this.updateTimer = new System.Windows.Forms.Timer(this.components);
-            this.loadingFileNameLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel.SuspendLayout();
             this.leftPanel.SuspendLayout();
             this.rightPanel.SuspendLayout();
@@ -136,6 +136,16 @@ namespace PlayerGui.Controls.AudioPlayer
             this.leftPanel.Name = "leftPanel";
             this.leftPanel.Size = new System.Drawing.Size(459, 630);
             this.leftPanel.TabIndex = 11;
+            // 
+            // loadingFileNameLabel
+            // 
+            this.loadingFileNameLabel.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.loadingFileNameLabel.Location = new System.Drawing.Point(38, 273);
+            this.loadingFileNameLabel.Name = "loadingFileNameLabel";
+            this.loadingFileNameLabel.Size = new System.Drawing.Size(384, 24);
+            this.loadingFileNameLabel.TabIndex = 11;
+            this.loadingFileNameLabel.Text = "Loading...";
+            this.loadingFileNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // rightPanel
             // 
@@ -274,16 +284,6 @@ namespace PlayerGui.Controls.AudioPlayer
             // 
             this.updateTimer.Tick += new System.EventHandler(this.UpdateTimer_Tick);
             // 
-            // loadingFileNameLabel
-            // 
-            this.loadingFileNameLabel.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.loadingFileNameLabel.Location = new System.Drawing.Point(38, 273);
-            this.loadingFileNameLabel.Name = "loadingFileNameLabel";
-            this.loadingFileNameLabel.Size = new System.Drawing.Size(384, 24);
-            this.loadingFileNameLabel.TabIndex = 11;
-            this.loadingFileNameLabel.Text = "file";
-            this.loadingFileNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // AudioPlayerControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -292,6 +292,7 @@ namespace PlayerGui.Controls.AudioPlayer
             this.Controls.Add(this.tableLayoutPanel);
             this.Name = "AudioPlayerControl";
             this.Size = new System.Drawing.Size(930, 636);
+            this.Load += new System.EventHandler(this.AudioPlayerControl_Load);
             this.tableLayoutPanel.ResumeLayout(false);
             this.leftPanel.ResumeLayout(false);
             this.rightPanel.ResumeLayout(false);
