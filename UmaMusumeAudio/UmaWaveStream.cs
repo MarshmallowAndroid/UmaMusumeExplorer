@@ -2,7 +2,6 @@
 using System;
 using System.IO;
 using CriWareFormats;
-using UmaMusumeAudio.Hca;
 
 namespace UmaMusumeAudio
 {
@@ -16,7 +15,6 @@ namespace UmaMusumeAudio
         private const ulong umaMusumeKey = 75923756697503;
 
         private readonly HcaWaveStream hcaWaveStream;
-        private readonly object lockObject = new();
 
         public UmaWaveStream(AwbReader awbReader, int waveId)
         {
@@ -34,21 +32,10 @@ namespace UmaMusumeAudio
 
         public override int Read(byte[] buffer, int offset, int count)
         {
-            lock (lockObject)
-            {
-                return hcaWaveStream.Read(buffer, offset, count);
-            }
+            return hcaWaveStream.Read(buffer, offset, count);
         }
 
         private static ulong MixKey(ulong key, ushort subkey) =>
             key * (((ulong)subkey << 16) | ((ushort)~subkey + 2u));
-
-        protected override void Dispose(bool disposing)
-        {
-            lock (lockObject)
-            {
-                base.Dispose(disposing);
-            }
-        }
     }
 }

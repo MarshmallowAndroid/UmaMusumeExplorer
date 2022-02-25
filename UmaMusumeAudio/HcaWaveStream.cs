@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UmaMusumeAudio.Hca
+namespace UmaMusumeAudio
 {
     public class HcaWaveStream : WaveStream
     {
