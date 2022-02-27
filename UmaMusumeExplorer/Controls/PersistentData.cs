@@ -14,10 +14,13 @@ namespace UmaMusumeExplorer.Controls
         private static IEnumerable<RaceBgm> raceBgm;
         private static IEnumerable<RaceBgmPattern> raceBgmPatterns;
         private static IEnumerable<CharaData> charaDatas;
+        private static IEnumerable<CardData> cardDatas;
+        private static IEnumerable<CardRarityData> cardRarityDatas;
 
         private static IEnumerable<TextData> charaNameTextDatas;
         private static IEnumerable<TextData> charaNameKatakanaTextDatas;
         private static IEnumerable<TextData> charaVoiceNameTextDatas;
+        private static IEnumerable<TextData> charaCostumeNameTextDatas;
 
         public static IEnumerable<GameAsset> BgmGameFiles
         {
@@ -63,6 +66,28 @@ namespace UmaMusumeExplorer.Controls
             }
         }
 
+        public static IEnumerable<CardData> CardDatas
+        {
+            get
+            {
+                if (cardDatas == null)
+                    cardDatas = UmaFileHelper.GetInfoDatabaseRows<CardData>();
+
+                return cardDatas;
+            }
+        }
+
+        public static IEnumerable<CardRarityData> CardRarityDatas
+        {
+            get
+            {
+                if (cardRarityDatas == null)
+                    cardRarityDatas = UmaFileHelper.GetInfoDatabaseRows<CardRarityData>();
+
+                return cardRarityDatas;
+            }
+        }
+
         public static IEnumerable<TextData> CharaNameTextDatas
         {
             get
@@ -93,6 +118,17 @@ namespace UmaMusumeExplorer.Controls
                     charaVoiceNameTextDatas = UmaFileHelper.GetInfoDatabaseRows<TextData>(td => td.Category == 7);
 
                 return charaVoiceNameTextDatas;
+            }
+        }
+
+        public static IEnumerable<TextData> CharaCostumeNameTextDatas
+        {
+            get
+            {
+                if (charaCostumeNameTextDatas == null)
+                    charaCostumeNameTextDatas = UmaFileHelper.GetInfoDatabaseRows<TextData>(td => td.Category == 5);
+
+                return charaCostumeNameTextDatas;
             }
         }
     }
