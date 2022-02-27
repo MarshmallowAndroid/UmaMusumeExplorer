@@ -36,6 +36,8 @@
             this.genderHintLabel = new System.Windows.Forms.Label();
             this.birthDateHintLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.costumeSelectComboBox = new System.Windows.Forms.ComboBox();
+            this.costumeHintLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -126,11 +128,30 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(385, 55);
             this.tableLayoutPanel1.TabIndex = 8;
             // 
+            // costumeSelectComboBox
+            // 
+            this.costumeSelectComboBox.FormattingEnabled = true;
+            this.costumeSelectComboBox.Location = new System.Drawing.Point(73, 138);
+            this.costumeSelectComboBox.Name = "costumeSelectComboBox";
+            this.costumeSelectComboBox.Size = new System.Drawing.Size(167, 23);
+            this.costumeSelectComboBox.TabIndex = 9;
+            // 
+            // costumeHintLabel
+            // 
+            this.costumeHintLabel.AutoSize = true;
+            this.costumeHintLabel.Location = new System.Drawing.Point(12, 141);
+            this.costumeHintLabel.Name = "costumeHintLabel";
+            this.costumeHintLabel.Size = new System.Drawing.Size(55, 15);
+            this.costumeHintLabel.TabIndex = 10;
+            this.costumeHintLabel.Text = "Costume";
+            // 
             // CardDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(601, 651);
+            this.Controls.Add(this.costumeHintLabel);
+            this.Controls.Add(this.costumeSelectComboBox);
             this.Controls.Add(this.cvNameLabel);
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -157,5 +178,7 @@
         private System.Windows.Forms.Label genderHintLabel;
         private System.Windows.Forms.Label birthDateHintLabel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.ComboBox costumeSelectComboBox;
+        private System.Windows.Forms.Label costumeHintLabel;
     }
 }

@@ -25,8 +25,10 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
         private void CardDetailsForm_Load(object sender, EventArgs e)
         {
             int id = charaData.Id;
+            string charaName = PersistentData.CharaNameTextDatas.First(td => td.Index == id).Text;
 
-            nameLabel.Text = PersistentData.CharaNameTextDatas.First(td => td.Index == id).Text;
+            Text = charaName;
+            nameLabel.Text = charaName;
 
             string katakana = PersistentData.CharaNameKatakanaTextDatas.Where(td => td.Index == id).First().Text;
 
