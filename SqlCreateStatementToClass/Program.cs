@@ -30,19 +30,12 @@ if (createStatement != "")
         createStatement = createStatement[(type.Length + 1)..];
         createStatement = createStatement[(createStatement.IndexOf(',') + 1)..];
 
-        switch (type)
+        type = type switch
         {
-            case "INTEGER":
-                type = "int";
-                break;
-            case "TEXT":
-                type = "string";
-                break;
-            default:
-                type = "object";
-                break;
-        }
-
+            "INTEGER" => "int",
+            "TEXT" => "string",
+            _ => "object",
+        };
         writer.Write("    ");
         writer.WriteLine($"[Column(\"{columnName}\")]");
         writer.Write("    ");
