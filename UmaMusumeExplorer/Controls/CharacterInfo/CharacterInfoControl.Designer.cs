@@ -34,8 +34,7 @@ namespace PlayerGui.Controls.CharacterInfo
             this.charactersPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.selectLabel = new System.Windows.Forms.Label();
             this.goButton = new System.Windows.Forms.Button();
-            this.selectNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)(this.selectNumericUpDown)).BeginInit();
+            this.charaListComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // loadingProgressBar
@@ -67,7 +66,7 @@ namespace PlayerGui.Controls.CharacterInfo
             // selectLabel
             // 
             this.selectLabel.AutoSize = true;
-            this.selectLabel.Location = new System.Drawing.Point(3, 5);
+            this.selectLabel.Location = new System.Drawing.Point(3, 6);
             this.selectLabel.Name = "selectLabel";
             this.selectLabel.Size = new System.Drawing.Size(68, 15);
             this.selectLabel.TabIndex = 5;
@@ -75,7 +74,7 @@ namespace PlayerGui.Controls.CharacterInfo
             // 
             // goButton
             // 
-            this.goButton.Location = new System.Drawing.Point(203, 3);
+            this.goButton.Location = new System.Drawing.Point(279, 3);
             this.goButton.Name = "goButton";
             this.goButton.Size = new System.Drawing.Size(75, 23);
             this.goButton.TabIndex = 7;
@@ -83,24 +82,22 @@ namespace PlayerGui.Controls.CharacterInfo
             this.goButton.UseVisualStyleBackColor = true;
             this.goButton.Click += new System.EventHandler(this.GoButton_Click);
             // 
-            // selectNumericUpDown
+            // charaListComboBox
             // 
-            this.selectNumericUpDown.Location = new System.Drawing.Point(77, 3);
-            this.selectNumericUpDown.Maximum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            0});
-            this.selectNumericUpDown.Name = "selectNumericUpDown";
-            this.selectNumericUpDown.Size = new System.Drawing.Size(120, 23);
-            this.selectNumericUpDown.TabIndex = 8;
+            this.charaListComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.charaListComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.charaListComboBox.FormattingEnabled = true;
+            this.charaListComboBox.Location = new System.Drawing.Point(77, 3);
+            this.charaListComboBox.Name = "charaListComboBox";
+            this.charaListComboBox.Size = new System.Drawing.Size(196, 23);
+            this.charaListComboBox.TabIndex = 8;
             // 
             // CharacterInfoControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.Controls.Add(this.selectNumericUpDown);
+            this.Controls.Add(this.charaListComboBox);
             this.Controls.Add(this.goButton);
             this.Controls.Add(this.loadingProgressBar);
             this.Controls.Add(this.selectLabel);
@@ -108,7 +105,6 @@ namespace PlayerGui.Controls.CharacterInfo
             this.Name = "CharacterInfoControl";
             this.Size = new System.Drawing.Size(730, 424);
             this.Load += new System.EventHandler(this.CharacterInfoControl_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.selectNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -120,6 +116,6 @@ namespace PlayerGui.Controls.CharacterInfo
         private System.Windows.Forms.FlowLayoutPanel charactersPanel;
         private System.Windows.Forms.Label selectLabel;
         private System.Windows.Forms.Button goButton;
-        private System.Windows.Forms.NumericUpDown selectNumericUpDown;
+        private System.Windows.Forms.ComboBox charaListComboBox;
     }
 }

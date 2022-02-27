@@ -9,7 +9,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 {
     internal class AssetStudioProgress : IProgress
     {
-        Action<int> reportProgress;
+        readonly Action<int> reportProgress;
 
         public AssetStudioProgress(Action<int> action)
         {

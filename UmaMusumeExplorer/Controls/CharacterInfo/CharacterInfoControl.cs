@@ -32,27 +32,7 @@ namespace PlayerGui.Controls.CharacterInfo
             CharaData chara = charaIcon.Tag as CharaData;
 
             CardDetailsForm details = new(chara);
-            Form parentForm = GetParentForm(this);
-
-            int left = parentForm.Left;
-            int top = parentForm.Top;
-
-            left += (parentForm.Width / 2) - (details.Width / 2);
-            top += (parentForm.Height / 2) - (details.Height / 2);
-
-            details.Left = left;
-            details.Top = top;
-
-            details.Show();
-        }
-
-        private Form GetParentForm(Control control)
-        {
-            if (control is Form parentForm)
-            {
-                return parentForm;
-            }
-            else return GetParentForm(control.Parent);
+            OpenFormInParentCenter(details);
         }
 
         private void LoadingBackgroundWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
@@ -69,28 +49,13 @@ namespace PlayerGui.Controls.CharacterInfo
             AssetStudio.Progress.Default = new AssetStudioProgress(loadingBackgroundWorker.ReportProgress);
             UnityTextureHelpers.LoadFiles(imagePaths.ToArray());
 
-            List<PictureBox> charaIcons = new();
-
             int itemNumber = 1;
             foreach (var item in charaDatas)
             {
-                PictureBox charaIcon = new()
-                {
-                    Width = 100,
-                    Height = 100,
-                    BackgroundImage = UnityTextureHelpers.GetCharaIcon(item.Id),
-                    BackgroundImageLayout = ImageLayout.Zoom,
-                    Cursor = Cursors.Hand,
-                    Tag = item
-                };
-
-                charaIcon.Click += CharaIcon_Click;
-                charaIcons.Add(charaIcon);
+                Invoke(() => AddItems(item));
 
                 loadingBackgroundWorker.ReportProgress((int)((float)itemNumber++ / charaDatas.Count() * 100.0f));
             }
-
-            e.Result = charaIcons;
         }
 
         private void LoadingBackgroundWorker_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
@@ -101,14 +66,72 @@ namespace PlayerGui.Controls.CharacterInfo
         private void LoadingBackgroundWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
             loadingProgressBar.Visible = false;
-
-            charactersPanel.Controls.AddRange(((List<PictureBox>)e.Result).ToArray());
         }
 
         private void GoButton_Click(object sender, EventArgs e)
         {
-            CharaData chara = charaDatas.FirstOrDefault(c => (int)selectNumericUpDown.Value == c.Id);
-            if (chara != null) new CardDetailsForm(chara).Show();
+            CharaComboBoxItem item = charaListComboBox.SelectedItem as CharaComboBoxItem;
+            if (item != null) OpenFormInParentCenter(new CardDetailsForm(item.CharaData));
+        }
+
+
+        private void AddItems(CharaData chara)
+        {
+            charaListComboBox.Items.Add(new CharaComboBoxItem(chara));
+            PictureBox charaIcon = new()
+            {
+                Width = 100,
+                Height = 100,
+                BackgroundImage = UnityTextureHelpers.GetCharaIcon(chara.Id),
+                BackgroundImageLayout = ImageLayout.Zoom,
+                Cursor = Cursors.Hand,
+                Tag = chara
+            };
+
+            charaIcon.Click += CharaIcon_Click;
+
+            charactersPanel.Controls.Add(charaIcon);
+        }
+
+        private void OpenFormInParentCenter(Form form)
+        {
+            Form parentForm = GetParentForm(this);
+
+            int left = parentForm.Left;
+            int top = parentForm.Top;
+
+            left += (parentForm.Width / 2) - (form.Width / 2);
+            top += (parentForm.Height / 2) - (form.Height / 2);
+
+            form.Left = left;
+            form.Top = top;
+
+            form.Show();
+        }
+
+        private Form GetParentForm(Control control)
+        {
+            if (control is Form parentForm)
+            {
+                return parentForm;
+            }
+            else return GetParentForm(control.Parent);
+        }
+
+    }
+
+    internal class CharaComboBoxItem
+    {
+        public CharaComboBoxItem(CharaData chara)
+        {
+            CharaData = chara;
+        }
+
+        public CharaData CharaData { get; }
+
+        public override string ToString()
+        {
+            return CharaData.Id.ToString() + ": " + PersistentData.CharaNameTextDatas.First(td => td.Index == CharaData.Id).Text;
         }
     }
 }
