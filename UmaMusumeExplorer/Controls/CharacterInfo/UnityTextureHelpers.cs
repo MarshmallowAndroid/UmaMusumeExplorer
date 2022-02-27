@@ -16,7 +16,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 {
     internal static class UnityTextureHelpers
     {
-        private static AssetsManager assetsManager = new();
+        private static readonly AssetsManager assetsManager = new();
 
         public static void LoadFiles(params string[] paths)
         {
