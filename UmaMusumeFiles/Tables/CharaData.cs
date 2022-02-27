@@ -12,8 +12,8 @@ namespace UmaMusumeFiles.Tables
     {
         [Column("id")]
         public int Id { get; set; }
-        [Column("birth_year")]
 
+        [Column("birth_year")]
         public int BirthYear { get; set; }
         [Column("birth_month")]
         public int BirthMonth { get; set; }
@@ -39,32 +39,32 @@ namespace UmaMusumeFiles.Tables
         public string UITrainingColor2 { get; set; } = "";
 
         [Column("ui_border_color")]
-        public string UIBorderColor { get; set; }
+        public string UIBorderColor { get; set; } = "";
 
         [Column("ui_num_color_1")]
-        public string UINumColor1 { get; set; }
+        public string UINumColor1 { get; set; } = "";
         [Column("ui_num_color_2")]
-        public string UINumColor2 { get; set; }
+        public string UINumColor2 { get; set; } = "";
 
         [Column("ui_turn_color")]
-        public string UITurnColor { get; set; }
+        public string UITurnColor { get; set; } = "";
 
         [Column("ui_wipe_color_1")]
-        public string UIWipeColor1 { get; set; }
+        public string UIWipeColor1 { get; set; } = "";
         [Column("ui_wipe_color_2")]
-        public string UIWipeColor2 { get; set; }
+        public string UIWipeColor2 { get; set; } = "";
         [Column("ui_wipe_color_3")]
-        public string UIWipeColor3 { get; set; }
+        public string UIWipeColor3 { get; set; } = "";
 
         [Column("ui_speech_color_1")]
-        public string UISpeechColor1 { get; set; }
+        public string UISpeechColor1 { get; set; } = "";
         [Column("ui_speech_color_2")]
-        public string UISpeechColor2 { get; set; }
+        public string UISpeechColor2 { get; set; } = "";
 
         [Column("ui_nameplate_color_1")]
-        public string UINameplateColor1 { get; set; }
+        public string UINameplateColor1 { get; set; } = "";
         [Column("ui_nameplate_color_2")]
-        public string UINameplateColor2 { get; set; }
+        public string UINameplateColor2 { get; set; } = "";
 
         [Column("height")]
         public int Height { get; set; }
@@ -88,7 +88,7 @@ namespace UmaMusumeFiles.Tables
         public int PersonalDress { get; set; }
 
         [Column("tail_model_id")]
-        public int TailModelID { get; set; }
+        public int TailModelId { get; set; }
 
         [Column("race_running_type")]
         public int RaceRunningType { get; set; }
@@ -114,7 +114,7 @@ namespace UmaMusumeFiles.Tables
         public int StoryTailRandomTimeMax { get; set; }
 
         [Column("attachment_model_id")]
-        public int AttachmentModelID { get; set; }
+        public int AttachmentModelId { get; set; }
 
         [Column("mini_mayu_shader_type")]
         public int MiniMayuShaderType { get; set; }
