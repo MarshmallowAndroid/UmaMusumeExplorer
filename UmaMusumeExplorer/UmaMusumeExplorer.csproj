@@ -19,8 +19,12 @@
     <ProjectReference Include="..\UmaMusumeFiles\UmaMusumeFiles.csproj" />
   </ItemGroup>
 
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="mkdir $(OutDir)x64\&#xD;&#xA;copy $(SolutionDir)AssetStudio\Texture2DDecoderNative\bin\x64\$(Configuration)\Texture2DDecoderNative.dll $(OutDir)x64\" />
+  <Target Name="AfterBuild">
+    <Copy SourceFiles="$(SolutionDir)AssetStudio\Texture2DDecoderNative\bin\x64\$(Configuration)\Texture2DDecoderNative.dll" DestinationFolder="$(OutDir)\x64" />
+  </Target>
+    
+  <Target Name="AfterPublish">
+    <Copy SourceFiles="$(SolutionDir)AssetStudio\Texture2DDecoderNative\bin\x64\$(Configuration)\Texture2DDecoderNative.dll" DestinationFolder="$(PublishDir)\x64" />
   </Target>
 
 </Project>
