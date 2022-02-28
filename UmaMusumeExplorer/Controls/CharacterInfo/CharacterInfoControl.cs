@@ -9,6 +9,7 @@ using UmaMusumeExplorer.Controls.CharacterInfo;
 using UmaMusumeExplorer.Controls;
 using System.ComponentModel;
 using System.Drawing;
+using System.Diagnostics;
 
 namespace PlayerGui.Controls.CharacterInfo
 {
@@ -23,7 +24,7 @@ namespace PlayerGui.Controls.CharacterInfo
 
         private void CharacterInfoControl_Load(object sender, EventArgs e)
         {
-            loadingBackgroundWorker.RunWorkerAsync();
+            if (!DesignMode) loadingBackgroundWorker.RunWorkerAsync();
         }
 
         private void CharaIcon_Click(object sender, EventArgs e)
