@@ -56,6 +56,9 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             {
                 costumeSelectComboBox.Items.Add(new CostumeSelectComboBoxItem(item));
             }
+
+            if (costumeSelectComboBox.Items.Count > 0)
+                costumeSelectComboBox.SelectedIndex = 0;
         }
 
         private void CostumeSelectComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -64,11 +67,31 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             CardData cardData = (comboBox.SelectedItem as CostumeSelectComboBoxItem).CardData;
             CardRarityData rarityData = PersistentData.CardRarityDatas.First(crd => crd.CardId == cardData.Id);
 
-            speedLabel.Text = rarityData.Speed.ToString();
-            staminaLabel.Text = rarityData.Stamina.ToString();
-            powerLabel.Text = rarityData.Pow.ToString();
-            gutsLabel.Text = rarityData.Guts.ToString();
-            wisdomLabel.Text = rarityData.Wiz.ToString();
+            speedStatusDisplayLabel.Value = rarityData.Speed;
+            staminaStatusDisplayLabel.Value = rarityData.Stamina;
+            powerStatusDisplayLabel.Value = rarityData.Pow;
+            gutsStatusDisplayLabel.Value = rarityData.Guts;
+            wisdomStatusDisplayLabel.Value = rarityData.Wiz;
+
+            turfRankedLabel.Rank = (RankedLabelRank)rarityData.ProperGroundTurf;
+            dirtRankedLabel.Rank = (RankedLabelRank)rarityData.ProperGroundDirt;
+
+            shortRankedLabel.Rank = (RankedLabelRank)rarityData.ProperDistanceShort;
+            mileRankedLabel.Rank = (RankedLabelRank)rarityData.ProperDistanceMile;
+            middleRankedLabel.Rank = (RankedLabelRank)rarityData.ProperDistanceMiddle;
+            longRankedLabel.Rank = (RankedLabelRank)rarityData.ProperDistanceLong;
+
+            escapeRankedLabel.Rank = (RankedLabelRank)rarityData.ProperRunningStyleNige;
+            leadingRankedLabel.Rank = (RankedLabelRank)rarityData.ProperRunningStyleSenko;
+            insertRankedLabel.Rank = (RankedLabelRank)rarityData.ProperRunningStyleSashi;
+            driveInRankedLabel.Rank = (RankedLabelRank)rarityData.ProperRunningStyleOikomi;
+
+            speedGrowthLabel.Text = cardData.TalentSpeed.ToString() + "%";
+            staminaGrowthLabel.Text = cardData.TalentStamina.ToString() + "%";
+            powerGrowthLabel.Text = cardData.TalentPow.ToString() + "%";
+            gutsGrowthLabel.Text = cardData.TalentGuts.ToString() + "%";
+            wisdomGrowthLabel.Text = cardData.TalentWiz.ToString() + "%";
+
         }
 
         private Color ColorFromHexString(string hexString)
