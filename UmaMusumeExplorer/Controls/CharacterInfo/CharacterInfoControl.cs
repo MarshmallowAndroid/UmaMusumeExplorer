@@ -33,7 +33,7 @@ namespace PlayerGui.Controls.CharacterInfo
             CharaData chara = charaIcon.Tag as CharaData;
 
             CardDetailsForm details = new(chara);
-            ShowFormInParentCenter(details);
+            ControlHelpers.ShowFormCenter(details, this);
         }
 
         private void LoadingBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -89,32 +89,7 @@ namespace PlayerGui.Controls.CharacterInfo
 
         private void GoButton_Click(object sender, EventArgs e)
         {
-            if (charaListComboBox.SelectedItem is CharaComboBoxItem item) ShowFormInParentCenter(new CardDetailsForm(item.CharaData));
-        }
-
-        private void ShowFormInParentCenter(Form form)
-        {
-            Form parentForm = GetParentForm(this);
-
-            int left = parentForm.Left;
-            int top = parentForm.Top;
-
-            left += (parentForm.Width / 2) - (form.Width / 2);
-            top += (parentForm.Height / 2) - (form.Height / 2);
-
-            form.Left = left;
-            form.Top = top;
-
-            form.Show();
-        }
-
-        private Form GetParentForm(Control control)
-        {
-            if (control is Form parentForm)
-            {
-                return parentForm;
-            }
-            else return GetParentForm(control.Parent);
+            if (charaListComboBox.SelectedItem is CharaComboBoxItem item) ControlHelpers.ShowFormCenter(new CardDetailsForm(item.CharaData), this);
         }
     }
 }
