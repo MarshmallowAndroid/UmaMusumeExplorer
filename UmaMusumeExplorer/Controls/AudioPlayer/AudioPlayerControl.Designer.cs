@@ -51,6 +51,7 @@ namespace PlayerGui.Controls.AudioPlayer
             this.nextBankButton = new System.Windows.Forms.Button();
             this.playButton = new System.Windows.Forms.Button();
             this.updateTimer = new System.Windows.Forms.Timer(this.components);
+            this.configureLoopButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel.SuspendLayout();
             this.leftPanel.SuspendLayout();
             this.rightPanel.SuspendLayout();
@@ -149,6 +150,7 @@ namespace PlayerGui.Controls.AudioPlayer
             // 
             // rightPanel
             // 
+            this.rightPanel.Controls.Add(this.configureLoopButton);
             this.rightPanel.Controls.Add(this.saveButton);
             this.rightPanel.Controls.Add(this.timeLengthLabel);
             this.rightPanel.Controls.Add(this.timeElapsedLabel);
@@ -284,6 +286,17 @@ namespace PlayerGui.Controls.AudioPlayer
             // 
             this.updateTimer.Tick += new System.EventHandler(this.UpdateTimer_Tick);
             // 
+            // configureLoopButton
+            // 
+            this.configureLoopButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.configureLoopButton.Location = new System.Drawing.Point(3, 575);
+            this.configureLoopButton.Name = "configureLoopButton";
+            this.configureLoopButton.Size = new System.Drawing.Size(127, 23);
+            this.configureLoopButton.TabIndex = 11;
+            this.configureLoopButton.Text = "Configure loop...";
+            this.configureLoopButton.UseVisualStyleBackColor = true;
+            this.configureLoopButton.Click += new System.EventHandler(this.ConfigureLoopButton_Click);
+            // 
             // AudioPlayerControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -325,5 +338,6 @@ namespace PlayerGui.Controls.AudioPlayer
         private System.Windows.Forms.Label timeElapsedLabel;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Label loadingFileNameLabel;
+        private System.Windows.Forms.Button configureLoopButton;
     }
 }

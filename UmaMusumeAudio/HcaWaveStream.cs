@@ -37,6 +37,9 @@ namespace UmaMusumeAudio
             }
 
             Loop = info.LoopEnabled;
+            LoopStartSample = info.LoopStartSample;
+            LoopEndSample = info.LoopEndSample;
+
             WaveFormat = new WaveFormat(info.SamplingRate, info.ChannelCount);
 
             samplePosition = info.EncoderDelay;
@@ -46,6 +49,10 @@ namespace UmaMusumeAudio
         public HcaInfo Info => info;
 
         public bool Loop { get; set; }
+
+        public long LoopStartSample { get; set; }
+
+        public long LoopEndSample { get; set; }
 
         public override WaveFormat WaveFormat { get; }
 
@@ -80,9 +87,9 @@ namespace UmaMusumeAudio
 
                 for (int i = 0; i < count / info.ChannelCount / sizeof(short); i++)
                 {
-                    if (samplePosition - info.EncoderDelay >= info.LoopEndSample && Loop)
+                    if (samplePosition - info.EncoderDelay >= LoopEndSample && Loop)
                     {
-                        samplePosition = info.LoopStartSample + info.EncoderDelay;
+                        samplePosition = LoopStartSample + info.EncoderDelay;
                         FillBuffer(samplePosition);
                     }
                     else if (Position >= Length) break;
@@ -103,6 +110,13 @@ namespace UmaMusumeAudio
 
                 return read;
             }
+        }
+
+        public void ResetLoop()
+        {
+            Loop = info.LoopEnabled;
+            LoopStartSample = info.LoopStartSample;
+            LoopEndSample = info.LoopEndSample;
         }
 
         private void FillBuffer(long sample)

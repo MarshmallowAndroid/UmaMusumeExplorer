@@ -26,6 +26,10 @@ namespace UmaMusumeAudio
 
         public bool Loop { get => hcaWaveStream.Loop; set { hcaWaveStream.Loop = value; } }
 
+        public long LoopStartSample { get => hcaWaveStream.LoopStartSample; set { hcaWaveStream.LoopStartSample = value; } }
+
+        public long LoopEndSample { get => hcaWaveStream.LoopEndSample; set { hcaWaveStream.LoopEndSample = value; } }
+
         public override long Length => hcaWaveStream.Length;
 
         public override long Position { get => hcaWaveStream.Position; set => hcaWaveStream.Position = value; }
@@ -34,6 +38,8 @@ namespace UmaMusumeAudio
         {
             return hcaWaveStream.Read(buffer, offset, count);
         }
+
+        public void ResetLoop() => hcaWaveStream.ResetLoop();
 
         private static ulong MixKey(ulong key, ushort subkey) =>
             key * (((ulong)subkey << 16) | ((ushort)~subkey + 2u));

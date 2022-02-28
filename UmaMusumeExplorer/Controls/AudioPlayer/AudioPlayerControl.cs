@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using UmaMusumeAudio;
+using UmaMusumeExplorer.Controls;
 using UmaMusumeExplorer.Controls.AudioPlayer;
 using UmaMusumeFiles;
 
@@ -274,6 +275,12 @@ namespace PlayerGui.Controls.AudioPlayer
                     waveOut.Play();
                 }
             }
+        }
+
+        private void ConfigureLoopButton_Click(object sender, EventArgs e)
+        {
+            if (umaWaveStream != null)
+                ControlHelpers.ShowFormDialogCenter(new ConfigureLoopForm(umaWaveStream), this);
         }
     }
 }
