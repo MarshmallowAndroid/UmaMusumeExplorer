@@ -1,6 +1,6 @@
 ﻿using CriWareFormats;
 
-namespace UmaMusumeExplorer.Controls.AudioPlayer
+namespace UmaMusumeExplorer.Controls.AudioPlayer.Classes
 {
     class TrackComboBoxItem
     {

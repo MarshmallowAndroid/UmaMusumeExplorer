@@ -22,7 +22,7 @@ namespace UmaMusumeExplorer.Controls
         private static IEnumerable<TextData> charaVoiceNameTextDatas;
         private static IEnumerable<TextData> charaCostumeNameTextDatas;
 
-        public static IEnumerable<GameAsset> BgmGameFiles
+        public static IEnumerable<GameAsset> BgmGameAssets
         {
             get
             {

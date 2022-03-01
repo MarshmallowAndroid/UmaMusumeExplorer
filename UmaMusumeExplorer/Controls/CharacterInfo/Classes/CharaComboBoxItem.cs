@@ -2,7 +2,7 @@
 using UmaMusumeFiles.Tables;
 using UmaMusumeExplorer.Controls;
 
-namespace PlayerGui.Controls.CharacterInfo
+namespace UmaMusumeExplorer.Controls.CharacterInfo.Classes
 {
     internal class CharaComboBoxItem
     {

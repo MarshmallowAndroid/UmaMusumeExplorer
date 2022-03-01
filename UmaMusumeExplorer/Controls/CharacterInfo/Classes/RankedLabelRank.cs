@@ -1,8 +1,9 @@
-﻿namespace UmaMusumeExplorer.Controls.CharacterInfo
+﻿namespace UmaMusumeExplorer.Controls.CharacterInfo.Classes
 {
     public enum RankedLabelRank
     {
-        G = 1,
+        Unknown,
+        G,
         F,
         E,
         D,

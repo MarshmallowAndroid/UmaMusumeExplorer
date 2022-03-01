@@ -1,5 +1,4 @@
 ﻿using AssetStudio;
-using PlayerGui.Controls.CharacterInfo;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
@@ -12,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Image = SixLabors.ImageSharp.Image;
 
-namespace UmaMusumeExplorer.Controls.CharacterInfo
+namespace UmaMusumeExplorer.Controls.CharacterInfo.Classes
 {
     internal static class UnityTextureHelpers
     {
@@ -30,8 +29,8 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             if (idString == "0000") imageString = "chr_icon_round_0000";
 
             SerializedFile targetAsset = assetsManager.assetsFileList.Where(
-                a => ((NamedObject)a.Objects.Where(o => o.type == ClassIDType.Texture2D).First()).m_Name.StartsWith(imageString)).First();
-            Texture2D texture = (Texture2D)targetAsset.Objects.Where(o => o.type == ClassIDType.Texture2D).First();
+                a => (a.Objects.Where(o => o.type == ClassIDType.Texture2D).First() as NamedObject).m_Name.StartsWith(imageString)).First();
+            Texture2D texture = targetAsset.Objects.Where(o => o.type == ClassIDType.Texture2D).First() as Texture2D;
 
             Image<Bgra32> image = texture.ConvertToImage(true);
 

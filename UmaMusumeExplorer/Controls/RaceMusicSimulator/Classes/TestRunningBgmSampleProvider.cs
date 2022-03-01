@@ -1,7 +1,7 @@
 ﻿using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
 
-namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
+namespace UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes
 {
     public class TestRunningBgmSampleProvider : ISampleProvider
     {

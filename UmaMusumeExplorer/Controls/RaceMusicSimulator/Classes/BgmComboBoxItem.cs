@@ -1,6 +1,6 @@
 ﻿using UmaMusumeFiles.Tables;
 
-namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
+namespace UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes
 {
     public class BgmComboBoxItem
     {

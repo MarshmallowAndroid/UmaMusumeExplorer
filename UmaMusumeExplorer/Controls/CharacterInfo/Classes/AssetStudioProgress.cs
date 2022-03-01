@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UmaMusumeExplorer.Controls.CharacterInfo
+namespace UmaMusumeExplorer.Controls.CharacterInfo.Classes
 {
     internal class AssetStudioProgress : IProgress
     {

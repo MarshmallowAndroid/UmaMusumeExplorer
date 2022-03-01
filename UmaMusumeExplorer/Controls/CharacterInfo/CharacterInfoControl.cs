@@ -10,6 +10,7 @@ using UmaMusumeExplorer.Controls;
 using System.ComponentModel;
 using System.Drawing;
 using System.Diagnostics;
+using UmaMusumeExplorer.Controls.CharacterInfo.Classes;
 
 namespace PlayerGui.Controls.CharacterInfo
 {

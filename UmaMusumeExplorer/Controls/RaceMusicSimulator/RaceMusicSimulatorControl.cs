@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using UmaMusumeExplorer.Controls;
-using UmaMusumeExplorer.Controls.RaceMusicSimulator;
+using UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes;
 using UmaMusumeFiles;
 using UmaMusumeFiles.Tables;
 
@@ -88,7 +88,7 @@ namespace PlayerGui.Controls.RaceMusicSimulator
                         if ((int)propertyValue == 0) continue;
                         break;
                     case "String":
-                        if ((string)propertyValue == string.Empty) continue;
+                        if (propertyValue as string == string.Empty) continue;
                         break;
                     default:
                         break;
@@ -102,12 +102,12 @@ namespace PlayerGui.Controls.RaceMusicSimulator
                 else if (property.Name.StartsWith("BgmCueName"))
                 {
                     int index = int.Parse(property.Name.Replace("BgmCueName", ""));
-                    bgmCueNames.Add(index, (string)propertyValue);
+                    bgmCueNames.Add(index, propertyValue as string);
                 }
                 else if (property.Name.StartsWith("BgmCuesheetName"))
                 {
                     int index = int.Parse(property.Name.Replace("BgmCuesheetName", ""));
-                    bgmCuesheetNames.Add(index, (string)propertyValue);
+                    bgmCuesheetNames.Add(index, propertyValue as string);
                 }
 
                 validItems++;
@@ -162,8 +162,8 @@ namespace PlayerGui.Controls.RaceMusicSimulator
             firstPatternLengthComboBox.SelectedIndex = 0;
             secondPatternLengthComboBox.SelectedIndex = 0;
 
-            paddockBgm = new(PersistentData.BgmGameFiles, raceBgm.PaddockBgmCuesheetName, raceBgm.PaddockBgmCueName);
-            entryTableBgm = new(PersistentData.BgmGameFiles, raceBgm.EntryTableBgmCuesheetName, raceBgm.EntryTableBgmCueName);
+            paddockBgm = new(PersistentData.BgmGameAssets, raceBgm.PaddockBgmCuesheetName, raceBgm.PaddockBgmCueName);
+            entryTableBgm = new(PersistentData.BgmGameAssets, raceBgm.EntryTableBgmCuesheetName, raceBgm.EntryTableBgmCueName);
 
             mixer = new MixingSampleProvider(WaveFormat.CreateIeeeFloatWaveFormat(
                 paddockBgm.UmaWaveStream.WaveFormat.SampleRate,
@@ -201,8 +201,8 @@ namespace PlayerGui.Controls.RaceMusicSimulator
                 resultCutInCueNameTextBox.Text = resultCutInBgmCueName;
                 resultListCuesheetNameTextBox.Text = resultListBgmCuesheetName;
                 resultListCueNameTextBox.Text = resultListBgmCueName;
-                resultCutInBgm = new Bgm(PersistentData.BgmGameFiles, resultCutInBgmCuesheetName, resultCutInBgmCueName);
-                resultListBgm = new Bgm(PersistentData.BgmGameFiles, resultListBgmCuesheetName, resultListBgmCueName);
+                resultCutInBgm = new Bgm(PersistentData.BgmGameAssets, resultCutInBgmCuesheetName, resultCutInBgmCueName);
+                resultListBgm = new Bgm(PersistentData.BgmGameAssets, resultListBgmCuesheetName, resultListBgmCueName);
             }
             else
             {
@@ -222,7 +222,7 @@ namespace PlayerGui.Controls.RaceMusicSimulator
                 firstPattern = firstPatternBgmList.FirstOrDefault(bi => bi.BgmTime == (int)comboBox.SelectedItem);
                 firstPatternCueNameTextBox.Text = firstPattern.BgmCueName;
                 firstPatternCuesheetNameTextBox.Text = firstPattern.BgmCuesheetName;
-                firstPatternBgm = new(PersistentData.BgmGameFiles, firstPattern.BgmCuesheetName, firstPattern.BgmCueName);
+                firstPatternBgm = new(PersistentData.BgmGameAssets, firstPattern.BgmCuesheetName, firstPattern.BgmCueName);
             }
             else
             {
@@ -240,7 +240,7 @@ namespace PlayerGui.Controls.RaceMusicSimulator
                 secondPattern = secondPatternBgmList.FirstOrDefault(bi => bi.BgmTime == (int)comboBox.SelectedItem);
                 secondPatternCueNameTextBox.Text = secondPattern.BgmCueName;
                 secondPatternCuesheetNameTextBox.Text = secondPattern.BgmCuesheetName;
-                secondPatternBgm = new(PersistentData.BgmGameFiles, secondPattern.BgmCuesheetName, secondPattern.BgmCueName);
+                secondPatternBgm = new(PersistentData.BgmGameAssets, secondPattern.BgmCuesheetName, secondPattern.BgmCueName);
             }
             else
             {

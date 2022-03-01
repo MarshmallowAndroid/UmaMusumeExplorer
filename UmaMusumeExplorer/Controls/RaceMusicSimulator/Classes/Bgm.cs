@@ -5,7 +5,7 @@ using System.IO;
 using UmaMusumeAudio;
 using UmaMusumeFiles;
 
-namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
+namespace UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes
 {
     public class Bgm : IDisposable
     {
