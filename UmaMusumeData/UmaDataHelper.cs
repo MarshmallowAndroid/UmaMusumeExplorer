@@ -7,7 +7,7 @@ using UmaMusumeFiles.Tables;
 
 namespace UmaMusumeFiles
 {
-    public static class UmaFileHelper
+    public static class UmaDataHelper
     {
         private static readonly string localLow = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "Low");
         private static readonly string umaMusumeDirectory = Path.Combine(localLow, "Cygames", "umamusume");

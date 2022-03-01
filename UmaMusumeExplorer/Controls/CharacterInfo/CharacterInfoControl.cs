@@ -42,10 +42,10 @@ namespace PlayerGui.Controls.CharacterInfo
             Regex charIconRegex = new("\\bchr_icon_[0-9]{4}\\b");
 
             List<string> imagePaths = new();
-            foreach (var item in UmaFileHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("chara/")))
+            foreach (var item in UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("chara/")))
             {
                 if (charIconRegex.IsMatch(item.BaseName) || item.BaseName == "chr_icon_round_0000")
-                    imagePaths.Add(UmaFileHelper.GetPath(item));
+                    imagePaths.Add(UmaDataHelper.GetPath(item));
             }
 
             AssetStudio.Progress.Default = new AssetStudioProgress(loadingBackgroundWorker.ReportProgress);

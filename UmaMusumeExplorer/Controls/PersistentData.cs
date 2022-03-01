@@ -27,7 +27,7 @@ namespace UmaMusumeExplorer.Controls
             get
             {
                 if (bgmGameFiles == null)
-                    bgmGameFiles = UmaFileHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("sound/b/"));
+                    bgmGameFiles = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("sound/b/"));
 
                 return bgmGameFiles;
             }
@@ -38,7 +38,7 @@ namespace UmaMusumeExplorer.Controls
             get
             {
                 if (raceBgm == null)
-                    raceBgm = UmaFileHelper.GetInfoDatabaseRows<RaceBgm>();
+                    raceBgm = UmaDataHelper.GetInfoDatabaseRows<RaceBgm>();
 
                 return raceBgm;
             }
@@ -49,7 +49,7 @@ namespace UmaMusumeExplorer.Controls
             get
             {
                 if (raceBgmPatterns == null)
-                    raceBgmPatterns = UmaFileHelper.GetInfoDatabaseRows<RaceBgmPattern>();
+                    raceBgmPatterns = UmaDataHelper.GetInfoDatabaseRows<RaceBgmPattern>();
 
                 return raceBgmPatterns;
             }
@@ -60,7 +60,7 @@ namespace UmaMusumeExplorer.Controls
             get
             {
                 if (charaDatas == null)
-                    charaDatas = UmaFileHelper.GetInfoDatabaseRows<CharaData>();
+                    charaDatas = UmaDataHelper.GetInfoDatabaseRows<CharaData>();
 
                 return charaDatas;
             }
@@ -71,7 +71,7 @@ namespace UmaMusumeExplorer.Controls
             get
             {
                 if (cardDatas == null)
-                    cardDatas = UmaFileHelper.GetInfoDatabaseRows<CardData>();
+                    cardDatas = UmaDataHelper.GetInfoDatabaseRows<CardData>();
 
                 return cardDatas;
             }
@@ -82,7 +82,7 @@ namespace UmaMusumeExplorer.Controls
             get
             {
                 if (cardRarityDatas == null)
-                    cardRarityDatas = UmaFileHelper.GetInfoDatabaseRows<CardRarityData>();
+                    cardRarityDatas = UmaDataHelper.GetInfoDatabaseRows<CardRarityData>();
 
                 return cardRarityDatas;
             }
@@ -93,7 +93,7 @@ namespace UmaMusumeExplorer.Controls
             get
             {
                 if (charaNameTextDatas == null)
-                    charaNameTextDatas = UmaFileHelper.GetInfoDatabaseRows<TextData>(td => td.Category == 170);
+                    charaNameTextDatas = UmaDataHelper.GetInfoDatabaseRows<TextData>(td => td.Category == 170);
 
                 return charaNameTextDatas;
             }
@@ -104,7 +104,7 @@ namespace UmaMusumeExplorer.Controls
             get
             {
                 if (charaNameKatakanaTextDatas == null)
-                    charaNameKatakanaTextDatas = UmaFileHelper.GetInfoDatabaseRows<TextData>(td => td.Category == 182);
+                    charaNameKatakanaTextDatas = UmaDataHelper.GetInfoDatabaseRows<TextData>(td => td.Category == 182);
 
                 return charaNameKatakanaTextDatas;
             }
@@ -115,7 +115,7 @@ namespace UmaMusumeExplorer.Controls
             get
             {
                 if (charaVoiceNameTextDatas == null)
-                    charaVoiceNameTextDatas = UmaFileHelper.GetInfoDatabaseRows<TextData>(td => td.Category == 7);
+                    charaVoiceNameTextDatas = UmaDataHelper.GetInfoDatabaseRows<TextData>(td => td.Category == 7);
 
                 return charaVoiceNameTextDatas;
             }
@@ -126,7 +126,7 @@ namespace UmaMusumeExplorer.Controls
             get
             {
                 if (charaCostumeNameTextDatas == null)
-                    charaCostumeNameTextDatas = UmaFileHelper.GetInfoDatabaseRows<TextData>(td => td.Category == 5);
+                    charaCostumeNameTextDatas = UmaDataHelper.GetInfoDatabaseRows<TextData>(td => td.Category == 5);
 
                 return charaCostumeNameTextDatas;
             }

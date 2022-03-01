@@ -14,8 +14,8 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes
         public Bgm(IEnumerable<GameAsset> gameAssetList, string cuesheetName, string cueName)
         {
             string lower = cuesheetName.ToLower();
-            string awbPath = UmaFileHelper.GetPath(gameAssetList, lower + ".awb");
-            string acbPath = UmaFileHelper.GetPath(gameAssetList, lower + ".acb");
+            string awbPath = UmaDataHelper.GetPath(gameAssetList, lower + ".awb");
+            string acbPath = UmaDataHelper.GetPath(gameAssetList, lower + ".acb");
 
             awbReader = new(File.OpenRead(awbPath));
 

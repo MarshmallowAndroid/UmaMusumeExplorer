@@ -57,9 +57,9 @@ namespace PlayerGui.Controls.AudioPlayer
             int currentFile = 0;
             foreach (var gameFile in awbOnly)
             {
-                if (File.Exists(UmaFileHelper.GetPath(gameFile)))
+                if (File.Exists(UmaDataHelper.GetPath(gameFile)))
                 {
-                    FileStream awbFile = File.OpenRead(UmaFileHelper.GetPath(gameFile));
+                    FileStream awbFile = File.OpenRead(UmaDataHelper.GetPath(gameFile));
                     AwbReader awbReader = new(awbFile);
 
                     string name = gameFile.BaseName;
@@ -113,11 +113,11 @@ namespace PlayerGui.Controls.AudioPlayer
                 waveOut.Stop();
                 awbReader?.Dispose();
 
-                string awbPath = UmaFileHelper.GetPath(gameFile);
+                string awbPath = UmaDataHelper.GetPath(gameFile);
                 awbReader = new(File.OpenRead(awbPath));
 
                 string acbName = gameFile.BaseName[0..^4] + ".acb";
-                string acbPath = UmaFileHelper.GetPath(bgmAssets.FirstOrDefault((gf) => gf.BaseName == acbName));
+                string acbPath = UmaDataHelper.GetPath(bgmAssets.FirstOrDefault((gf) => gf.BaseName == acbName));
                 FileStream acbFile = File.OpenRead(acbPath);
                 AcbReader acbReader = new(acbFile);
 
