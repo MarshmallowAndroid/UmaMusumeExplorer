@@ -145,8 +145,8 @@ namespace PlayerGui.Controls.RaceMusicSimulator
 
             paddockCueNameTextBox.Text = raceBgm.PaddockBgmCueName;
             paddockCuesheetNameTextBox.Text = raceBgm.PaddockBgmCuesheetName;
-            entryTableCueNameTextBox.Text = raceBgm.EntryTableBgmCueName;
-            entryTableCuesheetNameTextBox.Text = raceBgm.EntryTableBgmCuesheetName;
+            entryTableCueNameTextBox.Text = raceBgm.EntrytableBgmCueName;
+            entryTableCuesheetNameTextBox.Text = raceBgm.EntrytableBgmCuesheetName;
 
             foreach (var item in firstPatternBgmList)
             {
@@ -163,7 +163,7 @@ namespace PlayerGui.Controls.RaceMusicSimulator
             secondPatternLengthComboBox.SelectedIndex = 0;
 
             paddockBgm = new(PersistentData.BgmGameAssets, raceBgm.PaddockBgmCuesheetName, raceBgm.PaddockBgmCueName);
-            entryTableBgm = new(PersistentData.BgmGameAssets, raceBgm.EntryTableBgmCuesheetName, raceBgm.EntryTableBgmCueName);
+            entryTableBgm = new(PersistentData.BgmGameAssets, raceBgm.EntrytableBgmCuesheetName, raceBgm.EntrytableBgmCueName);
 
             mixer = new MixingSampleProvider(WaveFormat.CreateIeeeFloatWaveFormat(
                 paddockBgm.UmaWaveStream.WaveFormat.SampleRate,
@@ -192,8 +192,8 @@ namespace PlayerGui.Controls.RaceMusicSimulator
 
             if (propertyIndex > 0)
             {
-                string resultCutInBgmCuesheetName = type.GetProperty("ResultCutInBgmCuesheetName" + propertyIndex).GetValue(raceBgm).ToString();
-                string resultCutInBgmCueName = type.GetProperty("ResultCutInBgmCueName" + propertyIndex).GetValue(raceBgm).ToString();
+                string resultCutInBgmCuesheetName = type.GetProperty("ResultCutinBgmCuesheetName" + propertyIndex).GetValue(raceBgm).ToString();
+                string resultCutInBgmCueName = type.GetProperty("ResultCutinBgmCueName" + propertyIndex).GetValue(raceBgm).ToString();
                 string resultListBgmCuesheetName = type.GetProperty("ResultListBgmCuesheetName" + propertyIndex).GetValue(raceBgm).ToString();
                 string resultListBgmCueName = type.GetProperty("ResultListBgmCueName" + propertyIndex).GetValue(raceBgm).ToString();
 
