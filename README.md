@@ -24,13 +24,9 @@ In fact, I listen to the BGM while working on this tool. Personal favorites incl
 * `gm061` ("Draw" jingle and BGM)
 * `gm097`, `gm098`, and `gm099`
 * `gm133` and `gm133_long`
-* `gm171`[^1]
+* `gm171`
 
 If Cygames asks me to take this repository down, I will have to comply.
-
-[^1]: Unfortunately, they didn't set the loop data of this BGM (probably because it's new).
-However, I manually found the loop points with Audacity. Use values **905571-8817660** as start
-and end loop points. This can also be set in the tool.
 
 ## Credits
 
