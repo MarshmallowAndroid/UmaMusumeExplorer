@@ -26,8 +26,6 @@ In fact, I listen to the BGM while working on this tool. Personal favorites incl
 * `gm133` and `gm133_long`
 * `gm171`
 
-If Cygames asks me to take this repository down, I will have to comply.
-
 ## Credits
 
 * [sqlite-net](https://github.com/praeclarum/sqlite-net) for SQLite functionality
