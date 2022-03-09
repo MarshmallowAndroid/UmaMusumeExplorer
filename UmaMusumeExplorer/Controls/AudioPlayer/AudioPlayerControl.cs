@@ -156,10 +156,9 @@ namespace PlayerGui.Controls.AudioPlayer
 
                 timeLengthLabel.Text = umaWaveStream.TotalTime.ToString("mm\\:ss");
 
-                waveOut.Stop();
-                waveOut.Init(new VolumeSampleProvider(umaWaveStream.ToSampleProvider()) { Volume = 4.0f });
-                initialized = true;
+                InitializeWaveOut(umaWaveStream);
                 waveOut.Play();
+                initialized = true;
             }
 
             updateTimer.Enabled = true;
@@ -185,11 +184,25 @@ namespace PlayerGui.Controls.AudioPlayer
         {
             if (initialized)
             {
-                if (waveOut.PlaybackState == PlaybackState.Playing)
-                    waveOut.Pause();
-                else
+                try
+                {
+                    if (waveOut.PlaybackState == PlaybackState.Playing)
+                        waveOut.Pause();
+                    else
+                        waveOut.Play();
+                }
+                catch (Exception)
+                {
+                    InitializeWaveOut(umaWaveStream);
                     waveOut.Play();
+                }
             }
+        }
+
+        private void InitializeWaveOut(WaveStream waveStream)
+        {
+            waveOut.Stop();
+            waveOut.Init(new VolumeSampleProvider(waveStream.ToSampleProvider()) { Volume = 4.0f });
         }
 
         private void PrevTrackButton_Click(object sender, EventArgs e)
