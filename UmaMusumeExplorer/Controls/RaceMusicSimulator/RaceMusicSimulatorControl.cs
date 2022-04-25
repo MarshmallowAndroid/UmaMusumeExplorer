@@ -19,11 +19,11 @@ namespace PlayerGui.Controls.RaceMusicSimulator
         private Pattern firstPattern;
         private Pattern secondPattern;
 
-        private readonly WaveOutEvent waveOut;
+        private WaveOutEvent waveOut;
 
         private Bgm paddockBgm;
         private Bgm entryTableBgm;
-        private Bgm resultCutInBgm;
+        private Bgm resultCutinBgm;
         private Bgm resultListBgm;
         private Bgm firstPatternBgm;
         private Bgm secondPatternBgm;
@@ -33,12 +33,12 @@ namespace PlayerGui.Controls.RaceMusicSimulator
         public RaceMusicSimulatorControl()
         {
             InitializeComponent();
-
-            waveOut = new WaveOutEvent();
         }
 
         private void RaceSimulatorControl_Load(object sender, EventArgs e)
         {
+            waveOut = new WaveOutEvent();
+
             IEnumerable<RaceBgm> raceBgm = PersistentData.RaceBgm;
 
             foreach (var bgm in raceBgm)
@@ -65,7 +65,7 @@ namespace PlayerGui.Controls.RaceMusicSimulator
 
             paddockBgm?.Dispose();
             entryTableBgm?.Dispose();
-            resultCutInBgm?.Dispose();
+            resultCutinBgm?.Dispose();
             resultListBgm?.Dispose();
         }
 
@@ -132,7 +132,7 @@ namespace PlayerGui.Controls.RaceMusicSimulator
         {
             waveOut.Stop();
 
-            BgmComboBoxItem comboBoxItem = (BgmComboBoxItem)bgmIDComboBox.SelectedItem;
+            BgmComboBoxItem comboBoxItem = bgmIDComboBox.SelectedItem as BgmComboBoxItem;
             raceBgm = comboBoxItem.RaceBgm;
 
             RaceBgmPattern firstPatternTable = PersistentData.RaceBgmPatterns.FirstOrDefault(p =>
@@ -167,41 +167,41 @@ namespace PlayerGui.Controls.RaceMusicSimulator
 
             mixer = new MixingSampleProvider(WaveFormat.CreateIeeeFloatWaveFormat(
                 paddockBgm.UmaWaveStream.WaveFormat.SampleRate,
-                paddockBgm.UmaWaveStream.WaveFormat.Channels));
+                paddockBgm.UmaWaveStream.WaveFormat.Channels)) { ReadFully = true };
 
             mixer.MixerInputEnded += Mixer_MixerInputEnded;
 
-            waveOut.Init(new VolumeSampleProvider(mixer) { Volume = 3.0f });
+            waveOut.Init(new VolumeSampleProvider(mixer) { Volume = 4.0f });
             waveOut.Play();
         }
 
         private void Mixer_MixerInputEnded(object sender, SampleProviderEventArgs e)
         {
-            MixingSampleProvider sampleProvider = (MixingSampleProvider)sender;
+            //MixingSampleProvider sampleProvider = sender as MixingSampleProvider;
 
-            sampleProvider.RemoveMixerInput(e.SampleProvider);
+            //sampleProvider.RemoveMixerInput(e.SampleProvider);
         }
 
         private void RaceResultComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ComboBox comboBox = (ComboBox)sender;
-            RaceBgm raceBgm = ((BgmComboBoxItem)bgmIDComboBox.SelectedItem).RaceBgm;
+            ComboBox comboBox = sender as ComboBox;
+            RaceBgm raceBgm = (bgmIDComboBox.SelectedItem as BgmComboBoxItem).RaceBgm;
             Type type = raceBgm.GetType();
 
             int propertyIndex = comboBox.SelectedIndex + 1;
 
             if (propertyIndex > 0)
             {
-                string resultCutInBgmCuesheetName = type.GetProperty("ResultCutinBgmCuesheetName" + propertyIndex).GetValue(raceBgm).ToString();
-                string resultCutInBgmCueName = type.GetProperty("ResultCutinBgmCueName" + propertyIndex).GetValue(raceBgm).ToString();
+                string resultCutinBgmCuesheetName = type.GetProperty("ResultCutinBgmCuesheetName" + propertyIndex).GetValue(raceBgm).ToString();
+                string resultCutinBgmCueName = type.GetProperty("ResultCutinBgmCueName" + propertyIndex).GetValue(raceBgm).ToString();
                 string resultListBgmCuesheetName = type.GetProperty("ResultListBgmCuesheetName" + propertyIndex).GetValue(raceBgm).ToString();
                 string resultListBgmCueName = type.GetProperty("ResultListBgmCueName" + propertyIndex).GetValue(raceBgm).ToString();
 
-                resultCutInCuesheetNameTextBox.Text = resultCutInBgmCuesheetName;
-                resultCutInCueNameTextBox.Text = resultCutInBgmCueName;
+                resultCutInCuesheetNameTextBox.Text = resultCutinBgmCuesheetName;
+                resultCutInCueNameTextBox.Text = resultCutinBgmCueName;
                 resultListCuesheetNameTextBox.Text = resultListBgmCuesheetName;
                 resultListCueNameTextBox.Text = resultListBgmCueName;
-                resultCutInBgm = new Bgm(PersistentData.BgmGameAssets, resultCutInBgmCuesheetName, resultCutInBgmCueName);
+                resultCutinBgm = new Bgm(PersistentData.BgmGameAssets, resultCutinBgmCuesheetName, resultCutinBgmCueName);
                 resultListBgm = new Bgm(PersistentData.BgmGameAssets, resultListBgmCuesheetName, resultListBgmCueName);
             }
             else
@@ -233,7 +233,7 @@ namespace PlayerGui.Controls.RaceMusicSimulator
 
         private void SecondPatternLengthComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ComboBox comboBox = (ComboBox)sender;
+            ComboBox comboBox = sender as ComboBox;
 
             if (comboBox.SelectedIndex >= 0)
             {
@@ -253,7 +253,13 @@ namespace PlayerGui.Controls.RaceMusicSimulator
         {
             if (raceBgm == null) return;
 
-            Button button = (Button)sender;
+            Button button = sender as Button;
+
+            if (mixer.MixerInputs.Any())
+            {
+                FadeInOutSampleProvider sampleProvider = mixer.MixerInputs.Last() as FadeInOutSampleProvider;
+                sampleProvider.BeginFadeOut(500);
+            }
 
             switch (button.Name)
             {
@@ -264,15 +270,22 @@ namespace PlayerGui.Controls.RaceMusicSimulator
                     mixer.AddMixerInput(new FadeInOutSampleProvider(entryTableBgm.UmaWaveStream.ToSampleProvider()));
                     break;
                 case "playRaceResultButton":
-                    //mixer.AddMixerInput(new FadeInOutSampleProvider(raceR.UmaWaveStream.ToSampleProvider()));
+                    mixer.AddMixerInput(new FadeInOutSampleProvider(
+                        resultCutinBgm.UmaWaveStream.ToSampleProvider()));
+                    mixer.AddMixerInput(new FadeInOutSampleProvider(
+                        new OffsetSampleProvider(resultListBgm.UmaWaveStream.ToSampleProvider())
+                        {
+                            DelayBy = resultCutinBgm.UmaWaveStream.TotalTime - TimeSpan.FromSeconds(1)
+                        }));
                     break;
                 case "playRunningButton":
-                    mixer.AddMixerInput(new TestRunningBgmSampleProvider(firstPatternBgm, secondPatternBgm));
+                    mixer.AddMixerInput(new FadeInOutSampleProvider(firstPatternBgm.UmaWaveStream.ToSampleProvider()));
+                    //mixer.AddMixerInput(new TestRunningBgmSampleProvider(firstPatternBgm, secondPatternBgm));
                     break;
                 case "playLastSpurtButton":
-                    //mixer.AddMixerInput(new FadeInOutSampleProvider(secondPatternBgm.UmaWaveStream.ToSampleProvider()));
-                    TestRunningBgmSampleProvider test = (TestRunningBgmSampleProvider)mixer.MixerInputs.Last();
-                    test.LastSpurt();
+                    mixer.AddMixerInput(new FadeInOutSampleProvider(secondPatternBgm.UmaWaveStream.ToSampleProvider()));
+                    //TestRunningBgmSampleProvider test = (TestRunningBgmSampleProvider)mixer.MixerInputs.Last();
+                    //test.LastSpurt();
                     break;
                 default:
                     break;
