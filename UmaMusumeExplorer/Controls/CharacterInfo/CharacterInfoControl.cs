@@ -65,6 +65,10 @@ namespace PlayerGui.Controls.CharacterInfo
                     Cursor = Cursors.Hand,
                     Tag = item
                 };
+
+                ToolTip toolTip = new();
+                toolTip.SetToolTip(charaIcon, item.Id.ToString());
+
                 charaIcon.Click += CharaIcon_Click;
                 pictureBoxes.Add(charaIcon);
 
