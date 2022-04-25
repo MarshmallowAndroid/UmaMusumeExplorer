@@ -27,7 +27,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             LoadValues();
         }
 
-        private void ApplyButton_Click(object sender, EventArgs e)
+        private void OKButton_Click(object sender, EventArgs e)
         {
             hcaWaveStream.Loop = loopEnabledCheckBox.Checked;
             hcaWaveStream.LoopStartSample = (long)startSampleNumericUpDown.Value;
@@ -47,6 +47,11 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             loopEnabledCheckBox.Checked = hcaWaveStream.Loop;
             startSampleNumericUpDown.Value = hcaWaveStream.LoopStartSample;
             endSampleNumericUpDown.Value = hcaWaveStream.LoopEndSample;
+        }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

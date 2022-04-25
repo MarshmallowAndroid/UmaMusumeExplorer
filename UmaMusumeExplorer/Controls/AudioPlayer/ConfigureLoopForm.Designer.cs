@@ -33,8 +33,9 @@
             this.endSampleNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.startSamplesHintLabel = new System.Windows.Forms.Label();
             this.endSamplesHintLabel = new System.Windows.Forms.Label();
-            this.applyButton = new System.Windows.Forms.Button();
+            this.okButton = new System.Windows.Forms.Button();
             this.resetButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.startSampleNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.endSampleNumericUpDown)).BeginInit();
             this.SuspendLayout();
@@ -101,19 +102,19 @@
             this.endSamplesHintLabel.TabIndex = 0;
             this.endSamplesHintLabel.Text = "End sample";
             // 
-            // applyButton
+            // okButton
             // 
-            this.applyButton.Location = new System.Drawing.Point(266, 119);
-            this.applyButton.Name = "applyButton";
-            this.applyButton.Size = new System.Drawing.Size(75, 23);
-            this.applyButton.TabIndex = 3;
-            this.applyButton.Text = "Apply";
-            this.applyButton.UseVisualStyleBackColor = true;
-            this.applyButton.Click += new System.EventHandler(this.ApplyButton_Click);
+            this.okButton.Location = new System.Drawing.Point(266, 119);
+            this.okButton.Name = "okButton";
+            this.okButton.Size = new System.Drawing.Size(75, 23);
+            this.okButton.TabIndex = 3;
+            this.okButton.Text = "OK";
+            this.okButton.UseVisualStyleBackColor = true;
+            this.okButton.Click += new System.EventHandler(this.OKButton_Click);
             // 
             // resetButton
             // 
-            this.resetButton.Location = new System.Drawing.Point(347, 119);
+            this.resetButton.Location = new System.Drawing.Point(12, 119);
             this.resetButton.Name = "resetButton";
             this.resetButton.Size = new System.Drawing.Size(75, 23);
             this.resetButton.TabIndex = 3;
@@ -121,13 +122,24 @@
             this.resetButton.UseVisualStyleBackColor = true;
             this.resetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
+            // cancelButton
+            // 
+            this.cancelButton.Location = new System.Drawing.Point(347, 119);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelButton.TabIndex = 3;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            // 
             // ConfigureLoopForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(434, 154);
             this.Controls.Add(this.resetButton);
-            this.Controls.Add(this.applyButton);
+            this.Controls.Add(this.cancelButton);
+            this.Controls.Add(this.okButton);
             this.Controls.Add(this.endSampleNumericUpDown);
             this.Controls.Add(this.startSampleNumericUpDown);
             this.Controls.Add(this.loopEnabledCheckBox);
@@ -154,7 +166,8 @@
         private System.Windows.Forms.NumericUpDown endSampleNumericUpDown;
         private System.Windows.Forms.Label startSamplesHintLabel;
         private System.Windows.Forms.Label endSamplesHintLabel;
-        private System.Windows.Forms.Button applyButton;
+        private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.Button resetButton;
+        private System.Windows.Forms.Button cancelButton;
     }
 }
