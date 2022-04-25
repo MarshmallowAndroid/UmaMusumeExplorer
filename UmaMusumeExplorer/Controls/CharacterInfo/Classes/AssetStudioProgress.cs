@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo.Classes
 {
-    internal class AssetStudioProgress : IProgress
+    internal class AssetStudioProgress : IProgress<int>
     {
         readonly Action<int> reportProgress;
 
