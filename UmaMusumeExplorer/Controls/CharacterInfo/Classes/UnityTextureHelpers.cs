@@ -37,7 +37,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo.Classes
             int adjustedHeight = (int)(image.Height * 1.10f);
             image.Mutate(o => o.Resize(image.Width, adjustedHeight));
 
-            PinnedBitmap bitmap = new(image.ConvertToBgra32Bytes(), image.Width, adjustedHeight);
+            PinnedBitmap bitmap = new(image.ConvertToBytes(), image.Width, adjustedHeight);
             return bitmap.Bitmap;
         }
     }
