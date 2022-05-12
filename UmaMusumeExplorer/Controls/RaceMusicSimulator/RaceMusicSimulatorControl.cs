@@ -28,7 +28,9 @@ namespace PlayerGui.Controls.RaceMusicSimulator
         private Bgm firstPatternBgm;
         private Bgm secondPatternBgm;
 
-        private MixingSampleProvider mixer;
+        private AutoRemoveMixingSampleProvider mixer;
+
+        private string lastPressedButtonName = "";
 
         public RaceMusicSimulatorControl()
         {
@@ -165,21 +167,12 @@ namespace PlayerGui.Controls.RaceMusicSimulator
             paddockBgm = new(PersistentData.BgmGameAssets, raceBgm.PaddockBgmCuesheetName, raceBgm.PaddockBgmCueName);
             entryTableBgm = new(PersistentData.BgmGameAssets, raceBgm.EntrytableBgmCuesheetName, raceBgm.EntrytableBgmCueName);
 
-            mixer = new MixingSampleProvider(WaveFormat.CreateIeeeFloatWaveFormat(
+            mixer = new(WaveFormat.CreateIeeeFloatWaveFormat(
                 paddockBgm.UmaWaveStream.WaveFormat.SampleRate,
                 paddockBgm.UmaWaveStream.WaveFormat.Channels)) { ReadFully = true };
 
-            mixer.MixerInputEnded += Mixer_MixerInputEnded;
-
             waveOut.Init(new VolumeSampleProvider(mixer) { Volume = 4.0f });
             waveOut.Play();
-        }
-
-        private void Mixer_MixerInputEnded(object sender, SampleProviderEventArgs e)
-        {
-            //MixingSampleProvider sampleProvider = sender as MixingSampleProvider;
-
-            //sampleProvider.RemoveMixerInput(e.SampleProvider);
         }
 
         private void RaceResultComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -257,35 +250,43 @@ namespace PlayerGui.Controls.RaceMusicSimulator
 
             if (mixer.MixerInputs.Any())
             {
-                FadeInOutSampleProvider sampleProvider = mixer.MixerInputs.Last() as FadeInOutSampleProvider;
+                FadeInOutEventSampleProvider sampleProvider = mixer.MixerInputs.Last() as FadeInOutEventSampleProvider;
                 sampleProvider.BeginFadeOut(500);
             }
+
+            if (lastPressedButtonName == button.Name)
+                mixer.RemoveAllMixerInputs();
+
+            lastPressedButtonName = button.Name;
 
             switch (button.Name)
             {
                 case "playPaddockButton":
-                    mixer.AddMixerInput(new FadeInOutSampleProvider(paddockBgm.UmaWaveStream.ToSampleProvider()));
+                    paddockBgm.UmaWaveStream.Position = 0;
+                    mixer.AddMixerInput(new FadeInOutEventSampleProvider(paddockBgm.UmaWaveStream.ToSampleProvider()));
                     break;
                 case "playEntryTableButton":
-                    mixer.AddMixerInput(new FadeInOutSampleProvider(entryTableBgm.UmaWaveStream.ToSampleProvider()));
+                    entryTableBgm.UmaWaveStream.Position = 0;
+                    mixer.AddMixerInput(new FadeInOutEventSampleProvider(entryTableBgm.UmaWaveStream.ToSampleProvider()));
                     break;
                 case "playRaceResultButton":
-                    mixer.AddMixerInput(new FadeInOutSampleProvider(
+                    resultCutinBgm.UmaWaveStream.Position = 0;
+                    resultListBgm.UmaWaveStream.Position = 0;
+                    mixer.AddMixerInput(new FadeInOutEventSampleProvider(
                         resultCutinBgm.UmaWaveStream.ToSampleProvider()));
-                    mixer.AddMixerInput(new FadeInOutSampleProvider(
+                    mixer.AddMixerInput(new FadeInOutEventSampleProvider(
                         new OffsetSampleProvider(resultListBgm.UmaWaveStream.ToSampleProvider())
                         {
                             DelayBy = resultCutinBgm.UmaWaveStream.TotalTime - TimeSpan.FromSeconds(1)
                         }));
                     break;
                 case "playRunningButton":
-                    mixer.AddMixerInput(new FadeInOutSampleProvider(firstPatternBgm.UmaWaveStream.ToSampleProvider()));
-                    //mixer.AddMixerInput(new TestRunningBgmSampleProvider(firstPatternBgm, secondPatternBgm));
+                    firstPatternBgm.UmaWaveStream.Position = 0;
+                    mixer.AddMixerInput(new FadeInOutEventSampleProvider(firstPatternBgm.UmaWaveStream.ToSampleProvider()));
                     break;
                 case "playLastSpurtButton":
-                    mixer.AddMixerInput(new FadeInOutSampleProvider(secondPatternBgm.UmaWaveStream.ToSampleProvider()));
-                    //TestRunningBgmSampleProvider test = (TestRunningBgmSampleProvider)mixer.MixerInputs.Last();
-                    //test.LastSpurt();
+                    secondPatternBgm.UmaWaveStream.Position = 0;
+                    mixer.AddMixerInput(new FadeInOutEventSampleProvider(secondPatternBgm.UmaWaveStream.ToSampleProvider()));
                     break;
                 default:
                     break;
