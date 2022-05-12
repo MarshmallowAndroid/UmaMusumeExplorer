@@ -239,7 +239,7 @@ namespace PlayerGui.Controls.RaceMusicSimulator
             // 
             // playRunningButton
             // 
-            this.playRunningButton.Location = new System.Drawing.Point(467, 207);
+            this.playRunningButton.Location = new System.Drawing.Point(337, 236);
             this.playRunningButton.Name = "playRunningButton";
             this.playRunningButton.Size = new System.Drawing.Size(124, 23);
             this.playRunningButton.TabIndex = 4;
@@ -259,7 +259,7 @@ namespace PlayerGui.Controls.RaceMusicSimulator
             // 
             // playEntryTableButton
             // 
-            this.playEntryTableButton.Location = new System.Drawing.Point(337, 236);
+            this.playEntryTableButton.Location = new System.Drawing.Point(467, 207);
             this.playEntryTableButton.Name = "playEntryTableButton";
             this.playEntryTableButton.Size = new System.Drawing.Size(124, 23);
             this.playEntryTableButton.TabIndex = 4;
