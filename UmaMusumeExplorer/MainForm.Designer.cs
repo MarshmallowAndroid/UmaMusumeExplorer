@@ -29,6 +29,7 @@ namespace PlayerGui
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl = new System.Windows.Forms.TabControl();
             this.audioPlayerTabPage = new System.Windows.Forms.TabPage();
             this.audioPlayerControl1 = new PlayerGui.Controls.AudioPlayer.AudioPlayerControl();
@@ -122,6 +123,7 @@ namespace PlayerGui
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1011, 692);
             this.Controls.Add(this.tabControl);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Uma Musume Explorer";
