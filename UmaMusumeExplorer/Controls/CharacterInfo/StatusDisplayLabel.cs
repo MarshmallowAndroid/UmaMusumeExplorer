@@ -72,6 +72,36 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
                 else if (InRange(statusValue, 1200, 1200))
                     statusRankLabel.Text = "SS+";
 
+                switch (statusRankLabel.Text[0])
+                {
+                    case 'G':
+                        statusRankLabel.ForeColor = Color.DarkGray;
+                        break;
+                    case 'F':
+                        statusRankLabel.ForeColor = Color.SlateBlue;
+                        break;
+                    case 'E':
+                        statusRankLabel.ForeColor = Color.DarkViolet;
+                        break;
+                    case 'D':
+                        statusRankLabel.ForeColor = Color.DeepSkyBlue;
+                        break;
+                    case 'C':
+                        statusRankLabel.ForeColor = Color.LimeGreen;
+                        break;
+                    case 'B':
+                        statusRankLabel.ForeColor = Color.HotPink;
+                        break;
+                    case 'A':
+                        statusRankLabel.ForeColor = Color.OrangeRed;
+                        break;
+                    case 'S':
+                        statusRankLabel.ForeColor = Color.Goldenrod;
+                        break;
+                    default:
+                        break;
+                }
+
                 Update();
             }
         }

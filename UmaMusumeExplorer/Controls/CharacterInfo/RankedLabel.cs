@@ -18,6 +18,8 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
         public RankedLabel()
         {
             InitializeComponent();
+
+            Rank = RankedLabelRank.Unknown;
         }
 
         public RankedLabelRank Rank
@@ -34,29 +36,38 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
                 {
                     case RankedLabelRank.G:
                         rankLabel.Text = "G";
+                        rankLabel.ForeColor = Color.DarkGray;
                         break;
                     case RankedLabelRank.F:
                         rankLabel.Text = "F";
+                        rankLabel.ForeColor = Color.SlateBlue;
                         break;
                     case RankedLabelRank.E:
                         rankLabel.Text = "E";
+                        rankLabel.ForeColor = Color.DarkViolet;
                         break;
                     case RankedLabelRank.D:
                         rankLabel.Text = "D";
+                        rankLabel.ForeColor = Color.DeepSkyBlue;
                         break;
                     case RankedLabelRank.C:
                         rankLabel.Text = "C";
+                        rankLabel.ForeColor = Color.LimeGreen;
                         break;
                     case RankedLabelRank.B:
                         rankLabel.Text = "B";
+                        rankLabel.ForeColor = Color.HotPink;
                         break;
                     case RankedLabelRank.A:
                         rankLabel.Text = "A";
+                        rankLabel.ForeColor = Color.OrangeRed;
                         break;
                     case RankedLabelRank.S:
                         rankLabel.Text = "S";
+                        rankLabel.ForeColor = Color.Goldenrod;
                         break;
                     default:
+                        rankLabel.Text = "?";
                         break;
                 }
 
