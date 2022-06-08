@@ -22,6 +22,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
         private AwbReader awbReader;
         private UmaWaveStream umaWaveStream;
         private WaveOutEvent waveOut;
+        private VolumeSampleProvider volumeSampleProvider;
         private bool initialized = false;
         private int totalFiles;
         private string currentFileName = "";
@@ -200,7 +201,8 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
         private void InitializeWaveOut(WaveStream waveStream)
         {
             waveOut.Stop();
-            waveOut.Init(new VolumeSampleProvider(waveStream.ToSampleProvider()) { Volume = 4.0f });
+            volumeSampleProvider = new VolumeSampleProvider(waveStream.ToSampleProvider()) { Volume = (float)amplifyUpDown.Value };
+            waveOut.Init(volumeSampleProvider);
         }
 
         private void PrevTrackButton_Click(object sender, EventArgs e)
@@ -295,6 +297,11 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
         {
             if (umaWaveStream != null)
                 ControlHelpers.ShowFormDialogCenter(new ConfigureLoopForm(umaWaveStream), this);
+        }
+
+        private void AmplifyUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            volumeSampleProvider.Volume = (float)amplifyUpDown.Value;
         }
     }
 }

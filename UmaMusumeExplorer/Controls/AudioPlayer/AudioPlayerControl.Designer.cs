@@ -40,6 +40,9 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             this.leftPanel = new System.Windows.Forms.Panel();
             this.loadingFileNameLabel = new System.Windows.Forms.Label();
             this.rightPanel = new System.Windows.Forms.Panel();
+            this.amplifyUpDown = new System.Windows.Forms.NumericUpDown();
+            this.amplifyLabel = new System.Windows.Forms.Label();
+            this.configureLoopButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
             this.timeLengthLabel = new System.Windows.Forms.Label();
             this.timeElapsedLabel = new System.Windows.Forms.Label();
@@ -51,10 +54,10 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             this.nextBankButton = new System.Windows.Forms.Button();
             this.playButton = new System.Windows.Forms.Button();
             this.updateTimer = new System.Windows.Forms.Timer(this.components);
-            this.configureLoopButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel.SuspendLayout();
             this.leftPanel.SuspendLayout();
             this.rightPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.amplifyUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seekTrackBar)).BeginInit();
             this.controlsTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
@@ -150,6 +153,8 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             // 
             // rightPanel
             // 
+            this.rightPanel.Controls.Add(this.amplifyUpDown);
+            this.rightPanel.Controls.Add(this.amplifyLabel);
             this.rightPanel.Controls.Add(this.configureLoopButton);
             this.rightPanel.Controls.Add(this.saveButton);
             this.rightPanel.Controls.Add(this.timeLengthLabel);
@@ -162,6 +167,50 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             this.rightPanel.Name = "rightPanel";
             this.rightPanel.Size = new System.Drawing.Size(459, 630);
             this.rightPanel.TabIndex = 0;
+            // 
+            // amplifyUpDown
+            // 
+            this.amplifyUpDown.DecimalPlaces = 1;
+            this.amplifyUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.amplifyUpDown.Location = new System.Drawing.Point(336, 604);
+            this.amplifyUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.amplifyUpDown.Name = "amplifyUpDown";
+            this.amplifyUpDown.Size = new System.Drawing.Size(120, 23);
+            this.amplifyUpDown.TabIndex = 14;
+            this.amplifyUpDown.Value = new decimal(new int[] {
+            40,
+            0,
+            0,
+            65536});
+            this.amplifyUpDown.ValueChanged += new System.EventHandler(this.AmplifyUpDown_ValueChanged);
+            // 
+            // amplifyLabel
+            // 
+            this.amplifyLabel.AutoSize = true;
+            this.amplifyLabel.Location = new System.Drawing.Point(248, 606);
+            this.amplifyLabel.Name = "amplifyLabel";
+            this.amplifyLabel.Size = new System.Drawing.Size(82, 15);
+            this.amplifyLabel.TabIndex = 13;
+            this.amplifyLabel.Text = "Amplification:";
+            // 
+            // configureLoopButton
+            // 
+            this.configureLoopButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.configureLoopButton.Location = new System.Drawing.Point(3, 575);
+            this.configureLoopButton.Name = "configureLoopButton";
+            this.configureLoopButton.Size = new System.Drawing.Size(127, 23);
+            this.configureLoopButton.TabIndex = 11;
+            this.configureLoopButton.Text = "Configure loop...";
+            this.configureLoopButton.UseVisualStyleBackColor = true;
+            this.configureLoopButton.Click += new System.EventHandler(this.ConfigureLoopButton_Click);
             // 
             // saveButton
             // 
@@ -286,17 +335,6 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             // 
             this.updateTimer.Tick += new System.EventHandler(this.UpdateTimer_Tick);
             // 
-            // configureLoopButton
-            // 
-            this.configureLoopButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.configureLoopButton.Location = new System.Drawing.Point(3, 575);
-            this.configureLoopButton.Name = "configureLoopButton";
-            this.configureLoopButton.Size = new System.Drawing.Size(127, 23);
-            this.configureLoopButton.TabIndex = 11;
-            this.configureLoopButton.Text = "Configure loop...";
-            this.configureLoopButton.UseVisualStyleBackColor = true;
-            this.configureLoopButton.Click += new System.EventHandler(this.ConfigureLoopButton_Click);
-            // 
             // AudioPlayerControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -310,6 +348,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             this.leftPanel.ResumeLayout(false);
             this.rightPanel.ResumeLayout(false);
             this.rightPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.amplifyUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seekTrackBar)).EndInit();
             this.controlsTableLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -339,5 +378,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Label loadingFileNameLabel;
         private System.Windows.Forms.Button configureLoopButton;
+        private System.Windows.Forms.Label amplifyLabel;
+        private System.Windows.Forms.NumericUpDown amplifyUpDown;
     }
 }
