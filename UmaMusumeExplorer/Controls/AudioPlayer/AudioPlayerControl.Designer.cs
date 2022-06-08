@@ -1,5 +1,5 @@
 ﻿
-namespace PlayerGui.Controls.AudioPlayer
+namespace UmaMusumeExplorer.Controls.AudioPlayer
 {
     partial class AudioPlayerControl
     {

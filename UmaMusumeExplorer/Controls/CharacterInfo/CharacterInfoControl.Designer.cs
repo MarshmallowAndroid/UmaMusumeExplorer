@@ -1,5 +1,5 @@
 ﻿
-namespace PlayerGui.Controls.CharacterInfo
+namespace UmaMusumeExplorer.Controls.CharacterInfo
 {
     partial class CharacterInfoControl
     {

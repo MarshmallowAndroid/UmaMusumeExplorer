@@ -9,12 +9,10 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using UmaMusumeAudio;
-using UmaMusumeExplorer.Controls;
-using UmaMusumeExplorer.Controls.AudioPlayer;
 using UmaMusumeExplorer.Controls.AudioPlayer.Classes;
 using UmaMusumeFiles;
 
-namespace PlayerGui.Controls.AudioPlayer
+namespace UmaMusumeExplorer.Controls.AudioPlayer
 {
     public partial class AudioPlayerControl : UserControl
     {

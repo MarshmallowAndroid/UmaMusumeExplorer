@@ -12,7 +12,7 @@ using System.Drawing;
 using System.Diagnostics;
 using UmaMusumeExplorer.Controls.CharacterInfo.Classes;
 
-namespace PlayerGui.Controls.CharacterInfo
+namespace UmaMusumeExplorer.Controls.CharacterInfo
 {
     public partial class CharacterInfoControl : UserControl
     {

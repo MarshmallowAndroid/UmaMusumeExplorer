@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace PlayerGui
+namespace UmaMusumeExplorer
 {
     public partial class MainForm : Form
     {

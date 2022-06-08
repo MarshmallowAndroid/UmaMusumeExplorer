@@ -82,7 +82,7 @@
             // 
             this.statusRankLabel.AutoSize = true;
             this.statusRankLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.statusRankLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.statusRankLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.statusRankLabel.Location = new System.Drawing.Point(0, 0);
             this.statusRankLabel.Margin = new System.Windows.Forms.Padding(0);
             this.statusRankLabel.Name = "statusRankLabel";

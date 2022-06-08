@@ -9,7 +9,7 @@ using UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes;
 using UmaMusumeFiles;
 using UmaMusumeFiles.Tables;
 
-namespace PlayerGui.Controls.RaceMusicSimulator
+namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
 {
     public partial class RaceMusicSimulatorControl : UserControl
     {

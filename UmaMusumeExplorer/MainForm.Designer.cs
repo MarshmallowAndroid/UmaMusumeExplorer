@@ -1,5 +1,5 @@
 ﻿
-namespace PlayerGui
+namespace UmaMusumeExplorer
 {
     partial class MainForm
     {
@@ -32,11 +32,11 @@ namespace PlayerGui
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl = new System.Windows.Forms.TabControl();
             this.audioPlayerTabPage = new System.Windows.Forms.TabPage();
-            this.audioPlayerControl1 = new PlayerGui.Controls.AudioPlayer.AudioPlayerControl();
+            this.audioPlayerControl1 = new UmaMusumeExplorer.Controls.AudioPlayer.AudioPlayerControl();
             this.raceMusicTabPage = new System.Windows.Forms.TabPage();
-            this.raceSimulatorControl1 = new PlayerGui.Controls.RaceMusicSimulator.RaceMusicSimulatorControl();
+            this.raceSimulatorControl1 = new UmaMusumeExplorer.Controls.RaceMusicSimulator.RaceMusicSimulatorControl();
             this.characterInfoTabPage = new System.Windows.Forms.TabPage();
-            this.characterInfoControl = new PlayerGui.Controls.CharacterInfo.CharacterInfoControl();
+            this.characterInfoControl = new UmaMusumeExplorer.Controls.CharacterInfo.CharacterInfoControl();
             this.tabControl.SuspendLayout();
             this.audioPlayerTabPage.SuspendLayout();
             this.raceMusicTabPage.SuspendLayout();
@@ -138,9 +138,9 @@ namespace PlayerGui
         #endregion
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage raceMusicTabPage;
-        private PlayerGui.Controls.RaceMusicSimulator.RaceMusicSimulatorControl raceSimulatorControl1;
+        private UmaMusumeExplorer.Controls.RaceMusicSimulator.RaceMusicSimulatorControl raceSimulatorControl1;
         private System.Windows.Forms.TabPage audioPlayerTabPage;
-        private PlayerGui.Controls.AudioPlayer.AudioPlayerControl audioPlayerControl1;
+        private UmaMusumeExplorer.Controls.AudioPlayer.AudioPlayerControl audioPlayerControl1;
         private System.Windows.Forms.TabPage characterInfoTabPage;
         private Controls.CharacterInfo.CharacterInfoControl characterInfoControl;
     }

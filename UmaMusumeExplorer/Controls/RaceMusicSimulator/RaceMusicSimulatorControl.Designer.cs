@@ -1,5 +1,5 @@
 ﻿
-namespace PlayerGui.Controls.RaceMusicSimulator
+namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
 {
     partial class RaceMusicSimulatorControl
     {
