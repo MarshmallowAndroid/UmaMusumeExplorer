@@ -19,7 +19,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes
             FadingOut
         }
 
-        private readonly object lockObject = new object();
+        private readonly object lockObject = new();
 
         private readonly ISampleProvider source;
 
