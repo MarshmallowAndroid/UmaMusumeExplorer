@@ -23,28 +23,46 @@ namespace Extractor
                 var gameFiles = connection.Table<GameFile>().ToList();
                 gameFiles.Sort((gf1, gf2) => { return string.Compare(gf1.Name, gf2.Name); });
 
-                //int fileNumber = 1;
+                int total = gameFiles.Count;
+                int finished = 0;
+
+                object finishedLock = new();
+
+                Task[] copyTasks = new Task[total];
+                int index = 0;
                 foreach (var gameFile in gameFiles)
                 {
-                    //Task.Run(() => Console.WriteLine("Processing file {0} of {1}...", fileNumber, gameFiles.Count));
+                    copyTasks[index] = new Task(() =>
+                    {
+                        string dataFileName = gameFile.Hash;
+                        string dataFilePath = Path.Combine(dataDirectory, dataFileName[..2], dataFileName);
+                        string realFileName = gameFile.Name.TrimStart('/');
+                        if (gameFile.Category.StartsWith("manifest")) realFileName += ".manifest";
+                        string realFilePath = Path.Combine(outputDirectory, realFileName);
+                        string destinationDirectory;
 
-                    string dataFileName = gameFile.Hash;
-                    string dataFilePath = Path.Combine(dataDirectory, dataFileName[..2], dataFileName);
-                    string realFileName = gameFile.Name.TrimStart('/');
-                    if (gameFile.Category.StartsWith("manifest")) realFileName += ".manifest";
-                    string realFilePath = Path.Combine(outputDirectory, realFileName);
-                    string destinationDirectory;
+                        if (!string.IsNullOrEmpty(Path.GetDirectoryName(realFileName)))
+                            destinationDirectory = Path.Combine(outputDirectory, Path.GetDirectoryName(realFileName));
+                        else destinationDirectory = outputDirectory;
 
-                    if (!string.IsNullOrEmpty(Path.GetDirectoryName(realFileName)))
-                        destinationDirectory = Path.Combine(outputDirectory, Path.GetDirectoryName(realFileName));
-                    else destinationDirectory = outputDirectory;   
+                        Directory.CreateDirectory(destinationDirectory);
 
-                    Directory.CreateDirectory(destinationDirectory);
+                        if (!File.Exists(realFilePath) && File.Exists(dataFilePath)) File.Copy(dataFilePath, realFilePath);
 
-                    if (!File.Exists(realFilePath) && File.Exists(dataFilePath)) File.Copy(dataFilePath, realFilePath);
-                    
-                    //fileNumber++;
+                        lock (finishedLock)
+                        {
+                            finished++;
+                            Console.CursorTop = 0;
+                            Console.CursorLeft = 0;
+                            Console.WriteLine($"Copying {((float)finished / total) * 100.0f:f2}% complete");
+                        }
+                    });
+                    copyTasks[index].Start();
+
+                    index++;
                 }
+
+                Task.WaitAll(copyTasks);
             }
         }
     }

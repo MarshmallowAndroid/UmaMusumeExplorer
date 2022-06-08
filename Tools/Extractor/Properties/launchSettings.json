@@ -2,7 +2,7 @@
   "profiles": {
     "Extractor": {
       "commandName": "Project",
-      "commandLineArgs": "D:\\umamusume_dir_rebuild"
+      "commandLineArgs": "D:\\umamusume_"
     }
   }
 }
