@@ -10,7 +10,7 @@ using System.Linq;
 using System.Windows.Forms;
 using UmaMusumeAudio;
 using UmaMusumeExplorer.Controls.AudioPlayer.Classes;
-using UmaMusumeFiles;
+using UmaMusumeData;
 
 namespace UmaMusumeExplorer.Controls.AudioPlayer
 {

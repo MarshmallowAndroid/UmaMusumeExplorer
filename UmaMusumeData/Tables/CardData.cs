@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UmaMusumeFiles.Tables
+namespace UmaMusumeData.Tables
 {
     [Table("card_data")]
     public class CardData

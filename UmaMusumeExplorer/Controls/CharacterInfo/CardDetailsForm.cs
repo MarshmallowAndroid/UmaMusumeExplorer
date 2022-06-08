@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UmaMusumeExplorer.Controls.CharacterInfo.Classes;
-using UmaMusumeFiles.Tables;
+using UmaMusumeData.Tables;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo
 {

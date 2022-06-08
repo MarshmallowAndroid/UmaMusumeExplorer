@@ -1,6 +1,6 @@
 ﻿using SQLite;
 
-namespace UmaMusumeFiles.Tables
+namespace UmaMusumeData.Tables
 {
     [Table("card_rarity_data")]
     public class CardRarityData

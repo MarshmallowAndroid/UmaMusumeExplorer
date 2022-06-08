@@ -3,9 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using UmaMusumeFiles.Tables;
 
-namespace UmaMusumeFiles
+namespace UmaMusumeData
 {
     public static class UmaDataHelper
     {

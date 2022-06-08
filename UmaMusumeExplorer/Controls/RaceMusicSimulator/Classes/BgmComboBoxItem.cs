@@ -1,4 +1,4 @@
-﻿using UmaMusumeFiles.Tables;
+﻿using UmaMusumeData.Tables;
 
 namespace UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes
 {

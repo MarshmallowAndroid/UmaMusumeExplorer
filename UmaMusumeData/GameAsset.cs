@@ -1,6 +1,6 @@
 ﻿using SQLite;
 
-namespace UmaMusumeFiles
+namespace UmaMusumeData
 {
     [Table("a")]
     public class GameAsset

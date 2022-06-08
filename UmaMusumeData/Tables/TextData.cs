@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SQLite;
 
-namespace UmaMusumeFiles.Tables
+namespace UmaMusumeData.Tables
 {
     [Table("text_data")]
     public class TextData

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using UmaMusumeAudio;
-using UmaMusumeFiles;
+using UmaMusumeData;
 
 namespace UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes
 {

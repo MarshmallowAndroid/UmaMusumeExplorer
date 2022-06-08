@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UmaMusumeFiles;
-using UmaMusumeFiles.Tables;
+using UmaMusumeData;
+using UmaMusumeData.Tables;
 
 namespace UmaMusumeExplorer.Controls
 {

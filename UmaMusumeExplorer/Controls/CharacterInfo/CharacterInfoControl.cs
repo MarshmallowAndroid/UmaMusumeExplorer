@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using UmaMusumeFiles;
-using UmaMusumeFiles.Tables;
+using UmaMusumeData;
+using UmaMusumeData.Tables;
 using System.Text.RegularExpressions;
 using UmaMusumeExplorer.Controls.CharacterInfo;
 using UmaMusumeExplorer.Controls;

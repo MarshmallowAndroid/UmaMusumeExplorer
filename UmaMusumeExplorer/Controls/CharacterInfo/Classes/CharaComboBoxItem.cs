@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using UmaMusumeFiles.Tables;
+using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Controls;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo.Classes
