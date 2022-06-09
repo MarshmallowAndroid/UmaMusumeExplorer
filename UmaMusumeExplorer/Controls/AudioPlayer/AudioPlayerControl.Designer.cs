@@ -170,20 +170,21 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             // 
             // amplifyUpDown
             // 
+            this.amplifyUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.amplifyUpDown.DecimalPlaces = 1;
             this.amplifyUpDown.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.amplifyUpDown.Location = new System.Drawing.Point(336, 604);
+            this.amplifyUpDown.Location = new System.Drawing.Point(389, 604);
             this.amplifyUpDown.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
             this.amplifyUpDown.Name = "amplifyUpDown";
-            this.amplifyUpDown.Size = new System.Drawing.Size(120, 23);
+            this.amplifyUpDown.Size = new System.Drawing.Size(67, 23);
             this.amplifyUpDown.TabIndex = 14;
             this.amplifyUpDown.Value = new decimal(new int[] {
             40,
@@ -194,8 +195,9 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             // 
             // amplifyLabel
             // 
+            this.amplifyLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.amplifyLabel.AutoSize = true;
-            this.amplifyLabel.Location = new System.Drawing.Point(248, 606);
+            this.amplifyLabel.Location = new System.Drawing.Point(301, 606);
             this.amplifyLabel.Name = "amplifyLabel";
             this.amplifyLabel.Size = new System.Drawing.Size(82, 15);
             this.amplifyLabel.TabIndex = 13;
