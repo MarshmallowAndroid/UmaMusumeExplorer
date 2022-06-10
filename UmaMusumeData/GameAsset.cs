@@ -18,6 +18,9 @@ namespace UmaMusumeData
         [Column("h"), NotNull]
         public string Hash { get; set; } = "";
 
+        [Column("m"), NotNull]
+        public string Manifest { get; set; } = "";
+
         public string BaseName
         {
             get

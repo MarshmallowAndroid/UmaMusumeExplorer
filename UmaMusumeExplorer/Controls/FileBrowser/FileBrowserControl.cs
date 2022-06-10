@@ -22,31 +22,13 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
 
         private void FileBrowserControl_Load(object sender, EventArgs e)
         {
-            Task.Run(() =>
-            {
-                gameAssets = UmaDataHelper.GetGameAssetDataRows(ga => true);
-                gameAssets.Sort((ga1, ga2) => string.Compare(ga1.Name, ga2.Name));
+            gameAssets = UmaDataHelper.GetGameAssetDataRows(ga => true);
+            gameAssets.Sort((ga1, ga2) => string.Compare(ga1.Name, ga2.Name));
 
-                TreeNode rootNode = new("Root");
-                foreach (var asset in gameAssets)
-                {
-                    //int lastSlashIndex = asset.Name.IndexOf('/');
-                    //if (lastSlashIndex < 1) continue;
+            TreeNode rootNode = new("Root");
+            rootNode.Nodes.Add("dummy");
 
-                    //string node = asset.Name.Substring(0, lastSlashIndex);
-
-                    //if (!rootNode.Nodes.ContainsKey(node))
-                    //    rootNode.Nodes.Add(node, node);
-                    NodesFromPath(rootNode, asset.Name);
-                }
-
-                Invoke(() =>
-                {
-                    fileTreeView.BeginUpdate();
-                    fileTreeView.Nodes.Add(rootNode);
-                    fileTreeView.EndUpdate();
-                });
-            });
+            fileTreeView.Nodes.Add(rootNode);
         }
 
         private void NodesFromPath(TreeNode sourceNode, string path)
@@ -66,14 +48,59 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             NodesFromPath(sourceNode.Nodes[nodeName], path.Substring(lastSlashIndex + 1));
         }
 
-        private void FileTreeView_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-
-        }
-
         private void FileTreeView_BeforeExpand(object sender, TreeViewCancelEventArgs e)
         {
+            TreeNode targetNode = e.Node;
 
+            targetNode.Nodes.Clear();
+
+            IEnumerable<GameAsset> assetList;
+
+            string convertedNodePath = "";
+
+            if (targetNode.Text == "Root")
+                assetList = gameAssets;
+            else
+            {
+                convertedNodePath = targetNode.FullPath["Root/".Length..];
+                assetList = gameAssets.Where(ga => ga.Name.StartsWith(convertedNodePath + "/"));
+            }
+
+            List<GameAsset> files = new();
+
+            foreach (var asset in assetList)
+            {
+                string assetName = targetNode.Text == "Root" ? asset.Name : asset.Name[(convertedNodePath.Length + 1)..];
+
+                int firstSlashIndex = assetName.IndexOf('/');
+
+                if (firstSlashIndex < 1)
+                {
+                    files.Add(asset);
+                    continue;
+                }
+
+                string nodeName = assetName.Substring(0, firstSlashIndex);
+                string nodeKey = convertedNodePath + '/' + nodeName;
+
+                if (!targetNode.Nodes.ContainsKey(nodeKey))
+                {
+                    targetNode.Nodes.Add(nodeKey, nodeName);
+                    targetNode.Nodes[nodeKey].Nodes.Add("dummy");
+                }
+            }
+
+            foreach (var file in files)
+            {
+                string fileName = file.BaseName;
+
+                if (file.Manifest.StartsWith("manifest"))
+                    fileName += ".manifest";
+
+                targetNode.Nodes.Add(file.Name, fileName);
+                targetNode.Nodes[file.Name].ImageIndex = 1;
+                targetNode.Nodes[file.Name].SelectedImageIndex = 1;
+            }
         }
     }
 }
