@@ -13,7 +13,7 @@ namespace UmaMusumeData
         public string Name { get; set; } = "";
 
         [Column("l"), NotNull]
-        public string Length { get; set; } = "";
+        public int Length { get; set; }
 
         [Column("h"), NotNull]
         public string Hash { get; set; } = "";
