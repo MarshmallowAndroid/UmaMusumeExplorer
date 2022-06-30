@@ -42,7 +42,7 @@ namespace UmaMusumeData
         {
             SQLiteConnection connection = new(databaseFile);
 
-            object rows;
+            List<T> rows;
             if (condition != null)
                 rows = connection.Table<T>().Where(condition).ToList();
             else
@@ -51,7 +51,7 @@ namespace UmaMusumeData
             connection.Close();
             connection.Dispose();
 
-            return (List<T>)rows;
+            return rows;
         }
     }
 }
