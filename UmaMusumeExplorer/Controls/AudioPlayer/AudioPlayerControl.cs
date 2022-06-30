@@ -17,7 +17,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
     public partial class AudioPlayerControl : UserControl
     {
         private readonly object waveOutLock = new();
-        private readonly IEnumerable<GameAsset> bgmAssets = PersistentData.BgmGameAssets;
+        private readonly IEnumerable<GameAsset> bgmAssets = AssetTables.BgmGameAssets;
 
         private AwbReader awbReader;
         private UmaWaveStream umaWaveStream;

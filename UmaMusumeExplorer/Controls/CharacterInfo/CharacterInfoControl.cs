@@ -16,7 +16,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 {
     public partial class CharacterInfoControl : UserControl
     {
-        private readonly IEnumerable<CharaData> charaDatas = PersistentData.CharaDatas;
+        private readonly IEnumerable<CharaData> charaDatas = AssetTables.CharaDatas;
 
         public CharacterInfoControl()
         {

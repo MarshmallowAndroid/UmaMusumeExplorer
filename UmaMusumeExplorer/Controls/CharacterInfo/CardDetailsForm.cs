@@ -26,22 +26,22 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
         private void CardDetailsForm_Load(object sender, EventArgs e)
         {
             int id = charaData.Id;
-            string charaName = PersistentData.CharaNameTextDatas.First(td => td.Index == id).Text;
+            string charaName = AssetTables.CharaNameTextDatas.First(td => td.Index == id).Text;
 
             Text = charaName;
             nameLabel.Text = charaName;
 
-            string katakana = PersistentData.CharaNameKatakanaTextDatas.Where(td => td.Index == id).First().Text;
+            string katakana = AssetTables.CharaNameKatakanaTextDatas.Where(td => td.Index == id).First().Text;
 
             if (!katakana.Equals(nameLabel.Text))
-                nameLabel.Text += $"（{PersistentData.CharaNameKatakanaTextDatas.Where(td => td.Index == id).First().Text}）";
+                nameLabel.Text += $"（{AssetTables.CharaNameKatakanaTextDatas.Where(td => td.Index == id).First().Text}）";
             nameLabel.BackColor = ColorFromHexString(charaData.UIColorMain);
             if (GetBrightness(nameLabel.BackColor) > 128)
                 nameLabel.ForeColor = Color.Black;
             else
                 nameLabel.ForeColor = Color.White;
 
-            cvNameLabel.Text = "CV. " + PersistentData.CharaVoiceNameTextDatas.Where(td => td.Index == id).First().Text;
+            cvNameLabel.Text = "CV. " + AssetTables.CharaVoiceNameTextDatas.Where(td => td.Index == id).First().Text;
             cvNameLabel.BackColor = ColorFromHexString(charaData.UIColorSub);
             if (GetBrightness(cvNameLabel.BackColor) > 128)
                 cvNameLabel.ForeColor = Color.Black;
@@ -53,7 +53,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
             iconPictureBox.Image = UnityTextureHelpers.GetCharaIcon(id);
 
-            foreach (var item in PersistentData.CardDatas.Where(cd => cd.CharaId == charaData.Id))
+            foreach (var item in AssetTables.CardDatas.Where(cd => cd.CharaId == charaData.Id))
             {
                 costumeSelectComboBox.Items.Add(new CostumeSelectComboBoxItem(item));
             }
@@ -66,7 +66,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
         {
             ComboBox comboBox = sender as ComboBox;
             CardData cardData = (comboBox.SelectedItem as CostumeSelectComboBoxItem).CardData;
-            CardRarityData rarityData = PersistentData.CardRarityDatas.First(crd => crd.CardId == cardData.Id);
+            CardRarityData rarityData = AssetTables.CardRarityDatas.First(crd => crd.CardId == cardData.Id);
 
             speedStatusDisplayLabel.Value = rarityData.Speed;
             staminaStatusDisplayLabel.Value = rarityData.Stamina;
@@ -122,7 +122,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
         public override string ToString()
         {
-            return PersistentData.CharaCostumeNameTextDatas.First(td => td.Index == CardData.Id).Text;
+            return AssetTables.CharaCostumeNameTextDatas.First(td => td.Index == CardData.Id).Text;
         }
     }
 }

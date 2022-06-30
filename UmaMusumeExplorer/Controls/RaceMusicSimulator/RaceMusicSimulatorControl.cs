@@ -41,7 +41,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
         {
             waveOut = new WaveOutEvent();
 
-            IEnumerable<RaceBgm> raceBgm = PersistentData.RaceBgm;
+            IEnumerable<RaceBgm> raceBgm = AssetTables.RaceBgm;
 
             foreach (var bgm in raceBgm)
             {
@@ -137,9 +137,9 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
             BgmComboBoxItem comboBoxItem = bgmIDComboBox.SelectedItem as BgmComboBoxItem;
             raceBgm = comboBoxItem.RaceBgm;
 
-            RaceBgmPattern firstPatternTable = PersistentData.RaceBgmPatterns.FirstOrDefault(p =>
+            RaceBgmPattern firstPatternTable = AssetTables.RaceBgmPatterns.FirstOrDefault(p =>
                 p.Id == comboBoxItem.RaceBgm.FirstBgmPattern);
-            RaceBgmPattern secondPatternTable = PersistentData.RaceBgmPatterns.FirstOrDefault(p =>
+            RaceBgmPattern secondPatternTable = AssetTables.RaceBgmPatterns.FirstOrDefault(p =>
                 p.Id == comboBoxItem.RaceBgm.SecondBgmPattern);
 
             firstPatternBgmList = LoadPattern(firstPatternTable);
@@ -164,8 +164,8 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
             firstPatternLengthComboBox.SelectedIndex = 0;
             secondPatternLengthComboBox.SelectedIndex = 0;
 
-            paddockBgm = new(PersistentData.BgmGameAssets, raceBgm.PaddockBgmCuesheetName, raceBgm.PaddockBgmCueName);
-            entryTableBgm = new(PersistentData.BgmGameAssets, raceBgm.EntrytableBgmCuesheetName, raceBgm.EntrytableBgmCueName);
+            paddockBgm = new(AssetTables.BgmGameAssets, raceBgm.PaddockBgmCuesheetName, raceBgm.PaddockBgmCueName);
+            entryTableBgm = new(AssetTables.BgmGameAssets, raceBgm.EntrytableBgmCuesheetName, raceBgm.EntrytableBgmCueName);
 
             mixer = new(WaveFormat.CreateIeeeFloatWaveFormat(
                 paddockBgm.UmaWaveStream.WaveFormat.SampleRate,
@@ -194,8 +194,8 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
                 resultCutInCueNameTextBox.Text = resultCutinBgmCueName;
                 resultListCuesheetNameTextBox.Text = resultListBgmCuesheetName;
                 resultListCueNameTextBox.Text = resultListBgmCueName;
-                resultCutinBgm = new Bgm(PersistentData.BgmGameAssets, resultCutinBgmCuesheetName, resultCutinBgmCueName);
-                resultListBgm = new Bgm(PersistentData.BgmGameAssets, resultListBgmCuesheetName, resultListBgmCueName);
+                resultCutinBgm = new Bgm(AssetTables.BgmGameAssets, resultCutinBgmCuesheetName, resultCutinBgmCueName);
+                resultListBgm = new Bgm(AssetTables.BgmGameAssets, resultListBgmCuesheetName, resultListBgmCueName);
             }
             else
             {
@@ -215,7 +215,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
                 firstPattern = firstPatternBgmList.FirstOrDefault(bi => bi.BgmTime == (int)comboBox.SelectedItem);
                 firstPatternCueNameTextBox.Text = firstPattern.BgmCueName;
                 firstPatternCuesheetNameTextBox.Text = firstPattern.BgmCuesheetName;
-                firstPatternBgm = new(PersistentData.BgmGameAssets, firstPattern.BgmCuesheetName, firstPattern.BgmCueName);
+                firstPatternBgm = new(AssetTables.BgmGameAssets, firstPattern.BgmCuesheetName, firstPattern.BgmCueName);
             }
             else
             {
@@ -233,7 +233,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
                 secondPattern = secondPatternBgmList.FirstOrDefault(bi => bi.BgmTime == (int)comboBox.SelectedItem);
                 secondPatternCueNameTextBox.Text = secondPattern.BgmCueName;
                 secondPatternCuesheetNameTextBox.Text = secondPattern.BgmCuesheetName;
-                secondPatternBgm = new(PersistentData.BgmGameAssets, secondPattern.BgmCuesheetName, secondPattern.BgmCueName);
+                secondPatternBgm = new(AssetTables.BgmGameAssets, secondPattern.BgmCuesheetName, secondPattern.BgmCueName);
             }
             else
             {
