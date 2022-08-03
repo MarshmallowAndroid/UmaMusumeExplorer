@@ -16,7 +16,7 @@ namespace UmaMusumeData
 
         public static string GetPath(GameAsset gameFile)
         {
-            if (gameFile != null)
+            if (gameFile is not null)
             {
                 return Path.Combine(dataDirectory, gameFile.Hash[..2], gameFile.Hash);
             }
@@ -27,7 +27,7 @@ namespace UmaMusumeData
         {
             GameAsset gameFile = gameAssetList.FirstOrDefault(gf => gf.BaseName == gameFileBaseName);
 
-            if (gameFile != null)
+            if (gameFile is not null)
                 return GetPath(gameFile);
             else return "";
         }
@@ -43,7 +43,7 @@ namespace UmaMusumeData
             SQLiteConnection connection = new(databaseFile);
 
             List<T> rows;
-            if (condition != null)
+            if (condition is not null)
                 rows = connection.Table<T>().Where(condition).ToList();
             else
                 rows = connection.Table<T>().ToList();

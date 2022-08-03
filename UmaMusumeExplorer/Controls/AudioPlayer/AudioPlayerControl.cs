@@ -259,7 +259,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            if (tracksComboBox.SelectedItem != null)
+            if (tracksComboBox.SelectedItem is not null)
             {
                 string outputFileName = ((TrackComboBoxItem)tracksComboBox.SelectedItem).TrackName;
 
@@ -295,7 +295,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
 
         private void ConfigureLoopButton_Click(object sender, EventArgs e)
         {
-            if (umaWaveStream != null)
+            if (umaWaveStream is not null)
                 ControlHelpers.ShowFormDialogCenter(new ConfigureLoopForm(umaWaveStream), this);
         }
 
