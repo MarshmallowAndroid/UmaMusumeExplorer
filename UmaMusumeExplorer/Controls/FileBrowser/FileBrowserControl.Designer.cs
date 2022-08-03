@@ -41,6 +41,7 @@
             this.totalFileSizeLabel = new System.Windows.Forms.Label();
             this.totalFileCountLabel = new System.Windows.Forms.Label();
             this.clearButton = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.treeViewContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +58,6 @@
             this.fileTreeView.SelectedImageIndex = 0;
             this.fileTreeView.Size = new System.Drawing.Size(434, 561);
             this.fileTreeView.TabIndex = 0;
-            this.fileTreeView.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.FileTreeView_AfterCheck);
             this.fileTreeView.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.FileTreeView_BeforeExpand);
             // 
             // treeViewContextMenuStrip
@@ -84,7 +84,8 @@
             // 
             // extractButton
             // 
-            this.extractButton.Location = new System.Drawing.Point(524, 388);
+            this.extractButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.extractButton.Location = new System.Drawing.Point(524, 518);
             this.extractButton.Name = "extractButton";
             this.extractButton.Size = new System.Drawing.Size(75, 23);
             this.extractButton.TabIndex = 1;
@@ -94,14 +95,16 @@
             // 
             // extractListView
             // 
-            this.extractListView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.extractListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.extractListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.nameHeader,
             this.sizeHeader});
+            this.extractListView.FullRowSelect = true;
             this.extractListView.Location = new System.Drawing.Point(443, 3);
             this.extractListView.Name = "extractListView";
-            this.extractListView.Size = new System.Drawing.Size(404, 341);
+            this.extractListView.Size = new System.Drawing.Size(404, 473);
             this.extractListView.TabIndex = 2;
             this.extractListView.UseCompatibleStateImageBehavior = false;
             this.extractListView.View = System.Windows.Forms.View.Details;
@@ -118,19 +121,20 @@
             // 
             // totalFileSizeLabel
             // 
-            this.totalFileSizeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.totalFileSizeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.totalFileSizeLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.totalFileSizeLabel.Location = new System.Drawing.Point(629, 349);
+            this.totalFileSizeLabel.Location = new System.Drawing.Point(629, 479);
             this.totalFileSizeLabel.Name = "totalFileSizeLabel";
             this.totalFileSizeLabel.Size = new System.Drawing.Size(218, 36);
             this.totalFileSizeLabel.TabIndex = 3;
-            this.totalFileSizeLabel.Text = "0 MB";
+            this.totalFileSizeLabel.Text = "0 B";
             this.totalFileSizeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // totalFileCountLabel
             // 
+            this.totalFileCountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.totalFileCountLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.totalFileCountLabel.Location = new System.Drawing.Point(443, 349);
+            this.totalFileCountLabel.Location = new System.Drawing.Point(443, 479);
             this.totalFileCountLabel.Name = "totalFileCountLabel";
             this.totalFileCountLabel.Size = new System.Drawing.Size(100, 36);
             this.totalFileCountLabel.TabIndex = 3;
@@ -139,7 +143,8 @@
             // 
             // clearButton
             // 
-            this.clearButton.Location = new System.Drawing.Point(443, 388);
+            this.clearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.clearButton.Location = new System.Drawing.Point(443, 518);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(75, 23);
             this.clearButton.TabIndex = 4;
@@ -147,10 +152,20 @@
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar1.Location = new System.Drawing.Point(443, 547);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(404, 17);
+            this.progressBar1.TabIndex = 5;
+            // 
             // FileBrowserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.clearButton);
             this.Controls.Add(this.totalFileSizeLabel);
             this.Controls.Add(this.totalFileCountLabel);
@@ -178,5 +193,6 @@
         private System.Windows.Forms.ContextMenuStrip treeViewContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
         private System.Windows.Forms.Button clearButton;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

@@ -116,6 +116,8 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
         private void AddToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TreeNode node = fileTreeView.SelectedNode;
+
+            if (node is null) return;
             if (node.FullPath == "Root") return;
 
             GameAsset asset = (GameAsset)node.Tag;
@@ -147,8 +149,21 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
 
             selectedAssets.Sort((a, b) => a.BaseName.CompareTo(b.BaseName));
 
+            ListViewItem[] items = new ListViewItem[selectedAssets.Count];
+            int index = 0;
+            foreach (var selectedAsset in selectedAssets)
+            {
+                ListViewItem item = new ListViewItem(selectedAsset.BaseName);
+                item.Name = selectedAsset.Name;
+                item.SubItems.Add(GenerateSizeString(selectedAsset.Length));
+                items[index++] = item;
+            }
+
+            extractListView.Items.Clear();
+            extractListView.Items.AddRange(items);
+
             totalFileCountLabel.Text = $"{selectedAssets.Count} files";
-            totalFileSizeLabel.Text = $"{selectedAssets.Sum(a => a.Length) / 1000000.0f:f2} MB";
+            totalFileSizeLabel.Text = GenerateSizeString(selectedAssets.Sum(a => a.Length));
         }
 
         private void ClearButton_Click(object sender, EventArgs e)
@@ -157,38 +172,72 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             extractListView.Items.Clear();
 
             totalFileCountLabel.Text = $"0 files";
-            totalFileSizeLabel.Text = $"0 MB";
+            totalFileSizeLabel.Text = $"0 B";
         }
 
-        private void ExtractButton_Click(object sender, EventArgs e)
+        private async void ExtractButton_Click(object sender, EventArgs e)
         {
+            string localLow = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "AppData", "LocalLow");
+            string umaMusumeDirectory = Path.Combine(localLow, "Cygames", "umamusume");
+            string dataDirectory = Path.Combine(umaMusumeDirectory, "dat");
+
             string outputDirectory = Directory.CreateDirectory("Extracted").FullName;
 
-            foreach (var assets in selectedAssets)
+            object finishedLock = new();
+
+            int total = selectedAssets.Count;
+
+            Task[] copyTasks = new Task[total];
+            int index = 0;
+            int finished = 0;
+            foreach (var asset in selectedAssets)
             {
-                string realFilePath = Path.Combine(outputDirectory, assets.Name);
+                copyTasks[index] = new Task(() =>
+                {
+                    string dataFileName = asset.Hash;
+                    string dataFilePath = Path.Combine(dataDirectory, dataFileName[..2], dataFileName);
+                    string realFileName = asset.Name.TrimStart('/');
+                    if (asset.Manifest.StartsWith("manifest")) realFileName += ".manifest";
+                    string realFilePath = Path.Combine(outputDirectory, realFileName);
+                    string destinationDirectory;
+
+                    if (!string.IsNullOrEmpty(Path.GetDirectoryName(realFileName)))
+                        destinationDirectory = Path.Combine(outputDirectory, Path.GetDirectoryName(realFileName));
+                    else destinationDirectory = outputDirectory;
+
+                    Directory.CreateDirectory(destinationDirectory);
+
+                    if (!File.Exists(realFilePath) && File.Exists(dataFilePath)) File.Copy(dataFilePath, realFilePath);
+
+                    lock (finishedLock)
+                    {
+                        finished++;
+                        Invoke(() => progressBar1.Value = (int)(((float)finished / total) * 100.0f));
+                    }
+                });
+                copyTasks[index++].Start();
             }
+
+            await Task.WhenAll(copyTasks);
+
+            MessageBox.Show("Extract complete.", "Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            progressBar1.Value = 0;
         }
 
-        private void FileTreeView_AfterCheck(object sender, TreeViewEventArgs e)
+        private string GenerateSizeString(int length)
         {
-            //if (e.Action == TreeViewAction.Unknown) return;
-            //if (e.Node.FullPath == "Root") return;
+            StringBuilder sizeString = new();
 
-            //GameAsset asset = (GameAsset)e.Node.Tag;
+            string[] units = new string[]
+            {
+                "B", "KB", "MB", "GB"
+            };
 
-            //if (asset != null)
-            //{
-            //    UpdateSelectedAssets(asset, e.Node.Checked);
-            //}
-            //else
-            //{
-            //    string convertedNodePath = e.Node.FullPath[("Root/".Length)..];
-            //    foreach (var item in gameAssets.Where(ga => ga.Name.StartsWith(convertedNodePath)))
-            //    {
-            //        UpdateSelectedAssets(item, e.Node.Checked);
-            //    }
-            //}
+            int unitIndex = (int)Math.Floor(Math.Log(length, 10) / 3);
+            float divide = (float)Math.Pow(1000, unitIndex);
+            sizeString.Append($"{length / divide:f2} {units[unitIndex]}");
+
+            return sizeString.ToString();
         }
 
         void UpdateSelectedAssets(GameAsset asset, bool isChecked)
@@ -196,26 +245,8 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             TreeNode[] matching = fileTreeView.Nodes.Find(asset.Name, true);
             if (matching.Length > 0) matching[0].Checked = isChecked;
 
-            //if (isChecked)
-            //{
-            if (!selectedAssets.Contains(asset) && !extractListView.Items.ContainsKey(asset.Name))
-            {
+            if (!selectedAssets.Contains(asset))
                 selectedAssets.Add(asset);
-                ListViewItem item = extractListView.Items.Add(asset.Name, asset.BaseName, 0);
-                item.SubItems.Add($"{asset.Length / 1000.0f:f2} KB");
-            }
-            //}
-            //else
-            //{
-            //    selectedAssets.Remove(asset);
-            //    extractListView.Items.Remove(extractListView.Items[asset.Name]);
-            //}
-        }
-
-        void AddToListView(GameAsset asset)
-        {
-            ListViewItem item = extractListView.Items.Add(asset.Name, asset.BaseName, 0);
-            item.SubItems.Add($"{asset.Length / 1000.0f:f2} KB");
         }
     }
 }
