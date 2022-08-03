@@ -12,6 +12,9 @@ namespace UmaMusumeData
         [Column("n"), NotNull]
         public string Name { get; set; } = "";
 
+        [Column("d")]
+        public string Dependencies { get; set; } = "";
+
         [Column("l"), NotNull]
         public int Length { get; set; }
 
