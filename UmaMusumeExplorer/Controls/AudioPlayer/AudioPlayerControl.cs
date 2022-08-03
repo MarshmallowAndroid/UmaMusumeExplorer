@@ -36,7 +36,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
 
         private void AudioPlayerControl_Load(object sender, EventArgs e)
         {
-            fileListView.Columns[0].Width = (int)(fileListView.Width * (float)0.80);
+            fileListView.Columns[0].Width = (int)(fileListView.Width * 0.80f);
             fileListView.Columns[1].Width = -2;
 
             if (!DesignMode) loadingBackgroundWorker.RunWorkerAsync();
