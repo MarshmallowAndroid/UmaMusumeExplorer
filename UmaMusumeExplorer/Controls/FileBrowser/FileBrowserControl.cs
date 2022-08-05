@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -15,7 +16,15 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
     public partial class FileBrowserControl : UserControl
     {
         private List<GameAsset> gameAssets;
+        private List<GameAsset> searchedAssets;
+        private List<GameAsset> targetAssets;
         private readonly List<GameAsset> selectedAssets = new();
+
+        private static readonly string localLow = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "AppData", "LocalLow");
+        private static readonly string umaMusumeDirectory = Path.Combine(localLow, "Cygames", "umamusume");
+        private static readonly string dataDirectory = Path.Combine(umaMusumeDirectory, "dat");
+
+        private bool searched;
 
         public FileBrowserControl()
         {
@@ -24,7 +33,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
 
         private void FileBrowserControl_Load(object sender, EventArgs e)
         {
-            gameAssets = UmaDataHelper.GetGameAssetDataRows(ga => true);
+            gameAssets = UmaDataHelper.GetGameAssetDataRows();
             gameAssets.Sort((ga1, ga2) => string.Compare(ga1.Name, ga2.Name));
 
             TreeNode rootNode = new("Root");
@@ -34,6 +43,8 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
 
             extractListView.Columns[0].Width = (int)(extractListView.Width * 0.80f);
             extractListView.Columns[1].Width = -2;
+
+            targetAssets = gameAssets;
         }
 
         private void NodesFromPath(TreeNode sourceNode, string path)
@@ -63,11 +74,11 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             string convertedNodePath = "";
 
             if (expandingNode.Text == "Root")
-                assetList = gameAssets;
+                assetList = targetAssets;
             else
             {
                 convertedNodePath = expandingNode.FullPath["Root/".Length..];
-                assetList = gameAssets.Where(ga => ga.Name.StartsWith(convertedNodePath + "/"));
+                assetList = targetAssets.Where(ga => ga.Name.StartsWith(convertedNodePath + "/"));
             }
 
             List<GameAsset> files = new();
@@ -132,7 +143,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
 
                 IEnumerable<GameAsset> assetsToAdd = gameAssets.Where(ga => ga.Name.StartsWith(convertedNodePath));
                 int itemCount = assetsToAdd.Count();
-                if (itemCount > 1000)
+                if (itemCount > 10000)
                 {
                     DialogResult confirmResult =
                         MessageBox.Show($"Adding {itemCount} items. This might take a long time.\n\nProceed?", "Warning",
@@ -156,11 +167,26 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
                 ListViewItem item = new ListViewItem(selectedAsset.BaseName);
                 item.Name = selectedAsset.Name;
                 item.SubItems.Add(GenerateSizeString(selectedAsset.Length));
+                item.Tag = selectedAsset;
                 items[index++] = item;
             }
 
             extractListView.Items.Clear();
             extractListView.Items.AddRange(items);
+
+            totalFileCountLabel.Text = $"{selectedAssets.Count} files";
+            totalFileSizeLabel.Text = GenerateSizeString(selectedAssets.Sum(a => a.Length));
+        }
+
+        private void RemoveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListView.SelectedListViewItemCollection selectedItems = extractListView.SelectedItems;
+
+            foreach (ListViewItem item in selectedItems)
+            {
+                extractListView.Items.Remove(item);
+                selectedAssets.Remove((GameAsset)item.Tag);
+            }
 
             totalFileCountLabel.Text = $"{selectedAssets.Count} files";
             totalFileSizeLabel.Text = GenerateSizeString(selectedAssets.Sum(a => a.Length));
@@ -177,10 +203,6 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
 
         private async void ExtractButton_Click(object sender, EventArgs e)
         {
-            string localLow = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "AppData", "LocalLow");
-            string umaMusumeDirectory = Path.Combine(localLow, "Cygames", "umamusume");
-            string dataDirectory = Path.Combine(umaMusumeDirectory, "dat");
-
             string outputDirectory = Directory.CreateDirectory("Extracted").FullName;
 
             object finishedLock = new();
@@ -234,6 +256,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             };
 
             int unitIndex = (int)Math.Floor(Math.Log(length, 10) / 3);
+            unitIndex = unitIndex >= 0 ? unitIndex : 0;
             float divide = (float)Math.Pow(1000, unitIndex);
             sizeString.Append($"{length / divide:f2} {units[unitIndex]}");
 
@@ -247,6 +270,54 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
 
             if (!selectedAssets.Contains(asset))
                 selectedAssets.Add(asset);
+        }
+
+        private void OpenFileLocationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (fileTreeView.SelectedNode.Tag is GameAsset asset)
+            {
+                string dataFileName = asset.Hash;
+                string dataFilePath = Path.Combine(dataDirectory, dataFileName[..2], dataFileName);
+
+                if (!File.Exists(dataFilePath))
+                {
+                    MessageBox.Show("Asset does not exist locally.", "Asset not found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+
+                Process.Start("explorer.exe", $"/select, \"{dataFilePath}\"");
+            }
+        }
+
+        private void TreeViewContextMenuStrip_Opening(object sender, CancelEventArgs e)
+        {
+            bool isFolder = (GameAsset)fileTreeView.SelectedNode.Tag is null;
+            toolStripSeparator1.Visible = !isFolder;
+            openFileLocationToolStripMenuItem.Visible = !isFolder;
+        }
+
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            if (!searched)
+            {
+                searchedAssets = UmaDataHelper.GetGameAssetDataRows().Where(ga => ga.BaseName.Contains(searchTextBox.Text)).ToList();
+                searchedAssets.Sort((ga1, ga2) => ga1.Name.CompareTo(ga2.Name));
+                targetAssets = searchedAssets;
+
+                fileTreeView.Nodes[0].Collapse();
+
+                searched = true;
+                searchButton.Text = "Reset";
+            }
+            else
+            {
+                searchedAssets.Clear();
+                targetAssets = gameAssets;
+
+                searchButton.Text = "Search";
+
+                searched = false;
+            }
         }
     }
 }
