@@ -4,11 +4,16 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
     <StartupObject>UmaMusumeExplorer.Program</StartupObject>
     <PackageIcon>ProgramIcon.png</PackageIcon>
     <ApplicationIcon>Resources\ProgramIcon.ico</ApplicationIcon>
+    <FileVersion>1.1.0.0</FileVersion>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <Version>1.1.0</Version>
+    <Product>Uma Musume Explorer</Product>
+	<AssemblyTitle>Uma Musume Explorer</AssemblyTitle>
+	<Authors>Jacob Tarun</Authors>
   </PropertyGroup>
 
   <ItemGroup>
