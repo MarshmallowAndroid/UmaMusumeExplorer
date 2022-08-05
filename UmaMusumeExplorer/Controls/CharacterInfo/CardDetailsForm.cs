@@ -55,18 +55,37 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
             foreach (var item in AssetTables.CardDatas.Where(cd => cd.CharaId == charaData.Id))
             {
-                costumeSelectComboBox.Items.Add(new CostumeSelectComboBoxItem(item));
+                costumeComboBox.Items.Add(new CostumeComboBoxItem(item));
             }
 
-            if (costumeSelectComboBox.Items.Count > 0)
-                costumeSelectComboBox.SelectedIndex = 0;
+            if (costumeComboBox.Items.Count > 0)
+                costumeComboBox.SelectedIndex = 0;
         }
 
         private void CostumeSelectComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ComboBox comboBox = sender as ComboBox;
-            CardData cardData = (comboBox.SelectedItem as CostumeSelectComboBoxItem).CardData;
-            CardRarityData rarityData = AssetTables.CardRarityDatas.First(crd => crd.CardId == cardData.Id);
+            CardData cardData = (costumeComboBox.SelectedItem as CostumeComboBoxItem).CardData;
+
+            rarityComboBox.Items.Clear();
+            foreach (var rarityData in AssetTables.CardRarityDatas.Where(crd => crd.CardId == cardData.Id))
+            {
+                rarityComboBox.Items.Add(new RarityComboBoxItem(rarityData));
+            }
+
+            if (rarityComboBox.Items.Count > 0)
+                rarityComboBox.SelectedIndex = 0;
+            else
+                iconPictureBox.Image = UnityTextureHelpers.GetCharaIcon(cardData.CharaId);
+        }
+
+        private void RarityComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CardData cardData = (costumeComboBox.SelectedItem as CostumeComboBoxItem).CardData;
+            CardRarityData rarityData = (rarityComboBox.SelectedItem as RarityComboBoxItem).CardRarityData;
+
+            if (rarityData is null) rarityData = new();
+
+            iconPictureBox.Image = UnityTextureHelpers.GetCharaIcon(cardData.CharaId, rarityData.RaceDressId);
 
             speedStatusDisplayLabel.Value = rarityData.Speed;
             staminaStatusDisplayLabel.Value = rarityData.Stamina;
@@ -92,7 +111,6 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             powerGrowthLabel.Text = cardData.TalentPow.ToString() + "%";
             gutsGrowthLabel.Text = cardData.TalentGuts.ToString() + "%";
             wisdomGrowthLabel.Text = cardData.TalentWiz.ToString() + "%";
-
         }
 
         private Color ColorFromHexString(string hexString)
@@ -107,13 +125,13 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
         private static byte GetBrightness(Color color)
         {
-            return (byte)((color.R + color.R + color.B + color.G + color.G) / 6);
+            return (byte)((color.R + color.R + color.G + color.G + color.B + color.B) / 6);
         }
     }
 
-    class CostumeSelectComboBoxItem
+    class CostumeComboBoxItem
     {
-        public CostumeSelectComboBoxItem(CardData cardData)
+        public CostumeComboBoxItem(CardData cardData)
         {
             CardData = cardData;
         }
@@ -123,6 +141,27 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
         public override string ToString()
         {
             return AssetTables.CharaCostumeNameTextDatas.First(td => td.Index == CardData.Id).Text;
+        }
+    }
+
+    class RarityComboBoxItem
+    {
+        public RarityComboBoxItem(CardRarityData cardRarityData)
+        {
+            CardRarityData = cardRarityData;
+        }
+
+        public CardRarityData CardRarityData { get; }
+
+        public override string ToString()
+        {
+            StringBuilder starsString = new();
+            for (int i = 0; i < CardRarityData.Rarity; i++)
+            {
+                starsString.Append('★');
+            }
+
+            return starsString.ToString();
         }
     }
 }

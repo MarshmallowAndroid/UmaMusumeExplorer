@@ -40,11 +40,13 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
         private void LoadingBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             Regex charIconRegex = new("\\bchr_icon_[0-9]{4}\\b");
+            Regex charCardIconRegex = new("\\bchr_icon_[0-9]{4}_[0-9]{6}_[0-9]{2}\\b");
 
             List<string> imagePaths = new();
-            foreach (var item in UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("chara/")))
+            List<GameAsset> charaAssetRows = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("chara/"));
+            foreach (var item in charaAssetRows)
             {
-                if (charIconRegex.IsMatch(item.BaseName) || item.BaseName == "chr_icon_round_0000")
+                if (charIconRegex.IsMatch(item.BaseName) || charCardIconRegex.IsMatch(item.BaseName) || item.BaseName == "chr_icon_round_0000")
                     imagePaths.Add(UmaDataHelper.GetPath(item));
             }
 

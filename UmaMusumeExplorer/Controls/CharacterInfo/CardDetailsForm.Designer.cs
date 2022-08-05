@@ -36,7 +36,7 @@
             this.genderHintLabel = new System.Windows.Forms.Label();
             this.birthDateHintLabel = new System.Windows.Forms.Label();
             this.belowNameTablePanel = new System.Windows.Forms.TableLayoutPanel();
-            this.costumeSelectComboBox = new System.Windows.Forms.ComboBox();
+            this.costumeComboBox = new System.Windows.Forms.ComboBox();
             this.costumeHintLabel = new System.Windows.Forms.Label();
             this.statsTablePanel = new System.Windows.Forms.TableLayoutPanel();
             this.speedStatusDisplayLabel = new UmaMusumeExplorer.Controls.CharacterInfo.StatusDisplayLabel();
@@ -74,6 +74,8 @@
             this.gutsGrowthLabel = new System.Windows.Forms.Label();
             this.wisdomGrowthLabel = new System.Windows.Forms.Label();
             this.growthRateLabel = new System.Windows.Forms.Label();
+            this.rarityComboBox = new System.Windows.Forms.ComboBox();
+            this.rarityHintLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox)).BeginInit();
             this.belowNameTablePanel.SuspendLayout();
             this.statsTablePanel.SuspendLayout();
@@ -106,7 +108,7 @@
             // 
             this.iconPictureBox.Location = new System.Drawing.Point(12, 12);
             this.iconPictureBox.Name = "iconPictureBox";
-            this.iconPictureBox.Size = new System.Drawing.Size(120, 120);
+            this.iconPictureBox.Size = new System.Drawing.Size(150, 150);
             this.iconPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.iconPictureBox.TabIndex = 5;
             this.iconPictureBox.TabStop = false;
@@ -115,7 +117,7 @@
             // 
             this.cvNameLabel.AutoSize = true;
             this.cvNameLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cvNameLabel.Location = new System.Drawing.Point(138, 49);
+            this.cvNameLabel.Location = new System.Drawing.Point(168, 49);
             this.cvNameLabel.Name = "cvNameLabel";
             this.cvNameLabel.Size = new System.Drawing.Size(100, 25);
             this.cvNameLabel.TabIndex = 3;
@@ -125,7 +127,7 @@
             // 
             this.nameLabel.AutoSize = true;
             this.nameLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.nameLabel.Location = new System.Drawing.Point(138, 12);
+            this.nameLabel.Location = new System.Drawing.Point(168, 12);
             this.nameLabel.Name = "nameLabel";
             this.nameLabel.Size = new System.Drawing.Size(104, 37);
             this.nameLabel.TabIndex = 4;
@@ -160,7 +162,7 @@
             this.belowNameTablePanel.Controls.Add(this.birthDateHintLabel, 0, 1);
             this.belowNameTablePanel.Controls.Add(this.birthdayLabel, 1, 1);
             this.belowNameTablePanel.Controls.Add(this.genderLabel, 1, 0);
-            this.belowNameTablePanel.Location = new System.Drawing.Point(138, 77);
+            this.belowNameTablePanel.Location = new System.Drawing.Point(168, 107);
             this.belowNameTablePanel.Name = "belowNameTablePanel";
             this.belowNameTablePanel.RowCount = 2;
             this.belowNameTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -168,20 +170,20 @@
             this.belowNameTablePanel.Size = new System.Drawing.Size(385, 55);
             this.belowNameTablePanel.TabIndex = 8;
             // 
-            // costumeSelectComboBox
+            // costumeComboBox
             // 
-            this.costumeSelectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.costumeSelectComboBox.FormattingEnabled = true;
-            this.costumeSelectComboBox.Location = new System.Drawing.Point(73, 138);
-            this.costumeSelectComboBox.Name = "costumeSelectComboBox";
-            this.costumeSelectComboBox.Size = new System.Drawing.Size(167, 23);
-            this.costumeSelectComboBox.TabIndex = 9;
-            this.costumeSelectComboBox.SelectedIndexChanged += new System.EventHandler(this.CostumeSelectComboBox_SelectedIndexChanged);
+            this.costumeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.costumeComboBox.FormattingEnabled = true;
+            this.costumeComboBox.Location = new System.Drawing.Point(73, 168);
+            this.costumeComboBox.Name = "costumeComboBox";
+            this.costumeComboBox.Size = new System.Drawing.Size(167, 23);
+            this.costumeComboBox.TabIndex = 9;
+            this.costumeComboBox.SelectedIndexChanged += new System.EventHandler(this.CostumeSelectComboBox_SelectedIndexChanged);
             // 
             // costumeHintLabel
             // 
             this.costumeHintLabel.AutoSize = true;
-            this.costumeHintLabel.Location = new System.Drawing.Point(12, 141);
+            this.costumeHintLabel.Location = new System.Drawing.Point(12, 171);
             this.costumeHintLabel.Name = "costumeHintLabel";
             this.costumeHintLabel.Size = new System.Drawing.Size(55, 15);
             this.costumeHintLabel.TabIndex = 10;
@@ -189,6 +191,8 @@
             // 
             // statsTablePanel
             // 
+            this.statsTablePanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.statsTablePanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.statsTablePanel.ColumnCount = 5;
             this.statsTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -206,7 +210,7 @@
             this.statsTablePanel.Controls.Add(this.powerStatusDisplayLabel, 2, 1);
             this.statsTablePanel.Controls.Add(this.gutsStatusDisplayLabel, 3, 1);
             this.statsTablePanel.Controls.Add(this.wisdomStatusDisplayLabel, 4, 1);
-            this.statsTablePanel.Location = new System.Drawing.Point(12, 167);
+            this.statsTablePanel.Location = new System.Drawing.Point(12, 197);
             this.statsTablePanel.Name = "statsTablePanel";
             this.statsTablePanel.RowCount = 2;
             this.statsTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -219,10 +223,10 @@
             this.speedStatusDisplayLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.speedStatusDisplayLabel.AutoSize = true;
             this.speedStatusDisplayLabel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.speedStatusDisplayLabel.Location = new System.Drawing.Point(17, 23);
+            this.speedStatusDisplayLabel.Location = new System.Drawing.Point(15, 23);
             this.speedStatusDisplayLabel.MaxValue = 1200;
             this.speedStatusDisplayLabel.Name = "speedStatusDisplayLabel";
-            this.speedStatusDisplayLabel.Size = new System.Drawing.Size(82, 60);
+            this.speedStatusDisplayLabel.Size = new System.Drawing.Size(86, 60);
             this.speedStatusDisplayLabel.TabIndex = 13;
             this.speedStatusDisplayLabel.Value = 50;
             // 
@@ -281,10 +285,10 @@
             this.staminaStatusDisplayLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.staminaStatusDisplayLabel.AutoSize = true;
             this.staminaStatusDisplayLabel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.staminaStatusDisplayLabel.Location = new System.Drawing.Point(132, 23);
+            this.staminaStatusDisplayLabel.Location = new System.Drawing.Point(130, 23);
             this.staminaStatusDisplayLabel.MaxValue = 1200;
             this.staminaStatusDisplayLabel.Name = "staminaStatusDisplayLabel";
-            this.staminaStatusDisplayLabel.Size = new System.Drawing.Size(82, 60);
+            this.staminaStatusDisplayLabel.Size = new System.Drawing.Size(86, 60);
             this.staminaStatusDisplayLabel.TabIndex = 13;
             this.staminaStatusDisplayLabel.Value = 50;
             // 
@@ -293,10 +297,10 @@
             this.powerStatusDisplayLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.powerStatusDisplayLabel.AutoSize = true;
             this.powerStatusDisplayLabel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.powerStatusDisplayLabel.Location = new System.Drawing.Point(247, 23);
+            this.powerStatusDisplayLabel.Location = new System.Drawing.Point(245, 23);
             this.powerStatusDisplayLabel.MaxValue = 1200;
             this.powerStatusDisplayLabel.Name = "powerStatusDisplayLabel";
-            this.powerStatusDisplayLabel.Size = new System.Drawing.Size(82, 60);
+            this.powerStatusDisplayLabel.Size = new System.Drawing.Size(86, 60);
             this.powerStatusDisplayLabel.TabIndex = 13;
             this.powerStatusDisplayLabel.Value = 50;
             // 
@@ -305,10 +309,10 @@
             this.gutsStatusDisplayLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.gutsStatusDisplayLabel.AutoSize = true;
             this.gutsStatusDisplayLabel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.gutsStatusDisplayLabel.Location = new System.Drawing.Point(362, 23);
+            this.gutsStatusDisplayLabel.Location = new System.Drawing.Point(360, 23);
             this.gutsStatusDisplayLabel.MaxValue = 1200;
             this.gutsStatusDisplayLabel.Name = "gutsStatusDisplayLabel";
-            this.gutsStatusDisplayLabel.Size = new System.Drawing.Size(82, 60);
+            this.gutsStatusDisplayLabel.Size = new System.Drawing.Size(86, 60);
             this.gutsStatusDisplayLabel.TabIndex = 13;
             this.gutsStatusDisplayLabel.Value = 50;
             // 
@@ -317,15 +321,17 @@
             this.wisdomStatusDisplayLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.wisdomStatusDisplayLabel.AutoSize = true;
             this.wisdomStatusDisplayLabel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.wisdomStatusDisplayLabel.Location = new System.Drawing.Point(477, 23);
+            this.wisdomStatusDisplayLabel.Location = new System.Drawing.Point(475, 23);
             this.wisdomStatusDisplayLabel.MaxValue = 1200;
             this.wisdomStatusDisplayLabel.Name = "wisdomStatusDisplayLabel";
-            this.wisdomStatusDisplayLabel.Size = new System.Drawing.Size(82, 60);
+            this.wisdomStatusDisplayLabel.Size = new System.Drawing.Size(86, 60);
             this.wisdomStatusDisplayLabel.TabIndex = 13;
             this.wisdomStatusDisplayLabel.Value = 50;
             // 
             // aptitudeTableLayoutPanel
             // 
+            this.aptitudeTableLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.aptitudeTableLayoutPanel.ColumnCount = 5;
             this.aptitudeTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.aptitudeTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -345,7 +351,7 @@
             this.aptitudeTableLayoutPanel.Controls.Add(this.escapeRankedLabel, 1, 2);
             this.aptitudeTableLayoutPanel.Controls.Add(this.leadingRankedLabel, 2, 2);
             this.aptitudeTableLayoutPanel.Controls.Add(this.insertRankedLabel, 3, 2);
-            this.aptitudeTableLayoutPanel.Location = new System.Drawing.Point(12, 264);
+            this.aptitudeTableLayoutPanel.Location = new System.Drawing.Point(12, 294);
             this.aptitudeTableLayoutPanel.Name = "aptitudeTableLayoutPanel";
             this.aptitudeTableLayoutPanel.RowCount = 3;
             this.aptitudeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
@@ -360,6 +366,7 @@
             this.driveInRankedLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.driveInRankedLabel.Location = new System.Drawing.Point(463, 69);
             this.driveInRankedLabel.Name = "driveInRankedLabel";
+            this.driveInRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.Classes.RankedLabelRank.Unknown;
             this.driveInRankedLabel.Size = new System.Drawing.Size(112, 28);
             this.driveInRankedLabel.TabIndex = 13;
             this.driveInRankedLabel.Text = "Drive-in";
@@ -370,6 +377,7 @@
             this.dirtRankedLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dirtRankedLabel.Location = new System.Drawing.Point(233, 3);
             this.dirtRankedLabel.Name = "dirtRankedLabel";
+            this.dirtRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.Classes.RankedLabelRank.Unknown;
             this.dirtRankedLabel.Size = new System.Drawing.Size(109, 27);
             this.dirtRankedLabel.TabIndex = 13;
             this.dirtRankedLabel.Text = "Dirt";
@@ -380,6 +388,7 @@
             this.turfRankedLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.turfRankedLabel.Location = new System.Drawing.Point(118, 3);
             this.turfRankedLabel.Name = "turfRankedLabel";
+            this.turfRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.Classes.RankedLabelRank.Unknown;
             this.turfRankedLabel.Size = new System.Drawing.Size(109, 27);
             this.turfRankedLabel.TabIndex = 13;
             this.turfRankedLabel.Text = "Turf";
@@ -420,6 +429,7 @@
             this.shortRankedLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.shortRankedLabel.Location = new System.Drawing.Point(118, 36);
             this.shortRankedLabel.Name = "shortRankedLabel";
+            this.shortRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.Classes.RankedLabelRank.Unknown;
             this.shortRankedLabel.Size = new System.Drawing.Size(109, 27);
             this.shortRankedLabel.TabIndex = 13;
             this.shortRankedLabel.Text = "Short";
@@ -430,6 +440,7 @@
             this.mileRankedLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mileRankedLabel.Location = new System.Drawing.Point(233, 36);
             this.mileRankedLabel.Name = "mileRankedLabel";
+            this.mileRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.Classes.RankedLabelRank.Unknown;
             this.mileRankedLabel.Size = new System.Drawing.Size(109, 27);
             this.mileRankedLabel.TabIndex = 13;
             this.mileRankedLabel.Text = "Mile";
@@ -440,6 +451,7 @@
             this.middleRankedLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.middleRankedLabel.Location = new System.Drawing.Point(348, 36);
             this.middleRankedLabel.Name = "middleRankedLabel";
+            this.middleRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.Classes.RankedLabelRank.Unknown;
             this.middleRankedLabel.Size = new System.Drawing.Size(109, 27);
             this.middleRankedLabel.TabIndex = 13;
             this.middleRankedLabel.Text = "Middle";
@@ -450,6 +462,7 @@
             this.longRankedLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.longRankedLabel.Location = new System.Drawing.Point(463, 36);
             this.longRankedLabel.Name = "longRankedLabel";
+            this.longRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.Classes.RankedLabelRank.Unknown;
             this.longRankedLabel.Size = new System.Drawing.Size(112, 27);
             this.longRankedLabel.TabIndex = 13;
             this.longRankedLabel.Text = "Long";
@@ -460,6 +473,7 @@
             this.escapeRankedLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.escapeRankedLabel.Location = new System.Drawing.Point(118, 69);
             this.escapeRankedLabel.Name = "escapeRankedLabel";
+            this.escapeRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.Classes.RankedLabelRank.Unknown;
             this.escapeRankedLabel.Size = new System.Drawing.Size(109, 28);
             this.escapeRankedLabel.TabIndex = 13;
             this.escapeRankedLabel.Text = "Escape";
@@ -470,6 +484,7 @@
             this.leadingRankedLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.leadingRankedLabel.Location = new System.Drawing.Point(233, 69);
             this.leadingRankedLabel.Name = "leadingRankedLabel";
+            this.leadingRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.Classes.RankedLabelRank.Unknown;
             this.leadingRankedLabel.Size = new System.Drawing.Size(109, 28);
             this.leadingRankedLabel.TabIndex = 13;
             this.leadingRankedLabel.Text = "Leading";
@@ -480,6 +495,7 @@
             this.insertRankedLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.insertRankedLabel.Location = new System.Drawing.Point(348, 69);
             this.insertRankedLabel.Name = "insertRankedLabel";
+            this.insertRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.Classes.RankedLabelRank.Unknown;
             this.insertRankedLabel.Size = new System.Drawing.Size(109, 28);
             this.insertRankedLabel.TabIndex = 13;
             this.insertRankedLabel.Text = "Insert";
@@ -537,6 +553,8 @@
             // 
             // growthRateTableLayoutPanel
             // 
+            this.growthRateTableLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.growthRateTableLayoutPanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.growthRateTableLayoutPanel.ColumnCount = 5;
             this.growthRateTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -549,7 +567,7 @@
             this.growthRateTableLayoutPanel.Controls.Add(this.powerGrowthLabel, 2, 0);
             this.growthRateTableLayoutPanel.Controls.Add(this.gutsGrowthLabel, 3, 0);
             this.growthRateTableLayoutPanel.Controls.Add(this.wisdomGrowthLabel, 4, 0);
-            this.growthRateTableLayoutPanel.Location = new System.Drawing.Point(12, 402);
+            this.growthRateTableLayoutPanel.Location = new System.Drawing.Point(12, 432);
             this.growthRateTableLayoutPanel.Name = "growthRateTableLayoutPanel";
             this.growthRateTableLayoutPanel.RowCount = 1;
             this.growthRateTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -615,11 +633,30 @@
             // growthRateLabel
             // 
             this.growthRateLabel.AutoSize = true;
-            this.growthRateLabel.Location = new System.Drawing.Point(12, 384);
+            this.growthRateLabel.Location = new System.Drawing.Point(12, 414);
             this.growthRateLabel.Name = "growthRateLabel";
             this.growthRateLabel.Size = new System.Drawing.Size(69, 15);
             this.growthRateLabel.TabIndex = 13;
             this.growthRateLabel.Text = "Growth rate";
+            // 
+            // rarityComboBox
+            // 
+            this.rarityComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.rarityComboBox.FormattingEnabled = true;
+            this.rarityComboBox.Location = new System.Drawing.Point(289, 168);
+            this.rarityComboBox.Name = "rarityComboBox";
+            this.rarityComboBox.Size = new System.Drawing.Size(117, 23);
+            this.rarityComboBox.TabIndex = 9;
+            this.rarityComboBox.SelectedIndexChanged += new System.EventHandler(this.RarityComboBox_SelectedIndexChanged);
+            // 
+            // rarityHintLabel
+            // 
+            this.rarityHintLabel.AutoSize = true;
+            this.rarityHintLabel.Location = new System.Drawing.Point(246, 171);
+            this.rarityHintLabel.Name = "rarityHintLabel";
+            this.rarityHintLabel.Size = new System.Drawing.Size(37, 15);
+            this.rarityHintLabel.TabIndex = 10;
+            this.rarityHintLabel.Text = "Rarity";
             // 
             // CardDetailsForm
             // 
@@ -630,8 +667,10 @@
             this.Controls.Add(this.aptitudeTableLayoutPanel);
             this.Controls.Add(this.growthRateTableLayoutPanel);
             this.Controls.Add(this.statsTablePanel);
+            this.Controls.Add(this.rarityHintLabel);
+            this.Controls.Add(this.rarityComboBox);
             this.Controls.Add(this.costumeHintLabel);
-            this.Controls.Add(this.costumeSelectComboBox);
+            this.Controls.Add(this.costumeComboBox);
             this.Controls.Add(this.cvNameLabel);
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.belowNameTablePanel);
@@ -666,7 +705,7 @@
         private System.Windows.Forms.Label genderHintLabel;
         private System.Windows.Forms.Label birthDateHintLabel;
         private System.Windows.Forms.TableLayoutPanel belowNameTablePanel;
-        private System.Windows.Forms.ComboBox costumeSelectComboBox;
+        private System.Windows.Forms.ComboBox costumeComboBox;
         private System.Windows.Forms.Label costumeHintLabel;
         private System.Windows.Forms.TableLayoutPanel statsTablePanel;
         private System.Windows.Forms.Label speedHintLabel;
@@ -704,5 +743,7 @@
         private System.Windows.Forms.Label gutsGrowthLabel;
         private System.Windows.Forms.Label wisdomGrowthLabel;
         private System.Windows.Forms.Label growthRateLabel;
+        private System.Windows.Forms.ComboBox rarityComboBox;
+        private System.Windows.Forms.Label rarityHintLabel;
     }
 }

@@ -68,6 +68,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
                         break;
                     default:
                         rankLabel.Text = "?";
+                        rankLabel.ForeColor = Color.Black;
                         break;
                 }
 
