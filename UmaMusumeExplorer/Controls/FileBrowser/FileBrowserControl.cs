@@ -304,8 +304,6 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
                 searchedAssets.Sort((ga1, ga2) => ga1.Name.CompareTo(ga2.Name));
                 targetAssets = searchedAssets;
 
-                fileTreeView.Nodes[0].Collapse();
-
                 searched = true;
                 searchButton.Text = "Reset";
             }
@@ -314,10 +312,11 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
                 searchedAssets.Clear();
                 targetAssets = gameAssets;
 
-                searchButton.Text = "Search";
-
                 searched = false;
+                searchButton.Text = "Search";
             }
+
+            fileTreeView.Nodes[0].Collapse();
         }
     }
 }
