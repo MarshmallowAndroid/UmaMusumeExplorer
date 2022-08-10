@@ -53,8 +53,8 @@ namespace UmaMusumeExplorer
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl.Controls.Add(this.fileBrowserTabPage);
             this.tabControl.Controls.Add(this.audioPlayerTabPage);
-            this.tabControl.Controls.Add(this.raceMusicTabPage);
             this.tabControl.Controls.Add(this.characterInfoTabPage);
+            this.tabControl.Controls.Add(this.raceMusicTabPage);
             this.tabControl.Location = new System.Drawing.Point(12, 12);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;

@@ -39,8 +39,8 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
         private void LoadingBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            Regex charIconRegex = new("\\bchr_icon_[0-9]{4}\\b");
-            Regex charCardIconRegex = new("\\bchr_icon_[0-9]{4}_[0-9]{6}_[0-9]{2}\\b");
+            Regex charIconRegex = new(@"\bchr_icon_[0-9]{4}\b");
+            Regex charCardIconRegex = new(@"\bchr_icon_[0-9]{4}_[0-9]{6}_[0-9]{2}\b");
 
             List<string> imagePaths = new();
             List<GameAsset> charaAssetRows = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("chara/"));

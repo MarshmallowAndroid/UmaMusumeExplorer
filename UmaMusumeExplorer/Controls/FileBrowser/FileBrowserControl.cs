@@ -20,10 +20,6 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
         private List<GameAsset> targetAssets;
         private readonly List<GameAsset> selectedAssets = new();
 
-        private static readonly string localLow = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "AppData", "LocalLow");
-        private static readonly string umaMusumeDirectory = Path.Combine(localLow, "Cygames", "umamusume");
-        private static readonly string dataDirectory = Path.Combine(umaMusumeDirectory, "dat");
-
         private bool searched;
 
         public FileBrowserControl()
@@ -221,8 +217,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             {
                 copyTasks[index] = new Task(() =>
                 {
-                    string dataFileName = asset.Hash;
-                    string dataFilePath = Path.Combine(dataDirectory, dataFileName[..2], dataFileName);
+                    string dataFilePath = UmaDataHelper.GetPath(asset);
                     string realFileName = asset.Name.TrimStart('/');
                     if (asset.Manifest.StartsWith("manifest")) realFileName += ".manifest";
                     string realFilePath = Path.Combine(outputDirectory, realFileName);
@@ -239,7 +234,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
                     lock (finishedLock)
                     {
                         finished++;
-                        Invoke(() => progressBar1.Value = (int)(((float)finished / total) * 100.0f));
+                        Invoke(() => progressBar1.Value = (int)((float)finished / total * 100.0f));
                     }
                 });
                 copyTasks[index++].Start();
@@ -281,8 +276,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
         {
             if (fileTreeView.SelectedNode.Tag is GameAsset asset)
             {
-                string dataFileName = asset.Hash;
-                string dataFilePath = Path.Combine(dataDirectory, dataFileName[..2], dataFileName);
+                string dataFilePath = UmaDataHelper.GetPath(asset);
 
                 if (!File.Exists(dataFilePath))
                 {

@@ -35,7 +35,7 @@ namespace UmaMusumeData
         public static List<GameAsset> GetGameAssetDataRows(Func<GameAsset, bool> condition = null)
             => GetRows(metaFile, condition);
 
-        public static List<T> GetInfoDatabaseRows<T>(Func<T, bool> condition = null) where T : new()
+        public static List<T> GetMasterDatabaseRows<T>(Func<T, bool> condition = null) where T : new()
             => GetRows(masterFile, condition);
 
         private static List<T> GetRows<T>(string databaseFile, Func<T, bool> condition = null) where T : new()
