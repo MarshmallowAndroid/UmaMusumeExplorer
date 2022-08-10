@@ -139,9 +139,9 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             }
             else
             {
-                string convertedNodePath = node.FullPath[("Root/".Length)..];
+                string convertedNodePath = node.FullPath["Root/".Length..];
 
-                IEnumerable<GameAsset> assetsToAdd = gameAssets.Where(ga => ga.Name.StartsWith(convertedNodePath));
+                IEnumerable<GameAsset> assetsToAdd = targetAssets.Where(ga => ga.Name.StartsWith(convertedNodePath + '/'));
                 int itemCount = assetsToAdd.Count();
                 if (itemCount > 10000)
                 {
@@ -164,8 +164,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             int index = 0;
             foreach (var selectedAsset in selectedAssets)
             {
-                ListViewItem item = new ListViewItem(selectedAsset.BaseName);
-                item.Name = selectedAsset.Name;
+                ListViewItem item = new ListViewItem(selectedAsset.Name);
                 item.SubItems.Add(GenerateSizeString(selectedAsset.Length));
                 item.Tag = selectedAsset;
                 items[index++] = item;
@@ -203,11 +202,17 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
 
         private async void ExtractButton_Click(object sender, EventArgs e)
         {
-            string outputDirectory = Directory.CreateDirectory("Extracted").FullName;
+            int total = selectedAssets.Count;
+
+            if (total < 1) return;
+
+            FolderBrowserDialog folderBrowserDialog = new();
+            DialogResult dialogResult = folderBrowserDialog.ShowDialog();
+            if (dialogResult == DialogResult.Cancel) return;
+
+            string outputDirectory = folderBrowserDialog.SelectedPath;
 
             object finishedLock = new();
-
-            int total = selectedAssets.Count;
 
             Task[] copyTasks = new Task[total];
             int index = 0;
