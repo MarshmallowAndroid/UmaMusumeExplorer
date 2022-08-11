@@ -6,7 +6,6 @@ using UmaMusumeData;
 using UmaMusumeData.Tables;
 using System.Text.RegularExpressions;
 using UmaMusumeExplorer.Controls.CharacterInfo;
-using UmaMusumeExplorer.Controls;
 using System.ComponentModel;
 using System.Drawing;
 using System.Diagnostics;
