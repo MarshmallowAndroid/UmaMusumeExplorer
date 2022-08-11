@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UmaMusumeExplorer.Controls.CharacterInfo.Classes
+namespace UmaMusumeExplorer.Controls
 {
-    internal class AssetStudioProgress : IProgress<int>
+    internal class LoadingProgress : IProgress<int>
     {
         readonly Action<int> reportProgress;
 
-        public AssetStudioProgress(Action<int> action)
+        public LoadingProgress(Action<int> action)
         {
             reportProgress = action;
         }
