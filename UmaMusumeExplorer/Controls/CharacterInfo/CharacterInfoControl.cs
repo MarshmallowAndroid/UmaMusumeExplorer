@@ -27,30 +27,21 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
         {
             if (!DesignMode) loadingBackgroundWorker.RunWorkerAsync();
         }
-
-        private void CharaIcon_Click(object sender, EventArgs e)
-        {
-            PictureBox charaIcon = sender as PictureBox;
-            CharaData chara = charaIcon.Tag as CharaData;
-
-            CardDetailsForm details = new(chara);
-            ControlHelpers.ShowFormCenter(details, this);
-        }
-
+        
         private void LoadingBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            Regex charIconRegex = new(@"\bchr_icon_[0-9]{4}\b");
-            Regex charCardIconRegex = new(@"\bchr_icon_[0-9]{4}_[0-9]{6}_[0-9]{2}\b");
+            Regex chrIconRegex = new(@"\bchr_icon_[0-9]{4}\b");
+            Regex chrCardIconRegex = new(@"\bchr_icon_[0-9]{4}_[0-9]{6}_[0-9]{2}\b");
 
             List<string> imagePaths = new();
             List<GameAsset> charaAssetRows = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("chara/"));
-            foreach (var item in charaAssetRows)
+            foreach (var asset in charaAssetRows)
             {
-                if (charIconRegex.IsMatch(item.BaseName) || charCardIconRegex.IsMatch(item.BaseName) || item.BaseName == "chr_icon_round_0000")
-                    imagePaths.Add(UmaDataHelper.GetPath(item));
+                if (chrIconRegex.IsMatch(asset.BaseName) || chrCardIconRegex.IsMatch(asset.BaseName) || asset.BaseName == "chr_icon_round_0000")
+                    imagePaths.Add(UmaDataHelper.GetPath(asset));
             }
 
-            AssetStudio.Progress.Default = new AssetStudioProgress(loadingBackgroundWorker.ReportProgress);
+            AssetStudio.Progress.Default = new LoadingProgress(loadingBackgroundWorker.ReportProgress);
             UnityTextureHelpers.LoadFiles(imagePaths.ToArray());
 
             List<Control> pictureBoxes = new();
@@ -60,11 +51,11 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             {
                 PictureBox charaIcon = new()
                 {
-                    Width = 100,
-                    Height = 100,
                     BackgroundImage = UnityTextureHelpers.GetCharaIcon(item.Id),
                     BackgroundImageLayout = ImageLayout.Zoom,
                     Cursor = Cursors.Hand,
+                    Height = 100,
+                    Width = 100,
                     Tag = item
                 };
 
@@ -80,6 +71,15 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             }
 
             e.Result = pictureBoxes.ToArray();
+        }
+
+        private void CharaIcon_Click(object sender, EventArgs e)
+        {
+            PictureBox charaIcon = sender as PictureBox;
+            CharaData chara = charaIcon.Tag as CharaData;
+
+            CardDetailsForm details = new(chara);
+            ControlHelpers.ShowFormCenter(details, this);
         }
 
         private void LoadingBackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
