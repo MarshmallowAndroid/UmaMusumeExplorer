@@ -9,7 +9,7 @@ namespace UmaMusumeExplorer.Controls
 {
     internal class LoadingProgress : IProgress<int>
     {
-        readonly Action<int> reportProgress;
+        private readonly Action<int> reportProgress;
 
         public LoadingProgress(Action<int> action)
         {
