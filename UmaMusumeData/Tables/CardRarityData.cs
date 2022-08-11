@@ -5,69 +5,69 @@ namespace UmaMusumeData.Tables
     [Table("card_rarity_data")]
     public class CardRarityData
     {
-        [Column("id")]
+        [Column("id"), NotNull, PrimaryKey]
         public int Id { get; set; }
 
-        [Column("card_id")]
+        [Column("card_id"), NotNull]
         public int CardId { get; set; }
 
-        [Column("rarity")]
+        [Column("rarity"), NotNull]
         public int Rarity { get; set; }
 
-        [Column("race_dress_id")]
+        [Column("race_dress_id"), NotNull]
         public int RaceDressId { get; set; }
 
-        [Column("skill_set")]
+        [Column("skill_set"), NotNull]
         public int SkillSet { get; set; }
 
-        [Column("speed")]
+        [Column("speed"), NotNull]
         public int Speed { get; set; }
-        [Column("stamina")]
+        [Column("stamina"), NotNull]
         public int Stamina { get; set; }
-        [Column("pow")]
+        [Column("pow"), NotNull]
         public int Pow { get; set; }
-        [Column("guts")]
+        [Column("guts"), NotNull]
         public int Guts { get; set; }
-        [Column("wiz")]
+        [Column("wiz"), NotNull]
         public int Wiz { get; set; }
 
-        [Column("max_speed")]
+        [Column("max_speed"), NotNull]
         public int MaxSpeed { get; set; }
-        [Column("max_stamina")]
+        [Column("max_stamina"), NotNull]
         public int MaxStamina { get; set; }
-        [Column("max_pow")]
+        [Column("max_pow"), NotNull]
         public int MaxPow { get; set; }
-        [Column("max_guts")]
+        [Column("max_guts"), NotNull]
         public int MaxGuts { get; set; }
-        [Column("max_wiz")]
+        [Column("max_wiz"), NotNull]
         public int MaxWiz { get; set; }
 
-        [Column("proper_distance_short")]
+        [Column("proper_distance_short"), NotNull]
         public int ProperDistanceShort { get; set; }
-        [Column("proper_distance_mile")]
+        [Column("proper_distance_mile"), NotNull]
         public int ProperDistanceMile { get; set; }
-        [Column("proper_distance_middle")]
+        [Column("proper_distance_middle"), NotNull]
         public int ProperDistanceMiddle { get; set; }
-        [Column("proper_distance_long")]
+        [Column("proper_distance_long"), NotNull]
         public int ProperDistanceLong { get; set; }
 
-        [Column("proper_running_style_nige")]
+        [Column("proper_running_style_nige"), NotNull]
         public int ProperRunningStyleNige { get; set; }
-        [Column("proper_running_style_senko")]
+        [Column("proper_running_style_senko"), NotNull]
         public int ProperRunningStyleSenko { get; set; }
-        [Column("proper_running_style_sashi")]
+        [Column("proper_running_style_sashi"), NotNull]
         public int ProperRunningStyleSashi { get; set; }
-        [Column("proper_running_style_oikomi")]
+        [Column("proper_running_style_oikomi"), NotNull]
         public int ProperRunningStyleOikomi { get; set; }
 
-        [Column("proper_ground_turf")]
+        [Column("proper_ground_turf"), NotNull]
         public int ProperGroundTurf { get; set; }
-        [Column("proper_ground_dirt")]
+        [Column("proper_ground_dirt"), NotNull]
         public int ProperGroundDirt { get; set; }
 
-        [Column("get_dress_id_1")]
+        [Column("get_dress_id_1"), NotNull]
         public int GetDressId1 { get; set; }
-        [Column("get_dress_id_2")]
+        [Column("get_dress_id_2"), NotNull]
         public int GetDressId2 { get; set; }
     }
 }

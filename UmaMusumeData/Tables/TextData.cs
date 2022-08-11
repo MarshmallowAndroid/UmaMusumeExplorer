@@ -1,25 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SQLite;
+﻿using SQLite;
 
 namespace UmaMusumeData.Tables
 {
     [Table("text_data")]
     public class TextData
     {
-        [Column("id")]
+        [Column("id"), NotNull]
         public int Id { get; set; }
 
-        [Column("category")]
+        [Column("category"), NotNull, PrimaryKey]
         public int Category { get; set; }
 
-        [Column("index")]
+        [Column("index"), NotNull, PrimaryKey]
         public int Index { get; set; }
 
-        [Column("text")]
+        [Column("text"), NotNull]
         public string Text { get; set; } = "";
     }
 }
