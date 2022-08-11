@@ -138,9 +138,9 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
             raceBgm = comboBoxItem.RaceBgm;
 
             RaceBgmPattern firstPatternTable = AssetTables.RaceBgmPatterns.FirstOrDefault(p =>
-                p.Id == comboBoxItem.RaceBgm.FirstBgmPattern);
+                p.ID == comboBoxItem.RaceBgm.FirstBgmPattern);
             RaceBgmPattern secondPatternTable = AssetTables.RaceBgmPatterns.FirstOrDefault(p =>
-                p.Id == comboBoxItem.RaceBgm.SecondBgmPattern);
+                p.ID == comboBoxItem.RaceBgm.SecondBgmPattern);
 
             firstPatternBgmList = LoadPattern(firstPatternTable);
             secondPatternBgmList = LoadPattern(secondPatternTable);

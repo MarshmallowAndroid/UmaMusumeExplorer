@@ -6,7 +6,7 @@ namespace UmaMusumeData.Tables
     public class TextData
     {
         [Column("id"), NotNull]
-        public int Id { get; set; }
+        public int ID { get; set; }
 
         [Column("category"), NotNull, PrimaryKey]
         public int Category { get; set; }

@@ -28,6 +28,7 @@ namespace UmaMusumeExplorer.Controls
         private static readonly IEnumerable<TextData> charaCostumeNameTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 5);
 
         private static readonly IEnumerable<TextData> liveNameTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 16);
+        private static readonly IEnumerable<TextData> liveInfoTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 17);
 
         public static IEnumerable<GameAsset> BgmGameAssets => bgmGameFiles;
         
@@ -46,5 +47,7 @@ namespace UmaMusumeExplorer.Controls
         public static IEnumerable<TextData> CharaNameTextDatas => charaNameTextDatas;
         public static IEnumerable<TextData> CharaVoiceNameTextDatas => charaVoiceNameTextDatas;
 
+        public static IEnumerable<TextData> LiveNameTextDatas => liveNameTextDatas;
+        public static IEnumerable<TextData> LiveInfoTextDatas => liveInfoTextDatas;
     }
 }

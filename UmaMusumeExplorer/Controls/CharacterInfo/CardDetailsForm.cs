@@ -25,7 +25,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
         private void CardDetailsForm_Load(object sender, EventArgs e)
         {
-            int id = charaData.Id;
+            int id = charaData.ID;
             string charaName = AssetTables.CharaNameTextDatas.First(td => td.Index == id).Text;
 
             Text = charaName;
@@ -51,9 +51,9 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             genderLabel.Text = charaData.Sex == 1 ? "Male" : "Female";
             birthdayLabel.Text = $"{charaData.BirthDay}/{charaData.BirthMonth}/{charaData.BirthYear} ({DateTime.Now.Year - charaData.BirthYear} years)";
 
-            iconPictureBox.Image = UnityTextureHelpers.GetCharaIcon(id);
+            iconPictureBox.Image = UnityAssetHelpers.GetCharaIcon(id);
 
-            foreach (var item in AssetTables.CardDatas.Where(cd => cd.CharaId == charaData.Id))
+            foreach (var item in AssetTables.CardDatas.Where(cd => cd.CharaID == charaData.ID))
             {
                 costumeComboBox.Items.Add(new CostumeComboBoxItem(item));
             }
@@ -67,7 +67,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             CardData cardData = (costumeComboBox.SelectedItem as CostumeComboBoxItem).CardData;
 
             rarityComboBox.Items.Clear();
-            foreach (var rarityData in AssetTables.CardRarityDatas.Where(crd => crd.CardId == cardData.Id))
+            foreach (var rarityData in AssetTables.CardRarityDatas.Where(crd => crd.CardID == cardData.ID))
             {
                 rarityComboBox.Items.Add(new RarityComboBoxItem(rarityData));
             }
@@ -75,7 +75,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             if (rarityComboBox.Items.Count > 0)
                 rarityComboBox.SelectedIndex = 0;
             else
-                iconPictureBox.Image = UnityTextureHelpers.GetCharaIcon(cardData.CharaId);
+                iconPictureBox.Image = UnityAssetHelpers.GetCharaIcon(cardData.CharaID);
         }
 
         private void RarityComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -85,7 +85,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
             if (rarityData is null) rarityData = new();
 
-            iconPictureBox.Image = UnityTextureHelpers.GetCharaIcon(cardData.CharaId, rarityData.RaceDressId);
+            iconPictureBox.Image = UnityAssetHelpers.GetCharaIcon(cardData.CharaID, rarityData.RaceDressID);
 
             speedStatusDisplayLabel.Value = rarityData.Speed;
             staminaStatusDisplayLabel.Value = rarityData.Stamina;
@@ -140,7 +140,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
         public override string ToString()
         {
-            return AssetTables.CharaCostumeNameTextDatas.First(td => td.Index == CardData.Id).Text;
+            return AssetTables.CharaCostumeNameTextDatas.First(td => td.Index == CardData.ID).Text;
         }
     }
 

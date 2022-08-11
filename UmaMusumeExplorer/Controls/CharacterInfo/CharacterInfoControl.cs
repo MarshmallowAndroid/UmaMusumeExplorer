@@ -40,8 +40,10 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
                     imagePaths.Add(UmaDataHelper.GetPath(asset));
             }
 
+            IProgress<int> defaultProgress = AssetStudio.Progress.Default;
             AssetStudio.Progress.Default = new LoadingProgress(loadingBackgroundWorker.ReportProgress);
-            UnityTextureHelpers.LoadFiles(imagePaths.ToArray());
+
+            UnityAssetHelpers.LoadFiles(imagePaths.ToArray());
 
             List<Control> pictureBoxes = new();
 
@@ -50,7 +52,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             {
                 PictureBox charaIcon = new()
                 {
-                    BackgroundImage = UnityTextureHelpers.GetCharaIcon(item.Id),
+                    BackgroundImage = UnityAssetHelpers.GetCharaIcon(item.ID),
                     BackgroundImageLayout = ImageLayout.Zoom,
                     Cursor = Cursors.Hand,
                     Height = 100,
@@ -59,7 +61,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
                 };
 
                 ToolTip toolTip = new();
-                toolTip.SetToolTip(charaIcon, item.Id.ToString());
+                toolTip.SetToolTip(charaIcon, item.ID.ToString());
 
                 charaIcon.Click += CharaIcon_Click;
                 pictureBoxes.Add(charaIcon);
@@ -68,6 +70,8 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
                 loadingBackgroundWorker.ReportProgress((int)((float)itemNumber++ / charaDatas.Count() * 100.0f));
             }
+
+            AssetStudio.Progress.Default = defaultProgress;
 
             e.Result = pictureBoxes.ToArray();
         }

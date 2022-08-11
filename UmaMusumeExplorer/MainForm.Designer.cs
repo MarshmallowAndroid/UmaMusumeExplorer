@@ -35,15 +35,18 @@ namespace UmaMusumeExplorer
             this.fileBrowserControl = new UmaMusumeExplorer.Controls.FileBrowser.FileBrowserControl();
             this.audioPlayerTabPage = new System.Windows.Forms.TabPage();
             this.audioPlayerControl1 = new UmaMusumeExplorer.Controls.AudioPlayer.AudioPlayerControl();
-            this.raceMusicTabPage = new System.Windows.Forms.TabPage();
-            this.raceSimulatorControl1 = new UmaMusumeExplorer.Controls.RaceMusicSimulator.RaceMusicSimulatorControl();
             this.characterInfoTabPage = new System.Windows.Forms.TabPage();
             this.characterInfoControl = new UmaMusumeExplorer.Controls.CharacterInfo.CharacterInfoControl();
+            this.raceMusicTabPage = new System.Windows.Forms.TabPage();
+            this.raceSimulatorControl1 = new UmaMusumeExplorer.Controls.RaceMusicSimulator.RaceMusicSimulatorControl();
+            this.jukeboxTabPage = new System.Windows.Forms.TabPage();
+            this.jukebox = new UmaMusumeExplorer.Controls.LiveMusicPlayer.JukeboxControl();
             this.tabControl.SuspendLayout();
             this.fileBrowserTabPage.SuspendLayout();
             this.audioPlayerTabPage.SuspendLayout();
-            this.raceMusicTabPage.SuspendLayout();
             this.characterInfoTabPage.SuspendLayout();
+            this.raceMusicTabPage.SuspendLayout();
+            this.jukeboxTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -52,6 +55,7 @@ namespace UmaMusumeExplorer
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl.Controls.Add(this.fileBrowserTabPage);
+            this.tabControl.Controls.Add(this.jukeboxTabPage);
             this.tabControl.Controls.Add(this.audioPlayerTabPage);
             this.tabControl.Controls.Add(this.characterInfoTabPage);
             this.tabControl.Controls.Add(this.raceMusicTabPage);
@@ -100,26 +104,6 @@ namespace UmaMusumeExplorer
             this.audioPlayerControl1.Size = new System.Drawing.Size(982, 634);
             this.audioPlayerControl1.TabIndex = 0;
             // 
-            // raceMusicTabPage
-            // 
-            this.raceMusicTabPage.Controls.Add(this.raceSimulatorControl1);
-            this.raceMusicTabPage.Location = new System.Drawing.Point(4, 24);
-            this.raceMusicTabPage.Name = "raceMusicTabPage";
-            this.raceMusicTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.raceMusicTabPage.Size = new System.Drawing.Size(988, 640);
-            this.raceMusicTabPage.TabIndex = 1;
-            this.raceMusicTabPage.Text = "Race Music Simulator";
-            this.raceMusicTabPage.UseVisualStyleBackColor = true;
-            // 
-            // raceSimulatorControl1
-            // 
-            this.raceSimulatorControl1.BackColor = System.Drawing.SystemColors.Control;
-            this.raceSimulatorControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.raceSimulatorControl1.Location = new System.Drawing.Point(3, 3);
-            this.raceSimulatorControl1.Name = "raceSimulatorControl1";
-            this.raceSimulatorControl1.Size = new System.Drawing.Size(982, 634);
-            this.raceSimulatorControl1.TabIndex = 0;
-            // 
             // characterInfoTabPage
             // 
             this.characterInfoTabPage.Controls.Add(this.characterInfoControl);
@@ -140,6 +124,44 @@ namespace UmaMusumeExplorer
             this.characterInfoControl.Size = new System.Drawing.Size(982, 634);
             this.characterInfoControl.TabIndex = 0;
             // 
+            // raceMusicTabPage
+            // 
+            this.raceMusicTabPage.Controls.Add(this.raceSimulatorControl1);
+            this.raceMusicTabPage.Location = new System.Drawing.Point(4, 24);
+            this.raceMusicTabPage.Name = "raceMusicTabPage";
+            this.raceMusicTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.raceMusicTabPage.Size = new System.Drawing.Size(988, 640);
+            this.raceMusicTabPage.TabIndex = 1;
+            this.raceMusicTabPage.Text = "Race Music Simulator";
+            this.raceMusicTabPage.UseVisualStyleBackColor = true;
+            // 
+            // raceSimulatorControl1
+            // 
+            this.raceSimulatorControl1.BackColor = System.Drawing.SystemColors.Control;
+            this.raceSimulatorControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.raceSimulatorControl1.Location = new System.Drawing.Point(3, 3);
+            this.raceSimulatorControl1.Name = "raceSimulatorControl1";
+            this.raceSimulatorControl1.Size = new System.Drawing.Size(982, 634);
+            this.raceSimulatorControl1.TabIndex = 0;
+            // 
+            // jukeboxTabPage
+            // 
+            this.jukeboxTabPage.Controls.Add(this.jukebox);
+            this.jukeboxTabPage.Location = new System.Drawing.Point(4, 24);
+            this.jukeboxTabPage.Name = "jukeboxTabPage";
+            this.jukeboxTabPage.Size = new System.Drawing.Size(988, 640);
+            this.jukeboxTabPage.TabIndex = 5;
+            this.jukeboxTabPage.Text = "Jukebox";
+            this.jukeboxTabPage.UseVisualStyleBackColor = true;
+            // 
+            // jukebox
+            // 
+            this.jukebox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.jukebox.Location = new System.Drawing.Point(0, 0);
+            this.jukebox.Name = "jukebox";
+            this.jukebox.Size = new System.Drawing.Size(988, 640);
+            this.jukebox.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -153,8 +175,9 @@ namespace UmaMusumeExplorer
             this.tabControl.ResumeLayout(false);
             this.fileBrowserTabPage.ResumeLayout(false);
             this.audioPlayerTabPage.ResumeLayout(false);
-            this.raceMusicTabPage.ResumeLayout(false);
             this.characterInfoTabPage.ResumeLayout(false);
+            this.raceMusicTabPage.ResumeLayout(false);
+            this.jukeboxTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -169,6 +192,8 @@ namespace UmaMusumeExplorer
         private Controls.CharacterInfo.CharacterInfoControl characterInfoControl;
         private System.Windows.Forms.TabPage fileBrowserTabPage;
         private Controls.FileBrowser.FileBrowserControl fileBrowserControl;
+        private System.Windows.Forms.TabPage jukeboxTabPage;
+        private Controls.LiveMusicPlayer.JukeboxControl jukebox;
     }
 }
 

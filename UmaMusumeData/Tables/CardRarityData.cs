@@ -6,16 +6,16 @@ namespace UmaMusumeData.Tables
     public class CardRarityData
     {
         [Column("id"), NotNull, PrimaryKey]
-        public int Id { get; set; }
+        public int ID { get; set; }
 
         [Column("card_id"), NotNull]
-        public int CardId { get; set; }
+        public int CardID { get; set; }
 
         [Column("rarity"), NotNull]
         public int Rarity { get; set; }
 
         [Column("race_dress_id"), NotNull]
-        public int RaceDressId { get; set; }
+        public int RaceDressID { get; set; }
 
         [Column("skill_set"), NotNull]
         public int SkillSet { get; set; }
@@ -66,8 +66,8 @@ namespace UmaMusumeData.Tables
         public int ProperGroundDirt { get; set; }
 
         [Column("get_dress_id_1"), NotNull]
-        public int GetDressId1 { get; set; }
+        public int GetDressID1 { get; set; }
         [Column("get_dress_id_2"), NotNull]
-        public int GetDressId2 { get; set; }
+        public int GetDressID2 { get; set; }
     }
 }

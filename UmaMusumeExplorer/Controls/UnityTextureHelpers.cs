@@ -5,6 +5,7 @@ using SixLabors.ImageSharp.Processing;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -14,7 +15,7 @@ using Image = SixLabors.ImageSharp.Image;
 
 namespace UmaMusumeExplorer.Controls
 {
-    internal static class UnityTextureHelpers
+    internal static class UnityAssetHelpers
     {
         private static readonly AssetsManager assetsManager = new();
 
@@ -23,7 +24,12 @@ namespace UmaMusumeExplorer.Controls
             assetsManager.LoadFiles(paths);
         }
 
-        public static Bitmap GetCharaIcon(int id, int raceDressId = 0)
+        public static void ClearLoadedFiles()
+        {
+            assetsManager.Clear();
+        }
+
+        public static Bitmap GetCharaIcon(int id, int raceDressID = 0)
         {
             string idString = $"{id:d4}";
 
@@ -35,10 +41,10 @@ namespace UmaMusumeExplorer.Controls
                 imageString.Append("chr_icon_round_0000");
             }
 
-            if (raceDressId > 0)
-                imageString.Append($"_{raceDressId:d6}_02");
+            if (raceDressID > 0)
+                imageString.Append($"_{raceDressID:d6}_02");
 
-            SerializedFile targetAsset = GetImageFile(imageString.ToString());
+            SerializedFile targetAsset = GetFile(imageString.ToString(), ClassIDType.Texture2D);
             Texture2D texture = targetAsset.Objects.Where(o => o.type == ClassIDType.Texture2D).First() as Texture2D;
 
             Image<Bgra32> image = texture.ConvertToImage(true);
@@ -50,15 +56,15 @@ namespace UmaMusumeExplorer.Controls
             return bitmap.Bitmap;
         }
 
-        public static Bitmap GetJacket(int musicId, int size = 0)
+        public static Bitmap GetJacket(int musicID, char size = 'm')
         {
-            string idString = $"{musicId:d4}";
+            string idString = $"{musicID:d4}";
 
             StringBuilder imageString = new();
-            imageString.Append($"jacket_icon_{(size == 0 ? 'm' : 'l')}_{idString}");
+            imageString.Append($"jacket_icon_{size}_{idString}");
 
-            SerializedFile targetAsset = GetImageFile(imageString.ToString());
-            if (targetAsset is null) targetAsset = GetImageFile($"jacket_icon_{(size == 0 ? 'm' : 'l')}_0000");
+            SerializedFile targetAsset = GetFile(imageString.ToString(), ClassIDType.Texture2D);
+            if (targetAsset is null) targetAsset = GetFile($"jacket_icon_{size}_0000", ClassIDType.Texture2D);
             Texture2D texture = targetAsset.Objects.Where(o => o.type == ClassIDType.Texture2D).First() as Texture2D;
 
             Image<Bgra32> image = texture.ConvertToImage(true);
@@ -70,10 +76,21 @@ namespace UmaMusumeExplorer.Controls
             return bitmap.Bitmap;
         }
 
-        private static SerializedFile GetImageFile(string objectName)
+        public static StreamReader GetLiveCsv(int musicID, string category)
+        {
+            string idString = $"{musicID:d4}";
+
+            SerializedFile targetAsset = GetFile($"m{idString}_{category}", ClassIDType.TextAsset);
+            if (targetAsset is null) return null;
+            TextAsset textAsset = targetAsset.Objects.Where(o => o.type == ClassIDType.TextAsset).First() as TextAsset;
+
+            return new StreamReader(new MemoryStream(textAsset.m_Script));
+        }
+
+        private static SerializedFile GetFile(string objectName, ClassIDType classIDType)
         {
             return assetsManager.assetsFileList.Where(
-                a => (a.Objects.Where(o => o.type == ClassIDType.Texture2D).First() as NamedObject).m_Name.Equals(objectName)).FirstOrDefault();
+                a => (a.Objects.Where(o => o.type == classIDType).FirstOrDefault() as NamedObject)?.m_Name.Equals(objectName) ?? false).FirstOrDefault();
         }
     }
 }

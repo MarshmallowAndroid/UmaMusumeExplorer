@@ -24,11 +24,11 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes
             int targetWaveID = -1;
             foreach (var wave in awbReader.Waves)
             {
-                string waveName = acbReader.GetWaveName(wave.WaveId, 0, false);
+                string waveName = acbReader.GetWaveName(wave.WaveID, 0, false);
 
                 if (waveName.Contains(cueName))
                 {
-                    targetWaveID = wave.WaveId;
+                    targetWaveID = wave.WaveID;
                     break;
                 }
             }

@@ -170,7 +170,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             extractListView.Items.AddRange(items);
 
             totalFileCountLabel.Text = $"{selectedAssets.Count} files";
-            totalFileSizeLabel.Text = GenerateSizeString(selectedAssets.Sum(a => a.Length));
+            totalFileSizeLabel.Text = GenerateSizeString(selectedAssets.Sum(a => (long)a.Length));
         }
 
         private void RemoveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -246,7 +246,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             progressBar1.Value = 0;
         }
 
-        private string GenerateSizeString(int length)
+        private string GenerateSizeString(long length)
         {
             StringBuilder sizeString = new();
 

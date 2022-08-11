@@ -6,22 +6,22 @@ namespace UmaMusumeData.Tables
     public class RaceBgm
     {
         [Column("id"), NotNull, PrimaryKey]
-        public int Id { get; set; }
+        public int ID { get; set; }
 
         [Column("race_type"), NotNull]
         public int RaceType { get; set; }
 
         [Column("race_instance_id"), NotNull]
-        public int RaceInstanceId { get; set; }
+        public int RaceInstanceID { get; set; }
 
         [Column("grade"), NotNull]
         public int Grade { get; set; }
 
         [Column("single_mode_route_race_id"), NotNull]
-        public int SingleModeRouteRaceId { get; set; }
+        public int SingleModeRouteRaceID { get; set; }
 
         [Column("single_mode_program_id"), NotNull]
-        public int SingleModeProgramId { get; set; }
+        public int SingleModeProgramID { get; set; }
 
         [Column("paddock_bgm_cue_name"), NotNull]
         public string PaddockBgmCueName { get; set; } = "";

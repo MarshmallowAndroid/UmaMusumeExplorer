@@ -6,7 +6,7 @@ namespace UmaMusumeData.Tables
     public class RaceBgmPattern
     {
         [Column("id"), NotNull, PrimaryKey]
-        public int Id { get; set; }
+        public int ID { get; set; }
 
         [Column("bgm_time_1"), NotNull]
         public int BgmTime1 { get; set; }
