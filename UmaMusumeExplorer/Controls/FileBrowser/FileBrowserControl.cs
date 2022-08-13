@@ -43,23 +43,6 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             targetAssets = gameAssets;
         }
 
-        private void NodesFromPath(TreeNode sourceNode, string path)
-        {
-            int lastSlashIndex = path.IndexOf('/');
-            if (lastSlashIndex < 1)
-            {
-                sourceNode.Nodes.Add(path);
-                return;
-            }
-
-            string nodeName = path[..lastSlashIndex];
-
-            if (!sourceNode.Nodes.ContainsKey(nodeName))
-                sourceNode.Nodes.Add(nodeName, nodeName);
-
-            NodesFromPath(sourceNode.Nodes[nodeName], path[(lastSlashIndex + 1)..]);
-        }
-
         private void FileTreeView_BeforeExpand(object sender, TreeViewCancelEventArgs e)
         {
             TreeNode expandingNode = e.Node;
@@ -246,34 +229,10 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             progressBar1.Value = 0;
         }
 
-        private string GenerateSizeString(long length)
-        {
-            StringBuilder sizeString = new();
-
-            string[] units = new string[]
-            {
-                "B", "KB", "MB", "GB"
-            };
-
-            int unitIndex = (int)Math.Floor(Math.Log(length, 10) / 3);
-            unitIndex = unitIndex >= 0 ? unitIndex : 0;
-            float divide = (float)Math.Pow(1000, unitIndex);
-            sizeString.Append($"{length / divide:f2} {units[unitIndex]}");
-
-            return sizeString.ToString();
-        }
-
-        void UpdateSelectedAssets(GameAsset asset, bool isChecked)
-        {
-            TreeNode[] matching = fileTreeView.Nodes.Find(asset.Name, true);
-            if (matching.Length > 0) matching[0].Checked = isChecked;
-
-            if (!selectedAssets.Contains(asset))
-                selectedAssets.Add(asset);
-        }
-
         private void OpenFileLocationToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (fileTreeView.SelectedNode is null) return;
+
             if (fileTreeView.SelectedNode.Tag is GameAsset asset)
             {
                 string dataFilePath = UmaDataHelper.GetPath(asset);
@@ -290,6 +249,8 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
 
         private void TreeViewContextMenuStrip_Opening(object sender, CancelEventArgs e)
         {
+            if (fileTreeView.SelectedNode is null) return;
+
             bool isFolder = (GameAsset)fileTreeView.SelectedNode.Tag is null;
             toolStripSeparator1.Visible = !isFolder;
             openFileLocationToolStripMenuItem.Visible = !isFolder;
@@ -316,6 +277,49 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             }
 
             fileTreeView.Nodes[0].Collapse();
+        }
+        
+        void UpdateSelectedAssets(GameAsset asset, bool isChecked)
+        {
+            TreeNode[] matching = fileTreeView.Nodes.Find(asset.Name, true);
+            if (matching.Length > 0) matching[0].Checked = isChecked;
+
+            if (!selectedAssets.Contains(asset))
+                selectedAssets.Add(asset);
+        }
+
+        private string GenerateSizeString(long length)
+        {
+            StringBuilder sizeString = new();
+
+            string[] units = new string[]
+            {
+                "B", "KB", "MB", "GB"
+            };
+
+            int unitIndex = (int)Math.Floor(Math.Log(length, 10) / 3);
+            unitIndex = unitIndex >= 0 ? unitIndex : 0;
+            float divide = (float)Math.Pow(1000, unitIndex);
+            sizeString.Append($"{length / divide:f2} {units[unitIndex]}");
+
+            return sizeString.ToString();
+        }
+
+        private void NodesFromPath(TreeNode sourceNode, string path)
+        {
+            int lastSlashIndex = path.IndexOf('/');
+            if (lastSlashIndex < 1)
+            {
+                sourceNode.Nodes.Add(path);
+                return;
+            }
+
+            string nodeName = path[..lastSlashIndex];
+
+            if (!sourceNode.Nodes.ContainsKey(nodeName))
+                sourceNode.Nodes.Add(nodeName, nodeName);
+
+            NodesFromPath(sourceNode.Nodes[nodeName], path[(lastSlashIndex + 1)..]);
         }
     }
 }
