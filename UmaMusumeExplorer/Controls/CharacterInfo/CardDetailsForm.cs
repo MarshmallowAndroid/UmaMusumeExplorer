@@ -16,6 +16,8 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
     {
         private readonly CharaData charaData;
 
+        private PinnedBitmap iconPinnedBitmap;
+
         public CardDetailsForm(CharaData chara)
         {
             InitializeComponent();
@@ -51,7 +53,8 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             genderLabel.Text = charaData.Sex == 1 ? "Male" : "Female";
             birthdayLabel.Text = $"{charaData.BirthDay}/{charaData.BirthMonth}/{charaData.BirthYear} ({DateTime.Now.Year - charaData.BirthYear} years)";
 
-            iconPictureBox.Image = UnityAssetHelpers.GetCharaIcon(id);
+            iconPinnedBitmap = UnityAssetHelpers.GetCharaIcon(id);
+            iconPictureBox.Image = iconPinnedBitmap.Bitmap;
 
             foreach (var item in AssetTables.CardDatas.Where(cd => cd.CharaID == charaData.ID))
             {
@@ -75,7 +78,11 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             if (rarityComboBox.Items.Count > 0)
                 rarityComboBox.SelectedIndex = 0;
             else
-                iconPictureBox.Image = UnityAssetHelpers.GetCharaIcon(cardData.CharaID);
+            {
+                iconPinnedBitmap.Dispose();
+                iconPinnedBitmap = UnityAssetHelpers.GetCharaIcon(cardData.CharaID);
+                iconPictureBox.Image = iconPinnedBitmap.Bitmap;
+            }
         }
 
         private void RarityComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -85,7 +92,9 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
             if (rarityData is null) rarityData = new();
 
-            iconPictureBox.Image = UnityAssetHelpers.GetCharaIcon(cardData.CharaID, rarityData.RaceDressID);
+            iconPinnedBitmap.Dispose();
+            iconPinnedBitmap = UnityAssetHelpers.GetCharaIcon(cardData.CharaID, rarityData.RaceDressID);
+            iconPictureBox.Image = iconPinnedBitmap.Bitmap;
 
             speedStatusDisplayLabel.Value = rarityData.Speed;
             staminaStatusDisplayLabel.Value = rarityData.Stamina;

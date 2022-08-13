@@ -51,7 +51,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             {
                 PictureBox jacket = new()
                 {
-                    BackgroundImage = UnityAssetHelpers.GetJacket(item.MusicID, 'm'),
+                    BackgroundImage = UnityAssetHelpers.GetJacket(item.MusicID, 'l').Bitmap,
                     BackgroundImageLayout = ImageLayout.Zoom,
                     Cursor = Cursors.Hand,
                     Height = 130,

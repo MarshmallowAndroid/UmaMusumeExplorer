@@ -21,6 +21,8 @@ namespace UmaMusumeExplorer.Controls.Jukebox
     {
         private readonly AssetsManager assetsManager = new();
 
+        private readonly PinnedBitmap songJacketPinnedBitmap;
+
         private readonly LivePermissionData livePermissionData;
         private readonly LiveData liveData;
 
@@ -47,7 +49,8 @@ namespace UmaMusumeExplorer.Controls.Jukebox
 
             LoadMusicScore();
 
-            songJacketPictureBox.BackgroundImage = UnityAssetHelpers.GetJacket(musicID, 'l');
+            songJacketPinnedBitmap = UnityAssetHelpers.GetJacket(musicID, 'l');
+            songJacketPictureBox.BackgroundImage = songJacketPinnedBitmap.Bitmap;
             songTitleLabel.Text = AssetTables.LiveNameTextDatas.First(litd => litd.Index == musicID).Text;
             songInfoLabel.Text = AssetTables.LiveInfoTextDatas.First(litd => litd.Index == musicID).Text.Replace("\\n", "\n");
 
@@ -196,10 +199,11 @@ namespace UmaMusumeExplorer.Controls.Jukebox
 
         private void JukeboxPlayerForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            songJacketPinnedBitmap.Dispose();
+            playbackFinished = true;
+
             waveOutEvent.Stop();
             waveOutEvent.Dispose();
-
-            playbackFinished = true;
 
             assetsManager.Clear();
         }

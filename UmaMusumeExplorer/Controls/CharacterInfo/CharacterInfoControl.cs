@@ -52,7 +52,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             {
                 PictureBox charaIcon = new()
                 {
-                    BackgroundImage = UnityAssetHelpers.GetCharaIcon(item.ID),
+                    BackgroundImage = UnityAssetHelpers.GetCharaIcon(item.ID).Bitmap,
                     BackgroundImageLayout = ImageLayout.Zoom,
                     Cursor = Cursors.Hand,
                     Height = 100,

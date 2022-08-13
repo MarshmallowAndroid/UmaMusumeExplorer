@@ -10,7 +10,6 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
-using UmaMusumeExplorer.Controls.CharacterInfo.Classes;
 using Image = SixLabors.ImageSharp.Image;
 
 namespace UmaMusumeExplorer.Controls
@@ -29,7 +28,7 @@ namespace UmaMusumeExplorer.Controls
             assetsManager.Clear();
         }
 
-        public static Bitmap GetCharaIcon(int id, int raceDressID = 0)
+        public static PinnedBitmap GetCharaIcon(int id, int raceDressID = 0)
         {
             string idString = $"{id:d4}";
 
@@ -52,11 +51,10 @@ namespace UmaMusumeExplorer.Controls
             int adjustedHeight = (int)(image.Height * 1.115f);
             image.Mutate(o => o.Resize(image.Width, adjustedHeight));
 
-            PinnedBitmap bitmap = new(image.ConvertToBytes(), image.Width, adjustedHeight);
-            return bitmap.Bitmap;
+            return new(image.ConvertToBytes(), image.Width, adjustedHeight);
         }
 
-        public static Bitmap GetJacket(int musicID, char size = 'm')
+        public static PinnedBitmap GetJacket(int musicID, char size = 'm')
         {
             string idString = $"{musicID:d4}";
 
@@ -72,8 +70,7 @@ namespace UmaMusumeExplorer.Controls
             //int adjustedHeight = (int)(image.Height * 1.115f);
             //image.Mutate(o => o.Resize(image.Width, adjustedHeight));
 
-            PinnedBitmap bitmap = new(image.ConvertToBytes(), image.Width, image.Height);
-            return bitmap.Bitmap;
+            return new(image.ConvertToBytes(), image.Width, image.Height);
         }
 
         public static StreamReader GetLiveCsv(int musicID, string category)
