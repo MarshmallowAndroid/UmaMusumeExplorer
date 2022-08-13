@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Runtime.InteropServices;
 
-namespace UmaMusumeExplorer.Controls.CharacterInfo.Classes
+namespace UmaMusumeExplorer.Controls
 {
     class PinnedBitmap : IDisposable
     {
