@@ -244,7 +244,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
 
         private void PlayButtons_Click(object sender, EventArgs e)
         {
-            if (raceBgm == null) return;
+            if (raceBgm is null) return;
 
             Button button = sender as Button;
 

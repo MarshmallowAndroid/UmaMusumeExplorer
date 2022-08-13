@@ -68,7 +68,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes
                 sources.Add(mixerInput);
             }
 
-            if (WaveFormat == null)
+            if (WaveFormat is null)
             {
                 WaveFormat = mixerInput.WaveFormat;
             }
@@ -95,7 +95,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes
                 sources.Add(mixerInput);
             }
 
-            if (WaveFormat == null)
+            if (WaveFormat is null)
             {
                 WaveFormat = mixerInput.WaveFormat;
             }
