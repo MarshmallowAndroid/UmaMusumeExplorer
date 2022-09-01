@@ -27,6 +27,7 @@
   <ItemGroup>
     <ProjectReference Include="..\AssetStudio\AssetStudioUtility\AssetStudioUtility.csproj" />
     <ProjectReference Include="..\AssetStudio\AssetStudio\AssetStudio.csproj" />
+    <ProjectReference Include="..\CriWareLibrary\CriWareFormats\CriWareFormats.csproj" />
     <ProjectReference Include="..\UmaMusumeAudio\UmaMusumeAudio.csproj" />
     <ProjectReference Include="..\UmaMusumeData\UmaMusumeData.csproj" />
   </ItemGroup>

@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ClHcaSharp\ClHcaSharp\ClHcaSharp.csproj" />
-    <ProjectReference Include="..\CriWareTools\CriWareFormats\CriWareFormats.csproj" />
+    <ProjectReference Include="..\CriWareLibrary\CriWareFormats\CriWareFormats.csproj" />
   </ItemGroup>
 
 </Project>

@@ -7,3 +7,6 @@
 [submodule "AssetStudio"]
 	path = AssetStudio
 	url = https://github.com/Perfare/AssetStudio
+[submodule "CriWareLibrary"]
+	path = CriWareLibrary
+	url = https://github.com/MarshmallowAndroid/CriWareLibrary
