@@ -29,7 +29,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
         /// </summary>
         private void InitializeComponent()
         {
-            this.bgmIDComboBox = new System.Windows.Forms.ComboBox();
+            this.bgmIdComboBox = new System.Windows.Forms.ComboBox();
             this.loadButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.entryTableCuesheetNameTextBox = new System.Windows.Forms.TextBox();
@@ -70,15 +70,15 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
-            // bgmIDComboBox
+            // bgmIdComboBox
             // 
-            this.bgmIDComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.bgmIDComboBox.FormattingEnabled = true;
-            this.bgmIDComboBox.Location = new System.Drawing.Point(3, 3);
-            this.bgmIDComboBox.Name = "bgmIDComboBox";
-            this.bgmIDComboBox.Size = new System.Drawing.Size(77, 23);
-            this.bgmIDComboBox.TabIndex = 0;
-            this.bgmIDComboBox.SelectedIndexChanged += new System.EventHandler(this.BgmIDComboBox_SelectedIndexChanged);
+            this.bgmIdComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.bgmIdComboBox.FormattingEnabled = true;
+            this.bgmIdComboBox.Location = new System.Drawing.Point(3, 3);
+            this.bgmIdComboBox.Name = "bgmIdComboBox";
+            this.bgmIdComboBox.Size = new System.Drawing.Size(77, 23);
+            this.bgmIdComboBox.TabIndex = 0;
+            this.bgmIdComboBox.SelectedIndexChanged += new System.EventHandler(this.BgmIdComboBox_SelectedIndexChanged);
             // 
             // loadButton
             // 
@@ -426,7 +426,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
             this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.panel);
             this.Controls.Add(this.loadButton);
-            this.Controls.Add(this.bgmIDComboBox);
+            this.Controls.Add(this.bgmIdComboBox);
             this.Name = "RaceMusicSimulatorControl";
             this.Size = new System.Drawing.Size(700, 472);
             this.Load += new System.EventHandler(this.RaceSimulatorControl_Load);
@@ -446,7 +446,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
 
         #endregion
 
-        private System.Windows.Forms.ComboBox bgmIDComboBox;
+        private System.Windows.Forms.ComboBox bgmIdComboBox;
         private System.Windows.Forms.Button loadButton;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label paddockLabel;

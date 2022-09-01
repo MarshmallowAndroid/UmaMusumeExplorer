@@ -28,7 +28,7 @@ namespace UmaMusumeExplorer.Controls
             assetsManager.Clear();
         }
 
-        public static PinnedBitmap GetCharaIcon(int id, int raceDressID = 0)
+        public static PinnedBitmap GetCharaIcon(int id, int raceDressId = 0)
         {
             string idString = $"{id:d4}";
 
@@ -40,8 +40,8 @@ namespace UmaMusumeExplorer.Controls
                 imageString.Append("chr_icon_round_0000");
             }
 
-            if (raceDressID > 0)
-                imageString.Append($"_{raceDressID:d6}_02");
+            if (raceDressId > 0)
+                imageString.Append($"_{raceDressId:d6}_02");
 
             SerializedFile targetAsset = GetFile(imageString.ToString(), ClassIDType.Texture2D);
             Texture2D texture = targetAsset.Objects.Where(o => o.type == ClassIDType.Texture2D).First() as Texture2D;
@@ -54,9 +54,9 @@ namespace UmaMusumeExplorer.Controls
             return new(image.ConvertToBytes(), image.Width, adjustedHeight);
         }
 
-        public static PinnedBitmap GetJacket(int musicID, char size = 'm')
+        public static PinnedBitmap GetJacket(int musicId, char size = 'm')
         {
-            string idString = $"{musicID:d4}";
+            string idString = $"{musicId:d4}";
 
             StringBuilder imageString = new();
             imageString.Append($"jacket_icon_{size}_{idString}");
@@ -73,9 +73,9 @@ namespace UmaMusumeExplorer.Controls
             return new(image.ConvertToBytes(), image.Width, image.Height);
         }
 
-        public static StreamReader GetLiveCsv(int musicID, string category)
+        public static StreamReader GetLiveCsv(int musicId, string category)
         {
-            string idString = $"{musicID:d4}";
+            string idString = $"{musicId:d4}";
 
             SerializedFile targetAsset = GetFile($"m{idString}_{category}", ClassIDType.TextAsset);
             if (targetAsset is null) return null;
@@ -84,10 +84,10 @@ namespace UmaMusumeExplorer.Controls
             return new StreamReader(new MemoryStream(textAsset.m_Script));
         }
 
-        private static SerializedFile GetFile(string objectName, ClassIDType classIDType)
+        private static SerializedFile GetFile(string objectName, ClassIDType classIdType)
         {
             return assetsManager.assetsFileList.Where(
-                a => (a.Objects.Where(o => o.type == classIDType).FirstOrDefault() as NamedObject)?.m_Name.Equals(objectName) ?? false).FirstOrDefault();
+                a => (a.Objects.Where(o => o.type == classIdType).FirstOrDefault() as NamedObject)?.m_Name.Equals(objectName) ?? false).FirstOrDefault();
         }
     }
 }

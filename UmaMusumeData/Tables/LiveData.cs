@@ -6,7 +6,7 @@ namespace UmaMusumeData.Tables
     public class LiveData
     {
         [Column("music_id"), NotNull, PrimaryKey]
-        public int MusicID { get; set; }
+        public int MusicId { get; set; }
 
         [Column("sort"), NotNull]
         public int Sort { get; set; }

@@ -7,7 +7,7 @@ namespace UmaMusumeData
     {
         [PrimaryKey]
         [Column("i")]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [Column("n"), NotNull]
         public string Name { get; set; } = "";

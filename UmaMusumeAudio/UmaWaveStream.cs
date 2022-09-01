@@ -16,9 +16,9 @@ namespace UmaMusumeAudio
 
         private readonly HcaWaveStream hcaWaveStream;
 
-        public UmaWaveStream(AwbReader awbReader, int waveID)
+        public UmaWaveStream(AwbReader awbReader, int waveId)
         {
-            Stream awbSubfile = awbReader.GetWaveSubfileStream(awbReader.Waves.Find((wave) => wave.WaveID == waveID));
+            Stream awbSubfile = awbReader.GetWaveSubfileStream(awbReader.Waves.Find((wave) => wave.WaveId == waveId));
             hcaWaveStream = new(awbSubfile, MixKey(umaMusumeKey, awbReader.Subkey));
         }
 

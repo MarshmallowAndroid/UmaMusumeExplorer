@@ -70,7 +70,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             this.selectLabel.Name = "selectLabel";
             this.selectLabel.Size = new System.Drawing.Size(68, 15);
             this.selectLabel.TabIndex = 5;
-            this.selectLabel.Text = "Select by ID";
+            this.selectLabel.Text = "Select by Id";
             // 
             // goButton
             // 

@@ -6,10 +6,10 @@ namespace UmaMusumeData.Tables
     public class CardData
     {
         [Column("id"), NotNull, PrimaryKey]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [Column("chara_id"), NotNull]
-        public int CharaID { get; set; }
+        public int CharaId { get; set; }
 
         [Column("default_rarity"), NotNull]
         public int DefaultRarity { get; set; }
@@ -18,7 +18,7 @@ namespace UmaMusumeData.Tables
         public int LimitedChara { get; set; }
 
         [Column("available_skill_set_id"), NotNull]
-        public int AvailableSkillSetID { get; set; }
+        public int AvailableSkillSetId { get; set; }
 
         [Column("talent_speed"), NotNull]
         public int TalentSpeed { get; set; }
@@ -32,13 +32,13 @@ namespace UmaMusumeData.Tables
         public int TalentWiz { get; set; }
 
         [Column("talent_group_id"), NotNull]
-        public int TalentGroupID { get; set; }
+        public int TalentGroupId { get; set; }
 
         [Column("bg_id"), NotNull]
-        public int BgID { get; set; }
+        public int BgId { get; set; }
 
         [Column("get_piece_id"), NotNull]
-        public int GetPieceID { get; set; }
+        public int GetPieceId { get; set; }
 
         [Column("running_style"), NotNull]
         public int RunningStyle { get; set; }

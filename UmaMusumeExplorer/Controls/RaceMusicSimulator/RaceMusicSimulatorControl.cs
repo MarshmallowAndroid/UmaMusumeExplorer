@@ -45,11 +45,11 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
 
             foreach (var bgm in raceBgm)
             {
-                bgmIDComboBox.Items.Add(new BgmComboBoxItem() { RaceBgm = bgm });
+                bgmIdComboBox.Items.Add(new BgmComboBoxItem() { RaceBgm = bgm });
             }
         }
 
-        private void BgmIDComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void BgmIdComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             paddockCueNameTextBox.Text = "";
             paddockCuesheetNameTextBox.Text = "";
@@ -134,13 +134,13 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
         {
             waveOut.Stop();
 
-            BgmComboBoxItem comboBoxItem = bgmIDComboBox.SelectedItem as BgmComboBoxItem;
+            BgmComboBoxItem comboBoxItem = bgmIdComboBox.SelectedItem as BgmComboBoxItem;
             raceBgm = comboBoxItem.RaceBgm;
 
             RaceBgmPattern firstPatternTable = AssetTables.RaceBgmPatterns.FirstOrDefault(p =>
-                p.ID == comboBoxItem.RaceBgm.FirstBgmPattern);
+                p.Id == comboBoxItem.RaceBgm.FirstBgmPattern);
             RaceBgmPattern secondPatternTable = AssetTables.RaceBgmPatterns.FirstOrDefault(p =>
-                p.ID == comboBoxItem.RaceBgm.SecondBgmPattern);
+                p.Id == comboBoxItem.RaceBgm.SecondBgmPattern);
 
             firstPatternBgmList = LoadPattern(firstPatternTable);
             secondPatternBgmList = LoadPattern(secondPatternTable);
@@ -178,7 +178,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
         private void RaceResultComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox comboBox = sender as ComboBox;
-            RaceBgm raceBgm = (bgmIDComboBox.SelectedItem as BgmComboBoxItem).RaceBgm;
+            RaceBgm raceBgm = (bgmIdComboBox.SelectedItem as BgmComboBoxItem).RaceBgm;
             Type type = raceBgm.GetType();
 
             int propertyIndex = comboBox.SelectedIndex + 1;

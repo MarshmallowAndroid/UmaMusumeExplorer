@@ -8,7 +8,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes
 
         public override string ToString()
         {
-            return RaceBgm.ID.ToString();
+            return RaceBgm.Id.ToString();
         }
     }
 }

@@ -105,14 +105,14 @@ namespace UmaMusumeExplorer.Controls.Jukebox
             {
                 while (currentSample >= volumeTriggers[volumeTriggerIndex].Sample)
                 {
-                    //if (volumeTriggers[volumeTriggerIndex].ActiveSingers == 1)
-                    //    volumeMultiplier = 1.0f;
-                    //else
-                    //volumeMultiplier = 1.0f - (1.0f / volumeTriggers[volumeTriggerIndex].ActiveSingers);
                     if (volumeTriggers[volumeTriggerIndex].ActiveSingers == 1)
-                        volumeMultiplier = 1.5f;
-                    else
                         volumeMultiplier = 1.0f;
+                    else
+                        volumeMultiplier = 1.0f - (1.0f / volumeTriggers[volumeTriggerIndex].ActiveSingers);
+                    //if (volumeTriggers[volumeTriggerIndex].ActiveSingers == 1)
+                    //    volumeMultiplier = 1.25f;
+                    //else
+                    //    volumeMultiplier = 0.9f;
 
                     if (volumeTriggerIndex < volumeTriggers.Count - 1) volumeTriggerIndex++;
                     else break;

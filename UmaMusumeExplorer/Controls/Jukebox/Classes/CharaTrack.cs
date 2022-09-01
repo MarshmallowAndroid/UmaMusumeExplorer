@@ -15,8 +15,8 @@ namespace UmaMusumeExplorer.Controls.Jukebox.Classes
         private readonly UmaWaveStream mainUmaWaveStream;
         private readonly UmaWaveStream secondUmaWaveStream;
 
-        private readonly PanningSampleProvider mainSampleProvider;
-        private readonly PanningSampleProvider secondSampleProvider;
+        private readonly PanSampleProvider mainSampleProvider;
+        private readonly PanSampleProvider secondSampleProvider;
 
         private readonly List<Trigger> triggers = new();
 
@@ -31,12 +31,12 @@ namespace UmaMusumeExplorer.Controls.Jukebox.Classes
         public CharaTrack(AwbReader charaAwb, List<PartTrigger> partTriggers, int index)
         {
             mainUmaWaveStream = new(charaAwb, 0);
-            mainSampleProvider = new(mainUmaWaveStream.ToSampleProvider().ToMono());
+            mainSampleProvider = new(mainUmaWaveStream.ToSampleProvider());
 
             if (charaAwb.Waves.Count > 1)
             {
                 secondUmaWaveStream = new(charaAwb, 1);
-                secondSampleProvider = new(secondUmaWaveStream.ToSampleProvider().ToMono());
+                secondSampleProvider = new(secondUmaWaveStream.ToSampleProvider());
             }
 
             foreach (var partTrigger in partTriggers)

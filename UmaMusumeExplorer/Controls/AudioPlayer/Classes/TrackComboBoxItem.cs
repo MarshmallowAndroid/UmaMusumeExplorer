@@ -6,7 +6,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer.Classes
     {
         public string TrackName { get; set; }
 
-        public int WaveID { get; set; }
+        public int WaveId { get; set; }
 
         public AwbReader AwbReader { get; set; }
 

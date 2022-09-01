@@ -52,7 +52,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             {
                 PictureBox charaIcon = new()
                 {
-                    BackgroundImage = UnityAssetHelpers.GetCharaIcon(item.ID).Bitmap,
+                    BackgroundImage = UnityAssetHelpers.GetCharaIcon(item.Id).Bitmap,
                     BackgroundImageLayout = ImageLayout.Zoom,
                     Cursor = Cursors.Hand,
                     Height = 100,
@@ -61,7 +61,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
                 };
 
                 ToolTip toolTip = new();
-                toolTip.SetToolTip(charaIcon, item.ID.ToString());
+                toolTip.SetToolTip(charaIcon, item.Id.ToString());
 
                 charaIcon.Click += CharaIcon_Click;
                 pictureBoxes.Add(charaIcon);

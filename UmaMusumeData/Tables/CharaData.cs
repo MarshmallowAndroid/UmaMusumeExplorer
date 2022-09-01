@@ -6,7 +6,7 @@ namespace UmaMusumeData.Tables
     public class CharaData
     {
         [Column("id"), NotNull, PrimaryKey]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [Column("birth_year"), NotNull]
         public int BirthYear { get; set; }
@@ -83,7 +83,7 @@ namespace UmaMusumeData.Tables
         public int PersonalDress { get; set; }
 
         [Column("tail_model_id"), NotNull]
-        public int TailModelID { get; set; }
+        public int TailModelId { get; set; }
 
         [Column("race_running_type"), NotNull]
         public int RaceRunningType { get; set; }
@@ -109,7 +109,7 @@ namespace UmaMusumeData.Tables
         public int StoryTailRandomTimeMax { get; set; }
 
         [Column("attachment_model_id"), NotNull]
-        public int AttachmentModelID { get; set; }
+        public int AttachmentModelId { get; set; }
 
         [Column("mini_mayu_shader_type"), NotNull]
         public int MiniMayuShaderType { get; set; }

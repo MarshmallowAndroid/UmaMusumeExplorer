@@ -42,25 +42,25 @@ namespace UmaMusumeExplorer.Controls.Jukebox
         {
             InitializeComponent();
 
-            int musicID = live.MusicID;
+            int musicId = live.MusicId;
 
             liveData = live;
-            livePermissionData = AssetTables.LivePermissionDatas.FirstOrDefault(lpd => lpd.MusicID == musicID);
+            livePermissionData = AssetTables.LivePermissionDatas.FirstOrDefault(lpd => lpd.MusicId == musicId);
 
             LoadMusicScore();
 
-            songJacketPinnedBitmap = UnityAssetHelpers.GetJacket(musicID, 'l');
+            songJacketPinnedBitmap = UnityAssetHelpers.GetJacket(musicId, 'l');
             songJacketPictureBox.BackgroundImage = songJacketPinnedBitmap.Bitmap;
-            songTitleLabel.Text = AssetTables.LiveNameTextDatas.First(litd => litd.Index == musicID).Text;
-            songInfoLabel.Text = AssetTables.LiveInfoTextDatas.First(litd => litd.Index == musicID).Text.Replace("\\n", "\n");
+            songTitleLabel.Text = AssetTables.LiveNameTextDatas.First(litd => litd.Index == musicId).Text;
+            songInfoLabel.Text = AssetTables.LiveInfoTextDatas.First(litd => litd.Index == musicId).Text.Replace("\\n", "\n");
 
-            IEnumerable<GameAsset> audioAssets = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith($"sound/l/{musicID}"));
-            AwbReader okeAwb = GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicID}_oke_02.awb")));
+            IEnumerable<GameAsset> audioAssets = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith($"sound/l/{musicId}"));
+            AwbReader okeAwb = GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicId}_oke_02.awb")));
 
             List<AwbReader> charaAwbs = new(GetSingingMembers());
-            charaAwbs.Add(GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicID}_chara_1004_01.awb"))));
-            charaAwbs.Add(GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicID}_chara_1012_01.awb"))));
-            charaAwbs.Add(GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicID}_chara_1013_01.awb"))));
+            charaAwbs.Add(GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicId}_chara_1004_01.awb"))));
+            charaAwbs.Add(GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicId}_chara_1012_01.awb"))));
+            charaAwbs.Add(GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicId}_chara_1013_01.awb"))));
 
             songMixer = new(okeAwb, charaAwbs, partTriggers);
 
@@ -77,7 +77,7 @@ namespace UmaMusumeExplorer.Controls.Jukebox
 
         private void LoadMusicScore()
         {
-            IEnumerable<GameAsset> musicScoreAssets = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith($"live/musicscores/m{liveData.MusicID}"));
+            IEnumerable<GameAsset> musicScoreAssets = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith($"live/musicscores/m{liveData.MusicId}"));
             List<string> assetPaths = new();
             foreach (var item in musicScoreAssets)
             {
@@ -85,7 +85,7 @@ namespace UmaMusumeExplorer.Controls.Jukebox
             }
             assetsManager.LoadFiles(assetPaths.ToArray());
 
-            StreamReader lyricsCsv = GetLiveCsv(liveData.MusicID, "lyrics");
+            StreamReader lyricsCsv = GetLiveCsv(liveData.MusicId, "lyrics");
             lyricsCsv.ReadLine();
             while (!lyricsCsv.EndOfStream)
             {
@@ -93,7 +93,7 @@ namespace UmaMusumeExplorer.Controls.Jukebox
                 lyricsTriggers.Add(trigger);
             }
 
-            StreamReader partCsv = GetLiveCsv(liveData.MusicID, "part");
+            StreamReader partCsv = GetLiveCsv(liveData.MusicId, "part");
             partCsv.ReadLine();
             while (!partCsv.EndOfStream)
             {
@@ -160,9 +160,9 @@ namespace UmaMusumeExplorer.Controls.Jukebox
             return new(File.OpenRead(awbPath));
         }
 
-        private StreamReader GetLiveCsv(int musicID, string category)
+        private StreamReader GetLiveCsv(int musicId, string category)
         {
-            string idString = $"{musicID:d4}";
+            string idString = $"{musicId:d4}";
 
             SerializedFile targetAsset = assetsManager.assetsFileList.Where(
                 a => (a.Objects.Where(o => o.type == ClassIDType.TextAsset).FirstOrDefault() as NamedObject)?.m_Name.Equals($"m{idString}_{category}") ?? false).FirstOrDefault();

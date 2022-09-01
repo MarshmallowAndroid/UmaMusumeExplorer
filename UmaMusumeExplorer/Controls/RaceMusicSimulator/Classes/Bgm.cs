@@ -21,21 +21,21 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes
 
             AcbReader acbReader = new(File.OpenRead(acbPath));
 
-            int targetWaveID = -1;
+            int targetWaveId = -1;
             foreach (var wave in awbReader.Waves)
             {
-                string waveName = acbReader.GetWaveName(wave.WaveID, 0, false);
+                string waveName = acbReader.GetWaveName(wave.WaveId, 0, false);
 
                 if (waveName.Contains(cueName))
                 {
-                    targetWaveID = wave.WaveID;
+                    targetWaveId = wave.WaveId;
                     break;
                 }
             }
 
             acbReader.Dispose();
 
-            UmaWaveStream = new UmaWaveStream(awbReader, targetWaveID);
+            UmaWaveStream = new UmaWaveStream(awbReader, targetWaveId);
         }
 
         public UmaWaveStream UmaWaveStream { get; }

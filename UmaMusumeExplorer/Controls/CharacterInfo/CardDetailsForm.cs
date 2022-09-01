@@ -27,7 +27,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
         private void CardDetailsForm_Load(object sender, EventArgs e)
         {
-            int id = charaData.ID;
+            int id = charaData.Id;
             string charaName = AssetTables.CharaNameTextDatas.First(td => td.Index == id).Text;
 
             Text = charaName;
@@ -56,7 +56,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             iconPinnedBitmap = UnityAssetHelpers.GetCharaIcon(id);
             iconPictureBox.Image = iconPinnedBitmap.Bitmap;
 
-            foreach (var item in AssetTables.CardDatas.Where(cd => cd.CharaID == charaData.ID))
+            foreach (var item in AssetTables.CardDatas.Where(cd => cd.CharaId == charaData.Id))
             {
                 costumeComboBox.Items.Add(new CostumeComboBoxItem(item));
             }
@@ -70,7 +70,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             CardData cardData = (costumeComboBox.SelectedItem as CostumeComboBoxItem).CardData;
 
             rarityComboBox.Items.Clear();
-            foreach (var rarityData in AssetTables.CardRarityDatas.Where(crd => crd.CardID == cardData.ID))
+            foreach (var rarityData in AssetTables.CardRarityDatas.Where(crd => crd.CardId == cardData.Id))
             {
                 rarityComboBox.Items.Add(new RarityComboBoxItem(rarityData));
             }
@@ -80,7 +80,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             else
             {
                 iconPinnedBitmap.Dispose();
-                iconPinnedBitmap = UnityAssetHelpers.GetCharaIcon(cardData.CharaID);
+                iconPinnedBitmap = UnityAssetHelpers.GetCharaIcon(cardData.CharaId);
                 iconPictureBox.Image = iconPinnedBitmap.Bitmap;
             }
         }
@@ -93,7 +93,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             if (rarityData is null) rarityData = new();
 
             iconPinnedBitmap.Dispose();
-            iconPinnedBitmap = UnityAssetHelpers.GetCharaIcon(cardData.CharaID, rarityData.RaceDressID);
+            iconPinnedBitmap = UnityAssetHelpers.GetCharaIcon(cardData.CharaId, rarityData.RaceDressId);
             iconPictureBox.Image = iconPinnedBitmap.Bitmap;
 
             speedStatusDisplayLabel.Value = rarityData.Speed;
@@ -149,7 +149,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
         public override string ToString()
         {
-            return AssetTables.CharaCostumeNameTextDatas.First(td => td.Index == CardData.ID).Text;
+            return AssetTables.CharaCostumeNameTextDatas.First(td => td.Index == CardData.Id).Text;
         }
     }
 

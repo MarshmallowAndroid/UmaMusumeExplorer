@@ -6,9 +6,9 @@ namespace UmaMusumeData.Tables
     public class LivePermissionData
     {
         [Column("music_id"), NotNull, PrimaryKey]
-        public int MusicID { get; set; }
+        public int MusicId { get; set; }
 
         [Column("chara_id"), NotNull, PrimaryKey]
-        public int CharaID { get; set; }
+        public int CharaId { get; set; }
     }
 }

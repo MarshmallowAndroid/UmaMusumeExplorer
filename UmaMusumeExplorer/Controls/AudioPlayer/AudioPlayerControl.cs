@@ -124,12 +124,12 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
 
                 foreach (var wave in awbReader.Waves)
                 {
-                    string waveNames = acbReader.GetWaveName(wave.WaveID, 0, false);
+                    string waveNames = acbReader.GetWaveName(wave.WaveId, 0, false);
 
                     tracksComboBox.Items.Add(new TrackComboBoxItem()
                     {
                         TrackName = waveNames,
-                        WaveID = wave.WaveID,
+                        WaveId = wave.WaveId,
                         AwbReader = awbReader
                     });
                 }
@@ -146,12 +146,12 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
 
             ComboBox comboBox = sender as ComboBox;
 
-            int waveID = ((TrackComboBoxItem)comboBox.SelectedItem).WaveID;
+            int waveId = ((TrackComboBoxItem)comboBox.SelectedItem).WaveId;
             awbReader = ((TrackComboBoxItem)comboBox.SelectedItem).AwbReader;
 
             lock (waveOutLock)
             {
-                umaWaveStream = new(awbReader, waveID);
+                umaWaveStream = new(awbReader, waveId);
 
                 timeLengthLabel.Text = umaWaveStream.TotalTime.ToString("mm\\:ss");
 
