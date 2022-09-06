@@ -277,6 +277,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             }
 
             fileTreeView.Nodes[0].Collapse();
+            fileTreeView.Nodes[0].Nodes.Add("");
         }
         
         void UpdateSelectedAssets(GameAsset asset, bool isChecked)
