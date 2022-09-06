@@ -260,7 +260,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
         {
             if (!searched)
             {
-                searchedAssets = UmaDataHelper.GetGameAssetDataRows().Where(ga => ga.BaseName.Contains(searchTextBox.Text)).ToList();
+                searchedAssets = UmaDataHelper.GetGameAssetDataRows().Where(ga => ga.Name.Contains(searchTextBox.Text)).ToList();
                 searchedAssets.Sort((ga1, ga2) => ga1.Name.CompareTo(ga2.Name));
                 targetAssets = searchedAssets;
 
