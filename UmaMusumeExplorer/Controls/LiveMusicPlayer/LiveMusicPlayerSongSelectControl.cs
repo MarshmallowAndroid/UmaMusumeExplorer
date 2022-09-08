@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FMOD;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,29 +15,31 @@ using UmaMusumeExplorer.Controls.Jukebox;
 
 namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 {
-    public partial class JukeboxControl : UserControl
+    public partial class LiveMusicPlayerSongSelectControl : UserControl
     {
         private readonly IEnumerable<LiveData> liveDatas = AssetTables.LiveDatas;
 
-        public JukeboxControl()
+        public LiveMusicPlayerSongSelectControl()
         {
             InitializeComponent();
         }
 
-        private void Jukebox_Load(object sender, EventArgs e)
+        private void LiveMusicPlayerSongSelectControl_Load(object sender, EventArgs e)
         {
             if (!DesignMode) loadingBackgroundWorker.RunWorkerAsync();
         }
 
         private void LoadingBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            Regex jacketIcon = new(@"\bjacket_icon_[lm]_[0-9]{4}\b");
-
             List<string> imagePaths = new();
-            List<GameAsset> liveAssetRows = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("live/"));
-            foreach (var asset in liveAssetRows)
+            List<GameAsset> liveJacketAssetRows = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("live/jacket/jacket_icon_l_"));
+            foreach (var liveData in liveDatas)
             {
-                if (jacketIcon.IsMatch(asset.BaseName))
+                if (liveData.HasLive == 0) continue;
+
+                GameAsset asset = liveJacketAssetRows.FirstOrDefault(a => a.BaseName == $"jacket_icon_l_{liveData.MusicId}");
+
+                if (asset is not null)
                     imagePaths.Add(UmaDataHelper.GetPath(asset));
             }
 
@@ -47,22 +50,24 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
             List<PictureBox> pictureBoxes = new();
             int itemNumber = 1;
-            foreach (var item in liveDatas)
+            foreach (var liveData in liveDatas)
             {
+                if (liveData.HasLive == 0) continue;
+
                 PictureBox jacket = new()
                 {
-                    BackgroundImage = UnityAssetHelpers.GetJacket(item.MusicId, 'l').Bitmap,
+                    BackgroundImage = UnityAssetHelpers.GetJacket(liveData.MusicId, 'l').Bitmap,
                     BackgroundImageLayout = ImageLayout.Zoom,
                     Cursor = Cursors.Hand,
                     Height = 130,
                     Width = 130,
-                    Tag = item
+                    Tag = liveData
                 };
 
                 jacket.Click += Jacket_Click;
 
                 ToolTip toolTip = new();
-                toolTip.SetToolTip(jacket, item.MusicId.ToString());
+                toolTip.SetToolTip(jacket, liveData.MusicId.ToString());
 
                 pictureBoxes.Add(jacket);
 
@@ -78,7 +83,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
         {
             LiveData liveData = (sender as PictureBox).Tag as LiveData;
             if (liveData is not null)
-                ControlHelpers.ShowFormCenter(new JukeboxPlayerForm(liveData), this);
+                ControlHelpers.ShowFormCenter(new LiveMusicPlayerForm(liveData), this);
         }
 
         private void LoadingBackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)

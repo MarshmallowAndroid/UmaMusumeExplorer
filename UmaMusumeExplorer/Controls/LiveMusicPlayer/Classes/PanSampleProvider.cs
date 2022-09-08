@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UmaMusumeExplorer.Controls.Jukebox.Classes
+namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 {
     internal class PanSampleProvider : ISampleProvider
     {
@@ -33,8 +33,8 @@ namespace UmaMusumeExplorer.Controls.Jukebox.Classes
             int bufferIndex = 0;
             for (int i = offset; i < count / 2; i++)
             {
-                left = (Pan <= 0) ? 1.0f : (1.0f - Pan) / 2.0f;
-                right = (Pan >= 0) ? 1.0f : (Pan + 1.0f) / 2.0f;
+                left = Pan <= 0 ? 1.0f : (1.0f - Pan) / 2.0f;
+                right = Pan >= 0 ? 1.0f : (Pan + 1.0f) / 2.0f;
 
                 buffer[bufferIndex++] *= left;
                 buffer[bufferIndex++] *= right;

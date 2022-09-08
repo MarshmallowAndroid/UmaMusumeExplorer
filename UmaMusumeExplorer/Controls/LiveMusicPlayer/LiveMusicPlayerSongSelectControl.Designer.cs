@@ -1,6 +1,6 @@
 ﻿namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 {
-    partial class JukeboxControl
+    partial class LiveMusicPlayerSongSelectControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -57,7 +57,7 @@
             this.jacketPanel.Size = new System.Drawing.Size(821, 528);
             this.jacketPanel.TabIndex = 2;
             // 
-            // Jukebox
+            // LiveMusicPlayerSongSelectControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -65,7 +65,7 @@
             this.Controls.Add(this.jacketPanel);
             this.Name = "Jukebox";
             this.Size = new System.Drawing.Size(821, 528);
-            this.Load += new System.EventHandler(this.Jukebox_Load);
+            this.Load += new System.EventHandler(this.LiveMusicPlayerSongSelectControl_Load);
             this.ResumeLayout(false);
 
         }

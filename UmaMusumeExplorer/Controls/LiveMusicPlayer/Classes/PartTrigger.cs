@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UmaMusumeExplorer.Controls.Jukebox.Classes
+namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 {
     internal class PartTrigger
     {

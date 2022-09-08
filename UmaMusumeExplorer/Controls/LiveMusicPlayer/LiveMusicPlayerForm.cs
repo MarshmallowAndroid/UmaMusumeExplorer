@@ -13,11 +13,11 @@ using System.Windows.Forms;
 using UmaMusumeAudio;
 using UmaMusumeData;
 using UmaMusumeData.Tables;
-using UmaMusumeExplorer.Controls.Jukebox.Classes;
+using UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes;
 
-namespace UmaMusumeExplorer.Controls.Jukebox
+namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 {
-    public partial class JukeboxPlayerForm : Form
+    public partial class LiveMusicPlayerForm : Form
     {
         private readonly AssetsManager assetsManager = new();
 
@@ -38,7 +38,7 @@ namespace UmaMusumeExplorer.Controls.Jukebox
         private bool seeked = false;
         private bool playbackFinished = false;
 
-        public JukeboxPlayerForm(LiveData live)
+        public LiveMusicPlayerForm(LiveData live)
         {
             InitializeComponent();
 
@@ -58,9 +58,9 @@ namespace UmaMusumeExplorer.Controls.Jukebox
             AwbReader okeAwb = GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicId}_oke_02.awb")));
 
             List<AwbReader> charaAwbs = new(GetSingingMembers());
-            charaAwbs.Add(GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicId}_chara_1004_01.awb"))));
-            charaAwbs.Add(GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicId}_chara_1012_01.awb"))));
-            charaAwbs.Add(GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicId}_chara_1013_01.awb"))));
+            //charaAwbs.Add(GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicId}_chara_1001_01.awb"))));
+            //charaAwbs.Add(GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicId}_chara_1002_01.awb"))));
+            //charaAwbs.Add(GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicId}_chara_1003_01.awb"))));
 
             songMixer = new(okeAwb, charaAwbs, partTriggers);
 
@@ -68,7 +68,7 @@ namespace UmaMusumeExplorer.Controls.Jukebox
 
             waveOutEvent.Init(songMixer);
 
-            int volume = (int)(waveOutEvent.Volume * 100.0f);
+            int volume = (int)Math.Ceiling(waveOutEvent.Volume * 100.0f);
             volumeTrackbar.Value = volume;
             volumeLabel.Text = volume + "%";
 
@@ -78,6 +78,9 @@ namespace UmaMusumeExplorer.Controls.Jukebox
         private void LoadMusicScore()
         {
             IEnumerable<GameAsset> musicScoreAssets = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith($"live/musicscores/m{liveData.MusicId}"));
+
+            if (musicScoreAssets.Count() < 1) return;
+
             List<string> assetPaths = new();
             foreach (var item in musicScoreAssets)
             {
@@ -217,7 +220,7 @@ namespace UmaMusumeExplorer.Controls.Jukebox
         private void VolumeTrackbar_Scroll(object sender, EventArgs e)
         {
             waveOutEvent.Volume = volumeTrackbar.Value / 100.0f;
-            volumeLabel.Text = (int)(waveOutEvent.Volume * 100.0f) + "%";
+            volumeLabel.Text = (int)Math.Ceiling(waveOutEvent.Volume * 100.0f) + "%";
         }
 
         private void TryInvoke(Action action)

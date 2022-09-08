@@ -1,6 +1,6 @@
-﻿namespace UmaMusumeExplorer.Controls.Jukebox
+﻿namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 {
-    partial class JukeboxPlayerForm
+    partial class LiveMusicPlayerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -172,7 +172,7 @@
             this.updateTimer.Interval = 500;
             this.updateTimer.Tick += new System.EventHandler(this.UpdateTimer_Tick);
             // 
-            // JukeboxPlayerForm
+            // LiveMusicPlayerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -189,9 +189,9 @@
             this.Controls.Add(this.songInfoLabel);
             this.Controls.Add(this.songTitleLabel);
             this.Controls.Add(this.songJacketPictureBox);
-            this.Name = "JukeboxPlayerForm";
+            this.Name = "LiveMusicPlayerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Jukebox";
+            this.Text = "Live Music Player";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.JukeboxPlayerForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.songJacketPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seekTrackBar)).EndInit();

@@ -4,9 +4,8 @@ using NAudio.Wave.SampleProviders;
 using System;
 using System.Collections.Generic;
 using UmaMusumeAudio;
-using UmaMusumeExplorer.Controls.Jukebox.Classes;
 
-namespace UmaMusumeExplorer.Controls.Jukebox
+namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 {
     internal class SongMixer : ISampleProvider, IDisposable
     {
@@ -108,7 +107,7 @@ namespace UmaMusumeExplorer.Controls.Jukebox
                     if (volumeTriggers[volumeTriggerIndex].ActiveSingers == 1)
                         volumeMultiplier = 1.0f;
                     else
-                        volumeMultiplier = 1.0f - (1.0f / volumeTriggers[volumeTriggerIndex].ActiveSingers);
+                        volumeMultiplier = 1.0f - 1.0f / volumeTriggers[volumeTriggerIndex].ActiveSingers;
                     //if (volumeTriggers[volumeTriggerIndex].ActiveSingers == 1)
                     //    volumeMultiplier = 1.25f;
                     //else

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UmaMusumeAudio;
 
-namespace UmaMusumeExplorer.Controls.Jukebox.Classes
+namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 {
     internal class CharaTrack : ISampleProvider, IDisposable
     {
