@@ -38,6 +38,9 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             this.loadingProgressBar = new System.Windows.Forms.ProgressBar();
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.leftPanel = new System.Windows.Forms.Panel();
+            this.refreshButton = new System.Windows.Forms.Button();
+            this.audioTypeComboBox = new System.Windows.Forms.ComboBox();
+            this.audioTypeLabel = new System.Windows.Forms.Label();
             this.loadingFileNameLabel = new System.Windows.Forms.Label();
             this.rightPanel = new System.Windows.Forms.Panel();
             this.amplifyUpDown = new System.Windows.Forms.NumericUpDown();
@@ -64,15 +67,17 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             // 
             // fileListView
             // 
+            this.fileListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.fileListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.nameHeader,
             this.tracksHeader});
-            this.fileListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fileListView.FullRowSelect = true;
-            this.fileListView.Location = new System.Drawing.Point(0, 0);
+            this.fileListView.Location = new System.Drawing.Point(0, 32);
             this.fileListView.MultiSelect = false;
             this.fileListView.Name = "fileListView";
-            this.fileListView.Size = new System.Drawing.Size(459, 630);
+            this.fileListView.Size = new System.Drawing.Size(459, 598);
             this.fileListView.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.fileListView.TabIndex = 0;
             this.fileListView.UseCompatibleStateImageBehavior = false;
@@ -91,6 +96,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             // loadingBackgroundWorker
             // 
             this.loadingBackgroundWorker.WorkerReportsProgress = true;
+            this.loadingBackgroundWorker.WorkerSupportsCancellation = true;
             this.loadingBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.LoadingBackgroundWorker_DoWork);
             this.loadingBackgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.LoadingBackgroundWorker_ProgressChanged);
             this.loadingBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.LoadingBackgroundWorker_RunWorkerCompleted);
@@ -110,7 +116,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             // loadingProgressBar
             // 
             this.loadingProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.loadingProgressBar.Location = new System.Drawing.Point(38, 300);
+            this.loadingProgressBar.Location = new System.Drawing.Point(37, 320);
             this.loadingProgressBar.Name = "loadingProgressBar";
             this.loadingProgressBar.Size = new System.Drawing.Size(384, 22);
             this.loadingProgressBar.TabIndex = 10;
@@ -132,6 +138,9 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             // 
             // leftPanel
             // 
+            this.leftPanel.Controls.Add(this.refreshButton);
+            this.leftPanel.Controls.Add(this.audioTypeComboBox);
+            this.leftPanel.Controls.Add(this.audioTypeLabel);
             this.leftPanel.Controls.Add(this.loadingFileNameLabel);
             this.leftPanel.Controls.Add(this.loadingProgressBar);
             this.leftPanel.Controls.Add(this.fileListView);
@@ -141,10 +150,48 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             this.leftPanel.Size = new System.Drawing.Size(459, 630);
             this.leftPanel.TabIndex = 11;
             // 
+            // refreshButton
+            // 
+            this.refreshButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.refreshButton.Location = new System.Drawing.Point(381, 3);
+            this.refreshButton.Name = "refreshButton";
+            this.refreshButton.Size = new System.Drawing.Size(75, 23);
+            this.refreshButton.TabIndex = 14;
+            this.refreshButton.Text = "Refresh";
+            this.refreshButton.UseVisualStyleBackColor = true;
+            this.refreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
+            // 
+            // audioTypeComboBox
+            // 
+            this.audioTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.audioTypeComboBox.FormattingEnabled = true;
+            this.audioTypeComboBox.Items.AddRange(new object[] {
+            "BGM",
+            "Story voice lines",
+            "Commentary voice lines",
+            "Live",
+            "SFX",
+            "General voice lines"});
+            this.audioTypeComboBox.Location = new System.Drawing.Point(74, 3);
+            this.audioTypeComboBox.Name = "audioTypeComboBox";
+            this.audioTypeComboBox.Size = new System.Drawing.Size(217, 23);
+            this.audioTypeComboBox.TabIndex = 13;
+            this.audioTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.AudioTypeComboBox_SelectedIndexChanged);
+            // 
+            // audioTypeLabel
+            // 
+            this.audioTypeLabel.AutoSize = true;
+            this.audioTypeLabel.Location = new System.Drawing.Point(3, 6);
+            this.audioTypeLabel.Name = "audioTypeLabel";
+            this.audioTypeLabel.Size = new System.Drawing.Size(65, 15);
+            this.audioTypeLabel.TabIndex = 12;
+            this.audioTypeLabel.Text = "Audio type";
+            // 
             // loadingFileNameLabel
             // 
+            this.loadingFileNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.loadingFileNameLabel.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.loadingFileNameLabel.Location = new System.Drawing.Point(38, 273);
+            this.loadingFileNameLabel.Location = new System.Drawing.Point(37, 293);
             this.loadingFileNameLabel.Name = "loadingFileNameLabel";
             this.loadingFileNameLabel.Size = new System.Drawing.Size(384, 24);
             this.loadingFileNameLabel.TabIndex = 11;
@@ -348,6 +395,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             this.Load += new System.EventHandler(this.AudioPlayerControl_Load);
             this.tableLayoutPanel.ResumeLayout(false);
             this.leftPanel.ResumeLayout(false);
+            this.leftPanel.PerformLayout();
             this.rightPanel.ResumeLayout(false);
             this.rightPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.amplifyUpDown)).EndInit();
@@ -382,5 +430,8 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
         private System.Windows.Forms.Button configureLoopButton;
         private System.Windows.Forms.Label amplifyLabel;
         private System.Windows.Forms.NumericUpDown amplifyUpDown;
+        private System.Windows.Forms.ComboBox audioTypeComboBox;
+        private System.Windows.Forms.Label audioTypeLabel;
+        private System.Windows.Forms.Button refreshButton;
     }
 }

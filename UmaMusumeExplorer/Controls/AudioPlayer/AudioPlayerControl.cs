@@ -11,13 +11,15 @@ using System.Windows.Forms;
 using UmaMusumeAudio;
 using UmaMusumeExplorer.Controls.AudioPlayer.Classes;
 using UmaMusumeData;
+using System.Threading;
 
 namespace UmaMusumeExplorer.Controls.AudioPlayer
 {
     public partial class AudioPlayerControl : UserControl
     {
         private readonly object waveOutLock = new();
-        private readonly IEnumerable<GameAsset> bgmAssets = AssetTables.BgmGameAssets;
+        private readonly IEnumerable<GameAsset> bgmAssets = AssetTables.AudioAssets;
+        private IEnumerable<GameAsset> awbOnly;
 
         private AwbReader awbReader;
         private UmaWaveStream umaWaveStream;
@@ -32,22 +34,51 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
         public AudioPlayerControl()
         {
             InitializeComponent();
+
+            waveOut = new WaveOutEvent() { DesiredLatency = 100 };
         }
 
         private void AudioPlayerControl_Load(object sender, EventArgs e)
         {
+            audioTypeComboBox.SelectedIndex = 0;
+
             fileListView.Columns[0].Width = (int)(fileListView.Width * 0.80f);
             fileListView.Columns[1].Width = -2;
+        }
 
-            if (!DesignMode) loadingBackgroundWorker.RunWorkerAsync();
+        private void AudioTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            char audioType;
+
+            if (audioTypeComboBox.SelectedIndex == 0)
+                audioType = 'b';
+            else if (audioTypeComboBox.SelectedIndex == 1)
+                audioType = 'c';
+            else if (audioTypeComboBox.SelectedIndex == 2)
+                audioType = 'j';
+            else if (audioTypeComboBox.SelectedIndex == 3)
+                audioType = 'l';
+            else if (audioTypeComboBox.SelectedIndex == 4)
+                audioType = 's';
+            else
+                audioType = 'v';
+
+            awbOnly = bgmAssets.Where((gf) => gf.Name.StartsWith($"sound/{audioType}/") && gf.BaseName.EndsWith(".awb"));
+            totalFiles = awbOnly.Count();
+
+            fileListView.Items.Clear();
+
+            loadingProgressBar.Visible = true;
+            loadingFileNameLabel.Visible = true;
+            audioTypeComboBox.Enabled = false;
+            refreshButton.Enabled = false;
+
+            loadingBackgroundWorker.RunWorkerAsync();
         }
 
         private void LoadingBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             BackgroundWorker backgroundWorker = sender as BackgroundWorker;
-
-            IEnumerable<GameAsset> awbOnly = bgmAssets.Where((gf) => gf.BaseName.EndsWith(".awb"));
-            totalFiles = awbOnly.Count();
 
             List<ListViewItem> listViewItems = new();
 
@@ -90,11 +121,13 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
         {
             loadingProgressBar.Visible = false;
             loadingFileNameLabel.Visible = false;
-            fileListView.Items.AddRange(e.Result as ListViewItem[]);
+            audioTypeComboBox.Enabled = true;
+            refreshButton.Enabled = true;
+
+            if (e.Result is not null) fileListView.Items.AddRange(e.Result as ListViewItem[]);
+
             fileListView.Columns[0].Width = (int)(fileListView.ClientSize.Width * (float)0.80);
             fileListView.Columns[1].Width = -2;
-
-            waveOut = new WaveOutEvent() { DesiredLatency = 100 };
         }
 
         private void FileListView_ItemActivate(object sender, EventArgs e)
@@ -302,6 +335,20 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
         private void AmplifyUpDown_ValueChanged(object sender, EventArgs e)
         {
             volumeSampleProvider.Volume = (float)amplifyUpDown.Value;
+        }
+
+        private void RefreshButton_Click(object sender, EventArgs e)
+        {
+            totalFiles = awbOnly.Count();
+
+            fileListView.Items.Clear();
+
+            loadingProgressBar.Visible = true;
+            loadingFileNameLabel.Visible = true;
+            audioTypeComboBox.Enabled = false;
+            refreshButton.Enabled = false;
+
+            loadingBackgroundWorker.RunWorkerAsync();
         }
     }
 }

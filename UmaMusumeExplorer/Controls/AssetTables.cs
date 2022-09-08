@@ -10,7 +10,7 @@ namespace UmaMusumeExplorer.Controls
 {
     internal static class AssetTables
     {
-        private static readonly IEnumerable<GameAsset> bgmGameFiles = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("sound/b/"));
+        private static readonly IEnumerable<GameAsset> audioGameFiles = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("sound/"));
 
         private static readonly IEnumerable<CardData> cardDatas = UmaDataHelper.GetMasterDatabaseRows<CardData>();
         private static readonly IEnumerable<CardRarityData> cardRarityDatas = UmaDataHelper.GetMasterDatabaseRows<CardRarityData>();
@@ -30,7 +30,7 @@ namespace UmaMusumeExplorer.Controls
         private static readonly IEnumerable<TextData> liveNameTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 16);
         private static readonly IEnumerable<TextData> liveInfoTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 17);
 
-        public static IEnumerable<GameAsset> BgmGameAssets => bgmGameFiles;
+        public static IEnumerable<GameAsset> AudioAssets => audioGameFiles;
         
         public static IEnumerable<CardData> CardDatas => cardDatas;
         public static IEnumerable<CardRarityData> CardRarityDatas => cardRarityDatas;
