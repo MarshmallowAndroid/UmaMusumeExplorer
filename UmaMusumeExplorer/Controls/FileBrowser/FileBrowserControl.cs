@@ -143,7 +143,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             int index = 0;
             foreach (var selectedAsset in selectedAssets)
             {
-                ListViewItem item = new ListViewItem(selectedAsset.Name);
+                ListViewItem item = new(selectedAsset.Name);
                 item.SubItems.Add(GenerateSizeString(selectedAsset.Length));
                 item.Tag = selectedAsset;
                 items[index++] = item;
@@ -151,6 +151,32 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
 
             extractListView.Items.Clear();
             extractListView.Items.AddRange(items);
+
+            List<ListViewItem> dependencyItems = new();
+            foreach (var selectedAsset in selectedAssets)
+            {
+                foreach (var dependency in selectedAsset.Dependencies.Split(';'))
+                {
+                    GameAsset dependencyAsset = gameAssets.FirstOrDefault(ga => ga.Name == dependency);
+
+                    if (dependencyAsset is not null)
+                    {
+                        ListViewItem item = new(dependencyAsset.Name);
+                        item.SubItems.Add(GenerateSizeString(dependencyAsset.Length));
+                        item.Tag = dependencyAsset;
+
+                        dependencyItems.Add(item);
+                    }
+                }
+            }
+
+            if (dependencyItems.Count > 0)
+            {
+                DialogResult addDependencyResult = MessageBox.Show("Include dependencies?", "Dependencies found", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (addDependencyResult == DialogResult.Yes)
+                    extractListView.Items.AddRange(dependencyItems.ToArray());
+            }
 
             totalFileCountLabel.Text = $"{selectedAssets.Count} files";
             totalFileSizeLabel.Text = GenerateSizeString(selectedAssets.Sum(a => (long)a.Length));
@@ -181,7 +207,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
 
         private async void ExtractButton_Click(object sender, EventArgs e)
         {
-            int total = selectedAssets.Count;
+            int total = extractListView.Items.Count;
 
             if (total < 1) return;
 
@@ -196,8 +222,10 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             Task[] copyTasks = new Task[total];
             int index = 0;
             int finished = 0;
-            foreach (var asset in selectedAssets)
+            foreach (ListViewItem item in extractListView.Items)
             {
+                GameAsset asset = item.Tag as GameAsset;
+
                 copyTasks[index] = new Task(() =>
                 {
                     string dataFilePath = UmaDataHelper.GetPath(asset);
@@ -279,7 +307,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             fileTreeView.Nodes[0].Collapse();
             fileTreeView.Nodes[0].Nodes.Add("");
         }
-        
+
         void UpdateSelectedAssets(GameAsset asset, bool isChecked)
         {
             TreeNode[] matching = fileTreeView.Nodes.Find(asset.Name, true);
