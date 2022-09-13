@@ -14,14 +14,14 @@ using UmaMusumeData.Tables;
 
 namespace UmaMusumeExplorer.Controls.Jukebox
 {
-    public partial class CharaChooserForm : Form
+    public partial class UnitSetupForm : Form
     {
         private readonly LivePermissionData livePermissionData;
         private readonly List<PinnedBitmap> pinnedBitmaps;
 
         private readonly AssetsManager assetsManager;
 
-        public CharaChooserForm(LivePermissionData permissionData)
+        public UnitSetupForm(LivePermissionData permissionData)
         {
             InitializeComponent();
 
