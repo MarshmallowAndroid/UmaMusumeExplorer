@@ -63,7 +63,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             }
         }
 
-        private int PositionToIndex(int position, int pivot)
+        private static int PositionToIndex(int position, int pivot)
         {
             int distance = Math.Abs(pivot - position);
             int multiply = distance * 2;
