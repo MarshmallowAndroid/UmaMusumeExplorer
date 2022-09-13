@@ -17,6 +17,7 @@ namespace UmaMusumeExplorer.Controls
     internal static class UnityAssetHelpers
     {
         private static readonly AssetsManager assetsManager = new();
+        private static readonly Dictionary<string, ImagePointerContainer> imagePointerContainers = new();
 
         public static void LoadFiles(params string[] paths)
         {
@@ -25,6 +26,11 @@ namespace UmaMusumeExplorer.Controls
 
         public static void ClearLoadedFiles()
         {
+            foreach (var imagePointerContainers in imagePointerContainers)
+            {
+                imagePointerContainers.Value.ImageHandle.Free();
+            }
+            imagePointerContainers.Clear();
             assetsManager.Clear();
         }
 
@@ -32,18 +38,22 @@ namespace UmaMusumeExplorer.Controls
         {
             string idString = $"{id:d4}";
 
-            StringBuilder imageString = new();
-            imageString.Append($"chr_icon_{idString}");
+            StringBuilder imageStringBuilder = new();
+            imageStringBuilder.Append($"chr_icon_{idString}");
             if (idString == "0000")
             {
-                imageString.Clear();
-                imageString.Append("chr_icon_round_0000");
+                imageStringBuilder.Clear();
+                imageStringBuilder.Append("chr_icon_round_0000");
             }
 
             if (raceDressId > 0)
-                imageString.Append($"_{raceDressId:d6}_02");
+                imageStringBuilder.Append($"_{raceDressId:d6}_02");
 
-            SerializedFile targetAsset = GetFile(imageString.ToString(), ClassIDType.Texture2D);
+            string imageString = imageStringBuilder.ToString();
+
+            if (imagePointerContainers.ContainsKey(imageString)) return PinnedBitmapFromKey(imageString);
+
+            SerializedFile targetAsset = GetFile(imageString, ClassIDType.Texture2D);
             Texture2D texture = targetAsset.Objects.Where(o => o.type == ClassIDType.Texture2D).First() as Texture2D;
 
             Image<Bgra32> image = texture.ConvertToImage(true);
@@ -51,26 +61,35 @@ namespace UmaMusumeExplorer.Controls
             int adjustedHeight = (int)(image.Height * 1.115f);
             image.Mutate(o => o.Resize(image.Width, adjustedHeight));
 
-            return new(image.ConvertToBytes(), image.Width, adjustedHeight);
+            imagePointerContainers.Add(imageString,
+                new ImagePointerContainer(
+                   GCHandle.Alloc(image.ConvertToBytes(), GCHandleType.Pinned), image.Width, adjustedHeight));
+
+            return PinnedBitmapFromKey(imageString);
         }
 
         public static PinnedBitmap GetJacket(int musicId, char size = 'm')
         {
             string idString = $"{musicId:d4}";
 
-            StringBuilder imageString = new();
-            imageString.Append($"jacket_icon_{size}_{idString}");
+            StringBuilder imageStringBuilder = new();
+            imageStringBuilder.Append($"jacket_icon_{size}_{idString}");
 
-            SerializedFile targetAsset = GetFile(imageString.ToString(), ClassIDType.Texture2D);
+            string imageString = imageStringBuilder.ToString();
+
+            if (imagePointerContainers.ContainsKey(imageString)) return PinnedBitmapFromKey(imageString);
+
+            SerializedFile targetAsset = GetFile(imageString, ClassIDType.Texture2D);
             if (targetAsset is null) targetAsset = GetFile($"jacket_icon_{size}_0000", ClassIDType.Texture2D);
             Texture2D texture = targetAsset.Objects.Where(o => o.type == ClassIDType.Texture2D).First() as Texture2D;
 
             Image<Bgra32> image = texture.ConvertToImage(true);
 
-            //int adjustedHeight = (int)(image.Height * 1.115f);
-            //image.Mutate(o => o.Resize(image.Width, adjustedHeight));
+            imagePointerContainers.Add(imageString,
+                new ImagePointerContainer(
+                   GCHandle.Alloc(image.ConvertToBytes(), GCHandleType.Pinned), image.Width, image.Height));
 
-            return new(image.ConvertToBytes(), image.Width, image.Height);
+            return PinnedBitmapFromKey(imageString);
         }
 
         public static StreamReader GetLiveCsv(int musicId, string category)
@@ -89,5 +108,27 @@ namespace UmaMusumeExplorer.Controls
             return assetsManager.assetsFileList.Where(
                 a => (a.Objects.Where(o => o.type == classIdType).FirstOrDefault() as NamedObject)?.m_Name.Equals(objectName) ?? false).FirstOrDefault();
         }
+
+        private static PinnedBitmap PinnedBitmapFromKey(string key) =>
+            new PinnedBitmap(
+                imagePointerContainers[key].ImageHandle.AddrOfPinnedObject(),
+                imagePointerContainers[key].Width,
+                imagePointerContainers[key].Height);
+    }
+
+    internal class ImagePointerContainer
+    {
+        public ImagePointerContainer(GCHandle imageHandle, int width, int height)
+        {
+            ImageHandle = imageHandle;
+            Width = width;
+            Height = height;
+        }
+
+        public GCHandle ImageHandle { get; }
+
+        public int Width { get; }
+
+        public int Height { get; }
     }
 }

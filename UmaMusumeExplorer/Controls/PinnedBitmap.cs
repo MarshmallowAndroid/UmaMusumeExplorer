@@ -20,12 +20,24 @@ namespace UmaMusumeExplorer.Controls
                 bitmapHandle.AddrOfPinnedObject());
         }
 
+        public PinnedBitmap(IntPtr imageDataHandle, int width, int height)
+        {
+            bitmap = new Bitmap(
+                width,
+                height,
+                width * 4,
+                System.Drawing.Imaging.PixelFormat.Format32bppArgb,
+                imageDataHandle);
+        }
+
         public Bitmap Bitmap => bitmap;
 
         public void Dispose()
         {
             bitmap.Dispose();
-            bitmapHandle.Free();
+
+            if (bitmapHandle.IsAllocated)
+                bitmapHandle.Free();
         }
     }
 }
