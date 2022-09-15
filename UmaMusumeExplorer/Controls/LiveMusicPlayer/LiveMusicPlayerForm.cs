@@ -7,31 +7,35 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UmaMusumeAudio;
 using UmaMusumeData;
 using UmaMusumeData.Tables;
+using UmaMusumeExplorer.Controls.Jukebox;
 using UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes;
 
 namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 {
     public partial class LiveMusicPlayerForm : Form
     {
+        private readonly int musicID;
+
         private readonly AssetsManager assetsManager = new();
 
         private readonly PinnedBitmap songJacketPinnedBitmap;
 
-        private readonly LivePermissionData livePermissionData;
         private readonly LiveData liveData;
+        private readonly IEnumerable<LivePermissionData> livePermissionData;
 
         private readonly WaveOutEvent waveOutEvent = new WaveOutEvent() { DesiredLatency = 250 };
-        private readonly SongMixer songMixer;
 
         private readonly List<LyricsTrigger> lyricsTriggers = new();
         private readonly List<PartTrigger> partTriggers = new();
 
+        private SongMixer songMixer;
         private readonly Thread lyricsThread;
         private readonly object lyricsLabelLock = new();
         private int lyricsTriggerIndex = 0;
@@ -42,25 +46,51 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
         {
             InitializeComponent();
 
-            int musicId = live.MusicId;
+            musicID = live.MusicId;
 
             liveData = live;
-            livePermissionData = AssetTables.LivePermissionDatas.FirstOrDefault(lpd => lpd.MusicId == musicId);
+            livePermissionData = AssetTables.LivePermissionDatas.Where(lpd => lpd.MusicId == musicID);
 
+            if (livePermissionData.Count() == 0)
+            {
+                livePermissionData = new List<LivePermissionData>();
+
+                var matches = UmaDataHelper.GetGameAssetDataRows(ga => ga.BaseName.StartsWith($"snd_bgm_live_{musicID}_chara_") && ga.BaseName.EndsWith(".awb"));
+
+                foreach (var audioAsset in matches)
+                {
+                    int charaID = int.Parse(audioAsset.BaseName.Remove(0, $"snd_bgm_live_{musicID}_chara_".Length)[..4]);
+
+                    (livePermissionData as List<LivePermissionData>).Add(new LivePermissionData() { MusicId = musicID, CharaId = charaID });
+                }
+            }
+
+            songJacketPinnedBitmap = UnityAssetHelpers.GetJacket(musicID, 'l');
+            songJacketPictureBox.BackgroundImage = songJacketPinnedBitmap.Bitmap;
+            songTitleLabel.Text = AssetTables.LiveNameTextDatas.First(litd => litd.Index == musicID).Text;
+            songInfoLabel.Text = AssetTables.LiveInfoTextDatas.First(litd => litd.Index == musicID).Text.Replace("\\n", "\n");
+
+            lyricsThread = new(DoLyricsPlayback);
+        }
+
+        private void LiveMusicPlayerForm_Load(object sender, EventArgs e)
+        {
             LoadMusicScore();
 
-            songJacketPinnedBitmap = UnityAssetHelpers.GetJacket(musicId, 'l');
-            songJacketPictureBox.BackgroundImage = songJacketPinnedBitmap.Bitmap;
-            songTitleLabel.Text = AssetTables.LiveNameTextDatas.First(litd => litd.Index == musicId).Text;
-            songInfoLabel.Text = AssetTables.LiveInfoTextDatas.First(litd => litd.Index == musicId).Text.Replace("\\n", "\n");
-
-            IEnumerable<GameAsset> audioAssets = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith($"sound/l/{musicId}"));
-            AwbReader okeAwb = GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicId}_oke_02.awb")));
+            IEnumerable<GameAsset> audioAssets = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith($"sound/l/{musicID}"));
+            AwbReader okeAwb = GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicID}_oke_02.awb")));
 
             List<AwbReader> charaAwbs = new(GetSingingMembers());
-            //charaAwbs.Add(GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicId}_chara_1001_01.awb"))));
-            //charaAwbs.Add(GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicId}_chara_1002_01.awb"))));
-            //charaAwbs.Add(GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicId}_chara_1003_01.awb"))));
+
+            UnitSetupForm unitSetupForm = new(livePermissionData, GetSingingMembers());
+            ControlHelpers.ShowFormDialogCenter(unitSetupForm, this);
+
+            Array.Sort(unitSetupForm.CharacterPositions, (a, b) => a.CharacterIndex.CompareTo(b.CharacterIndex));
+
+            foreach (var item in unitSetupForm.CharacterPositions)
+            {
+                charaAwbs.Add(GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicID}_chara_{item.CharacterID}_01.awb"))));
+            }
 
             songMixer = new(okeAwb, charaAwbs, partTriggers);
 
@@ -71,8 +101,6 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             int volume = (int)Math.Ceiling(waveOutEvent.Volume * 100.0f);
             volumeTrackbar.Value = volume;
             volumeLabel.Text = volume + "%";
-
-            lyricsThread = new(DoLyricsPlayback);
         }
 
         private void LoadMusicScore()
@@ -103,64 +131,6 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
                 PartTrigger trigger = new(partCsv.ReadLine());
                 partTriggers.Add(trigger);
             }
-        }
-
-        private int GetSingingMembers()
-        {
-            bool[] membersSing = new bool[partTriggers[0].MemberTracks.Length];
-
-            foreach (var partTrigger in partTriggers)
-            {
-                for (int i = 0; i < partTrigger.MemberTracks.Length; i++)
-                {
-                    if (partTrigger.MemberTracks[i] > 0) membersSing[i] = true;
-                }
-            }
-
-            int activeMembers = 0;
-            for (int i = 0; i < membersSing.Length; i++)
-            {
-                if (membersSing[i]) activeMembers++;
-            }
-
-            return activeMembers;
-        }
-
-        private void DoLyricsPlayback()
-        {
-            //LyricsTrigger currentLyricsTrigger = lyricsTriggers[lyricsTriggerIndex];
-            while (!playbackFinished)
-            {
-                double msElapsed = songMixer.CurrentTime.TotalMilliseconds;
-
-                if (seeked)
-                {
-                    lyricsTriggerIndex = 0;
-                    seeked = false;
-                }
-
-                while (msElapsed >= lyricsTriggers[lyricsTriggerIndex].TimeMs)
-                {
-                    TryInvoke(() =>
-                    {
-                        lyricsLabel.Text = lyricsTriggers[lyricsTriggerIndex].Lyrics;
-                    });
-
-                    if (lyricsTriggerIndex < lyricsTriggers.Count - 1)
-                        lyricsTriggerIndex++;
-                    else break;
-
-                    //currentLyricsTrigger = lyricsTriggers[lyricsTriggerIndex];
-                }
-
-                Thread.Sleep(1);
-            }
-        }
-
-        private static AwbReader GetAwbFile(GameAsset gameFile)
-        {
-            string awbPath = UmaDataHelper.GetPath(gameFile);
-            return new(File.OpenRead(awbPath));
         }
 
         private StreamReader GetLiveCsv(int musicId, string category)
@@ -221,6 +191,64 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
         {
             waveOutEvent.Volume = volumeTrackbar.Value / 100.0f;
             volumeLabel.Text = (int)Math.Ceiling(waveOutEvent.Volume * 100.0f) + "%";
+        }
+
+        private int GetSingingMembers()
+        {
+            bool[] membersSing = new bool[partTriggers[0].MemberTracks.Length];
+
+            foreach (var partTrigger in partTriggers)
+            {
+                for (int i = 0; i < partTrigger.MemberTracks.Length; i++)
+                {
+                    if (partTrigger.MemberTracks[i] > 0) membersSing[i] = true;
+                }
+            }
+
+            int activeMembers = 0;
+            for (int i = 0; i < membersSing.Length; i++)
+            {
+                if (membersSing[i]) activeMembers++;
+            }
+
+            return activeMembers;
+        }
+
+        private void DoLyricsPlayback()
+        {
+            //LyricsTrigger currentLyricsTrigger = lyricsTriggers[lyricsTriggerIndex];
+            while (!playbackFinished)
+            {
+                double msElapsed = songMixer.CurrentTime.TotalMilliseconds;
+
+                if (seeked)
+                {
+                    lyricsTriggerIndex = 0;
+                    seeked = false;
+                }
+
+                while (msElapsed >= lyricsTriggers[lyricsTriggerIndex].TimeMs)
+                {
+                    TryInvoke(() =>
+                    {
+                        lyricsLabel.Text = lyricsTriggers[lyricsTriggerIndex].Lyrics;
+                    });
+
+                    if (lyricsTriggerIndex < lyricsTriggers.Count - 1)
+                        lyricsTriggerIndex++;
+                    else break;
+
+                    //currentLyricsTrigger = lyricsTriggers[lyricsTriggerIndex];
+                }
+
+                Thread.Sleep(1);
+            }
+        }
+
+        private static AwbReader GetAwbFile(GameAsset gameFile)
+        {
+            string awbPath = UmaDataHelper.GetPath(gameFile);
+            return new(File.OpenRead(awbPath));
         }
 
         private void TryInvoke(Action action)

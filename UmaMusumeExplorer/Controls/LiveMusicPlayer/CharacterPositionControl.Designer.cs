@@ -50,12 +50,13 @@
             // 
             this.characterPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.characterPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.characterPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.characterPictureBox.Location = new System.Drawing.Point(3, 89);
             this.characterPictureBox.Name = "characterPictureBox";
             this.characterPictureBox.Size = new System.Drawing.Size(120, 120);
             this.characterPictureBox.TabIndex = 1;
             this.characterPictureBox.TabStop = false;
-            this.characterPictureBox.Click += new System.EventHandler(this.CharacterPictureBox_Click);
             // 
             // CharacterPositionControl
             // 

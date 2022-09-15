@@ -9,7 +9,10 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using UmaMusumeData;
+using UmaMusumeData.Tables;
 using Image = SixLabors.ImageSharp.Image;
 
 namespace UmaMusumeExplorer.Controls
@@ -18,6 +21,9 @@ namespace UmaMusumeExplorer.Controls
     {
         private static readonly AssetsManager assetsManager = new();
         private static readonly Dictionary<string, ImagePointerContainer> imagePointerContainers = new();
+
+        private static bool charaIconsLoaded = false;
+        private static bool jacketIconsLoaded = false;
 
         public static void LoadFiles(params string[] paths)
         {
@@ -36,6 +42,24 @@ namespace UmaMusumeExplorer.Controls
 
         public static PinnedBitmap GetCharaIcon(int id, int raceDressId = 0)
         {
+            if (!charaIconsLoaded)
+            {
+                Regex chrIconRegex = new(@"\bchr_icon_[0-9]{4}\b");
+                Regex chrCardIconRegex = new(@"\bchr_icon_[0-9]{4}_[0-9]{6}_[0-9]{2}\b");
+
+                List<string> imagePaths = new();
+                List<GameAsset> charaAssetRows = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("chara/"));
+                foreach (var asset in charaAssetRows)
+                {
+                    if (chrIconRegex.IsMatch(asset.BaseName) || chrCardIconRegex.IsMatch(asset.BaseName) || asset.BaseName == "chr_icon_round_0000")
+                        imagePaths.Add(UmaDataHelper.GetPath(asset));
+                }
+
+                LoadFiles(imagePaths.ToArray());
+
+                charaIconsLoaded = true;
+            }
+
             string idString = $"{id:d4}";
 
             StringBuilder imageStringBuilder = new();
@@ -70,6 +94,25 @@ namespace UmaMusumeExplorer.Controls
 
         public static PinnedBitmap GetJacket(int musicId, char size = 'm')
         {
+            if (!jacketIconsLoaded)
+            {
+                List<string> imagePaths = new();
+                List<GameAsset> liveJacketAssetRows = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("live/jacket/jacket_icon_l_"));
+                foreach (var liveData in AssetTables.LiveDatas)
+                {
+                    if (liveData.HasLive == 0) continue;
+
+                    GameAsset asset = liveJacketAssetRows.FirstOrDefault(a => a.BaseName == $"jacket_icon_l_{liveData.MusicId}");
+
+                    if (asset is not null)
+                        imagePaths.Add(UmaDataHelper.GetPath(asset));
+                }
+
+                LoadFiles(imagePaths.ToArray());
+
+                jacketIconsLoaded = true;
+            }
+
             string idString = $"{musicId:d4}";
 
             StringBuilder imageStringBuilder = new();

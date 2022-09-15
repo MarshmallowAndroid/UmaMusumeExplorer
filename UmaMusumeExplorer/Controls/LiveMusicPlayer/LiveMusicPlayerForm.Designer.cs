@@ -193,6 +193,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Live Music Player";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.JukeboxPlayerForm_FormClosing);
+            this.Load += new System.EventHandler(this.LiveMusicPlayerForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.songJacketPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seekTrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.volumeTrackbar)).EndInit();

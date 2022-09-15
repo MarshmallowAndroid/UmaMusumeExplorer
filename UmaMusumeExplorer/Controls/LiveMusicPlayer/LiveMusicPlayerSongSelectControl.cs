@@ -31,22 +31,8 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
         private void LoadingBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            List<string> imagePaths = new();
-            List<GameAsset> liveJacketAssetRows = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("live/jacket/jacket_icon_l_"));
-            foreach (var liveData in liveDatas)
-            {
-                if (liveData.HasLive == 0) continue;
-
-                GameAsset asset = liveJacketAssetRows.FirstOrDefault(a => a.BaseName == $"jacket_icon_l_{liveData.MusicId}");
-
-                if (asset is not null)
-                    imagePaths.Add(UmaDataHelper.GetPath(asset));
-            }
-
             IProgress<int> defaultProgress = AssetStudio.Progress.Default;
             AssetStudio.Progress.Default = new LoadingProgress(loadingBackgroundWorker.ReportProgress);
-
-            UnityAssetHelpers.LoadFiles(imagePaths.ToArray());
 
             List<PictureBox> pictureBoxes = new();
             int itemNumber = 1;
