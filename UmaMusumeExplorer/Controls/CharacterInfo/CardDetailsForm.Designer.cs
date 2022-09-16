@@ -662,7 +662,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(601, 798);
+            this.ClientSize = new System.Drawing.Size(601, 489);
             this.Controls.Add(this.growthRateLabel);
             this.Controls.Add(this.aptitudeTableLayoutPanel);
             this.Controls.Add(this.growthRateTableLayoutPanel);
