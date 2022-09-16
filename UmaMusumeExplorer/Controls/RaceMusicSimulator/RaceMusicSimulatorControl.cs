@@ -47,6 +47,8 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
             {
                 bgmIdComboBox.Items.Add(new BgmComboBoxItem() { RaceBgm = bgm });
             }
+
+            bgmIdComboBox.SelectedIndex = 0;
         }
 
         private void BgmIdComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -135,6 +137,8 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
             waveOut.Stop();
 
             BgmComboBoxItem comboBoxItem = bgmIdComboBox.SelectedItem as BgmComboBoxItem;
+            if (comboBoxItem is null) return;
+
             raceBgm = comboBoxItem.RaceBgm;
 
             RaceBgmPattern firstPatternTable = AssetTables.RaceBgmPatterns.FirstOrDefault(p =>
