@@ -173,7 +173,8 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
 
             mixer = new(WaveFormat.CreateIeeeFloatWaveFormat(
                 paddockBgm.UmaWaveStream.WaveFormat.SampleRate,
-                paddockBgm.UmaWaveStream.WaveFormat.Channels)) { ReadFully = true };
+                paddockBgm.UmaWaveStream.WaveFormat.Channels))
+            { ReadFully = true };
 
             waveOut.Init(new VolumeSampleProvider(mixer) { Volume = 4.0f });
             waveOut.Play();
@@ -254,8 +255,10 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
 
             if (mixer.MixerInputs.Any())
             {
-                FadeInOutEventSampleProvider sampleProvider = mixer.MixerInputs.Last() as FadeInOutEventSampleProvider;
-                sampleProvider.BeginFadeOut(500);
+                foreach (FadeInOutEventSampleProvider sampleProvider in mixer.MixerInputs)
+                {
+                    sampleProvider.BeginFadeOut(500);
+                }
             }
 
             if (lastPressedButtonName == button.Name)
