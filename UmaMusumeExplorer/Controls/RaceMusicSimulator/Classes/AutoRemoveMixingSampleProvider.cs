@@ -147,7 +147,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes
                     num = Math.Max(num3, num);
                     if (num3 < count)
                     {
-                        this.MixerInputEnded?.Invoke(this, new SampleProviderEventArgs(sampleProvider));
+                        MixerInputEnded?.Invoke(this, new SampleProviderEventArgs(sampleProvider));
                         sources.RemoveAt(num2);
                     }
                 }

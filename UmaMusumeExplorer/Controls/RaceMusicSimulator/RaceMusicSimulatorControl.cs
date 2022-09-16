@@ -8,6 +8,7 @@ using UmaMusumeExplorer.Controls;
 using UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes;
 using UmaMusumeData;
 using UmaMusumeData.Tables;
+using UmaMusumeAudio;
 
 namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
 {
@@ -29,6 +30,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
         private Bgm secondPatternBgm;
 
         private AutoRemoveMixingSampleProvider mixer;
+        private VolumeSampleProvider volumeSampleProvider;
 
         private string lastPressedButtonName = "";
 
@@ -176,7 +178,12 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
                 paddockBgm.UmaWaveStream.WaveFormat.Channels))
             { ReadFully = true };
 
-            waveOut.Init(new VolumeSampleProvider(mixer) { Volume = 4.0f });
+            volumeSampleProvider = new VolumeSampleProvider(mixer)
+            {
+                Volume = (float)amplifyUpDown.Value
+            };
+
+            waveOut.Init(volumeSampleProvider);
             waveOut.Play();
         }
 
@@ -300,6 +307,34 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
             }
 
             waveOut.Play();
+        }
+
+        private void TogglePlayButton_Click(object sender, EventArgs e)
+        {
+            if (raceBgm is null) return;
+
+            try
+            {
+                if (waveOut.PlaybackState == PlaybackState.Playing)
+                    waveOut.Pause();
+                else
+                    waveOut.Play();
+            }
+            catch (Exception)
+            {
+                waveOut.Init(volumeSampleProvider);
+                waveOut.Play();
+            }
+        }
+
+        private void StopButton_Click(object sender, EventArgs e)
+        {
+            mixer.RemoveAllMixerInputs();
+        }
+
+        private void AmplifyUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            volumeSampleProvider.Volume = (float)amplifyUpDown.Value;
         }
     }
 }

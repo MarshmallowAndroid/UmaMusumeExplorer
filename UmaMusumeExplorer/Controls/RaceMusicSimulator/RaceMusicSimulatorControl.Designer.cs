@@ -44,6 +44,10 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
             this.firstPatternCueNameTextBox = new System.Windows.Forms.TextBox();
             this.firstPatternLengthLabel = new System.Windows.Forms.Label();
             this.panel = new System.Windows.Forms.Panel();
+            this.amplifyUpDown = new System.Windows.Forms.NumericUpDown();
+            this.amplifyLabel = new System.Windows.Forms.Label();
+            this.stopButton = new System.Windows.Forms.Button();
+            this.togglePlayButton = new System.Windows.Forms.Button();
             this.playLastSpurtButton = new System.Windows.Forms.Button();
             this.playRunningButton = new System.Windows.Forms.Button();
             this.playRaceResultButton = new System.Windows.Forms.Button();
@@ -66,6 +70,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.amplifyUpDown)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
@@ -213,6 +218,10 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel.AutoScroll = true;
+            this.panel.Controls.Add(this.amplifyUpDown);
+            this.panel.Controls.Add(this.amplifyLabel);
+            this.panel.Controls.Add(this.stopButton);
+            this.panel.Controls.Add(this.togglePlayButton);
             this.panel.Controls.Add(this.playLastSpurtButton);
             this.panel.Controls.Add(this.playRunningButton);
             this.panel.Controls.Add(this.playRaceResultButton);
@@ -226,6 +235,61 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
             this.panel.Name = "panel";
             this.panel.Size = new System.Drawing.Size(694, 437);
             this.panel.TabIndex = 4;
+            // 
+            // amplifyUpDown
+            // 
+            this.amplifyUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.amplifyUpDown.DecimalPlaces = 1;
+            this.amplifyUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.amplifyUpDown.Location = new System.Drawing.Point(624, 411);
+            this.amplifyUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.amplifyUpDown.Name = "amplifyUpDown";
+            this.amplifyUpDown.Size = new System.Drawing.Size(67, 23);
+            this.amplifyUpDown.TabIndex = 16;
+            this.amplifyUpDown.Value = new decimal(new int[] {
+            40,
+            0,
+            0,
+            65536});
+            this.amplifyUpDown.ValueChanged += new System.EventHandler(this.AmplifyUpDown_ValueChanged);
+            // 
+            // amplifyLabel
+            // 
+            this.amplifyLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.amplifyLabel.AutoSize = true;
+            this.amplifyLabel.Location = new System.Drawing.Point(536, 413);
+            this.amplifyLabel.Name = "amplifyLabel";
+            this.amplifyLabel.Size = new System.Drawing.Size(82, 15);
+            this.amplifyLabel.TabIndex = 15;
+            this.amplifyLabel.Text = "Amplification:";
+            // 
+            // stopButton
+            // 
+            this.stopButton.Location = new System.Drawing.Point(467, 294);
+            this.stopButton.Name = "stopButton";
+            this.stopButton.Size = new System.Drawing.Size(124, 54);
+            this.stopButton.TabIndex = 5;
+            this.stopButton.Text = "Stop";
+            this.stopButton.UseVisualStyleBackColor = true;
+            this.stopButton.Click += new System.EventHandler(this.StopButton_Click);
+            // 
+            // togglePlayButton
+            // 
+            this.togglePlayButton.Location = new System.Drawing.Point(337, 294);
+            this.togglePlayButton.Name = "togglePlayButton";
+            this.togglePlayButton.Size = new System.Drawing.Size(124, 54);
+            this.togglePlayButton.TabIndex = 5;
+            this.togglePlayButton.Text = "Toggle Play";
+            this.togglePlayButton.UseVisualStyleBackColor = true;
+            this.togglePlayButton.Click += new System.EventHandler(this.TogglePlayButton_Click);
             // 
             // playLastSpurtButton
             // 
@@ -436,6 +500,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
             this.groupBox3.PerformLayout();
             this.panel.ResumeLayout(false);
             this.panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.amplifyUpDown)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -480,5 +545,9 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
         private System.Windows.Forms.Button playPaddockButton;
         private System.Windows.Forms.Button playLastSpurtButton;
         private System.Windows.Forms.Button playRunningButton;
+        private System.Windows.Forms.Button togglePlayButton;
+        private System.Windows.Forms.Button stopButton;
+        private System.Windows.Forms.NumericUpDown amplifyUpDown;
+        private System.Windows.Forms.Label amplifyLabel;
     }
 }
