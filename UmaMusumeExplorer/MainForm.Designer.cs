@@ -62,10 +62,10 @@ namespace UmaMusumeExplorer
             // 
             // fileBrowserTabPage
             // 
+            this.fileBrowserTabPage.BackColor = System.Drawing.SystemColors.Control;
             this.fileBrowserTabPage.Controls.Add(this.fileBrowserControl);
             resources.ApplyResources(this.fileBrowserTabPage, "fileBrowserTabPage");
             this.fileBrowserTabPage.Name = "fileBrowserTabPage";
-            this.fileBrowserTabPage.UseVisualStyleBackColor = true;
             // 
             // fileBrowserControl
             // 
@@ -77,20 +77,18 @@ namespace UmaMusumeExplorer
             this.audioPlayerTabPage.Controls.Add(this.audioPlayerControl);
             resources.ApplyResources(this.audioPlayerTabPage, "audioPlayerTabPage");
             this.audioPlayerTabPage.Name = "audioPlayerTabPage";
-            this.audioPlayerTabPage.UseVisualStyleBackColor = true;
             // 
             // audioPlayerControl
             // 
-            this.audioPlayerControl.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this.audioPlayerControl, "audioPlayerControl");
             this.audioPlayerControl.Name = "audioPlayerControl";
             // 
             // liveMusicPlayerTabPage
             // 
+            this.liveMusicPlayerTabPage.BackColor = System.Drawing.SystemColors.Control;
             this.liveMusicPlayerTabPage.Controls.Add(this.liveMusicPlayerSongSelectControl);
             resources.ApplyResources(this.liveMusicPlayerTabPage, "liveMusicPlayerTabPage");
             this.liveMusicPlayerTabPage.Name = "liveMusicPlayerTabPage";
-            this.liveMusicPlayerTabPage.UseVisualStyleBackColor = true;
             // 
             // liveMusicPlayerSongSelectControl
             // 
@@ -99,27 +97,25 @@ namespace UmaMusumeExplorer
             // 
             // characterInfoTabPage
             // 
+            this.characterInfoTabPage.BackColor = System.Drawing.SystemColors.Control;
             this.characterInfoTabPage.Controls.Add(this.characterInfoControl);
             resources.ApplyResources(this.characterInfoTabPage, "characterInfoTabPage");
             this.characterInfoTabPage.Name = "characterInfoTabPage";
-            this.characterInfoTabPage.UseVisualStyleBackColor = true;
             // 
             // characterInfoControl
             // 
-            this.characterInfoControl.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this.characterInfoControl, "characterInfoControl");
             this.characterInfoControl.Name = "characterInfoControl";
             // 
             // raceMusicTabPage
             // 
+            this.raceMusicTabPage.BackColor = System.Drawing.SystemColors.Control;
             this.raceMusicTabPage.Controls.Add(this.raceSimulatorControl);
             resources.ApplyResources(this.raceMusicTabPage, "raceMusicTabPage");
             this.raceMusicTabPage.Name = "raceMusicTabPage";
-            this.raceMusicTabPage.UseVisualStyleBackColor = true;
             // 
             // raceSimulatorControl
             // 
-            this.raceSimulatorControl.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this.raceSimulatorControl, "raceSimulatorControl");
             this.raceSimulatorControl.Name = "raceSimulatorControl";
             // 

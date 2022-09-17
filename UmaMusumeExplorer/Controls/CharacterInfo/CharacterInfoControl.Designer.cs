@@ -79,7 +79,6 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.charaListComboBox);
             this.Controls.Add(this.goButton);
             this.Controls.Add(this.loadingProgressBar);

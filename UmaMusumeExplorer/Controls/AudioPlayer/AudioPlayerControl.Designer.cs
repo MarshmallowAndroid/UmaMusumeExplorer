@@ -286,7 +286,6 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.tableLayoutPanel);
             this.Name = "AudioPlayerControl";
             this.Load += new System.EventHandler(this.AudioPlayerControl_Load);
