@@ -85,8 +85,13 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             UnitSetupForm unitSetupForm = new(livePermissionData, GetSingingMembers());
             ControlHelpers.ShowFormDialogCenter(unitSetupForm, this);
 
-            Array.Sort(unitSetupForm.CharacterPositions, (a, b) => a.CharacterIndex.CompareTo(b.CharacterIndex));
+            if (unitSetupForm.CharacterPositions is null)
+            {
+                Close();
+                return;
+            }
 
+            Array.Sort(unitSetupForm.CharacterPositions, (a, b) => a.CharacterIndex.CompareTo(b.CharacterIndex));
             foreach (var item in unitSetupForm.CharacterPositions)
             {
                 charaAwbs.Add(GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicID}_chara_{item.CharacterID}_01.awb"))));

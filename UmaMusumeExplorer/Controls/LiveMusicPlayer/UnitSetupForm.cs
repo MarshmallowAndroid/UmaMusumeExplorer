@@ -20,27 +20,28 @@ namespace UmaMusumeExplorer.Controls.Jukebox
     public partial class UnitSetupForm : Form
     {
         private readonly IEnumerable<LivePermissionData> livePermissionData;
+        private readonly CharacterPositionControl[] characterPositions;
 
         public UnitSetupForm(IEnumerable<LivePermissionData> permissionData, int singingMembers)
         {
             InitializeComponent();
 
-            livePermissionData = permissionData;         
+            livePermissionData = permissionData;
 
-            CharacterPositions = new CharacterPositionControl[singingMembers];
+            characterPositions = new CharacterPositionControl[singingMembers];
 
-            int pivot = CharacterPositions.Length / 2;
-            for (int i = 0; i < CharacterPositions.Length; i++)
+            int pivot = characterPositions.Length / 2;
+            for (int i = 0; i < characterPositions.Length; i++)
             {
                 CharacterPositionControl characterPositionControl = new CharacterPositionControl(i + 1, livePermissionData, this);
                 characterPositionControl.CharacterID = livePermissionData.ElementAt(i).CharaId;
-                CharacterPositions[PositionToIndex(i, pivot)] = characterPositionControl;
+                characterPositions[PositionToIndex(i, pivot)] = characterPositionControl;
             }
 
-            singersPanel.Controls.AddRange(CharacterPositions.ToArray());
+            singersPanel.Controls.AddRange(characterPositions);
         }
 
-        public CharacterPositionControl[] CharacterPositions { get; private set; }
+        public CharacterPositionControl[] CharacterPositions { get; private set; } = null;
 
         public void CharacterPositionPictureBoxClick(object sender, EventArgs e)
         {
@@ -56,7 +57,7 @@ namespace UmaMusumeExplorer.Controls.Jukebox
 
             if (selectedCharacter == 0) return;
 
-            foreach (var characterPosition in CharacterPositions)
+            foreach (var characterPosition in characterPositions)
             {
                 if (characterPosition.CharacterID == selectedCharacter)
                 {
@@ -67,14 +68,9 @@ namespace UmaMusumeExplorer.Controls.Jukebox
             characterPositionControl.CharacterID = selectedCharacter;
         }
 
-        private void UnitSetupForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void ConfirmButton_Click(object sender, EventArgs e)
         {
-
+            CharacterPositions = characterPositions;
         }
 
         private static int PositionToIndex(int position, int pivot)

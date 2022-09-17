@@ -63,7 +63,6 @@
             this.Controls.Add(this.tableLayoutPanel);
             this.MaximizeBox = false;
             this.Name = "UnitSetupForm";
-            this.Load += new System.EventHandler(this.UnitSetupForm_Load);
             this.tableLayoutPanel.ResumeLayout(false);
             this.tableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
