@@ -29,8 +29,6 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
         private int totalFiles;
         private string currentFileName = "";
 
-        //private MixingSampleProvider mix;
-
         public AudioPlayerControl()
         {
             InitializeComponent();
@@ -138,41 +136,6 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             ChangeBank(gameFile);
         }
 
-        private void ChangeBank(GameAsset gameFile)
-        {
-            lock (waveOutLock)
-            {
-                waveOut.Stop();
-                awbReader?.Dispose();
-
-                string awbPath = UmaDataHelper.GetPath(gameFile);
-                awbReader = new(File.OpenRead(awbPath));
-
-                string acbName = gameFile.BaseName[0..^4] + ".acb";
-                string acbPath = UmaDataHelper.GetPath(bgmAssets.FirstOrDefault((gf) => gf.BaseName == acbName));
-                FileStream acbFile = File.OpenRead(acbPath);
-                AcbReader acbReader = new(acbFile);
-
-                tracksComboBox.Items.Clear();
-
-                foreach (var wave in awbReader.Waves)
-                {
-                    string waveNames = acbReader.GetWaveName(wave.WaveId, 0, false);
-
-                    tracksComboBox.Items.Add(new TrackComboBoxItem()
-                    {
-                        TrackName = waveNames,
-                        WaveId = wave.WaveId,
-                        AwbReader = awbReader
-                    });
-                }
-
-                acbFile.Dispose();
-
-                tracksComboBox.SelectedIndex = 0;
-            }
-        }
-
         private void TracksComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             updateTimer.Enabled = false;
@@ -229,13 +192,6 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
                     waveOut.Play();
                 }
             }
-        }
-
-        private void InitializeWaveOut(WaveStream waveStream)
-        {
-            waveOut.Stop();
-            volumeSampleProvider = new VolumeSampleProvider(waveStream.ToSampleProvider()) { Volume = (float)amplifyUpDown.Value };
-            waveOut.Init(volumeSampleProvider);
         }
 
         private void PrevTrackButton_Click(object sender, EventArgs e)
@@ -349,6 +305,48 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             refreshButton.Enabled = false;
 
             loadingBackgroundWorker.RunWorkerAsync();
+        }
+
+        private void ChangeBank(GameAsset gameFile)
+        {
+            lock (waveOutLock)
+            {
+                waveOut.Stop();
+                awbReader?.Dispose();
+
+                string awbPath = UmaDataHelper.GetPath(gameFile);
+                awbReader = new(File.OpenRead(awbPath));
+
+                string acbName = gameFile.BaseName[0..^4] + ".acb";
+                string acbPath = UmaDataHelper.GetPath(bgmAssets.FirstOrDefault((gf) => gf.BaseName == acbName));
+                FileStream acbFile = File.OpenRead(acbPath);
+                AcbReader acbReader = new(acbFile);
+
+                tracksComboBox.Items.Clear();
+
+                foreach (var wave in awbReader.Waves)
+                {
+                    string waveNames = acbReader.GetWaveName(wave.WaveId, 0, false);
+
+                    tracksComboBox.Items.Add(new TrackComboBoxItem()
+                    {
+                        TrackName = waveNames,
+                        WaveId = wave.WaveId,
+                        AwbReader = awbReader
+                    });
+                }
+
+                acbFile.Dispose();
+
+                tracksComboBox.SelectedIndex = 0;
+            }
+        }
+
+        private void InitializeWaveOut(WaveStream waveStream)
+        {
+            waveOut.Stop();
+            volumeSampleProvider = new VolumeSampleProvider(waveStream.ToSampleProvider()) { Volume = (float)amplifyUpDown.Value };
+            waveOut.Init(volumeSampleProvider);
         }
     }
 }
