@@ -104,14 +104,10 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             {
                 while (currentSample >= volumeTriggers[volumeTriggerIndex].Sample)
                 {
-                    if (volumeTriggers[volumeTriggerIndex].ActiveSingers < 3)
+                    if (volumeTriggers[volumeTriggerIndex].ActiveSingers == 1)
                         volumeMultiplier = 1.0f;
                     else
-                        volumeMultiplier = 1.0f - 1.0f / volumeTriggers[volumeTriggerIndex].ActiveSingers;
-                    //if (volumeTriggers[volumeTriggerIndex].ActiveSingers == 1)
-                    //    volumeMultiplier = 1.25f;
-                    //else
-                    //    volumeMultiplier = 0.9f;
+                        volumeMultiplier = 1.0f / (volumeTriggers[volumeTriggerIndex].ActiveSingers + 1) + 0.5f;
 
                     if (volumeTriggerIndex < volumeTriggers.Count - 1) volumeTriggerIndex++;
                     else break;
