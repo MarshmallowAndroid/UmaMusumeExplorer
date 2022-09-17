@@ -54,17 +54,11 @@
             // 
             // fileTreeView
             // 
-            this.fileTreeView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            resources.ApplyResources(this.fileTreeView, "fileTreeView");
             this.fileTreeView.ContextMenuStrip = this.treeViewContextMenuStrip;
-            this.fileTreeView.ImageIndex = 0;
             this.fileTreeView.ImageList = this.treeViewImageList;
-            this.fileTreeView.Location = new System.Drawing.Point(3, 32);
             this.fileTreeView.Name = "fileTreeView";
             this.fileTreeView.PathSeparator = "/";
-            this.fileTreeView.SelectedImageIndex = 0;
-            this.fileTreeView.Size = new System.Drawing.Size(434, 532);
-            this.fileTreeView.TabIndex = 0;
             this.fileTreeView.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.FileTreeView_BeforeExpand);
             // 
             // treeViewContextMenuStrip
@@ -74,26 +68,24 @@
             this.toolStripSeparator1,
             this.openFileLocationToolStripMenuItem});
             this.treeViewContextMenuStrip.Name = "treeViewContextMenuStrip";
-            this.treeViewContextMenuStrip.Size = new System.Drawing.Size(169, 54);
+            resources.ApplyResources(this.treeViewContextMenuStrip, "treeViewContextMenuStrip");
             this.treeViewContextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.TreeViewContextMenuStrip_Opening);
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.addToolStripMenuItem.Text = "Add";
+            resources.ApplyResources(this.addToolStripMenuItem, "addToolStripMenuItem");
             this.addToolStripMenuItem.Click += new System.EventHandler(this.AddToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(165, 6);
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
             // openFileLocationToolStripMenuItem
             // 
             this.openFileLocationToolStripMenuItem.Name = "openFileLocationToolStripMenuItem";
-            this.openFileLocationToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.openFileLocationToolStripMenuItem.Text = "Open file location";
+            resources.ApplyResources(this.openFileLocationToolStripMenuItem, "openFileLocationToolStripMenuItem");
             this.openFileLocationToolStripMenuItem.Click += new System.EventHandler(this.OpenFileLocationToolStripMenuItem_Click);
             // 
             // treeViewImageList
@@ -106,118 +98,81 @@
             // 
             // extractButton
             // 
-            this.extractButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.extractButton.Location = new System.Drawing.Point(524, 518);
+            resources.ApplyResources(this.extractButton, "extractButton");
             this.extractButton.Name = "extractButton";
-            this.extractButton.Size = new System.Drawing.Size(75, 23);
-            this.extractButton.TabIndex = 1;
-            this.extractButton.Text = "Extract";
             this.extractButton.UseVisualStyleBackColor = true;
             this.extractButton.Click += new System.EventHandler(this.ExtractButton_Click);
             // 
             // extractListView
             // 
-            this.extractListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.extractListView, "extractListView");
             this.extractListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.nameHeader,
             this.sizeHeader});
             this.extractListView.ContextMenuStrip = this.extractListContextMenuStrip;
             this.extractListView.FullRowSelect = true;
-            this.extractListView.Location = new System.Drawing.Point(443, 3);
             this.extractListView.Name = "extractListView";
-            this.extractListView.Size = new System.Drawing.Size(404, 473);
-            this.extractListView.TabIndex = 2;
             this.extractListView.UseCompatibleStateImageBehavior = false;
             this.extractListView.View = System.Windows.Forms.View.Details;
             // 
             // nameHeader
             // 
-            this.nameHeader.Text = "Name";
-            this.nameHeader.Width = 325;
+            resources.ApplyResources(this.nameHeader, "nameHeader");
             // 
             // sizeHeader
             // 
-            this.sizeHeader.Text = "Size";
-            this.sizeHeader.Width = 75;
+            resources.ApplyResources(this.sizeHeader, "sizeHeader");
             // 
             // extractListContextMenuStrip
             // 
             this.extractListContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.removeToolStripMenuItem});
             this.extractListContextMenuStrip.Name = "extractListContextMenuStrip";
-            this.extractListContextMenuStrip.Size = new System.Drawing.Size(118, 26);
+            resources.ApplyResources(this.extractListContextMenuStrip, "extractListContextMenuStrip");
             // 
             // removeToolStripMenuItem
             // 
             this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-            this.removeToolStripMenuItem.Text = "Remove";
+            resources.ApplyResources(this.removeToolStripMenuItem, "removeToolStripMenuItem");
             this.removeToolStripMenuItem.Click += new System.EventHandler(this.RemoveToolStripMenuItem_Click);
             // 
             // totalFileSizeLabel
             // 
-            this.totalFileSizeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.totalFileSizeLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.totalFileSizeLabel.Location = new System.Drawing.Point(629, 479);
+            resources.ApplyResources(this.totalFileSizeLabel, "totalFileSizeLabel");
             this.totalFileSizeLabel.Name = "totalFileSizeLabel";
-            this.totalFileSizeLabel.Size = new System.Drawing.Size(218, 36);
-            this.totalFileSizeLabel.TabIndex = 3;
-            this.totalFileSizeLabel.Text = "0 B";
-            this.totalFileSizeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // totalFileCountLabel
             // 
-            this.totalFileCountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.totalFileCountLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.totalFileCountLabel.Location = new System.Drawing.Point(443, 479);
+            resources.ApplyResources(this.totalFileCountLabel, "totalFileCountLabel");
             this.totalFileCountLabel.Name = "totalFileCountLabel";
-            this.totalFileCountLabel.Size = new System.Drawing.Size(100, 36);
-            this.totalFileCountLabel.TabIndex = 3;
-            this.totalFileCountLabel.Text = "0 files";
-            this.totalFileCountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // clearButton
             // 
-            this.clearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.clearButton.Location = new System.Drawing.Point(443, 518);
+            resources.ApplyResources(this.clearButton, "clearButton");
             this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(75, 23);
-            this.clearButton.TabIndex = 4;
-            this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // progressBar1
             // 
-            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.Location = new System.Drawing.Point(443, 547);
+            resources.ApplyResources(this.progressBar1, "progressBar1");
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(404, 17);
-            this.progressBar1.TabIndex = 5;
             // 
             // searchTextBox
             // 
-            this.searchTextBox.Location = new System.Drawing.Point(3, 3);
+            resources.ApplyResources(this.searchTextBox, "searchTextBox");
             this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(353, 23);
-            this.searchTextBox.TabIndex = 6;
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(362, 3);
+            resources.ApplyResources(this.searchButton, "searchButton");
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(75, 23);
-            this.searchButton.TabIndex = 7;
-            this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
             this.searchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // FileBrowserControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.searchTextBox);
@@ -229,7 +184,6 @@
             this.Controls.Add(this.extractButton);
             this.Controls.Add(this.fileTreeView);
             this.Name = "FileBrowserControl";
-            this.Size = new System.Drawing.Size(850, 567);
             this.Load += new System.EventHandler(this.FileBrowserControl_Load);
             this.treeViewContextMenuStrip.ResumeLayout(false);
             this.extractListContextMenuStrip.ResumeLayout(false);

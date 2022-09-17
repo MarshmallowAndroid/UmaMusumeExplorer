@@ -30,6 +30,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AudioPlayerControl));
             this.fileListView = new System.Windows.Forms.ListView();
             this.nameHeader = new System.Windows.Forms.ColumnHeader();
             this.tracksHeader = new System.Windows.Forms.ColumnHeader();
@@ -67,31 +68,25 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             // 
             // fileListView
             // 
-            this.fileListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.fileListView, "fileListView");
             this.fileListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.nameHeader,
             this.tracksHeader});
             this.fileListView.FullRowSelect = true;
-            this.fileListView.Location = new System.Drawing.Point(0, 32);
             this.fileListView.MultiSelect = false;
             this.fileListView.Name = "fileListView";
-            this.fileListView.Size = new System.Drawing.Size(459, 598);
             this.fileListView.Sorting = System.Windows.Forms.SortOrder.Ascending;
-            this.fileListView.TabIndex = 0;
             this.fileListView.UseCompatibleStateImageBehavior = false;
             this.fileListView.View = System.Windows.Forms.View.Details;
             this.fileListView.ItemActivate += new System.EventHandler(this.FileListView_ItemActivate);
             // 
             // nameHeader
             // 
-            this.nameHeader.Text = "Name";
-            this.nameHeader.Width = 240;
+            resources.ApplyResources(this.nameHeader, "nameHeader");
             // 
             // tracksHeader
             // 
-            this.tracksHeader.Text = "Tracks";
+            resources.ApplyResources(this.tracksHeader, "tracksHeader");
             // 
             // loadingBackgroundWorker
             // 
@@ -103,38 +98,23 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             // 
             // tracksComboBox
             // 
-            this.tracksComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.tracksComboBox, "tracksComboBox");
             this.tracksComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tracksComboBox.FormattingEnabled = true;
-            this.tracksComboBox.Location = new System.Drawing.Point(3, 3);
             this.tracksComboBox.Name = "tracksComboBox";
-            this.tracksComboBox.Size = new System.Drawing.Size(453, 23);
-            this.tracksComboBox.TabIndex = 1;
             this.tracksComboBox.SelectedIndexChanged += new System.EventHandler(this.TracksComboBox_SelectedIndexChanged);
             // 
             // loadingProgressBar
             // 
-            this.loadingProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.loadingProgressBar.Location = new System.Drawing.Point(37, 320);
+            resources.ApplyResources(this.loadingProgressBar, "loadingProgressBar");
             this.loadingProgressBar.Name = "loadingProgressBar";
-            this.loadingProgressBar.Size = new System.Drawing.Size(384, 22);
-            this.loadingProgressBar.TabIndex = 10;
             // 
             // tableLayoutPanel
             // 
-            this.tableLayoutPanel.ColumnCount = 2;
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            resources.ApplyResources(this.tableLayoutPanel, "tableLayoutPanel");
             this.tableLayoutPanel.Controls.Add(this.leftPanel, 0, 0);
             this.tableLayoutPanel.Controls.Add(this.rightPanel, 1, 0);
-            this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
-            this.tableLayoutPanel.RowCount = 1;
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(930, 636);
-            this.tableLayoutPanel.TabIndex = 0;
             // 
             // leftPanel
             // 
@@ -144,20 +124,13 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             this.leftPanel.Controls.Add(this.loadingFileNameLabel);
             this.leftPanel.Controls.Add(this.loadingProgressBar);
             this.leftPanel.Controls.Add(this.fileListView);
-            this.leftPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.leftPanel.Location = new System.Drawing.Point(3, 3);
+            resources.ApplyResources(this.leftPanel, "leftPanel");
             this.leftPanel.Name = "leftPanel";
-            this.leftPanel.Size = new System.Drawing.Size(459, 630);
-            this.leftPanel.TabIndex = 11;
             // 
             // refreshButton
             // 
-            this.refreshButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.refreshButton.Location = new System.Drawing.Point(381, 3);
+            resources.ApplyResources(this.refreshButton, "refreshButton");
             this.refreshButton.Name = "refreshButton";
-            this.refreshButton.Size = new System.Drawing.Size(75, 23);
-            this.refreshButton.TabIndex = 14;
-            this.refreshButton.Text = "Refresh";
             this.refreshButton.UseVisualStyleBackColor = true;
             this.refreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
             // 
@@ -166,37 +139,26 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             this.audioTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.audioTypeComboBox.FormattingEnabled = true;
             this.audioTypeComboBox.Items.AddRange(new object[] {
-            "BGM",
-            "Story voice lines",
-            "Commentary voice lines",
-            "Live",
-            "SFX",
-            "General voice lines"});
-            this.audioTypeComboBox.Location = new System.Drawing.Point(74, 3);
+            resources.GetString("audioTypeComboBox.Items"),
+            resources.GetString("audioTypeComboBox.Items1"),
+            resources.GetString("audioTypeComboBox.Items2"),
+            resources.GetString("audioTypeComboBox.Items3"),
+            resources.GetString("audioTypeComboBox.Items4"),
+            resources.GetString("audioTypeComboBox.Items5")});
+            resources.ApplyResources(this.audioTypeComboBox, "audioTypeComboBox");
             this.audioTypeComboBox.Name = "audioTypeComboBox";
-            this.audioTypeComboBox.Size = new System.Drawing.Size(217, 23);
-            this.audioTypeComboBox.TabIndex = 13;
             this.audioTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.AudioTypeComboBox_SelectedIndexChanged);
             // 
             // audioTypeLabel
             // 
-            this.audioTypeLabel.AutoSize = true;
-            this.audioTypeLabel.Location = new System.Drawing.Point(3, 6);
+            resources.ApplyResources(this.audioTypeLabel, "audioTypeLabel");
             this.audioTypeLabel.Name = "audioTypeLabel";
-            this.audioTypeLabel.Size = new System.Drawing.Size(65, 15);
-            this.audioTypeLabel.TabIndex = 12;
-            this.audioTypeLabel.Text = "Audio type";
             // 
             // loadingFileNameLabel
             // 
-            this.loadingFileNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.loadingFileNameLabel, "loadingFileNameLabel");
             this.loadingFileNameLabel.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.loadingFileNameLabel.Location = new System.Drawing.Point(37, 293);
             this.loadingFileNameLabel.Name = "loadingFileNameLabel";
-            this.loadingFileNameLabel.Size = new System.Drawing.Size(384, 24);
-            this.loadingFileNameLabel.TabIndex = 11;
-            this.loadingFileNameLabel.Text = "Loading...";
-            this.loadingFileNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // rightPanel
             // 
@@ -209,30 +171,24 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             this.rightPanel.Controls.Add(this.seekTrackBar);
             this.rightPanel.Controls.Add(this.controlsTableLayoutPanel);
             this.rightPanel.Controls.Add(this.tracksComboBox);
-            this.rightPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rightPanel.Location = new System.Drawing.Point(468, 3);
+            resources.ApplyResources(this.rightPanel, "rightPanel");
             this.rightPanel.Name = "rightPanel";
-            this.rightPanel.Size = new System.Drawing.Size(459, 630);
-            this.rightPanel.TabIndex = 0;
             // 
             // amplifyUpDown
             // 
-            this.amplifyUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.amplifyUpDown, "amplifyUpDown");
             this.amplifyUpDown.DecimalPlaces = 1;
             this.amplifyUpDown.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.amplifyUpDown.Location = new System.Drawing.Point(389, 604);
             this.amplifyUpDown.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
             this.amplifyUpDown.Name = "amplifyUpDown";
-            this.amplifyUpDown.Size = new System.Drawing.Size(67, 23);
-            this.amplifyUpDown.TabIndex = 14;
             this.amplifyUpDown.Value = new decimal(new int[] {
             40,
             0,
@@ -242,142 +198,84 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             // 
             // amplifyLabel
             // 
-            this.amplifyLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.amplifyLabel.AutoSize = true;
-            this.amplifyLabel.Location = new System.Drawing.Point(301, 606);
+            resources.ApplyResources(this.amplifyLabel, "amplifyLabel");
             this.amplifyLabel.Name = "amplifyLabel";
-            this.amplifyLabel.Size = new System.Drawing.Size(82, 15);
-            this.amplifyLabel.TabIndex = 13;
-            this.amplifyLabel.Text = "Amplification:";
             // 
             // configureLoopButton
             // 
-            this.configureLoopButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.configureLoopButton.Location = new System.Drawing.Point(3, 575);
+            resources.ApplyResources(this.configureLoopButton, "configureLoopButton");
             this.configureLoopButton.Name = "configureLoopButton";
-            this.configureLoopButton.Size = new System.Drawing.Size(127, 23);
-            this.configureLoopButton.TabIndex = 11;
-            this.configureLoopButton.Text = "Configure loop...";
             this.configureLoopButton.UseVisualStyleBackColor = true;
             this.configureLoopButton.Click += new System.EventHandler(this.ConfigureLoopButton_Click);
             // 
             // saveButton
             // 
-            this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.saveButton.Location = new System.Drawing.Point(3, 604);
+            resources.ApplyResources(this.saveButton, "saveButton");
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(127, 23);
-            this.saveButton.TabIndex = 11;
-            this.saveButton.Text = "Save to WAV file...";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // timeLengthLabel
             // 
-            this.timeLengthLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.timeLengthLabel.Location = new System.Drawing.Point(368, 208);
+            resources.ApplyResources(this.timeLengthLabel, "timeLengthLabel");
             this.timeLengthLabel.Name = "timeLengthLabel";
-            this.timeLengthLabel.Size = new System.Drawing.Size(56, 23);
-            this.timeLengthLabel.TabIndex = 0;
-            this.timeLengthLabel.Text = "00:00";
-            this.timeLengthLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // timeElapsedLabel
             // 
-            this.timeElapsedLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.timeElapsedLabel.Location = new System.Drawing.Point(34, 208);
+            resources.ApplyResources(this.timeElapsedLabel, "timeElapsedLabel");
             this.timeElapsedLabel.Name = "timeElapsedLabel";
-            this.timeElapsedLabel.Size = new System.Drawing.Size(56, 23);
-            this.timeElapsedLabel.TabIndex = 0;
-            this.timeElapsedLabel.Text = "00:00";
-            this.timeElapsedLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // seekTrackBar
             // 
-            this.seekTrackBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.seekTrackBar.Location = new System.Drawing.Point(34, 234);
+            resources.ApplyResources(this.seekTrackBar, "seekTrackBar");
             this.seekTrackBar.Maximum = 100;
             this.seekTrackBar.Name = "seekTrackBar";
-            this.seekTrackBar.Size = new System.Drawing.Size(390, 45);
-            this.seekTrackBar.TabIndex = 2;
             this.seekTrackBar.TickFrequency = 0;
             this.seekTrackBar.TickStyle = System.Windows.Forms.TickStyle.Both;
             this.seekTrackBar.Scroll += new System.EventHandler(this.SeekTrackBar_Scroll);
             // 
             // controlsTableLayoutPanel
             // 
-            this.controlsTableLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.controlsTableLayoutPanel.ColumnCount = 5;
-            this.controlsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.controlsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.controlsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.controlsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.controlsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            resources.ApplyResources(this.controlsTableLayoutPanel, "controlsTableLayoutPanel");
             this.controlsTableLayoutPanel.Controls.Add(this.prevTrackButton, 1, 0);
             this.controlsTableLayoutPanel.Controls.Add(this.nextTrackButton, 3, 0);
             this.controlsTableLayoutPanel.Controls.Add(this.prevBankButton, 0, 0);
             this.controlsTableLayoutPanel.Controls.Add(this.nextBankButton, 4, 0);
             this.controlsTableLayoutPanel.Controls.Add(this.playButton, 2, 0);
-            this.controlsTableLayoutPanel.Location = new System.Drawing.Point(34, 285);
             this.controlsTableLayoutPanel.Name = "controlsTableLayoutPanel";
-            this.controlsTableLayoutPanel.RowCount = 1;
-            this.controlsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.controlsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.controlsTableLayoutPanel.Size = new System.Drawing.Size(390, 67);
-            this.controlsTableLayoutPanel.TabIndex = 10;
             // 
             // prevTrackButton
             // 
-            this.prevTrackButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.prevTrackButton.Location = new System.Drawing.Point(81, 3);
+            resources.ApplyResources(this.prevTrackButton, "prevTrackButton");
             this.prevTrackButton.Name = "prevTrackButton";
-            this.prevTrackButton.Size = new System.Drawing.Size(72, 61);
-            this.prevTrackButton.TabIndex = 4;
-            this.prevTrackButton.Text = "Prev. Track";
             this.prevTrackButton.UseVisualStyleBackColor = true;
             this.prevTrackButton.Click += new System.EventHandler(this.PrevTrackButton_Click);
             // 
             // nextTrackButton
             // 
-            this.nextTrackButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.nextTrackButton.Location = new System.Drawing.Point(237, 3);
+            resources.ApplyResources(this.nextTrackButton, "nextTrackButton");
             this.nextTrackButton.Name = "nextTrackButton";
-            this.nextTrackButton.Size = new System.Drawing.Size(72, 61);
-            this.nextTrackButton.TabIndex = 5;
-            this.nextTrackButton.Text = "Next Track";
             this.nextTrackButton.UseVisualStyleBackColor = true;
             this.nextTrackButton.Click += new System.EventHandler(this.NextTrackButton_Click);
             // 
             // prevBankButton
             // 
-            this.prevBankButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.prevBankButton.Location = new System.Drawing.Point(3, 3);
+            resources.ApplyResources(this.prevBankButton, "prevBankButton");
             this.prevBankButton.Name = "prevBankButton";
-            this.prevBankButton.Size = new System.Drawing.Size(72, 61);
-            this.prevBankButton.TabIndex = 6;
-            this.prevBankButton.Text = "Prev. Bank";
             this.prevBankButton.UseVisualStyleBackColor = true;
             this.prevBankButton.Click += new System.EventHandler(this.PrevBankButton_Click);
             // 
             // nextBankButton
             // 
-            this.nextBankButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.nextBankButton.Location = new System.Drawing.Point(315, 3);
+            resources.ApplyResources(this.nextBankButton, "nextBankButton");
             this.nextBankButton.Name = "nextBankButton";
-            this.nextBankButton.Size = new System.Drawing.Size(72, 61);
-            this.nextBankButton.TabIndex = 7;
-            this.nextBankButton.Text = "Next Bank";
             this.nextBankButton.UseVisualStyleBackColor = true;
             this.nextBankButton.Click += new System.EventHandler(this.NextBankButton_Click);
             // 
             // playButton
             // 
-            this.playButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.playButton.Location = new System.Drawing.Point(159, 3);
+            resources.ApplyResources(this.playButton, "playButton");
             this.playButton.Name = "playButton";
-            this.playButton.Size = new System.Drawing.Size(72, 61);
-            this.playButton.TabIndex = 3;
-            this.playButton.Text = "Toggle Play";
             this.playButton.Click += new System.EventHandler(this.PlayButton_Click);
             // 
             // updateTimer
@@ -386,12 +284,11 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             // 
             // AudioPlayerControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.tableLayoutPanel);
             this.Name = "AudioPlayerControl";
-            this.Size = new System.Drawing.Size(930, 636);
             this.Load += new System.EventHandler(this.AudioPlayerControl_Load);
             this.tableLayoutPanel.ResumeLayout(false);
             this.leftPanel.ResumeLayout(false);

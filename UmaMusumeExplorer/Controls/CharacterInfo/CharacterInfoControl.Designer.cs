@@ -29,6 +29,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CharacterInfoControl));
             this.loadingProgressBar = new System.Windows.Forms.ProgressBar();
             this.loadingBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.charactersPanel = new System.Windows.Forms.FlowLayoutPanel();
@@ -39,11 +40,8 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             // 
             // loadingProgressBar
             // 
-            this.loadingProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.loadingProgressBar.Location = new System.Drawing.Point(223, 215);
+            resources.ApplyResources(this.loadingProgressBar, "loadingProgressBar");
             this.loadingProgressBar.Name = "loadingProgressBar";
-            this.loadingProgressBar.Size = new System.Drawing.Size(281, 23);
-            this.loadingProgressBar.TabIndex = 3;
             // 
             // loadingBackgroundWorker
             // 
@@ -54,31 +52,18 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             // 
             // charactersPanel
             // 
-            this.charactersPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.charactersPanel.AutoScroll = true;
-            this.charactersPanel.Location = new System.Drawing.Point(0, 32);
+            resources.ApplyResources(this.charactersPanel, "charactersPanel");
             this.charactersPanel.Name = "charactersPanel";
-            this.charactersPanel.Size = new System.Drawing.Size(727, 389);
-            this.charactersPanel.TabIndex = 4;
             // 
             // selectLabel
             // 
-            this.selectLabel.AutoSize = true;
-            this.selectLabel.Location = new System.Drawing.Point(3, 6);
+            resources.ApplyResources(this.selectLabel, "selectLabel");
             this.selectLabel.Name = "selectLabel";
-            this.selectLabel.Size = new System.Drawing.Size(68, 15);
-            this.selectLabel.TabIndex = 5;
-            this.selectLabel.Text = "Select by Id";
             // 
             // goButton
             // 
-            this.goButton.Location = new System.Drawing.Point(279, 3);
+            resources.ApplyResources(this.goButton, "goButton");
             this.goButton.Name = "goButton";
-            this.goButton.Size = new System.Drawing.Size(75, 23);
-            this.goButton.TabIndex = 7;
-            this.goButton.Text = "Go";
             this.goButton.UseVisualStyleBackColor = true;
             this.goButton.Click += new System.EventHandler(this.GoButton_Click);
             // 
@@ -87,14 +72,12 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             this.charaListComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.charaListComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.charaListComboBox.FormattingEnabled = true;
-            this.charaListComboBox.Location = new System.Drawing.Point(77, 3);
+            resources.ApplyResources(this.charaListComboBox, "charaListComboBox");
             this.charaListComboBox.Name = "charaListComboBox";
-            this.charaListComboBox.Size = new System.Drawing.Size(196, 23);
-            this.charaListComboBox.TabIndex = 8;
             // 
             // CharacterInfoControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.charaListComboBox);
@@ -103,7 +86,6 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             this.Controls.Add(this.selectLabel);
             this.Controls.Add(this.charactersPanel);
             this.Name = "CharacterInfoControl";
-            this.Size = new System.Drawing.Size(730, 424);
             this.Load += new System.EventHandler(this.CharacterInfoControl_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

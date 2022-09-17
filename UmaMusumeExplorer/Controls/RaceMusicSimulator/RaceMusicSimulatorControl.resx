@@ -60,118 +60,1063 @@
   <metadata name="bgmIdComboBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="bgmIdComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="bgmIdComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 23</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="bgmIdComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;bgmIdComboBox.Name" xml:space="preserve">
+    <value>bgmIdComboBox</value>
+  </data>
+  <data name="&gt;&gt;bgmIdComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bgmIdComboBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;bgmIdComboBox.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <metadata name="loadButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="loadButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>86, 3</value>
+  </data>
+  <data name="loadButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="loadButton.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="loadButton.Text" xml:space="preserve">
+    <value>Load</value>
+  </data>
+  <data name="&gt;&gt;loadButton.Name" xml:space="preserve">
+    <value>loadButton</value>
+  </data>
+  <data name="&gt;&gt;loadButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;loadButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;loadButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <metadata name="groupBox1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="groupBox1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="groupBox1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
   <metadata name="entryTableCuesheetNameTextBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="entryTableCuesheetNameTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 81</value>
+  </data>
+  <data name="entryTableCuesheetNameTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 23</value>
+  </data>
+  <data name="entryTableCuesheetNameTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;entryTableCuesheetNameTextBox.Name" xml:space="preserve">
+    <value>entryTableCuesheetNameTextBox</value>
+  </data>
+  <data name="&gt;&gt;entryTableCuesheetNameTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;entryTableCuesheetNameTextBox.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;entryTableCuesheetNameTextBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="paddockCuesheetNameTextBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="paddockCuesheetNameTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 37</value>
+  </data>
+  <data name="paddockCuesheetNameTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 23</value>
+  </data>
+  <data name="paddockCuesheetNameTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;paddockCuesheetNameTextBox.Name" xml:space="preserve">
+    <value>paddockCuesheetNameTextBox</value>
+  </data>
+  <data name="&gt;&gt;paddockCuesheetNameTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;paddockCuesheetNameTextBox.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;paddockCuesheetNameTextBox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <metadata name="entryTableCueNameTextBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="entryTableCueNameTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>114, 81</value>
+  </data>
+  <data name="entryTableCueNameTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>208, 23</value>
+  </data>
+  <data name="entryTableCueNameTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;entryTableCueNameTextBox.Name" xml:space="preserve">
+    <value>entryTableCueNameTextBox</value>
+  </data>
+  <data name="&gt;&gt;entryTableCueNameTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;entryTableCueNameTextBox.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;entryTableCueNameTextBox.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <metadata name="paddockCueNameTextBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="paddockCueNameTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>114, 37</value>
+  </data>
+  <data name="paddockCueNameTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>208, 23</value>
+  </data>
+  <data name="paddockCueNameTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;paddockCueNameTextBox.Name" xml:space="preserve">
+    <value>paddockCueNameTextBox</value>
+  </data>
+  <data name="&gt;&gt;paddockCueNameTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;paddockCueNameTextBox.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;paddockCueNameTextBox.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <metadata name="entryTableLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="entryTableLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="entryTableLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 63</value>
+  </data>
+  <data name="entryTableLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 15</value>
+  </data>
+  <data name="entryTableLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="entryTableLabel.Text" xml:space="preserve">
+    <value>Entry Table</value>
+  </data>
+  <data name="&gt;&gt;entryTableLabel.Name" xml:space="preserve">
+    <value>entryTableLabel</value>
+  </data>
+  <data name="&gt;&gt;entryTableLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;entryTableLabel.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;entryTableLabel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <metadata name="paddockLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="paddockLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="paddockLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 19</value>
+  </data>
+  <data name="paddockLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 15</value>
+  </data>
+  <data name="paddockLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="paddockLabel.Text" xml:space="preserve">
+    <value>Paddock</value>
+  </data>
+  <data name="&gt;&gt;paddockLabel.Name" xml:space="preserve">
+    <value>paddockLabel</value>
+  </data>
+  <data name="&gt;&gt;paddockLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;paddockLabel.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;paddockLabel.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>328, 126</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Intro</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>panel</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
   <metadata name="groupBox3.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="groupBox3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="groupBox3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
   <metadata name="firstPatternLengthComboBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="firstPatternLengthComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>56, 22</value>
+  </data>
+  <data name="firstPatternLengthComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 23</value>
+  </data>
+  <data name="firstPatternLengthComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;firstPatternLengthComboBox.Name" xml:space="preserve">
+    <value>firstPatternLengthComboBox</value>
+  </data>
+  <data name="&gt;&gt;firstPatternLengthComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;firstPatternLengthComboBox.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;firstPatternLengthComboBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="firstPatternCuesheetNameTextBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="firstPatternCuesheetNameTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 51</value>
+  </data>
+  <data name="firstPatternCuesheetNameTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 23</value>
+  </data>
+  <data name="firstPatternCuesheetNameTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;firstPatternCuesheetNameTextBox.Name" xml:space="preserve">
+    <value>firstPatternCuesheetNameTextBox</value>
+  </data>
+  <data name="&gt;&gt;firstPatternCuesheetNameTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;firstPatternCuesheetNameTextBox.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;firstPatternCuesheetNameTextBox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <metadata name="firstPatternCueNameTextBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="firstPatternCueNameTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>114, 51</value>
+  </data>
+  <data name="firstPatternCueNameTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>208, 23</value>
+  </data>
+  <data name="firstPatternCueNameTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;firstPatternCueNameTextBox.Name" xml:space="preserve">
+    <value>firstPatternCueNameTextBox</value>
+  </data>
+  <data name="&gt;&gt;firstPatternCueNameTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;firstPatternCueNameTextBox.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;firstPatternCueNameTextBox.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <metadata name="firstPatternLengthLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="firstPatternLengthLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="firstPatternLengthLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="firstPatternLengthLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 15</value>
+  </data>
+  <data name="firstPatternLengthLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="firstPatternLengthLabel.Text" xml:space="preserve">
+    <value>Length</value>
+  </data>
+  <data name="&gt;&gt;firstPatternLengthLabel.Name" xml:space="preserve">
+    <value>firstPatternLengthLabel</value>
+  </data>
+  <data name="&gt;&gt;firstPatternLengthLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;firstPatternLengthLabel.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;firstPatternLengthLabel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>337, 3</value>
+  </data>
+  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>328, 96</value>
+  </data>
+  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>First Pattern (Running)</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
+    <value>panel</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
   <metadata name="panel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="panel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="panel.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <metadata name="amplifyUpDown.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="amplifyUpDown.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="amplifyUpDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>624, 411</value>
+  </data>
+  <data name="amplifyUpDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 23</value>
+  </data>
+  <data name="amplifyUpDown.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;amplifyUpDown.Name" xml:space="preserve">
+    <value>amplifyUpDown</value>
+  </data>
+  <data name="&gt;&gt;amplifyUpDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;amplifyUpDown.Parent" xml:space="preserve">
+    <value>panel</value>
+  </data>
+  <data name="&gt;&gt;amplifyUpDown.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="amplifyLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="amplifyLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="amplifyLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="amplifyLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>536, 413</value>
+  </data>
+  <data name="amplifyLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 15</value>
+  </data>
+  <data name="amplifyLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="amplifyLabel.Text" xml:space="preserve">
+    <value>Amplification:</value>
+  </data>
+  <data name="&gt;&gt;amplifyLabel.Name" xml:space="preserve">
+    <value>amplifyLabel</value>
+  </data>
+  <data name="&gt;&gt;amplifyLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;amplifyLabel.Parent" xml:space="preserve">
+    <value>panel</value>
+  </data>
+  <data name="&gt;&gt;amplifyLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <metadata name="stopButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="stopButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>467, 294</value>
+  </data>
+  <data name="stopButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 54</value>
+  </data>
+  <data name="stopButton.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="stopButton.Text" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="&gt;&gt;stopButton.Name" xml:space="preserve">
+    <value>stopButton</value>
+  </data>
+  <data name="&gt;&gt;stopButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;stopButton.Parent" xml:space="preserve">
+    <value>panel</value>
+  </data>
+  <data name="&gt;&gt;stopButton.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <metadata name="togglePlayButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="togglePlayButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>337, 294</value>
+  </data>
+  <data name="togglePlayButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 54</value>
+  </data>
+  <data name="togglePlayButton.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="togglePlayButton.Text" xml:space="preserve">
+    <value>Toggle Play</value>
+  </data>
+  <data name="&gt;&gt;togglePlayButton.Name" xml:space="preserve">
+    <value>togglePlayButton</value>
+  </data>
+  <data name="&gt;&gt;togglePlayButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;togglePlayButton.Parent" xml:space="preserve">
+    <value>panel</value>
+  </data>
+  <data name="&gt;&gt;togglePlayButton.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <metadata name="playLastSpurtButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="playLastSpurtButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>467, 236</value>
+  </data>
+  <data name="playLastSpurtButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 23</value>
+  </data>
+  <data name="playLastSpurtButton.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="playLastSpurtButton.Text" xml:space="preserve">
+    <value>Play Last Spurt</value>
+  </data>
+  <data name="&gt;&gt;playLastSpurtButton.Name" xml:space="preserve">
+    <value>playLastSpurtButton</value>
+  </data>
+  <data name="&gt;&gt;playLastSpurtButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;playLastSpurtButton.Parent" xml:space="preserve">
+    <value>panel</value>
+  </data>
+  <data name="&gt;&gt;playLastSpurtButton.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <metadata name="playRunningButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="playRunningButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>337, 236</value>
+  </data>
+  <data name="playRunningButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 23</value>
+  </data>
+  <data name="playRunningButton.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="playRunningButton.Text" xml:space="preserve">
+    <value>Play Running</value>
+  </data>
+  <data name="&gt;&gt;playRunningButton.Name" xml:space="preserve">
+    <value>playRunningButton</value>
+  </data>
+  <data name="&gt;&gt;playRunningButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;playRunningButton.Parent" xml:space="preserve">
+    <value>panel</value>
+  </data>
+  <data name="&gt;&gt;playRunningButton.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
   <metadata name="playRaceResultButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="playRaceResultButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>337, 265</value>
+  </data>
+  <data name="playRaceResultButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 23</value>
+  </data>
+  <data name="playRaceResultButton.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="playRaceResultButton.Text" xml:space="preserve">
+    <value>Play Race Result</value>
+  </data>
+  <data name="&gt;&gt;playRaceResultButton.Name" xml:space="preserve">
+    <value>playRaceResultButton</value>
+  </data>
+  <data name="&gt;&gt;playRaceResultButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;playRaceResultButton.Parent" xml:space="preserve">
+    <value>panel</value>
+  </data>
+  <data name="&gt;&gt;playRaceResultButton.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
   <metadata name="playEntryTableButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="playEntryTableButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>467, 207</value>
+  </data>
+  <data name="playEntryTableButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 23</value>
+  </data>
+  <data name="playEntryTableButton.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="playEntryTableButton.Text" xml:space="preserve">
+    <value>Play Entry Table</value>
+  </data>
+  <data name="&gt;&gt;playEntryTableButton.Name" xml:space="preserve">
+    <value>playEntryTableButton</value>
+  </data>
+  <data name="&gt;&gt;playEntryTableButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;playEntryTableButton.Parent" xml:space="preserve">
+    <value>panel</value>
+  </data>
+  <data name="&gt;&gt;playEntryTableButton.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
   <metadata name="playPaddockButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="playPaddockButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>337, 207</value>
+  </data>
+  <data name="playPaddockButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 23</value>
+  </data>
+  <data name="playPaddockButton.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="playPaddockButton.Text" xml:space="preserve">
+    <value>Play Paddock</value>
+  </data>
+  <data name="&gt;&gt;playPaddockButton.Name" xml:space="preserve">
+    <value>playPaddockButton</value>
+  </data>
+  <data name="&gt;&gt;playPaddockButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;playPaddockButton.Parent" xml:space="preserve">
+    <value>panel</value>
+  </data>
+  <data name="&gt;&gt;playPaddockButton.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
   <metadata name="groupBox2.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="groupBox2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="groupBox2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
   <metadata name="raceResultComboBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="raceResultComboBox.Items" xml:space="preserve">
+    <value>1st Place</value>
+  </data>
+  <data name="raceResultComboBox.Items1" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="raceResultComboBox.Items2" xml:space="preserve">
+    <value>Lose</value>
+  </data>
+  <data name="raceResultComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 22</value>
+  </data>
+  <data name="raceResultComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 23</value>
+  </data>
+  <data name="raceResultComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;raceResultComboBox.Name" xml:space="preserve">
+    <value>raceResultComboBox</value>
+  </data>
+  <data name="&gt;&gt;raceResultComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;raceResultComboBox.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;raceResultComboBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="resultListCuesheetNameTextBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="resultListCuesheetNameTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 125</value>
+  </data>
+  <data name="resultListCuesheetNameTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 23</value>
+  </data>
+  <data name="resultListCuesheetNameTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;resultListCuesheetNameTextBox.Name" xml:space="preserve">
+    <value>resultListCuesheetNameTextBox</value>
+  </data>
+  <data name="&gt;&gt;resultListCuesheetNameTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;resultListCuesheetNameTextBox.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;resultListCuesheetNameTextBox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <metadata name="resultListCueNameTextBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="resultListCueNameTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>114, 125</value>
+  </data>
+  <data name="resultListCueNameTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>208, 23</value>
+  </data>
+  <data name="resultListCueNameTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;resultListCueNameTextBox.Name" xml:space="preserve">
+    <value>resultListCueNameTextBox</value>
+  </data>
+  <data name="&gt;&gt;resultListCueNameTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;resultListCueNameTextBox.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;resultListCueNameTextBox.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <metadata name="resultCutInCuesheetNameTextBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="resultCutInCuesheetNameTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 81</value>
+  </data>
+  <data name="resultCutInCuesheetNameTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 23</value>
+  </data>
+  <data name="resultCutInCuesheetNameTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;resultCutInCuesheetNameTextBox.Name" xml:space="preserve">
+    <value>resultCutInCuesheetNameTextBox</value>
+  </data>
+  <data name="&gt;&gt;resultCutInCuesheetNameTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;resultCutInCuesheetNameTextBox.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;resultCutInCuesheetNameTextBox.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <metadata name="resultCutInCueNameTextBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="resultCutInCueNameTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>114, 81</value>
+  </data>
+  <data name="resultCutInCueNameTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>208, 23</value>
+  </data>
+  <data name="resultCutInCueNameTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;resultCutInCueNameTextBox.Name" xml:space="preserve">
+    <value>resultCutInCueNameTextBox</value>
+  </data>
+  <data name="&gt;&gt;resultCutInCueNameTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;resultCutInCueNameTextBox.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;resultCutInCueNameTextBox.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <metadata name="resultListLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="resultListLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="resultListLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 107</value>
+  </data>
+  <data name="resultListLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 15</value>
+  </data>
+  <data name="resultListLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="resultListLabel.Text" xml:space="preserve">
+    <value>Result List</value>
+  </data>
+  <data name="&gt;&gt;resultListLabel.Name" xml:space="preserve">
+    <value>resultListLabel</value>
+  </data>
+  <data name="&gt;&gt;resultListLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;resultListLabel.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;resultListLabel.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
   <metadata name="cutInLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="cutInLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cutInLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 63</value>
+  </data>
+  <data name="cutInLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 15</value>
+  </data>
+  <data name="cutInLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="cutInLabel.Text" xml:space="preserve">
+    <value>Cut In</value>
+  </data>
+  <data name="&gt;&gt;cutInLabel.Name" xml:space="preserve">
+    <value>cutInLabel</value>
+  </data>
+  <data name="&gt;&gt;cutInLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cutInLabel.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;cutInLabel.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
   <metadata name="raceResultLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="raceResultLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="raceResultLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="raceResultLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 15</value>
+  </data>
+  <data name="raceResultLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="raceResultLabel.Text" xml:space="preserve">
+    <value>Race Result</value>
+  </data>
+  <data name="&gt;&gt;raceResultLabel.Name" xml:space="preserve">
+    <value>raceResultLabel</value>
+  </data>
+  <data name="&gt;&gt;raceResultLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;raceResultLabel.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;raceResultLabel.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 135</value>
+  </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>328, 170</value>
+  </data>
+  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Result</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+    <value>panel</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
   <metadata name="groupBox4.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="groupBox4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="groupBox4.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
   <metadata name="secondPatternLengthComboBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="secondPatternLengthComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>56, 22</value>
+  </data>
+  <data name="secondPatternLengthComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 23</value>
+  </data>
+  <data name="secondPatternLengthComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;secondPatternLengthComboBox.Name" xml:space="preserve">
+    <value>secondPatternLengthComboBox</value>
+  </data>
+  <data name="&gt;&gt;secondPatternLengthComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;secondPatternLengthComboBox.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;secondPatternLengthComboBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="secondPatternCuesheetNameTextBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="secondPatternCuesheetNameTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 51</value>
+  </data>
+  <data name="secondPatternCuesheetNameTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 23</value>
+  </data>
+  <data name="secondPatternCuesheetNameTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;secondPatternCuesheetNameTextBox.Name" xml:space="preserve">
+    <value>secondPatternCuesheetNameTextBox</value>
+  </data>
+  <data name="&gt;&gt;secondPatternCuesheetNameTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;secondPatternCuesheetNameTextBox.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;secondPatternCuesheetNameTextBox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <metadata name="secondPatternCueNameTextBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="secondPatternCueNameTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>114, 51</value>
+  </data>
+  <data name="secondPatternCueNameTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>208, 23</value>
+  </data>
+  <data name="secondPatternCueNameTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;secondPatternCueNameTextBox.Name" xml:space="preserve">
+    <value>secondPatternCueNameTextBox</value>
+  </data>
+  <data name="&gt;&gt;secondPatternCueNameTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;secondPatternCueNameTextBox.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;secondPatternCueNameTextBox.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <metadata name="secondPatternLengthLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="secondPatternLengthLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="secondPatternLengthLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="secondPatternLengthLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 15</value>
+  </data>
+  <data name="secondPatternLengthLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="secondPatternLengthLabel.Text" xml:space="preserve">
+    <value>Length</value>
+  </data>
+  <data name="&gt;&gt;secondPatternLengthLabel.Name" xml:space="preserve">
+    <value>secondPatternLengthLabel</value>
+  </data>
+  <data name="&gt;&gt;secondPatternLengthLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;secondPatternLengthLabel.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;secondPatternLengthLabel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>337, 105</value>
+  </data>
+  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>328, 96</value>
+  </data>
+  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>Second Pattern (Last Spurt)</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
+    <value>panel</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="panel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 32</value>
+  </data>
+  <data name="panel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>694, 437</value>
+  </data>
+  <data name="panel.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;panel.Name" xml:space="preserve">
+    <value>panel</value>
+  </data>
+  <data name="&gt;&gt;panel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 15</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>700, 472</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>RaceMusicSimulatorControl</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

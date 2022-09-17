@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfigureLoopForm));
             this.loopEnabledCheckBox = new System.Windows.Forms.CheckBox();
             this.startSampleNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.endSampleNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -42,17 +43,13 @@
             // 
             // loopEnabledCheckBox
             // 
-            this.loopEnabledCheckBox.AutoSize = true;
-            this.loopEnabledCheckBox.Location = new System.Drawing.Point(12, 12);
+            resources.ApplyResources(this.loopEnabledCheckBox, "loopEnabledCheckBox");
             this.loopEnabledCheckBox.Name = "loopEnabledCheckBox";
-            this.loopEnabledCheckBox.Size = new System.Drawing.Size(98, 19);
-            this.loopEnabledCheckBox.TabIndex = 1;
-            this.loopEnabledCheckBox.Text = "Loop enabled";
             this.loopEnabledCheckBox.UseVisualStyleBackColor = true;
             // 
             // startSampleNumericUpDown
             // 
-            this.startSampleNumericUpDown.Location = new System.Drawing.Point(90, 37);
+            resources.ApplyResources(this.startSampleNumericUpDown, "startSampleNumericUpDown");
             this.startSampleNumericUpDown.Maximum = new decimal(new int[] {
             1410065407,
             2,
@@ -64,12 +61,10 @@
             0,
             -2147483648});
             this.startSampleNumericUpDown.Name = "startSampleNumericUpDown";
-            this.startSampleNumericUpDown.Size = new System.Drawing.Size(153, 23);
-            this.startSampleNumericUpDown.TabIndex = 2;
             // 
             // endSampleNumericUpDown
             // 
-            this.endSampleNumericUpDown.Location = new System.Drawing.Point(90, 66);
+            resources.ApplyResources(this.endSampleNumericUpDown, "endSampleNumericUpDown");
             this.endSampleNumericUpDown.Maximum = new decimal(new int[] {
             1410065407,
             2,
@@ -81,62 +76,42 @@
             0,
             -2147483648});
             this.endSampleNumericUpDown.Name = "endSampleNumericUpDown";
-            this.endSampleNumericUpDown.Size = new System.Drawing.Size(153, 23);
-            this.endSampleNumericUpDown.TabIndex = 2;
             // 
             // startSamplesHintLabel
             // 
-            this.startSamplesHintLabel.AutoSize = true;
-            this.startSamplesHintLabel.Location = new System.Drawing.Point(12, 39);
+            resources.ApplyResources(this.startSamplesHintLabel, "startSamplesHintLabel");
             this.startSamplesHintLabel.Name = "startSamplesHintLabel";
-            this.startSamplesHintLabel.Size = new System.Drawing.Size(72, 15);
-            this.startSamplesHintLabel.TabIndex = 0;
-            this.startSamplesHintLabel.Text = "Start sample";
             // 
             // endSamplesHintLabel
             // 
-            this.endSamplesHintLabel.AutoSize = true;
-            this.endSamplesHintLabel.Location = new System.Drawing.Point(12, 68);
+            resources.ApplyResources(this.endSamplesHintLabel, "endSamplesHintLabel");
             this.endSamplesHintLabel.Name = "endSamplesHintLabel";
-            this.endSamplesHintLabel.Size = new System.Drawing.Size(68, 15);
-            this.endSamplesHintLabel.TabIndex = 0;
-            this.endSamplesHintLabel.Text = "End sample";
             // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(266, 119);
+            resources.ApplyResources(this.okButton, "okButton");
             this.okButton.Name = "okButton";
-            this.okButton.Size = new System.Drawing.Size(75, 23);
-            this.okButton.TabIndex = 3;
-            this.okButton.Text = "OK";
             this.okButton.UseVisualStyleBackColor = true;
             this.okButton.Click += new System.EventHandler(this.OKButton_Click);
             // 
             // resetButton
             // 
-            this.resetButton.Location = new System.Drawing.Point(12, 119);
+            resources.ApplyResources(this.resetButton, "resetButton");
             this.resetButton.Name = "resetButton";
-            this.resetButton.Size = new System.Drawing.Size(75, 23);
-            this.resetButton.TabIndex = 3;
-            this.resetButton.Text = "Reset";
             this.resetButton.UseVisualStyleBackColor = true;
             this.resetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(347, 119);
+            resources.ApplyResources(this.cancelButton, "cancelButton");
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 3;
-            this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // ConfigureLoopForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 154);
             this.Controls.Add(this.resetButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.okButton);
@@ -149,8 +124,6 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ConfigureLoopForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Configure Loop";
             this.Load += new System.EventHandler(this.LoopModifyForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.startSampleNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.endSampleNumericUpDown)).EndInit();
