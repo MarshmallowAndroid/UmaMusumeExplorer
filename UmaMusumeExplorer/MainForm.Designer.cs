@@ -145,7 +145,6 @@ namespace UmaMusumeExplorer
         private Controls.CharacterInfo.CharacterInfoControl characterInfoControl;
         private System.Windows.Forms.TabPage fileBrowserTabPage;
         private System.Windows.Forms.TabPage liveMusicPlayerTabPage;
-        private Controls.LiveMusicPlayer.LiveMusicPlayerSongSelectControl jukebox;
         private Controls.LiveMusicPlayer.LiveMusicPlayerSongSelectControl liveMusicPlayerSongSelectControl;
         private Controls.FileBrowser.FileBrowserControl fileBrowserControl;
     }

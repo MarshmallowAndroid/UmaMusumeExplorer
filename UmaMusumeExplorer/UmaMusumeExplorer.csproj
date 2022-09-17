@@ -8,9 +8,9 @@
     <StartupObject>UmaMusumeExplorer.Program</StartupObject>
     <PackageIcon>ProgramIcon.png</PackageIcon>
     <ApplicationIcon>Resources\ProgramIcon.ico</ApplicationIcon>
-    <FileVersion>1.1.0.0</FileVersion>
-    <AssemblyVersion>1.1.0.0</AssemblyVersion>
-    <Version>1.1.0</Version>
+    <FileVersion>1.2.0.0</FileVersion>
+    <AssemblyVersion>1.2.0.0</AssemblyVersion>
+    <Version>1.2.0</Version>
     <Product>Uma Musume Explorer</Product>
 	<AssemblyTitle>Uma Musume Explorer</AssemblyTitle>
 	<Authors>Jacob Tarun</Authors>
@@ -54,12 +54,12 @@
     </None>
   </ItemGroup>
 
-  <Target Name="AfterBuild">
-    <Copy SourceFiles="$(SolutionDir)AssetStudio\Texture2DDecoderNative\bin\x64\$(Configuration)\Texture2DDecoderNative.dll" DestinationFolder="$(OutDir)\x64" />
+  <Target Name="CopyDllsBuild" AfterTargets="AfterBuild">
+    <Copy SourceFiles="$(SolutionDir)AssetStudio\Texture2DDecoderNative\bin\x64\$(Configuration)\Texture2DDecoderNative.dll" DestinationFolder="$(OutDir)x64" />
   </Target>
     
-  <Target Name="AfterPublish">
-    <Copy SourceFiles="$(SolutionDir)AssetStudio\Texture2DDecoderNative\bin\x64\$(Configuration)\Texture2DDecoderNative.dll" DestinationFolder="$(PublishDir)\x64" />
+  <Target Name="CopyDllsPublish" AfterTargets="AfterPublish">
+    <Copy SourceFiles="$(SolutionDir)AssetStudio\Texture2DDecoderNative\bin\x64\$(Configuration)\Texture2DDecoderNative.dll" DestinationFolder="$(PublishDir)x64" />
   </Target>
 
 </Project>
