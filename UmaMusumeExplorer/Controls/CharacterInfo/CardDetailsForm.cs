@@ -82,6 +82,8 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
                 iconPinnedBitmap.Dispose();
                 iconPinnedBitmap = UnityAssetHelpers.GetCharaIcon(cardData.CharaId);
                 iconPictureBox.Image = iconPinnedBitmap.Bitmap;
+
+                UpdateStats(cardData, new CardRarityData());
             }
         }
 
@@ -96,6 +98,11 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             iconPinnedBitmap = UnityAssetHelpers.GetCharaIcon(cardData.CharaId, rarityData.RaceDressId);
             iconPictureBox.Image = iconPinnedBitmap.Bitmap;
 
+            UpdateStats(cardData, rarityData);
+        }
+
+        private void UpdateStats(CardData cardData, CardRarityData rarityData)
+        {
             speedStatusDisplayLabel.Value = rarityData.Speed;
             staminaStatusDisplayLabel.Value = rarityData.Stamina;
             powerStatusDisplayLabel.Value = rarityData.Pow;
