@@ -71,6 +71,7 @@ namespace UmaMusumeExplorer.Controls.Jukebox
         private void ConfirmButton_Click(object sender, EventArgs e)
         {
             CharacterPositions = characterPositions;
+            Close();
         }
 
         private static int PositionToIndex(int position, int pivot)
