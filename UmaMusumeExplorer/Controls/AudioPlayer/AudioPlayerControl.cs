@@ -12,6 +12,7 @@ using UmaMusumeAudio;
 using UmaMusumeExplorer.Controls.AudioPlayer.Classes;
 using UmaMusumeData;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace UmaMusumeExplorer.Controls.AudioPlayer
 {
@@ -147,6 +148,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
 
             lock (waveOutLock)
             {
+                umaWaveStream?.Dispose();
                 umaWaveStream = new(awbReader, waveId);
 
                 timeLengthLabel.Text = umaWaveStream.TotalTime.ToString("mm\\:ss");
@@ -263,21 +265,27 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
 
                 if (result == DialogResult.OK)
                 {
-                    waveOut.Pause();
-                    umaWaveStream.Loop = false;
+                    saveButton.Enabled = false;
 
-                    long restore = umaWaveStream.Position;
-                    umaWaveStream.Position = 0;
+                    int waveId = ((TrackComboBoxItem)tracksComboBox.SelectedItem).WaveId;
+                    UmaWaveStream copy = new(awbReader, waveId);
 
-                    WaveFileWriter.CreateWaveFile16(save.FileName,
-                        new VolumeSampleProvider(umaWaveStream.ToSampleProvider())
-                        {
-                            Volume = 4.0f
-                        });
+                    Task.Run(() =>
+                    {
+                        copy.Loop = false;
 
-                    umaWaveStream.Position = restore;
-                    umaWaveStream.Loop = true;
-                    waveOut.Play();
+                        WaveFileWriter.CreateWaveFile16(save.FileName,
+                            new VolumeSampleProvider(copy.ToSampleProvider())
+                            {
+                                Volume = (float)amplifyUpDown.Value
+                            });
+
+                        MessageBox.Show("Wave file saved", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        copy.Dispose();
+
+                        Invoke(() => saveButton.Enabled = true);
+                    });
                 }
             }
         }

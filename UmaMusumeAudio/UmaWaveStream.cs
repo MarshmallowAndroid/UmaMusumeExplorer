@@ -43,5 +43,12 @@ namespace UmaMusumeAudio
 
         private static ulong MixKey(ulong key, ushort subkey) =>
             key * (((ulong)subkey << 16) | ((ushort)~subkey + 2u));
+
+        protected override void Dispose(bool disposing)
+        {
+            hcaWaveStream.Dispose();
+
+            base.Dispose(disposing);
+        }
     }
 }

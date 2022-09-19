@@ -140,6 +140,13 @@ namespace UmaMusumeAudio
             }
         }
 
+        protected override void Dispose(bool disposing)
+        {
+            hcaFileStream.Dispose();
+
+            base.Dispose(disposing);
+        }
+
         //private void FillBuffer()
         //{
         //    if (hcaFileStream.Position >= hcaFileStream.Length)
