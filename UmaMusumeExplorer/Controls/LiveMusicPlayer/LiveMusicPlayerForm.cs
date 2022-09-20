@@ -30,7 +30,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
         private readonly LiveData liveData;
         private readonly IEnumerable<LivePermissionData> livePermissionData;
 
-        private readonly WaveOutEvent waveOutEvent = new WaveOutEvent() { DesiredLatency = 250 };
+        private readonly WaveOutEvent waveOutEvent = new() { DesiredLatency = 250 };
 
         private readonly List<LyricsTrigger> lyricsTriggers = new();
         private readonly List<PartTrigger> partTriggers = new();
@@ -51,7 +51,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             liveData = live;
             livePermissionData = AssetTables.LivePermissionDatas.Where(lpd => lpd.MusicId == musicID);
 
-            if (livePermissionData.Count() == 0)
+            if (!livePermissionData.Any())
             {
                 livePermissionData = new List<LivePermissionData>();
 
@@ -83,6 +83,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             List<AwbReader> charaAwbs = new(GetSingingMembers());
 
             UnitSetupForm unitSetupForm = new(livePermissionData, GetSingingMembers());
+            unitSetupForm.Text = songTitleLabel.Text + " " + unitSetupForm.Text;
             ControlHelpers.ShowFormDialogCenter(unitSetupForm, this);
 
             if (unitSetupForm.CharacterPositions is null)
