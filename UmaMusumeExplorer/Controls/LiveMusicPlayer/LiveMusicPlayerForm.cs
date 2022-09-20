@@ -267,5 +267,10 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             {
             }
         }
+
+        private void SetupButton_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

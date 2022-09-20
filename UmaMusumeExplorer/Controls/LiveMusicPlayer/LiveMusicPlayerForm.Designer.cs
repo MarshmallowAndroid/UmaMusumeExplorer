@@ -87,6 +87,7 @@
             resources.ApplyResources(this.setupButton, "setupButton");
             this.setupButton.Name = "setupButton";
             this.setupButton.UseVisualStyleBackColor = true;
+            this.setupButton.Click += new System.EventHandler(this.SetupButton_Click);
             // 
             // seekTrackBar
             // 
