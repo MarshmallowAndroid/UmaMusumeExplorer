@@ -86,7 +86,10 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             int currentFile = 0;
             foreach (var gameFile in awbOnly)
             {
-                if (File.Exists(UmaDataHelper.GetPath(gameFile)))
+                string acbName = gameFile.BaseName[0..^4] + ".acb";
+                string acbPath = UmaDataHelper.GetPath(bgmAssets.FirstOrDefault((gf) => gf.BaseName == acbName));
+
+                if (File.Exists(UmaDataHelper.GetPath(gameFile)) && File.Exists(acbPath))
                 {
                     FileStream awbFile = File.OpenRead(UmaDataHelper.GetPath(gameFile));
                     AwbReader awbReader = new(awbFile);
