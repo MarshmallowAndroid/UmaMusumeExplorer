@@ -17,7 +17,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
         private readonly IEnumerable<LivePermissionData> livePermissionData;
 
         private int characterIndex = 0;
-        private int characterID = 0;
+        private int characterId = 0;
 
         public CharacterPositionControl(int index, IEnumerable<LivePermissionData> permissionData, UnitSetupForm unitSetupForm)
         {
@@ -44,13 +44,13 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             }
         }
 
-        public int CharacterID
+        public int CharacterId
         {
-            get { return characterID; }
+            get { return characterId; }
             set
             {
-                characterID = value;
-                characterPictureBox.BackgroundImage = UnityAssetHelpers.GetCharaIcon(characterID).Bitmap;
+                characterId = value;
+                characterPictureBox.BackgroundImage = UnityAssetHelpers.GetCharaIcon(characterId).Bitmap;
 
                 Update();
             }
@@ -61,7 +61,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             CharacterSelectForm characterSelectForm = new(livePermissionData);
             ControlHelpers.ShowFormDialogCenter(characterSelectForm, this);
 
-            CharacterID = characterSelectForm.SelectedCharacter;
+            CharacterId = characterSelectForm.SelectedCharacter;
         }
     }
 }

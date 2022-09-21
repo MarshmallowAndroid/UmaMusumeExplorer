@@ -21,7 +21,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 {
     public partial class LiveMusicPlayerForm : Form
     {
-        private readonly int musicID;
+        private readonly int musicId;
 
         private readonly AssetsManager assetsManager = new();
 
@@ -46,29 +46,29 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
         {
             InitializeComponent();
 
-            musicID = live.MusicId;
+            musicId = live.MusicId;
 
             liveData = live;
-            livePermissionData = AssetTables.LivePermissionDatas.Where(lpd => lpd.MusicId == musicID);
+            livePermissionData = AssetTables.LivePermissionDatas.Where(lpd => lpd.MusicId == musicId);
 
             if (!livePermissionData.Any())
             {
                 livePermissionData = new List<LivePermissionData>();
 
-                var matches = UmaDataHelper.GetGameAssetDataRows(ga => ga.BaseName.StartsWith($"snd_bgm_live_{musicID}_chara_") && ga.BaseName.EndsWith(".awb"));
+                var matches = UmaDataHelper.GetGameAssetDataRows(ga => ga.BaseName.StartsWith($"snd_bgm_live_{musicId}_chara_") && ga.BaseName.EndsWith(".awb"));
 
                 foreach (var audioAsset in matches)
                 {
-                    int charaID = int.Parse(audioAsset.BaseName.Remove(0, $"snd_bgm_live_{musicID}_chara_".Length)[..4]);
+                    int charaId = int.Parse(audioAsset.BaseName.Remove(0, $"snd_bgm_live_{musicId}_chara_".Length)[..4]);
 
-                    (livePermissionData as List<LivePermissionData>).Add(new LivePermissionData() { MusicId = musicID, CharaId = charaID });
+                    (livePermissionData as List<LivePermissionData>).Add(new LivePermissionData() { MusicId = musicId, CharaId = charaId });
                 }
             }
 
-            songJacketPinnedBitmap = UnityAssetHelpers.GetJacket(musicID, 'l');
+            songJacketPinnedBitmap = UnityAssetHelpers.GetJacket(musicId, 'l');
             songJacketPictureBox.BackgroundImage = songJacketPinnedBitmap.Bitmap;
-            songTitleLabel.Text = AssetTables.LiveNameTextDatas.First(litd => litd.Index == musicID).Text;
-            songInfoLabel.Text = AssetTables.LiveInfoTextDatas.First(litd => litd.Index == musicID).Text.Replace("\\n", "\n");
+            songTitleLabel.Text = AssetTables.LiveNameTextDatas.First(litd => litd.Index == musicId).Text;
+            songInfoLabel.Text = AssetTables.LiveInfoTextDatas.First(litd => litd.Index == musicId).Text.Replace("\\n", "\n");
 
             lyricsThread = new(DoLyricsPlayback);
         }

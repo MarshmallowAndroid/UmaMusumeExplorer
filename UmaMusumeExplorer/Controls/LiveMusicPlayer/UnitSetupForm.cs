@@ -48,7 +48,7 @@ namespace UmaMusumeExplorer.Controls.Jukebox
             PictureBox characterPositionPixtureBox = sender as PictureBox;
             CharacterPositionControl characterPositionControl = characterPositionPixtureBox.Parent as CharacterPositionControl;
 
-            int initialCharacter = characterPositionControl.CharacterID;
+            int initialCharacter = characterPositionControl.CharacterId;
 
             CharacterSelectForm characterSelectForm = new(livePermissionData);
             ControlHelpers.ShowFormDialogCenter(characterSelectForm, this);
@@ -59,13 +59,13 @@ namespace UmaMusumeExplorer.Controls.Jukebox
 
             foreach (var characterPosition in characterPositions)
             {
-                if (characterPosition.CharacterID == selectedCharacter)
+                if (characterPosition.CharacterId == selectedCharacter)
                 {
-                    characterPosition.CharacterID = initialCharacter;
+                    characterPosition.CharacterId = initialCharacter;
                 }
             }
 
-            characterPositionControl.CharacterID = selectedCharacter;
+            characterPositionControl.CharacterId = selectedCharacter;
         }
 
         private void ConfirmButton_Click(object sender, EventArgs e)
