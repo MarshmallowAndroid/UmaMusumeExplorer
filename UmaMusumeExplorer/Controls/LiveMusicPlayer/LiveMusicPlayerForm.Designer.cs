@@ -81,6 +81,7 @@
             resources.ApplyResources(this.stopButton, "stopButton");
             this.stopButton.Name = "stopButton";
             this.stopButton.UseVisualStyleBackColor = true;
+            this.stopButton.Click += new System.EventHandler(this.StopButton_Click);
             // 
             // setupButton
             // 

@@ -269,6 +269,12 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
         private void SetupButton_Click(object sender, EventArgs e)
         {
             
+        private void StopButton_Click(object sender, EventArgs e)
+        {
+            waveOutEvent.Stop();
+            waveOutEvent.Dispose();
+            songMixer.Dispose();
+            Close();
         }
     }
 }
