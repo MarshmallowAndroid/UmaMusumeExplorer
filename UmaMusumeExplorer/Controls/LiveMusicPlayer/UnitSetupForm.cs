@@ -22,7 +22,7 @@ namespace UmaMusumeExplorer.Controls.Jukebox
         private readonly IEnumerable<LivePermissionData> livePermissionData;
         private readonly CharacterPositionControl[] characterPositions;
 
-        public UnitSetupForm(IEnumerable<LivePermissionData> permissionData, int singingMembers)
+        public UnitSetupForm(IEnumerable<LivePermissionData> permissionData, int singingMembers, IEnumerable<int> characterIds)
         {
             InitializeComponent();
 
@@ -34,7 +34,12 @@ namespace UmaMusumeExplorer.Controls.Jukebox
             for (int i = 0; i < characterPositions.Length; i++)
             {
                 CharacterPositionControl characterPositionControl = new CharacterPositionControl(i + 1, livePermissionData, this);
-                characterPositionControl.CharacterID = livePermissionData.ElementAt(i).CharaId;
+
+                if (characterIds.Any())
+                    characterPositionControl.CharacterId = characterIds.ElementAt(i);
+                else
+                    characterPositionControl.CharacterId = livePermissionData.ElementAt(i).CharaId;
+
                 characterPositions[PositionToIndex(i, pivot)] = characterPositionControl;
             }
 

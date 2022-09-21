@@ -13,7 +13,10 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
         private readonly ISampleProvider okeSampleProvider;
 
         private readonly List<CharaTrack> charaTracks = new();
+        private readonly List<PartTrigger> partTriggers = new();
         private readonly List<VolumeTrigger> volumeTriggers = new();
+
+        private readonly object charaAwbsLock = new();
 
         private float[] charaTracksBuffer;
         private float[] okeBuffer;
@@ -22,20 +25,12 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
         private long currentSample = 0;
         private int volumeTriggerIndex = 0;
 
-        public SongMixer(AwbReader okeAwb, List<AwbReader> charaAwbs, List<PartTrigger> partTriggers)
+        public SongMixer(AwbReader okeAwb, List<PartTrigger> parts)
         {
-            List<ISampleProvider> sampleProviders = new();
-
             okeWaveStream = new(okeAwb, 0);
             okeSampleProvider = okeWaveStream.ToSampleProvider();
 
-            charaTracks = new();
-            int currentIndex = 0;
-            foreach (var charaAwb in charaAwbs)
-            {
-                CharaTrack charaTrack = new CharaTrack(charaAwb, partTriggers, currentIndex++);
-                charaTracks.Add(charaTrack);
-            }
+            partTriggers = parts;
 
             foreach (var partTrigger in partTriggers)
             {
@@ -77,6 +72,22 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 
         public TimeSpan TotalTime => okeWaveStream.TotalTime;
 
+        public void InitializeCharaTracks(List<AwbReader> charaAwbs)
+        {
+            int currentIndex = 0;
+
+            lock (charaAwbsLock)
+            {
+                charaTracks.Clear();
+                foreach (var charaAwb in charaAwbs)
+                {
+                    CharaTrack charaTrack = new CharaTrack(charaAwb, partTriggers, currentIndex++);
+                    charaTrack.Position = okeWaveStream.Position;
+                    charaTracks.Add(charaTrack);
+                }
+            }
+        }
+
         public int Read(float[] buffer, int offset, int count)
         {
             if (charaTracksBuffer is null && okeBuffer is null)
@@ -90,13 +101,16 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                 buffer[i] = 0.0f;
             }
 
-            foreach (var charaTrack in charaTracks)
+            lock (charaAwbsLock)
             {
-                charaTrack.Read(charaTracksBuffer, offset, count);
-
-                for (int i = offset; i < count; i++)
+                foreach (var charaTrack in charaTracks)
                 {
-                    buffer[i] += charaTracksBuffer[i];
+                    charaTrack.Read(charaTracksBuffer, offset, count);
+
+                    for (int i = offset; i < count; i++)
+                    {
+                        buffer[i] += charaTracksBuffer[i];
+                    }
                 }
             }
 

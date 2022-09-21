@@ -34,6 +34,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
         private readonly List<LyricsTrigger> lyricsTriggers = new();
         private readonly List<PartTrigger> partTriggers = new();
+        private readonly List<int> currentCharacterIds = new();
 
         private SongMixer songMixer;
         private readonly Thread lyricsThread;
@@ -77,36 +78,51 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
         {
             LoadMusicScore();
 
-            IEnumerable<GameAsset> audioAssets = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith($"sound/l/{musicID}"));
-            AwbReader okeAwb = GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicID}_oke_02.awb")));
-
-            List<AwbReader> charaAwbs = new(GetSingingMembers());
-
-            UnitSetupForm unitSetupForm = new(livePermissionData, GetSingingMembers());
-            unitSetupForm.Text = songTitleLabel.Text + " " + unitSetupForm.Text;
-            ControlHelpers.ShowFormDialogCenter(unitSetupForm, this);
-
-            if (unitSetupForm.CharacterPositions is null)
+            if (!SetupUnit())
             {
                 Close();
                 return;
             }
+        }
+
+        private bool SetupUnit()
+        {
+            IEnumerable<GameAsset> audioAssets = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith($"sound/l/{musicId}"));
+            AwbReader okeAwb = GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicId}_oke_02.awb")));
+
+            List<AwbReader> charaAwbs = new(GetSingingMembers());
+
+            UnitSetupForm unitSetupForm = new(livePermissionData, GetSingingMembers(), currentCharacterIds);
+            unitSetupForm.Text = songTitleLabel.Text + " " + unitSetupForm.Text;
+            ControlHelpers.ShowFormDialogCenter(unitSetupForm, this);
+
+            if (unitSetupForm.CharacterPositions is null) return false;
 
             Array.Sort(unitSetupForm.CharacterPositions, (a, b) => a.CharacterIndex.CompareTo(b.CharacterIndex));
+
+            currentCharacterIds.Clear();
             foreach (var item in unitSetupForm.CharacterPositions)
             {
-                charaAwbs.Add(GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicID}_chara_{item.CharacterID}_01.awb"))));
+                charaAwbs.Add(GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicId}_chara_{item.CharacterId}_01.awb"))));
+                currentCharacterIds.Add(item.CharacterId);
             }
 
-            songMixer = new(okeAwb, charaAwbs, partTriggers);
+            long previousPosition = songMixer?.Position ?? 0;
+
+            if (songMixer is null)
+            {
+                songMixer = new(okeAwb, partTriggers);
+                waveOutEvent.Init(songMixer);
+            }
+
+            songMixer.InitializeCharaTracks(charaAwbs);
 
             totalTimeLabel.Text = $"{songMixer.TotalTime:m\\:ss}";
-
-            waveOutEvent.Init(songMixer);
-
             int volume = (int)Math.Ceiling(waveOutEvent.Volume * 100.0f);
             volumeTrackbar.Value = volume;
             volumeLabel.Text = volume + "%";
+
+            return true;
         }
 
         private void LoadMusicScore()
@@ -268,7 +284,9 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
         private void SetupButton_Click(object sender, EventArgs e)
         {
-            
+            SetupUnit();
+        }
+
         private void StopButton_Click(object sender, EventArgs e)
         {
             waveOutEvent.Stop();
