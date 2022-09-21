@@ -158,12 +158,10 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
             if (waveOutEvent.PlaybackState == PlaybackState.Playing)
             {
-                playButton.Text = "Play";
                 waveOutEvent.Pause();
             }
             else
             {
-                playButton.Text = "Pause";
                 waveOutEvent.Play();
             }
 

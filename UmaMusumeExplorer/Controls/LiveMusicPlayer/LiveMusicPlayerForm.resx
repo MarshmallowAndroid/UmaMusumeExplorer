@@ -199,7 +199,7 @@
     <value>2</value>
   </data>
   <data name="playButton.Text" xml:space="preserve">
-    <value>Play</value>
+    <value>Toggle Play</value>
   </data>
   <data name="&gt;&gt;playButton.Name" xml:space="preserve">
     <value>playButton</value>
