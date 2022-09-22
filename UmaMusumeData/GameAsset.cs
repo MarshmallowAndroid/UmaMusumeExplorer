@@ -32,5 +32,15 @@ namespace UmaMusumeData
                 return Name[(lastSlash + 1)..];
             }
         }
+
+        public override bool Equals(object obj)
+        {
+            return ((GameAsset)obj).Hash == Hash;
+        }
+
+        public override int GetHashCode()
+        {
+            return Hash.GetHashCode();
+        }
     }
 }

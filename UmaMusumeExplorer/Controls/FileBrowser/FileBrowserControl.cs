@@ -137,6 +137,32 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
                 }
             }
 
+            List<GameAsset> dependencies = new();
+            foreach (var selectedAsset in selectedAssets)
+            {
+                AddDependenciesRecurse(dependencies, selectedAsset);
+            }
+
+            List<ListViewItem> dependencyItems = new();
+            if (dependencies.Count > 0)
+            {
+                DialogResult addDependencyResult = MessageBox.Show("Include dependencies?", "Dependencies found", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (addDependencyResult == DialogResult.Yes)
+                {
+                    foreach (var dependencyAsset in dependencies)
+                    {
+                        UpdateSelectedAssets(dependencyAsset, node.Checked);
+
+                        ListViewItem item = new(dependencyAsset.Name);
+                        item.SubItems.Add(GenerateSizeString(dependencyAsset.Length));
+                        item.Tag = dependencyAsset;
+
+                        dependencyItems.Add(item);
+                    }
+                }
+            }
+
             selectedAssets.Sort((a, b) => a.BaseName.CompareTo(b.BaseName));
 
             ListViewItem[] items = new ListViewItem[selectedAssets.Count];
@@ -151,32 +177,6 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
 
             extractListView.Items.Clear();
             extractListView.Items.AddRange(items);
-
-            List<ListViewItem> dependencyItems = new();
-            foreach (var selectedAsset in selectedAssets)
-            {
-                foreach (var dependency in selectedAsset.Dependencies.Split(';'))
-                {
-                    GameAsset dependencyAsset = gameAssets.FirstOrDefault(ga => ga.Name == dependency);
-
-                    if (dependencyAsset is not null)
-                    {
-                        ListViewItem item = new(dependencyAsset.Name);
-                        item.SubItems.Add(GenerateSizeString(dependencyAsset.Length));
-                        item.Tag = dependencyAsset;
-
-                        dependencyItems.Add(item);
-                    }
-                }
-            }
-
-            if (dependencyItems.Count > 0)
-            {
-                DialogResult addDependencyResult = MessageBox.Show("Include dependencies?", "Dependencies found", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (addDependencyResult == DialogResult.Yes)
-                    extractListView.Items.AddRange(dependencyItems.ToArray());
-            }
 
             totalFileCountLabel.Text = $"{selectedAssets.Count} files";
             totalFileSizeLabel.Text = GenerateSizeString(selectedAssets.Sum(a => (long)a.Length));
@@ -308,7 +308,23 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             fileTreeView.Nodes[0].Nodes.Add("");
         }
 
-        void UpdateSelectedAssets(GameAsset asset, bool isChecked)
+        private void AddDependenciesRecurse(List<GameAsset> dependencyList, GameAsset gameAsset)
+        {
+            foreach (var dependency in gameAsset.Dependencies.Split(';'))
+            {
+                GameAsset dependencyAsset = gameAssets.FirstOrDefault(ga => ga.Name == dependency);
+
+                if (dependencyAsset is not null)
+                {
+                    AddDependenciesRecurse(dependencyList, dependencyAsset);
+
+                    if (!dependencyList.Contains(dependencyAsset))
+                        dependencyList.Add(dependencyAsset);
+                }
+            }
+        }
+
+        private void UpdateSelectedAssets(GameAsset asset, bool isChecked)
         {
             TreeNode[] matching = fileTreeView.Nodes.Find(asset.Name, true);
             if (matching.Length > 0) matching[0].Checked = isChecked;
