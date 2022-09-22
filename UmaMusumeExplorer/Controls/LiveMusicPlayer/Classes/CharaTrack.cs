@@ -47,7 +47,8 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                         sample,
                         partTrigger.MemberTracks[index],
                         partTrigger.MemberVolumes[index],
-                        partTrigger.MemberPans[index]));
+                        partTrigger.MemberPans[index],
+                        partTrigger.VolumeRate));
             }
         }
 
@@ -103,16 +104,22 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                     else
                         volumeMultiplier = triggers[triggerIndex].Volume;
 
-                    if (triggers[triggerIndex].Pan == 999.0f)
-                    {
-                        mainSampleProvider.Pan = 0.0f;
-                        if (secondSampleProvider is not null) secondSampleProvider.Pan = 0.0f;
-                    }
-                    else
-                    {
-                        mainSampleProvider.Pan = triggers[triggerIndex].Pan;
-                        if (secondSampleProvider is not null) secondSampleProvider.Pan = triggers[triggerIndex].Pan;
-                    }
+                    if (triggers[triggerIndex].VolumeRate != 999.0f)
+                        volumeMultiplier = triggers[triggerIndex].VolumeRate;
+
+                    //if (triggers[triggerIndex].Pan == 999.0f)
+                    //{
+                    //    mainSampleProvider.Pan = 0.0f;
+
+                    //    if (secondSampleProvider is not null) secondSampleProvider.Pan = 0.0f;
+                    //}
+                    //else
+                    //{
+                    //    mainSampleProvider.Pan = triggers[triggerIndex].Pan;
+                    //    if (secondSampleProvider is not null) secondSampleProvider.Pan = triggers[triggerIndex].Pan;
+
+                    //    //volumeMultiplier *= (1.0f - triggers[triggerIndex].Pan);
+                    //}
 
                     if (triggerIndex < triggers.Count - 1) triggerIndex++;
                     else break;
@@ -144,13 +151,15 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             public int Track;
             public float Volume;
             public float Pan;
+            public float VolumeRate;
 
-            public Trigger(long sample, int track, float volume, float pan)
+            public Trigger(long sample, int track, float volume, float pan, float volumeRate)
             {
                 Sample = sample;
                 Track = track;
                 Volume = volume;
                 Pan = pan;
+                VolumeRate = volumeRate;
             }
         }
     }

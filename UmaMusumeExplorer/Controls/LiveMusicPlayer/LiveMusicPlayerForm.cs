@@ -147,10 +147,10 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             }
 
             StreamReader partCsv = GetLiveCsv(liveData.MusicId, "part");
-            partCsv.ReadLine();
+            bool hasVolumeRate = partCsv.ReadLine().Contains("volume_rate");
             while (!partCsv.EndOfStream)
             {
-                PartTrigger trigger = new(partCsv.ReadLine());
+                PartTrigger trigger = new(partCsv.ReadLine(), hasVolumeRate);
                 partTriggers.Add(trigger);
             }
         }

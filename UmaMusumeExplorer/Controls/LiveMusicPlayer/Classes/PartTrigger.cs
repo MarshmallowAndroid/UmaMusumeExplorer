@@ -17,16 +17,20 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 
         public float[] MemberPans { get; }
 
-        public PartTrigger(string partCsvLine)
+        public float VolumeRate { get; }
+
+        public PartTrigger(string partCsvLine, bool hasVolumeRate)
         {
             string[] columns = partCsvLine.Split(',');
 
             int activeMembers;
 
-            if (columns.Length - 1 > 5)
-                activeMembers = (columns.Length - 1) / 3;
+            int ignoreColumns = hasVolumeRate ? 2 : 1;
+
+            if (columns.Length - ignoreColumns > 5)
+                activeMembers = (columns.Length - ignoreColumns) / 3;
             else
-                activeMembers = columns.Length - 1;
+                activeMembers = columns.Length - ignoreColumns;
 
             MemberTracks = new int[activeMembers];
             MemberVolumes = new float[activeMembers];
@@ -61,6 +65,9 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                     MemberPans[i] = 999;
                 }
             }
+
+            if (hasVolumeRate)
+                VolumeRate = float.Parse(columns[currentIndex++]);
         }
 
         private static int PositionToIndex(int position, int pivot)
