@@ -329,7 +329,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
 
         private void StopButton_Click(object sender, EventArgs e)
         {
-            mixer.RemoveAllMixerInputs();
+            mixer?.RemoveAllMixerInputs();
         }
 
         private void AmplifyUpDown_ValueChanged(object sender, EventArgs e)
