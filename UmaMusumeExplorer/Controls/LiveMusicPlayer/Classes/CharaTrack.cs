@@ -104,8 +104,8 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                     else
                         volumeMultiplier = triggers[triggerIndex].Volume;
 
-                    if (triggers[triggerIndex].VolumeRate != 999.0f && triggers[triggerIndex].VolumeRate != 0.0f)
-                        volumeMultiplier = triggers[triggerIndex].VolumeRate;
+                    if (triggers[triggerIndex].VolumeRate != 999.0f)
+                        volumeMultiplier += 0.25f * triggers[triggerIndex].VolumeRate;
 
                     //if (triggers[triggerIndex].Pan == 999.0f)
                     //{

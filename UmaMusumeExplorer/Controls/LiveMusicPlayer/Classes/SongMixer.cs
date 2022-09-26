@@ -139,6 +139,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             for (int i = offset; i < count; i++)
             {
                 buffer[i] += okeBuffer[i];
+                buffer[i] *= 1.5f;
             }
 
             return read;
