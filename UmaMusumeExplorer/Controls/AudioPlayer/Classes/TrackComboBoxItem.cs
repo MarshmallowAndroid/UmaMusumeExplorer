@@ -12,7 +12,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer.Classes
 
         public override string ToString()
         {
-            return TrackName;
+            return $"{WaveId}: {TrackName}";
         }
     }
 }
