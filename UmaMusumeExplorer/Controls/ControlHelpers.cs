@@ -12,13 +12,13 @@ namespace UmaMusumeExplorer.Controls
         public static void ShowFormDialogCenter(Form form, Control target)
         {
             SetNewLocation(form, target);
-            form.ShowDialog();
+            form.ShowDialog(GetParentForm(target));
         }
 
         public static void ShowFormCenter(Form form, Control target)
         {
             SetNewLocation(form, target);
-            form.Show();
+            form.Show(GetParentForm(target));
         }
 
         private static void SetNewLocation(Form form, Control target)

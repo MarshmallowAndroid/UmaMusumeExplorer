@@ -181,7 +181,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             seekTrackBar.Value = (int)(songMixer.CurrentTime / songMixer.TotalTime * 100.0d);
         }
 
-        private void JukeboxPlayerForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void PlayerForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             songJacketPinnedBitmap.Dispose();
             playbackFinished = true;

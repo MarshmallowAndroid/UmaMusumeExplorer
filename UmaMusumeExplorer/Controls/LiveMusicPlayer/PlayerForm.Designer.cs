@@ -180,7 +180,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "PlayerForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.JukeboxPlayerForm_FormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PlayerForm_FormClosing);
             this.Load += new System.EventHandler(this.LiveMusicPlayerForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.songJacketPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seekTrackBar)).EndInit();
