@@ -108,8 +108,11 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
         {
             lock (readLock)
             {
+                bool alwaysSinging = false;
+
                 foreach (var charaTrack in charaTracks)
                 {
+                    alwaysSinging = charaTrack.AlwaysSinging;
                     charaTrack.Dispose();
                 }
 
@@ -120,6 +123,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                 {
                     CharaTrack charaTrack = new(charaAwb, partTriggers, currentIndex++);
                     charaTrack.Position = okeWaveStream.Position;
+                    charaTrack.AlwaysSinging = alwaysSinging;
                     charaTracks.Add(charaTrack);
                 }
             }
