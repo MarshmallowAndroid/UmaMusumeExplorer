@@ -32,7 +32,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             characterPictureBox.Click += unitSetupForm.CharacterPositionPictureBoxClick;
         }
 
-        public int CharacterIndex
+        public int PositionIndex
         {
             get { return characterIndex; }
             set
