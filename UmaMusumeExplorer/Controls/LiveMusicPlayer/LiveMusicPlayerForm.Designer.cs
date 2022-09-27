@@ -144,6 +144,7 @@
             this.Controls.Add(this.songInfoLabel);
             this.Controls.Add(this.songTitleLabel);
             this.Controls.Add(this.songJacketPictureBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "LiveMusicPlayerForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.JukeboxPlayerForm_FormClosing);
