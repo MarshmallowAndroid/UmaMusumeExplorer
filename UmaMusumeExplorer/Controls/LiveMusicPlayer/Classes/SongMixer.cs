@@ -75,6 +75,35 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 
         public TimeSpan TotalTime => okeWaveStream.TotalTime;
 
+        public bool ForceSolo
+        {
+            get
+            {
+                bool alwaysSinging = false;
+
+                lock (readLock)
+                {
+                    foreach (var charaTrack in charaTracks)
+                    {
+                        alwaysSinging = charaTrack.AlwaysSinging;
+                    }
+                }
+
+                return alwaysSinging;
+            }
+
+            set
+            {
+                lock (readLock)
+                {
+                    foreach (var charaTrack in charaTracks)
+                    {
+                        charaTrack.AlwaysSinging = value;
+                    }
+                }
+            }
+        }
+
         public void InitializeCharaTracks(List<AwbReader> charaAwbs)
         {
             lock (readLock)
@@ -138,7 +167,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 
                     for (int j = 0; j < WaveFormat.Channels; j++)
                     {
-                        buffer[i * WaveFormat.Channels + j] *= volumeMultiplier;
+                        buffer[i * WaveFormat.Channels + j] *= ForceSolo ? 1.0f : volumeMultiplier;
                     }
 
                     currentSample++;

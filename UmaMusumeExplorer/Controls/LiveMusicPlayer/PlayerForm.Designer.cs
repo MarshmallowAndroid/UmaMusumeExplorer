@@ -43,9 +43,14 @@
             this.currentTimeLabel = new System.Windows.Forms.Label();
             this.totalTimeLabel = new System.Windows.Forms.Label();
             this.updateTimer = new System.Windows.Forms.Timer(this.components);
+            this.debugContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.titleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.headingSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.forceSoloMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.songJacketPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seekTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.volumeTrackbar)).BeginInit();
+            this.debugContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // songJacketPictureBox
@@ -128,10 +133,38 @@
             this.updateTimer.Interval = 500;
             this.updateTimer.Tick += new System.EventHandler(this.UpdateTimer_Tick);
             // 
-            // LiveMusicPlayerForm
+            // debugContextMenuStrip
+            // 
+            this.debugContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.titleMenuItem,
+            this.headingSeparator,
+            this.forceSoloMenuItem});
+            this.debugContextMenuStrip.Name = "debugContextMenuStrip";
+            resources.ApplyResources(this.debugContextMenuStrip, "debugContextMenuStrip");
+            // 
+            // titleMenuItem
+            // 
+            this.titleMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.titleMenuItem, "titleMenuItem");
+            this.titleMenuItem.Name = "titleMenuItem";
+            // 
+            // headingSeparator
+            // 
+            this.headingSeparator.Name = "headingSeparator";
+            resources.ApplyResources(this.headingSeparator, "headingSeparator");
+            // 
+            // forceSoloMenuItem
+            // 
+            this.forceSoloMenuItem.CheckOnClick = true;
+            this.forceSoloMenuItem.Name = "forceSoloMenuItem";
+            resources.ApplyResources(this.forceSoloMenuItem, "forceSoloMenuItem");
+            this.forceSoloMenuItem.Click += new System.EventHandler(this.ForceSoloMenuItem_Click);
+            // 
+            // PlayerForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ContextMenuStrip = this.debugContextMenuStrip;
             this.Controls.Add(this.totalTimeLabel);
             this.Controls.Add(this.currentTimeLabel);
             this.Controls.Add(this.volumeLabel);
@@ -146,12 +179,13 @@
             this.Controls.Add(this.songJacketPictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "LiveMusicPlayerForm";
+            this.Name = "PlayerForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.JukeboxPlayerForm_FormClosing);
             this.Load += new System.EventHandler(this.LiveMusicPlayerForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.songJacketPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seekTrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.volumeTrackbar)).EndInit();
+            this.debugContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,5 +206,9 @@
         private System.Windows.Forms.Label currentTimeLabel;
         private System.Windows.Forms.Label totalTimeLabel;
         private System.Windows.Forms.Timer updateTimer;
+        private System.Windows.Forms.ContextMenuStrip debugContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem titleMenuItem;
+        private System.Windows.Forms.ToolStripSeparator headingSeparator;
+        private System.Windows.Forms.ToolStripMenuItem forceSoloMenuItem;
     }
 }

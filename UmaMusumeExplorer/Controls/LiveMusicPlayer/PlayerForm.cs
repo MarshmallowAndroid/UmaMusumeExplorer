@@ -285,5 +285,12 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             songMixer.Dispose();
             Close();
         }
+
+        private void ForceSoloMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = sender as ToolStripMenuItem;
+
+            songMixer.ForceSolo = item.Checked;
+        }
     }
 }

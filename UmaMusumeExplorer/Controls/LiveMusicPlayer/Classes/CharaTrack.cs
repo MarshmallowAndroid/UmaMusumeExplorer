@@ -20,6 +20,8 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 
         private readonly List<Trigger> triggers = new();
 
+        private readonly int positionIndex;
+
         private float[] mainBuffer;
         private float[] secondBuffer;
         private float[] targetBuffer;
@@ -50,6 +52,8 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                         partTrigger.MemberPans[index],
                         partTrigger.VolumeRate));
             }
+
+            positionIndex = index;
         }
 
         public WaveFormat WaveFormat => mainSampleProvider.WaveFormat;
@@ -71,7 +75,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             }
         }
 
-        public bool Singing { get; private set; }
+        public bool AlwaysSinging { get; set; }
 
         public int Read(float[] buffer, int offset, int count)
         {
@@ -89,8 +93,6 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                 while (currentSample >= triggers[triggerIndex].Sample)
                 {
                     int activeTrack = triggers[triggerIndex].Track;
-
-                    Singing = activeTrack == 1;
 
                     if (activeTrack == 1)
                         targetBuffer = mainBuffer;
@@ -129,8 +131,17 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                 {
                     int index = i * WaveFormat.Channels + j;
 
-                    if (targetBuffer is null) buffer[index] = 0;
-                    else buffer[index] = targetBuffer[index] * volumeMultiplier;
+                    if (targetBuffer is null || (AlwaysSinging && positionIndex != 0)) buffer[index] = 0;
+                    else
+                    {
+                        if (!AlwaysSinging)
+                            buffer[index] = targetBuffer[index] * volumeMultiplier;
+                        else
+                        {
+                            buffer[index] = mainBuffer[index];
+                            if (secondBuffer is not null) buffer[index] += secondBuffer[index];
+                        }
+                    }
                 }
 
                 currentSample++;
