@@ -24,11 +24,9 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
         private readonly int musicId;
 
         private readonly AssetsManager assetsManager = new();
-
         private readonly PinnedBitmap songJacketPinnedBitmap;
 
         private readonly LiveData liveData;
-        private readonly IEnumerable<LivePermissionData> livePermissionData;
 
         private readonly WaveOutEvent waveOutEvent = new() { DesiredLatency = 250 };
 
@@ -50,21 +48,6 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             musicId = live.MusicId;
 
             liveData = live;
-            livePermissionData = AssetTables.LivePermissionDatas.Where(lpd => lpd.MusicId == musicId);
-
-            if (!livePermissionData.Any())
-            {
-                livePermissionData = new List<LivePermissionData>();
-
-                var matches = UmaDataHelper.GetGameAssetDataRows(ga => ga.BaseName.StartsWith($"snd_bgm_live_{musicId}_chara_") && ga.BaseName.EndsWith(".awb"));
-
-                foreach (var audioAsset in matches)
-                {
-                    int charaId = int.Parse(audioAsset.BaseName.Remove(0, $"snd_bgm_live_{musicId}_chara_".Length)[..4]);
-
-                    (livePermissionData as List<LivePermissionData>).Add(new LivePermissionData() { MusicId = musicId, CharaId = charaId });
-                }
-            }
 
             songJacketPinnedBitmap = UnityAssetHelpers.GetJacket(musicId, 'l');
             songJacketPictureBox.BackgroundImage = songJacketPinnedBitmap.Bitmap;
@@ -90,9 +73,10 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             IEnumerable<GameAsset> audioAssets = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith($"sound/l/{musicId}"));
             AwbReader okeAwb = GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicId}_oke_02.awb")));
 
-            List<AwbReader> charaAwbs = new(GetSingingMembers());
+            int singingMembers = GetSingingMembers();
+            List<AwbReader> charaAwbs = new(singingMembers);
 
-            UnitSetupForm unitSetupForm = new(livePermissionData, GetSingingMembers(), currentCharacterIds);
+            UnitSetupForm unitSetupForm = new(musicId, singingMembers);
             unitSetupForm.Text = songTitleLabel.Text + " " + unitSetupForm.Text;
             ControlHelpers.ShowFormDialogCenter(unitSetupForm, this);
 

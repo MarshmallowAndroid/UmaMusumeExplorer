@@ -14,29 +14,48 @@ using System.Windows.Forms;
 using UmaMusumeData;
 using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Controls.LiveMusicPlayer;
+using UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes;
 
 namespace UmaMusumeExplorer.Controls.Jukebox
 {
     public partial class UnitSetupForm : Form
     {
+        private readonly int id;
         private readonly IEnumerable<LivePermissionData> livePermissionData;
         private readonly CharacterPositionControl[] characterPositions;
 
-        public UnitSetupForm(IEnumerable<LivePermissionData> permissionData, int singingMembers, IEnumerable<int> characterIds)
+        public UnitSetupForm(int musicId, int singingMembers)
         {
             InitializeComponent();
 
-            livePermissionData = permissionData;
+            id = musicId;
+            
+            livePermissionData = AssetTables.LivePermissionDatas.Where(lpd => lpd.MusicId == musicId);
+            if (!livePermissionData.Any())
+            {
+                livePermissionData = new List<LivePermissionData>();
+
+                var matches = UmaDataHelper.GetGameAssetDataRows(ga => ga.BaseName.StartsWith($"snd_bgm_live_{musicId}_chara_") && ga.BaseName.EndsWith(".awb"));
+
+                foreach (var audioAsset in matches)
+                {
+                    int charaId = int.Parse(audioAsset.BaseName.Remove(0, $"snd_bgm_live_{musicId}_chara_".Length)[..4]);
+
+                    (livePermissionData as List<LivePermissionData>).Add(new LivePermissionData() { MusicId = musicId, CharaId = charaId });
+                }
+            }
 
             characterPositions = new CharacterPositionControl[singingMembers];
+
+            SongConfiguration songConfiguration = LiveConfiguration.LoadConfiguration(musicId);
 
             int pivot = characterPositions.Length / 2;
             for (int i = 0; i < characterPositions.Length; i++)
             {
-                CharacterPositionControl characterPositionControl = new CharacterPositionControl(i + 1, livePermissionData, this);
+                CharacterPositionControl characterPositionControl = new(i + 1, livePermissionData, this);
 
-                if (characterIds.Any())
-                    characterPositionControl.CharacterId = characterIds.ElementAt(i);
+                if (songConfiguration is not null)
+                    characterPositionControl.CharacterId = songConfiguration.Members[i];
                 else
                     characterPositionControl.CharacterId = livePermissionData.ElementAt(i).CharaId;
 
@@ -76,6 +95,17 @@ namespace UmaMusumeExplorer.Controls.Jukebox
         private void ConfirmButton_Click(object sender, EventArgs e)
         {
             CharacterPositions = characterPositions;
+
+            int pivot = characterPositions.Length / 2;
+            int[] members = new int[characterPositions.Length];
+            for (int i = 0; i < characterPositions.Length; i++)
+            {
+                members[PositionToIndex(i, pivot)] = characterPositions[i].CharacterId;
+            }
+
+            SongConfiguration songConfiguration = new(id, members);
+            LiveConfiguration.SaveConfiguration(songConfiguration);
+
             Close();
         }
 

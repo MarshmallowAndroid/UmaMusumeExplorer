@@ -16,7 +16,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
         private readonly List<PartTrigger> partTriggers = new();
         private readonly List<VolumeTrigger> volumeTriggers = new();
 
-        private readonly object charaAwbsLock = new();
+        private readonly object readLock = new();
 
         private float[] charaTracksBuffer;
         private float[] okeBuffer;
@@ -56,13 +56,16 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             }
             set
             {
-                okeWaveStream.Position = value;
-                foreach (var charaTrack in charaTracks)
+                lock (readLock)
                 {
-                    charaTrack.Position = okeWaveStream.Position;
+                    okeWaveStream.Position = value;
+                    foreach (var charaTrack in charaTracks)
+                    {
+                        charaTrack.Position = value;
+                    }
+                    currentSample = okeWaveStream.Position / okeWaveStream.WaveFormat.Channels / (okeWaveStream.WaveFormat.BitsPerSample / 8);
+                    volumeTriggerIndex = 0;
                 }
-                currentSample = okeWaveStream.Position / okeWaveStream.WaveFormat.Channels / (okeWaveStream.WaveFormat.BitsPerSample / 8);
-                volumeTriggerIndex = 0;
             }
         }
 
@@ -74,14 +77,19 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 
         public void InitializeCharaTracks(List<AwbReader> charaAwbs)
         {
-            int currentIndex = 0;
-
-            lock (charaAwbsLock)
+            lock (readLock)
             {
+                foreach (var charaTrack in charaTracks)
+                {
+                    charaTrack.Dispose();
+                }
+
                 charaTracks.Clear();
+
+                int currentIndex = 0;
                 foreach (var charaAwb in charaAwbs)
                 {
-                    CharaTrack charaTrack = new CharaTrack(charaAwb, partTriggers, currentIndex++);
+                    CharaTrack charaTrack = new(charaAwb, partTriggers, currentIndex++);
                     charaTrack.Position = okeWaveStream.Position;
                     charaTracks.Add(charaTrack);
                 }
@@ -101,7 +109,9 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                 buffer[i] = 0.0f;
             }
 
-            lock (charaAwbsLock)
+            int read;
+
+            lock (readLock)
             {
                 foreach (var charaTrack in charaTracks)
                 {
@@ -112,34 +122,34 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                         buffer[i] += charaTracksBuffer[i];
                     }
                 }
-            }
 
-            for (int i = offset; i < count / WaveFormat.Channels; i++)
-            {
-                while (currentSample >= volumeTriggers[volumeTriggerIndex].Sample)
+                for (int i = offset; i < count / WaveFormat.Channels; i++)
                 {
-                    if (volumeTriggers[volumeTriggerIndex].ActiveSingers == 1)
-                        volumeMultiplier = 1.0f;
-                    else
-                        volumeMultiplier = 1.0f / (volumeTriggers[volumeTriggerIndex].ActiveSingers + 1) + 0.5f;
+                    while (currentSample >= volumeTriggers[volumeTriggerIndex].Sample)
+                    {
+                        if (volumeTriggers[volumeTriggerIndex].ActiveSingers == 1)
+                            volumeMultiplier = 1.0f;
+                        else
+                            volumeMultiplier = 1.0f / (volumeTriggers[volumeTriggerIndex].ActiveSingers + 1) + 0.5f;
 
-                    if (volumeTriggerIndex < volumeTriggers.Count - 1) volumeTriggerIndex++;
-                    else break;
+                        if (volumeTriggerIndex < volumeTriggers.Count - 1) volumeTriggerIndex++;
+                        else break;
+                    }
+
+                    for (int j = 0; j < WaveFormat.Channels; j++)
+                    {
+                        buffer[i * WaveFormat.Channels + j] *= volumeMultiplier;
+                    }
+
+                    currentSample++;
                 }
 
-                for (int j = 0; j < WaveFormat.Channels; j++)
+                read = okeSampleProvider.Read(okeBuffer, offset, count);
+                for (int i = offset; i < count; i++)
                 {
-                    buffer[i * WaveFormat.Channels + j] *= volumeMultiplier;
+                    buffer[i] += okeBuffer[i];
+                    buffer[i] *= 1.5f;
                 }
-
-                currentSample++;
-            }
-
-            int read = okeSampleProvider.Read(okeBuffer, offset, count);
-            for (int i = offset; i < count; i++)
-            {
-                buffer[i] += okeBuffer[i];
-                buffer[i] *= 1.5f;
             }
 
             return read;
