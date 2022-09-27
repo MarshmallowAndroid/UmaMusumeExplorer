@@ -55,7 +55,7 @@ namespace UmaMusumeExplorer.Controls.Jukebox
 
             int initialCharacter = characterPositionControl.CharacterId;
 
-            CharacterSelectForm characterSelectForm = new(livePermissionData);
+            CharacterSelectForm characterSelectForm = new(livePermissionData, characterPositions);
             ControlHelpers.ShowFormDialogCenter(characterSelectForm, this);
 
             int selectedCharacter = characterSelectForm.SelectedCharacter;

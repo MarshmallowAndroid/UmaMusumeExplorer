@@ -19,8 +19,9 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
         private readonly IEnumerable<CharaData> charaDatas = AssetTables.CharaDatas;
         private readonly IEnumerable<LivePermissionData> livePermissionData;
         private readonly List<int> allowedCharas = new();
+        private readonly List<int> alreadySelected = new();
 
-        public CharacterSelectForm(IEnumerable<LivePermissionData> permissionData)
+        public CharacterSelectForm(IEnumerable<LivePermissionData> permissionData, CharacterPositionControl[] characters)
         {
             InitializeComponent();
 
@@ -28,6 +29,11 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             foreach (var lpd in livePermissionData)
             {
                 allowedCharas.Add(lpd.CharaId);
+            }
+
+            foreach (var character in characters)
+            {
+                alreadySelected.Add(character.CharacterId);
             }
         }
 
@@ -45,25 +51,27 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
         private void CharacterSelectForm_Load(object sender, EventArgs e)
         {
             List<Control> pictureBoxes = new();
-            foreach (var item in charaDatas)
+            foreach (var charaData in charaDatas)
             {
-                if (!allowedCharas.Contains(item.Id)) continue;
+                if (!allowedCharas.Contains(charaData.Id)) continue;
 
                 PictureBox charaIcon = new()
                 {
-                    BackgroundImage = UnityAssetHelpers.GetCharaIcon(item.Id).Bitmap,
+                    BackgroundImage = UnityAssetHelpers.GetCharaIcon(charaData.Id).Bitmap,
                     BackgroundImageLayout = ImageLayout.Zoom,
                     Cursor = Cursors.Hand,
                     Height = 100,
                     Width = 100,
-                    Tag = item
+                    Tag = charaData
                 };
+
+                if (alreadySelected.Contains(charaData.Id)) charaIcon.BackColor = Color.FromArgb(234, 54, 128);
 
                 charaIcon.Click += CharaIcon_Click; ;
                 pictureBoxes.Add(charaIcon);
             }
 
-            flowLayoutPanel1.Controls.AddRange(pictureBoxes.ToArray());
+            flowLayoutPanel.Controls.AddRange(pictureBoxes.ToArray());
         }
     }
 }

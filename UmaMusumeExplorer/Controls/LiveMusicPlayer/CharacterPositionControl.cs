@@ -55,13 +55,5 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
                 Update();
             }
         }
-
-        private void CharacterPictureBox_Click(object sender, EventArgs e)
-        {
-            CharacterSelectForm characterSelectForm = new(livePermissionData);
-            ControlHelpers.ShowFormDialogCenter(characterSelectForm, this);
-
-            CharacterId = characterSelectForm.SelectedCharacter;
-        }
     }
 }
