@@ -21,22 +21,20 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 {
     public partial class PlayerForm : Form
     {
+        private readonly LiveData liveData;
         private readonly int musicId;
 
         private readonly AssetsManager assetsManager = new();
-        private readonly PinnedBitmap songJacketPinnedBitmap;
-
-        private readonly LiveData liveData;
-
-        private readonly WaveOutEvent waveOutEvent = new() { DesiredLatency = 250 };
+        private PinnedBitmap songJacketPinnedBitmap;
 
         private readonly List<LyricsTrigger> lyricsTriggers = new();
         private readonly List<PartTrigger> partTriggers = new();
-        private readonly List<int> currentCharacterIds = new();
 
         private SongMixer songMixer;
+        private readonly WaveOutEvent waveOutEvent = new() { DesiredLatency = 250 };
+
         private readonly Thread lyricsThread;
-        private readonly object lyricsLabelLock = new();
+        private readonly Thread lightsThread;
         private int lyricsTriggerIndex = 0;
         private bool seeked = false;
         private bool playbackFinished = false;
@@ -45,21 +43,20 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
         {
             InitializeComponent();
 
+            liveData = live;
             musicId = live.MusicId;
 
-            liveData = live;
-
-            songJacketPinnedBitmap = UnityAssetHelpers.GetJacket(musicId, 'l');
-            songJacketPictureBox.BackgroundImage = songJacketPinnedBitmap.Bitmap;
-            songTitleLabel.Text = AssetTables.LiveNameTextDatas.First(litd => litd.Index == musicId).Text;
-            songInfoLabel.Text = AssetTables.LiveInfoTextDatas.First(litd => litd.Index == musicId).Text.Replace("\\n", "\n");
+            LoadMusicScore();
 
             lyricsThread = new(DoLyricsPlayback);
         }
 
         private void LiveMusicPlayerForm_Load(object sender, EventArgs e)
         {
-            LoadMusicScore();
+            songJacketPinnedBitmap = UnityAssetHelpers.GetJacket(musicId, 'l');
+            songJacketPictureBox.BackgroundImage = songJacketPinnedBitmap.Bitmap;
+            songTitleLabel.Text = AssetTables.LiveNameTextDatas.First(litd => litd.Index == musicId).Text;
+            songInfoLabel.Text = AssetTables.LiveInfoTextDatas.First(litd => litd.Index == musicId).Text.Replace("\\n", "\n");
 
             if (!SetupUnit())
             {
@@ -70,42 +67,52 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
         private bool SetupUnit()
         {
+            // Get possible audio assets for music ID
             IEnumerable<GameAsset> audioAssets = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith($"sound/l/{musicId}"));
+
+            // Get BGM without sound effects
             AwbReader okeAwb = GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicId}_oke_02.awb")));
 
+            // Retrieve count of members that actually sing
             int singingMembers = GetSingingMembers();
-            List<AwbReader> charaAwbs = new(singingMembers);
 
+            // Launch unit setup
             UnitSetupForm unitSetupForm = new(musicId, singingMembers);
             unitSetupForm.Text = songTitleLabel.Text + " " + unitSetupForm.Text;
             ControlHelpers.ShowFormDialogCenter(unitSetupForm, this);
 
+            // Abort unit setup when character selection is not confirmed
             if (unitSetupForm.CharacterPositions is null) return false;
 
-            Array.Sort(unitSetupForm.CharacterPositions, (a, b) => a.CharacterIndex.CompareTo(b.CharacterIndex));
+            // Sort by position indices
+            Array.Sort(unitSetupForm.CharacterPositions, (a, b) => a.PositionIndex.CompareTo(b.PositionIndex));
 
-            currentCharacterIds.Clear();
+            // Add AWB files for the selected characters
+            List<AwbReader> charaAwbs = new(singingMembers);
             foreach (var item in unitSetupForm.CharacterPositions)
             {
                 charaAwbs.Add(GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicId}_chara_{item.CharacterId}_01.awb"))));
-                currentCharacterIds.Add(item.CharacterId);
             }
 
             long previousPosition = songMixer?.Position ?? 0;
 
+            // Initialize song mixer on first playback
             if (songMixer is null)
             {
                 songMixer = new(okeAwb, partTriggers);
                 waveOutEvent.Init(songMixer);
             }
 
+            // Initialize tracks, can be done during playback
             songMixer.InitializeCharaTracks(charaAwbs);
 
+            // Update the total time and volume track bars
             totalTimeLabel.Text = $"{songMixer.TotalTime:m\\:ss}";
             int volume = (int)Math.Ceiling(waveOutEvent.Volume * 100.0f);
             volumeTrackbar.Value = volume;
             volumeLabel.Text = volume + "%";
 
+            // Unit setup success
             return true;
         }
 
@@ -113,7 +120,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
         {
             IEnumerable<GameAsset> musicScoreAssets = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith($"live/musicscores/m{liveData.MusicId}"));
 
-            if (musicScoreAssets.Count() < 1) return;
+            if (!musicScoreAssets.Any()) return;
 
             List<string> assetPaths = new();
             foreach (var item in musicScoreAssets)
