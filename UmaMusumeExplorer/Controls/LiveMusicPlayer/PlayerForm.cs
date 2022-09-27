@@ -34,7 +34,6 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
         private readonly WaveOutEvent waveOutEvent = new() { DesiredLatency = 250 };
 
         private readonly Thread lyricsThread;
-        private readonly Thread lightsThread;
         private int lyricsTriggerIndex = 0;
         private bool seeked = false;
         private bool playbackFinished = false;
@@ -63,6 +62,8 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
                 Close();
                 return;
             }
+
+            new LightsForm(musicId, songMixer).Show();
         }
 
         private bool SetupUnit()
