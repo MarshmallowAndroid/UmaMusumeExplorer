@@ -1,6 +1,6 @@
 ﻿namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 {
-    partial class LiveMusicPlayerSongSelectControl
+    partial class LiveMusicPlayerControl
     {
         /// <summary> 
         /// Required designer variable.

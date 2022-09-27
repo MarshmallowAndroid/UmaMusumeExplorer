@@ -1,6 +1,6 @@
 ﻿namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 {
-    partial class LiveMusicPlayerForm
+    partial class PlayerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LiveMusicPlayerForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlayerForm));
             this.songJacketPictureBox = new System.Windows.Forms.PictureBox();
             this.songTitleLabel = new System.Windows.Forms.Label();
             this.songInfoLabel = new System.Windows.Forms.Label();

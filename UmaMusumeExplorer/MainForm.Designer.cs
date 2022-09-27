@@ -36,7 +36,7 @@ namespace UmaMusumeExplorer
             this.audioPlayerTabPage = new System.Windows.Forms.TabPage();
             this.audioPlayerControl = new UmaMusumeExplorer.Controls.AudioPlayer.AudioPlayerControl();
             this.liveMusicPlayerTabPage = new System.Windows.Forms.TabPage();
-            this.liveMusicPlayerSongSelectControl = new UmaMusumeExplorer.Controls.LiveMusicPlayer.LiveMusicPlayerSongSelectControl();
+            this.liveMusicPlayerSongSelectControl = new UmaMusumeExplorer.Controls.LiveMusicPlayer.LiveMusicPlayerControl();
             this.characterInfoTabPage = new System.Windows.Forms.TabPage();
             this.characterInfoControl = new UmaMusumeExplorer.Controls.CharacterInfo.CharacterInfoControl();
             this.raceMusicTabPage = new System.Windows.Forms.TabPage();
@@ -145,7 +145,7 @@ namespace UmaMusumeExplorer
         private Controls.CharacterInfo.CharacterInfoControl characterInfoControl;
         private System.Windows.Forms.TabPage fileBrowserTabPage;
         private System.Windows.Forms.TabPage liveMusicPlayerTabPage;
-        private Controls.LiveMusicPlayer.LiveMusicPlayerSongSelectControl liveMusicPlayerSongSelectControl;
+        private Controls.LiveMusicPlayer.LiveMusicPlayerControl liveMusicPlayerSongSelectControl;
         private Controls.FileBrowser.FileBrowserControl fileBrowserControl;
     }
 }

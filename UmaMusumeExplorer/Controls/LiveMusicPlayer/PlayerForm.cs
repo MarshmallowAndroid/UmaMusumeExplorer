@@ -19,7 +19,7 @@ using UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes;
 
 namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 {
-    public partial class LiveMusicPlayerForm : Form
+    public partial class PlayerForm : Form
     {
         private readonly int musicId;
 
@@ -43,7 +43,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
         private bool seeked = false;
         private bool playbackFinished = false;
 
-        public LiveMusicPlayerForm(LiveData live)
+        public PlayerForm(LiveData live)
         {
             InitializeComponent();
 
