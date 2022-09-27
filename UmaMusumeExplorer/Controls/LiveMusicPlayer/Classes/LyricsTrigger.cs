@@ -11,7 +11,8 @@
             string[] columns = lyricsCsvLine.Split(',');
             TimeMs = int.Parse(columns[0]);
             Lyrics = columns[1]
-                .Replace("[COMMA]", ",");
+                .Replace("[COMMA]", ",")
+                .Replace("&", "&&");
         }
     }
 }
