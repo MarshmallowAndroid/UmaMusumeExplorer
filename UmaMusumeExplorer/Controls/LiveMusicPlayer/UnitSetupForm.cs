@@ -53,6 +53,7 @@ namespace UmaMusumeExplorer.Controls.Jukebox
             for (int i = 0; i < characterPositions.Length; i++)
             {
                 CharacterPositionControl characterPositionControl = new(i + 1, livePermissionData, this);
+                characterPositionControl.TabIndex = i;
 
                 if (songConfiguration is not null)
                     characterPositionControl.CharacterId = songConfiguration.Members[i];

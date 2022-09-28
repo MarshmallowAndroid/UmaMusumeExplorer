@@ -116,6 +116,7 @@ namespace UmaMusumeExplorer
             // 
             // raceSimulatorControl
             // 
+            this.raceSimulatorControl.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this.raceSimulatorControl, "raceSimulatorControl");
             this.raceSimulatorControl.Name = "raceSimulatorControl";
             // 

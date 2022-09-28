@@ -82,7 +82,7 @@
     <value>459, 598</value>
   </data>
   <data name="fileListView.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;fileListView.Name" xml:space="preserve">
     <value>fileListView</value>
@@ -112,7 +112,7 @@
     <value>453, 23</value>
   </data>
   <data name="tracksComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;tracksComboBox.Name" xml:space="preserve">
     <value>tracksComboBox</value>
@@ -139,7 +139,7 @@
     <value>384, 22</value>
   </data>
   <data name="loadingProgressBar.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;loadingProgressBar.Name" xml:space="preserve">
     <value>loadingProgressBar</value>
@@ -156,12 +156,156 @@
   <metadata name="tableLayoutPanel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="leftPanel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="rightPanel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="tableLayoutPanel.ColumnCount" type="System.Int32, mscorlib">
     <value>2</value>
+  </data>
+  <data name="&gt;&gt;leftPanel.Name" xml:space="preserve">
+    <value>leftPanel</value>
+  </data>
+  <data name="&gt;&gt;leftPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;leftPanel.Parent" xml:space="preserve">
+    <value>tableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;leftPanel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;rightPanel.Name" xml:space="preserve">
+    <value>rightPanel</value>
+  </data>
+  <data name="&gt;&gt;rightPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rightPanel.Parent" xml:space="preserve">
+    <value>tableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;rightPanel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tableLayoutPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tableLayoutPanel.RowCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>930, 636</value>
+  </data>
+  <data name="tableLayoutPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel.Name" xml:space="preserve">
+    <value>tableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="leftPanel" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="rightPanel" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50,Percent,50" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <metadata name="leftPanel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="refreshButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="audioTypeComboBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="audioTypeLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="loadingFileNameLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="&gt;&gt;refreshButton.Name" xml:space="preserve">
+    <value>refreshButton</value>
+  </data>
+  <data name="&gt;&gt;refreshButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;refreshButton.Parent" xml:space="preserve">
+    <value>leftPanel</value>
+  </data>
+  <data name="&gt;&gt;refreshButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;audioTypeComboBox.Name" xml:space="preserve">
+    <value>audioTypeComboBox</value>
+  </data>
+  <data name="&gt;&gt;audioTypeComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;audioTypeComboBox.Parent" xml:space="preserve">
+    <value>leftPanel</value>
+  </data>
+  <data name="&gt;&gt;audioTypeComboBox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;audioTypeLabel.Name" xml:space="preserve">
+    <value>audioTypeLabel</value>
+  </data>
+  <data name="&gt;&gt;audioTypeLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;audioTypeLabel.Parent" xml:space="preserve">
+    <value>leftPanel</value>
+  </data>
+  <data name="&gt;&gt;audioTypeLabel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;loadingFileNameLabel.Name" xml:space="preserve">
+    <value>loadingFileNameLabel</value>
+  </data>
+  <data name="&gt;&gt;loadingFileNameLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;loadingFileNameLabel.Parent" xml:space="preserve">
+    <value>leftPanel</value>
+  </data>
+  <data name="&gt;&gt;loadingFileNameLabel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="leftPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="leftPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="leftPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>459, 630</value>
+  </data>
+  <data name="leftPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;leftPanel.Name" xml:space="preserve">
+    <value>leftPanel</value>
+  </data>
+  <data name="&gt;&gt;leftPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;leftPanel.Parent" xml:space="preserve">
+    <value>tableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;leftPanel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="refreshButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -175,7 +319,7 @@
     <value>75, 23</value>
   </data>
   <data name="refreshButton.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+    <value>2</value>
   </data>
   <data name="refreshButton.Text" xml:space="preserve">
     <value>Refresh</value>
@@ -220,7 +364,7 @@
     <value>217, 23</value>
   </data>
   <data name="audioTypeComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;audioTypeComboBox.Name" xml:space="preserve">
     <value>audioTypeComboBox</value>
@@ -247,7 +391,7 @@
     <value>65, 15</value>
   </data>
   <data name="audioTypeLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>0</value>
   </data>
   <data name="audioTypeLabel.Text" xml:space="preserve">
     <value>Audio type</value>
@@ -277,7 +421,7 @@
     <value>384, 24</value>
   </data>
   <data name="loadingFileNameLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>4</value>
   </data>
   <data name="loadingFileNameLabel.Text" xml:space="preserve">
     <value>Loading...</value>
@@ -297,33 +441,156 @@
   <data name="&gt;&gt;loadingFileNameLabel.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="leftPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="leftPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="leftPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>459, 630</value>
-  </data>
-  <data name="leftPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;leftPanel.Name" xml:space="preserve">
-    <value>leftPanel</value>
-  </data>
-  <data name="&gt;&gt;leftPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;leftPanel.Parent" xml:space="preserve">
-    <value>tableLayoutPanel</value>
-  </data>
-  <data name="&gt;&gt;leftPanel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <metadata name="rightPanel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="amplifyUpDown.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="amplifyLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="configureLoopButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="saveButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="timeLengthLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="timeElapsedLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="seekTrackBar.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="controlsTableLayoutPanel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="&gt;&gt;amplifyUpDown.Name" xml:space="preserve">
+    <value>amplifyUpDown</value>
+  </data>
+  <data name="&gt;&gt;amplifyUpDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;amplifyUpDown.Parent" xml:space="preserve">
+    <value>rightPanel</value>
+  </data>
+  <data name="&gt;&gt;amplifyUpDown.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;amplifyLabel.Name" xml:space="preserve">
+    <value>amplifyLabel</value>
+  </data>
+  <data name="&gt;&gt;amplifyLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;amplifyLabel.Parent" xml:space="preserve">
+    <value>rightPanel</value>
+  </data>
+  <data name="&gt;&gt;amplifyLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;configureLoopButton.Name" xml:space="preserve">
+    <value>configureLoopButton</value>
+  </data>
+  <data name="&gt;&gt;configureLoopButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;configureLoopButton.Parent" xml:space="preserve">
+    <value>rightPanel</value>
+  </data>
+  <data name="&gt;&gt;configureLoopButton.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;saveButton.Name" xml:space="preserve">
+    <value>saveButton</value>
+  </data>
+  <data name="&gt;&gt;saveButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;saveButton.Parent" xml:space="preserve">
+    <value>rightPanel</value>
+  </data>
+  <data name="&gt;&gt;saveButton.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;timeLengthLabel.Name" xml:space="preserve">
+    <value>timeLengthLabel</value>
+  </data>
+  <data name="&gt;&gt;timeLengthLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;timeLengthLabel.Parent" xml:space="preserve">
+    <value>rightPanel</value>
+  </data>
+  <data name="&gt;&gt;timeLengthLabel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;timeElapsedLabel.Name" xml:space="preserve">
+    <value>timeElapsedLabel</value>
+  </data>
+  <data name="&gt;&gt;timeElapsedLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;timeElapsedLabel.Parent" xml:space="preserve">
+    <value>rightPanel</value>
+  </data>
+  <data name="&gt;&gt;timeElapsedLabel.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;seekTrackBar.Name" xml:space="preserve">
+    <value>seekTrackBar</value>
+  </data>
+  <data name="&gt;&gt;seekTrackBar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;seekTrackBar.Parent" xml:space="preserve">
+    <value>rightPanel</value>
+  </data>
+  <data name="&gt;&gt;seekTrackBar.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;controlsTableLayoutPanel.Name" xml:space="preserve">
+    <value>controlsTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;controlsTableLayoutPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;controlsTableLayoutPanel.Parent" xml:space="preserve">
+    <value>rightPanel</value>
+  </data>
+  <data name="&gt;&gt;controlsTableLayoutPanel.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="controlsTableLayoutPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="prevTrackButton" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="nextTrackButton" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="prevBankButton" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="nextBankButton" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="playButton" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,20,Percent,20,Percent,20,Percent,20,Percent,20" /&gt;&lt;Rows Styles="Percent,100,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="rightPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="rightPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>468, 3</value>
+  </data>
+  <data name="rightPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>459, 630</value>
+  </data>
+  <data name="rightPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;rightPanel.Name" xml:space="preserve">
+    <value>rightPanel</value>
+  </data>
+  <data name="&gt;&gt;rightPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rightPanel.Parent" xml:space="preserve">
+    <value>tableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;rightPanel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <metadata name="amplifyUpDown.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -337,7 +604,7 @@
     <value>67, 23</value>
   </data>
   <data name="amplifyUpDown.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+    <value>8</value>
   </data>
   <data name="&gt;&gt;amplifyUpDown.Name" xml:space="preserve">
     <value>amplifyUpDown</value>
@@ -367,7 +634,7 @@
     <value>82, 15</value>
   </data>
   <data name="amplifyLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>7</value>
   </data>
   <data name="amplifyLabel.Text" xml:space="preserve">
     <value>Amplification:</value>
@@ -397,7 +664,7 @@
     <value>127, 23</value>
   </data>
   <data name="configureLoopButton.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>5</value>
   </data>
   <data name="configureLoopButton.Text" xml:space="preserve">
     <value>Configure loop...</value>
@@ -427,7 +694,7 @@
     <value>127, 23</value>
   </data>
   <data name="saveButton.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>6</value>
   </data>
   <data name="saveButton.Text" xml:space="preserve">
     <value>Save to WAV file...</value>
@@ -457,7 +724,7 @@
     <value>56, 23</value>
   </data>
   <data name="timeLengthLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="timeLengthLabel.Text" xml:space="preserve">
     <value>00:00</value>
@@ -490,7 +757,7 @@
     <value>56, 23</value>
   </data>
   <data name="timeElapsedLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="timeElapsedLabel.Text" xml:space="preserve">
     <value>00:00</value>
@@ -523,7 +790,7 @@
     <value>390, 45</value>
   </data>
   <data name="seekTrackBar.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;seekTrackBar.Name" xml:space="preserve">
     <value>seekTrackBar</value>
@@ -540,11 +807,113 @@
   <metadata name="controlsTableLayoutPanel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="prevTrackButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="nextTrackButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="prevBankButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="nextBankButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="playButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="controlsTableLayoutPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>
   </data>
   <data name="controlsTableLayoutPanel.ColumnCount" type="System.Int32, mscorlib">
     <value>5</value>
+  </data>
+  <data name="&gt;&gt;prevTrackButton.Name" xml:space="preserve">
+    <value>prevTrackButton</value>
+  </data>
+  <data name="&gt;&gt;prevTrackButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;prevTrackButton.Parent" xml:space="preserve">
+    <value>controlsTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;prevTrackButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;nextTrackButton.Name" xml:space="preserve">
+    <value>nextTrackButton</value>
+  </data>
+  <data name="&gt;&gt;nextTrackButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nextTrackButton.Parent" xml:space="preserve">
+    <value>controlsTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;nextTrackButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;prevBankButton.Name" xml:space="preserve">
+    <value>prevBankButton</value>
+  </data>
+  <data name="&gt;&gt;prevBankButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;prevBankButton.Parent" xml:space="preserve">
+    <value>controlsTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;prevBankButton.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;nextBankButton.Name" xml:space="preserve">
+    <value>nextBankButton</value>
+  </data>
+  <data name="&gt;&gt;nextBankButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nextBankButton.Parent" xml:space="preserve">
+    <value>controlsTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;nextBankButton.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;playButton.Name" xml:space="preserve">
+    <value>playButton</value>
+  </data>
+  <data name="&gt;&gt;playButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;playButton.Parent" xml:space="preserve">
+    <value>controlsTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;playButton.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="controlsTableLayoutPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>34, 285</value>
+  </data>
+  <data name="controlsTableLayoutPanel.RowCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="controlsTableLayoutPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>390, 67</value>
+  </data>
+  <data name="controlsTableLayoutPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;controlsTableLayoutPanel.Name" xml:space="preserve">
+    <value>controlsTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;controlsTableLayoutPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;controlsTableLayoutPanel.Parent" xml:space="preserve">
+    <value>rightPanel</value>
+  </data>
+  <data name="&gt;&gt;controlsTableLayoutPanel.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="controlsTableLayoutPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="prevTrackButton" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="nextTrackButton" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="prevBankButton" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="nextBankButton" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="playButton" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,20,Percent,20,Percent,20,Percent,20,Percent,20" /&gt;&lt;Rows Styles="Percent,100,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <metadata name="prevTrackButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -559,7 +928,7 @@
     <value>72, 61</value>
   </data>
   <data name="prevTrackButton.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>1</value>
   </data>
   <data name="prevTrackButton.Text" xml:space="preserve">
     <value>Prev. Track</value>
@@ -589,7 +958,7 @@
     <value>72, 61</value>
   </data>
   <data name="nextTrackButton.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>3</value>
   </data>
   <data name="nextTrackButton.Text" xml:space="preserve">
     <value>Next Track</value>
@@ -619,7 +988,7 @@
     <value>72, 61</value>
   </data>
   <data name="prevBankButton.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>0</value>
   </data>
   <data name="prevBankButton.Text" xml:space="preserve">
     <value>Prev. Bank</value>
@@ -649,7 +1018,7 @@
     <value>72, 61</value>
   </data>
   <data name="nextBankButton.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>4</value>
   </data>
   <data name="nextBankButton.Text" xml:space="preserve">
     <value>Next Bank</value>
@@ -679,7 +1048,7 @@
     <value>72, 61</value>
   </data>
   <data name="playButton.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="playButton.Text" xml:space="preserve">
     <value>Toggle Play</value>
@@ -695,87 +1064,6 @@
   </data>
   <data name="&gt;&gt;playButton.ZOrder" xml:space="preserve">
     <value>4</value>
-  </data>
-  <data name="controlsTableLayoutPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>34, 285</value>
-  </data>
-  <data name="controlsTableLayoutPanel.RowCount" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="controlsTableLayoutPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>390, 67</value>
-  </data>
-  <data name="controlsTableLayoutPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;controlsTableLayoutPanel.Name" xml:space="preserve">
-    <value>controlsTableLayoutPanel</value>
-  </data>
-  <data name="&gt;&gt;controlsTableLayoutPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;controlsTableLayoutPanel.Parent" xml:space="preserve">
-    <value>rightPanel</value>
-  </data>
-  <data name="&gt;&gt;controlsTableLayoutPanel.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="controlsTableLayoutPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="prevTrackButton" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="nextTrackButton" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="prevBankButton" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="nextBankButton" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="playButton" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,20,Percent,20,Percent,20,Percent,20,Percent,20" /&gt;&lt;Rows Styles="Percent,100,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
-  <data name="rightPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="rightPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>468, 3</value>
-  </data>
-  <data name="rightPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>459, 630</value>
-  </data>
-  <data name="rightPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;rightPanel.Name" xml:space="preserve">
-    <value>rightPanel</value>
-  </data>
-  <data name="&gt;&gt;rightPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rightPanel.Parent" xml:space="preserve">
-    <value>tableLayoutPanel</value>
-  </data>
-  <data name="&gt;&gt;rightPanel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tableLayoutPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tableLayoutPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="tableLayoutPanel.RowCount" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="tableLayoutPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>930, 636</value>
-  </data>
-  <data name="tableLayoutPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel.Name" xml:space="preserve">
-    <value>tableLayoutPanel</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tableLayoutPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="leftPanel" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="rightPanel" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50,Percent,50" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <metadata name="updateTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>215, 17</value>

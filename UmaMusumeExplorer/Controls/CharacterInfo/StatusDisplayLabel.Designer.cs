@@ -63,7 +63,7 @@
             this.statusMaxValueLabel.Margin = new System.Windows.Forms.Padding(0);
             this.statusMaxValueLabel.Name = "statusMaxValueLabel";
             this.statusMaxValueLabel.Size = new System.Drawing.Size(52, 17);
-            this.statusMaxValueLabel.TabIndex = 1;
+            this.statusMaxValueLabel.TabIndex = 2;
             this.statusMaxValueLabel.Text = "/1200";
             // 
             // statusValueLabel
@@ -88,7 +88,7 @@
             this.statusRankLabel.Name = "statusRankLabel";
             this.tableLayoutPanel.SetRowSpan(this.statusRankLabel, 2);
             this.statusRankLabel.Size = new System.Drawing.Size(52, 56);
-            this.statusRankLabel.TabIndex = 1;
+            this.statusRankLabel.TabIndex = 0;
             this.statusRankLabel.Text = "SS+";
             this.statusRankLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 

@@ -100,7 +100,7 @@
     <value>523, 74</value>
   </data>
   <data name="songTitleLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="songTitleLabel.Text" xml:space="preserve">
     <value>？？？</value>
@@ -166,7 +166,7 @@
     <value>523, 58</value>
   </data>
   <data name="lyricsLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="lyricsLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
@@ -196,7 +196,7 @@
     <value>185, 51</value>
   </data>
   <data name="playButton.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>7</value>
   </data>
   <data name="playButton.Text" xml:space="preserve">
     <value>Toggle Play</value>
@@ -226,7 +226,7 @@
     <value>70, 51</value>
   </data>
   <data name="stopButton.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>8</value>
   </data>
   <data name="stopButton.Text" xml:space="preserve">
     <value>Stop</value>
@@ -256,7 +256,7 @@
     <value>70, 51</value>
   </data>
   <data name="setupButton.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>6</value>
   </data>
   <data name="setupButton.Text" xml:space="preserve">
     <value>Setup</value>
@@ -283,7 +283,7 @@
     <value>523, 45</value>
   </data>
   <data name="seekTrackBar.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;seekTrackBar.Name" xml:space="preserve">
     <value>seekTrackBar</value>
@@ -307,7 +307,7 @@
     <value>247, 45</value>
   </data>
   <data name="volumeTrackbar.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>9</value>
   </data>
   <data name="&gt;&gt;volumeTrackbar.Name" xml:space="preserve">
     <value>volumeTrackbar</value>
@@ -334,7 +334,7 @@
     <value>23, 15</value>
   </data>
   <data name="volumeLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>10</value>
   </data>
   <data name="volumeLabel.Text" xml:space="preserve">
     <value>0%</value>
@@ -364,7 +364,7 @@
     <value>70, 34</value>
   </data>
   <data name="currentTimeLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>3</value>
   </data>
   <data name="currentTimeLabel.Text" xml:space="preserve">
     <value>0:00</value>
@@ -397,7 +397,7 @@
     <value>70, 34</value>
   </data>
   <data name="totalTimeLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="totalTimeLabel.Text" xml:space="preserve">
     <value>0:00</value>
@@ -427,22 +427,22 @@
     <value>False</value>
   </data>
   <data name="titleMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>164, 22</value>
   </data>
   <data name="titleMenuItem.Text" xml:space="preserve">
     <value>Debug Menu</value>
   </data>
   <data name="headingSeparator.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>161, 6</value>
   </data>
   <data name="forceSoloMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>164, 22</value>
   </data>
   <data name="forceSoloMenuItem.Text" xml:space="preserve">
     <value>Force center solo</value>
   </data>
   <data name="debugContextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 76</value>
+    <value>165, 54</value>
   </data>
   <data name="debugContextMenuStrip.Text" xml:space="preserve">
     <value>Debug Menu</value>

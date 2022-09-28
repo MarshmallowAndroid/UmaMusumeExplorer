@@ -203,7 +203,7 @@
     <value>liveMusicPlayerSongSelectControl</value>
   </data>
   <data name="&gt;&gt;liveMusicPlayerSongSelectControl.Type" xml:space="preserve">
-    <value>UmaMusumeExplorer.Controls.LiveMusicPlayer.LiveMusicPlayerSongSelectControl, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
+    <value>UmaMusumeExplorer.Controls.LiveMusicPlayer.LiveMusicPlayerControl, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;liveMusicPlayerSongSelectControl.Parent" xml:space="preserve">
     <value>liveMusicPlayerTabPage</value>
@@ -356,7 +356,7 @@
     <value>996, 668</value>
   </data>
   <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
     <value>tabControl</value>

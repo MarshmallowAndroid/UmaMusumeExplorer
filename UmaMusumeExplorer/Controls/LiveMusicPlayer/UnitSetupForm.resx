@@ -148,7 +148,7 @@
     <value>431, 331</value>
   </data>
   <data name="tableLayoutPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel.Name" xml:space="preserve">
     <value>tableLayoutPanel</value>

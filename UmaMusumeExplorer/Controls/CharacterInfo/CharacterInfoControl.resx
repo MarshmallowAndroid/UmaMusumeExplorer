@@ -73,7 +73,7 @@
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="loadingProgressBar.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;loadingProgressBar.Name" xml:space="preserve">
     <value>loadingProgressBar</value>
@@ -106,7 +106,7 @@
     <value>727, 389</value>
   </data>
   <data name="charactersPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;charactersPanel.Name" xml:space="preserve">
     <value>charactersPanel</value>
@@ -133,7 +133,7 @@
     <value>68, 15</value>
   </data>
   <data name="selectLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>0</value>
   </data>
   <data name="selectLabel.Text" xml:space="preserve">
     <value>Select by ID</value>
@@ -160,7 +160,7 @@
     <value>75, 23</value>
   </data>
   <data name="goButton.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>2</value>
   </data>
   <data name="goButton.Text" xml:space="preserve">
     <value>Go</value>
@@ -187,7 +187,7 @@
     <value>196, 23</value>
   </data>
   <data name="charaListComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;charaListComboBox.Name" xml:space="preserve">
     <value>charaListComboBox</value>

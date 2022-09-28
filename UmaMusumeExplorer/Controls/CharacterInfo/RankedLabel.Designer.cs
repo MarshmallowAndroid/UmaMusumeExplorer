@@ -54,7 +54,7 @@
             this.rankLabel.Margin = new System.Windows.Forms.Padding(0);
             this.rankLabel.Name = "rankLabel";
             this.rankLabel.Size = new System.Drawing.Size(21, 21);
-            this.rankLabel.TabIndex = 0;
+            this.rankLabel.TabIndex = 1;
             this.rankLabel.Text = "G";
             // 
             // tableLayoutPanel
@@ -70,7 +70,7 @@
             this.tableLayoutPanel.RowCount = 1;
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel.Size = new System.Drawing.Size(132, 28);
-            this.tableLayoutPanel.TabIndex = 1;
+            this.tableLayoutPanel.TabIndex = 0;
             // 
             // RankedLabel
             // 

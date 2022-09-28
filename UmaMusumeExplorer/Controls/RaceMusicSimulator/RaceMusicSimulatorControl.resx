@@ -93,7 +93,7 @@
     <value>75, 23</value>
   </data>
   <data name="loadButton.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="loadButton.Text" xml:space="preserve">
     <value>Load</value>
@@ -130,7 +130,7 @@
     <value>102, 23</value>
   </data>
   <data name="entryTableCuesheetNameTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;entryTableCuesheetNameTextBox.Name" xml:space="preserve">
     <value>entryTableCuesheetNameTextBox</value>
@@ -178,7 +178,7 @@
     <value>208, 23</value>
   </data>
   <data name="entryTableCueNameTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;entryTableCueNameTextBox.Name" xml:space="preserve">
     <value>entryTableCueNameTextBox</value>
@@ -202,7 +202,7 @@
     <value>208, 23</value>
   </data>
   <data name="paddockCueNameTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;paddockCueNameTextBox.Name" xml:space="preserve">
     <value>paddockCueNameTextBox</value>
@@ -229,7 +229,7 @@
     <value>64, 15</value>
   </data>
   <data name="entryTableLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="entryTableLabel.Text" xml:space="preserve">
     <value>Entry Table</value>
@@ -283,7 +283,7 @@
     <value>328, 126</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>0</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Intro</value>
@@ -319,7 +319,7 @@
     <value>121, 23</value>
   </data>
   <data name="firstPatternLengthComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;firstPatternLengthComboBox.Name" xml:space="preserve">
     <value>firstPatternLengthComboBox</value>
@@ -343,7 +343,7 @@
     <value>102, 23</value>
   </data>
   <data name="firstPatternCuesheetNameTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;firstPatternCuesheetNameTextBox.Name" xml:space="preserve">
     <value>firstPatternCuesheetNameTextBox</value>
@@ -367,7 +367,7 @@
     <value>208, 23</value>
   </data>
   <data name="firstPatternCueNameTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;firstPatternCueNameTextBox.Name" xml:space="preserve">
     <value>firstPatternCueNameTextBox</value>
@@ -418,7 +418,7 @@
     <value>328, 96</value>
   </data>
   <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="groupBox3.Text" xml:space="preserve">
     <value>First Pattern (Running)</value>
@@ -457,7 +457,7 @@
     <value>67, 23</value>
   </data>
   <data name="amplifyUpDown.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
+    <value>12</value>
   </data>
   <data name="&gt;&gt;amplifyUpDown.Name" xml:space="preserve">
     <value>amplifyUpDown</value>
@@ -487,7 +487,7 @@
     <value>82, 15</value>
   </data>
   <data name="amplifyLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
+    <value>11</value>
   </data>
   <data name="amplifyLabel.Text" xml:space="preserve">
     <value>Amplification:</value>
@@ -514,7 +514,7 @@
     <value>124, 54</value>
   </data>
   <data name="stopButton.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>10</value>
   </data>
   <data name="stopButton.Text" xml:space="preserve">
     <value>Stop</value>
@@ -541,7 +541,7 @@
     <value>124, 54</value>
   </data>
   <data name="togglePlayButton.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>9</value>
   </data>
   <data name="togglePlayButton.Text" xml:space="preserve">
     <value>Toggle Play</value>
@@ -568,7 +568,7 @@
     <value>124, 23</value>
   </data>
   <data name="playLastSpurtButton.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="playLastSpurtButton.Text" xml:space="preserve">
     <value>Play Last Spurt</value>
@@ -595,7 +595,7 @@
     <value>124, 23</value>
   </data>
   <data name="playRunningButton.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="playRunningButton.Text" xml:space="preserve">
     <value>Play Running</value>
@@ -622,7 +622,7 @@
     <value>124, 23</value>
   </data>
   <data name="playRaceResultButton.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>8</value>
   </data>
   <data name="playRaceResultButton.Text" xml:space="preserve">
     <value>Play Race Result</value>
@@ -649,7 +649,7 @@
     <value>124, 23</value>
   </data>
   <data name="playEntryTableButton.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="playEntryTableButton.Text" xml:space="preserve">
     <value>Play Entry Table</value>
@@ -721,7 +721,7 @@
     <value>121, 23</value>
   </data>
   <data name="raceResultComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;raceResultComboBox.Name" xml:space="preserve">
     <value>raceResultComboBox</value>
@@ -745,7 +745,7 @@
     <value>102, 23</value>
   </data>
   <data name="resultListCuesheetNameTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;resultListCuesheetNameTextBox.Name" xml:space="preserve">
     <value>resultListCuesheetNameTextBox</value>
@@ -769,7 +769,7 @@
     <value>208, 23</value>
   </data>
   <data name="resultListCueNameTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;resultListCueNameTextBox.Name" xml:space="preserve">
     <value>resultListCueNameTextBox</value>
@@ -793,7 +793,7 @@
     <value>102, 23</value>
   </data>
   <data name="resultCutInCuesheetNameTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;resultCutInCuesheetNameTextBox.Name" xml:space="preserve">
     <value>resultCutInCuesheetNameTextBox</value>
@@ -817,7 +817,7 @@
     <value>208, 23</value>
   </data>
   <data name="resultCutInCueNameTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;resultCutInCueNameTextBox.Name" xml:space="preserve">
     <value>resultCutInCueNameTextBox</value>
@@ -844,7 +844,7 @@
     <value>60, 15</value>
   </data>
   <data name="resultListLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>5</value>
   </data>
   <data name="resultListLabel.Text" xml:space="preserve">
     <value>Result List</value>
@@ -874,7 +874,7 @@
     <value>39, 15</value>
   </data>
   <data name="cutInLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="cutInLabel.Text" xml:space="preserve">
     <value>Cut In</value>
@@ -964,7 +964,7 @@
     <value>121, 23</value>
   </data>
   <data name="secondPatternLengthComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;secondPatternLengthComboBox.Name" xml:space="preserve">
     <value>secondPatternLengthComboBox</value>
@@ -988,7 +988,7 @@
     <value>102, 23</value>
   </data>
   <data name="secondPatternCuesheetNameTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;secondPatternCuesheetNameTextBox.Name" xml:space="preserve">
     <value>secondPatternCuesheetNameTextBox</value>
@@ -1012,7 +1012,7 @@
     <value>208, 23</value>
   </data>
   <data name="secondPatternCueNameTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;secondPatternCueNameTextBox.Name" xml:space="preserve">
     <value>secondPatternCueNameTextBox</value>
@@ -1063,7 +1063,7 @@
     <value>328, 96</value>
   </data>
   <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="groupBox4.Text" xml:space="preserve">
     <value>Second Pattern (Last Spurt)</value>
@@ -1087,7 +1087,7 @@
     <value>694, 437</value>
   </data>
   <data name="panel.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;panel.Name" xml:space="preserve">
     <value>panel</value>

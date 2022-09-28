@@ -57,6 +57,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="genderLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="genderLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -72,7 +75,7 @@
     <value>31, 21</value>
   </data>
   <data name="genderLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>1</value>
   </data>
   <data name="genderLabel.Text" xml:space="preserve">
     <value>???</value>
@@ -89,6 +92,9 @@
   <data name="&gt;&gt;genderLabel.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <metadata name="birthdayLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="birthdayLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -102,7 +108,7 @@
     <value>78, 21</value>
   </data>
   <data name="birthdayLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>3</value>
   </data>
   <data name="birthdayLabel.Text" xml:space="preserve">
     <value>??/??/????</value>
@@ -119,6 +125,9 @@
   <data name="&gt;&gt;birthdayLabel.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <metadata name="iconPictureBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="iconPictureBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 12</value>
   </data>
@@ -144,6 +153,9 @@
   <data name="&gt;&gt;iconPictureBox.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
+  <metadata name="cvNameLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="cvNameLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -157,7 +169,7 @@
     <value>100, 25</value>
   </data>
   <data name="cvNameLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="cvNameLabel.Text" xml:space="preserve">
     <value>CV.？？？</value>
@@ -174,6 +186,9 @@
   <data name="&gt;&gt;cvNameLabel.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <metadata name="nameLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="nameLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -187,7 +202,7 @@
     <value>104, 37</value>
   </data>
   <data name="nameLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>0</value>
   </data>
   <data name="nameLabel.Text" xml:space="preserve">
     <value>？？？</value>
@@ -204,6 +219,9 @@
   <data name="&gt;&gt;nameLabel.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <metadata name="genderHintLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="genderHintLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -217,7 +235,7 @@
     <value>65, 21</value>
   </data>
   <data name="genderHintLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>0</value>
   </data>
   <data name="genderHintLabel.Text" xml:space="preserve">
     <value>Gender</value>
@@ -234,6 +252,9 @@
   <data name="&gt;&gt;genderHintLabel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="birthDateHintLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="birthDateHintLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -247,7 +268,7 @@
     <value>85, 21</value>
   </data>
   <data name="birthDateHintLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>2</value>
   </data>
   <data name="birthDateHintLabel.Text" xml:space="preserve">
     <value>Birth date</value>
@@ -264,6 +285,9 @@
   <data name="&gt;&gt;birthDateHintLabel.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <metadata name="belowNameTablePanel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="belowNameTablePanel.ColumnCount" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
@@ -277,7 +301,7 @@
     <value>385, 55</value>
   </data>
   <data name="belowNameTablePanel.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;belowNameTablePanel.Name" xml:space="preserve">
     <value>belowNameTablePanel</value>
@@ -294,6 +318,9 @@
   <data name="belowNameTablePanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="genderHintLabel" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="birthDateHintLabel" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="birthdayLabel" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="genderLabel" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
+  <metadata name="costumeComboBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="costumeComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>73, 168</value>
   </data>
@@ -301,7 +328,7 @@
     <value>167, 23</value>
   </data>
   <data name="costumeComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;costumeComboBox.Name" xml:space="preserve">
     <value>costumeComboBox</value>
@@ -315,6 +342,9 @@
   <data name="&gt;&gt;costumeComboBox.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <metadata name="costumeHintLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="costumeHintLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -325,7 +355,7 @@
     <value>55, 15</value>
   </data>
   <data name="costumeHintLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+    <value>3</value>
   </data>
   <data name="costumeHintLabel.Text" xml:space="preserve">
     <value>Costume</value>
@@ -342,6 +372,9 @@
   <data name="&gt;&gt;costumeHintLabel.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <metadata name="statsTablePanel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="statsTablePanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
@@ -351,6 +384,9 @@
   <data name="statsTablePanel.ColumnCount" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
+  <metadata name="speedStatusDisplayLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="speedStatusDisplayLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -367,7 +403,7 @@
     <value>86, 60</value>
   </data>
   <data name="speedStatusDisplayLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;speedStatusDisplayLabel.Name" xml:space="preserve">
     <value>speedStatusDisplayLabel</value>
@@ -381,6 +417,9 @@
   <data name="&gt;&gt;speedStatusDisplayLabel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="speedHintLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="speedHintLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -394,7 +433,7 @@
     <value>39, 15</value>
   </data>
   <data name="speedHintLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>0</value>
   </data>
   <data name="speedHintLabel.Text" xml:space="preserve">
     <value>Speed</value>
@@ -411,6 +450,9 @@
   <data name="&gt;&gt;speedHintLabel.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <metadata name="staminaHintLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="staminaHintLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -424,7 +466,7 @@
     <value>50, 15</value>
   </data>
   <data name="staminaHintLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>2</value>
   </data>
   <data name="staminaHintLabel.Text" xml:space="preserve">
     <value>Stamina</value>
@@ -441,6 +483,9 @@
   <data name="&gt;&gt;staminaHintLabel.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <metadata name="powerHintLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="powerHintLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -454,7 +499,7 @@
     <value>40, 15</value>
   </data>
   <data name="powerHintLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>4</value>
   </data>
   <data name="powerHintLabel.Text" xml:space="preserve">
     <value>Power</value>
@@ -471,6 +516,9 @@
   <data name="&gt;&gt;powerHintLabel.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <metadata name="gutsHintLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="gutsHintLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -484,7 +532,7 @@
     <value>31, 15</value>
   </data>
   <data name="gutsHintLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>6</value>
   </data>
   <data name="gutsHintLabel.Text" xml:space="preserve">
     <value>Guts</value>
@@ -501,6 +549,9 @@
   <data name="&gt;&gt;gutsHintLabel.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <metadata name="wisdomHintLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="wisdomHintLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -514,7 +565,7 @@
     <value>51, 15</value>
   </data>
   <data name="wisdomHintLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>8</value>
   </data>
   <data name="wisdomHintLabel.Text" xml:space="preserve">
     <value>Wisdom</value>
@@ -531,6 +582,9 @@
   <data name="&gt;&gt;wisdomHintLabel.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <metadata name="staminaStatusDisplayLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="staminaStatusDisplayLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -547,7 +601,7 @@
     <value>86, 60</value>
   </data>
   <data name="staminaStatusDisplayLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;staminaStatusDisplayLabel.Name" xml:space="preserve">
     <value>staminaStatusDisplayLabel</value>
@@ -561,6 +615,9 @@
   <data name="&gt;&gt;staminaStatusDisplayLabel.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <metadata name="powerStatusDisplayLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="powerStatusDisplayLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -577,7 +634,7 @@
     <value>86, 60</value>
   </data>
   <data name="powerStatusDisplayLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;powerStatusDisplayLabel.Name" xml:space="preserve">
     <value>powerStatusDisplayLabel</value>
@@ -591,6 +648,9 @@
   <data name="&gt;&gt;powerStatusDisplayLabel.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <metadata name="gutsStatusDisplayLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="gutsStatusDisplayLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -607,7 +667,7 @@
     <value>86, 60</value>
   </data>
   <data name="gutsStatusDisplayLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;gutsStatusDisplayLabel.Name" xml:space="preserve">
     <value>gutsStatusDisplayLabel</value>
@@ -621,6 +681,9 @@
   <data name="&gt;&gt;gutsStatusDisplayLabel.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <metadata name="wisdomStatusDisplayLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="wisdomStatusDisplayLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -637,7 +700,7 @@
     <value>86, 60</value>
   </data>
   <data name="wisdomStatusDisplayLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>9</value>
   </data>
   <data name="&gt;&gt;wisdomStatusDisplayLabel.Name" xml:space="preserve">
     <value>wisdomStatusDisplayLabel</value>
@@ -661,7 +724,7 @@
     <value>577, 91</value>
   </data>
   <data name="statsTablePanel.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;statsTablePanel.Name" xml:space="preserve">
     <value>statsTablePanel</value>
@@ -678,12 +741,18 @@
   <data name="statsTablePanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="speedStatusDisplayLabel" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="speedHintLabel" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="staminaHintLabel" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="powerHintLabel" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="gutsHintLabel" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="wisdomHintLabel" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="staminaStatusDisplayLabel" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="powerStatusDisplayLabel" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="gutsStatusDisplayLabel" Row="1" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="wisdomStatusDisplayLabel" Row="1" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,20,Percent,20,Percent,20,Percent,20,Percent,20" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
+  <metadata name="aptitudeTableLayoutPanel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="aptitudeTableLayoutPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
   <data name="aptitudeTableLayoutPanel.ColumnCount" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
+  <metadata name="driveInRankedLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="driveInRankedLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -694,7 +763,7 @@
     <value>112, 28</value>
   </data>
   <data name="driveInRankedLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>12</value>
   </data>
   <data name="driveInRankedLabel.Text" xml:space="preserve">
     <value>Drive-in</value>
@@ -711,6 +780,9 @@
   <data name="&gt;&gt;driveInRankedLabel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="dirtRankedLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="dirtRankedLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -721,7 +793,7 @@
     <value>109, 27</value>
   </data>
   <data name="dirtRankedLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>2</value>
   </data>
   <data name="dirtRankedLabel.Text" xml:space="preserve">
     <value>Dirt</value>
@@ -738,6 +810,9 @@
   <data name="&gt;&gt;dirtRankedLabel.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <metadata name="turfRankedLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="turfRankedLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -748,7 +823,7 @@
     <value>109, 27</value>
   </data>
   <data name="turfRankedLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>1</value>
   </data>
   <data name="turfRankedLabel.Text" xml:space="preserve">
     <value>Turf</value>
@@ -765,6 +840,9 @@
   <data name="&gt;&gt;turfRankedLabel.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <metadata name="fieldAptitudeLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="fieldAptitudeLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -778,7 +856,7 @@
     <value>79, 15</value>
   </data>
   <data name="fieldAptitudeLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>0</value>
   </data>
   <data name="fieldAptitudeLabel.Text" xml:space="preserve">
     <value>Field aptitude</value>
@@ -795,6 +873,9 @@
   <data name="&gt;&gt;fieldAptitudeLabel.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <metadata name="distanceAptitudeLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="distanceAptitudeLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -808,7 +889,7 @@
     <value>99, 15</value>
   </data>
   <data name="distanceAptitudeLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>3</value>
   </data>
   <data name="distanceAptitudeLabel.Text" xml:space="preserve">
     <value>Distance aptitude</value>
@@ -825,6 +906,9 @@
   <data name="&gt;&gt;distanceAptitudeLabel.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <metadata name="runningStyleAptitudeLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="runningStyleAptitudeLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -838,7 +922,7 @@
     <value>82, 30</value>
   </data>
   <data name="runningStyleAptitudeLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>8</value>
   </data>
   <data name="runningStyleAptitudeLabel.Text" xml:space="preserve">
     <value>Running style aptitude</value>
@@ -855,6 +939,9 @@
   <data name="&gt;&gt;runningStyleAptitudeLabel.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <metadata name="shortRankedLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="shortRankedLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -865,7 +952,7 @@
     <value>109, 27</value>
   </data>
   <data name="shortRankedLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>4</value>
   </data>
   <data name="shortRankedLabel.Text" xml:space="preserve">
     <value>Short</value>
@@ -882,6 +969,9 @@
   <data name="&gt;&gt;shortRankedLabel.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <metadata name="mileRankedLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="mileRankedLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -892,7 +982,7 @@
     <value>109, 27</value>
   </data>
   <data name="mileRankedLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>5</value>
   </data>
   <data name="mileRankedLabel.Text" xml:space="preserve">
     <value>Mile</value>
@@ -909,6 +999,9 @@
   <data name="&gt;&gt;mileRankedLabel.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <metadata name="middleRankedLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="middleRankedLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -919,7 +1012,7 @@
     <value>109, 27</value>
   </data>
   <data name="middleRankedLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>6</value>
   </data>
   <data name="middleRankedLabel.Text" xml:space="preserve">
     <value>Middle</value>
@@ -936,6 +1029,9 @@
   <data name="&gt;&gt;middleRankedLabel.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <metadata name="longRankedLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="longRankedLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -946,7 +1042,7 @@
     <value>112, 27</value>
   </data>
   <data name="longRankedLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>7</value>
   </data>
   <data name="longRankedLabel.Text" xml:space="preserve">
     <value>Long</value>
@@ -963,6 +1059,9 @@
   <data name="&gt;&gt;longRankedLabel.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <metadata name="escapeRankedLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="escapeRankedLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -973,7 +1072,7 @@
     <value>109, 28</value>
   </data>
   <data name="escapeRankedLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>9</value>
   </data>
   <data name="escapeRankedLabel.Text" xml:space="preserve">
     <value>Escape</value>
@@ -990,6 +1089,9 @@
   <data name="&gt;&gt;escapeRankedLabel.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
+  <metadata name="leadingRankedLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="leadingRankedLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -1000,7 +1102,7 @@
     <value>109, 28</value>
   </data>
   <data name="leadingRankedLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>10</value>
   </data>
   <data name="leadingRankedLabel.Text" xml:space="preserve">
     <value>Leading</value>
@@ -1017,6 +1119,9 @@
   <data name="&gt;&gt;leadingRankedLabel.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
+  <metadata name="insertRankedLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="insertRankedLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -1027,7 +1132,7 @@
     <value>109, 28</value>
   </data>
   <data name="insertRankedLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>11</value>
   </data>
   <data name="insertRankedLabel.Text" xml:space="preserve">
     <value>Insert</value>
@@ -1054,7 +1159,7 @@
     <value>578, 100</value>
   </data>
   <data name="aptitudeTableLayoutPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>8</value>
   </data>
   <data name="&gt;&gt;aptitudeTableLayoutPanel.Name" xml:space="preserve">
     <value>aptitudeTableLayoutPanel</value>
@@ -1071,12 +1176,18 @@
   <data name="aptitudeTableLayoutPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="driveInRankedLabel" Row="2" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="dirtRankedLabel" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="turfRankedLabel" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="fieldAptitudeLabel" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="distanceAptitudeLabel" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="runningStyleAptitudeLabel" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="shortRankedLabel" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="mileRankedLabel" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="middleRankedLabel" Row="1" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="longRankedLabel" Row="1" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="escapeRankedLabel" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="leadingRankedLabel" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="insertRankedLabel" Row="2" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,20,Percent,20,Percent,20,Percent,20,Percent,20" /&gt;&lt;Rows Styles="Percent,33.33333,Percent,33.33333,Percent,33.33333" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
+  <metadata name="tableLayoutPanel1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="tableLayoutPanel1.CellBorderStyle" type="System.Windows.Forms.TableLayoutPanelCellBorderStyle, System.Windows.Forms">
     <value>Single</value>
   </data>
   <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
+  <metadata name="statusDisplayLabel1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="statusDisplayLabel1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -1107,6 +1218,9 @@
   <data name="&gt;&gt;statusDisplayLabel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="label4.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="label4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -1158,6 +1272,9 @@
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="statusDisplayLabel1" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label4" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,20,Percent,20,Percent,20,Percent,20,Percent,20" /&gt;&lt;Rows Styles="Absolute,20,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
+  <metadata name="label5.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="label5.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -1182,6 +1299,9 @@
   <data name="&gt;&gt;label5.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <metadata name="growthRateTableLayoutPanel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="growthRateTableLayoutPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
@@ -1191,6 +1311,9 @@
   <data name="growthRateTableLayoutPanel.ColumnCount" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
+  <metadata name="speedGrowthLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="speedGrowthLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -1207,7 +1330,7 @@
     <value>33, 21</value>
   </data>
   <data name="speedGrowthLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>0</value>
   </data>
   <data name="speedGrowthLabel.Text" xml:space="preserve">
     <value>0%</value>
@@ -1224,6 +1347,9 @@
   <data name="&gt;&gt;speedGrowthLabel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="staminaGrowthLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="staminaGrowthLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -1240,7 +1366,7 @@
     <value>33, 21</value>
   </data>
   <data name="staminaGrowthLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>1</value>
   </data>
   <data name="staminaGrowthLabel.Text" xml:space="preserve">
     <value>0%</value>
@@ -1257,6 +1383,9 @@
   <data name="&gt;&gt;staminaGrowthLabel.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <metadata name="powerGrowthLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="powerGrowthLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -1273,7 +1402,7 @@
     <value>33, 21</value>
   </data>
   <data name="powerGrowthLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>2</value>
   </data>
   <data name="powerGrowthLabel.Text" xml:space="preserve">
     <value>0%</value>
@@ -1290,6 +1419,9 @@
   <data name="&gt;&gt;powerGrowthLabel.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <metadata name="gutsGrowthLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="gutsGrowthLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -1306,7 +1438,7 @@
     <value>33, 21</value>
   </data>
   <data name="gutsGrowthLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>3</value>
   </data>
   <data name="gutsGrowthLabel.Text" xml:space="preserve">
     <value>0%</value>
@@ -1323,6 +1455,9 @@
   <data name="&gt;&gt;gutsGrowthLabel.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <metadata name="wisdomGrowthLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="wisdomGrowthLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -1339,7 +1474,7 @@
     <value>33, 21</value>
   </data>
   <data name="wisdomGrowthLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>4</value>
   </data>
   <data name="wisdomGrowthLabel.Text" xml:space="preserve">
     <value>0%</value>
@@ -1366,7 +1501,7 @@
     <value>577, 32</value>
   </data>
   <data name="growthRateTableLayoutPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>10</value>
   </data>
   <data name="&gt;&gt;growthRateTableLayoutPanel.Name" xml:space="preserve">
     <value>growthRateTableLayoutPanel</value>
@@ -1383,6 +1518,9 @@
   <data name="growthRateTableLayoutPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="speedGrowthLabel" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="staminaGrowthLabel" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="powerGrowthLabel" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="gutsGrowthLabel" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="wisdomGrowthLabel" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,20,Percent,20,Percent,20,Percent,20,Percent,20" /&gt;&lt;Rows Styles="AutoSize,0,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
+  <metadata name="growthRateLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="growthRateLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1393,7 +1531,7 @@
     <value>69, 15</value>
   </data>
   <data name="growthRateLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>9</value>
   </data>
   <data name="growthRateLabel.Text" xml:space="preserve">
     <value>Growth rate</value>
@@ -1410,6 +1548,9 @@
   <data name="&gt;&gt;growthRateLabel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="rarityComboBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="rarityComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>289, 168</value>
   </data>
@@ -1417,7 +1558,7 @@
     <value>117, 23</value>
   </data>
   <data name="rarityComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;rarityComboBox.Name" xml:space="preserve">
     <value>rarityComboBox</value>
@@ -1431,6 +1572,9 @@
   <data name="&gt;&gt;rarityComboBox.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <metadata name="rarityHintLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="rarityHintLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1441,7 +1585,7 @@
     <value>37, 15</value>
   </data>
   <data name="rarityHintLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+    <value>5</value>
   </data>
   <data name="rarityHintLabel.Text" xml:space="preserve">
     <value>Rarity</value>
@@ -1459,6 +1603,9 @@
     <value>4</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">

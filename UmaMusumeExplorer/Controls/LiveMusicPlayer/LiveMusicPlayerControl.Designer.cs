@@ -55,15 +55,15 @@
             this.jacketPanel.Location = new System.Drawing.Point(0, 0);
             this.jacketPanel.Name = "jacketPanel";
             this.jacketPanel.Size = new System.Drawing.Size(821, 528);
-            this.jacketPanel.TabIndex = 2;
+            this.jacketPanel.TabIndex = 0;
             // 
-            // LiveMusicPlayerSongSelectControl
+            // LiveMusicPlayerControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.loadingProgressBar);
             this.Controls.Add(this.jacketPanel);
-            this.Name = "Jukebox";
+            this.Name = "LiveMusicPlayerControl";
             this.Size = new System.Drawing.Size(821, 528);
             this.Load += new System.EventHandler(this.LiveMusicPlayerSongSelectControl_Load);
             this.ResumeLayout(false);

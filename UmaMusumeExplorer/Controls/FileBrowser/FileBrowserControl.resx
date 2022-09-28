@@ -101,7 +101,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAEZTeXN0ZW0uV2luZG93cy5Gb3JtcywgQ3VsdHVyZT1uZXV0cmFs
         LCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAmU3lzdGVtLldpbmRvd3MuRm9ybXMu
         SW1hZ2VMaXN0U3RyZWFtZXIBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAARgsAAAJNU0Z0AUkBTAIBAQIB
-        AAEQAQEBEAEBARABAAEQAQAE/wEhAQAI/wFCAU0BNgcAATYDAAEoAwABQAMAARADAAEBAQABIAYAARAa
+        AAEYAQEBGAEBARABAAEQAQAE/wEhAQAI/wFCAU0BNgcAATYDAAEoAwABQAMAARADAAEBAQABIAYAARAa
         AAFIAccB6wH/AUgBxgHqAf8BSAHGAeoB/wFHAcUB6gH/AUcBxAHpAf8BRwHEAekB/wFGAcMB6AH/AUYB
         wgHoAf8BRgHCAecB/wFGAcEB5wH/AUUBwQHmAf8BRgHBAecB/wFZAmcB7wwAAZEBkAGPAf8CjwGNAf8B
         jgGNAYwB/wGNAYwBiwH/AYsBigGJAf8BigGJAYgB/wKIAYYB/wGHAYYBhQH/AYYBhQGDAf8ChAGCAf8B
@@ -161,7 +161,7 @@
     <value>434, 532</value>
   </data>
   <data name="fileTreeView.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;fileTreeView.Name" xml:space="preserve">
     <value>fileTreeView</value>
@@ -185,7 +185,7 @@
     <value>75, 23</value>
   </data>
   <data name="extractButton.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>7</value>
   </data>
   <data name="extractButton.Text" xml:space="preserve">
     <value>Extract</value>
@@ -242,7 +242,7 @@
     <value>404, 473</value>
   </data>
   <data name="extractListView.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;extractListView.Name" xml:space="preserve">
     <value>extractListView</value>
@@ -269,7 +269,7 @@
     <value>218, 36</value>
   </data>
   <data name="totalFileSizeLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="totalFileSizeLabel.Text" xml:space="preserve">
     <value>0 B</value>
@@ -302,7 +302,7 @@
     <value>100, 36</value>
   </data>
   <data name="totalFileCountLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="totalFileCountLabel.Text" xml:space="preserve">
     <value>0 files</value>
@@ -332,7 +332,7 @@
     <value>75, 23</value>
   </data>
   <data name="clearButton.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="clearButton.Text" xml:space="preserve">
     <value>Clear</value>
@@ -359,7 +359,7 @@
     <value>404, 17</value>
   </data>
   <data name="progressBar1.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="&gt;&gt;progressBar1.Name" xml:space="preserve">
     <value>progressBar1</value>
@@ -380,7 +380,7 @@
     <value>353, 23</value>
   </data>
   <data name="searchTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;searchTextBox.Name" xml:space="preserve">
     <value>searchTextBox</value>
@@ -401,7 +401,7 @@
     <value>75, 23</value>
   </data>
   <data name="searchButton.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>1</value>
   </data>
   <data name="searchButton.Text" xml:space="preserve">
     <value>Search</value>
