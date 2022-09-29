@@ -127,24 +127,15 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                 {
                     int index = i * WaveFormat.Channels + j;
 
-                    if (AlwaysSinging)
+                    if (AlwaysSinging && positionIndex == 0)
                     {
-                        if (positionIndex == 0)
-                        {
-                            buffer[index] = mainBuffer[index];
-                            if (secondBuffer is not null) buffer[index] += secondBuffer[index];
-                        }
-                        else
-                        {
-                            buffer[index] = 0;
-                        }
-                        continue;
+                        buffer[index] = mainBuffer[index];
+                        if (secondBuffer is not null) buffer[index] += secondBuffer[index];
                     }
-
-                    if (targetBuffer is null)
-                        buffer[index] = 0;
-                    else
+                    else if (!AlwaysSinging && targetBuffer is not null)
                         buffer[index] = targetBuffer[index] * volumeMultiplier;
+                    else
+                        buffer[index] = 0;
                 }
 
                 currentSample++;
