@@ -43,7 +43,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 
             foreach (var partTrigger in partTriggers)
             {
-                long sample = (long)(partTrigger.TimeMs / 1000.0d * mainUmaWaveStream.WaveFormat.SampleRate);
+                long sample = (long)(partTrigger.TimeMs / 1000.0f * mainUmaWaveStream.WaveFormat.SampleRate);
                 triggers.Add(
                     new Trigger(
                         sample,

@@ -178,7 +178,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
         private void UpdateTimer_Tick(object sender, EventArgs e)
         {
             currentTimeLabel.Text = $"{songMixer.CurrentTime:m\\:ss}";
-            seekTrackBar.Value = (int)(songMixer.CurrentTime / songMixer.TotalTime * 100.0d);
+            seekTrackBar.Value = (int)(songMixer.CurrentTime / songMixer.TotalTime * 100.0f);
         }
 
         private void PlayerForm_FormClosing(object sender, FormClosingEventArgs e)

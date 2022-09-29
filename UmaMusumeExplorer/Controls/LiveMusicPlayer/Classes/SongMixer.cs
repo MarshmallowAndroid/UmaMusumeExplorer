@@ -41,7 +41,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                         activeSingers++;
                 }
 
-                long sample = (long)(partTrigger.TimeMs / 1000.0d * WaveFormat.SampleRate);
+                long sample = (long)(partTrigger.TimeMs / 1000.0f * WaveFormat.SampleRate);
                 volumeTriggers.Add(new VolumeTrigger(sample, activeSingers));
             }
         }
