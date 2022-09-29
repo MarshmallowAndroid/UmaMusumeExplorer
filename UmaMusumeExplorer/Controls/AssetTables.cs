@@ -8,7 +8,7 @@ using UmaMusumeData.Tables;
 
 namespace UmaMusumeExplorer.Controls
 {
-    internal static class AssetTables
+    static class AssetTables
     {
         private static readonly IEnumerable<GameAsset> audioGameFiles = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("sound/"));
 

@@ -13,7 +13,7 @@ using UmaMusumeExplorer.Controls.CharacterInfo.Classes;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo
 {
-    public partial class CharacterInfoControl : UserControl
+    partial class CharacterInfoControl : UserControl
     {
         private readonly IEnumerable<CharaData> charaDatas = AssetTables.CharaDatas;
 

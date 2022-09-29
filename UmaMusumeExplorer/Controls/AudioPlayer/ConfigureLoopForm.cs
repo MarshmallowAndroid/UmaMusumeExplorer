@@ -11,7 +11,7 @@ using UmaMusumeAudio;
 
 namespace UmaMusumeExplorer.Controls.AudioPlayer
 {
-    public partial class ConfigureLoopForm : Form
+    partial class ConfigureLoopForm : Form
     {
         private readonly UmaWaveStream hcaWaveStream;
 

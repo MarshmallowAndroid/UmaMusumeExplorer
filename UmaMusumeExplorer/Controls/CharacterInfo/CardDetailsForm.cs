@@ -12,7 +12,7 @@ using UmaMusumeData.Tables;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo
 {
-    public partial class CardDetailsForm : Form
+    partial class CardDetailsForm : Form
     {
         private readonly CharaData charaData;
 

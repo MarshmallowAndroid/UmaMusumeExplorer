@@ -16,15 +16,16 @@ using System.Threading.Tasks;
 
 namespace UmaMusumeExplorer.Controls.AudioPlayer
 {
-    public partial class AudioPlayerControl : UserControl
+    partial class AudioPlayerControl : UserControl
     {
+        private readonly WaveOutEvent waveOut;
         private readonly object waveOutLock = new();
+
         private readonly IEnumerable<GameAsset> bgmAssets = AssetTables.AudioAssets;
         private IEnumerable<GameAsset> awbOnly;
 
         private AwbReader awbReader;
         private UmaWaveStream umaWaveStream;
-        private WaveOutEvent waveOut;
         private VolumeSampleProvider volumeSampleProvider;
         private bool initialized = false;
         private int totalFiles;
@@ -301,7 +302,8 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
 
         private void AmplifyUpDown_ValueChanged(object sender, EventArgs e)
         {
-            volumeSampleProvider.Volume = (float)amplifyUpDown.Value;
+            if (volumeSampleProvider is not null)
+                volumeSampleProvider.Volume = (float)amplifyUpDown.Value;
         }
 
         private void RefreshButton_Click(object sender, EventArgs e)

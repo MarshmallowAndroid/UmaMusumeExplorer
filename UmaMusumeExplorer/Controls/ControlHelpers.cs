@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace UmaMusumeExplorer.Controls
 {
-    internal static class ControlHelpers
+    static class ControlHelpers
     {
         public static void ShowFormDialogCenter(Form form, Control target)
         {

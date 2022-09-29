@@ -11,7 +11,7 @@ using UmaMusumeExplorer.Controls.CharacterInfo.Classes;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo
 {
-    public partial class RankedLabel : UserControl
+    partial class RankedLabel : UserControl
     {
         private RankedLabelRank rank;
 

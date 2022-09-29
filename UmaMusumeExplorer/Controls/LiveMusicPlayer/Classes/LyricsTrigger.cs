@@ -1,6 +1,6 @@
 ﻿namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 {
-    internal class LyricsTrigger
+    class LyricsTrigger
     {
         public int TimeMs { get; }
 

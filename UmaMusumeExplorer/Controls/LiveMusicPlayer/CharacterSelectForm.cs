@@ -14,7 +14,7 @@ using UmaMusumeExplorer.Controls.CharacterInfo.Classes;
 
 namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 {
-    public partial class CharacterSelectForm : Form
+    partial class CharacterSelectForm : Form
     {
         private readonly IEnumerable<CharaData> charaDatas = AssetTables.CharaDatas;
         private readonly IEnumerable<LivePermissionData> livePermissionData;

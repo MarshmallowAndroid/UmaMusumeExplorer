@@ -10,7 +10,7 @@ using UmaMusumeAudio;
 
 namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 {
-    internal class CharaTrack : ISampleProvider, IDisposable
+    class CharaTrack : ISampleProvider, IDisposable
     {
         private readonly UmaWaveStream mainUmaWaveStream;
         private readonly UmaWaveStream secondUmaWaveStream;

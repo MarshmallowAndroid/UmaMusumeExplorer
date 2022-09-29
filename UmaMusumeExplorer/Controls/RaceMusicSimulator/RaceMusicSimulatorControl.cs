@@ -12,7 +12,7 @@ using UmaMusumeAudio;
 
 namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
 {
-    public partial class RaceMusicSimulatorControl : UserControl
+    partial class RaceMusicSimulatorControl : UserControl
     {
         private RaceBgm raceBgm;
         private List<Pattern> firstPatternBgmList;
@@ -138,8 +138,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
         {
             waveOut.Stop();
 
-            BgmComboBoxItem comboBoxItem = bgmIdComboBox.SelectedItem as BgmComboBoxItem;
-            if (comboBoxItem is null) return;
+            if (bgmIdComboBox.SelectedItem is not BgmComboBoxItem comboBoxItem) return;
 
             raceBgm = comboBoxItem.RaceBgm;
 
@@ -262,7 +261,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
 
             if (mixer.MixerInputs.Any())
             {
-                foreach (FadeInOutEventSampleProvider sampleProvider in mixer.MixerInputs)
+                foreach (FadeInOutEventSampleProvider sampleProvider in mixer.MixerInputs.Cast<FadeInOutEventSampleProvider>())
                 {
                     sampleProvider.BeginFadeOut(500);
                 }

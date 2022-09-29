@@ -17,7 +17,7 @@ using Image = SixLabors.ImageSharp.Image;
 
 namespace UmaMusumeExplorer.Controls
 {
-    internal static class UnityAssetHelpers
+    static class UnityAssetHelpers
     {
         private static readonly AssetsManager assetsManager = new();
         private static readonly Dictionary<string, ImagePointerContainer> imagePointerContainers = new();
@@ -123,7 +123,7 @@ namespace UmaMusumeExplorer.Controls
             if (imagePointerContainers.ContainsKey(imageString)) return PinnedBitmapFromKey(imageString);
 
             SerializedFile targetAsset = GetFile(imageString, ClassIDType.Texture2D);
-            if (targetAsset is null) targetAsset = GetFile($"jacket_icon_{size}_0000", ClassIDType.Texture2D);
+            targetAsset ??= GetFile($"jacket_icon_{size}_0000", ClassIDType.Texture2D);
             Texture2D texture = targetAsset.Objects.Where(o => o.type == ClassIDType.Texture2D).First() as Texture2D;
 
             Image<Bgra32> image = texture.ConvertToImage(true);
@@ -153,13 +153,12 @@ namespace UmaMusumeExplorer.Controls
         }
 
         private static PinnedBitmap PinnedBitmapFromKey(string key) =>
-            new PinnedBitmap(
-                imagePointerContainers[key].ImageHandle.AddrOfPinnedObject(),
+            new(imagePointerContainers[key].ImageHandle.AddrOfPinnedObject(),
                 imagePointerContainers[key].Width,
                 imagePointerContainers[key].Height);
     }
 
-    internal class ImagePointerContainer
+    class ImagePointerContainer
     {
         public ImagePointerContainer(GCHandle imageHandle, int width, int height)
         {

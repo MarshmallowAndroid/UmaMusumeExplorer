@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 {
-    internal class PanSampleProvider : ISampleProvider
+    class PanSampleProvider : ISampleProvider
     {
         private readonly ISampleProvider sampleProvider;
 

@@ -15,7 +15,7 @@ using UmaMusumeExplorer.Controls.Jukebox;
 
 namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 {
-    public partial class LiveMusicPlayerControl : UserControl
+    partial class LiveMusicPlayerControl : UserControl
     {
         private readonly IEnumerable<LiveData> liveDatas = AssetTables.LiveDatas;
 

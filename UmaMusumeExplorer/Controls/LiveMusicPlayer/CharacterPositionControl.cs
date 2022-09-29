@@ -12,7 +12,7 @@ using UmaMusumeExplorer.Controls.Jukebox;
 
 namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 {
-    public partial class CharacterPositionControl : UserControl
+    partial class CharacterPositionControl : UserControl
     {
         private readonly IEnumerable<LivePermissionData> livePermissionData;
 

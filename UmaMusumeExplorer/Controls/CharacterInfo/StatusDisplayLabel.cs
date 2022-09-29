@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo
 {
-    public partial class StatusDisplayLabel : UserControl
+    partial class StatusDisplayLabel : UserControl
     {
         private int statusValue = 50;
         private int statusMaxValue = 1200;

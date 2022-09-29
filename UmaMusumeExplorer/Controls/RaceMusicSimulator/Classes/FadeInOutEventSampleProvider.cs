@@ -9,7 +9,7 @@ using static UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes.IEventSampleP
 namespace UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes
 {
     // Implementation of NAudio's FadeInOutSampleProvider that invokes an event after fading.
-    internal class FadeInOutEventSampleProvider : IEventSampleProvider
+    class FadeInOutEventSampleProvider : IEventSampleProvider
     {
         private enum FadeState
         {

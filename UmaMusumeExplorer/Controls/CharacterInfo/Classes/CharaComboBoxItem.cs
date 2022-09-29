@@ -4,7 +4,7 @@ using UmaMusumeExplorer.Controls;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo.Classes
 {
-    internal class CharaComboBoxItem
+    class CharaComboBoxItem
     {
         public CharaComboBoxItem(CharaData chara)
         {

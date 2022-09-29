@@ -18,7 +18,7 @@ using UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes;
 
 namespace UmaMusumeExplorer.Controls.Jukebox
 {
-    public partial class UnitSetupForm : Form
+    partial class UnitSetupForm : Form
     {
         private readonly int id;
         private readonly IEnumerable<LivePermissionData> livePermissionData;

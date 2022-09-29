@@ -19,7 +19,7 @@ using UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes;
 
 namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 {
-    public partial class PlayerForm : Form
+    partial class PlayerForm : Form
     {
         private readonly LiveData liveData;
         private readonly int musicId;
@@ -34,7 +34,6 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
         private readonly WaveOutEvent waveOutEvent = new() { DesiredLatency = 250 };
 
         private readonly Thread lyricsThread;
-        private readonly Thread lightsThread;
         private int lyricsTriggerIndex = 0;
         private bool seeked = false;
         private bool playbackFinished = false;

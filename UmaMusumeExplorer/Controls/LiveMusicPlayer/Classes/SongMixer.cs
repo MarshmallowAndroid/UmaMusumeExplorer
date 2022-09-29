@@ -7,7 +7,7 @@ using UmaMusumeAudio;
 
 namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 {
-    internal class SongMixer : ISampleProvider, IDisposable
+    class SongMixer : ISampleProvider, IDisposable
     {
         private readonly UmaWaveStream okeWaveStream;
         private readonly ISampleProvider okeSampleProvider;

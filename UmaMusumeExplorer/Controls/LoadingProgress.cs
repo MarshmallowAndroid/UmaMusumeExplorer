@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace UmaMusumeExplorer.Controls
 {
-    internal class LoadingProgress : IProgress<int>
+    class LoadingProgress : IProgress<int>
     {
         private readonly Action<int> reportProgress;
 

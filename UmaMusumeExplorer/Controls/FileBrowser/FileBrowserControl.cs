@@ -13,7 +13,7 @@ using UmaMusumeData;
 
 namespace UmaMusumeExplorer.Controls.FileBrowser
 {
-    public partial class FileBrowserControl : UserControl
+    partial class FileBrowserControl : UserControl
     {
         private List<GameAsset> gameAssets;
         private List<GameAsset> searchedAssets;

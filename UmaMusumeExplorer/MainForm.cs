@@ -2,7 +2,7 @@
 
 namespace UmaMusumeExplorer
 {
-    public partial class MainForm : Form
+    partial class MainForm : Form
     {
         public MainForm()
         {

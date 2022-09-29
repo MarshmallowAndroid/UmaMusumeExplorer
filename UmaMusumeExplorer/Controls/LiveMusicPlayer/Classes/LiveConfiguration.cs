@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 {
-    internal static class LiveConfiguration
+    static class LiveConfiguration
     {
         private static FileStream configurationFile;
 
@@ -96,7 +96,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
         }
     }
 
-    internal class SongConfiguration
+    class SongConfiguration
     {
         public int SongId;
         public int[] Members;

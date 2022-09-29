@@ -2,7 +2,7 @@
 
 namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 {
-    internal class PartTrigger
+    class PartTrigger
     {
         private static readonly int[] positionTable =
         {
