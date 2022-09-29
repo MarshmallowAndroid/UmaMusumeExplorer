@@ -4,11 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using UmaMusumeExplorer.Controls;
-using UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes;
-using UmaMusumeData;
 using UmaMusumeData.Tables;
-using UmaMusumeAudio;
+using UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes;
 
 namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
 {

@@ -1,4 +1,3 @@
-using UmaMusumeExplorer;
 using System;
 using System.Windows.Forms;
 

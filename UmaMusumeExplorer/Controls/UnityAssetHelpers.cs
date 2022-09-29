@@ -2,18 +2,13 @@
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
-using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using UmaMusumeData;
-using UmaMusumeData.Tables;
-using Image = SixLabors.ImageSharp.Image;
 
 namespace UmaMusumeExplorer.Controls
 {

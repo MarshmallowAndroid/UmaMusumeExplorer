@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 {
@@ -11,7 +7,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
     {
         private static FileStream configurationFile;
 
-        private static Dictionary<int, SongConfiguration> songConfigurations = new();
+        private static readonly Dictionary<int, SongConfiguration> songConfigurations = new();
 
         public static void SaveConfiguration(SongConfiguration songConfiguration)
         {

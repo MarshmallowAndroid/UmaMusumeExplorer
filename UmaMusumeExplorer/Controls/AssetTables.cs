@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using UmaMusumeData;
 using UmaMusumeData.Tables;
 
@@ -31,18 +27,18 @@ namespace UmaMusumeExplorer.Controls
         private static readonly IEnumerable<TextData> liveInfoTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 17);
 
         public static IEnumerable<GameAsset> AudioAssets => audioGameFiles;
-        
+
         public static IEnumerable<CardData> CardDatas => cardDatas;
         public static IEnumerable<CardRarityData> CardRarityDatas => cardRarityDatas;
-         public static IEnumerable<CharaData> CharaDatas => charaDatas;
+        public static IEnumerable<CharaData> CharaDatas => charaDatas;
 
         public static IEnumerable<LiveData> LiveDatas => liveDatas;
         public static IEnumerable<LivePermissionData> LivePermissionDatas => livePermissionDatas;
-        
+
         public static IEnumerable<RaceBgm> RaceBgm => raceBgm;
         public static IEnumerable<RaceBgmPattern> RaceBgmPatterns => raceBgmPatterns;
 
-        public static IEnumerable<TextData> CharaCostumeNameTextDatas => charaCostumeNameTextDatas;     
+        public static IEnumerable<TextData> CharaCostumeNameTextDatas => charaCostumeNameTextDatas;
         public static IEnumerable<TextData> CharaNameKatakanaTextDatas => charaNameKatakanaTextDatas;
         public static IEnumerable<TextData> CharaNameTextDatas => charaNameTextDatas;
         public static IEnumerable<TextData> CharaVoiceNameTextDatas => charaVoiceNameTextDatas;

@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
-using UmaMusumeData;
 using UmaMusumeData.Tables;
-using System.Text.RegularExpressions;
-using UmaMusumeExplorer.Controls.CharacterInfo;
-using System.ComponentModel;
-using System.Drawing;
-using System.Diagnostics;
 using UmaMusumeExplorer.Controls.CharacterInfo.Classes;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo
@@ -26,7 +21,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
         {
             if (!DesignMode) loadingBackgroundWorker.RunWorkerAsync();
         }
-        
+
         private void LoadingBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             IProgress<int> defaultProgress = AssetStudio.Progress.Default;

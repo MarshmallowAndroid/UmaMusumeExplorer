@@ -1,6 +1,5 @@
 ﻿using CriWareFormats;
 using NAudio.Wave;
-using NAudio.Wave.SampleProviders;
 using System;
 using System.Collections.Generic;
 using UmaMusumeAudio;
@@ -121,9 +120,11 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                 int currentIndex = 0;
                 foreach (var charaAwb in charaAwbs)
                 {
-                    CharaTrack charaTrack = new(charaAwb, partTriggers, currentIndex++);
-                    charaTrack.Position = okeWaveStream.Position;
-                    charaTrack.AlwaysSinging = alwaysSinging;
+                    CharaTrack charaTrack = new(charaAwb, partTriggers, currentIndex++)
+                    {
+                        Position = okeWaveStream.Position,
+                        AlwaysSinging = alwaysSinging
+                    };
                     charaTracks.Add(charaTrack);
                 }
             }

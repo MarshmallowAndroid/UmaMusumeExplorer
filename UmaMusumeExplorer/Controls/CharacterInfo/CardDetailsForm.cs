@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using UmaMusumeExplorer.Controls.CharacterInfo.Classes;
 using UmaMusumeData.Tables;
+using UmaMusumeExplorer.Controls.CharacterInfo.Classes;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo
 {
@@ -92,7 +89,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             CardData cardData = (costumeComboBox.SelectedItem as CostumeComboBoxItem).CardData;
             CardRarityData rarityData = (rarityComboBox.SelectedItem as RarityComboBoxItem).CardRarityData;
 
-            if (rarityData is null) rarityData = new();
+            rarityData ??= new();
 
             iconPinnedBitmap.Dispose();
             iconPinnedBitmap = UnityAssetHelpers.GetCharaIcon(cardData.CharaId, rarityData.RaceDressId);
@@ -129,7 +126,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             wisdomGrowthLabel.Text = cardData.TalentWiz.ToString() + "%";
         }
 
-        private Color ColorFromHexString(string hexString)
+        private static Color ColorFromHexString(string hexString)
         {
             byte a = 0xFF;
             byte r = Convert.FromHexString(hexString[..2])[0];

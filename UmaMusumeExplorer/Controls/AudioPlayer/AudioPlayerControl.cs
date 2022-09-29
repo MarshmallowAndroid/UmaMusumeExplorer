@@ -7,12 +7,11 @@ using System.ComponentModel;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using UmaMusumeAudio;
-using UmaMusumeExplorer.Controls.AudioPlayer.Classes;
 using UmaMusumeData;
-using System.Threading;
-using System.Threading.Tasks;
+using UmaMusumeExplorer.Controls.AudioPlayer.Classes;
 
 namespace UmaMusumeExplorer.Controls.AudioPlayer
 {

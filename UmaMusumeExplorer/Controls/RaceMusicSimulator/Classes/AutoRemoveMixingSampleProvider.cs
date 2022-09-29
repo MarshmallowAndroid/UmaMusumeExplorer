@@ -3,9 +3,6 @@ using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes
 {
@@ -15,8 +12,6 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes
         private readonly List<ISampleProvider> sources;
 
         private float[] sourceBuffer;
-
-        private const int MaxInputs = 1024;
 
         public IEnumerable<ISampleProvider> MixerInputs => sources;
 

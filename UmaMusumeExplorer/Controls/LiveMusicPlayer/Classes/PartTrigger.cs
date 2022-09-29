@@ -4,11 +4,6 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 {
     class PartTrigger
     {
-        private static readonly int[] positionTable =
-        {
-
-        };
-
         public int TimeMs { get; }
 
         public int[] MemberTracks { get; }

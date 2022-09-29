@@ -1,15 +1,7 @@
-﻿using AssetStudio;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
-using System.Drawing;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using UmaMusumeData;
 using UmaMusumeData.Tables;
@@ -29,7 +21,7 @@ namespace UmaMusumeExplorer.Controls.Jukebox
             InitializeComponent();
 
             id = musicId;
-            
+
             livePermissionData = AssetTables.LivePermissionDatas.Where(lpd => lpd.MusicId == musicId);
             if (!livePermissionData.Any())
             {
@@ -52,8 +44,10 @@ namespace UmaMusumeExplorer.Controls.Jukebox
             int pivot = characterPositions.Length / 2;
             for (int i = 0; i < characterPositions.Length; i++)
             {
-                CharacterPositionControl characterPositionControl = new(i + 1, livePermissionData, this);
-                characterPositionControl.TabIndex = i;
+                CharacterPositionControl characterPositionControl = new(i + 1, this)
+                {
+                    TabIndex = i
+                };
 
                 if (songConfiguration is not null)
                     characterPositionControl.CharacterId = songConfiguration.Members[i];

@@ -1,9 +1,4 @@
 ﻿using NAudio.Wave;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes.IEventSampleProvider;
 
 namespace UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes
