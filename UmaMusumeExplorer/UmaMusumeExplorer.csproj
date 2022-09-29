@@ -12,9 +12,9 @@
     <AssemblyVersion>1.2.4.0</AssemblyVersion>
     <Version>1.2.4</Version>
     <Product>Uma Musume Explorer</Product>
-	<AssemblyTitle>Uma Musume Explorer</AssemblyTitle>
-	<Authors>Jacob Tarun</Authors>
-	<NeutralLanguage>en-US</NeutralLanguage>
+    <AssemblyTitle>Uma Musume Explorer</AssemblyTitle>
+    <Authors>Jacob Tarun</Authors>
+    <NeutralLanguage>en-US</NeutralLanguage>
   </PropertyGroup>
 
   <ItemGroup>
