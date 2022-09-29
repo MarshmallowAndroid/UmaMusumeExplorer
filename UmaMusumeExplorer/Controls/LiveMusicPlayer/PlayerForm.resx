@@ -427,22 +427,28 @@
     <value>False</value>
   </data>
   <data name="titleMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="titleMenuItem.Text" xml:space="preserve">
     <value>Debug Menu</value>
   </data>
   <data name="headingSeparator.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="forceSoloMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="forceSoloMenuItem.Text" xml:space="preserve">
     <value>Force center solo</value>
   </data>
+  <data name="muteBgmToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="muteBgmToolStripMenuItem.Text" xml:space="preserve">
+    <value>Mute BGM</value>
+  </data>
   <data name="debugContextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 54</value>
+    <value>181, 98</value>
   </data>
   <data name="debugContextMenuStrip.Text" xml:space="preserve">
     <value>Debug Menu</value>
@@ -493,6 +499,12 @@
     <value>forceSoloMenuItem</value>
   </data>
   <data name="&gt;&gt;forceSoloMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;muteBgmToolStripMenuItem.Name" xml:space="preserve">
+    <value>muteBgmToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;muteBgmToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

@@ -47,6 +47,7 @@
             this.titleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.headingSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.forceSoloMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.muteBgmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.songJacketPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seekTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.volumeTrackbar)).BeginInit();
@@ -138,7 +139,8 @@
             this.debugContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.titleMenuItem,
             this.headingSeparator,
-            this.forceSoloMenuItem});
+            this.forceSoloMenuItem,
+            this.muteBgmToolStripMenuItem});
             this.debugContextMenuStrip.Name = "debugContextMenuStrip";
             resources.ApplyResources(this.debugContextMenuStrip, "debugContextMenuStrip");
             // 
@@ -159,6 +161,13 @@
             this.forceSoloMenuItem.Name = "forceSoloMenuItem";
             resources.ApplyResources(this.forceSoloMenuItem, "forceSoloMenuItem");
             this.forceSoloMenuItem.Click += new System.EventHandler(this.ForceSoloMenuItem_Click);
+            // 
+            // muteBgmToolStripMenuItem
+            // 
+            this.muteBgmToolStripMenuItem.CheckOnClick = true;
+            this.muteBgmToolStripMenuItem.Name = "muteBgmToolStripMenuItem";
+            resources.ApplyResources(this.muteBgmToolStripMenuItem, "muteBgmToolStripMenuItem");
+            this.muteBgmToolStripMenuItem.Click += new System.EventHandler(this.MuteBgmToolStripMenuItem_Click);
             // 
             // PlayerForm
             // 
@@ -210,5 +219,6 @@
         private System.Windows.Forms.ToolStripMenuItem titleMenuItem;
         private System.Windows.Forms.ToolStripSeparator headingSeparator;
         private System.Windows.Forms.ToolStripMenuItem forceSoloMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem muteBgmToolStripMenuItem;
     }
 }

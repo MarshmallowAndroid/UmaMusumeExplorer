@@ -103,6 +103,8 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             }
         }
 
+        public bool MuteBgm { get; set; }
+
         public void InitializeCharaTracks(List<AwbReader> charaAwbs)
         {
             lock (readLock)
@@ -181,7 +183,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                 read = okeSampleProvider.Read(okeBuffer, offset, count);
                 for (int i = offset; i < count; i++)
                 {
-                    buffer[i] += okeBuffer[i];
+                    buffer[i] += MuteBgm ? 0 : okeBuffer[i];
                     buffer[i] *= 1.5f;
                 }
             }

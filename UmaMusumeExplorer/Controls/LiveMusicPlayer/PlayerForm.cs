@@ -287,5 +287,12 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
             songMixer.ForceSolo = item.Checked;
         }
+
+        private void MuteBgmToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = sender as ToolStripMenuItem;
+
+            songMixer.MuteBgm = item.Checked;
+        }
     }
 }
