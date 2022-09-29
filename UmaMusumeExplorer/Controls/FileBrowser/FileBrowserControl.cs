@@ -332,7 +332,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
                 selectedAssets.Add(asset);
         }
 
-        private string GenerateSizeString(long length)
+        private static string GenerateSizeString(long length)
         {
             StringBuilder sizeString = new();
 
