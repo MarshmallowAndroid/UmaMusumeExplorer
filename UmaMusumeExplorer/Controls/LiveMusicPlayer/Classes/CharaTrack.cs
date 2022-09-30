@@ -42,11 +42,14 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             foreach (var partTrigger in partTriggers)
             {
                 long sample = (long)(partTrigger.TimeMs / 1000.0f * mainUmaWaveStream.WaveFormat.SampleRate);
+                float volume = partTrigger.MemberVolumes[index] != 999.0f ? partTrigger.MemberVolumes[index] : 1.0f;
+                volume += partTrigger.VolumeRate != 999.0f ? 0.25f * partTrigger.VolumeRate : 0.0f;
+
                 triggers.Add(
                     new Trigger(
                         sample,
                         partTrigger.MemberTracks[index],
-                        partTrigger.MemberVolumes[index],
+                        volume,
                         partTrigger.MemberPans[index],
                         partTrigger.VolumeRate));
             }
@@ -66,14 +69,14 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             {
                 lock (readLock)
                 {
-                mainUmaWaveStream.Position = value;
-                if (secondUmaWaveStream is not null) secondUmaWaveStream.Position = value;
+                    mainUmaWaveStream.Position = value;
+                    if (secondUmaWaveStream is not null) secondUmaWaveStream.Position = value;
 
-                currentSample = mainUmaWaveStream.Position / mainUmaWaveStream.WaveFormat.Channels / (mainUmaWaveStream.WaveFormat.BitsPerSample / 8);
+                    currentSample = mainUmaWaveStream.Position / mainUmaWaveStream.WaveFormat.Channels / (mainUmaWaveStream.WaveFormat.BitsPerSample / 8);
 
-                triggerIndex = 0;
+                    triggerIndex = 0;
+                }
             }
-        }
         }
 
         public bool CenterOnly { get; set; }
@@ -93,7 +96,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             lock (readLock)
             {
                 mainRead = mainSampleProvider.Read(mainBuffer, offset, count);
-            secondSampleProvider?.Read(secondBuffer, offset, count);
+                secondSampleProvider?.Read(secondBuffer, offset, count);
             }
 
             for (int i = 0; i < count / WaveFormat.Channels; i++)
@@ -109,13 +112,10 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                     else
                         targetBuffer = null;
 
-                    if (triggers[triggerIndex].Volume == 999.0f)
-                        volumeMultiplier = 1.0f;
-                    else
-                        volumeMultiplier = triggers[triggerIndex].Volume;
+                    volumeMultiplier = triggers[triggerIndex].Volume;
 
-                    if (triggers[triggerIndex].VolumeRate != 999.0f)
-                        volumeMultiplier += 0.25f * triggers[triggerIndex].VolumeRate;
+                    //if (triggers[triggerIndex].VolumeRate != 999.0f)
+                    //    volumeMultiplier += 0.25f * triggers[triggerIndex].VolumeRate;
 
                     //if (triggers[triggerIndex].Pan == 999.0f)
                     //{

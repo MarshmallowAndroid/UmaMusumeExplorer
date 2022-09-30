@@ -17,6 +17,8 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 
         private readonly object readLock = new();
 
+        private readonly float allActiveVolume;
+
         private float[] charaTracksBuffer;
         private float[] okeBuffer;
         private float volumeMultiplier = 1.0f;
@@ -43,6 +45,8 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                 long sample = (long)(partTrigger.TimeMs / 1000.0f * WaveFormat.SampleRate);
                 volumeTriggers.Add(new VolumeTrigger(sample, activeSingers));
             }
+
+            allActiveVolume = 1.0f / (parts[0].MemberVolumes.Length + 1) + 0.5f;
         }
 
         public WaveFormat WaveFormat => okeSampleProvider.WaveFormat;
@@ -128,9 +132,16 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                     {
                         charaTrack.AlwaysSing = value;
                     }
+
+                    if (value)
+                        volumeMultiplier = allActiveVolume;
+                    else
+                    {
+                        volumeTriggerIndex--;
+                        volumeMultiplier = volumeTriggers[volumeTriggerIndex].Volume;
+                    }
                 }
             }
-        }
         }
 
         public bool MuteBgm { get; set; }
@@ -197,34 +208,34 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                 }
 
                 read = okeSampleProvider.Read(okeBuffer, offset, count);
-                }
+            }
 
-                for (int i = offset; i < count / WaveFormat.Channels; i++)
+            for (int i = offset; i < count / WaveFormat.Channels; i++)
+            {
+                while (currentSample >= volumeTriggers[volumeTriggerIndex].Sample)
                 {
-                    while (currentSample >= volumeTriggers[volumeTriggerIndex].Sample)
-                    {
                     if (AllSing)
                         volumeMultiplier = allActiveVolume;
-                        else
-                            volumeMultiplier = 1.0f / (volumeTriggers[volumeTriggerIndex].ActiveSingers + 1) + 0.5f;
+                    else
+                        volumeMultiplier = volumeTriggers[volumeTriggerIndex].Volume;
 
-                        if (volumeTriggerIndex < volumeTriggers.Count - 1) volumeTriggerIndex++;
-                        else break;
-                    }
-
-                    for (int j = 0; j < WaveFormat.Channels; j++)
-                    {
-                    buffer[i * WaveFormat.Channels + j] *= CenterOnly ? 1.0f : volumeMultiplier;
-                    }
-
-                    currentSample++;
+                    if (volumeTriggerIndex < volumeTriggers.Count - 1) volumeTriggerIndex++;
+                    else break;
                 }
 
-                for (int i = offset; i < count; i++)
+                for (int j = 0; j < WaveFormat.Channels; j++)
                 {
-                    buffer[i] += MuteBgm ? 0 : okeBuffer[i];
-                    buffer[i] *= 1.5f;
+                    buffer[i * WaveFormat.Channels + j] *= CenterOnly ? 1.0f : volumeMultiplier;
                 }
+
+                currentSample++;
+            }
+
+            for (int i = offset; i < count; i++)
+            {
+                buffer[i] += MuteBgm ? 0 : okeBuffer[i];
+                buffer[i] *= 1.5f;
+            }
 
             return read;
         }
@@ -242,12 +253,12 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
         private struct VolumeTrigger
         {
             public long Sample;
-            public int ActiveSingers;
+            public float Volume;
 
             public VolumeTrigger(long sample, int activeSingers)
             {
                 Sample = sample;
-                ActiveSingers = activeSingers;
+                Volume = 1.0f / (activeSingers + 1) + 0.5f;
             }
         }
     }
