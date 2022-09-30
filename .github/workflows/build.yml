@@ -18,5 +18,5 @@ jobs:
           msbuild-architecture: x64
       - name: Build project
         run: |
-          msbuild AssetStudio\Texture2DDecoderNative
+          msbuild AssetStudio\Texture2DDecoderNative -p:Configuration=Release
           dotnet publish UmaMusumeExplorer --no-self-contained -r win-x64 -c Release -p:PublishSingleFile=true
