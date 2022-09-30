@@ -10,13 +10,21 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout branch and submodules
+        uses: actions/checkout@v3
         with:
           submodules: 'recursive'
-      - uses: microsoft/setup-msbuild@v1.1
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1.1
         with:
           msbuild-architecture: x64
-      - name: Build project
+      - name: Build .NET project
         run: |
           msbuild AssetStudio\Texture2DDecoderNative -p:Configuration=Release
           dotnet publish UmaMusumeExplorer --no-self-contained -r win-x64 -c Release -p:PublishSingleFile=true
+      - name: Zip up files
+        run: Compress-Archive UmaMusumeExplorer\bin\Release\net6.0-windows\publish\win-x64\* build-win-x64.zip
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          path: build-win-x64.zip
