@@ -137,7 +137,8 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                         volumeMultiplier = allActiveVolume;
                     else
                     {
-                        volumeTriggerIndex--;
+                        if (volumeTriggerIndex > 0)
+                            volumeTriggerIndex--;
                         volumeMultiplier = volumeTriggers[volumeTriggerIndex].Volume;
                     }
                 }
