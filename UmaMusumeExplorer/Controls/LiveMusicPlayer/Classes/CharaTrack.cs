@@ -26,6 +26,8 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
         private int triggerIndex = 0;
         private float volumeMultiplier = 1.0f;
 
+        private readonly object readLock = new();
+
         public CharaTrack(AwbReader charaAwb, List<PartTrigger> partTriggers, int index)
         {
             mainUmaWaveStream = new(charaAwb, 0);
@@ -62,6 +64,8 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             }
             set
             {
+                lock (readLock)
+                {
                 mainUmaWaveStream.Position = value;
                 if (secondUmaWaveStream is not null) secondUmaWaveStream.Position = value;
 
@@ -69,6 +73,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 
                 triggerIndex = 0;
             }
+        }
         }
 
         public bool AlwaysSinging { get; set; }
@@ -81,8 +86,13 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                 secondBuffer = new float[count];
             }
 
-            int mainRead = mainSampleProvider.Read(mainBuffer, offset, count);
+            int mainRead;
+
+            lock (readLock)
+            {
+                mainRead = mainSampleProvider.Read(mainBuffer, offset, count);
             secondSampleProvider?.Read(secondBuffer, offset, count);
+            }
 
             for (int i = 0; i < count / WaveFormat.Channels; i++)
             {

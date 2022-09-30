@@ -159,6 +159,9 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                     }
                 }
 
+                read = okeSampleProvider.Read(okeBuffer, offset, count);
+                }
+
                 for (int i = offset; i < count / WaveFormat.Channels; i++)
                 {
                     while (currentSample >= volumeTriggers[volumeTriggerIndex].Sample)
@@ -180,13 +183,11 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                     currentSample++;
                 }
 
-                read = okeSampleProvider.Read(okeBuffer, offset, count);
                 for (int i = offset; i < count; i++)
                 {
                     buffer[i] += MuteBgm ? 0 : okeBuffer[i];
                     buffer[i] *= 1.5f;
                 }
-            }
 
             return read;
         }
