@@ -6,7 +6,6 @@
     <UseWindowsForms>true</UseWindowsForms>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
     <StartupObject>UmaMusumeExplorer.Program</StartupObject>
-    <PackageIcon>ProgramIcon.png</PackageIcon>
     <ApplicationIcon>Resources\ProgramIcon.ico</ApplicationIcon>
     <FileVersion>1.2.5.0</FileVersion>
     <AssemblyVersion>1.2.5.0</AssemblyVersion>
@@ -48,19 +47,12 @@
     </EmbeddedResource>
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="Resources\ProgramIcon.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
-
   <Target Name="CopyDllsBuild" AfterTargets="AfterBuild">
-    <Copy SourceFiles="$(SolutionDir)AssetStudio\Texture2DDecoderNative\bin\x64\$(Configuration)\Texture2DDecoderNative.dll" DestinationFolder="$(OutDir)x64" />
+    <Copy SourceFiles="$(ProjectDir)..\AssetStudio\Texture2DDecoderNative\bin\x64\$(Configuration)\Texture2DDecoderNative.dll" DestinationFolder="$(OutDir)x64" />
   </Target>
     
-  <Target Name="CopyDllsPublish" AfterTargets="AfterPublish">
-    <Copy SourceFiles="$(SolutionDir)AssetStudio\Texture2DDecoderNative\bin\x64\$(Configuration)\Texture2DDecoderNative.dll" DestinationFolder="$(PublishDir)x64" />
+  <Target Name="CopyDllsPublish" AfterTargets="Publish">
+    <Copy SourceFiles="$(ProjectDir)..\AssetStudio\Texture2DDecoderNative\bin\x64\$(Configuration)\Texture2DDecoderNative.dll" DestinationFolder="$(PublishDir)x64" />
   </Target>
 
 </Project>
