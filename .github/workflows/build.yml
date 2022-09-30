@@ -13,5 +13,8 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: 'recursive'
+      - uses: microsoft/setup-msbuild@v1.1
+        with:
+          msbuild-architecture: x64
       - name: Build project
         run: dotnet publish UmaMusumeExplorer --no-self-contained -r win-x64 -c Release -p:PublishSingleFile=true
