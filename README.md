@@ -1,4 +1,5 @@
 ﻿# Uma Musume Explorer
+ [![CI](https://github.com/MarshmallowAndroid/UmaMusumeExplorer/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/MarshmallowAndroid/UmaMusumeExplorer/actions/workflows/build.yml)
 
 A GUI utility for viewing data from the game ウマ娘　プリティーダービー (Uma Musume Pretty Derby) developed by Cygames, Inc.
 
