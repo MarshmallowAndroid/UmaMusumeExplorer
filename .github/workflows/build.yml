@@ -11,5 +11,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          submodules: 'recursive'
       - name: Build project
         run: dotnet publish UmaMusumeExplorer --no-self-contained -r win-x64 -c Release -p:PublishSingleFile=true
