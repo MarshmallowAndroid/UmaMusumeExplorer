@@ -27,4 +27,5 @@ jobs:
       - name: Upload build artifact
         uses: actions/upload-artifact@v3.1.0
         with:
-          path: build-win-x64.zip
+          name: build-win-x64
+          path: .\UmaMusumeExplorer\bin\Release\net6.0-windows\win-x64\publish\
