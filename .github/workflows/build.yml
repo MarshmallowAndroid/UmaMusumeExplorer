@@ -20,10 +20,10 @@ jobs:
           msbuild-architecture: x64
       - name: Build .NET project
         run: |
-          msbuild AssetStudio\Texture2DDecoderNative -p:Configuration=Release
-          dotnet publish UmaMusumeExplorer --no-self-contained -r win-x64 -c Release -p:PublishSingleFile=true
+          msbuild .\AssetStudio\Texture2DDecoderNative -p:Configuration=Release
+          dotnet publish .\UmaMusumeExplorer --no-self-contained -r win-x64 -c Release -p:PublishSingleFile=true
       - name: Zip up files
-        run: Compress-Archive UmaMusumeExplorer\UmaMusumeExplorer\bin\Release\net6.0-windows\publish\win-x64\* build-win-x64.zip
+        run: Compress-Archive .\UmaMusumeExplorer\bin\Release\net6.0-windows\publish\win-x64\* build-win-x64.zip
       - name: Upload build artifact
         uses: actions/upload-artifact@v3.1.0
         with:
