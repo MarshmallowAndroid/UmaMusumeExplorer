@@ -74,7 +74,36 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 
         public TimeSpan TotalTime => okeWaveStream.TotalTime;
 
-        public bool ForceSolo
+        public bool CenterOnly
+        {
+            get
+            {
+                bool centerOnly = false;
+
+                lock (readLock)
+                {
+                    foreach (var charaTrack in charaTracks)
+                    {
+                        centerOnly = charaTrack.CenterOnly;
+                    }
+                }
+
+                return centerOnly;
+            }
+
+            set
+            {
+                lock (readLock)
+                {
+                    foreach (var charaTrack in charaTracks)
+                    {
+                        charaTrack.CenterOnly = value;
+                    }
+                }
+            }
+        }
+
+        public bool AllSing
         {
             get
             {
@@ -84,7 +113,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                 {
                     foreach (var charaTrack in charaTracks)
                     {
-                        alwaysSinging = charaTrack.AlwaysSinging;
+                        alwaysSinging = charaTrack.AlwaysSing;
                     }
                 }
 
@@ -97,23 +126,28 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                 {
                     foreach (var charaTrack in charaTracks)
                     {
-                        charaTrack.AlwaysSinging = value;
+                        charaTrack.AlwaysSing = value;
                     }
                 }
             }
         }
+        }
 
         public bool MuteBgm { get; set; }
+
+        public bool MuteVoices { get; set; }
 
         public void InitializeCharaTracks(List<AwbReader> charaAwbs)
         {
             lock (readLock)
             {
-                bool alwaysSinging = false;
+                bool alwaysSing = false;
+                bool centerSolo = false;
 
                 foreach (var charaTrack in charaTracks)
                 {
-                    alwaysSinging = charaTrack.AlwaysSinging;
+                    alwaysSing = charaTrack.AlwaysSing;
+                    centerSolo = charaTrack.CenterOnly;
                     charaTrack.Dispose();
                 }
 
@@ -124,8 +158,9 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                 {
                     CharaTrack charaTrack = new(charaAwb, partTriggers, currentIndex++)
                     {
-                        Position = okeWaveStream.Position,
-                        AlwaysSinging = alwaysSinging
+                        AlwaysSing = alwaysSing,
+                        CenterOnly = centerSolo,
+                        Position = okeWaveStream.Position
                     };
                     charaTracks.Add(charaTrack);
                 }
@@ -153,6 +188,8 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                 {
                     charaTrack.Read(charaTracksBuffer, offset, count);
 
+                    if (MuteVoices) continue;
+
                     for (int i = offset; i < count; i++)
                     {
                         buffer[i] += charaTracksBuffer[i];
@@ -166,8 +203,8 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                 {
                     while (currentSample >= volumeTriggers[volumeTriggerIndex].Sample)
                     {
-                        if (volumeTriggers[volumeTriggerIndex].ActiveSingers == 1)
-                            volumeMultiplier = 1.0f;
+                    if (AllSing)
+                        volumeMultiplier = allActiveVolume;
                         else
                             volumeMultiplier = 1.0f / (volumeTriggers[volumeTriggerIndex].ActiveSingers + 1) + 0.5f;
 
@@ -177,7 +214,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 
                     for (int j = 0; j < WaveFormat.Channels; j++)
                     {
-                        buffer[i * WaveFormat.Channels + j] *= ForceSolo ? 1.0f : volumeMultiplier;
+                    buffer[i * WaveFormat.Channels + j] *= CenterOnly ? 1.0f : volumeMultiplier;
                     }
 
                     currentSample++;

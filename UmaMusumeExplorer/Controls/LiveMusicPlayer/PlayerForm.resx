@@ -427,28 +427,43 @@
     <value>False</value>
   </data>
   <data name="titleMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>164, 22</value>
   </data>
   <data name="titleMenuItem.Text" xml:space="preserve">
     <value>Debug Menu</value>
   </data>
   <data name="headingSeparator.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>161, 6</value>
   </data>
   <data name="forceSoloMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>164, 22</value>
   </data>
   <data name="forceSoloMenuItem.Text" xml:space="preserve">
     <value>Force center solo</value>
   </data>
+  <data name="forceAllSingingToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 22</value>
+  </data>
+  <data name="forceAllSingingToolStripMenuItem.Text" xml:space="preserve">
+    <value>Force all singing</value>
+  </data>
+  <data name="forceMuteSeparator.Size" type="System.Drawing.Size, System.Drawing">
+    <value>161, 6</value>
+  </data>
   <data name="muteBgmToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>164, 22</value>
   </data>
   <data name="muteBgmToolStripMenuItem.Text" xml:space="preserve">
     <value>Mute BGM</value>
   </data>
+  <data name="muteVoicesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 22</value>
+  </data>
+  <data name="muteVoicesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Mute voices</value>
+  </data>
   <data name="debugContextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 98</value>
+    <value>165, 126</value>
   </data>
   <data name="debugContextMenuStrip.Text" xml:space="preserve">
     <value>Debug Menu</value>
@@ -501,10 +516,28 @@
   <data name="&gt;&gt;forceSoloMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;forceAllSingingToolStripMenuItem.Name" xml:space="preserve">
+    <value>forceAllSingingToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;forceAllSingingToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;forceMuteSeparator.Name" xml:space="preserve">
+    <value>forceMuteSeparator</value>
+  </data>
+  <data name="&gt;&gt;forceMuteSeparator.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;muteBgmToolStripMenuItem.Name" xml:space="preserve">
     <value>muteBgmToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;muteBgmToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;muteVoicesToolStripMenuItem.Name" xml:space="preserve">
+    <value>muteVoicesToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;muteVoicesToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

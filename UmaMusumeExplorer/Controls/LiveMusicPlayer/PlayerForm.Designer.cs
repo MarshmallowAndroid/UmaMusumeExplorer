@@ -47,7 +47,10 @@
             this.titleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.headingSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.forceSoloMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.forceAllSingingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.forceMuteSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.muteBgmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.muteVoicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.songJacketPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seekTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.volumeTrackbar)).BeginInit();
@@ -140,7 +143,10 @@
             this.titleMenuItem,
             this.headingSeparator,
             this.forceSoloMenuItem,
-            this.muteBgmToolStripMenuItem});
+            this.forceAllSingingToolStripMenuItem,
+            this.forceMuteSeparator,
+            this.muteBgmToolStripMenuItem,
+            this.muteVoicesToolStripMenuItem});
             this.debugContextMenuStrip.Name = "debugContextMenuStrip";
             resources.ApplyResources(this.debugContextMenuStrip, "debugContextMenuStrip");
             // 
@@ -162,12 +168,31 @@
             resources.ApplyResources(this.forceSoloMenuItem, "forceSoloMenuItem");
             this.forceSoloMenuItem.Click += new System.EventHandler(this.ForceSoloMenuItem_Click);
             // 
+            // forceAllSingingToolStripMenuItem
+            // 
+            this.forceAllSingingToolStripMenuItem.CheckOnClick = true;
+            this.forceAllSingingToolStripMenuItem.Name = "forceAllSingingToolStripMenuItem";
+            resources.ApplyResources(this.forceAllSingingToolStripMenuItem, "forceAllSingingToolStripMenuItem");
+            this.forceAllSingingToolStripMenuItem.Click += new System.EventHandler(this.ForceAllSingingToolStripMenuItem_Click);
+            // 
+            // forceMuteSeparator
+            // 
+            this.forceMuteSeparator.Name = "forceMuteSeparator";
+            resources.ApplyResources(this.forceMuteSeparator, "forceMuteSeparator");
+            // 
             // muteBgmToolStripMenuItem
             // 
             this.muteBgmToolStripMenuItem.CheckOnClick = true;
             this.muteBgmToolStripMenuItem.Name = "muteBgmToolStripMenuItem";
             resources.ApplyResources(this.muteBgmToolStripMenuItem, "muteBgmToolStripMenuItem");
             this.muteBgmToolStripMenuItem.Click += new System.EventHandler(this.MuteBgmToolStripMenuItem_Click);
+            // 
+            // muteVoicesToolStripMenuItem
+            // 
+            this.muteVoicesToolStripMenuItem.CheckOnClick = true;
+            this.muteVoicesToolStripMenuItem.Name = "muteVoicesToolStripMenuItem";
+            resources.ApplyResources(this.muteVoicesToolStripMenuItem, "muteVoicesToolStripMenuItem");
+            this.muteVoicesToolStripMenuItem.Click += new System.EventHandler(this.MuteVoicesToolStripMenuItem_Click);
             // 
             // PlayerForm
             // 
@@ -220,5 +245,8 @@
         private System.Windows.Forms.ToolStripSeparator headingSeparator;
         private System.Windows.Forms.ToolStripMenuItem forceSoloMenuItem;
         private System.Windows.Forms.ToolStripMenuItem muteBgmToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem muteVoicesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem forceAllSingingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator forceMuteSeparator;
     }
 }

@@ -284,15 +284,37 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
         private void ForceSoloMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem item = sender as ToolStripMenuItem;
+            songMixer.CenterOnly = item.Checked;
 
-            songMixer.ForceSolo = item.Checked;
+            if (forceAllSingingToolStripMenuItem.Checked) forceAllSingingToolStripMenuItem.Checked = false;
+            songMixer.AllSing = forceAllSingingToolStripMenuItem.Checked;
+        }
+
+        private void ForceAllSingingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = sender as ToolStripMenuItem;
+            songMixer.AllSing = item.Checked;
+
+            if (forceSoloMenuItem.Checked) forceSoloMenuItem.Checked = false;
+            songMixer.CenterOnly = forceSoloMenuItem.Checked;
         }
 
         private void MuteBgmToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem item = sender as ToolStripMenuItem;
-
             songMixer.MuteBgm = item.Checked;
+
+            if (muteVoicesToolStripMenuItem.Checked) muteVoicesToolStripMenuItem.Checked = false;
+            songMixer.MuteVoices = muteVoicesToolStripMenuItem.Checked;
+        }
+
+        private void MuteVoicesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = sender as ToolStripMenuItem;
+            songMixer.MuteVoices = item.Checked;
+
+            if (muteBgmToolStripMenuItem.Checked) muteBgmToolStripMenuItem.Checked = false;
+            songMixer.MuteBgm = muteBgmToolStripMenuItem.Checked;
         }
     }
 }

@@ -76,7 +76,9 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
         }
         }
 
-        public bool AlwaysSinging { get; set; }
+        public bool CenterOnly { get; set; }
+
+        public bool AlwaysSing { get; set; }
 
         public int Read(float[] buffer, int offset, int count)
         {
@@ -137,12 +139,12 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                 {
                     int index = i * WaveFormat.Channels + j;
 
-                    if (AlwaysSinging && positionIndex == 0)
+                    if ((CenterOnly && positionIndex == 0) || AlwaysSing)
                     {
                         buffer[index] = mainBuffer[index];
                         if (secondBuffer is not null) buffer[index] += secondBuffer[index];
                     }
-                    else if (!AlwaysSinging && targetBuffer is not null)
+                    else if (!CenterOnly && targetBuffer is not null)
                         buffer[index] = targetBuffer[index] * volumeMultiplier;
                     else
                         buffer[index] = 0;
