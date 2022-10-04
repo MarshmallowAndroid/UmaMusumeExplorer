@@ -60,6 +60,122 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             }
         }
 
+        private void PlayButton_Click(object sender, EventArgs e)
+        {
+            if (lyricsThread.ThreadState.HasFlag(ThreadState.Unstarted))
+                lyricsThread.Start();
+
+            if (waveOutEvent.PlaybackState == PlaybackState.Playing)
+            {
+                waveOutEvent.Pause();
+            }
+            else
+            {
+                waveOutEvent.Play();
+            }
+
+            updateTimer.Enabled = waveOutEvent.PlaybackState == PlaybackState.Playing;
+        }
+
+        private void UpdateTimer_Tick(object sender, EventArgs e)
+        {
+            currentTimeLabel.Text = $"{songMixer.CurrentTime:m\\:ss}";
+            seekTrackBar.Value = (int)(songMixer.CurrentTime / songMixer.TotalTime * 100.0f);
+        }
+
+        private void PlayerForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            songJacketPinnedBitmap.Dispose();
+            playbackFinished = true;
+
+            waveOutEvent.Stop();
+            waveOutEvent.Dispose();
+
+            assetsManager.Clear();
+        }
+
+        private void SeekTrackBar_Scroll(object sender, EventArgs e)
+        {
+            songMixer.Position = (long)(songMixer.Length * (float)(seekTrackBar.Value / 100.0f));
+            seeked = true;
+        }
+
+        private void VolumeTrackbar_Scroll(object sender, EventArgs e)
+        {
+            waveOutEvent.Volume = volumeTrackbar.Value / 100.0f;
+            volumeLabel.Text = (int)Math.Ceiling(waveOutEvent.Volume * 100.0f) + "%";
+        }
+
+        private void SetupButton_Click(object sender, EventArgs e)
+        {
+            SetupUnit();
+        }
+
+        private void StopButton_Click(object sender, EventArgs e)
+        {
+            waveOutEvent.Stop();
+            waveOutEvent.Dispose();
+            songMixer.Dispose();
+            Close();
+        }
+
+        private void ForceSoloMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = sender as ToolStripMenuItem;
+            songMixer.CenterOnly = item.Checked;
+
+            if (forceAllSingingToolStripMenuItem.Checked) forceAllSingingToolStripMenuItem.Checked = false;
+            songMixer.AllSing = forceAllSingingToolStripMenuItem.Checked;
+        }
+
+        private void ForceAllSingingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = sender as ToolStripMenuItem;
+            songMixer.AllSing = item.Checked;
+
+            if (forceSoloMenuItem.Checked) forceSoloMenuItem.Checked = false;
+            songMixer.CenterOnly = forceSoloMenuItem.Checked;
+        }
+
+        private void MuteBgmToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = sender as ToolStripMenuItem;
+            songMixer.MuteBgm = item.Checked;
+
+            if (muteVoicesToolStripMenuItem.Checked) muteVoicesToolStripMenuItem.Checked = false;
+            songMixer.MuteVoices = muteVoicesToolStripMenuItem.Checked;
+        }
+
+        private void MuteVoicesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = sender as ToolStripMenuItem;
+            songMixer.MuteVoices = item.Checked;
+
+            if (muteBgmToolStripMenuItem.Checked) muteBgmToolStripMenuItem.Checked = false;
+            songMixer.MuteBgm = muteBgmToolStripMenuItem.Checked;
+        }
+
+        private int GetSingingMembers()
+        {
+            bool[] membersSing = new bool[partTriggers[0].MemberTracks.Length];
+
+            foreach (var partTrigger in partTriggers)
+            {
+                for (int i = 0; i < partTrigger.MemberTracks.Length; i++)
+                {
+                    if (partTrigger.MemberTracks[i] > 0) membersSing[i] = true;
+                }
+            }
+
+            int activeMembers = 0;
+            for (int i = 0; i < membersSing.Length; i++)
+            {
+                if (membersSing[i]) activeMembers++;
+            }
+
+            return activeMembers;
+        }
+
         private bool SetupUnit()
         {
             // Get possible audio assets for music ID
@@ -153,73 +269,6 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             return new StreamReader(new MemoryStream(textAsset.m_Script));
         }
 
-        private void PlayButton_Click(object sender, EventArgs e)
-        {
-            if (lyricsThread.ThreadState.HasFlag(ThreadState.Unstarted))
-                lyricsThread.Start();
-
-            if (waveOutEvent.PlaybackState == PlaybackState.Playing)
-            {
-                waveOutEvent.Pause();
-            }
-            else
-            {
-                waveOutEvent.Play();
-            }
-
-            updateTimer.Enabled = waveOutEvent.PlaybackState == PlaybackState.Playing;
-        }
-
-        private void UpdateTimer_Tick(object sender, EventArgs e)
-        {
-            currentTimeLabel.Text = $"{songMixer.CurrentTime:m\\:ss}";
-            seekTrackBar.Value = (int)(songMixer.CurrentTime / songMixer.TotalTime * 100.0f);
-        }
-
-        private void PlayerForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            songJacketPinnedBitmap.Dispose();
-            playbackFinished = true;
-
-            waveOutEvent.Stop();
-            waveOutEvent.Dispose();
-
-            assetsManager.Clear();
-        }
-
-        private void SeekTrackBar_Scroll(object sender, EventArgs e)
-        {
-            songMixer.Position = (long)(songMixer.Length * (float)(seekTrackBar.Value / 100.0f));
-            seeked = true;
-        }
-
-        private void VolumeTrackbar_Scroll(object sender, EventArgs e)
-        {
-            waveOutEvent.Volume = volumeTrackbar.Value / 100.0f;
-            volumeLabel.Text = (int)Math.Ceiling(waveOutEvent.Volume * 100.0f) + "%";
-        }
-
-        private int GetSingingMembers()
-        {
-            bool[] membersSing = new bool[partTriggers[0].MemberTracks.Length];
-
-            foreach (var partTrigger in partTriggers)
-            {
-                for (int i = 0; i < partTrigger.MemberTracks.Length; i++)
-                {
-                    if (partTrigger.MemberTracks[i] > 0) membersSing[i] = true;
-                }
-            }
-
-            int activeMembers = 0;
-            for (int i = 0; i < membersSing.Length; i++)
-            {
-                if (membersSing[i]) activeMembers++;
-            }
-
-            return activeMembers;
-        }
-
         private void DoLyricsPlayback()
         {
             //LyricsTrigger currentLyricsTrigger = lyricsTriggers[lyricsTriggerIndex];
@@ -237,7 +286,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
                 {
                     TryInvoke(() =>
                     {
-                        lyricsLabel.Text = lyricsTriggers[lyricsTriggerIndex].Lyrics;
+                        lyricsLabel.Text = lyricsTriggers[lyricsTriggerIndex].Lyrics.Replace("&", "&&");
                     });
 
                     if (lyricsTriggerIndex < lyricsTriggers.Count - 1)
@@ -266,55 +315,6 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             catch (Exception)
             {
             }
-        }
-
-        private void SetupButton_Click(object sender, EventArgs e)
-        {
-            SetupUnit();
-        }
-
-        private void StopButton_Click(object sender, EventArgs e)
-        {
-            waveOutEvent.Stop();
-            waveOutEvent.Dispose();
-            songMixer.Dispose();
-            Close();
-        }
-
-        private void ForceSoloMenuItem_Click(object sender, EventArgs e)
-        {
-            ToolStripMenuItem item = sender as ToolStripMenuItem;
-            songMixer.CenterOnly = item.Checked;
-
-            if (forceAllSingingToolStripMenuItem.Checked) forceAllSingingToolStripMenuItem.Checked = false;
-            songMixer.AllSing = forceAllSingingToolStripMenuItem.Checked;
-        }
-
-        private void ForceAllSingingToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ToolStripMenuItem item = sender as ToolStripMenuItem;
-            songMixer.AllSing = item.Checked;
-
-            if (forceSoloMenuItem.Checked) forceSoloMenuItem.Checked = false;
-            songMixer.CenterOnly = forceSoloMenuItem.Checked;
-        }
-
-        private void MuteBgmToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ToolStripMenuItem item = sender as ToolStripMenuItem;
-            songMixer.MuteBgm = item.Checked;
-
-            if (muteVoicesToolStripMenuItem.Checked) muteVoicesToolStripMenuItem.Checked = false;
-            songMixer.MuteVoices = muteVoicesToolStripMenuItem.Checked;
-        }
-
-        private void MuteVoicesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ToolStripMenuItem item = sender as ToolStripMenuItem;
-            songMixer.MuteVoices = item.Checked;
-
-            if (muteBgmToolStripMenuItem.Checked) muteBgmToolStripMenuItem.Checked = false;
-            songMixer.MuteBgm = muteBgmToolStripMenuItem.Checked;
         }
     }
 }
