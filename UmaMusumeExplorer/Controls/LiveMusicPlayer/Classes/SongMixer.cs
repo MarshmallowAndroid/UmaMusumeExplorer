@@ -226,16 +226,13 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 
                 for (int j = 0; j < WaveFormat.Channels; j++)
                 {
-                    buffer[i * WaveFormat.Channels + j] *= CenterOnly ? 1.0f : volumeMultiplier;
+                    int index = i * WaveFormat.Channels + j;
+                    buffer[index] *= CenterOnly ? 1.0f : volumeMultiplier;
+                    buffer[index] += MuteBgm ? 0 : okeBuffer[index];
+                    buffer[index] *= 1.5f;
                 }
 
                 currentSample++;
-            }
-
-            for (int i = offset; i < count; i++)
-            {
-                buffer[i] += MuteBgm ? 0 : okeBuffer[i];
-                buffer[i] *= 1.5f;
             }
 
             return read;
