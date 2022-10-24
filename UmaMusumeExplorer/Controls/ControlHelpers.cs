@@ -4,21 +4,21 @@ namespace UmaMusumeExplorer.Controls
 {
     static class ControlHelpers
     {
-        public static void ShowFormDialogCenter(Form form, Control target)
+        public static void ShowFormDialogCenter(Form form, Control source)
         {
-            SetNewLocation(form, target);
-            form.ShowDialog(GetParentForm(target));
+            SetNewLocation(form, source);
+            form.ShowDialog(GetParentForm(source));
         }
 
-        public static void ShowFormCenter(Form form, Control target)
+        public static void ShowFormCenter(Form form, Control source)
         {
-            SetNewLocation(form, target);
-            form.Show(GetParentForm(target));
+            SetNewLocation(form, source);
+            form.Show(GetParentForm(source));
         }
 
-        private static void SetNewLocation(Form form, Control target)
+        private static void SetNewLocation(Form form, Control source)
         {
-            Form parentForm = GetParentForm(target);
+            Form parentForm = GetParentForm(source);
 
             int left = parentForm.Left;
             int top = parentForm.Top;
