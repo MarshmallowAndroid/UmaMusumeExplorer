@@ -184,6 +184,8 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             // Get BGM without sound effects
             AwbReader okeAwb = GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicId}_oke_02.awb")));
 
+            if (okeAwb is null) return false;
+
             // Retrieve count of members that actually sing
             int singingMembers = GetSingingMembers();
 
