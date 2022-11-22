@@ -61,7 +61,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
         {
             LiveData liveData = (sender as PictureBox).Tag as LiveData;
             if (liveData is not null)
-                ControlHelpers.ShowFormCenter(new PlayerForm(liveData), this);
+                new PlayerForm(liveData).Show();
         }
 
         private void LoadingBackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
