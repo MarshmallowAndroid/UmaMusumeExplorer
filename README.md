@@ -6,12 +6,13 @@ A GUI utility for viewing data from the game ウマ娘　プリティーダー�
 DISCLAIMER: You must have your own installation of the game from DMM Games to use this utility.
 Game data such as stats is not modified in any way, and can be viewed with any SQLite database viewer.
 
-## Functions included:
+## Functions included
 
 * File browser with search and export
-* Audio player
-* Live music player
-* Race music simulator (WIP)
+* Audio player with export
+* Live music player with export
+    * Access more options by right clicking the window
+* Race music simulator
 * Character info
     * 5 main stats (speed, stamina, etc.) for each costume and its rarity
 
