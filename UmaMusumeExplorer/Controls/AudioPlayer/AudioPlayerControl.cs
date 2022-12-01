@@ -259,9 +259,8 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
 
                 SaveFileDialog save = new()
                 {
-                    DefaultExt = "wav",
                     FileName = outputFileName,
-                    Filter = "16-bit PCM WAV files (*.wav) | *.wav"
+                    Filter = "16-bit PCM WAV|*.wav"
                 };
 
                 DialogResult result = save.ShowDialog();
