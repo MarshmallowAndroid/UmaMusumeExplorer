@@ -44,11 +44,11 @@ namespace UmaMusumeExplorer.Controls
 
                 List<string> imagePaths = new();
                 List<GameAsset> charaAssetRows = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("chara/"));
-                foreach (var asset in charaAssetRows)
+                charaAssetRows.ForEach(c =>
                 {
-                    if (chrIconRegex.IsMatch(asset.BaseName) || chrCardIconRegex.IsMatch(asset.BaseName) || asset.BaseName == "chr_icon_round_0000")
-                        imagePaths.Add(UmaDataHelper.GetPath(asset));
-                }
+                    if (chrIconRegex.IsMatch(c.BaseName) || chrCardIconRegex.IsMatch(c.BaseName) || c.BaseName == "chr_icon_round_0000")
+                        imagePaths.Add(UmaDataHelper.GetPath(c));
+                });
 
                 LoadFiles(imagePaths.ToArray());
 
@@ -93,15 +93,7 @@ namespace UmaMusumeExplorer.Controls
             {
                 List<string> imagePaths = new();
                 List<GameAsset> liveJacketAssetRows = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("live/jacket/jacket_icon_l_"));
-                foreach (var liveData in AssetTables.LiveDatas)
-                {
-                    if (liveData.HasLive == 0) continue;
-
-                    GameAsset asset = liveJacketAssetRows.FirstOrDefault(a => a.BaseName == $"jacket_icon_l_{liveData.MusicId}");
-
-                    if (asset is not null)
-                        imagePaths.Add(UmaDataHelper.GetPath(asset));
-                }
+                liveJacketAssetRows.ForEach(j => imagePaths.Add(UmaDataHelper.GetPath(j)));
 
                 LoadFiles(imagePaths.ToArray());
 
