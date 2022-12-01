@@ -85,7 +85,8 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 
         public int Read(float[] buffer, int offset, int count)
         {
-            if (mainBuffer is null && secondBuffer is null)
+            if ((mainBuffer is null && secondBuffer is null) ||
+                (mainBuffer.Length != count && secondBuffer.Length != count))
             {
                 mainBuffer = new float[count];
                 secondBuffer = new float[count];

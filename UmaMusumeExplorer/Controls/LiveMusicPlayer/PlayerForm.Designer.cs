@@ -51,6 +51,8 @@
             this.forceMuteSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.muteBgmMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.muteVoicesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.exportMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.songJacketPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seekTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.volumeTrackbar)).BeginInit();
@@ -147,8 +149,8 @@
             this.forceMuteSeparator,
             this.muteBgmMenuItem,
             this.muteVoicesMenuItem,
-            this.debugContextMenuStrip.Name = "debugContextMenuStrip";
-            resources.ApplyResources(this.debugContextMenuStrip, "debugContextMenuStrip");
+            this.exportSeparator,
+            this.exportMenuItem});
             this.playerContextMenuStrip.Name = "playerContextMenuStrip";
             resources.ApplyResources(this.playerContextMenuStrip, "playerContextMenuStrip");
             // 
@@ -196,12 +198,16 @@
             resources.ApplyResources(this.muteVoicesMenuItem, "muteVoicesMenuItem");
             this.muteVoicesMenuItem.Click += new System.EventHandler(this.MuteVoicesMenuItem_Click);
             // 
-            // muteVoicesToolStripMenuItem
+            // exportSeparator
             // 
-            this.muteVoicesToolStripMenuItem.CheckOnClick = true;
-            this.muteVoicesToolStripMenuItem.Name = "muteVoicesToolStripMenuItem";
-            resources.ApplyResources(this.muteVoicesToolStripMenuItem, "muteVoicesToolStripMenuItem");
-            this.muteVoicesToolStripMenuItem.Click += new System.EventHandler(this.MuteVoicesToolStripMenuItem_Click);
+            this.exportSeparator.Name = "exportSeparator";
+            resources.ApplyResources(this.exportSeparator, "exportSeparator");
+            // 
+            // exportMenuItem
+            // 
+            this.exportMenuItem.Name = "exportMenuItem";
+            resources.ApplyResources(this.exportMenuItem, "exportMenuItem");
+            this.exportMenuItem.Click += new System.EventHandler(this.ExportMenuItem_Click);
             // 
             // PlayerForm
             // 
@@ -257,5 +263,7 @@
         private System.Windows.Forms.ToolStripMenuItem muteVoicesMenuItem;
         private System.Windows.Forms.ToolStripMenuItem forceAllSingingMenuItem;
         private System.Windows.Forms.ToolStripSeparator forceMuteSeparator;
+        private System.Windows.Forms.ToolStripSeparator exportSeparator;
+        private System.Windows.Forms.ToolStripMenuItem exportMenuItem;
     }
 }

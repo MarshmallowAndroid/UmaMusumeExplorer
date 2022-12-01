@@ -6,7 +6,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using UmaMusumeData;
 using UmaMusumeData.Tables;
@@ -19,6 +21,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
     {
         private readonly LiveData liveData;
         private readonly int musicId;
+        private readonly string songTitle;
 
         private readonly AssetsManager assetsManager = new();
         private PinnedBitmap songJacketPinnedBitmap;
@@ -34,12 +37,19 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
         private bool seeked = false;
         private bool playbackFinished = false;
 
+        private readonly List<string> currentSingers = new();
+
         public PlayerForm(LiveData live)
         {
             InitializeComponent();
 
             liveData = live;
             musicId = live.MusicId;
+
+            songJacketPinnedBitmap = UnityAssetHelpers.GetJacket(musicId, 'l');
+            songJacketPictureBox.BackgroundImage = songJacketPinnedBitmap.Bitmap;
+            songTitleLabel.Text = songTitle = AssetTables.LiveNameTextDatas.First(litd => litd.Index == musicId).Text;
+            songInfoLabel.Text = AssetTables.LiveInfoTextDatas.First(litd => litd.Index == musicId).Text.Replace("\\n", "\n");
 
             LoadMusicScore();
 
@@ -48,11 +58,6 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
         private void LiveMusicPlayerForm_Load(object sender, EventArgs e)
         {
-            songJacketPinnedBitmap = UnityAssetHelpers.GetJacket(musicId, 'l');
-            songJacketPictureBox.BackgroundImage = songJacketPinnedBitmap.Bitmap;
-            songTitleLabel.Text = AssetTables.LiveNameTextDatas.First(litd => litd.Index == musicId).Text;
-            songInfoLabel.Text = AssetTables.LiveInfoTextDatas.First(litd => litd.Index == musicId).Text.Replace("\\n", "\n");
-
             if (!SetupUnit())
             {
                 Close();
@@ -155,7 +160,65 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             songMixer.MuteBgm = muteBgmMenuItem.Checked;
         }
 
+        private void ExportMenuItem_Click(object sender, EventArgs e)
+        {
+            StringBuilder fileNameString = new();
+            fileNameString.Append(songTitle + " (");
+            for (int i = 0; i < currentSingers.Count; i++)
+            {
+                fileNameString.Append(currentSingers[i]);
 
+                if (songMixer.CenterOnly) break;
+                if (i < currentSingers.Count - 1) fileNameString.Append('・');
+            }
+            fileNameString.Append(").wav");
+
+            SaveFileDialog saveFileDialog = new()
+            {
+                FileName = fileNameString.ToString(),
+                Filter = "16-bit PCM WAV|*.wav"
+            };
+
+            DialogResult result = saveFileDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                PlaybackState playbackState = waveOutEvent.PlaybackState;
+                waveOutEvent.Pause();
+
+                Task.Run(() =>
+                {
+                    long restorePosition = songMixer.Position;
+                    string restoreInfo = songInfoLabel.Text;
+
+                    songMixer.Position = 0;
+                    lyricsTriggerIndex = 0;
+                    Invoke(() =>
+                    {
+                        songInfoLabel.Text = "Exporting...";
+                        setupButton.Enabled = false;
+                        playButton.Enabled = false;
+                        stopButton.Enabled = false;
+                        updateTimer.Enabled = true;
+                    });
+
+                    WaveFileWriter.CreateWaveFile16(saveFileDialog.FileName, songMixer);
+
+                    songMixer.Position = restorePosition;
+                    lyricsTriggerIndex = 0;
+
+                    if (playbackState == PlaybackState.Playing)
+                        waveOutEvent.Play();
+
+                    Invoke(() =>
+                    {
+                        songInfoLabel.Text = restoreInfo;
+                        setupButton.Enabled = true;
+                        playButton.Enabled = true;
+                        stopButton.Enabled = true;
+                        updateTimer.Enabled = waveOutEvent.PlaybackState == PlaybackState.Playing;
+                    });
+                });
+            }
         }
 
         private int GetSingingMembers()
@@ -203,11 +266,14 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             // Sort by position indices
             Array.Sort(unitSetupForm.CharacterPositions, (a, b) => a.PositionIndex.CompareTo(b.PositionIndex));
 
+            currentSingers.Clear();
+
             // Add AWB files for the selected characters
             List<AwbReader> charaAwbs = new(singingMembers);
             foreach (var item in unitSetupForm.CharacterPositions)
             {
                 charaAwbs.Add(GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicId}_chara_{item.CharacterId}_01.awb"))));
+                currentSingers.Add(AssetTables.CharaNameTextDatas.FirstOrDefault(c => c.Index == item.CharacterId).Text);
             }
 
             long previousPosition = songMixer?.Position ?? 0;
@@ -276,7 +342,6 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
         private void DoLyricsPlayback()
         {
-            //LyricsTrigger currentLyricsTrigger = lyricsTriggers[lyricsTriggerIndex];
             while (!playbackFinished)
             {
                 double msElapsed = songMixer.CurrentTime.TotalMilliseconds;
@@ -297,8 +362,6 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
                     if (lyricsTriggerIndex < lyricsTriggers.Count - 1)
                         lyricsTriggerIndex++;
                     else break;
-
-                    //currentLyricsTrigger = lyricsTriggers[lyricsTriggerIndex];
                 }
 
                 Thread.Sleep(1);

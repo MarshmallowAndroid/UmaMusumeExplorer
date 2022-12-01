@@ -462,14 +462,14 @@
   <data name="muteVoicesMenuItem.Text" xml:space="preserve">
     <value>Mute voices</value>
   </data>
-  <data name="debugContextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 126</value>
+  <data name="exportSeparator.Size" type="System.Drawing.Size, System.Drawing">
+    <value>196, 6</value>
   </data>
-  <data name="debugContextMenuStrip.Text" xml:space="preserve">
-    <value>Debug Menu</value>
+  <data name="exportMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>199, 22</value>
   </data>
-  <data name="&gt;&gt;debugContextMenuStrip.Name" xml:space="preserve">
-    <value>debugContextMenuStrip</value>
+  <data name="exportMenuItem.Text" xml:space="preserve">
+    <value>Export to WAV</value>
   </data>
   <data name="playerContextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
     <value>200, 176</value>
@@ -549,10 +549,16 @@
   <data name="&gt;&gt;muteVoicesMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;muteVoicesToolStripMenuItem.Name" xml:space="preserve">
-    <value>muteVoicesToolStripMenuItem</value>
+  <data name="&gt;&gt;exportSeparator.Name" xml:space="preserve">
+    <value>exportSeparator</value>
   </data>
-  <data name="&gt;&gt;muteVoicesToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;exportSeparator.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;exportMenuItem.Name" xml:space="preserve">
+    <value>exportMenuItem</value>
+  </data>
+  <data name="&gt;&gt;exportMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

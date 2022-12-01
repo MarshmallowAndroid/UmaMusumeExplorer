@@ -181,7 +181,8 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 
         public int Read(float[] buffer, int offset, int count)
         {
-            if (charaTracksBuffer is null && okeBuffer is null)
+            if ((charaTracksBuffer is null && okeBuffer is null) ||
+                (charaTracksBuffer.Length != count || okeBuffer.Length != count))
             {
                 charaTracksBuffer = new float[count];
                 okeBuffer = new float[count];
