@@ -43,18 +43,18 @@
             this.currentTimeLabel = new System.Windows.Forms.Label();
             this.totalTimeLabel = new System.Windows.Forms.Label();
             this.updateTimer = new System.Windows.Forms.Timer(this.components);
-            this.debugContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.playerContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.titleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.headingSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.titleSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.forceSoloMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.forceAllSingingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.forceAllSingingMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.forceMuteSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.muteBgmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.muteVoicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.muteBgmMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.muteVoicesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.songJacketPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seekTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.volumeTrackbar)).BeginInit();
-            this.debugContextMenuStrip.SuspendLayout();
+            this.playerContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // songJacketPictureBox
@@ -137,18 +137,20 @@
             this.updateTimer.Interval = 500;
             this.updateTimer.Tick += new System.EventHandler(this.UpdateTimer_Tick);
             // 
-            // debugContextMenuStrip
+            // playerContextMenuStrip
             // 
-            this.debugContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.playerContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.titleMenuItem,
-            this.headingSeparator,
+            this.titleSeparator,
             this.forceSoloMenuItem,
-            this.forceAllSingingToolStripMenuItem,
+            this.forceAllSingingMenuItem,
             this.forceMuteSeparator,
-            this.muteBgmToolStripMenuItem,
-            this.muteVoicesToolStripMenuItem});
+            this.muteBgmMenuItem,
+            this.muteVoicesMenuItem,
             this.debugContextMenuStrip.Name = "debugContextMenuStrip";
             resources.ApplyResources(this.debugContextMenuStrip, "debugContextMenuStrip");
+            this.playerContextMenuStrip.Name = "playerContextMenuStrip";
+            resources.ApplyResources(this.playerContextMenuStrip, "playerContextMenuStrip");
             // 
             // titleMenuItem
             // 
@@ -156,10 +158,10 @@
             resources.ApplyResources(this.titleMenuItem, "titleMenuItem");
             this.titleMenuItem.Name = "titleMenuItem";
             // 
-            // headingSeparator
+            // titleSeparator
             // 
-            this.headingSeparator.Name = "headingSeparator";
-            resources.ApplyResources(this.headingSeparator, "headingSeparator");
+            this.titleSeparator.Name = "titleSeparator";
+            resources.ApplyResources(this.titleSeparator, "titleSeparator");
             // 
             // forceSoloMenuItem
             // 
@@ -168,24 +170,31 @@
             resources.ApplyResources(this.forceSoloMenuItem, "forceSoloMenuItem");
             this.forceSoloMenuItem.Click += new System.EventHandler(this.ForceSoloMenuItem_Click);
             // 
-            // forceAllSingingToolStripMenuItem
+            // forceAllSingingMenuItem
             // 
-            this.forceAllSingingToolStripMenuItem.CheckOnClick = true;
-            this.forceAllSingingToolStripMenuItem.Name = "forceAllSingingToolStripMenuItem";
-            resources.ApplyResources(this.forceAllSingingToolStripMenuItem, "forceAllSingingToolStripMenuItem");
-            this.forceAllSingingToolStripMenuItem.Click += new System.EventHandler(this.ForceAllSingingToolStripMenuItem_Click);
+            this.forceAllSingingMenuItem.CheckOnClick = true;
+            this.forceAllSingingMenuItem.Name = "forceAllSingingMenuItem";
+            resources.ApplyResources(this.forceAllSingingMenuItem, "forceAllSingingMenuItem");
+            this.forceAllSingingMenuItem.Click += new System.EventHandler(this.ForceAllSingingMenuItem_Click);
             // 
             // forceMuteSeparator
             // 
             this.forceMuteSeparator.Name = "forceMuteSeparator";
             resources.ApplyResources(this.forceMuteSeparator, "forceMuteSeparator");
             // 
-            // muteBgmToolStripMenuItem
+            // muteBgmMenuItem
             // 
-            this.muteBgmToolStripMenuItem.CheckOnClick = true;
-            this.muteBgmToolStripMenuItem.Name = "muteBgmToolStripMenuItem";
-            resources.ApplyResources(this.muteBgmToolStripMenuItem, "muteBgmToolStripMenuItem");
-            this.muteBgmToolStripMenuItem.Click += new System.EventHandler(this.MuteBgmToolStripMenuItem_Click);
+            this.muteBgmMenuItem.CheckOnClick = true;
+            this.muteBgmMenuItem.Name = "muteBgmMenuItem";
+            resources.ApplyResources(this.muteBgmMenuItem, "muteBgmMenuItem");
+            this.muteBgmMenuItem.Click += new System.EventHandler(this.MuteBgmMenuItem_Click);
+            // 
+            // muteVoicesMenuItem
+            // 
+            this.muteVoicesMenuItem.CheckOnClick = true;
+            this.muteVoicesMenuItem.Name = "muteVoicesMenuItem";
+            resources.ApplyResources(this.muteVoicesMenuItem, "muteVoicesMenuItem");
+            this.muteVoicesMenuItem.Click += new System.EventHandler(this.MuteVoicesMenuItem_Click);
             // 
             // muteVoicesToolStripMenuItem
             // 
@@ -198,7 +207,7 @@
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ContextMenuStrip = this.debugContextMenuStrip;
+            this.ContextMenuStrip = this.playerContextMenuStrip;
             this.Controls.Add(this.totalTimeLabel);
             this.Controls.Add(this.currentTimeLabel);
             this.Controls.Add(this.volumeLabel);
@@ -219,7 +228,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.songJacketPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seekTrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.volumeTrackbar)).EndInit();
-            this.debugContextMenuStrip.ResumeLayout(false);
+            this.playerContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -240,13 +249,13 @@
         private System.Windows.Forms.Label currentTimeLabel;
         private System.Windows.Forms.Label totalTimeLabel;
         private System.Windows.Forms.Timer updateTimer;
-        private System.Windows.Forms.ContextMenuStrip debugContextMenuStrip;
+        private System.Windows.Forms.ContextMenuStrip playerContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem titleMenuItem;
-        private System.Windows.Forms.ToolStripSeparator headingSeparator;
+        private System.Windows.Forms.ToolStripSeparator titleSeparator;
         private System.Windows.Forms.ToolStripMenuItem forceSoloMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem muteBgmToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem muteVoicesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem forceAllSingingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem muteBgmMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem muteVoicesMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem forceAllSingingMenuItem;
         private System.Windows.Forms.ToolStripSeparator forceMuteSeparator;
     }
 }

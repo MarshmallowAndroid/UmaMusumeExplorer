@@ -124,11 +124,11 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             ToolStripMenuItem item = sender as ToolStripMenuItem;
             songMixer.CenterOnly = item.Checked;
 
-            if (forceAllSingingToolStripMenuItem.Checked) forceAllSingingToolStripMenuItem.Checked = false;
-            songMixer.AllSing = forceAllSingingToolStripMenuItem.Checked;
+            if (forceAllSingingMenuItem.Checked) forceAllSingingMenuItem.Checked = false;
+            songMixer.AllSing = forceAllSingingMenuItem.Checked;
         }
 
-        private void ForceAllSingingToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ForceAllSingingMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem item = sender as ToolStripMenuItem;
             songMixer.AllSing = item.Checked;
@@ -137,22 +137,25 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             songMixer.CenterOnly = forceSoloMenuItem.Checked;
         }
 
-        private void MuteBgmToolStripMenuItem_Click(object sender, EventArgs e)
+        private void MuteBgmMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem item = sender as ToolStripMenuItem;
             songMixer.MuteBgm = item.Checked;
 
-            if (muteVoicesToolStripMenuItem.Checked) muteVoicesToolStripMenuItem.Checked = false;
-            songMixer.MuteVoices = muteVoicesToolStripMenuItem.Checked;
+            if (muteVoicesMenuItem.Checked) muteVoicesMenuItem.Checked = false;
+            songMixer.MuteVoices = muteVoicesMenuItem.Checked;
         }
 
-        private void MuteVoicesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void MuteVoicesMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem item = sender as ToolStripMenuItem;
             songMixer.MuteVoices = item.Checked;
 
-            if (muteBgmToolStripMenuItem.Checked) muteBgmToolStripMenuItem.Checked = false;
-            songMixer.MuteBgm = muteBgmToolStripMenuItem.Checked;
+            if (muteBgmMenuItem.Checked) muteBgmMenuItem.Checked = false;
+            songMixer.MuteBgm = muteBgmMenuItem.Checked;
+        }
+
+
         }
 
         private int GetSingingMembers()
