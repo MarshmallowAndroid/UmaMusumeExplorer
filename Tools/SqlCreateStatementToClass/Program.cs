@@ -37,7 +37,7 @@ if (createStatement != "")
             _ => "object",
         };
         writer.Write("    ");
-        writer.WriteLine($"[Column(\"{columnName}\")]");
+        writer.WriteLine($"[Column(\"{columnName}\"), NotNull]");
         writer.Write("    ");
         writer.Write($"public {type} {UnderscoredToCamelCase(columnName)} ");
 
