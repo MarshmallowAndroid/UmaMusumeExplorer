@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using UmaMusumeAudio;
 using UmaMusumeData;
 using UmaMusumeExplorer.Controls.AudioPlayer.Classes;
+using UmaMusumeExplorer.Game;
 
 namespace UmaMusumeExplorer.Controls.AudioPlayer
 {

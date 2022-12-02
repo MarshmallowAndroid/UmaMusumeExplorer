@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes;
+using UmaMusumeExplorer.Game;
 
 namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
 {

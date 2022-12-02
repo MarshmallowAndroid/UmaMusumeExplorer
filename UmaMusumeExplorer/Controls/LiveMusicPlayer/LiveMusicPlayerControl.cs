@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 using UmaMusumeData.Tables;
+using UmaMusumeExplorer.Game;
 
 namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 {
@@ -34,7 +35,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
                 PictureBox jacket = new()
                 {
-                    BackgroundImage = UnityAssetHelpers.GetJacket(liveData.MusicId, 'l').Bitmap,
+                    BackgroundImage = UnityAssets.GetJacket(liveData.MusicId, 'l').Bitmap,
                     BackgroundImageLayout = ImageLayout.Zoom,
                     Cursor = Cursors.Hand,
                     Height = 130,

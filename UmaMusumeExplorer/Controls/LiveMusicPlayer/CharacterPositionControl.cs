@@ -1,5 +1,6 @@
 ﻿using System.Windows.Forms;
 using UmaMusumeExplorer.Controls.Jukebox;
+using UmaMusumeExplorer.Game;
 
 namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 {
@@ -15,7 +16,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             characterIndex = index;
 
             positionIndexLabel.Text = characterIndex.ToString();
-            characterPictureBox.BackgroundImage = UnityAssetHelpers.GetCharaIcon(0).Bitmap;
+            characterPictureBox.BackgroundImage = UnityAssets.GetCharaIcon(0).Bitmap;
 
             characterPictureBox.Click += unitSetupForm.CharacterPositionPictureBoxClick;
         }
@@ -38,7 +39,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             set
             {
                 characterId = value;
-                characterPictureBox.BackgroundImage = UnityAssetHelpers.GetCharaIcon(characterId).Bitmap;
+                characterPictureBox.BackgroundImage = UnityAssets.GetCharaIcon(characterId).Bitmap;
 
                 Update();
             }

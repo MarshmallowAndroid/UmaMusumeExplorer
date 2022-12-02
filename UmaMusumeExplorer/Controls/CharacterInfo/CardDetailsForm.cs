@@ -6,6 +6,7 @@ using System.Text;
 using System.Windows.Forms;
 using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Controls.CharacterInfo.Classes;
+using UmaMusumeExplorer.Game;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo
 {
@@ -50,7 +51,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             genderLabel.Text = charaData.Sex == 1 ? "Male" : "Female";
             birthdayLabel.Text = $"{charaData.BirthDay}/{charaData.BirthMonth}/{charaData.BirthYear} ({DateTime.Now.Year - charaData.BirthYear} years)";
 
-            iconPinnedBitmap = UnityAssetHelpers.GetCharaIcon(id);
+            iconPinnedBitmap = UnityAssets.GetCharaIcon(id);
             iconPictureBox.Image = iconPinnedBitmap.Bitmap;
 
             foreach (var item in AssetTables.CardDatas.Where(cd => cd.CharaId == charaData.Id))
@@ -77,7 +78,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             else
             {
                 iconPinnedBitmap.Dispose();
-                iconPinnedBitmap = UnityAssetHelpers.GetCharaIcon(cardData.CharaId);
+                iconPinnedBitmap = UnityAssets.GetCharaIcon(cardData.CharaId);
                 iconPictureBox.Image = iconPinnedBitmap.Bitmap;
 
                 UpdateStats(cardData, new CardRarityData());
@@ -92,7 +93,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             rarityData ??= new();
 
             iconPinnedBitmap.Dispose();
-            iconPinnedBitmap = UnityAssetHelpers.GetCharaIcon(cardData.CharaId, rarityData.RaceDressId);
+            iconPinnedBitmap = UnityAssets.GetCharaIcon(cardData.CharaId, rarityData.RaceDressId);
             iconPictureBox.Image = iconPinnedBitmap.Bitmap;
 
             UpdateStats(cardData, rarityData);

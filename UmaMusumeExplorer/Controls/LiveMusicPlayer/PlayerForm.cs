@@ -14,6 +14,7 @@ using UmaMusumeData;
 using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Controls.Jukebox;
 using UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes;
+using UmaMusumeExplorer.Game;
 
 namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 {
@@ -46,7 +47,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             liveData = live;
             musicId = live.MusicId;
 
-            songJacketPinnedBitmap = UnityAssetHelpers.GetJacket(musicId, 'l');
+            songJacketPinnedBitmap = UnityAssets.GetJacket(musicId, 'l');
             songJacketPictureBox.BackgroundImage = songJacketPinnedBitmap.Bitmap;
             songTitleLabel.Text = songTitle = AssetTables.LiveNameTextDatas.First(litd => litd.Index == musicId).Text;
             songInfoLabel.Text = AssetTables.LiveInfoTextDatas.First(litd => litd.Index == musicId).Text.Replace("\\n", "\n");

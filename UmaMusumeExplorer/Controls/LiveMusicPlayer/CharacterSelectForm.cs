@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using UmaMusumeData.Tables;
+using UmaMusumeExplorer.Game;
 
 namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 {
@@ -49,7 +50,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
                 PictureBox charaIcon = new()
                 {
-                    BackgroundImage = UnityAssetHelpers.GetCharaIcon(charaData.Id).Bitmap,
+                    BackgroundImage = UnityAssets.GetCharaIcon(charaData.Id).Bitmap,
                     BackgroundImageLayout = ImageLayout.Zoom,
                     Cursor = Cursors.Hand,
                     Height = 100,

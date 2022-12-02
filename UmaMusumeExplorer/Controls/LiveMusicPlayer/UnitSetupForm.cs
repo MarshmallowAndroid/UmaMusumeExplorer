@@ -7,6 +7,7 @@ using UmaMusumeData;
 using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Controls.LiveMusicPlayer;
 using UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes;
+using UmaMusumeExplorer.Game;
 
 namespace UmaMusumeExplorer.Controls.Jukebox
 {

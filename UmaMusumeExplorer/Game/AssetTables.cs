@@ -2,7 +2,7 @@
 using UmaMusumeData;
 using UmaMusumeData.Tables;
 
-namespace UmaMusumeExplorer.Controls
+namespace UmaMusumeExplorer.Game
 {
     static class AssetTables
     {

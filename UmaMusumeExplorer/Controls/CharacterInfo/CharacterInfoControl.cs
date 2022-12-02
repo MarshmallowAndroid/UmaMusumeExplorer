@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Controls.CharacterInfo.Classes;
+using UmaMusumeExplorer.Game;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo
 {
@@ -34,7 +35,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             {
                 PictureBox charaIcon = new()
                 {
-                    BackgroundImage = UnityAssetHelpers.GetCharaIcon(item.Id).Bitmap,
+                    BackgroundImage = UnityAssets.GetCharaIcon(item.Id).Bitmap,
                     BackgroundImageLayout = ImageLayout.Zoom,
                     Cursor = Cursors.Hand,
                     Height = 100,

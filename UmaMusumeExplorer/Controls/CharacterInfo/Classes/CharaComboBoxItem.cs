@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using UmaMusumeData.Tables;
+using UmaMusumeExplorer.Game;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo.Classes
 {

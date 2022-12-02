@@ -10,9 +10,9 @@ using System.Text;
 using System.Text.RegularExpressions;
 using UmaMusumeData;
 
-namespace UmaMusumeExplorer.Controls
+namespace UmaMusumeExplorer.Game
 {
-    static class UnityAssetHelpers
+    static class UnityAssets
     {
         private static readonly AssetsManager assetsManager = new();
         private static readonly Dictionary<string, ImagePointerContainer> imagePointerContainers = new();
