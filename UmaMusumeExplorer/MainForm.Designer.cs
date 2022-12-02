@@ -37,6 +37,8 @@ namespace UmaMusumeExplorer
             this.audioPlayerControl = new UmaMusumeExplorer.Controls.AudioPlayer.AudioPlayerControl();
             this.liveMusicPlayerTabPage = new System.Windows.Forms.TabPage();
             this.liveMusicPlayerSongSelectControl = new UmaMusumeExplorer.Controls.LiveMusicPlayer.LiveMusicPlayerControl();
+            this.jukeboxTabPage = new System.Windows.Forms.TabPage();
+            this.jukeboxControl = new UmaMusumeExplorer.Controls.Jukebox.JukeboxControl();
             this.characterInfoTabPage = new System.Windows.Forms.TabPage();
             this.characterInfoControl = new UmaMusumeExplorer.Controls.CharacterInfo.CharacterInfoControl();
             this.raceMusicTabPage = new System.Windows.Forms.TabPage();
@@ -45,6 +47,7 @@ namespace UmaMusumeExplorer
             this.fileBrowserTabPage.SuspendLayout();
             this.audioPlayerTabPage.SuspendLayout();
             this.liveMusicPlayerTabPage.SuspendLayout();
+            this.jukeboxTabPage.SuspendLayout();
             this.characterInfoTabPage.SuspendLayout();
             this.raceMusicTabPage.SuspendLayout();
             this.SuspendLayout();
@@ -55,6 +58,7 @@ namespace UmaMusumeExplorer
             this.tabControl.Controls.Add(this.fileBrowserTabPage);
             this.tabControl.Controls.Add(this.audioPlayerTabPage);
             this.tabControl.Controls.Add(this.liveMusicPlayerTabPage);
+            this.tabControl.Controls.Add(this.jukeboxTabPage);
             this.tabControl.Controls.Add(this.characterInfoTabPage);
             this.tabControl.Controls.Add(this.raceMusicTabPage);
             this.tabControl.Name = "tabControl";
@@ -95,6 +99,19 @@ namespace UmaMusumeExplorer
             resources.ApplyResources(this.liveMusicPlayerSongSelectControl, "liveMusicPlayerSongSelectControl");
             this.liveMusicPlayerSongSelectControl.Name = "liveMusicPlayerSongSelectControl";
             // 
+            // jukeboxTabPage
+            // 
+            this.jukeboxTabPage.BackColor = System.Drawing.SystemColors.Control;
+            this.jukeboxTabPage.Controls.Add(this.jukeboxControl);
+            resources.ApplyResources(this.jukeboxTabPage, "jukeboxTabPage");
+            this.jukeboxTabPage.Name = "jukeboxTabPage";
+            // 
+            // jukeboxControl
+            // 
+            this.jukeboxControl.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.jukeboxControl, "jukeboxControl");
+            this.jukeboxControl.Name = "jukeboxControl";
+            // 
             // characterInfoTabPage
             // 
             this.characterInfoTabPage.BackColor = System.Drawing.SystemColors.Control;
@@ -130,6 +147,7 @@ namespace UmaMusumeExplorer
             this.fileBrowserTabPage.ResumeLayout(false);
             this.audioPlayerTabPage.ResumeLayout(false);
             this.liveMusicPlayerTabPage.ResumeLayout(false);
+            this.jukeboxTabPage.ResumeLayout(false);
             this.characterInfoTabPage.ResumeLayout(false);
             this.raceMusicTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -148,6 +166,8 @@ namespace UmaMusumeExplorer
         private System.Windows.Forms.TabPage liveMusicPlayerTabPage;
         private Controls.LiveMusicPlayer.LiveMusicPlayerControl liveMusicPlayerSongSelectControl;
         private Controls.FileBrowser.FileBrowserControl fileBrowserControl;
+        private System.Windows.Forms.TabPage jukeboxTabPage;
+        private Controls.Jukebox.JukeboxControl jukeboxControl;
     }
 }
 

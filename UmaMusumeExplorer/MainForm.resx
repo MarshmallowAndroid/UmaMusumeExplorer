@@ -57,19 +57,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="tabControl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tabControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <metadata name="fileBrowserTabPage.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="fileBrowserControl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="fileBrowserControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -124,12 +115,6 @@
   <data name="&gt;&gt;fileBrowserTabPage.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="audioPlayerTabPage.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="audioPlayerControl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="audioPlayerControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -181,12 +166,6 @@
   <data name="&gt;&gt;audioPlayerTabPage.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="liveMusicPlayerTabPage.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="liveMusicPlayerSongSelectControl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="liveMusicPlayerSongSelectControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -235,12 +214,54 @@
   <data name="&gt;&gt;liveMusicPlayerTabPage.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <metadata name="characterInfoTabPage.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="characterInfoControl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <data name="jukeboxControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="jukeboxControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="jukeboxControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>988, 640</value>
+  </data>
+  <data name="jukeboxControl.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;jukeboxControl.Name" xml:space="preserve">
+    <value>jukeboxControl</value>
+  </data>
+  <data name="&gt;&gt;jukeboxControl.Type" xml:space="preserve">
+    <value>UmaMusumeExplorer.Controls.Jukebox.JukeboxControl, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;jukeboxControl.Parent" xml:space="preserve">
+    <value>jukeboxTabPage</value>
+  </data>
+  <data name="&gt;&gt;jukeboxControl.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="jukeboxTabPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="jukeboxTabPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>988, 640</value>
+  </data>
+  <data name="jukeboxTabPage.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="jukeboxTabPage.Text" xml:space="preserve">
+    <value>Jukebox</value>
+  </data>
+  <data name="&gt;&gt;jukeboxTabPage.Name" xml:space="preserve">
+    <value>jukeboxTabPage</value>
+  </data>
+  <data name="&gt;&gt;jukeboxTabPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;jukeboxTabPage.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;jukeboxTabPage.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="characterInfoControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -290,14 +311,8 @@
     <value>tabControl</value>
   </data>
   <data name="&gt;&gt;characterInfoTabPage.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
-  <metadata name="raceMusicTabPage.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="raceSimulatorControl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="raceSimulatorControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -347,7 +362,7 @@
     <value>tabControl</value>
   </data>
   <data name="&gt;&gt;raceMusicTabPage.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 12</value>
@@ -371,9 +386,6 @@
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">

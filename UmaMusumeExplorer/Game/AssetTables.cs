@@ -12,6 +12,8 @@ namespace UmaMusumeExplorer.Game
         private static readonly IEnumerable<CardRarityData> cardRarityDatas = UmaDataHelper.GetMasterDatabaseRows<CardRarityData>();
         private static readonly IEnumerable<CharaData> charaDatas = UmaDataHelper.GetMasterDatabaseRows<CharaData>();
 
+        private static readonly IEnumerable<JukeboxMusicData> jukeboxMusicDatas = UmaDataHelper.GetMasterDatabaseRows<JukeboxMusicData>();
+
         private static readonly IEnumerable<LiveData> liveDatas = UmaDataHelper.GetMasterDatabaseRows<LiveData>();
         private static readonly IEnumerable<LivePermissionData> livePermissionDatas = UmaDataHelper.GetMasterDatabaseRows<LivePermissionData>();
 
@@ -31,6 +33,8 @@ namespace UmaMusumeExplorer.Game
         public static IEnumerable<CardData> CardDatas => cardDatas;
         public static IEnumerable<CardRarityData> CardRarityDatas => cardRarityDatas;
         public static IEnumerable<CharaData> CharaDatas => charaDatas;
+
+        public static IEnumerable<JukeboxMusicData> JukeboxMusicDatas => jukeboxMusicDatas;
 
         public static IEnumerable<LiveData> LiveDatas => liveDatas;
         public static IEnumerable<LivePermissionData> LivePermissionDatas => livePermissionDatas;
