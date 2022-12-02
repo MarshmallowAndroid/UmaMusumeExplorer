@@ -10,7 +10,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 {
     partial class LiveMusicPlayerControl : UserControl
     {
-        private readonly IEnumerable<LiveData> liveDatas = AssetTables.LiveDatas;
+        private readonly IEnumerable<LiveData> liveDatas = AssetTables.LiveDatas.OrderBy(l => l.Sort);
 
         public LiveMusicPlayerControl()
         {
