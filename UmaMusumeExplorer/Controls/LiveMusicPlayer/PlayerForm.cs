@@ -25,7 +25,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
         private readonly string songTitle;
 
         private readonly AssetsManager assetsManager = new();
-        private PinnedBitmap songJacketPinnedBitmap;
+        private readonly PinnedBitmap songJacketPinnedBitmap;
 
         private readonly List<LyricsTrigger> lyricsTriggers = new();
         private readonly List<PartTrigger> partTriggers = new();
