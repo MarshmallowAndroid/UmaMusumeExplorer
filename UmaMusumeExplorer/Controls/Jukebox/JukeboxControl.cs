@@ -12,9 +12,15 @@ namespace UmaMusumeExplorer.Controls.Jukebox
     {
         private readonly IEnumerable<JukeboxMusicData> jukeboxMusicDatas = AssetTables.JukeboxMusicDatas.OrderBy(l => l.Sort);
 
+        private SongLength currentSongLength;
+
         public JukeboxControl()
         {
             InitializeComponent();
+
+            shortVersionRadioButton.Checked = true;
+            shortVersionRadioButton.Tag = SongLength.ShortVersion;
+            gameSizeVersionRadioButton.Tag = SongLength.GameSizeVersion;
         }
 
         private void LiveMusicPlayerSongSelectControl_Load(object sender, EventArgs e)
@@ -58,9 +64,9 @@ namespace UmaMusumeExplorer.Controls.Jukebox
 
         private void Jacket_Click(object sender, EventArgs e)
         {
-            //LiveData liveData = (sender as PictureBox).Tag as LiveData;
-            //if (liveData is not null)
-            //    new PlayerForm(liveData).Show();
+            JukeboxMusicData liveData = (sender as PictureBox).Tag as JukeboxMusicData;
+            if (liveData is not null)
+                new PlayerForm(liveData, currentSongLength).Show();
         }
 
         private void LoadingBackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -73,6 +79,17 @@ namespace UmaMusumeExplorer.Controls.Jukebox
             loadingProgressBar.Visible = false;
 
             jacketPanel.Controls.AddRange((Control[])e.Result);
+        }
+
+        private void RadioBuiton_CheckedChanegd(object sender, EventArgs e)
+        {
+            RadioButton radioButton = sender as RadioButton;
+
+            if (radioButton.Tag is not null)
+            {
+                if (radioButton.Checked)
+                    currentSongLength = (SongLength)radioButton.Tag;
+            }
         }
     }
 }
