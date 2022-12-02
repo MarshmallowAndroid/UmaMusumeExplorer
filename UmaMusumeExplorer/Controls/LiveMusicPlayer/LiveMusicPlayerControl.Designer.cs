@@ -50,11 +50,13 @@
             // 
             // jacketPanel
             // 
+            this.jacketPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.jacketPanel.AutoScroll = true;
-            this.jacketPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.jacketPanel.Location = new System.Drawing.Point(0, 0);
+            this.jacketPanel.Location = new System.Drawing.Point(3, 3);
             this.jacketPanel.Name = "jacketPanel";
-            this.jacketPanel.Size = new System.Drawing.Size(821, 528);
+            this.jacketPanel.Size = new System.Drawing.Size(815, 522);
             this.jacketPanel.TabIndex = 0;
             // 
             // LiveMusicPlayerControl

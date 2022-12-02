@@ -12,7 +12,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using UmaMusumeData;
 using UmaMusumeData.Tables;
-using UmaMusumeExplorer.Controls.Jukebox;
 using UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes;
 using UmaMusumeExplorer.Game;
 

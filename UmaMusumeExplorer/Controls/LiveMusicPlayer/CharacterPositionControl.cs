@@ -1,5 +1,5 @@
 ﻿using System.Windows.Forms;
-using UmaMusumeExplorer.Controls.Jukebox;
+using UmaMusumeExplorer.Controls.LiveMusicPlayer;
 using UmaMusumeExplorer.Game;
 
 namespace UmaMusumeExplorer.Controls.LiveMusicPlayer

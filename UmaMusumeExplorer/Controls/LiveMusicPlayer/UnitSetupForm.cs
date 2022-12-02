@@ -9,7 +9,7 @@ using UmaMusumeExplorer.Controls.LiveMusicPlayer;
 using UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes;
 using UmaMusumeExplorer.Game;
 
-namespace UmaMusumeExplorer.Controls.Jukebox
+namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 {
     partial class UnitSetupForm : Form
     {

@@ -1,4 +1,4 @@
-﻿namespace UmaMusumeExplorer.Controls.Jukebox
+﻿namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 {
     partial class UnitSetupForm
     {
