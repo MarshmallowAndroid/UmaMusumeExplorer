@@ -21,7 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="NAudio.WinForms" Version="2.0.1" />
+    <PackageReference Include="NAudio.WinForms" Version="2.1.0" />
+    <PackageReference Include="Vanara.Windows.Shell" Version="3.4.11" />
   </ItemGroup>
 
   <ItemGroup>
