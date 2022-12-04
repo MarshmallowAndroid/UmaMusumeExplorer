@@ -283,6 +283,11 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             {
                 songMixer = new(okeAwb, partTriggers);
                 waveOutEvent.Init(songMixer);
+
+                waveOutEvent.Play();
+
+                lyricsThread.Start();
+                updateTimer.Enabled = true;
             }
 
             // Initialize tracks, can be done during playback

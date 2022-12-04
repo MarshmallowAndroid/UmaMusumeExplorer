@@ -141,6 +141,9 @@ namespace UmaMusumeExplorer.Controls.Jukebox
             {
                 musicWaveStream = new(okeAwb, 0);
                 waveOutEvent.Init(new VolumeSampleProvider(musicWaveStream.ToSampleProvider()) { Volume = 4.0F });
+                waveOutEvent.Play();
+
+                updateTimer.Enabled = true;
             }
 
             // Update the total time and volume track bars
