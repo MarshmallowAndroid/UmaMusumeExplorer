@@ -472,7 +472,7 @@
     <value>Export to WAV</value>
   </data>
   <data name="playerContextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 176</value>
+    <value>200, 154</value>
   </data>
   <data name="playerContextMenuStrip.Text" xml:space="preserve">
     <value>Live Music Player Menu</value>
@@ -496,7 +496,7 @@
     <value>547, 722</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterScreen</value>
+    <value>Manual</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Live Music Player</value>

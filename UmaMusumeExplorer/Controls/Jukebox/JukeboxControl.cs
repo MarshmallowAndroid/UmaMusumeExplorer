@@ -66,7 +66,7 @@ namespace UmaMusumeExplorer.Controls.Jukebox
         {
             JukeboxMusicData liveData = (sender as PictureBox).Tag as JukeboxMusicData;
             if (liveData is not null)
-                new PlayerForm(liveData, currentSongLength).Show();
+                ControlHelpers.ShowFormCenter(new PlayerForm(liveData, currentSongLength), this);
         }
 
         private void LoadingBackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
