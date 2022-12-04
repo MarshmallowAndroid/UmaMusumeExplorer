@@ -73,7 +73,7 @@ namespace UmaMusumeExplorer.Game
             if (imagePointerContainers.ContainsKey(imageString)) return PinnedBitmapFromKey(imageString);
 
             SerializedFile targetAsset = GetFile(imageString, ClassIDType.Texture2D);
-            Texture2D texture = targetAsset.Objects.Where(o => o.type == ClassIDType.Texture2D).First() as Texture2D;
+            Texture2D texture = targetAsset.Objects.First(o => o.type == ClassIDType.Texture2D) as Texture2D;
 
             Image<Bgra32> image = texture.ConvertToImage(true);
 
@@ -111,7 +111,7 @@ namespace UmaMusumeExplorer.Game
 
             SerializedFile targetAsset = GetFile(imageString, ClassIDType.Texture2D);
             targetAsset ??= GetFile($"jacket_icon_{size}_0000", ClassIDType.Texture2D);
-            Texture2D texture = targetAsset.Objects.Where(o => o.type == ClassIDType.Texture2D).First() as Texture2D;
+            Texture2D texture = targetAsset.Objects.First(o => o.type == ClassIDType.Texture2D) as Texture2D;
 
             Image<Bgra32> image = texture.ConvertToImage(true);
 
@@ -128,15 +128,15 @@ namespace UmaMusumeExplorer.Game
 
             SerializedFile targetAsset = GetFile($"m{idString}_{category}", ClassIDType.TextAsset);
             if (targetAsset is null) return null;
-            TextAsset textAsset = targetAsset.Objects.Where(o => o.type == ClassIDType.TextAsset).First() as TextAsset;
+            TextAsset textAsset = targetAsset.Objects.First(o => o.type == ClassIDType.TextAsset) as TextAsset;
 
             return new StreamReader(new MemoryStream(textAsset.m_Script));
         }
 
         private static SerializedFile GetFile(string objectName, ClassIDType classIdType)
         {
-            return assetsManager.assetsFileList.Where(
-                a => (a.Objects.Where(o => o.type == classIdType).FirstOrDefault() as NamedObject)?.m_Name.Equals(objectName) ?? false).FirstOrDefault();
+            return assetsManager.assetsFileList.FirstOrDefault(
+                a => (a.Objects.FirstOrDefault(o => o.type == classIdType) as NamedObject)?.m_Name.Equals(objectName) ?? false);
         }
 
         private static PinnedBitmap PinnedBitmapFromKey(string key) =>

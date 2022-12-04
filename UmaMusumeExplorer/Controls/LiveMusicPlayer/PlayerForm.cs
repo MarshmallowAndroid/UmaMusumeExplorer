@@ -337,10 +337,10 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
         {
             string idString = $"{musicId:d4}";
 
-            SerializedFile targetAsset = assetsManager.assetsFileList.Where(
-                a => (a.Objects.Where(o => o.type == ClassIDType.TextAsset).FirstOrDefault() as NamedObject)?.m_Name.Equals($"m{idString}_{category}") ?? false).FirstOrDefault();
+            SerializedFile targetAsset = assetsManager.assetsFileList.FirstOrDefault(
+                a => (a.Objects.FirstOrDefault(o => o.type == ClassIDType.TextAsset) as NamedObject)?.m_Name.Equals($"m{idString}_{category}") ?? false);
             if (targetAsset is null) return null;
-            TextAsset textAsset = targetAsset.Objects.Where(o => o.type == ClassIDType.TextAsset).First() as TextAsset;
+            TextAsset textAsset = targetAsset.Objects.First(o => o.type == ClassIDType.TextAsset) as TextAsset;
 
             return new StreamReader(new MemoryStream(textAsset.m_Script));
         }

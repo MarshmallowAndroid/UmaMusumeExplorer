@@ -31,17 +31,17 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             Text = charaName;
             nameLabel.Text = charaName;
 
-            string katakana = AssetTables.CharaNameKatakanaTextDatas.Where(td => td.Index == id).First().Text;
+            string katakana = AssetTables.CharaNameKatakanaTextDatas.First(td => td.Index == id).Text;
 
             if (!katakana.Equals(nameLabel.Text))
-                nameLabel.Text += $"（{AssetTables.CharaNameKatakanaTextDatas.Where(td => td.Index == id).First().Text}）";
+                nameLabel.Text += $"（{AssetTables.CharaNameKatakanaTextDatas.First(td => td.Index == id).Text}）";
             nameLabel.BackColor = ColorFromHexString(charaData.UIColorMain);
             if (GetBrightness(nameLabel.BackColor) > 128)
                 nameLabel.ForeColor = Color.Black;
             else
                 nameLabel.ForeColor = Color.White;
 
-            cvNameLabel.Text = "CV. " + AssetTables.CharaVoiceNameTextDatas.Where(td => td.Index == id).First().Text;
+            cvNameLabel.Text = "CV. " + AssetTables.CharaVoiceNameTextDatas.First(td => td.Index == id).Text;
             cvNameLabel.BackColor = ColorFromHexString(charaData.UIColorSub);
             if (GetBrightness(cvNameLabel.BackColor) > 128)
                 cvNameLabel.ForeColor = Color.Black;
