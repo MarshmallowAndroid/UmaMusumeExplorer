@@ -50,7 +50,7 @@ namespace UmaMusumeExplorer.Controls.Jukebox
                 jacket.Click += Jacket_Click;
 
                 ToolTip toolTip = new();
-                toolTip.SetToolTip(jacket, jukeboxMusicData.MusicId.ToString());
+                toolTip.SetToolTip(jacket, $"{jukeboxMusicData.MusicId}: {AssetTables.LiveNameTextDatas.First(l => l.Index == jukeboxMusicData.MusicId)}");
 
                 pictureBoxes.Add(jacket);
 

@@ -44,7 +44,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
                 };
 
                 ToolTip toolTip = new();
-                toolTip.SetToolTip(charaIcon, item.Id.ToString());
+                toolTip.SetToolTip(charaIcon, $"{item.Id}: {AssetTables.CharaNameTextDatas.First(c => c.Index == item.Id)}");
 
                 charaIcon.Click += CharaIcon_Click;
                 pictureBoxes.Add(charaIcon);
