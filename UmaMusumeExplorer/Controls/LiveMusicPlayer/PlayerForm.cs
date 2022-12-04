@@ -4,6 +4,7 @@ using NAudio.Wave;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -54,6 +55,8 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             LoadMusicScore();
 
             lyricsThread = new(DoLyricsPlayback);
+
+            Icon = Icon.FromHandle(songJacketPinnedBitmap.Bitmap.GetHicon());
         }
 
         private void LiveMusicPlayerForm_Load(object sender, EventArgs e)
