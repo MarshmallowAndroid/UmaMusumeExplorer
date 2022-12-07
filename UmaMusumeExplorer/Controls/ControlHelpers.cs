@@ -1,9 +1,23 @@
-﻿using System.Windows.Forms;
+﻿using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace UmaMusumeExplorer.Controls
 {
     static class ControlHelpers
     {
+        private static List<Form> OpenedForms { get; } = new();
+
+        public static void CloseAllForms()
+        {
+            OpenedForms.ForEach(form =>
+            {
+                form.FormClosed -= FormClosed;
+                form.Close();
+            });
+
+            OpenedForms.Clear();
+        }
+
         public static void ShowFormDialogCenter(Form form, Control source)
         {
             SetNewLocation(form, source);
@@ -13,7 +27,9 @@ namespace UmaMusumeExplorer.Controls
         public static void ShowFormCenter(Form form, Control source)
         {
             SetNewLocation(form, source);
-            form.Show(GetParentForm(source));
+            form.FormClosed += FormClosed;
+            form.Show();
+            OpenedForms.Add(form);
         }
 
         private static void SetNewLocation(Form form, Control source)
@@ -38,5 +54,7 @@ namespace UmaMusumeExplorer.Controls
             }
             else return GetParentForm(control.Parent);
         }
+
+        private static void FormClosed(object sender, FormClosedEventArgs e) => OpenedForms.Remove(sender as Form);
     }
 }

@@ -143,6 +143,7 @@ namespace UmaMusumeExplorer
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tabControl);
             this.Name = "MainForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.tabControl.ResumeLayout(false);
             this.fileBrowserTabPage.ResumeLayout(false);
             this.audioPlayerTabPage.ResumeLayout(false);
