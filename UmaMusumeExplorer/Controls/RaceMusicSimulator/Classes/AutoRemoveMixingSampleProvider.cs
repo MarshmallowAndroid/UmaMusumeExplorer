@@ -153,7 +153,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes
                 int num5 = offset + num;
                 while (num5 < offset + count)
                 {
-                    buffer[num5++] = 0f;
+                    buffer[num5++] = 0F;
                 }
 
                 num = count;

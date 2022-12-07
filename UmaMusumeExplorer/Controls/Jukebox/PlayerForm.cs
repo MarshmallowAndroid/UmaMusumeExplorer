@@ -71,7 +71,7 @@ namespace UmaMusumeExplorer.Controls.Jukebox
         private void UpdateTimer_Tick(object sender, EventArgs e)
         {
             currentTimeLabel.Text = $"{musicWaveStream.CurrentTime:m\\:ss}";
-            seekTrackBar.Value = (int)(musicWaveStream.CurrentTime / musicWaveStream.TotalTime * 100.0f);
+            seekTrackBar.Value = (int)(musicWaveStream.CurrentTime / musicWaveStream.TotalTime * 100.0F);
         }
 
         private void PlayerForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -86,13 +86,13 @@ namespace UmaMusumeExplorer.Controls.Jukebox
 
         private void SeekTrackBar_Scroll(object sender, EventArgs e)
         {
-            musicWaveStream.Position = (long)(musicWaveStream.Length * (float)(seekTrackBar.Value / 100.0f));
+            musicWaveStream.Position = (long)(musicWaveStream.Length * (float)(seekTrackBar.Value / 100.0F));
         }
 
         private void VolumeTrackbar_Scroll(object sender, EventArgs e)
         {
-            waveOutEvent.Volume = volumeTrackbar.Value / 100.0f;
-            volumeLabel.Text = (int)Math.Ceiling(waveOutEvent.Volume * 100.0f) + "%";
+            waveOutEvent.Volume = volumeTrackbar.Value / 100.0F;
+            volumeLabel.Text = (int)Math.Ceiling(waveOutEvent.Volume * 100.0F) + "%";
         }
 
         private void SetupButton_Click(object sender, EventArgs e)
@@ -148,7 +148,7 @@ namespace UmaMusumeExplorer.Controls.Jukebox
 
             // Update the total time and volume track bars
             totalTimeLabel.Text = $"{musicWaveStream.TotalTime:m\\:ss}";
-            int volume = (int)Math.Ceiling(waveOutEvent.Volume * 100.0f);
+            int volume = (int)Math.Ceiling(waveOutEvent.Volume * 100.0F);
             volumeTrackbar.Value = volume;
             volumeLabel.Text = volume + "%";
 

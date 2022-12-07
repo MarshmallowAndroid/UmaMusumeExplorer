@@ -24,9 +24,9 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
                 Font currentFont = statusValueLabel.Font;
 
                 if (statusValue >= 1000)
-                    statusValueLabel.Font = new Font(currentFont.FontFamily, 12.0f);
+                    statusValueLabel.Font = new Font(currentFont.FontFamily, 12.0F);
                 else
-                    statusValueLabel.Font = new Font(currentFont.FontFamily, 16.0f);
+                    statusValueLabel.Font = new Font(currentFont.FontFamily, 16.0F);
 
                 if (InRange(statusValue, 0, 49))
                     statusRankLabel.Text = "G";

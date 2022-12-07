@@ -42,7 +42,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
         {
             audioTypeComboBox.SelectedIndex = 0;
 
-            fileListView.Columns[0].Width = (int)(fileListView.Width * 0.80f);
+            fileListView.Columns[0].Width = (int)(fileListView.Width * 0.80F);
             fileListView.Columns[1].Width = -2;
         }
 

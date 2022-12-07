@@ -24,7 +24,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 
         private long currentSample = 0;
         private int triggerIndex = 0;
-        private float volumeMultiplier = 1.0f;
+        private float volumeMultiplier = 1.0F;
 
         private readonly object readLock = new();
 
@@ -41,9 +41,9 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 
             foreach (var partTrigger in partTriggers)
             {
-                long sample = (long)(partTrigger.TimeMs / 1000.0f * mainUmaWaveStream.WaveFormat.SampleRate);
-                float volume = partTrigger.MemberVolumes[index] != 999.0f ? partTrigger.MemberVolumes[index] : 1.0f;
-                volume += partTrigger.VolumeRate != 999.0f ? 0.25f * partTrigger.VolumeRate : 0.0f;
+                long sample = (long)(partTrigger.TimeMs / 1000.0F * mainUmaWaveStream.WaveFormat.SampleRate);
+                float volume = partTrigger.MemberVolumes[index] != 999.0F ? partTrigger.MemberVolumes[index] : 1.0F;
+                volume += partTrigger.VolumeRate != 999.0F ? 0.25F * partTrigger.VolumeRate : 0.0F;
 
                 triggers.Add(
                     new Trigger(
@@ -115,21 +115,21 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 
                     volumeMultiplier = triggers[triggerIndex].Volume;
 
-                    //if (triggers[triggerIndex].VolumeRate != 999.0f)
-                    //    volumeMultiplier += 0.25f * triggers[triggerIndex].VolumeRate;
+                    //if (triggers[triggerIndex].VolumeRate != 999.0F)
+                    //    volumeMultiplier += 0.25F * triggers[triggerIndex].VolumeRate;
 
-                    //if (triggers[triggerIndex].Pan == 999.0f)
+                    //if (triggers[triggerIndex].Pan == 999.0F)
                     //{
-                    //    mainSampleProvider.Pan = 0.0f;
+                    //    mainSampleProvider.Pan = 0.0F;
 
-                    //    if (secondSampleProvider is not null) secondSampleProvider.Pan = 0.0f;
+                    //    if (secondSampleProvider is not null) secondSampleProvider.Pan = 0.0F;
                     //}
                     //else
                     //{
                     //    mainSampleProvider.Pan = triggers[triggerIndex].Pan;
                     //    if (secondSampleProvider is not null) secondSampleProvider.Pan = triggers[triggerIndex].Pan;
 
-                    //    //volumeMultiplier *= (1.0f - triggers[triggerIndex].Pan);
+                    //    //volumeMultiplier *= (1.0F - triggers[triggerIndex].Pan);
                     //}
 
                     if (triggerIndex < triggers.Count - 1) triggerIndex++;

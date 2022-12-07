@@ -36,7 +36,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
 
             fileTreeView.Nodes.Add(rootNode);
 
-            extractListView.Columns[0].Width = (int)(extractListView.Width * 0.80f);
+            extractListView.Columns[0].Width = (int)(extractListView.Width * 0.80F);
             extractListView.Columns[1].Width = -2;
 
             targetAssets = gameAssets;
@@ -244,7 +244,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
                     lock (finishedLock)
                     {
                         finished++;
-                        Invoke(() => progressBar1.Value = (int)((float)finished / total * 100.0f));
+                        Invoke(() => progressBar1.Value = (int)((float)finished / total * 100.0F));
                     }
                 });
                 copyTasks[index++].Start();

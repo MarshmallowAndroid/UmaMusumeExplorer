@@ -85,7 +85,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes
         {
             for (int i = 0; i < count; i++)
             {
-                buffer[i + offset] = 0f;
+                buffer[i + offset] = 0F;
             }
         }
 
@@ -94,7 +94,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes
             int num = 0;
             while (num < sourceSamplesRead)
             {
-                float num2 = 1f - (float)fadeSamplePosition / (float)fadeSampleCount;
+                float num2 = 1F - (float)fadeSamplePosition / (float)fadeSampleCount;
                 for (int i = 0; i < source.WaveFormat.Channels; i++)
                 {
                     buffer[offset + num++] *= num2;

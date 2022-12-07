@@ -77,7 +77,7 @@ namespace UmaMusumeExplorer.Game
 
             Image<Bgra32> image = texture.ConvertToImage(true);
 
-            int adjustedHeight = (int)(image.Height * 1.115f);
+            int adjustedHeight = (int)(image.Height * 1.115F);
             image.Mutate(o => o.Resize(image.Width, adjustedHeight));
 
             imagePointerContainers.Add(imageString,

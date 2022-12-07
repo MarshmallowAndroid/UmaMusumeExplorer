@@ -21,7 +21,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 
         private float[] charaTracksBuffer;
         private float[] okeBuffer;
-        private float volumeMultiplier = 1.0f;
+        private float volumeMultiplier = 1.0F;
 
         private long currentSample = 0;
         private int volumeTriggerIndex = 0;
@@ -42,11 +42,11 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                         activeSingers++;
                 }
 
-                long sample = (long)(partTrigger.TimeMs / 1000.0f * WaveFormat.SampleRate);
+                long sample = (long)(partTrigger.TimeMs / 1000.0F * WaveFormat.SampleRate);
                 volumeTriggers.Add(new VolumeTrigger(sample, activeSingers));
             }
 
-            allActiveVolume = 1.0f / (parts[0].MemberVolumes.Length + 1) + 0.5f;
+            allActiveVolume = 1.0F / (parts[0].MemberVolumes.Length + 1) + 0.5F;
         }
 
         public WaveFormat WaveFormat => okeSampleProvider.WaveFormat;
@@ -190,7 +190,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 
             for (int i = 0; i < count; i++)
             {
-                buffer[i] = 0.0f;
+                buffer[i] = 0.0F;
             }
 
             int read;
@@ -228,9 +228,9 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                 for (int j = 0; j < WaveFormat.Channels; j++)
                 {
                     int index = i * WaveFormat.Channels + j;
-                    buffer[index] *= CenterOnly ? 1.0f : volumeMultiplier;
+                    buffer[index] *= CenterOnly ? 1.0F : volumeMultiplier;
                     buffer[index] += MuteBgm ? 0 : okeBuffer[index];
-                    buffer[index] *= 1.5f;
+                    buffer[index] *= 1.5F;
                 }
 
                 currentSample++;
@@ -257,7 +257,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             public VolumeTrigger(long sample, int activeSingers)
             {
                 Sample = sample;
-                Volume = 1.0f / (activeSingers + 1) + 0.5f;
+                Volume = 1.0F / (activeSingers + 1) + 0.5F;
             }
         }
     }

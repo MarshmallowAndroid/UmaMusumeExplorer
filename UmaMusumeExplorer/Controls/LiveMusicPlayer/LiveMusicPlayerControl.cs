@@ -50,7 +50,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
                 pictureBoxes.Add(jacket);
 
-                loadingBackgroundWorker.ReportProgress((int)((float)itemNumber++ / liveDatas.Count() * 100.0f));
+                loadingBackgroundWorker.ReportProgress((int)((float)itemNumber++ / liveDatas.Count() * 100.0F));
             }
 
             AssetStudio.Progress.Default = defaultProgress;

@@ -51,7 +51,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
                 Invoke(() => charaListComboBox.Items.Add(new CharaComboBoxItem(item)));
 
-                loadingBackgroundWorker.ReportProgress((int)((float)itemNumber++ / charaDatas.Count() * 100.0f));
+                loadingBackgroundWorker.ReportProgress((int)((float)itemNumber++ / charaDatas.Count() * 100.0F));
             }
 
             AssetStudio.Progress.Default = defaultProgress;

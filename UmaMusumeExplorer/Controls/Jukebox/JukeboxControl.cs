@@ -54,7 +54,7 @@ namespace UmaMusumeExplorer.Controls.Jukebox
 
                 pictureBoxes.Add(jacket);
 
-                loadingBackgroundWorker.ReportProgress((int)((float)itemNumber++ / jukeboxMusicDatas.Count() * 100.0f));
+                loadingBackgroundWorker.ReportProgress((int)((float)itemNumber++ / jukeboxMusicDatas.Count() * 100.0F));
             }
 
             AssetStudio.Progress.Default = defaultProgress;

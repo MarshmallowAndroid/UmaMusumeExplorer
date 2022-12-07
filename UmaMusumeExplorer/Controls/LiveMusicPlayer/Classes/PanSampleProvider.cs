@@ -29,8 +29,8 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             int bufferIndex = 0;
             for (int i = offset; i < count / 2; i++)
             {
-                left = Pan <= 0 ? 1.0f : (1.0f - Pan) / 2.0f;
-                right = Pan >= 0 ? 1.0f : (Pan + 1.0f) / 2.0f;
+                left = Pan <= 0 ? 1.0F : (1.0F - Pan) / 2.0F;
+                right = Pan >= 0 ? 1.0F : (Pan + 1.0F) / 2.0F;
 
                 buffer[bufferIndex++] *= left;
                 buffer[bufferIndex++] *= right;

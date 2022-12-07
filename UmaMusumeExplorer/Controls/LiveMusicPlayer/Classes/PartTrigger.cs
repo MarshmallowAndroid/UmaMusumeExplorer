@@ -56,7 +56,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             {
                 for (int i = 0; i < activeMembers; i++)
                 {
-                    MemberVolumes[i] = 1.0f;
+                    MemberVolumes[i] = 1.0F;
                     MemberPans[i] = 999;
                 }
             }
