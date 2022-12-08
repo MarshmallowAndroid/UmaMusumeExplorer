@@ -154,6 +154,5 @@
         private System.Windows.Forms.Label currentTimeLabel;
         private System.Windows.Forms.Label totalTimeLabel;
         private System.Windows.Forms.Timer updateTimer;
-        private System.Windows.Forms.Button setupButton;
     }
 }
