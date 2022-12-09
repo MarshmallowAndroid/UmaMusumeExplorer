@@ -1,6 +1,9 @@
 ﻿using System.Text;
 
-string createStatement = Console.ReadLine() ?? "";
+string createStatement = args.Length > 1 ? args[0] : "";
+
+if (createStatement == "")
+    createStatement = Console.ReadLine() ?? "";
 
 if (createStatement != "")
 {
@@ -17,39 +20,69 @@ if (createStatement != "")
 
     createStatement = createStatement[(createStatement.IndexOf('(') + 1)..];
 
+    Dictionary<string, string> properties = new();
+
     while (true)
     {
-        string columnName = ExtractFromQuotesAndUpdate(ref createStatement);
+        bool hasPrimaryKey = false;
+        if (createStatement.StartsWith(" PRIMARY KEY("))
+            hasPrimaryKey = true;
 
-        createStatement = createStatement[1..];
+        if (hasPrimaryKey)
+        {
+            while (true)
+            {
+                string columnName = ExtractFromQuotesAndUpdate(ref createStatement);
+                properties[columnName] += " PRIMARY KEY";
+                if (!createStatement.StartsWith(","))
+                {
+                    createStatement = createStatement[1..];
+                    break;
+                }
+            }
+        }
+        else
+        {
 
-        int spaceIndex = createStatement.IndexOf(' ');
-        if (spaceIndex < 0) break;
+            int spaceIndex = createStatement.IndexOf(' ');
+            if (spaceIndex < 0)
+                break;
 
-        string type = createStatement[..spaceIndex];
-        createStatement = createStatement[(type.Length + 1)..];
-        createStatement = createStatement[(createStatement.IndexOf(',') + 1)..];
+            string columnName = ExtractFromQuotesAndUpdate(ref createStatement);
+            createStatement = createStatement[1..];
 
+            string type = createStatement[..createStatement.IndexOf(',')];
+            createStatement = createStatement[(type.Length + 1)..];
+
+            properties.Add(columnName, type);
+        }
+    }
+
+    int index = 0;
+    foreach (var property in properties)
+    {
+        string type = property.Value[..property.Value.IndexOf(' ')];
         type = type switch
         {
             "INTEGER" => "int",
             "TEXT" => "string",
             _ => "object",
         };
+
         writer.Write("    ");
-        writer.WriteLine($"[Column(\"{columnName}\"), NotNull]");
+        writer.WriteLine($"[Column(\"{property.Key}\"){(property.Value.Contains("NOT NULL") ? ", NotNull" : "")}{(property.Value.Contains("PRIMARY KEY") ? ", PrimaryKey" : "")}]");
         writer.Write("    ");
-        writer.Write($"public {type} {UnderscoredToCamelCase(columnName)} ");
+        writer.Write($"public {type} {UnderscoredToCamelCase(property.Key)} ");
 
         if (type == "string")
             writer.WriteLine("{ get; set; } = \"\";");
         else
             writer.WriteLine("{ get; set; }");
 
-        int lastCommaIndex = createStatement.LastIndexOf(',');
-
-        if (lastCommaIndex >= 0)
+        if (index < properties.Count - 1)
             writer.WriteLine();
+
+        index++;
     }
 
     writer.WriteLine("}");
