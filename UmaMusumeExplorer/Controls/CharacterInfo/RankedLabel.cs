@@ -16,6 +16,10 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             Rank = RankedLabelRank.Unknown;
         }
 
+        [Browsable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [EditorBrowsable(EditorBrowsableState.Always)]
+        [RefreshProperties(RefreshProperties.All)]
         public RankedLabelRank Rank
         {
             get
@@ -66,7 +70,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
                         break;
                 }
 
-                Update();
+                Invalidate();
             }
         }
 
@@ -75,6 +79,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
         [Browsable(true)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         [EditorBrowsable(EditorBrowsableState.Always)]
+        [RefreshProperties(RefreshProperties.All)]
         public override string Text
         {
             get
@@ -84,7 +89,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             set
             {
                 textLabel.Text = value;
-                Update();
+                Invalidate();
             }
         }
 

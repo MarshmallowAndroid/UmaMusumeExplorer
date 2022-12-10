@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo
@@ -13,6 +14,10 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             InitializeComponent();
         }
 
+        [Browsable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [EditorBrowsable(EditorBrowsableState.Always)]
+        [RefreshProperties(RefreshProperties.All)]
         public int Value
         {
             get { return statusValue; }
@@ -95,10 +100,14 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
                         break;
                 }
 
-                Update();
+                Invalidate();
             }
         }
 
+        [Browsable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [EditorBrowsable(EditorBrowsableState.Always)]
+        [RefreshProperties(RefreshProperties.All)]
         public int MaxValue
         {
             get { return statusMaxValue; }
@@ -106,7 +115,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             {
                 statusMaxValue = value;
                 statusMaxValueLabel.Text = "/" + statusMaxValue.ToString();
-                Update();
+                Invalidate();
             }
         }
 
