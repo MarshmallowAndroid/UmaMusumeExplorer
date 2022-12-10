@@ -73,8 +73,8 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
         //public override string Text { get => base.Text; set => base.Text = value; }
 
         [Browsable(true)]
-        [EditorBrowsable(EditorBrowsableState.Always)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [EditorBrowsable(EditorBrowsableState.Always)]
         public override string Text
         {
             get
@@ -86,6 +86,19 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
                 textLabel.Text = value;
                 Update();
             }
+        }
+
+        public enum RankedLabelRank
+        {
+            Unknown,
+            G,
+            F,
+            E,
+            D,
+            C,
+            B,
+            A,
+            S
         }
     }
 }

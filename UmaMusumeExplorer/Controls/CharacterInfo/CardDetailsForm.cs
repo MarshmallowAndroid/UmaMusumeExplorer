@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Controls.CharacterInfo.Classes;
 using UmaMusumeExplorer.Game;
+using static UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo
 {

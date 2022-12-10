@@ -64,10 +64,6 @@
             this.escapeRankedLabel = new UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel();
             this.leadingRankedLabel = new UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel();
             this.insertRankedLabel = new UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.statusDisplayLabel1 = new UmaMusumeExplorer.Controls.CharacterInfo.StatusDisplayLabel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.growthRateTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.speedGrowthLabel = new System.Windows.Forms.Label();
             this.staminaGrowthLabel = new System.Windows.Forms.Label();
@@ -77,11 +73,12 @@
             this.growthRateLabel = new System.Windows.Forms.Label();
             this.rarityComboBox = new System.Windows.Forms.ComboBox();
             this.rarityHintLabel = new System.Windows.Forms.Label();
+            this.skillsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.skillsLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox)).BeginInit();
             this.belowNameTablePanel.SuspendLayout();
             this.statsTablePanel.SuspendLayout();
             this.aptitudeTableLayoutPanel.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
             this.growthRateTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -241,21 +238,21 @@
             this.driveInRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.driveInRankedLabel, "driveInRankedLabel");
             this.driveInRankedLabel.Name = "driveInRankedLabel";
-            this.driveInRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.Classes.RankedLabelRank.Unknown;
+            this.driveInRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel.RankedLabelRank.Unknown;
             // 
             // dirtRankedLabel
             // 
             this.dirtRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.dirtRankedLabel, "dirtRankedLabel");
             this.dirtRankedLabel.Name = "dirtRankedLabel";
-            this.dirtRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.Classes.RankedLabelRank.Unknown;
+            this.dirtRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel.RankedLabelRank.Unknown;
             // 
             // turfRankedLabel
             // 
             this.turfRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.turfRankedLabel, "turfRankedLabel");
             this.turfRankedLabel.Name = "turfRankedLabel";
-            this.turfRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.Classes.RankedLabelRank.Unknown;
+            this.turfRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel.RankedLabelRank.Unknown;
             // 
             // fieldAptitudeLabel
             // 
@@ -277,73 +274,49 @@
             this.shortRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.shortRankedLabel, "shortRankedLabel");
             this.shortRankedLabel.Name = "shortRankedLabel";
-            this.shortRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.Classes.RankedLabelRank.Unknown;
+            this.shortRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel.RankedLabelRank.Unknown;
             // 
             // mileRankedLabel
             // 
             this.mileRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.mileRankedLabel, "mileRankedLabel");
             this.mileRankedLabel.Name = "mileRankedLabel";
-            this.mileRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.Classes.RankedLabelRank.Unknown;
+            this.mileRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel.RankedLabelRank.Unknown;
             // 
             // middleRankedLabel
             // 
             this.middleRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.middleRankedLabel, "middleRankedLabel");
             this.middleRankedLabel.Name = "middleRankedLabel";
-            this.middleRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.Classes.RankedLabelRank.Unknown;
+            this.middleRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel.RankedLabelRank.Unknown;
             // 
             // longRankedLabel
             // 
             this.longRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.longRankedLabel, "longRankedLabel");
             this.longRankedLabel.Name = "longRankedLabel";
-            this.longRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.Classes.RankedLabelRank.Unknown;
+            this.longRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel.RankedLabelRank.Unknown;
             // 
             // escapeRankedLabel
             // 
             this.escapeRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.escapeRankedLabel, "escapeRankedLabel");
             this.escapeRankedLabel.Name = "escapeRankedLabel";
-            this.escapeRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.Classes.RankedLabelRank.Unknown;
+            this.escapeRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel.RankedLabelRank.Unknown;
             // 
             // leadingRankedLabel
             // 
             this.leadingRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.leadingRankedLabel, "leadingRankedLabel");
             this.leadingRankedLabel.Name = "leadingRankedLabel";
-            this.leadingRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.Classes.RankedLabelRank.Unknown;
+            this.leadingRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel.RankedLabelRank.Unknown;
             // 
             // insertRankedLabel
             // 
             this.insertRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.insertRankedLabel, "insertRankedLabel");
             this.insertRankedLabel.Name = "insertRankedLabel";
-            this.insertRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.Classes.RankedLabelRank.Unknown;
-            // 
-            // tableLayoutPanel1
-            // 
-            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.Controls.Add(this.statusDisplayLabel1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            // 
-            // statusDisplayLabel1
-            // 
-            resources.ApplyResources(this.statusDisplayLabel1, "statusDisplayLabel1");
-            this.statusDisplayLabel1.MaxValue = 1200;
-            this.statusDisplayLabel1.Name = "statusDisplayLabel1";
-            this.statusDisplayLabel1.Value = 50;
-            // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
-            // 
-            // label5
-            // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
+            this.insertRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel.RankedLabelRank.Unknown;
             // 
             // growthRateTableLayoutPanel
             // 
@@ -398,10 +371,22 @@
             resources.ApplyResources(this.rarityHintLabel, "rarityHintLabel");
             this.rarityHintLabel.Name = "rarityHintLabel";
             // 
+            // skillsTableLayoutPanel
+            // 
+            resources.ApplyResources(this.skillsTableLayoutPanel, "skillsTableLayoutPanel");
+            this.skillsTableLayoutPanel.Name = "skillsTableLayoutPanel";
+            // 
+            // skillsLabel
+            // 
+            resources.ApplyResources(this.skillsLabel, "skillsLabel");
+            this.skillsLabel.Name = "skillsLabel";
+            // 
             // CardDetailsForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.skillsTableLayoutPanel);
+            this.Controls.Add(this.skillsLabel);
             this.Controls.Add(this.growthRateLabel);
             this.Controls.Add(this.aptitudeTableLayoutPanel);
             this.Controls.Add(this.growthRateTableLayoutPanel);
@@ -423,8 +408,6 @@
             this.statsTablePanel.PerformLayout();
             this.aptitudeTableLayoutPanel.ResumeLayout(false);
             this.aptitudeTableLayoutPanel.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
             this.growthRateTableLayoutPanel.ResumeLayout(false);
             this.growthRateTableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -459,10 +442,6 @@
         private System.Windows.Forms.Label fieldAptitudeLabel;
         private System.Windows.Forms.Label distanceAptitudeLabel;
         private System.Windows.Forms.Label runningStyleAptitudeLabel;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private StatusDisplayLabel statusDisplayLabel1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
         private RankedLabel driveInRankedLabel;
         private RankedLabel dirtRankedLabel;
         private RankedLabel turfRankedLabel;
@@ -482,5 +461,7 @@
         private System.Windows.Forms.Label growthRateLabel;
         private System.Windows.Forms.ComboBox rarityComboBox;
         private System.Windows.Forms.Label rarityHintLabel;
+        private System.Windows.Forms.TableLayoutPanel skillsTableLayoutPanel;
+        private System.Windows.Forms.Label skillsLabel;
     }
 }

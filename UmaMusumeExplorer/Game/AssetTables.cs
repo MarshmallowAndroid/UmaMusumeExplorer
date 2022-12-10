@@ -28,6 +28,9 @@ namespace UmaMusumeExplorer.Game
         private static readonly IEnumerable<TextData> liveNameTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 16);
         private static readonly IEnumerable<TextData> liveInfoTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 17);
 
+        private static readonly IEnumerable<TextData> skillNameTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 47);
+        private static readonly IEnumerable<TextData> skillInfoTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 48);
+
         public static IEnumerable<GameAsset> AudioAssets => audioGameFiles;
 
         public static IEnumerable<CardData> CardDatas => cardDatas;
@@ -49,5 +52,8 @@ namespace UmaMusumeExplorer.Game
 
         public static IEnumerable<TextData> LiveNameTextDatas => liveNameTextDatas;
         public static IEnumerable<TextData> LiveInfoTextDatas => liveInfoTextDatas;
+
+        public static IEnumerable<TextData> SkillNameTextDatas => skillNameTextDatas;
+        public static IEnumerable<TextData> SkillInfoTextDatas => skillInfoTextDatas;
     }
 }
