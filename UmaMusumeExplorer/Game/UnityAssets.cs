@@ -14,16 +14,15 @@ namespace UmaMusumeExplorer.Game
 {
     static class UnityAssets
     {
-        private static readonly AssetsManager assetsManager = new();
+        private static readonly AssetsManager charaIconAssetsManager = new();
+        private static readonly AssetsManager skillIconAssetsManager = new();
+        private static readonly AssetsManager jacketsAssetsManager = new();
+        private static readonly AssetsManager generalAssetsManager = new();
         private static readonly Dictionary<string, ImagePointerContainer> imagePointerContainers = new();
 
         private static bool charaIconsLoaded = false;
+        private static bool skillIconsLoaded = false;
         private static bool jacketIconsLoaded = false;
-
-        public static void LoadFiles(params string[] paths)
-        {
-            assetsManager.LoadFiles(paths);
-        }
 
         public static void ClearLoadedFiles()
         {
@@ -31,8 +30,12 @@ namespace UmaMusumeExplorer.Game
             {
                 imagePointerContainers.Value.ImageHandle.Free();
             }
+
+            charaIconAssetsManager.Clear();
+            skillIconAssetsManager.Clear();
+            jacketsAssetsManager.Clear();
+            generalAssetsManager.Clear();
             imagePointerContainers.Clear();
-            assetsManager.Clear();
         }
 
         public static PinnedBitmap GetCharaIcon(int id, int raceDressId = 0)
@@ -50,7 +53,7 @@ namespace UmaMusumeExplorer.Game
                         imagePaths.Add(UmaDataHelper.GetPath(c));
                 });
 
-                LoadFiles(imagePaths.ToArray());
+                charaIconAssetsManager.LoadFiles(imagePaths.ToArray());
 
                 charaIconsLoaded = true;
             }
@@ -72,7 +75,7 @@ namespace UmaMusumeExplorer.Game
 
             if (imagePointerContainers.ContainsKey(imageString)) return PinnedBitmapFromKey(imageString);
 
-            SerializedFile targetAsset = GetFile(imageString, ClassIDType.Texture2D);
+            SerializedFile targetAsset = GetFile(charaIconAssetsManager, imageString, ClassIDType.Texture2D);
             Texture2D texture = targetAsset.Objects.First(o => o.type == ClassIDType.Texture2D) as Texture2D;
 
             Image<Bgra32> image = texture.ConvertToImage(true);
@@ -87,6 +90,44 @@ namespace UmaMusumeExplorer.Game
             return PinnedBitmapFromKey(imageString);
         }
 
+        public static PinnedBitmap GetSkillIcon(int id)
+        {
+            if (!skillIconsLoaded)
+            {
+                List<string> imagePaths = new();
+                List<GameAsset> skillIconAssetRows = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("outgame/skillicon/utx_ico_skill_"));
+                skillIconAssetRows.ForEach(s => imagePaths.Add(UmaDataHelper.GetPath(s)));
+                skillIconAssetsManager.LoadFiles(imagePaths.ToArray());
+
+                skillIconsLoaded = true;
+            }
+
+            string idString;
+
+            if (id == 0)
+                idString = "00000";
+            else
+                idString = id.ToString();
+
+            StringBuilder imageStringBuilder = new();
+            imageStringBuilder.Append($"utx_ico_skill_{idString}");
+
+            string imageString = imageStringBuilder.ToString();
+
+            if (imagePointerContainers.ContainsKey(imageString)) return PinnedBitmapFromKey(imageString);
+
+            SerializedFile targetAsset = GetFile(skillIconAssetsManager, imageString, ClassIDType.Texture2D);
+            Texture2D texture = targetAsset.Objects.First(o => o.type == ClassIDType.Texture2D) as Texture2D;
+
+            Image<Bgra32> image = texture.ConvertToImage(true);
+
+            imagePointerContainers.Add(imageString,
+                new ImagePointerContainer(
+                   GCHandle.Alloc(image.ConvertToBytes(), GCHandleType.Pinned), image.Width, image.Height));
+
+            return PinnedBitmapFromKey(imageString);
+        }
+
         public static PinnedBitmap GetJacket(int musicId, char size = 'm')
         {
             if (!jacketIconsLoaded)
@@ -95,7 +136,7 @@ namespace UmaMusumeExplorer.Game
                 List<GameAsset> liveJacketAssetRows = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("live/jacket/jacket_icon_l_"));
                 liveJacketAssetRows.ForEach(j => imagePaths.Add(UmaDataHelper.GetPath(j)));
 
-                LoadFiles(imagePaths.ToArray());
+                jacketsAssetsManager.LoadFiles(imagePaths.ToArray());
 
                 jacketIconsLoaded = true;
             }
@@ -109,8 +150,8 @@ namespace UmaMusumeExplorer.Game
 
             if (imagePointerContainers.ContainsKey(imageString)) return PinnedBitmapFromKey(imageString);
 
-            SerializedFile targetAsset = GetFile(imageString, ClassIDType.Texture2D);
-            targetAsset ??= GetFile($"jacket_icon_{size}_0000", ClassIDType.Texture2D);
+            SerializedFile targetAsset = GetFile(jacketsAssetsManager, imageString, ClassIDType.Texture2D);
+            targetAsset ??= GetFile(jacketsAssetsManager, $"jacket_icon_{size}_0000", ClassIDType.Texture2D);
             Texture2D texture = targetAsset.Objects.First(o => o.type == ClassIDType.Texture2D) as Texture2D;
 
             Image<Bgra32> image = texture.ConvertToImage(true);
@@ -126,14 +167,14 @@ namespace UmaMusumeExplorer.Game
         {
             string idString = $"{musicId:d4}";
 
-            SerializedFile targetAsset = GetFile($"m{idString}_{category}", ClassIDType.TextAsset);
+            SerializedFile targetAsset = GetFile(generalAssetsManager, $"m{idString}_{category}", ClassIDType.TextAsset);
             if (targetAsset is null) return null;
             TextAsset textAsset = targetAsset.Objects.First(o => o.type == ClassIDType.TextAsset) as TextAsset;
 
             return new StreamReader(new MemoryStream(textAsset.m_Script));
         }
 
-        private static SerializedFile GetFile(string objectName, ClassIDType classIdType)
+        private static SerializedFile GetFile(AssetsManager assetsManager, string objectName, ClassIDType classIdType)
         {
             return assetsManager.assetsFileList.FirstOrDefault(
                 a => (a.Objects.FirstOrDefault(o => o.type == classIdType) as NamedObject)?.m_Name.Equals(objectName) ?? false);
