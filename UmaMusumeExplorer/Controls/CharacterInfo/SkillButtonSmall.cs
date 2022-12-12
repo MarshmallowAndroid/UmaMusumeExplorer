@@ -103,17 +103,17 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             switch (Rarity)
             {
                 case SkillRarity.Rarity2:
-                case SkillRarity.Rarity3:
-                case SkillRarity.Rarity4:
                     colors = new[]
                     {
                         Color.LightYellow,
                         Color.Gold
                     };
                     break;
+                case SkillRarity.Rarity3:
+                case SkillRarity.Rarity4:
                 case SkillRarity.Rarity5:
                     colors = new[] {
-                        Color.SpringGreen,
+                        Color.LightGreen,
                         Color.DeepSkyBlue,
                         Color.BlueViolet,
                         Color.DeepPink
