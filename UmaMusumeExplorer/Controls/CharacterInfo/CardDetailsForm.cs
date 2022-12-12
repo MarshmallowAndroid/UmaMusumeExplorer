@@ -135,7 +135,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
                 .OrderBy(a => a.SkillId);
 
             skillsTableLayoutPanel.Controls.Clear();
-            skillsTableLayoutPanel.Controls.Add(ButtonFromSkillData(uniqueSkillSet.SkillId1), 0, 0);
+            skillsTableLayoutPanel.Controls.Add(ButtonFromSkillData(uniqueSkillSet.SkillId1, uniqueSkillSet.SkillLevel1), 0, 0);
 
             int currentColumn = 1;
             int currentRow = 0;
@@ -149,7 +149,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             }
         }
 
-        private static SkillButtonSmall ButtonFromSkillData(int skillId)
+        private static SkillButtonSmall ButtonFromSkillData(int skillId, int level = 0)
         {
             SkillData skill = AssetTables.SkillDatas.First(s => s.Id == skillId);
             return new()
@@ -157,6 +157,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
                 Dock = DockStyle.Fill,
                 IconId = skill.IconId,
                 Rarity = (SkillRarity)skill.Rarity,
+                SkillLevel = level,
                 SkillName = AssetTables.SkillNameTextDatas.First(s => s.Index == skillId).Text,
                 Tag = skill.Id
             };
