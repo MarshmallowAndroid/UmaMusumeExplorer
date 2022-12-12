@@ -1,13 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Windows.Forms;
 using UmaMusumeData.Tables;
-using UmaMusumeExplorer.Controls.CharacterInfo.Classes;
 using UmaMusumeExplorer.Game;
 using static UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel;
+using static UmaMusumeExplorer.Controls.CharacterInfo.SkillButtonSmall;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo
 {
@@ -100,32 +102,64 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             UpdateStats(cardData, rarityData);
         }
 
-        private void UpdateStats(CardData cardData, CardRarityData rarityData)
+        private void UpdateStats(CardData cardData, CardRarityData cardRarityData)
         {
-            speedStatusDisplayLabel.Value = rarityData.Speed;
-            staminaStatusDisplayLabel.Value = rarityData.Stamina;
-            powerStatusDisplayLabel.Value = rarityData.Pow;
-            gutsStatusDisplayLabel.Value = rarityData.Guts;
-            wisdomStatusDisplayLabel.Value = rarityData.Wiz;
+            speedStatusDisplayLabel.Value = cardRarityData.Speed;
+            staminaStatusDisplayLabel.Value = cardRarityData.Stamina;
+            powerStatusDisplayLabel.Value = cardRarityData.Pow;
+            gutsStatusDisplayLabel.Value = cardRarityData.Guts;
+            wisdomStatusDisplayLabel.Value = cardRarityData.Wiz;
 
-            turfRankedLabel.Rank = (RankedLabelRank)rarityData.ProperGroundTurf;
-            dirtRankedLabel.Rank = (RankedLabelRank)rarityData.ProperGroundDirt;
+            turfRankedLabel.Rank = (RankedLabelRank)cardRarityData.ProperGroundTurf;
+            dirtRankedLabel.Rank = (RankedLabelRank)cardRarityData.ProperGroundDirt;
 
-            shortRankedLabel.Rank = (RankedLabelRank)rarityData.ProperDistanceShort;
-            mileRankedLabel.Rank = (RankedLabelRank)rarityData.ProperDistanceMile;
-            middleRankedLabel.Rank = (RankedLabelRank)rarityData.ProperDistanceMiddle;
-            longRankedLabel.Rank = (RankedLabelRank)rarityData.ProperDistanceLong;
+            shortRankedLabel.Rank = (RankedLabelRank)cardRarityData.ProperDistanceShort;
+            mileRankedLabel.Rank = (RankedLabelRank)cardRarityData.ProperDistanceMile;
+            middleRankedLabel.Rank = (RankedLabelRank)cardRarityData.ProperDistanceMiddle;
+            longRankedLabel.Rank = (RankedLabelRank)cardRarityData.ProperDistanceLong;
 
-            escapeRankedLabel.Rank = (RankedLabelRank)rarityData.ProperRunningStyleNige;
-            leadingRankedLabel.Rank = (RankedLabelRank)rarityData.ProperRunningStyleSenko;
-            insertRankedLabel.Rank = (RankedLabelRank)rarityData.ProperRunningStyleSashi;
-            driveInRankedLabel.Rank = (RankedLabelRank)rarityData.ProperRunningStyleOikomi;
+            escapeRankedLabel.Rank = (RankedLabelRank)cardRarityData.ProperRunningStyleNige;
+            leadingRankedLabel.Rank = (RankedLabelRank)cardRarityData.ProperRunningStyleSenko;
+            insertRankedLabel.Rank = (RankedLabelRank)cardRarityData.ProperRunningStyleSashi;
+            driveInRankedLabel.Rank = (RankedLabelRank)cardRarityData.ProperRunningStyleOikomi;
 
             speedGrowthLabel.Text = cardData.TalentSpeed.ToString() + "%";
             staminaGrowthLabel.Text = cardData.TalentStamina.ToString() + "%";
             powerGrowthLabel.Text = cardData.TalentPow.ToString() + "%";
             gutsGrowthLabel.Text = cardData.TalentGuts.ToString() + "%";
             wisdomGrowthLabel.Text = cardData.TalentWiz.ToString() + "%";
+
+            SkillSet uniqueSkillSet = AssetTables.SkillSets.First(s => s.Id == cardRarityData.SkillSet);
+            IEnumerable<AvailableSkillSet> availableSkillSet = AssetTables.AvailableSkillSets
+                .Where(a => a.AvailableSkillSetId == cardData.AvailableSkillSetId)
+                .OrderBy(a => a.SkillId);
+
+            skillsTableLayoutPanel.Controls.Clear();
+            skillsTableLayoutPanel.Controls.Add(ButtonFromSkillData(uniqueSkillSet.SkillId1), 0, 0);
+
+            int currentColumn = 1;
+            int currentRow = 0;
+            foreach (var availableSkill in availableSkillSet)
+            {
+                skillsTableLayoutPanel.Controls.Add(ButtonFromSkillData(availableSkill.SkillId), currentColumn % 2, currentRow);
+
+                currentColumn++;
+                if (currentColumn % 2 == 0)
+                    currentRow++;
+            }
+        }
+
+        private static SkillButtonSmall ButtonFromSkillData(int skillId)
+        {
+            SkillData skill = AssetTables.SkillDatas.First(s => s.Id == skillId);
+            return new()
+            {
+                Dock = DockStyle.Fill,
+                IconId = skill.IconId,
+                Rarity = (SkillRarity)skill.Rarity,
+                SkillName = AssetTables.SkillNameTextDatas.First(s => s.Index == skillId).Text,
+                Tag = skill.Id
+            };
         }
 
         private static Color ColorFromHexString(string hexString)

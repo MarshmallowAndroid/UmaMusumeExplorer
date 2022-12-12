@@ -8,6 +8,8 @@ namespace UmaMusumeExplorer.Game
     {
         private static readonly IEnumerable<GameAsset> audioGameFiles = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("sound/"));
 
+        private static readonly IEnumerable<AvailableSkillSet> availableSkillSets = UmaDataHelper.GetMasterDatabaseRows<AvailableSkillSet>();
+
         private static readonly IEnumerable<CardData> cardDatas = UmaDataHelper.GetMasterDatabaseRows<CardData>();
         private static readonly IEnumerable<CardRarityData> cardRarityDatas = UmaDataHelper.GetMasterDatabaseRows<CardRarityData>();
         private static readonly IEnumerable<CharaData> charaDatas = UmaDataHelper.GetMasterDatabaseRows<CharaData>();
@@ -19,6 +21,9 @@ namespace UmaMusumeExplorer.Game
 
         private static readonly IEnumerable<RaceBgm> raceBgm = UmaDataHelper.GetMasterDatabaseRows<RaceBgm>();
         private static readonly IEnumerable<RaceBgmPattern> raceBgmPatterns = UmaDataHelper.GetMasterDatabaseRows<RaceBgmPattern>();
+
+        private static readonly IEnumerable<SkillSet> skillSets = UmaDataHelper.GetMasterDatabaseRows<SkillSet>();
+        private static readonly IEnumerable<SkillData> skillDatas = UmaDataHelper.GetMasterDatabaseRows<SkillData>();
 
         private static readonly IEnumerable<TextData> charaNameTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 170);
         private static readonly IEnumerable<TextData> charaNameKatakanaTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 182);
@@ -33,6 +38,8 @@ namespace UmaMusumeExplorer.Game
 
         public static IEnumerable<GameAsset> AudioAssets => audioGameFiles;
 
+        public static IEnumerable<AvailableSkillSet> AvailableSkillSets => availableSkillSets;
+
         public static IEnumerable<CardData> CardDatas => cardDatas;
         public static IEnumerable<CardRarityData> CardRarityDatas => cardRarityDatas;
         public static IEnumerable<CharaData> CharaDatas => charaDatas;
@@ -44,6 +51,9 @@ namespace UmaMusumeExplorer.Game
 
         public static IEnumerable<RaceBgm> RaceBgm => raceBgm;
         public static IEnumerable<RaceBgmPattern> RaceBgmPatterns => raceBgmPatterns;
+
+        public static IEnumerable<SkillSet> SkillSets => skillSets;
+        public static IEnumerable<SkillData> SkillDatas => skillDatas;
 
         public static IEnumerable<TextData> CharaCostumeNameTextDatas => charaCostumeNameTextDatas;
         public static IEnumerable<TextData> CharaNameKatakanaTextDatas => charaNameKatakanaTextDatas;
