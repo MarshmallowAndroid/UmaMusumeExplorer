@@ -1,6 +1,6 @@
 ﻿namespace UmaMusumeExplorer.Controls.CharacterInfo
 {
-    partial class SkillSmall
+    partial class SkillButtonSmall
     {
         /// <summary> 
         /// Required designer variable.
@@ -40,11 +40,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.levelLabel.BackColor = System.Drawing.Color.Transparent;
             this.levelLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.levelLabel.Location = new System.Drawing.Point(231, 3);
+            this.levelLabel.Location = new System.Drawing.Point(238, 3);
             this.levelLabel.Name = "levelLabel";
-            this.levelLabel.Size = new System.Drawing.Size(42, 48);
+            this.levelLabel.Size = new System.Drawing.Size(35, 32);
             this.levelLabel.TabIndex = 4;
-            this.levelLabel.Text = "Lv0";
             this.levelLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // skillNameLabel
@@ -53,10 +52,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.skillNameLabel.BackColor = System.Drawing.Color.Transparent;
-            this.skillNameLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.skillNameLabel.Location = new System.Drawing.Point(57, 3);
+            this.skillNameLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.skillNameLabel.Location = new System.Drawing.Point(41, 3);
             this.skillNameLabel.Name = "skillNameLabel";
-            this.skillNameLabel.Size = new System.Drawing.Size(168, 48);
+            this.skillNameLabel.Size = new System.Drawing.Size(191, 32);
             this.skillNameLabel.TabIndex = 3;
             this.skillNameLabel.Text = "Skill name";
             this.skillNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -66,21 +65,22 @@
             this.iconPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.iconPictureBox.BackColor = System.Drawing.Color.Transparent;
-            this.iconPictureBox.Location = new System.Drawing.Point(3, 3);
+            this.iconPictureBox.Location = new System.Drawing.Point(6, 6);
+            this.iconPictureBox.Margin = new System.Windows.Forms.Padding(6);
             this.iconPictureBox.Name = "iconPictureBox";
-            this.iconPictureBox.Size = new System.Drawing.Size(48, 48);
+            this.iconPictureBox.Size = new System.Drawing.Size(26, 26);
             this.iconPictureBox.TabIndex = 2;
             this.iconPictureBox.TabStop = false;
             // 
-            // SkillSmall
+            // SkillButtonSmall
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.levelLabel);
             this.Controls.Add(this.skillNameLabel);
             this.Controls.Add(this.iconPictureBox);
-            this.Name = "SkillSmall";
-            this.Size = new System.Drawing.Size(276, 54);
+            this.Name = "SkillButtonSmall";
+            this.Size = new System.Drawing.Size(276, 38);
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox)).EndInit();
             this.ResumeLayout(false);
 

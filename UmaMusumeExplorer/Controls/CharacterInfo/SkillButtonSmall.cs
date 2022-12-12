@@ -13,19 +13,21 @@ using UmaMusumeExplorer.Game;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo
 {
-    public partial class SkillSmall : UserControl
+    public partial class SkillButtonSmall : UserControl
     {
         private string skillName;
         private int level;
         private SkillRarity rarity;
+        private int iconId;
 
-        public SkillSmall()
+        public SkillButtonSmall()
         {
             InitializeComponent();
 
             skillName = Name;
-            level = 1;
+            level = 0;
             rarity = SkillRarity.Rarity1;
+            iconId = 0;
         }
 
         [Browsable(true)]
@@ -38,6 +40,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             set
             {
                 skillNameLabel.Text = value;
+                skillName = value;
                 Invalidate();
             }
         }
@@ -51,7 +54,13 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             get => level;
             set
             {
-                levelLabel.Text = $"Lv{value}";
+                if (value > 0)
+                    levelLabel.Text = $"Lv{value}";
+                else
+                    levelLabel.Text = "";
+
+                level = value;
+
                 Invalidate();
             }
         }
@@ -70,6 +79,22 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             }
         }
 
+        [Browsable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [EditorBrowsable(EditorBrowsableState.Always)]
+        [RefreshProperties(RefreshProperties.All)]
+        public int IconId
+        {
+            get => iconId;
+            set
+            {
+                iconPictureBox.BackgroundImage = UnityAssets.GetSkillIcon(value).Bitmap;
+                iconPictureBox.BackgroundImageLayout = ImageLayout.Zoom;
+                iconId = value;
+                Invalidate();
+            }
+        }
+
         protected override void OnPaint(PaintEventArgs e)
         {
             Color[] colors = { Color.White, Color.LightSteelBlue };
@@ -77,10 +102,12 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
             switch (Rarity)
             {
+                case SkillRarity.Rarity2:
+                case SkillRarity.Rarity3:
                 case SkillRarity.Rarity4:
                     colors = new[]
                     {
-                        Color.White,
+                        Color.LightYellow,
                         Color.Gold
                     };
                     break;
