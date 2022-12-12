@@ -351,6 +351,153 @@
   <data name="statsTablePanel.ColumnCount" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
+  <data name="&gt;&gt;speedStatusDisplayLabel.Name" xml:space="preserve">
+    <value>speedStatusDisplayLabel</value>
+  </data>
+  <data name="&gt;&gt;speedStatusDisplayLabel.Type" xml:space="preserve">
+    <value>UmaMusumeExplorer.Controls.CharacterInfo.StatusDisplayLabel, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;speedStatusDisplayLabel.Parent" xml:space="preserve">
+    <value>statsTablePanel</value>
+  </data>
+  <data name="&gt;&gt;speedStatusDisplayLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;speedHintLabel.Name" xml:space="preserve">
+    <value>speedHintLabel</value>
+  </data>
+  <data name="&gt;&gt;speedHintLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;speedHintLabel.Parent" xml:space="preserve">
+    <value>statsTablePanel</value>
+  </data>
+  <data name="&gt;&gt;speedHintLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;staminaHintLabel.Name" xml:space="preserve">
+    <value>staminaHintLabel</value>
+  </data>
+  <data name="&gt;&gt;staminaHintLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;staminaHintLabel.Parent" xml:space="preserve">
+    <value>statsTablePanel</value>
+  </data>
+  <data name="&gt;&gt;staminaHintLabel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;powerHintLabel.Name" xml:space="preserve">
+    <value>powerHintLabel</value>
+  </data>
+  <data name="&gt;&gt;powerHintLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;powerHintLabel.Parent" xml:space="preserve">
+    <value>statsTablePanel</value>
+  </data>
+  <data name="&gt;&gt;powerHintLabel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;gutsHintLabel.Name" xml:space="preserve">
+    <value>gutsHintLabel</value>
+  </data>
+  <data name="&gt;&gt;gutsHintLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gutsHintLabel.Parent" xml:space="preserve">
+    <value>statsTablePanel</value>
+  </data>
+  <data name="&gt;&gt;gutsHintLabel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;wisdomHintLabel.Name" xml:space="preserve">
+    <value>wisdomHintLabel</value>
+  </data>
+  <data name="&gt;&gt;wisdomHintLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;wisdomHintLabel.Parent" xml:space="preserve">
+    <value>statsTablePanel</value>
+  </data>
+  <data name="&gt;&gt;wisdomHintLabel.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;staminaStatusDisplayLabel.Name" xml:space="preserve">
+    <value>staminaStatusDisplayLabel</value>
+  </data>
+  <data name="&gt;&gt;staminaStatusDisplayLabel.Type" xml:space="preserve">
+    <value>UmaMusumeExplorer.Controls.CharacterInfo.StatusDisplayLabel, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;staminaStatusDisplayLabel.Parent" xml:space="preserve">
+    <value>statsTablePanel</value>
+  </data>
+  <data name="&gt;&gt;staminaStatusDisplayLabel.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;powerStatusDisplayLabel.Name" xml:space="preserve">
+    <value>powerStatusDisplayLabel</value>
+  </data>
+  <data name="&gt;&gt;powerStatusDisplayLabel.Type" xml:space="preserve">
+    <value>UmaMusumeExplorer.Controls.CharacterInfo.StatusDisplayLabel, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;powerStatusDisplayLabel.Parent" xml:space="preserve">
+    <value>statsTablePanel</value>
+  </data>
+  <data name="&gt;&gt;powerStatusDisplayLabel.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;gutsStatusDisplayLabel.Name" xml:space="preserve">
+    <value>gutsStatusDisplayLabel</value>
+  </data>
+  <data name="&gt;&gt;gutsStatusDisplayLabel.Type" xml:space="preserve">
+    <value>UmaMusumeExplorer.Controls.CharacterInfo.StatusDisplayLabel, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;gutsStatusDisplayLabel.Parent" xml:space="preserve">
+    <value>statsTablePanel</value>
+  </data>
+  <data name="&gt;&gt;gutsStatusDisplayLabel.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;wisdomStatusDisplayLabel.Name" xml:space="preserve">
+    <value>wisdomStatusDisplayLabel</value>
+  </data>
+  <data name="&gt;&gt;wisdomStatusDisplayLabel.Type" xml:space="preserve">
+    <value>UmaMusumeExplorer.Controls.CharacterInfo.StatusDisplayLabel, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;wisdomStatusDisplayLabel.Parent" xml:space="preserve">
+    <value>statsTablePanel</value>
+  </data>
+  <data name="&gt;&gt;wisdomStatusDisplayLabel.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="statsTablePanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 197</value>
+  </data>
+  <data name="statsTablePanel.RowCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="statsTablePanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>577, 91</value>
+  </data>
+  <data name="statsTablePanel.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;statsTablePanel.Name" xml:space="preserve">
+    <value>statsTablePanel</value>
+  </data>
+  <data name="&gt;&gt;statsTablePanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;statsTablePanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;statsTablePanel.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="statsTablePanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="speedStatusDisplayLabel" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="speedHintLabel" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="staminaHintLabel" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="powerHintLabel" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="gutsHintLabel" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="wisdomHintLabel" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="staminaStatusDisplayLabel" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="powerStatusDisplayLabel" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="gutsStatusDisplayLabel" Row="1" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="wisdomStatusDisplayLabel" Row="1" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,20,Percent,20,Percent,20,Percent,20,Percent,20" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
   <data name="speedStatusDisplayLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -651,38 +798,194 @@
   <data name="&gt;&gt;wisdomStatusDisplayLabel.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="statsTablePanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 197</value>
-  </data>
-  <data name="statsTablePanel.RowCount" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="statsTablePanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>577, 91</value>
-  </data>
-  <data name="statsTablePanel.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;statsTablePanel.Name" xml:space="preserve">
-    <value>statsTablePanel</value>
-  </data>
-  <data name="&gt;&gt;statsTablePanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;statsTablePanel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;statsTablePanel.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="statsTablePanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="speedStatusDisplayLabel" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="speedHintLabel" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="staminaHintLabel" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="powerHintLabel" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="gutsHintLabel" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="wisdomHintLabel" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="staminaStatusDisplayLabel" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="powerStatusDisplayLabel" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="gutsStatusDisplayLabel" Row="1" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="wisdomStatusDisplayLabel" Row="1" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,20,Percent,20,Percent,20,Percent,20,Percent,20" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
   <data name="aptitudeTableLayoutPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
   <data name="aptitudeTableLayoutPanel.ColumnCount" type="System.Int32, mscorlib">
     <value>5</value>
+  </data>
+  <data name="&gt;&gt;driveInRankedLabel.Name" xml:space="preserve">
+    <value>driveInRankedLabel</value>
+  </data>
+  <data name="&gt;&gt;driveInRankedLabel.Type" xml:space="preserve">
+    <value>UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;driveInRankedLabel.Parent" xml:space="preserve">
+    <value>aptitudeTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;driveInRankedLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;dirtRankedLabel.Name" xml:space="preserve">
+    <value>dirtRankedLabel</value>
+  </data>
+  <data name="&gt;&gt;dirtRankedLabel.Type" xml:space="preserve">
+    <value>UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;dirtRankedLabel.Parent" xml:space="preserve">
+    <value>aptitudeTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;dirtRankedLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;turfRankedLabel.Name" xml:space="preserve">
+    <value>turfRankedLabel</value>
+  </data>
+  <data name="&gt;&gt;turfRankedLabel.Type" xml:space="preserve">
+    <value>UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;turfRankedLabel.Parent" xml:space="preserve">
+    <value>aptitudeTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;turfRankedLabel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;fieldAptitudeLabel.Name" xml:space="preserve">
+    <value>fieldAptitudeLabel</value>
+  </data>
+  <data name="&gt;&gt;fieldAptitudeLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;fieldAptitudeLabel.Parent" xml:space="preserve">
+    <value>aptitudeTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;fieldAptitudeLabel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;distanceAptitudeLabel.Name" xml:space="preserve">
+    <value>distanceAptitudeLabel</value>
+  </data>
+  <data name="&gt;&gt;distanceAptitudeLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;distanceAptitudeLabel.Parent" xml:space="preserve">
+    <value>aptitudeTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;distanceAptitudeLabel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;runningStyleAptitudeLabel.Name" xml:space="preserve">
+    <value>runningStyleAptitudeLabel</value>
+  </data>
+  <data name="&gt;&gt;runningStyleAptitudeLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;runningStyleAptitudeLabel.Parent" xml:space="preserve">
+    <value>aptitudeTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;runningStyleAptitudeLabel.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;shortRankedLabel.Name" xml:space="preserve">
+    <value>shortRankedLabel</value>
+  </data>
+  <data name="&gt;&gt;shortRankedLabel.Type" xml:space="preserve">
+    <value>UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;shortRankedLabel.Parent" xml:space="preserve">
+    <value>aptitudeTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;shortRankedLabel.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;mileRankedLabel.Name" xml:space="preserve">
+    <value>mileRankedLabel</value>
+  </data>
+  <data name="&gt;&gt;mileRankedLabel.Type" xml:space="preserve">
+    <value>UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;mileRankedLabel.Parent" xml:space="preserve">
+    <value>aptitudeTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;mileRankedLabel.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;middleRankedLabel.Name" xml:space="preserve">
+    <value>middleRankedLabel</value>
+  </data>
+  <data name="&gt;&gt;middleRankedLabel.Type" xml:space="preserve">
+    <value>UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;middleRankedLabel.Parent" xml:space="preserve">
+    <value>aptitudeTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;middleRankedLabel.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;longRankedLabel.Name" xml:space="preserve">
+    <value>longRankedLabel</value>
+  </data>
+  <data name="&gt;&gt;longRankedLabel.Type" xml:space="preserve">
+    <value>UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;longRankedLabel.Parent" xml:space="preserve">
+    <value>aptitudeTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;longRankedLabel.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;escapeRankedLabel.Name" xml:space="preserve">
+    <value>escapeRankedLabel</value>
+  </data>
+  <data name="&gt;&gt;escapeRankedLabel.Type" xml:space="preserve">
+    <value>UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;escapeRankedLabel.Parent" xml:space="preserve">
+    <value>aptitudeTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;escapeRankedLabel.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;leadingRankedLabel.Name" xml:space="preserve">
+    <value>leadingRankedLabel</value>
+  </data>
+  <data name="&gt;&gt;leadingRankedLabel.Type" xml:space="preserve">
+    <value>UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;leadingRankedLabel.Parent" xml:space="preserve">
+    <value>aptitudeTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;leadingRankedLabel.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;insertRankedLabel.Name" xml:space="preserve">
+    <value>insertRankedLabel</value>
+  </data>
+  <data name="&gt;&gt;insertRankedLabel.Type" xml:space="preserve">
+    <value>UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;insertRankedLabel.Parent" xml:space="preserve">
+    <value>aptitudeTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;insertRankedLabel.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="aptitudeTableLayoutPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 294</value>
+  </data>
+  <data name="aptitudeTableLayoutPanel.RowCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="aptitudeTableLayoutPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>578, 100</value>
+  </data>
+  <data name="aptitudeTableLayoutPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;aptitudeTableLayoutPanel.Name" xml:space="preserve">
+    <value>aptitudeTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;aptitudeTableLayoutPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;aptitudeTableLayoutPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;aptitudeTableLayoutPanel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="aptitudeTableLayoutPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="driveInRankedLabel" Row="2" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="dirtRankedLabel" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="turfRankedLabel" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="fieldAptitudeLabel" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="distanceAptitudeLabel" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="runningStyleAptitudeLabel" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="shortRankedLabel" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="mileRankedLabel" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="middleRankedLabel" Row="1" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="longRankedLabel" Row="1" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="escapeRankedLabel" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="leadingRankedLabel" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="insertRankedLabel" Row="2" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,20,Percent,20,Percent,20,Percent,20,Percent,20" /&gt;&lt;Rows Styles="Percent,33.33333,Percent,33.33333,Percent,33.33333" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="driveInRankedLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1044,33 +1347,6 @@
   <data name="&gt;&gt;insertRankedLabel.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
-  <data name="aptitudeTableLayoutPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 294</value>
-  </data>
-  <data name="aptitudeTableLayoutPanel.RowCount" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="aptitudeTableLayoutPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>578, 100</value>
-  </data>
-  <data name="aptitudeTableLayoutPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;aptitudeTableLayoutPanel.Name" xml:space="preserve">
-    <value>aptitudeTableLayoutPanel</value>
-  </data>
-  <data name="&gt;&gt;aptitudeTableLayoutPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;aptitudeTableLayoutPanel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;aptitudeTableLayoutPanel.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="aptitudeTableLayoutPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="driveInRankedLabel" Row="2" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="dirtRankedLabel" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="turfRankedLabel" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="fieldAptitudeLabel" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="distanceAptitudeLabel" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="runningStyleAptitudeLabel" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="shortRankedLabel" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="mileRankedLabel" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="middleRankedLabel" Row="1" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="longRankedLabel" Row="1" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="escapeRankedLabel" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="leadingRankedLabel" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="insertRankedLabel" Row="2" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,20,Percent,20,Percent,20,Percent,20,Percent,20" /&gt;&lt;Rows Styles="Percent,33.33333,Percent,33.33333,Percent,33.33333" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
   <data name="growthRateTableLayoutPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
@@ -1079,6 +1355,93 @@
   </data>
   <data name="growthRateTableLayoutPanel.ColumnCount" type="System.Int32, mscorlib">
     <value>5</value>
+  </data>
+  <data name="&gt;&gt;speedGrowthLabel.Name" xml:space="preserve">
+    <value>speedGrowthLabel</value>
+  </data>
+  <data name="&gt;&gt;speedGrowthLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;speedGrowthLabel.Parent" xml:space="preserve">
+    <value>growthRateTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;speedGrowthLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;staminaGrowthLabel.Name" xml:space="preserve">
+    <value>staminaGrowthLabel</value>
+  </data>
+  <data name="&gt;&gt;staminaGrowthLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;staminaGrowthLabel.Parent" xml:space="preserve">
+    <value>growthRateTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;staminaGrowthLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;powerGrowthLabel.Name" xml:space="preserve">
+    <value>powerGrowthLabel</value>
+  </data>
+  <data name="&gt;&gt;powerGrowthLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;powerGrowthLabel.Parent" xml:space="preserve">
+    <value>growthRateTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;powerGrowthLabel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;gutsGrowthLabel.Name" xml:space="preserve">
+    <value>gutsGrowthLabel</value>
+  </data>
+  <data name="&gt;&gt;gutsGrowthLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gutsGrowthLabel.Parent" xml:space="preserve">
+    <value>growthRateTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;gutsGrowthLabel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;wisdomGrowthLabel.Name" xml:space="preserve">
+    <value>wisdomGrowthLabel</value>
+  </data>
+  <data name="&gt;&gt;wisdomGrowthLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;wisdomGrowthLabel.Parent" xml:space="preserve">
+    <value>growthRateTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;wisdomGrowthLabel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="growthRateTableLayoutPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 432</value>
+  </data>
+  <data name="growthRateTableLayoutPanel.RowCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="growthRateTableLayoutPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>577, 32</value>
+  </data>
+  <data name="growthRateTableLayoutPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;growthRateTableLayoutPanel.Name" xml:space="preserve">
+    <value>growthRateTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;growthRateTableLayoutPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;growthRateTableLayoutPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;growthRateTableLayoutPanel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="growthRateTableLayoutPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="speedGrowthLabel" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="staminaGrowthLabel" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="powerGrowthLabel" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="gutsGrowthLabel" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="wisdomGrowthLabel" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,20,Percent,20,Percent,20,Percent,20,Percent,20" /&gt;&lt;Rows Styles="AutoSize,0,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="speedGrowthLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
@@ -1244,33 +1607,6 @@
   </data>
   <data name="&gt;&gt;wisdomGrowthLabel.ZOrder" xml:space="preserve">
     <value>4</value>
-  </data>
-  <data name="growthRateTableLayoutPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 432</value>
-  </data>
-  <data name="growthRateTableLayoutPanel.RowCount" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="growthRateTableLayoutPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>577, 32</value>
-  </data>
-  <data name="growthRateTableLayoutPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;growthRateTableLayoutPanel.Name" xml:space="preserve">
-    <value>growthRateTableLayoutPanel</value>
-  </data>
-  <data name="&gt;&gt;growthRateTableLayoutPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;growthRateTableLayoutPanel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;growthRateTableLayoutPanel.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="growthRateTableLayoutPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="speedGrowthLabel" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="staminaGrowthLabel" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="powerGrowthLabel" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="gutsGrowthLabel" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="wisdomGrowthLabel" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,20,Percent,20,Percent,20,Percent,20,Percent,20" /&gt;&lt;Rows Styles="AutoSize,0,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="growthRateLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>

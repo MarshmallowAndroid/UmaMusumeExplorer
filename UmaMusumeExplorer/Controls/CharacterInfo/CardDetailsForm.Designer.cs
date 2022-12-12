@@ -399,6 +399,8 @@
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.belowNameTablePanel);
             this.Controls.Add(this.iconPictureBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "CardDetailsForm";
             this.Load += new System.EventHandler(this.CardDetailsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox)).EndInit();
