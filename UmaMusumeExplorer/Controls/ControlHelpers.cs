@@ -21,12 +21,15 @@ namespace UmaMusumeExplorer.Controls
         public static void ShowFormDialogCenter(Form form, Control source)
         {
             SetNewLocation(form, source);
-            form.ShowDialog(GetParentForm(source));
+            Form parentForm = GetParentForm(source);
+            form.Icon = parentForm.Icon;
+            form.ShowDialog(parentForm);
         }
 
         public static void ShowFormCenter(Form form, Control source)
         {
             SetNewLocation(form, source);
+            form.Icon = GetParentForm(source).Icon;
             form.FormClosed += FormClosed;
             form.Show();
             OpenedForms.Add(form);
