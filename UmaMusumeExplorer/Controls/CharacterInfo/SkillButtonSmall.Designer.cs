@@ -79,6 +79,7 @@
             this.Controls.Add(this.levelLabel);
             this.Controls.Add(this.skillNameLabel);
             this.Controls.Add(this.iconPictureBox);
+            this.DoubleBuffered = true;
             this.Name = "SkillButtonSmall";
             this.Size = new System.Drawing.Size(276, 38);
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox)).EndInit();

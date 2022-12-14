@@ -36,10 +36,10 @@
             this.nameLabel = new System.Windows.Forms.Label();
             this.genderHintLabel = new System.Windows.Forms.Label();
             this.birthDateHintLabel = new System.Windows.Forms.Label();
-            this.belowNameTablePanel = new System.Windows.Forms.TableLayoutPanel();
+            this.belowNameTablePanel = new DoubleBufferedTableLayoutPanel();
             this.costumeComboBox = new System.Windows.Forms.ComboBox();
             this.costumeHintLabel = new System.Windows.Forms.Label();
-            this.statsTablePanel = new System.Windows.Forms.TableLayoutPanel();
+            this.statsTablePanel = new DoubleBufferedTableLayoutPanel();
             this.speedStatusDisplayLabel = new UmaMusumeExplorer.Controls.CharacterInfo.StatusDisplayLabel();
             this.speedHintLabel = new System.Windows.Forms.Label();
             this.staminaHintLabel = new System.Windows.Forms.Label();
@@ -50,7 +50,7 @@
             this.powerStatusDisplayLabel = new UmaMusumeExplorer.Controls.CharacterInfo.StatusDisplayLabel();
             this.gutsStatusDisplayLabel = new UmaMusumeExplorer.Controls.CharacterInfo.StatusDisplayLabel();
             this.wisdomStatusDisplayLabel = new UmaMusumeExplorer.Controls.CharacterInfo.StatusDisplayLabel();
-            this.aptitudeTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.aptitudeTableLayoutPanel = new DoubleBufferedTableLayoutPanel();
             this.driveInRankedLabel = new UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel();
             this.dirtRankedLabel = new UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel();
             this.turfRankedLabel = new UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel();
@@ -64,7 +64,7 @@
             this.escapeRankedLabel = new UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel();
             this.leadingRankedLabel = new UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel();
             this.insertRankedLabel = new UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel();
-            this.growthRateTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.growthRateTableLayoutPanel = new DoubleBufferedTableLayoutPanel();
             this.speedGrowthLabel = new System.Windows.Forms.Label();
             this.staminaGrowthLabel = new System.Windows.Forms.Label();
             this.powerGrowthLabel = new System.Windows.Forms.Label();
@@ -73,7 +73,7 @@
             this.growthRateLabel = new System.Windows.Forms.Label();
             this.rarityComboBox = new System.Windows.Forms.ComboBox();
             this.rarityHintLabel = new System.Windows.Forms.Label();
-            this.skillsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.skillsTableLayoutPanel = new DoubleBufferedTableLayoutPanel();
             this.skillsLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox)).BeginInit();
             this.belowNameTablePanel.SuspendLayout();
@@ -399,6 +399,7 @@
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.belowNameTablePanel);
             this.Controls.Add(this.iconPictureBox);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "CardDetailsForm";
@@ -426,16 +427,16 @@
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.Label genderHintLabel;
         private System.Windows.Forms.Label birthDateHintLabel;
-        private System.Windows.Forms.TableLayoutPanel belowNameTablePanel;
+        private DoubleBufferedTableLayoutPanel belowNameTablePanel;
         private System.Windows.Forms.ComboBox costumeComboBox;
         private System.Windows.Forms.Label costumeHintLabel;
-        private System.Windows.Forms.TableLayoutPanel statsTablePanel;
+        private DoubleBufferedTableLayoutPanel statsTablePanel;
         private System.Windows.Forms.Label speedHintLabel;
         private System.Windows.Forms.Label staminaHintLabel;
         private System.Windows.Forms.Label powerHintLabel;
         private System.Windows.Forms.Label gutsHintLabel;
         private System.Windows.Forms.Label wisdomHintLabel;
-        private System.Windows.Forms.TableLayoutPanel aptitudeTableLayoutPanel;
+        private DoubleBufferedTableLayoutPanel aptitudeTableLayoutPanel;
         private StatusDisplayLabel speedStatusDisplayLabel;
         private StatusDisplayLabel staminaStatusDisplayLabel;
         private StatusDisplayLabel powerStatusDisplayLabel;
@@ -454,7 +455,7 @@
         private RankedLabel escapeRankedLabel;
         private RankedLabel leadingRankedLabel;
         private RankedLabel insertRankedLabel;
-        private System.Windows.Forms.TableLayoutPanel growthRateTableLayoutPanel;
+        private DoubleBufferedTableLayoutPanel growthRateTableLayoutPanel;
         private System.Windows.Forms.Label speedGrowthLabel;
         private System.Windows.Forms.Label staminaGrowthLabel;
         private System.Windows.Forms.Label powerGrowthLabel;
@@ -463,7 +464,7 @@
         private System.Windows.Forms.Label growthRateLabel;
         private System.Windows.Forms.ComboBox rarityComboBox;
         private System.Windows.Forms.Label rarityHintLabel;
-        private System.Windows.Forms.TableLayoutPanel skillsTableLayoutPanel;
+        private DoubleBufferedTableLayoutPanel skillsTableLayoutPanel;
         private System.Windows.Forms.Label skillsLabel;
     }
 }
