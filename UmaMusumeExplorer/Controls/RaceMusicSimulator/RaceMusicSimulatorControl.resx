@@ -57,9 +57,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="bgmIdComboBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="bgmIdComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
@@ -83,9 +80,6 @@
   <data name="&gt;&gt;bgmIdComboBox.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <metadata name="loadButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="loadButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>86, 3</value>
   </data>
@@ -110,9 +104,6 @@
   <data name="&gt;&gt;loadButton.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="groupBox1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="groupBox1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -120,9 +111,6 @@
   <data name="groupBox1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <metadata name="entryTableCuesheetNameTextBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="entryTableCuesheetNameTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 81</value>
   </data>
@@ -144,9 +132,6 @@
   <data name="&gt;&gt;entryTableCuesheetNameTextBox.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="paddockCuesheetNameTextBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="paddockCuesheetNameTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 37</value>
   </data>
@@ -168,9 +153,6 @@
   <data name="&gt;&gt;paddockCuesheetNameTextBox.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="entryTableCueNameTextBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="entryTableCueNameTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>114, 81</value>
   </data>
@@ -192,9 +174,6 @@
   <data name="&gt;&gt;entryTableCueNameTextBox.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <metadata name="paddockCueNameTextBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="paddockCueNameTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>114, 37</value>
   </data>
@@ -216,9 +195,6 @@
   <data name="&gt;&gt;paddockCueNameTextBox.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <metadata name="entryTableLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="entryTableLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -246,9 +222,6 @@
   <data name="&gt;&gt;entryTableLabel.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <metadata name="paddockLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="paddockLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -300,18 +273,12 @@
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <metadata name="groupBox3.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="groupBox3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="groupBox3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <metadata name="firstPatternLengthComboBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="firstPatternLengthComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>56, 22</value>
   </data>
@@ -333,9 +300,6 @@
   <data name="&gt;&gt;firstPatternLengthComboBox.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="firstPatternCuesheetNameTextBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="firstPatternCuesheetNameTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 51</value>
   </data>
@@ -357,9 +321,6 @@
   <data name="&gt;&gt;firstPatternCuesheetNameTextBox.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="firstPatternCueNameTextBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="firstPatternCueNameTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>114, 51</value>
   </data>
@@ -381,9 +342,6 @@
   <data name="&gt;&gt;firstPatternCueNameTextBox.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <metadata name="firstPatternLengthLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="firstPatternLengthLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -435,18 +393,12 @@
   <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
-  <metadata name="panel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="panel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="panel.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <metadata name="amplifyUpDown.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="amplifyUpDown.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
@@ -471,9 +423,6 @@
   <data name="&gt;&gt;amplifyUpDown.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="amplifyLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="amplifyLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
@@ -504,9 +453,6 @@
   <data name="&gt;&gt;amplifyLabel.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="stopButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="stopButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>467, 294</value>
   </data>
@@ -531,9 +477,6 @@
   <data name="&gt;&gt;stopButton.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <metadata name="togglePlayButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="togglePlayButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>337, 294</value>
   </data>
@@ -558,9 +501,6 @@
   <data name="&gt;&gt;togglePlayButton.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <metadata name="playLastSpurtButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="playLastSpurtButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>467, 236</value>
   </data>
@@ -585,9 +525,6 @@
   <data name="&gt;&gt;playLastSpurtButton.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <metadata name="playRunningButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="playRunningButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>337, 236</value>
   </data>
@@ -612,9 +549,6 @@
   <data name="&gt;&gt;playRunningButton.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <metadata name="playRaceResultButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="playRaceResultButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>337, 265</value>
   </data>
@@ -639,9 +573,6 @@
   <data name="&gt;&gt;playRaceResultButton.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <metadata name="playEntryTableButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="playEntryTableButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>467, 207</value>
   </data>
@@ -666,9 +597,6 @@
   <data name="&gt;&gt;playEntryTableButton.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <metadata name="playPaddockButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="playPaddockButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>337, 207</value>
   </data>
@@ -693,18 +621,12 @@
   <data name="&gt;&gt;playPaddockButton.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <metadata name="groupBox2.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="groupBox2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="groupBox2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <metadata name="raceResultComboBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="raceResultComboBox.Items" xml:space="preserve">
     <value>1st Place</value>
   </data>
@@ -735,11 +657,8 @@
   <data name="&gt;&gt;raceResultComboBox.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="resultListCuesheetNameTextBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="resultListCuesheetNameTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 125</value>
+    <value>6, 110</value>
   </data>
   <data name="resultListCuesheetNameTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 23</value>
@@ -759,11 +678,8 @@
   <data name="&gt;&gt;resultListCuesheetNameTextBox.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="resultListCueNameTextBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="resultListCueNameTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>114, 125</value>
+    <value>114, 110</value>
   </data>
   <data name="resultListCueNameTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>208, 23</value>
@@ -783,11 +699,8 @@
   <data name="&gt;&gt;resultListCueNameTextBox.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <metadata name="resultCutInCuesheetNameTextBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="resultCutInCuesheetNameTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 81</value>
+    <value>6, 66</value>
   </data>
   <data name="resultCutInCuesheetNameTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 23</value>
@@ -807,11 +720,8 @@
   <data name="&gt;&gt;resultCutInCuesheetNameTextBox.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <metadata name="resultCutInCueNameTextBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="resultCutInCueNameTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>114, 81</value>
+    <value>114, 66</value>
   </data>
   <data name="resultCutInCueNameTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>208, 23</value>
@@ -831,14 +741,11 @@
   <data name="&gt;&gt;resultCutInCueNameTextBox.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <metadata name="resultListLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="resultListLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="resultListLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 107</value>
+    <value>6, 92</value>
   </data>
   <data name="resultListLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 15</value>
@@ -861,14 +768,11 @@
   <data name="&gt;&gt;resultListLabel.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <metadata name="cutInLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="cutInLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="cutInLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 63</value>
+    <value>6, 48</value>
   </data>
   <data name="cutInLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 15</value>
@@ -891,9 +795,6 @@
   <data name="&gt;&gt;cutInLabel.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <metadata name="raceResultLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="raceResultLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -925,7 +826,7 @@
     <value>3, 135</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>328, 170</value>
+    <value>328, 155</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -945,18 +846,12 @@
   <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
-  <metadata name="groupBox4.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="groupBox4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="groupBox4.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <metadata name="secondPatternLengthComboBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="secondPatternLengthComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>56, 22</value>
   </data>
@@ -978,9 +873,6 @@
   <data name="&gt;&gt;secondPatternLengthComboBox.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="secondPatternCuesheetNameTextBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="secondPatternCuesheetNameTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 51</value>
   </data>
@@ -1002,9 +894,6 @@
   <data name="&gt;&gt;secondPatternCuesheetNameTextBox.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="secondPatternCueNameTextBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="secondPatternCueNameTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>114, 51</value>
   </data>
@@ -1026,9 +915,6 @@
   <data name="&gt;&gt;secondPatternCueNameTextBox.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <metadata name="secondPatternLengthLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="secondPatternLengthLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1102,9 +988,6 @@
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
