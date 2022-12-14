@@ -40,7 +40,14 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
             characterPositions = new CharacterPositionControl[singingMembers];
 
-            SongConfiguration songConfiguration = LiveConfiguration.LoadConfiguration(musicId);
+            AddUnitMembers();
+        }
+
+        public CharacterPositionControl[] CharacterPositions { get; private set; } = null;
+
+        public void AddUnitMembers()
+        {
+            SongConfiguration songConfiguration = LiveConfiguration.LoadConfiguration(id);
 
             int pivot = characterPositions.Length / 2;
             for (int i = 0; i < characterPositions.Length; i++)
@@ -60,8 +67,6 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
             singersPanel.Controls.AddRange(characterPositions);
         }
-
-        public CharacterPositionControl[] CharacterPositions { get; private set; } = null;
 
         public void CharacterPositionPictureBoxClick(object sender, EventArgs e)
         {
@@ -96,7 +101,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             int[] members = new int[characterPositions.Length];
             for (int i = 0; i < characterPositions.Length; i++)
             {
-                members[PositionToIndex(i, pivot)] = characterPositions[i].CharacterId;
+                members[i] = characterPositions[PositionToIndex(i, pivot)].CharacterId;
             }
 
             SongConfiguration songConfiguration = new(id, members);
