@@ -129,23 +129,27 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             gutsGrowthLabel.Text = cardData.TalentGuts.ToString() + "%";
             wisdomGrowthLabel.Text = cardData.TalentWiz.ToString() + "%";
 
-            SkillSet uniqueSkillSet = AssetTables.SkillSets.First(s => s.Id == cardRarityData.SkillSet);
-            IEnumerable<AvailableSkillSet> availableSkillSet = AssetTables.AvailableSkillSets
-                .Where(a => a.AvailableSkillSetId == cardData.AvailableSkillSetId)
-                .OrderBy(a => a.SkillId);
-
             skillsTableLayoutPanel.Controls.Clear();
-            skillsTableLayoutPanel.Controls.Add(ButtonFromSkillData(uniqueSkillSet.SkillId1, uniqueSkillSet.SkillLevel1), 0, 0);
 
-            int currentColumn = 1;
-            int currentRow = 0;
-            foreach (var availableSkill in availableSkillSet)
+            SkillSet uniqueSkillSet = AssetTables.SkillSets.FirstOrDefault(s => s.Id == cardRarityData.SkillSet);
+            if (uniqueSkillSet is not null)
             {
-                skillsTableLayoutPanel.Controls.Add(ButtonFromSkillData(availableSkill.SkillId), currentColumn % 2, currentRow);
+                IEnumerable<AvailableSkillSet> availableSkillSet = AssetTables.AvailableSkillSets
+                    .Where(a => a.AvailableSkillSetId == cardData.AvailableSkillSetId)
+                    .OrderBy(a => a.SkillId);
 
-                currentColumn++;
-                if (currentColumn % 2 == 0)
-                    currentRow++;
+                skillsTableLayoutPanel.Controls.Add(ButtonFromSkillData(uniqueSkillSet.SkillId1, uniqueSkillSet.SkillLevel1), 0, 0);
+
+                int currentColumn = 1;
+                int currentRow = 0;
+                foreach (var availableSkill in availableSkillSet)
+                {
+                    skillsTableLayoutPanel.Controls.Add(ButtonFromSkillData(availableSkill.SkillId), currentColumn % 2, currentRow);
+
+                    currentColumn++;
+                    if (currentColumn % 2 == 0)
+                        currentRow++;
+                }
             }
         }
 
