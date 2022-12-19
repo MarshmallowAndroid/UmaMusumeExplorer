@@ -153,10 +153,10 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             }
         }
 
-        private static SkillButtonSmall ButtonFromSkillData(int skillId, int level = 0)
+        private SkillButtonSmall ButtonFromSkillData(int skillId, int level = 0)
         {
             SkillData skill = AssetTables.SkillDatas.First(s => s.Id == skillId);
-            return new()
+            SkillButtonSmall skillButton = new()
             {
                 Dock = DockStyle.Fill,
                 IconId = skill.IconId,
@@ -165,6 +165,17 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
                 SkillName = AssetTables.SkillNameTextDatas.First(s => s.Index == skillId).Text,
                 Tag = skill.Id
             };
+
+            skillButton.SkillClick += SkillButton_Click;
+
+            return skillButton;
+        }
+
+        private void SkillButton_Click(object sender, EventArgs e)
+        {
+            SkillButtonSmall skillButton = sender as SkillButtonSmall;
+
+            ControlHelpers.ShowFormDialogCenter(new SkillInfoForm((int)skillButton.Tag), this);
         }
 
         private static Color ColorFromHexString(string hexString)

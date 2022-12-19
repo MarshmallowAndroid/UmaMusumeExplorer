@@ -28,6 +28,9 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             level = 0;
             rarity = SkillRarity.Rarity1;
             iconId = 0;
+
+            iconPictureBox.Click += OnSkillClicked;
+            skillNameLabel.Click += OnSkillClicked;
         }
 
         [Browsable(true)]
@@ -93,6 +96,13 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
                 iconId = value;
                 Invalidate();
             }
+        }
+
+        public event EventHandler SkillClick;
+
+        private void OnSkillClicked(object sender, EventArgs e)
+        {
+            SkillClick?.Invoke(this, e);
         }
 
         protected override void OnPaint(PaintEventArgs e)
