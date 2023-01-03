@@ -379,7 +379,10 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
         private static AwbReader GetAwbFile(GameAsset gameFile)
         {
             string awbPath = UmaDataHelper.GetPath(gameFile);
-            return new(File.OpenRead(awbPath));
+            if (File.Exists(awbPath))
+                return new(File.OpenRead(awbPath));
+            else
+                return null;
         }
 
         private void TryInvoke(Action action)

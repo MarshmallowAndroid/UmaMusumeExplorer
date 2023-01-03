@@ -17,7 +17,12 @@ namespace UmaMusumeData
         public static string GetPath(GameAsset gameFile)
         {
             if (gameFile is not null)
-                return Path.Combine(dataDirectory, gameFile.Hash[..2], gameFile.Hash);
+            {
+                string path = Path.Combine(dataDirectory, gameFile.Hash[..2], gameFile.Hash);
+
+                if (File.Exists(path)) return path;
+                else return "";
+            }
             else return "";
         }
 

@@ -94,11 +94,8 @@ namespace UmaMusumeExplorer.Game
         {
             if (!skillIconsLoaded)
             {
-                List<string> imagePaths = new();
                 List<GameAsset> skillIconAssetRows = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("outgame/skillicon/utx_ico_skill_"));
-                skillIconAssetRows.ForEach(s => imagePaths.Add(UmaDataHelper.GetPath(s)));
-                skillIconAssetsManager.LoadFiles(imagePaths.ToArray());
-
+                skillIconAssetsManager.LoadFiles(GetFilePaths(skillIconAssetRows));
                 skillIconsLoaded = true;
             }
 
@@ -132,12 +129,8 @@ namespace UmaMusumeExplorer.Game
         {
             if (!jacketIconsLoaded)
             {
-                List<string> imagePaths = new();
                 List<GameAsset> liveJacketAssetRows = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("live/jacket/jacket_icon_l_"));
-                liveJacketAssetRows.ForEach(j => imagePaths.Add(UmaDataHelper.GetPath(j)));
-
-                jacketsAssetsManager.LoadFiles(imagePaths.ToArray());
-
+                jacketsAssetsManager.LoadFiles(GetFilePaths(liveJacketAssetRows));
                 jacketIconsLoaded = true;
             }
 
@@ -172,6 +165,19 @@ namespace UmaMusumeExplorer.Game
             TextAsset textAsset = targetAsset.Objects.First(o => o.type == ClassIDType.TextAsset) as TextAsset;
 
             return new StreamReader(new MemoryStream(textAsset.m_Script));
+        }
+
+        private static string[] GetFilePaths(List<GameAsset> gameAssets)
+        {
+            List<string> paths = new();
+
+            foreach (GameAsset asset in gameAssets)
+            {
+                string path = UmaDataHelper.GetPath(asset);
+                if (path != string.Empty) paths.Add(path);
+            }
+
+            return paths.ToArray();
         }
 
         private static SerializedFile GetFile(AssetsManager assetsManager, string objectName, ClassIDType classIdType)
