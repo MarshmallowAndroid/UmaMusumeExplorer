@@ -29,22 +29,22 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
         private void CardDetailsForm_Load(object sender, EventArgs e)
         {
             int id = charaData.Id;
-            string charaName = AssetTables.CharaNameTextDatas.First(td => td.Index == id).Text;
+            string charaName = AssetTables.GetText(AssetTables.CharaNameTextDatas, id);
 
             Text = charaName;
             nameLabel.Text = charaName;
 
-            string katakana = AssetTables.CharaNameKatakanaTextDatas.First(td => td.Index == id).Text;
+            string katakana = AssetTables.GetText(AssetTables.CharaNameKatakanaTextDatas, id);
 
             if (!katakana.Equals(nameLabel.Text))
-                nameLabel.Text += $"（{AssetTables.CharaNameKatakanaTextDatas.First(td => td.Index == id).Text}）";
+                nameLabel.Text += $"（{AssetTables.GetText(AssetTables.CharaNameKatakanaTextDatas, id)}）";
             nameLabel.BackColor = ColorFromHexString(charaData.UIColorMain);
             if (GetBrightness(nameLabel.BackColor) > 128)
                 nameLabel.ForeColor = Color.Black;
             else
                 nameLabel.ForeColor = Color.White;
 
-            cvNameLabel.Text = "CV. " + AssetTables.CharaVoiceNameTextDatas.First(td => td.Index == id).Text;
+            cvNameLabel.Text = "CV. " + AssetTables.GetText(AssetTables.CharaVoiceNameTextDatas, id);
             cvNameLabel.BackColor = ColorFromHexString(charaData.UIColorSub);
             if (GetBrightness(cvNameLabel.BackColor) > 128)
                 cvNameLabel.ForeColor = Color.Black;
@@ -162,7 +162,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
                 IconId = skill.IconId,
                 Rarity = (SkillRarity)skill.Rarity,
                 SkillLevel = level,
-                SkillName = AssetTables.SkillNameTextDatas.First(s => s.Index == skillId).Text,
+                SkillName = AssetTables.GetText(AssetTables.SkillNameTextDatas, skillId),
                 Tag = skill.Id
             };
 
@@ -205,7 +205,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
         public override string ToString()
         {
-            return AssetTables.CharaCostumeNameTextDatas.First(td => td.Index == CardData.Id).Text;
+            return AssetTables.GetText(AssetTables.CharaCostumeNameTextDatas, CardData.Id);
         }
     }
 

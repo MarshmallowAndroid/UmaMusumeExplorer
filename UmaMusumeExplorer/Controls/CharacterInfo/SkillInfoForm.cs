@@ -27,8 +27,8 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             rarity = (SkillRarity)skillData.Rarity;
 
             iconPictureBox.BackgroundImage = UnityAssets.GetSkillIcon(skillData.IconId).Bitmap;
-            skillNameLabel.Text = AssetTables.SkillNameTextDatas.First(s => s.Index == skillId).Text;
-            skillInfoLabel.Text = AssetTables.SkillInfoTextDatas.First(s => s.Index == skillId).Text
+            skillNameLabel.Text = AssetTables.GetText(AssetTables.SkillNameTextDatas, skillId);
+            skillInfoLabel.Text = AssetTables.GetText(AssetTables.SkillInfoTextDatas, skillId)
                 .Replace("\\n", "\n");
 
         }

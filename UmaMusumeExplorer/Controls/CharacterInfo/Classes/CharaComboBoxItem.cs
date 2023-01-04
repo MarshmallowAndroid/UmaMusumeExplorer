@@ -15,7 +15,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo.Classes
 
         public override string ToString()
         {
-            return CharaData.Id.ToString() + ": " + AssetTables.CharaNameTextDatas.First(td => td.Index == CharaData.Id).Text;
+            return CharaData.Id.ToString() + ": " + AssetTables.GetText(AssetTables.CharaNameTextDatas, CharaData.Id);
         }
     }
 }

@@ -46,7 +46,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
                 jacket.Click += Jacket_Click;
 
                 ToolTip toolTip = new();
-                toolTip.SetToolTip(jacket, $"{liveData.MusicId}: {AssetTables.LiveNameTextDatas.First(l => l.Index == liveData.MusicId).Text}");
+                toolTip.SetToolTip(jacket, $"{liveData.MusicId}: {AssetTables.GetText(AssetTables.LiveNameTextDatas, liveData.MusicId)}");
 
                 pictureBoxes.Add(jacket);
 

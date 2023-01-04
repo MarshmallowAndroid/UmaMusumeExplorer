@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UmaMusumeData;
 using UmaMusumeData.Tables;
 
@@ -65,5 +66,10 @@ namespace UmaMusumeExplorer.Game
 
         public static IEnumerable<TextData> SkillNameTextDatas => skillNameTextDatas;
         public static IEnumerable<TextData> SkillInfoTextDatas => skillInfoTextDatas;
+
+        public static string GetText(IEnumerable<TextData> textDatas, int index)
+        {
+            return textDatas.First(td => td.Index == index).Text;
+        }
     }
 }

@@ -49,8 +49,8 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
             songJacketPinnedBitmap = UnityAssets.GetJacket(musicId, 'l');
             songJacketPictureBox.BackgroundImage = songJacketPinnedBitmap.Bitmap;
-            songTitleLabel.Text = songTitle = AssetTables.LiveNameTextDatas.First(litd => litd.Index == musicId).Text;
-            songInfoLabel.Text = AssetTables.LiveInfoTextDatas.First(litd => litd.Index == musicId).Text.Replace("\\n", "\n");
+            songTitleLabel.Text = songTitle = AssetTables.GetText(AssetTables.LiveNameTextDatas, musicId);
+            songInfoLabel.Text = AssetTables.GetText(AssetTables.LiveInfoTextDatas, musicId).Replace("\\n", "\n");
 
             LoadMusicScore();
 
@@ -276,7 +276,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             foreach (var item in unitSetupForm.CharacterPositions)
             {
                 charaAwbs.Add(GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicId}_chara_{item.CharacterId}_01.awb"))));
-                currentSingers.Add(AssetTables.CharaNameTextDatas.FirstOrDefault(c => c.Index == item.CharacterId).Text);
+                currentSingers.Add(AssetTables.GetText(AssetTables.CharaNameTextDatas, item.CharacterId));
             }
 
             long previousPosition = songMixer?.Position ?? 0;
