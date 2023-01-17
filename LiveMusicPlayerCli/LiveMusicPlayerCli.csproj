@@ -7,4 +7,17 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="NAudio.Wasapi" Version="2.1.0" />
+    <PackageReference Include="NAudio.WinMM" Version="2.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AssetStudio\AssetStudio\AssetStudio.csproj" />
+    <ProjectReference Include="..\ClHcaSharp\ClHcaSharp\ClHcaSharp.csproj" />
+    <ProjectReference Include="..\CriWareLibrary\CriWareFormats\CriWareFormats.csproj" />
+    <ProjectReference Include="..\UmaMusumeAudio\UmaMusumeAudio.csproj" />
+    <ProjectReference Include="..\UmaMusumeData\UmaMusumeData.csproj" />
+  </ItemGroup>
+
 </Project>
