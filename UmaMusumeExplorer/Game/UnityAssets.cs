@@ -49,7 +49,7 @@ namespace UmaMusumeExplorer.Game
                 List<GameAsset> charaAssetRows = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("chara/"));
                 charaAssetRows.ForEach(c =>
                 {
-                    if (chrIconRegex.IsMatch(c.BaseName) || chrCardIconRegex.IsMatch(c.BaseName) || c.BaseName == "chr_icon_round_0000")
+                    if (chrIconRegex.IsMatch(c.BaseName) || chrCardIconRegex.IsMatch(c.BaseName) || c.BaseName.Equals("chr_icon_round_0000"))
                         imagePaths.Add(UmaDataHelper.GetPath(c));
                 });
 
@@ -62,7 +62,7 @@ namespace UmaMusumeExplorer.Game
 
             StringBuilder imageStringBuilder = new();
             imageStringBuilder.Append($"chr_icon_{idString}");
-            if (idString == "0000")
+            if (idString.Equals("0000"))
             {
                 imageStringBuilder.Clear();
                 imageStringBuilder.Append("chr_icon_round_0000");
