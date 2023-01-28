@@ -15,6 +15,7 @@ Game data such as stats is not modified in any way, and can be viewed with any S
 * Race music simulator
 * Character info
     * 5 main stats (speed, stamina, etc.) for each costume and its rarity
+    * Skill view
 
 ## Remarks
 
