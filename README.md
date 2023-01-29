@@ -1,7 +1,7 @@
-﻿# Uma Musume Explorer
- [![CI](https://github.com/MarshmallowAndroid/UmaMusumeExplorer/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/MarshmallowAndroid/UmaMusumeExplorer/actions/workflows/build.yml)
+# Uma Musume Explorer
+[![CI](https://github.com/MarshmallowAndroid/UmaMusumeExplorer/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/MarshmallowAndroid/UmaMusumeExplorer/actions/workflows/build.yml)
 
-A GUI utility for viewing data from the game ウマ娘　プリティーダービー (Uma Musume Pretty Derby) developed by Cygames, Inc.
+A GUI utility for viewing certain assets from the game ウマ娘　プリティーダービー (Uma Musume Pretty Derby) developed by Cygames, Inc.
 
 DISCLAIMER: You must have your own installation of the game from DMM Games to use this utility.
 Game data such as stats is not modified in any way, and can be viewed with any SQLite database viewer.
