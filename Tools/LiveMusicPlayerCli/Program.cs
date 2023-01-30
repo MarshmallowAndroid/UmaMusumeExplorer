@@ -128,7 +128,7 @@ namespace LiveMusicPlayerCli
 
             singers.CopyTo(liveBuilder.Singers, 0);
 
-            ISampleProvider sampleProvider = liveBuilder.ToSampleProvider();
+            ISampleProvider sampleProvider = liveBuilder.Build();
 
             bool export = !exportFileName.Equals(string.Empty);
 

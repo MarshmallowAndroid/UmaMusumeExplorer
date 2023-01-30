@@ -49,7 +49,7 @@ namespace LiveMusicPlayerCli
 
         public bool Solo { get; set; }
 
-        public ISampleProvider ToSampleProvider(bool allSing = false)
+        public ISampleProvider Build(bool allSing = false)
         {
             if (okeAwb is null)
                 throw new Exception("No background music audio bank.");
@@ -64,7 +64,7 @@ namespace LiveMusicPlayerCli
                 singerAwbs.Add(charaAwb);
             }
 
-            SongMixer songMixer = new SongMixer(okeAwb, partTriggers);
+            SongMixer songMixer = new(okeAwb, partTriggers);
             songMixer.InitializeCharaTracks(singerAwbs);
 
             songMixer.CenterOnly = Solo;
@@ -130,12 +130,6 @@ namespace LiveMusicPlayerCli
             }
 
             return null;
-        }
-
-        private static SerializedFile? GetFile(AssetsManager assetsManager, string objectName, ClassIDType classIdType)
-        {
-            return assetsManager.assetsFileList.FirstOrDefault(
-                a => (a.Objects.FirstOrDefault(o => o.type == classIdType) as NamedObject)?.m_Name.Equals(objectName) ?? false);
         }
     }
 }
