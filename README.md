@@ -17,20 +17,7 @@ Game data such as stats is not modified in any way, and can be viewed with any S
     * 5 main stats (speed, stamina, etc.) for each costume and its rarity
     * Skill view
 
-## Remarks
-
-This was really only just an audio player because I was mesmerized by the amazing in-game BGM.
-However, since I spent a lot of time on that single tool, I thought it would be nice to
-practice programming and expand the functionality a little.
-
-In fact, I listen to the BGM while working on this tool. Personal favorites include:
-* `gm026`
-* `gm003`, `gm041`
-* `gm036` ("Lose" jingle and BGM)
-* `gm061` ("Draw" jingle and BGM)
-* `gm097`, `gm098`, and `gm099`
-* `gm133` and `gm133_long`
-* `gm171`
+![File browser](Docs/Images/window.png)
 
 ## Credits
 
