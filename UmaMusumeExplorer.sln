@@ -40,6 +40,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CriWareFormats", "CriWareLi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveMusicPlayerCli", "Tools\LiveMusicPlayerCli\LiveMusicPlayerCli.csproj", "{CD002A06-8B84-4EF7-ADCE-CAB2163D08C7}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssetStudioFBXWrapper", "AssetStudio\AssetStudioFBXWrapper\AssetStudioFBXWrapper.csproj", "{2A066ABC-0405-4783-9A85-03E8549C5E8E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -218,6 +220,18 @@ Global
 		{CD002A06-8B84-4EF7-ADCE-CAB2163D08C7}.Release|x64.Build.0 = Release|Any CPU
 		{CD002A06-8B84-4EF7-ADCE-CAB2163D08C7}.Release|x86.ActiveCfg = Release|Any CPU
 		{CD002A06-8B84-4EF7-ADCE-CAB2163D08C7}.Release|x86.Build.0 = Release|Any CPU
+		{2A066ABC-0405-4783-9A85-03E8549C5E8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A066ABC-0405-4783-9A85-03E8549C5E8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A066ABC-0405-4783-9A85-03E8549C5E8E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2A066ABC-0405-4783-9A85-03E8549C5E8E}.Debug|x64.Build.0 = Debug|Any CPU
+		{2A066ABC-0405-4783-9A85-03E8549C5E8E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2A066ABC-0405-4783-9A85-03E8549C5E8E}.Debug|x86.Build.0 = Debug|Any CPU
+		{2A066ABC-0405-4783-9A85-03E8549C5E8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A066ABC-0405-4783-9A85-03E8549C5E8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A066ABC-0405-4783-9A85-03E8549C5E8E}.Release|x64.ActiveCfg = Release|Any CPU
+		{2A066ABC-0405-4783-9A85-03E8549C5E8E}.Release|x64.Build.0 = Release|Any CPU
+		{2A066ABC-0405-4783-9A85-03E8549C5E8E}.Release|x86.ActiveCfg = Release|Any CPU
+		{2A066ABC-0405-4783-9A85-03E8549C5E8E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -234,6 +248,7 @@ Global
 		{EAE2D52F-C521-4CFC-B098-312429642AA3} = {AA29BD52-839C-4B41-93B8-1B6C136D9C41}
 		{A944B24F-6BDD-4835-9F18-C0CE2264B38A} = {72305DB9-DD13-417D-AA7C-B2CE0FE4A2C5}
 		{CD002A06-8B84-4EF7-ADCE-CAB2163D08C7} = {AA29BD52-839C-4B41-93B8-1B6C136D9C41}
+		{2A066ABC-0405-4783-9A85-03E8549C5E8E} = {9A0E6D76-3476-4266-9E94-1D32FF4D190E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9A195C9D-7E02-494F-81EC-732F455C8644}
