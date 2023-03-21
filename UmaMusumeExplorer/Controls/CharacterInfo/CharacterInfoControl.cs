@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using UmaMusumeData.Tables;
@@ -33,7 +34,9 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             int itemNumber = 1;
             foreach (var item in charaDatas)
             {
-                PictureBox charaIcon = new()
+                bool playable = AssetTables.CardDatas.Any(cd => cd.CharaId == item.Id);
+
+                CharacterPictureBox charaIcon = new(playable)
                 {
                     BackgroundImage = UnityAssets.GetCharaIcon(item.Id).Bitmap,
                     BackgroundImageLayout = ImageLayout.Zoom,
@@ -83,6 +86,14 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
         private void GoButton_Click(object sender, EventArgs e)
         {
             if (charaListComboBox.SelectedItem is CharaComboBoxItem item) ControlHelpers.ShowFormCenter(new CardDetailsForm(item.CharaData), this);
+        }
+
+        private void ShowPlayableCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (CharacterPictureBox cpb in charactersPanel.Controls)
+            {
+                cpb.ShowPlayability = showPlayableCheckBox.Checked;
+            }
         }
     }
 }
