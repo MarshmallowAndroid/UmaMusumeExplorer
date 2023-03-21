@@ -65,21 +65,6 @@
     <value>168, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="addToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
-  </data>
-  <data name="addToolStripMenuItem.Text" xml:space="preserve">
-    <value>Add</value>
-  </data>
-  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 6</value>
-  </data>
-  <data name="openFileLocationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
-  </data>
-  <data name="openFileLocationToolStripMenuItem.Text" xml:space="preserve">
-    <value>Open file location</value>
-  </data>
   <data name="treeViewContextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
     <value>169, 54</value>
   </data>
@@ -101,7 +86,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAEZTeXN0ZW0uV2luZG93cy5Gb3JtcywgQ3VsdHVyZT1uZXV0cmFs
         LCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAmU3lzdGVtLldpbmRvd3MuRm9ybXMu
         SW1hZ2VMaXN0U3RyZWFtZXIBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAARgsAAAJNU0Z0AUkBTAIBAQIB
-        AAEYAQEBGAEBARABAAEQAQAE/wEhAQAI/wFCAU0BNgcAATYDAAEoAwABQAMAARADAAEBAQABIAYAARAa
+        AAEgAQEBIAEBARABAAEQAQAE/wEhAQAI/wFCAU0BNgcAATYDAAEoAwABQAMAARADAAEBAQABIAYAARAa
         AAFIAccB6wH/AUgBxgHqAf8BSAHGAeoB/wFHAcUB6gH/AUcBxAHpAf8BRwHEAekB/wFGAcMB6AH/AUYB
         wgHoAf8BRgHCAecB/wFGAcEB5wH/AUUBwQHmAf8BRgHBAecB/wFZAmcB7wwAAZEBkAGPAf8CjwGNAf8B
         jgGNAYwB/wGNAYwBiwH/AYsBigGJAf8BigGJAYgB/wKIAYYB/wGHAYYBhQH/AYYBhQGDAf8ChAGCAf8B
@@ -175,6 +160,21 @@
   <data name="&gt;&gt;fileTreeView.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
+  <data name="addToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 22</value>
+  </data>
+  <data name="addToolStripMenuItem.Text" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 6</value>
+  </data>
+  <data name="openFileLocationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 22</value>
+  </data>
+  <data name="openFileLocationToolStripMenuItem.Text" xml:space="preserve">
+    <value>Open file location</value>
+  </data>
   <data name="extractButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
@@ -220,12 +220,6 @@
   <metadata name="extractListContextMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>366, 17</value>
   </metadata>
-  <data name="removeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 22</value>
-  </data>
-  <data name="removeToolStripMenuItem.Text" xml:space="preserve">
-    <value>Remove</value>
-  </data>
   <data name="extractListContextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
     <value>118, 26</value>
   </data>
@@ -255,6 +249,12 @@
   </data>
   <data name="&gt;&gt;extractListView.ZOrder" xml:space="preserve">
     <value>8</value>
+  </data>
+  <data name="removeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 22</value>
+  </data>
+  <data name="removeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Remove</value>
   </data>
   <data name="totalFileSizeLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left, Right</value>
@@ -349,28 +349,28 @@
   <data name="&gt;&gt;clearButton.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="progressBar1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="progressBar.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left, Right</value>
   </data>
-  <data name="progressBar1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="progressBar.Location" type="System.Drawing.Point, System.Drawing">
     <value>443, 547</value>
   </data>
-  <data name="progressBar1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="progressBar.Size" type="System.Drawing.Size, System.Drawing">
     <value>404, 17</value>
   </data>
-  <data name="progressBar1.TabIndex" type="System.Int32, mscorlib">
+  <data name="progressBar.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="&gt;&gt;progressBar1.Name" xml:space="preserve">
-    <value>progressBar1</value>
+  <data name="&gt;&gt;progressBar.Name" xml:space="preserve">
+    <value>progressBar</value>
   </data>
-  <data name="&gt;&gt;progressBar1.Type" xml:space="preserve">
+  <data name="&gt;&gt;progressBar.Type" xml:space="preserve">
     <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;progressBar1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;progressBar.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;progressBar1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;progressBar.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
   <data name="searchTextBox.Location" type="System.Drawing.Point, System.Drawing">

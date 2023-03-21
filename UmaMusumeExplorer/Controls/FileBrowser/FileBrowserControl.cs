@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
@@ -14,10 +15,10 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
 {
     partial class FileBrowserControl : UserControl
     {
-        private List<GameAsset> gameAssets;
-        private List<GameAsset> searchedAssets;
-        private List<GameAsset> targetAssets;
-        private readonly List<GameAsset> selectedAssets = new();
+        private readonly SortedDictionary<string, GameAsset> gameAssets = new();
+        private IDictionary<string, GameAsset> searchedAssets;
+        private IDictionary<string, GameAsset> targetAssets;
+        private readonly SortedDictionary<string, GameAsset> selectedAssets = new();
 
         private bool searched;
 
@@ -28,8 +29,10 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
 
         private void FileBrowserControl_Load(object sender, EventArgs e)
         {
-            gameAssets = UmaDataHelper.GetGameAssetDataRows();
-            gameAssets.Sort((ga1, ga2) => string.Compare(ga1.Name, ga2.Name));
+            foreach (var gameAsset in UmaDataHelper.GetGameAssetDataRows())
+            {
+                gameAssets.Add(gameAsset.Name, gameAsset);
+            }
 
             TreeNode rootNode = new("Root");
             rootNode.Nodes.Add("");
@@ -47,7 +50,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             TreeNode expandingNode = e.Node;
             expandingNode.Nodes.Clear();
 
-            IEnumerable<GameAsset> assetList;
+            IEnumerable<KeyValuePair<string, GameAsset>> assetList;
 
             string convertedNodePath = "";
 
@@ -56,18 +59,19 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             else
             {
                 convertedNodePath = expandingNode.FullPath["Root/".Length..];
-                assetList = targetAssets.Where(ga => ga.Name.StartsWith(convertedNodePath + "/"));
+                assetList = targetAssets.Where(ga => ga.Key.StartsWith(convertedNodePath + "/"));
             }
 
-            List<GameAsset> files = new();
+            SortedDictionary<string, GameAsset> files = new();
 
-            foreach (var asset in assetList)
+            foreach (var assetValue in assetList)
             {
+                GameAsset asset = assetValue.Value;
                 string assetName = expandingNode.Text.Equals("Root") ? asset.Name : asset.Name[(convertedNodePath.Length + 1)..];
 
                 int firstSlashIndex = assetName.IndexOf('/');
                 if (firstSlashIndex < 1)
-                    files.Add(asset);
+                    files.Add(asset.Name, asset);
                 else
                 {
                     string nodeName = assetName[..firstSlashIndex];
@@ -79,10 +83,9 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
                         expandingNode.Nodes[nodeKey].Nodes.Add("");
                     }
                 }
-
             }
 
-            foreach (var file in files)
+            foreach (var file in files.Values)
             {
                 string fileName = file.BaseName;
 
@@ -102,7 +105,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             }
         }
 
-        private void AddToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void AddToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TreeNode node = fileTreeView.SelectedNode;
 
@@ -119,7 +122,8 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             {
                 string convertedNodePath = node.FullPath["Root/".Length..];
 
-                IEnumerable<GameAsset> assetsToAdd = targetAssets.Where(ga => ga.Name.StartsWith(convertedNodePath + '/'));
+                IEnumerable<KeyValuePair<string, GameAsset>> assetsToAdd = targetAssets.Where(ga => ga.Key.StartsWith(convertedNodePath + '/'));
+
                 int itemCount = assetsToAdd.Count();
                 if (itemCount > 10000)
                 {
@@ -130,55 +134,73 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
                     if (confirmResult == DialogResult.No) return;
                 }
 
-                foreach (var item in assetsToAdd)
+                await Task.Run(() =>
                 {
-                    UpdateSelectedAssets(item, node.Checked);
-                }
-            }
-
-            List<GameAsset> dependencies = new();
-            foreach (var selectedAsset in selectedAssets)
-            {
-                AddDependenciesRecurse(dependencies, selectedAsset);
-            }
-
-            List<ListViewItem> dependencyItems = new();
-            if (dependencies.Count > 0)
-            {
-                DialogResult addDependencyResult = MessageBox.Show("Include dependencies?", "Dependencies found", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (addDependencyResult == DialogResult.Yes)
-                {
-                    foreach (var dependencyAsset in dependencies)
+                    int currentAsset = 0;
+                    foreach (var item in assetsToAdd)
                     {
-                        UpdateSelectedAssets(dependencyAsset, node.Checked);
+                        Invoke(() => UpdateSelectedAssets(item.Value, node.Checked));
+                        currentAsset++;
 
-                        ListViewItem item = new(dependencyAsset.Name);
-                        item.SubItems.Add(GenerateSizeString(dependencyAsset.Length));
-                        item.Tag = dependencyAsset;
+                        float percent = (float)currentAsset / itemCount;
+                        Invoke(() => progressBar.Value = (int)(percent * 100.0F));
+                    }
+                });
+            }
 
-                        dependencyItems.Add(item);
+            await Task.Run(() =>
+            {
+                List<ListViewItem> dependencyItems = new();
+                if (SelectedAssetsHaveDependencies())
+                {
+                    DialogResult addDependencyResult = MessageBox.Show("Include dependencies?", "Dependencies found", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (addDependencyResult == DialogResult.Yes)
+                    {
+                        List<GameAsset> dependencies = new();
+                        int currentAsset = 0;
+                        int assetCount = selectedAssets.Count;
+                        foreach (var selectedAsset in selectedAssets.Values)
+                        {
+                            AddDependenciesRecurse(dependencies, selectedAsset);
+                            currentAsset++;
+
+                            float percent = (float)currentAsset / assetCount;
+                            Invoke(() => progressBar.Value = (int)(percent * 100.0F));
+                        }
+
+                        foreach (var dependencyAsset in dependencies)
+                        {
+                            Invoke(() => UpdateSelectedAssets(dependencyAsset, node.Checked));
+
+                            ListViewItem item = new(dependencyAsset.Name);
+                            item.SubItems.Add(GenerateSizeString(dependencyAsset.Length));
+                            item.Tag = dependencyAsset;
+
+                            dependencyItems.Add(item);
+                        }
                     }
                 }
-            }
 
-            selectedAssets.Sort((a, b) => a.BaseName.CompareTo(b.BaseName));
+                ListViewItem[] items = new ListViewItem[selectedAssets.Count];
+                int index = 0;
+                foreach (var selectedAsset in selectedAssets.Values)
+                {
+                    ListViewItem item = new(selectedAsset.Name);
+                    item.SubItems.Add(GenerateSizeString(selectedAsset.Length));
+                    item.Tag = selectedAsset;
+                    items[index++] = item;
+                }
 
-            ListViewItem[] items = new ListViewItem[selectedAssets.Count];
-            int index = 0;
-            foreach (var selectedAsset in selectedAssets)
-            {
-                ListViewItem item = new(selectedAsset.Name);
-                item.SubItems.Add(GenerateSizeString(selectedAsset.Length));
-                item.Tag = selectedAsset;
-                items[index++] = item;
-            }
+                Invoke(() =>
+                {
+                    extractListView.Items.Clear();
+                    extractListView.Items.AddRange(items);
 
-            extractListView.Items.Clear();
-            extractListView.Items.AddRange(items);
-
-            totalFileCountLabel.Text = $"{selectedAssets.Count} files";
-            totalFileSizeLabel.Text = GenerateSizeString(selectedAssets.Sum(a => (long)a.Length));
+                    totalFileCountLabel.Text = $"{selectedAssets.Count} files";
+                    totalFileSizeLabel.Text = GenerateSizeString(selectedAssets.Sum(a => (long)a.Value.Length));
+                });
+            });
         }
 
         private void RemoveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -188,11 +210,11 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             foreach (ListViewItem item in selectedItems)
             {
                 extractListView.Items.Remove(item);
-                selectedAssets.Remove((GameAsset)item.Tag);
+                selectedAssets.Remove(((GameAsset)item.Tag).Name);
             }
 
             totalFileCountLabel.Text = $"{selectedAssets.Count} files";
-            totalFileSizeLabel.Text = GenerateSizeString(selectedAssets.Sum(a => a.Length));
+            totalFileSizeLabel.Text = GenerateSizeString(selectedAssets.Values.Sum(a => a.Length));
         }
 
         private void ClearButton_Click(object sender, EventArgs e)
@@ -244,7 +266,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
                     lock (finishedLock)
                     {
                         finished++;
-                        Invoke(() => progressBar1.Value = (int)((float)finished / total * 100.0F));
+                        Invoke(() => progressBar.Value = (int)((float)finished / total * 100.0F));
                     }
                 });
                 copyTasks[index++].Start();
@@ -253,7 +275,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             await Task.WhenAll(copyTasks);
 
             MessageBox.Show("Extract complete.", "Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            progressBar1.Value = 0;
+            progressBar.Value = 0;
         }
 
         private void OpenFileLocationToolStripMenuItem_Click(object sender, EventArgs e)
@@ -287,8 +309,8 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
         {
             if (!searched)
             {
-                searchedAssets = UmaDataHelper.GetGameAssetDataRows().Where(ga => ga.Name.Contains(searchTextBox.Text)).ToList();
-                searchedAssets.Sort((ga1, ga2) => ga1.Name.CompareTo(ga2.Name));
+                searchedAssets = UmaDataHelper.GetGameAssetDataRows().Where(ga => ga.Name.Contains(searchTextBox.Text)).ToDictionary(ga => ga.Name);
+                searchedAssets.OrderBy(ga => ga.Key);
                 targetAssets = searchedAssets;
 
                 searched = true;
@@ -307,15 +329,28 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             fileTreeView.Nodes[0].Nodes.Add("");
         }
 
-        private void AddDependenciesRecurse(List<GameAsset> dependencyList, GameAsset gameAsset)
+        private bool SelectedAssetsHaveDependencies()
         {
+            foreach (var asset in selectedAssets.Values)
+            {
+                if (asset.Dependencies.Any()) return true;
+            }
+
+            return false;
+        }
+
+        private void AddDependenciesRecurse(List<GameAsset> dependencyList, GameAsset gameAsset, int iteration = 0)
+        {
+            if (gameAsset.Dependencies == "") return;
+
             foreach (var dependency in gameAsset.Dependencies.Split(';'))
             {
-                GameAsset dependencyAsset = gameAssets.FirstOrDefault(ga => ga.Name == dependency);
+                GameAsset dependencyAsset = gameAssets[dependency];
 
                 if (dependencyAsset is not null)
                 {
-                    AddDependenciesRecurse(dependencyList, dependencyAsset);
+                    if (iteration <= 100)
+                        AddDependenciesRecurse(dependencyList, dependencyAsset, ++iteration);
 
                     if (!dependencyList.Contains(dependencyAsset))
                         dependencyList.Add(dependencyAsset);
@@ -328,8 +363,8 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             TreeNode[] matching = fileTreeView.Nodes.Find(asset.Name, true);
             if (matching.Length > 0) matching[0].Checked = isChecked;
 
-            if (!selectedAssets.Contains(asset))
-                selectedAssets.Add(asset);
+            if (!selectedAssets.ContainsKey(asset.Name))
+                selectedAssets.Add(asset.Name, asset);
         }
 
         private static string GenerateSizeString(long length)
