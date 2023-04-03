@@ -319,24 +319,24 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             }
             assetsManager.LoadFiles(assetPaths.ToArray());
 
-            StreamReader lyricsCsv = GetLiveCsv(liveData.MusicId, "lyrics");
-            lyricsCsv.ReadLine();
+            CsvReader lyricsCsv = GetLiveCsv(liveData.MusicId, "lyrics");
+            lyricsCsv.ReadCsvLine();
             while (!lyricsCsv.EndOfStream)
             {
-                LyricsTrigger trigger = new(lyricsCsv.ReadLine());
+                LyricsTrigger trigger = new(lyricsCsv.ReadCsvLine());
                 lyricsTriggers.Add(trigger);
             }
 
-            StreamReader partCsv = GetLiveCsv(liveData.MusicId, "part");
-            bool hasVolumeRate = partCsv.ReadLine().Contains("volume_rate");
+            CsvReader partCsv = GetLiveCsv(liveData.MusicId, "part");
+            bool hasVolumeRate = partCsv.ReadCsvLine().Contains("volume_rate");
             while (!partCsv.EndOfStream)
             {
-                PartTrigger trigger = new(partCsv.ReadLine(), hasVolumeRate);
+                PartTrigger trigger = new(partCsv.ReadCsvLine(), hasVolumeRate);
                 partTriggers.Add(trigger);
             }
         }
 
-        private StreamReader GetLiveCsv(int musicId, string category)
+        private CsvReader GetLiveCsv(int musicId, string category)
         {
             string idString = $"{musicId:d4}";
 
@@ -345,7 +345,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             if (targetAsset is null) return null;
             TextAsset textAsset = targetAsset.Objects.First(o => o.type == ClassIDType.TextAsset) as TextAsset;
 
-            return new StreamReader(new MemoryStream(textAsset.m_Script));
+            return new CsvReader(new MemoryStream(textAsset.m_Script));
         }
 
         private void DoLyricsPlayback()
