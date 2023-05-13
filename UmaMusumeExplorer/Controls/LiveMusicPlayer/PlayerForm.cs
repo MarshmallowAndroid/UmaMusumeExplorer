@@ -253,7 +253,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             // Get BGM without sound effects
             AwbReader okeAwb = GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicId}_oke_02.awb")));
 
-            if (okeAwb is null) return false;
+            if (okeAwb is null) return ShowFileNotFound();
 
             // Retrieve count of members that actually sing
             int singingMembers = GetSingingMembers();
@@ -275,7 +275,11 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             List<AwbReader> charaAwbs = new(singingMembers);
             foreach (var item in unitSetupForm.CharacterPositions)
             {
-                charaAwbs.Add(GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicId}_chara_{item.CharacterId}_01.awb"))));
+                AwbReader charaAwb = GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicId}_chara_{item.CharacterId}_01.awb")));
+
+                if (charaAwb is null) return ShowFileNotFound();
+
+                charaAwbs.Add(charaAwb);
                 currentSingers.Add(AssetTables.GetText(AssetTables.CharaNameTextDatas, item.CharacterId));
             }
 
@@ -304,6 +308,12 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
             // Unit setup success
             return true;
+        }
+
+        private bool ShowFileNotFound()
+        {
+            MessageBox.Show("Live music data not found. Please download all resources in the game.", "Assets not found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            return false;
         }
 
         private void LoadMusicScore()
