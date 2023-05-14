@@ -98,7 +98,6 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label skillNameLabel;
         private System.Windows.Forms.Label skillInfoLabel;
         private System.Windows.Forms.Button closeButton;

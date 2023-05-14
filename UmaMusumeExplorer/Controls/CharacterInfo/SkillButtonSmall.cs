@@ -31,6 +31,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
             iconPictureBox.Click += OnSkillClicked;
             skillNameLabel.Click += OnSkillClicked;
+            levelLabel.Click += OnSkillClicked;
         }
 
         [Browsable(true)]
