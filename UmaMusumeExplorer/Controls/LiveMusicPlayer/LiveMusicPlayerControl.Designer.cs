@@ -28,48 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.loadingBackgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.loadingProgressBar = new System.Windows.Forms.ProgressBar();
-            this.jacketPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.SuspendLayout();
+            loadingBackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            loadingProgressBar = new System.Windows.Forms.ProgressBar();
+            jacketPanel = new System.Windows.Forms.FlowLayoutPanel();
+            SuspendLayout();
             // 
             // loadingBackgroundWorker
             // 
-            this.loadingBackgroundWorker.WorkerReportsProgress = true;
-            this.loadingBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.LoadingBackgroundWorker_DoWork);
-            this.loadingBackgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.LoadingBackgroundWorker_ProgressChanged);
-            this.loadingBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.LoadingBackgroundWorker_RunWorkerCompleted);
+            loadingBackgroundWorker.WorkerReportsProgress = true;
+            loadingBackgroundWorker.DoWork += LoadingBackgroundWorker_DoWork;
+            loadingBackgroundWorker.ProgressChanged += LoadingBackgroundWorker_ProgressChanged;
+            loadingBackgroundWorker.RunWorkerCompleted += LoadingBackgroundWorker_RunWorkerCompleted;
             // 
             // loadingProgressBar
             // 
-            this.loadingProgressBar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.loadingProgressBar.Location = new System.Drawing.Point(194, 253);
-            this.loadingProgressBar.Name = "loadingProgressBar";
-            this.loadingProgressBar.Size = new System.Drawing.Size(433, 23);
-            this.loadingProgressBar.TabIndex = 1;
+            loadingProgressBar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            loadingProgressBar.Location = new System.Drawing.Point(194, 253);
+            loadingProgressBar.Name = "loadingProgressBar";
+            loadingProgressBar.Size = new System.Drawing.Size(433, 23);
+            loadingProgressBar.TabIndex = 1;
             // 
             // jacketPanel
             // 
-            this.jacketPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.jacketPanel.AutoScroll = true;
-            this.jacketPanel.Location = new System.Drawing.Point(3, 3);
-            this.jacketPanel.Name = "jacketPanel";
-            this.jacketPanel.Size = new System.Drawing.Size(815, 522);
-            this.jacketPanel.TabIndex = 0;
+            jacketPanel.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            jacketPanel.AutoScroll = true;
+            jacketPanel.Location = new System.Drawing.Point(3, 3);
+            jacketPanel.Name = "jacketPanel";
+            jacketPanel.Size = new System.Drawing.Size(815, 522);
+            jacketPanel.TabIndex = 0;
             // 
             // LiveMusicPlayerControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.loadingProgressBar);
-            this.Controls.Add(this.jacketPanel);
-            this.Name = "LiveMusicPlayerControl";
-            this.Size = new System.Drawing.Size(821, 528);
-            this.Load += new System.EventHandler(this.LiveMusicPlayerSongSelectControl_Load);
-            this.ResumeLayout(false);
-
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            Controls.Add(loadingProgressBar);
+            Controls.Add(jacketPanel);
+            Name = "LiveMusicPlayerControl";
+            Size = new System.Drawing.Size(821, 528);
+            Load += LiveMusicPlayerSongSelectControl_Load;
+            ResumeLayout(false);
         }
 
         #endregion

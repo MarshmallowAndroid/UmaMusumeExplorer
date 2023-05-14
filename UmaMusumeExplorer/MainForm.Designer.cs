@@ -30,129 +30,128 @@ namespace UmaMusumeExplorer
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.tabControl = new System.Windows.Forms.TabControl();
-            this.fileBrowserTabPage = new System.Windows.Forms.TabPage();
-            this.fileBrowserControl = new UmaMusumeExplorer.Controls.FileBrowser.FileBrowserControl();
-            this.audioPlayerTabPage = new System.Windows.Forms.TabPage();
-            this.audioPlayerControl = new UmaMusumeExplorer.Controls.AudioPlayer.AudioPlayerControl();
-            this.liveMusicPlayerTabPage = new System.Windows.Forms.TabPage();
-            this.liveMusicPlayerSongSelectControl = new UmaMusumeExplorer.Controls.LiveMusicPlayer.LiveMusicPlayerControl();
-            this.jukeboxTabPage = new System.Windows.Forms.TabPage();
-            this.jukeboxControl = new UmaMusumeExplorer.Controls.Jukebox.JukeboxControl();
-            this.characterInfoTabPage = new System.Windows.Forms.TabPage();
-            this.characterInfoControl = new UmaMusumeExplorer.Controls.CharacterInfo.CharacterInfoControl();
-            this.raceMusicTabPage = new System.Windows.Forms.TabPage();
-            this.raceSimulatorControl = new UmaMusumeExplorer.Controls.RaceMusicSimulator.RaceMusicSimulatorControl();
-            this.tabControl.SuspendLayout();
-            this.fileBrowserTabPage.SuspendLayout();
-            this.audioPlayerTabPage.SuspendLayout();
-            this.liveMusicPlayerTabPage.SuspendLayout();
-            this.jukeboxTabPage.SuspendLayout();
-            this.characterInfoTabPage.SuspendLayout();
-            this.raceMusicTabPage.SuspendLayout();
-            this.SuspendLayout();
+            tabControl = new System.Windows.Forms.TabControl();
+            fileBrowserTabPage = new System.Windows.Forms.TabPage();
+            fileBrowserControl = new Controls.FileBrowser.FileBrowserControl();
+            audioPlayerTabPage = new System.Windows.Forms.TabPage();
+            audioPlayerControl = new Controls.AudioPlayer.AudioPlayerControl();
+            liveMusicPlayerTabPage = new System.Windows.Forms.TabPage();
+            liveMusicPlayerSongSelectControl = new Controls.LiveMusicPlayer.LiveMusicPlayerControl();
+            jukeboxTabPage = new System.Windows.Forms.TabPage();
+            jukeboxControl = new Controls.Jukebox.JukeboxControl();
+            characterInfoTabPage = new System.Windows.Forms.TabPage();
+            characterInfoControl = new Controls.CharacterInfo.CharacterInfoControl();
+            raceMusicTabPage = new System.Windows.Forms.TabPage();
+            raceSimulatorControl = new Controls.RaceMusicSimulator.RaceMusicSimulatorControl();
+            tabControl.SuspendLayout();
+            fileBrowserTabPage.SuspendLayout();
+            audioPlayerTabPage.SuspendLayout();
+            liveMusicPlayerTabPage.SuspendLayout();
+            jukeboxTabPage.SuspendLayout();
+            characterInfoTabPage.SuspendLayout();
+            raceMusicTabPage.SuspendLayout();
+            SuspendLayout();
             // 
             // tabControl
             // 
-            resources.ApplyResources(this.tabControl, "tabControl");
-            this.tabControl.Controls.Add(this.fileBrowserTabPage);
-            this.tabControl.Controls.Add(this.audioPlayerTabPage);
-            this.tabControl.Controls.Add(this.liveMusicPlayerTabPage);
-            this.tabControl.Controls.Add(this.jukeboxTabPage);
-            this.tabControl.Controls.Add(this.characterInfoTabPage);
-            this.tabControl.Controls.Add(this.raceMusicTabPage);
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
+            resources.ApplyResources(tabControl, "tabControl");
+            tabControl.Controls.Add(fileBrowserTabPage);
+            tabControl.Controls.Add(audioPlayerTabPage);
+            tabControl.Controls.Add(liveMusicPlayerTabPage);
+            tabControl.Controls.Add(jukeboxTabPage);
+            tabControl.Controls.Add(characterInfoTabPage);
+            tabControl.Controls.Add(raceMusicTabPage);
+            tabControl.Name = "tabControl";
+            tabControl.SelectedIndex = 0;
             // 
             // fileBrowserTabPage
             // 
-            this.fileBrowserTabPage.BackColor = System.Drawing.SystemColors.Control;
-            this.fileBrowserTabPage.Controls.Add(this.fileBrowserControl);
-            resources.ApplyResources(this.fileBrowserTabPage, "fileBrowserTabPage");
-            this.fileBrowserTabPage.Name = "fileBrowserTabPage";
+            fileBrowserTabPage.BackColor = System.Drawing.SystemColors.Control;
+            fileBrowserTabPage.Controls.Add(fileBrowserControl);
+            resources.ApplyResources(fileBrowserTabPage, "fileBrowserTabPage");
+            fileBrowserTabPage.Name = "fileBrowserTabPage";
             // 
             // fileBrowserControl
             // 
-            resources.ApplyResources(this.fileBrowserControl, "fileBrowserControl");
-            this.fileBrowserControl.Name = "fileBrowserControl";
+            resources.ApplyResources(fileBrowserControl, "fileBrowserControl");
+            fileBrowserControl.Name = "fileBrowserControl";
             // 
             // audioPlayerTabPage
             // 
-            this.audioPlayerTabPage.Controls.Add(this.audioPlayerControl);
-            resources.ApplyResources(this.audioPlayerTabPage, "audioPlayerTabPage");
-            this.audioPlayerTabPage.Name = "audioPlayerTabPage";
+            audioPlayerTabPage.Controls.Add(audioPlayerControl);
+            resources.ApplyResources(audioPlayerTabPage, "audioPlayerTabPage");
+            audioPlayerTabPage.Name = "audioPlayerTabPage";
             // 
             // audioPlayerControl
             // 
-            resources.ApplyResources(this.audioPlayerControl, "audioPlayerControl");
-            this.audioPlayerControl.Name = "audioPlayerControl";
+            resources.ApplyResources(audioPlayerControl, "audioPlayerControl");
+            audioPlayerControl.Name = "audioPlayerControl";
             // 
             // liveMusicPlayerTabPage
             // 
-            this.liveMusicPlayerTabPage.BackColor = System.Drawing.SystemColors.Control;
-            this.liveMusicPlayerTabPage.Controls.Add(this.liveMusicPlayerSongSelectControl);
-            resources.ApplyResources(this.liveMusicPlayerTabPage, "liveMusicPlayerTabPage");
-            this.liveMusicPlayerTabPage.Name = "liveMusicPlayerTabPage";
+            liveMusicPlayerTabPage.BackColor = System.Drawing.SystemColors.Control;
+            liveMusicPlayerTabPage.Controls.Add(liveMusicPlayerSongSelectControl);
+            resources.ApplyResources(liveMusicPlayerTabPage, "liveMusicPlayerTabPage");
+            liveMusicPlayerTabPage.Name = "liveMusicPlayerTabPage";
             // 
             // liveMusicPlayerSongSelectControl
             // 
-            resources.ApplyResources(this.liveMusicPlayerSongSelectControl, "liveMusicPlayerSongSelectControl");
-            this.liveMusicPlayerSongSelectControl.Name = "liveMusicPlayerSongSelectControl";
+            resources.ApplyResources(liveMusicPlayerSongSelectControl, "liveMusicPlayerSongSelectControl");
+            liveMusicPlayerSongSelectControl.Name = "liveMusicPlayerSongSelectControl";
             // 
             // jukeboxTabPage
             // 
-            this.jukeboxTabPage.BackColor = System.Drawing.SystemColors.Control;
-            this.jukeboxTabPage.Controls.Add(this.jukeboxControl);
-            resources.ApplyResources(this.jukeboxTabPage, "jukeboxTabPage");
-            this.jukeboxTabPage.Name = "jukeboxTabPage";
+            jukeboxTabPage.BackColor = System.Drawing.SystemColors.Control;
+            jukeboxTabPage.Controls.Add(jukeboxControl);
+            resources.ApplyResources(jukeboxTabPage, "jukeboxTabPage");
+            jukeboxTabPage.Name = "jukeboxTabPage";
             // 
             // jukeboxControl
             // 
-            this.jukeboxControl.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.jukeboxControl, "jukeboxControl");
-            this.jukeboxControl.Name = "jukeboxControl";
+            jukeboxControl.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(jukeboxControl, "jukeboxControl");
+            jukeboxControl.Name = "jukeboxControl";
             // 
             // characterInfoTabPage
             // 
-            this.characterInfoTabPage.BackColor = System.Drawing.SystemColors.Control;
-            this.characterInfoTabPage.Controls.Add(this.characterInfoControl);
-            resources.ApplyResources(this.characterInfoTabPage, "characterInfoTabPage");
-            this.characterInfoTabPage.Name = "characterInfoTabPage";
+            characterInfoTabPage.BackColor = System.Drawing.SystemColors.Control;
+            characterInfoTabPage.Controls.Add(characterInfoControl);
+            resources.ApplyResources(characterInfoTabPage, "characterInfoTabPage");
+            characterInfoTabPage.Name = "characterInfoTabPage";
             // 
             // characterInfoControl
             // 
-            resources.ApplyResources(this.characterInfoControl, "characterInfoControl");
-            this.characterInfoControl.Name = "characterInfoControl";
+            resources.ApplyResources(characterInfoControl, "characterInfoControl");
+            characterInfoControl.Name = "characterInfoControl";
             // 
             // raceMusicTabPage
             // 
-            this.raceMusicTabPage.BackColor = System.Drawing.SystemColors.Control;
-            this.raceMusicTabPage.Controls.Add(this.raceSimulatorControl);
-            resources.ApplyResources(this.raceMusicTabPage, "raceMusicTabPage");
-            this.raceMusicTabPage.Name = "raceMusicTabPage";
+            raceMusicTabPage.BackColor = System.Drawing.SystemColors.Control;
+            raceMusicTabPage.Controls.Add(raceSimulatorControl);
+            resources.ApplyResources(raceMusicTabPage, "raceMusicTabPage");
+            raceMusicTabPage.Name = "raceMusicTabPage";
             // 
             // raceSimulatorControl
             // 
-            this.raceSimulatorControl.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.raceSimulatorControl, "raceSimulatorControl");
-            this.raceSimulatorControl.Name = "raceSimulatorControl";
+            raceSimulatorControl.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(raceSimulatorControl, "raceSimulatorControl");
+            raceSimulatorControl.Name = "raceSimulatorControl";
             // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tabControl);
-            this.Name = "MainForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            this.tabControl.ResumeLayout(false);
-            this.fileBrowserTabPage.ResumeLayout(false);
-            this.audioPlayerTabPage.ResumeLayout(false);
-            this.liveMusicPlayerTabPage.ResumeLayout(false);
-            this.jukeboxTabPage.ResumeLayout(false);
-            this.characterInfoTabPage.ResumeLayout(false);
-            this.raceMusicTabPage.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            Controls.Add(tabControl);
+            Name = "MainForm";
+            FormClosing += MainForm_FormClosing;
+            tabControl.ResumeLayout(false);
+            fileBrowserTabPage.ResumeLayout(false);
+            audioPlayerTabPage.ResumeLayout(false);
+            liveMusicPlayerTabPage.ResumeLayout(false);
+            jukeboxTabPage.ResumeLayout(false);
+            characterInfoTabPage.ResumeLayout(false);
+            raceMusicTabPage.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion
@@ -166,9 +165,9 @@ namespace UmaMusumeExplorer
         private System.Windows.Forms.TabPage fileBrowserTabPage;
         private System.Windows.Forms.TabPage liveMusicPlayerTabPage;
         private Controls.LiveMusicPlayer.LiveMusicPlayerControl liveMusicPlayerSongSelectControl;
-        private Controls.FileBrowser.FileBrowserControl fileBrowserControl;
         private System.Windows.Forms.TabPage jukeboxTabPage;
         private Controls.Jukebox.JukeboxControl jukeboxControl;
+        private Controls.FileBrowser.FileBrowserControl fileBrowserControl;
     }
 }
 

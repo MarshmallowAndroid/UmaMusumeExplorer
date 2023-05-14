@@ -30,365 +30,349 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RaceMusicSimulatorControl));
-            this.bgmIdComboBox = new System.Windows.Forms.ComboBox();
-            this.loadButton = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.entryTableCuesheetNameTextBox = new System.Windows.Forms.TextBox();
-            this.paddockCuesheetNameTextBox = new System.Windows.Forms.TextBox();
-            this.entryTableCueNameTextBox = new System.Windows.Forms.TextBox();
-            this.paddockCueNameTextBox = new System.Windows.Forms.TextBox();
-            this.entryTableLabel = new System.Windows.Forms.Label();
-            this.paddockLabel = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.firstPatternLengthComboBox = new System.Windows.Forms.ComboBox();
-            this.firstPatternCuesheetNameTextBox = new System.Windows.Forms.TextBox();
-            this.firstPatternCueNameTextBox = new System.Windows.Forms.TextBox();
-            this.firstPatternLengthLabel = new System.Windows.Forms.Label();
-            this.panel = new System.Windows.Forms.Panel();
-            this.amplifyUpDown = new System.Windows.Forms.NumericUpDown();
-            this.amplifyLabel = new System.Windows.Forms.Label();
-            this.stopButton = new System.Windows.Forms.Button();
-            this.togglePlayButton = new System.Windows.Forms.Button();
-            this.playLastSpurtButton = new System.Windows.Forms.Button();
-            this.playRunningButton = new System.Windows.Forms.Button();
-            this.playRaceResultButton = new System.Windows.Forms.Button();
-            this.playEntryTableButton = new System.Windows.Forms.Button();
-            this.playPaddockButton = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.raceResultComboBox = new System.Windows.Forms.ComboBox();
-            this.resultListCuesheetNameTextBox = new System.Windows.Forms.TextBox();
-            this.resultListCueNameTextBox = new System.Windows.Forms.TextBox();
-            this.resultCutInCuesheetNameTextBox = new System.Windows.Forms.TextBox();
-            this.resultCutInCueNameTextBox = new System.Windows.Forms.TextBox();
-            this.resultListLabel = new System.Windows.Forms.Label();
-            this.cutInLabel = new System.Windows.Forms.Label();
-            this.raceResultLabel = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.secondPatternLengthComboBox = new System.Windows.Forms.ComboBox();
-            this.secondPatternCuesheetNameTextBox = new System.Windows.Forms.TextBox();
-            this.secondPatternCueNameTextBox = new System.Windows.Forms.TextBox();
-            this.secondPatternLengthLabel = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.amplifyUpDown)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.SuspendLayout();
+            bgmIdComboBox = new System.Windows.Forms.ComboBox();
+            loadButton = new System.Windows.Forms.Button();
+            groupBox1 = new System.Windows.Forms.GroupBox();
+            entryTableCuesheetNameTextBox = new System.Windows.Forms.TextBox();
+            paddockCuesheetNameTextBox = new System.Windows.Forms.TextBox();
+            entryTableCueNameTextBox = new System.Windows.Forms.TextBox();
+            paddockCueNameTextBox = new System.Windows.Forms.TextBox();
+            entryTableLabel = new System.Windows.Forms.Label();
+            paddockLabel = new System.Windows.Forms.Label();
+            groupBox3 = new System.Windows.Forms.GroupBox();
+            firstPatternLengthComboBox = new System.Windows.Forms.ComboBox();
+            firstPatternCuesheetNameTextBox = new System.Windows.Forms.TextBox();
+            firstPatternCueNameTextBox = new System.Windows.Forms.TextBox();
+            firstPatternLengthLabel = new System.Windows.Forms.Label();
+            panel = new System.Windows.Forms.Panel();
+            amplifyUpDown = new System.Windows.Forms.NumericUpDown();
+            amplifyLabel = new System.Windows.Forms.Label();
+            stopButton = new System.Windows.Forms.Button();
+            togglePlayButton = new System.Windows.Forms.Button();
+            playLastSpurtButton = new System.Windows.Forms.Button();
+            playRunningButton = new System.Windows.Forms.Button();
+            playRaceResultButton = new System.Windows.Forms.Button();
+            playEntryTableButton = new System.Windows.Forms.Button();
+            playPaddockButton = new System.Windows.Forms.Button();
+            groupBox2 = new System.Windows.Forms.GroupBox();
+            raceResultComboBox = new System.Windows.Forms.ComboBox();
+            resultListCuesheetNameTextBox = new System.Windows.Forms.TextBox();
+            resultListCueNameTextBox = new System.Windows.Forms.TextBox();
+            resultCutInCuesheetNameTextBox = new System.Windows.Forms.TextBox();
+            resultCutInCueNameTextBox = new System.Windows.Forms.TextBox();
+            resultListLabel = new System.Windows.Forms.Label();
+            cutInLabel = new System.Windows.Forms.Label();
+            raceResultLabel = new System.Windows.Forms.Label();
+            groupBox4 = new System.Windows.Forms.GroupBox();
+            secondPatternLengthComboBox = new System.Windows.Forms.ComboBox();
+            secondPatternCuesheetNameTextBox = new System.Windows.Forms.TextBox();
+            secondPatternCueNameTextBox = new System.Windows.Forms.TextBox();
+            secondPatternLengthLabel = new System.Windows.Forms.Label();
+            groupBox1.SuspendLayout();
+            groupBox3.SuspendLayout();
+            panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)amplifyUpDown).BeginInit();
+            groupBox2.SuspendLayout();
+            groupBox4.SuspendLayout();
+            SuspendLayout();
             // 
             // bgmIdComboBox
             // 
-            this.bgmIdComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.bgmIdComboBox.FormattingEnabled = true;
-            resources.ApplyResources(this.bgmIdComboBox, "bgmIdComboBox");
-            this.bgmIdComboBox.Name = "bgmIdComboBox";
-            this.bgmIdComboBox.SelectedIndexChanged += new System.EventHandler(this.BgmIdComboBox_SelectedIndexChanged);
+            bgmIdComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            bgmIdComboBox.FormattingEnabled = true;
+            resources.ApplyResources(bgmIdComboBox, "bgmIdComboBox");
+            bgmIdComboBox.Name = "bgmIdComboBox";
+            bgmIdComboBox.SelectedIndexChanged += BgmIdComboBox_SelectedIndexChanged;
             // 
             // loadButton
             // 
-            resources.ApplyResources(this.loadButton, "loadButton");
-            this.loadButton.Name = "loadButton";
-            this.loadButton.UseVisualStyleBackColor = true;
-            this.loadButton.Click += new System.EventHandler(this.LoadButton_Click);
+            resources.ApplyResources(loadButton, "loadButton");
+            loadButton.Name = "loadButton";
+            loadButton.UseVisualStyleBackColor = true;
+            loadButton.Click += LoadButton_Click;
             // 
             // groupBox1
             // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Controls.Add(this.entryTableCuesheetNameTextBox);
-            this.groupBox1.Controls.Add(this.paddockCuesheetNameTextBox);
-            this.groupBox1.Controls.Add(this.entryTableCueNameTextBox);
-            this.groupBox1.Controls.Add(this.paddockCueNameTextBox);
-            this.groupBox1.Controls.Add(this.entryTableLabel);
-            this.groupBox1.Controls.Add(this.paddockLabel);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.TabStop = false;
+            resources.ApplyResources(groupBox1, "groupBox1");
+            groupBox1.Controls.Add(entryTableCuesheetNameTextBox);
+            groupBox1.Controls.Add(paddockCuesheetNameTextBox);
+            groupBox1.Controls.Add(entryTableCueNameTextBox);
+            groupBox1.Controls.Add(paddockCueNameTextBox);
+            groupBox1.Controls.Add(entryTableLabel);
+            groupBox1.Controls.Add(paddockLabel);
+            groupBox1.Name = "groupBox1";
+            groupBox1.TabStop = false;
             // 
             // entryTableCuesheetNameTextBox
             // 
-            resources.ApplyResources(this.entryTableCuesheetNameTextBox, "entryTableCuesheetNameTextBox");
-            this.entryTableCuesheetNameTextBox.Name = "entryTableCuesheetNameTextBox";
-            this.entryTableCuesheetNameTextBox.ReadOnly = true;
+            resources.ApplyResources(entryTableCuesheetNameTextBox, "entryTableCuesheetNameTextBox");
+            entryTableCuesheetNameTextBox.Name = "entryTableCuesheetNameTextBox";
+            entryTableCuesheetNameTextBox.ReadOnly = true;
             // 
             // paddockCuesheetNameTextBox
             // 
-            resources.ApplyResources(this.paddockCuesheetNameTextBox, "paddockCuesheetNameTextBox");
-            this.paddockCuesheetNameTextBox.Name = "paddockCuesheetNameTextBox";
-            this.paddockCuesheetNameTextBox.ReadOnly = true;
+            resources.ApplyResources(paddockCuesheetNameTextBox, "paddockCuesheetNameTextBox");
+            paddockCuesheetNameTextBox.Name = "paddockCuesheetNameTextBox";
+            paddockCuesheetNameTextBox.ReadOnly = true;
             // 
             // entryTableCueNameTextBox
             // 
-            resources.ApplyResources(this.entryTableCueNameTextBox, "entryTableCueNameTextBox");
-            this.entryTableCueNameTextBox.Name = "entryTableCueNameTextBox";
-            this.entryTableCueNameTextBox.ReadOnly = true;
+            resources.ApplyResources(entryTableCueNameTextBox, "entryTableCueNameTextBox");
+            entryTableCueNameTextBox.Name = "entryTableCueNameTextBox";
+            entryTableCueNameTextBox.ReadOnly = true;
             // 
             // paddockCueNameTextBox
             // 
-            resources.ApplyResources(this.paddockCueNameTextBox, "paddockCueNameTextBox");
-            this.paddockCueNameTextBox.Name = "paddockCueNameTextBox";
-            this.paddockCueNameTextBox.ReadOnly = true;
+            resources.ApplyResources(paddockCueNameTextBox, "paddockCueNameTextBox");
+            paddockCueNameTextBox.Name = "paddockCueNameTextBox";
+            paddockCueNameTextBox.ReadOnly = true;
             // 
             // entryTableLabel
             // 
-            resources.ApplyResources(this.entryTableLabel, "entryTableLabel");
-            this.entryTableLabel.Name = "entryTableLabel";
+            resources.ApplyResources(entryTableLabel, "entryTableLabel");
+            entryTableLabel.Name = "entryTableLabel";
             // 
             // paddockLabel
             // 
-            resources.ApplyResources(this.paddockLabel, "paddockLabel");
-            this.paddockLabel.Name = "paddockLabel";
+            resources.ApplyResources(paddockLabel, "paddockLabel");
+            paddockLabel.Name = "paddockLabel";
             // 
             // groupBox3
             // 
-            resources.ApplyResources(this.groupBox3, "groupBox3");
-            this.groupBox3.Controls.Add(this.firstPatternLengthComboBox);
-            this.groupBox3.Controls.Add(this.firstPatternCuesheetNameTextBox);
-            this.groupBox3.Controls.Add(this.firstPatternCueNameTextBox);
-            this.groupBox3.Controls.Add(this.firstPatternLengthLabel);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.TabStop = false;
+            resources.ApplyResources(groupBox3, "groupBox3");
+            groupBox3.Controls.Add(firstPatternLengthComboBox);
+            groupBox3.Controls.Add(firstPatternCuesheetNameTextBox);
+            groupBox3.Controls.Add(firstPatternCueNameTextBox);
+            groupBox3.Controls.Add(firstPatternLengthLabel);
+            groupBox3.Name = "groupBox3";
+            groupBox3.TabStop = false;
             // 
             // firstPatternLengthComboBox
             // 
-            this.firstPatternLengthComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.firstPatternLengthComboBox.FormattingEnabled = true;
-            resources.ApplyResources(this.firstPatternLengthComboBox, "firstPatternLengthComboBox");
-            this.firstPatternLengthComboBox.Name = "firstPatternLengthComboBox";
-            this.firstPatternLengthComboBox.SelectedIndexChanged += new System.EventHandler(this.FirstPatternLengthComboBox_SelectedIndexChanged);
+            firstPatternLengthComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            firstPatternLengthComboBox.FormattingEnabled = true;
+            resources.ApplyResources(firstPatternLengthComboBox, "firstPatternLengthComboBox");
+            firstPatternLengthComboBox.Name = "firstPatternLengthComboBox";
+            firstPatternLengthComboBox.SelectedIndexChanged += FirstPatternLengthComboBox_SelectedIndexChanged;
             // 
             // firstPatternCuesheetNameTextBox
             // 
-            resources.ApplyResources(this.firstPatternCuesheetNameTextBox, "firstPatternCuesheetNameTextBox");
-            this.firstPatternCuesheetNameTextBox.Name = "firstPatternCuesheetNameTextBox";
-            this.firstPatternCuesheetNameTextBox.ReadOnly = true;
+            resources.ApplyResources(firstPatternCuesheetNameTextBox, "firstPatternCuesheetNameTextBox");
+            firstPatternCuesheetNameTextBox.Name = "firstPatternCuesheetNameTextBox";
+            firstPatternCuesheetNameTextBox.ReadOnly = true;
             // 
             // firstPatternCueNameTextBox
             // 
-            resources.ApplyResources(this.firstPatternCueNameTextBox, "firstPatternCueNameTextBox");
-            this.firstPatternCueNameTextBox.Name = "firstPatternCueNameTextBox";
-            this.firstPatternCueNameTextBox.ReadOnly = true;
+            resources.ApplyResources(firstPatternCueNameTextBox, "firstPatternCueNameTextBox");
+            firstPatternCueNameTextBox.Name = "firstPatternCueNameTextBox";
+            firstPatternCueNameTextBox.ReadOnly = true;
             // 
             // firstPatternLengthLabel
             // 
-            resources.ApplyResources(this.firstPatternLengthLabel, "firstPatternLengthLabel");
-            this.firstPatternLengthLabel.Name = "firstPatternLengthLabel";
+            resources.ApplyResources(firstPatternLengthLabel, "firstPatternLengthLabel");
+            firstPatternLengthLabel.Name = "firstPatternLengthLabel";
             // 
             // panel
             // 
-            resources.ApplyResources(this.panel, "panel");
-            this.panel.Controls.Add(this.amplifyUpDown);
-            this.panel.Controls.Add(this.amplifyLabel);
-            this.panel.Controls.Add(this.stopButton);
-            this.panel.Controls.Add(this.togglePlayButton);
-            this.panel.Controls.Add(this.playLastSpurtButton);
-            this.panel.Controls.Add(this.playRunningButton);
-            this.panel.Controls.Add(this.playRaceResultButton);
-            this.panel.Controls.Add(this.playEntryTableButton);
-            this.panel.Controls.Add(this.playPaddockButton);
-            this.panel.Controls.Add(this.groupBox1);
-            this.panel.Controls.Add(this.groupBox2);
-            this.panel.Controls.Add(this.groupBox4);
-            this.panel.Controls.Add(this.groupBox3);
-            this.panel.Name = "panel";
+            resources.ApplyResources(panel, "panel");
+            panel.Controls.Add(amplifyUpDown);
+            panel.Controls.Add(amplifyLabel);
+            panel.Controls.Add(stopButton);
+            panel.Controls.Add(togglePlayButton);
+            panel.Controls.Add(playLastSpurtButton);
+            panel.Controls.Add(playRunningButton);
+            panel.Controls.Add(playRaceResultButton);
+            panel.Controls.Add(playEntryTableButton);
+            panel.Controls.Add(playPaddockButton);
+            panel.Controls.Add(groupBox1);
+            panel.Controls.Add(groupBox2);
+            panel.Controls.Add(groupBox4);
+            panel.Controls.Add(groupBox3);
+            panel.Name = "panel";
             // 
             // amplifyUpDown
             // 
-            resources.ApplyResources(this.amplifyUpDown, "amplifyUpDown");
-            this.amplifyUpDown.DecimalPlaces = 1;
-            this.amplifyUpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.amplifyUpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.amplifyUpDown.Name = "amplifyUpDown";
-            this.amplifyUpDown.Value = new decimal(new int[] {
-            40,
-            0,
-            0,
-            65536});
-            this.amplifyUpDown.ValueChanged += new System.EventHandler(this.AmplifyUpDown_ValueChanged);
+            resources.ApplyResources(amplifyUpDown, "amplifyUpDown");
+            amplifyUpDown.DecimalPlaces = 1;
+            amplifyUpDown.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
+            amplifyUpDown.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            amplifyUpDown.Name = "amplifyUpDown";
+            amplifyUpDown.Value = new decimal(new int[] { 40, 0, 0, 65536 });
+            amplifyUpDown.ValueChanged += AmplifyUpDown_ValueChanged;
             // 
             // amplifyLabel
             // 
-            resources.ApplyResources(this.amplifyLabel, "amplifyLabel");
-            this.amplifyLabel.Name = "amplifyLabel";
+            resources.ApplyResources(amplifyLabel, "amplifyLabel");
+            amplifyLabel.Name = "amplifyLabel";
             // 
             // stopButton
             // 
-            resources.ApplyResources(this.stopButton, "stopButton");
-            this.stopButton.Name = "stopButton";
-            this.stopButton.UseVisualStyleBackColor = true;
-            this.stopButton.Click += new System.EventHandler(this.StopButton_Click);
+            resources.ApplyResources(stopButton, "stopButton");
+            stopButton.Name = "stopButton";
+            stopButton.UseVisualStyleBackColor = true;
+            stopButton.Click += StopButton_Click;
             // 
             // togglePlayButton
             // 
-            resources.ApplyResources(this.togglePlayButton, "togglePlayButton");
-            this.togglePlayButton.Name = "togglePlayButton";
-            this.togglePlayButton.UseVisualStyleBackColor = true;
-            this.togglePlayButton.Click += new System.EventHandler(this.TogglePlayButton_Click);
+            resources.ApplyResources(togglePlayButton, "togglePlayButton");
+            togglePlayButton.Name = "togglePlayButton";
+            togglePlayButton.UseVisualStyleBackColor = true;
+            togglePlayButton.Click += TogglePlayButton_Click;
             // 
             // playLastSpurtButton
             // 
-            resources.ApplyResources(this.playLastSpurtButton, "playLastSpurtButton");
-            this.playLastSpurtButton.Name = "playLastSpurtButton";
-            this.playLastSpurtButton.UseVisualStyleBackColor = true;
-            this.playLastSpurtButton.Click += new System.EventHandler(this.PlayButtons_Click);
+            resources.ApplyResources(playLastSpurtButton, "playLastSpurtButton");
+            playLastSpurtButton.Name = "playLastSpurtButton";
+            playLastSpurtButton.UseVisualStyleBackColor = true;
+            playLastSpurtButton.Click += PlayButtons_Click;
             // 
             // playRunningButton
             // 
-            resources.ApplyResources(this.playRunningButton, "playRunningButton");
-            this.playRunningButton.Name = "playRunningButton";
-            this.playRunningButton.UseVisualStyleBackColor = true;
-            this.playRunningButton.Click += new System.EventHandler(this.PlayButtons_Click);
+            resources.ApplyResources(playRunningButton, "playRunningButton");
+            playRunningButton.Name = "playRunningButton";
+            playRunningButton.UseVisualStyleBackColor = true;
+            playRunningButton.Click += PlayButtons_Click;
             // 
             // playRaceResultButton
             // 
-            resources.ApplyResources(this.playRaceResultButton, "playRaceResultButton");
-            this.playRaceResultButton.Name = "playRaceResultButton";
-            this.playRaceResultButton.UseVisualStyleBackColor = true;
-            this.playRaceResultButton.Click += new System.EventHandler(this.PlayButtons_Click);
+            resources.ApplyResources(playRaceResultButton, "playRaceResultButton");
+            playRaceResultButton.Name = "playRaceResultButton";
+            playRaceResultButton.UseVisualStyleBackColor = true;
+            playRaceResultButton.Click += PlayButtons_Click;
             // 
             // playEntryTableButton
             // 
-            resources.ApplyResources(this.playEntryTableButton, "playEntryTableButton");
-            this.playEntryTableButton.Name = "playEntryTableButton";
-            this.playEntryTableButton.UseVisualStyleBackColor = true;
-            this.playEntryTableButton.Click += new System.EventHandler(this.PlayButtons_Click);
+            resources.ApplyResources(playEntryTableButton, "playEntryTableButton");
+            playEntryTableButton.Name = "playEntryTableButton";
+            playEntryTableButton.UseVisualStyleBackColor = true;
+            playEntryTableButton.Click += PlayButtons_Click;
             // 
             // playPaddockButton
             // 
-            resources.ApplyResources(this.playPaddockButton, "playPaddockButton");
-            this.playPaddockButton.Name = "playPaddockButton";
-            this.playPaddockButton.UseVisualStyleBackColor = true;
-            this.playPaddockButton.Click += new System.EventHandler(this.PlayButtons_Click);
+            resources.ApplyResources(playPaddockButton, "playPaddockButton");
+            playPaddockButton.Name = "playPaddockButton";
+            playPaddockButton.UseVisualStyleBackColor = true;
+            playPaddockButton.Click += PlayButtons_Click;
             // 
             // groupBox2
             // 
-            resources.ApplyResources(this.groupBox2, "groupBox2");
-            this.groupBox2.Controls.Add(this.raceResultComboBox);
-            this.groupBox2.Controls.Add(this.resultListCuesheetNameTextBox);
-            this.groupBox2.Controls.Add(this.resultListCueNameTextBox);
-            this.groupBox2.Controls.Add(this.resultCutInCuesheetNameTextBox);
-            this.groupBox2.Controls.Add(this.resultCutInCueNameTextBox);
-            this.groupBox2.Controls.Add(this.resultListLabel);
-            this.groupBox2.Controls.Add(this.cutInLabel);
-            this.groupBox2.Controls.Add(this.raceResultLabel);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.TabStop = false;
+            resources.ApplyResources(groupBox2, "groupBox2");
+            groupBox2.Controls.Add(raceResultComboBox);
+            groupBox2.Controls.Add(resultListCuesheetNameTextBox);
+            groupBox2.Controls.Add(resultListCueNameTextBox);
+            groupBox2.Controls.Add(resultCutInCuesheetNameTextBox);
+            groupBox2.Controls.Add(resultCutInCueNameTextBox);
+            groupBox2.Controls.Add(resultListLabel);
+            groupBox2.Controls.Add(cutInLabel);
+            groupBox2.Controls.Add(raceResultLabel);
+            groupBox2.Name = "groupBox2";
+            groupBox2.TabStop = false;
             // 
             // raceResultComboBox
             // 
-            this.raceResultComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.raceResultComboBox.FormattingEnabled = true;
-            this.raceResultComboBox.Items.AddRange(new object[] {
-            resources.GetString("raceResultComboBox.Items"),
-            resources.GetString("raceResultComboBox.Items1"),
-            resources.GetString("raceResultComboBox.Items2")});
-            resources.ApplyResources(this.raceResultComboBox, "raceResultComboBox");
-            this.raceResultComboBox.Name = "raceResultComboBox";
-            this.raceResultComboBox.SelectedIndexChanged += new System.EventHandler(this.RaceResultComboBox_SelectedIndexChanged);
+            raceResultComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            raceResultComboBox.FormattingEnabled = true;
+            raceResultComboBox.Items.AddRange(new object[] { resources.GetString("raceResultComboBox.Items"), resources.GetString("raceResultComboBox.Items1"), resources.GetString("raceResultComboBox.Items2") });
+            resources.ApplyResources(raceResultComboBox, "raceResultComboBox");
+            raceResultComboBox.Name = "raceResultComboBox";
+            raceResultComboBox.SelectedIndexChanged += RaceResultComboBox_SelectedIndexChanged;
             // 
             // resultListCuesheetNameTextBox
             // 
-            resources.ApplyResources(this.resultListCuesheetNameTextBox, "resultListCuesheetNameTextBox");
-            this.resultListCuesheetNameTextBox.Name = "resultListCuesheetNameTextBox";
-            this.resultListCuesheetNameTextBox.ReadOnly = true;
+            resources.ApplyResources(resultListCuesheetNameTextBox, "resultListCuesheetNameTextBox");
+            resultListCuesheetNameTextBox.Name = "resultListCuesheetNameTextBox";
+            resultListCuesheetNameTextBox.ReadOnly = true;
             // 
             // resultListCueNameTextBox
             // 
-            resources.ApplyResources(this.resultListCueNameTextBox, "resultListCueNameTextBox");
-            this.resultListCueNameTextBox.Name = "resultListCueNameTextBox";
-            this.resultListCueNameTextBox.ReadOnly = true;
+            resources.ApplyResources(resultListCueNameTextBox, "resultListCueNameTextBox");
+            resultListCueNameTextBox.Name = "resultListCueNameTextBox";
+            resultListCueNameTextBox.ReadOnly = true;
             // 
             // resultCutInCuesheetNameTextBox
             // 
-            resources.ApplyResources(this.resultCutInCuesheetNameTextBox, "resultCutInCuesheetNameTextBox");
-            this.resultCutInCuesheetNameTextBox.Name = "resultCutInCuesheetNameTextBox";
-            this.resultCutInCuesheetNameTextBox.ReadOnly = true;
+            resources.ApplyResources(resultCutInCuesheetNameTextBox, "resultCutInCuesheetNameTextBox");
+            resultCutInCuesheetNameTextBox.Name = "resultCutInCuesheetNameTextBox";
+            resultCutInCuesheetNameTextBox.ReadOnly = true;
             // 
             // resultCutInCueNameTextBox
             // 
-            resources.ApplyResources(this.resultCutInCueNameTextBox, "resultCutInCueNameTextBox");
-            this.resultCutInCueNameTextBox.Name = "resultCutInCueNameTextBox";
-            this.resultCutInCueNameTextBox.ReadOnly = true;
+            resources.ApplyResources(resultCutInCueNameTextBox, "resultCutInCueNameTextBox");
+            resultCutInCueNameTextBox.Name = "resultCutInCueNameTextBox";
+            resultCutInCueNameTextBox.ReadOnly = true;
             // 
             // resultListLabel
             // 
-            resources.ApplyResources(this.resultListLabel, "resultListLabel");
-            this.resultListLabel.Name = "resultListLabel";
+            resources.ApplyResources(resultListLabel, "resultListLabel");
+            resultListLabel.Name = "resultListLabel";
             // 
             // cutInLabel
             // 
-            resources.ApplyResources(this.cutInLabel, "cutInLabel");
-            this.cutInLabel.Name = "cutInLabel";
+            resources.ApplyResources(cutInLabel, "cutInLabel");
+            cutInLabel.Name = "cutInLabel";
             // 
             // raceResultLabel
             // 
-            resources.ApplyResources(this.raceResultLabel, "raceResultLabel");
-            this.raceResultLabel.Name = "raceResultLabel";
+            resources.ApplyResources(raceResultLabel, "raceResultLabel");
+            raceResultLabel.Name = "raceResultLabel";
             // 
             // groupBox4
             // 
-            resources.ApplyResources(this.groupBox4, "groupBox4");
-            this.groupBox4.Controls.Add(this.secondPatternLengthComboBox);
-            this.groupBox4.Controls.Add(this.secondPatternCuesheetNameTextBox);
-            this.groupBox4.Controls.Add(this.secondPatternCueNameTextBox);
-            this.groupBox4.Controls.Add(this.secondPatternLengthLabel);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.TabStop = false;
+            resources.ApplyResources(groupBox4, "groupBox4");
+            groupBox4.Controls.Add(secondPatternLengthComboBox);
+            groupBox4.Controls.Add(secondPatternCuesheetNameTextBox);
+            groupBox4.Controls.Add(secondPatternCueNameTextBox);
+            groupBox4.Controls.Add(secondPatternLengthLabel);
+            groupBox4.Name = "groupBox4";
+            groupBox4.TabStop = false;
             // 
             // secondPatternLengthComboBox
             // 
-            this.secondPatternLengthComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.secondPatternLengthComboBox.FormattingEnabled = true;
-            resources.ApplyResources(this.secondPatternLengthComboBox, "secondPatternLengthComboBox");
-            this.secondPatternLengthComboBox.Name = "secondPatternLengthComboBox";
-            this.secondPatternLengthComboBox.SelectedIndexChanged += new System.EventHandler(this.SecondPatternLengthComboBox_SelectedIndexChanged);
+            secondPatternLengthComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            secondPatternLengthComboBox.FormattingEnabled = true;
+            resources.ApplyResources(secondPatternLengthComboBox, "secondPatternLengthComboBox");
+            secondPatternLengthComboBox.Name = "secondPatternLengthComboBox";
+            secondPatternLengthComboBox.SelectedIndexChanged += SecondPatternLengthComboBox_SelectedIndexChanged;
             // 
             // secondPatternCuesheetNameTextBox
             // 
-            resources.ApplyResources(this.secondPatternCuesheetNameTextBox, "secondPatternCuesheetNameTextBox");
-            this.secondPatternCuesheetNameTextBox.Name = "secondPatternCuesheetNameTextBox";
-            this.secondPatternCuesheetNameTextBox.ReadOnly = true;
+            resources.ApplyResources(secondPatternCuesheetNameTextBox, "secondPatternCuesheetNameTextBox");
+            secondPatternCuesheetNameTextBox.Name = "secondPatternCuesheetNameTextBox";
+            secondPatternCuesheetNameTextBox.ReadOnly = true;
             // 
             // secondPatternCueNameTextBox
             // 
-            resources.ApplyResources(this.secondPatternCueNameTextBox, "secondPatternCueNameTextBox");
-            this.secondPatternCueNameTextBox.Name = "secondPatternCueNameTextBox";
-            this.secondPatternCueNameTextBox.ReadOnly = true;
+            resources.ApplyResources(secondPatternCueNameTextBox, "secondPatternCueNameTextBox");
+            secondPatternCueNameTextBox.Name = "secondPatternCueNameTextBox";
+            secondPatternCueNameTextBox.ReadOnly = true;
             // 
             // secondPatternLengthLabel
             // 
-            resources.ApplyResources(this.secondPatternLengthLabel, "secondPatternLengthLabel");
-            this.secondPatternLengthLabel.Name = "secondPatternLengthLabel";
+            resources.ApplyResources(secondPatternLengthLabel, "secondPatternLengthLabel");
+            secondPatternLengthLabel.Name = "secondPatternLengthLabel";
             // 
             // RaceMusicSimulatorControl
             // 
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            BackColor = System.Drawing.SystemColors.Control;
+            Controls.Add(panel);
+            Controls.Add(loadButton);
+            Controls.Add(bgmIdComboBox);
+            Name = "RaceMusicSimulatorControl";
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.Controls.Add(this.panel);
-            this.Controls.Add(this.loadButton);
-            this.Controls.Add(this.bgmIdComboBox);
-            this.Name = "RaceMusicSimulatorControl";
-            this.Load += new System.EventHandler(this.RaceSimulatorControl_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.panel.ResumeLayout(false);
-            this.panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.amplifyUpDown)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.ResumeLayout(false);
-
+            Load += RaceSimulatorControl_Load;
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
+            panel.ResumeLayout(false);
+            panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)amplifyUpDown).EndInit();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion

@@ -85,8 +85,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             // 
             // CharacterInfoControl
             // 
-            resources.ApplyResources(this, "$this");
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             Controls.Add(showPlayableCheckBox);
             Controls.Add(charaListComboBox);
             Controls.Add(goButton);
@@ -94,6 +93,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             Controls.Add(selectLabel);
             Controls.Add(charactersPanel);
             Name = "CharacterInfoControl";
+            resources.ApplyResources(this, "$this");
             Load += CharacterInfoControl_Load;
             ResumeLayout(false);
             PerformLayout();

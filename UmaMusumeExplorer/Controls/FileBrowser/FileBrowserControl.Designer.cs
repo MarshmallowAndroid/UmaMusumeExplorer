@@ -63,6 +63,7 @@
             // 
             // treeViewContextMenuStrip
             // 
+            treeViewContextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             treeViewContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { addToolStripMenuItem, toolStripSeparator1, openFileLocationToolStripMenuItem });
             treeViewContextMenuStrip.Name = "treeViewContextMenuStrip";
             resources.ApplyResources(treeViewContextMenuStrip, "treeViewContextMenuStrip");
@@ -120,6 +121,7 @@
             // 
             // extractListContextMenuStrip
             // 
+            extractListContextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             extractListContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { removeToolStripMenuItem });
             extractListContextMenuStrip.Name = "extractListContextMenuStrip";
             resources.ApplyResources(extractListContextMenuStrip, "extractListContextMenuStrip");
@@ -166,8 +168,7 @@
             // 
             // FileBrowserControl
             // 
-            resources.ApplyResources(this, "$this");
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             Controls.Add(searchButton);
             Controls.Add(searchTextBox);
             Controls.Add(progressBar);
@@ -178,7 +179,9 @@
             Controls.Add(extractButton);
             Controls.Add(fileTreeView);
             Name = "FileBrowserControl";
+            resources.ApplyResources(this, "$this");
             Load += FileBrowserControl_Load;
+            SizeChanged += FileBrowserControl_SizeChanged;
             treeViewContextMenuStrip.ResumeLayout(false);
             extractListContextMenuStrip.ResumeLayout(false);
             ResumeLayout(false);

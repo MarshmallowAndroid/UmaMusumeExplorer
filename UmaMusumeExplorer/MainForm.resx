@@ -121,6 +121,9 @@
   <data name="audioPlayerControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
+  <data name="audioPlayerControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
   <data name="audioPlayerControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>982, 634</value>
   </data>
@@ -172,6 +175,9 @@
   <data name="liveMusicPlayerSongSelectControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
+  <data name="liveMusicPlayerSongSelectControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
   <data name="liveMusicPlayerSongSelectControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>988, 640</value>
   </data>
@@ -220,6 +226,9 @@
   <data name="jukeboxControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
+  <data name="jukeboxControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
   <data name="jukeboxControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>988, 640</value>
   </data>
@@ -267,6 +276,9 @@
   </data>
   <data name="characterInfoControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
+  </data>
+  <data name="characterInfoControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="characterInfoControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>982, 634</value>
@@ -318,6 +330,9 @@
   </data>
   <data name="raceSimulatorControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
+  </data>
+  <data name="raceSimulatorControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="raceSimulatorControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>982, 634</value>
