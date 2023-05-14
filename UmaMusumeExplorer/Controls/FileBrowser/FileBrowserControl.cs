@@ -309,8 +309,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
         {
             if (!searched)
             {
-                searchedAssets = UmaDataHelper.GetGameAssetDataRows().Where(ga => ga.Name.Contains(searchTextBox.Text)).ToDictionary(ga => ga.Name);
-                searchedAssets.OrderBy(ga => ga.Key);
+                searchedAssets = UmaDataHelper.GetGameAssetDataRows().Where(ga => ga.Name.Contains(searchTextBox.Text)).ToDictionary(ga => ga.Name); ;
                 targetAssets = searchedAssets;
 
                 searched = true;

@@ -181,7 +181,6 @@
             Name = "FileBrowserControl";
             resources.ApplyResources(this, "$this");
             Load += FileBrowserControl_Load;
-            SizeChanged += FileBrowserControl_SizeChanged;
             treeViewContextMenuStrip.ResumeLayout(false);
             extractListContextMenuStrip.ResumeLayout(false);
             ResumeLayout(false);
