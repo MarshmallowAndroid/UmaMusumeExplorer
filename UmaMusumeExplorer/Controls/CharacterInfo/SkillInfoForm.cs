@@ -10,8 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UmaMusumeData.Tables;
+using UmaMusumeExplorer.Controls.CharacterInfo.Classes;
 using UmaMusumeExplorer.Game;
-using static UmaMusumeExplorer.Controls.CharacterInfo.SkillButtonSmall;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo
 {
@@ -86,15 +86,6 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
                 paddedRectangle);
 
             base.OnPaint(e);
-        }
-
-        public enum SkillRarity
-        {
-            Rarity1 = 1,
-            Rarity2 = 2,
-            Rarity3 = 3,
-            Rarity4 = 4,
-            Rarity5 = 5
         }
     }
 }

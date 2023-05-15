@@ -7,6 +7,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Windows.Forms;
 using UmaMusumeData.Tables;
+using UmaMusumeExplorer.Controls.CharacterInfo.Classes;
 using UmaMusumeExplorer.Game;
 using static UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel;
 using static UmaMusumeExplorer.Controls.CharacterInfo.SkillButtonSmall;
