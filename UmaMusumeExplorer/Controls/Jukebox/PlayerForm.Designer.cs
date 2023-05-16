@@ -28,122 +28,121 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlayerForm));
-            this.songJacketPictureBox = new System.Windows.Forms.PictureBox();
-            this.songTitleLabel = new System.Windows.Forms.Label();
-            this.songInfoLabel = new System.Windows.Forms.Label();
-            this.playButton = new System.Windows.Forms.Button();
-            this.stopButton = new System.Windows.Forms.Button();
-            this.seekTrackBar = new System.Windows.Forms.TrackBar();
-            this.volumeTrackbar = new System.Windows.Forms.TrackBar();
-            this.volumeLabel = new System.Windows.Forms.Label();
-            this.currentTimeLabel = new System.Windows.Forms.Label();
-            this.totalTimeLabel = new System.Windows.Forms.Label();
-            this.updateTimer = new System.Windows.Forms.Timer(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.songJacketPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seekTrackBar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.volumeTrackbar)).BeginInit();
-            this.SuspendLayout();
+            songJacketPictureBox = new Common.HighQualityPictureBox();
+            songTitleLabel = new System.Windows.Forms.Label();
+            songInfoLabel = new System.Windows.Forms.Label();
+            playButton = new System.Windows.Forms.Button();
+            stopButton = new System.Windows.Forms.Button();
+            seekTrackBar = new System.Windows.Forms.TrackBar();
+            volumeTrackbar = new System.Windows.Forms.TrackBar();
+            volumeLabel = new System.Windows.Forms.Label();
+            currentTimeLabel = new System.Windows.Forms.Label();
+            totalTimeLabel = new System.Windows.Forms.Label();
+            updateTimer = new System.Windows.Forms.Timer(components);
+            ((System.ComponentModel.ISupportInitialize)songJacketPictureBox).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)seekTrackBar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)volumeTrackbar).BeginInit();
+            SuspendLayout();
             // 
             // songJacketPictureBox
             // 
-            resources.ApplyResources(this.songJacketPictureBox, "songJacketPictureBox");
-            this.songJacketPictureBox.Name = "songJacketPictureBox";
-            this.songJacketPictureBox.TabStop = false;
+            resources.ApplyResources(songJacketPictureBox, "songJacketPictureBox");
+            songJacketPictureBox.Name = "songJacketPictureBox";
+            songJacketPictureBox.TabStop = false;
             // 
             // songTitleLabel
             // 
-            resources.ApplyResources(this.songTitleLabel, "songTitleLabel");
-            this.songTitleLabel.Name = "songTitleLabel";
+            resources.ApplyResources(songTitleLabel, "songTitleLabel");
+            songTitleLabel.Name = "songTitleLabel";
             // 
             // songInfoLabel
             // 
-            resources.ApplyResources(this.songInfoLabel, "songInfoLabel");
-            this.songInfoLabel.Name = "songInfoLabel";
+            resources.ApplyResources(songInfoLabel, "songInfoLabel");
+            songInfoLabel.Name = "songInfoLabel";
             // 
             // playButton
             // 
-            resources.ApplyResources(this.playButton, "playButton");
-            this.playButton.Name = "playButton";
-            this.playButton.UseVisualStyleBackColor = true;
-            this.playButton.Click += new System.EventHandler(this.PlayButton_Click);
+            resources.ApplyResources(playButton, "playButton");
+            playButton.Name = "playButton";
+            playButton.UseVisualStyleBackColor = true;
+            playButton.Click += PlayButton_Click;
             // 
             // stopButton
             // 
-            resources.ApplyResources(this.stopButton, "stopButton");
-            this.stopButton.Name = "stopButton";
-            this.stopButton.UseVisualStyleBackColor = true;
-            this.stopButton.Click += new System.EventHandler(this.StopButton_Click);
+            resources.ApplyResources(stopButton, "stopButton");
+            stopButton.Name = "stopButton";
+            stopButton.UseVisualStyleBackColor = true;
+            stopButton.Click += StopButton_Click;
             // 
             // seekTrackBar
             // 
-            resources.ApplyResources(this.seekTrackBar, "seekTrackBar");
-            this.seekTrackBar.Maximum = 100;
-            this.seekTrackBar.Name = "seekTrackBar";
-            this.seekTrackBar.TickFrequency = 0;
-            this.seekTrackBar.TickStyle = System.Windows.Forms.TickStyle.Both;
-            this.seekTrackBar.Scroll += new System.EventHandler(this.SeekTrackBar_Scroll);
+            resources.ApplyResources(seekTrackBar, "seekTrackBar");
+            seekTrackBar.Maximum = 100;
+            seekTrackBar.Name = "seekTrackBar";
+            seekTrackBar.TickFrequency = 0;
+            seekTrackBar.TickStyle = System.Windows.Forms.TickStyle.Both;
+            seekTrackBar.Scroll += SeekTrackBar_Scroll;
             // 
             // volumeTrackbar
             // 
-            resources.ApplyResources(this.volumeTrackbar, "volumeTrackbar");
-            this.volumeTrackbar.Maximum = 100;
-            this.volumeTrackbar.Name = "volumeTrackbar";
-            this.volumeTrackbar.TickFrequency = 50;
-            this.volumeTrackbar.TickStyle = System.Windows.Forms.TickStyle.Both;
-            this.volumeTrackbar.Scroll += new System.EventHandler(this.VolumeTrackbar_Scroll);
+            resources.ApplyResources(volumeTrackbar, "volumeTrackbar");
+            volumeTrackbar.Maximum = 100;
+            volumeTrackbar.Name = "volumeTrackbar";
+            volumeTrackbar.TickFrequency = 50;
+            volumeTrackbar.TickStyle = System.Windows.Forms.TickStyle.Both;
+            volumeTrackbar.Scroll += VolumeTrackbar_Scroll;
             // 
             // volumeLabel
             // 
-            resources.ApplyResources(this.volumeLabel, "volumeLabel");
-            this.volumeLabel.Name = "volumeLabel";
+            resources.ApplyResources(volumeLabel, "volumeLabel");
+            volumeLabel.Name = "volumeLabel";
             // 
             // currentTimeLabel
             // 
-            resources.ApplyResources(this.currentTimeLabel, "currentTimeLabel");
-            this.currentTimeLabel.Name = "currentTimeLabel";
+            resources.ApplyResources(currentTimeLabel, "currentTimeLabel");
+            currentTimeLabel.Name = "currentTimeLabel";
             // 
             // totalTimeLabel
             // 
-            resources.ApplyResources(this.totalTimeLabel, "totalTimeLabel");
-            this.totalTimeLabel.Name = "totalTimeLabel";
+            resources.ApplyResources(totalTimeLabel, "totalTimeLabel");
+            totalTimeLabel.Name = "totalTimeLabel";
             // 
             // updateTimer
             // 
-            this.updateTimer.Interval = 500;
-            this.updateTimer.Tick += new System.EventHandler(this.UpdateTimer_Tick);
+            updateTimer.Interval = 500;
+            updateTimer.Tick += UpdateTimer_Tick;
             // 
             // PlayerForm
             // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.totalTimeLabel);
-            this.Controls.Add(this.currentTimeLabel);
-            this.Controls.Add(this.volumeLabel);
-            this.Controls.Add(this.volumeTrackbar);
-            this.Controls.Add(this.seekTrackBar);
-            this.Controls.Add(this.stopButton);
-            this.Controls.Add(this.playButton);
-            this.Controls.Add(this.songInfoLabel);
-            this.Controls.Add(this.songTitleLabel);
-            this.Controls.Add(this.songJacketPictureBox);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.Name = "PlayerForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PlayerForm_FormClosing);
-            this.Load += new System.EventHandler(this.LiveMusicPlayerForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.songJacketPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seekTrackBar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.volumeTrackbar)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            Controls.Add(totalTimeLabel);
+            Controls.Add(currentTimeLabel);
+            Controls.Add(volumeLabel);
+            Controls.Add(volumeTrackbar);
+            Controls.Add(seekTrackBar);
+            Controls.Add(stopButton);
+            Controls.Add(playButton);
+            Controls.Add(songInfoLabel);
+            Controls.Add(songTitleLabel);
+            Controls.Add(songJacketPictureBox);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            Name = "PlayerForm";
+            FormClosing += PlayerForm_FormClosing;
+            Load += LiveMusicPlayerForm_Load;
+            ((System.ComponentModel.ISupportInitialize)songJacketPictureBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)seekTrackBar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)volumeTrackbar).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox songJacketPictureBox;
+        private Common.HighQualityPictureBox songJacketPictureBox;
         private System.Windows.Forms.Label songTitleLabel;
         private System.Windows.Forms.Label songInfoLabel;
         private System.Windows.Forms.Button playButton;

@@ -28,221 +28,211 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlayerForm));
-            this.songJacketPictureBox = new System.Windows.Forms.PictureBox();
-            this.songTitleLabel = new System.Windows.Forms.Label();
-            this.songInfoLabel = new System.Windows.Forms.Label();
-            this.lyricsLabel = new System.Windows.Forms.Label();
-            this.playButton = new System.Windows.Forms.Button();
-            this.stopButton = new System.Windows.Forms.Button();
-            this.setupButton = new System.Windows.Forms.Button();
-            this.seekTrackBar = new System.Windows.Forms.TrackBar();
-            this.volumeTrackbar = new System.Windows.Forms.TrackBar();
-            this.volumeLabel = new System.Windows.Forms.Label();
-            this.currentTimeLabel = new System.Windows.Forms.Label();
-            this.totalTimeLabel = new System.Windows.Forms.Label();
-            this.updateTimer = new System.Windows.Forms.Timer(this.components);
-            this.playerContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.titleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.titleSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.forceSoloMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.forceAllSingingMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.forceMuteSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.muteBgmMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.muteVoicesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.exportMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.songJacketPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seekTrackBar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.volumeTrackbar)).BeginInit();
-            this.playerContextMenuStrip.SuspendLayout();
-            this.SuspendLayout();
+            songJacketPictureBox = new Common.HighQualityPictureBox();
+            songTitleLabel = new System.Windows.Forms.Label();
+            songInfoLabel = new System.Windows.Forms.Label();
+            lyricsLabel = new System.Windows.Forms.Label();
+            playButton = new System.Windows.Forms.Button();
+            stopButton = new System.Windows.Forms.Button();
+            setupButton = new System.Windows.Forms.Button();
+            seekTrackBar = new System.Windows.Forms.TrackBar();
+            volumeTrackbar = new System.Windows.Forms.TrackBar();
+            volumeLabel = new System.Windows.Forms.Label();
+            currentTimeLabel = new System.Windows.Forms.Label();
+            totalTimeLabel = new System.Windows.Forms.Label();
+            updateTimer = new System.Windows.Forms.Timer(components);
+            playerContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(components);
+            titleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            titleSeparator = new System.Windows.Forms.ToolStripSeparator();
+            forceSoloMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            forceAllSingingMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            forceMuteSeparator = new System.Windows.Forms.ToolStripSeparator();
+            muteBgmMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            muteVoicesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            exportSeparator = new System.Windows.Forms.ToolStripSeparator();
+            exportMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            ((System.ComponentModel.ISupportInitialize)songJacketPictureBox).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)seekTrackBar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)volumeTrackbar).BeginInit();
+            playerContextMenuStrip.SuspendLayout();
+            SuspendLayout();
             // 
             // songJacketPictureBox
             // 
-            resources.ApplyResources(this.songJacketPictureBox, "songJacketPictureBox");
-            this.songJacketPictureBox.Name = "songJacketPictureBox";
-            this.songJacketPictureBox.TabStop = false;
+            resources.ApplyResources(songJacketPictureBox, "songJacketPictureBox");
+            songJacketPictureBox.Name = "songJacketPictureBox";
+            songJacketPictureBox.TabStop = false;
             // 
             // songTitleLabel
             // 
-            resources.ApplyResources(this.songTitleLabel, "songTitleLabel");
-            this.songTitleLabel.Name = "songTitleLabel";
+            resources.ApplyResources(songTitleLabel, "songTitleLabel");
+            songTitleLabel.Name = "songTitleLabel";
             // 
             // songInfoLabel
             // 
-            resources.ApplyResources(this.songInfoLabel, "songInfoLabel");
-            this.songInfoLabel.Name = "songInfoLabel";
+            resources.ApplyResources(songInfoLabel, "songInfoLabel");
+            songInfoLabel.Name = "songInfoLabel";
             // 
             // lyricsLabel
             // 
-            resources.ApplyResources(this.lyricsLabel, "lyricsLabel");
-            this.lyricsLabel.Name = "lyricsLabel";
+            resources.ApplyResources(lyricsLabel, "lyricsLabel");
+            lyricsLabel.Name = "lyricsLabel";
             // 
             // playButton
             // 
-            resources.ApplyResources(this.playButton, "playButton");
-            this.playButton.Name = "playButton";
-            this.playButton.UseVisualStyleBackColor = true;
-            this.playButton.Click += new System.EventHandler(this.PlayButton_Click);
+            resources.ApplyResources(playButton, "playButton");
+            playButton.Name = "playButton";
+            playButton.UseVisualStyleBackColor = true;
+            playButton.Click += PlayButton_Click;
             // 
             // stopButton
             // 
-            resources.ApplyResources(this.stopButton, "stopButton");
-            this.stopButton.Name = "stopButton";
-            this.stopButton.UseVisualStyleBackColor = true;
-            this.stopButton.Click += new System.EventHandler(this.StopButton_Click);
+            resources.ApplyResources(stopButton, "stopButton");
+            stopButton.Name = "stopButton";
+            stopButton.UseVisualStyleBackColor = true;
+            stopButton.Click += StopButton_Click;
             // 
             // setupButton
             // 
-            resources.ApplyResources(this.setupButton, "setupButton");
-            this.setupButton.Name = "setupButton";
-            this.setupButton.UseVisualStyleBackColor = true;
-            this.setupButton.Click += new System.EventHandler(this.SetupButton_Click);
+            resources.ApplyResources(setupButton, "setupButton");
+            setupButton.Name = "setupButton";
+            setupButton.UseVisualStyleBackColor = true;
+            setupButton.Click += SetupButton_Click;
             // 
             // seekTrackBar
             // 
-            resources.ApplyResources(this.seekTrackBar, "seekTrackBar");
-            this.seekTrackBar.Maximum = 100;
-            this.seekTrackBar.Name = "seekTrackBar";
-            this.seekTrackBar.TickFrequency = 0;
-            this.seekTrackBar.TickStyle = System.Windows.Forms.TickStyle.Both;
-            this.seekTrackBar.Scroll += new System.EventHandler(this.SeekTrackBar_Scroll);
+            resources.ApplyResources(seekTrackBar, "seekTrackBar");
+            seekTrackBar.Maximum = 100;
+            seekTrackBar.Name = "seekTrackBar";
+            seekTrackBar.TickFrequency = 0;
+            seekTrackBar.TickStyle = System.Windows.Forms.TickStyle.Both;
+            seekTrackBar.Scroll += SeekTrackBar_Scroll;
             // 
             // volumeTrackbar
             // 
-            resources.ApplyResources(this.volumeTrackbar, "volumeTrackbar");
-            this.volumeTrackbar.Maximum = 100;
-            this.volumeTrackbar.Name = "volumeTrackbar";
-            this.volumeTrackbar.TickFrequency = 50;
-            this.volumeTrackbar.TickStyle = System.Windows.Forms.TickStyle.Both;
-            this.volumeTrackbar.Scroll += new System.EventHandler(this.VolumeTrackbar_Scroll);
+            resources.ApplyResources(volumeTrackbar, "volumeTrackbar");
+            volumeTrackbar.Maximum = 100;
+            volumeTrackbar.Name = "volumeTrackbar";
+            volumeTrackbar.TickFrequency = 50;
+            volumeTrackbar.TickStyle = System.Windows.Forms.TickStyle.Both;
+            volumeTrackbar.Scroll += VolumeTrackbar_Scroll;
             // 
             // volumeLabel
             // 
-            resources.ApplyResources(this.volumeLabel, "volumeLabel");
-            this.volumeLabel.Name = "volumeLabel";
+            resources.ApplyResources(volumeLabel, "volumeLabel");
+            volumeLabel.Name = "volumeLabel";
             // 
             // currentTimeLabel
             // 
-            resources.ApplyResources(this.currentTimeLabel, "currentTimeLabel");
-            this.currentTimeLabel.Name = "currentTimeLabel";
+            resources.ApplyResources(currentTimeLabel, "currentTimeLabel");
+            currentTimeLabel.Name = "currentTimeLabel";
             // 
             // totalTimeLabel
             // 
-            resources.ApplyResources(this.totalTimeLabel, "totalTimeLabel");
-            this.totalTimeLabel.Name = "totalTimeLabel";
+            resources.ApplyResources(totalTimeLabel, "totalTimeLabel");
+            totalTimeLabel.Name = "totalTimeLabel";
             // 
             // updateTimer
             // 
-            this.updateTimer.Interval = 500;
-            this.updateTimer.Tick += new System.EventHandler(this.UpdateTimer_Tick);
+            updateTimer.Interval = 500;
+            updateTimer.Tick += UpdateTimer_Tick;
             // 
             // playerContextMenuStrip
             // 
-            this.playerContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.titleMenuItem,
-            this.titleSeparator,
-            this.forceSoloMenuItem,
-            this.forceAllSingingMenuItem,
-            this.forceMuteSeparator,
-            this.muteBgmMenuItem,
-            this.muteVoicesMenuItem,
-            this.exportSeparator,
-            this.exportMenuItem});
-            this.playerContextMenuStrip.Name = "playerContextMenuStrip";
-            resources.ApplyResources(this.playerContextMenuStrip, "playerContextMenuStrip");
+            playerContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { titleMenuItem, titleSeparator, forceSoloMenuItem, forceAllSingingMenuItem, forceMuteSeparator, muteBgmMenuItem, muteVoicesMenuItem, exportSeparator, exportMenuItem });
+            playerContextMenuStrip.Name = "playerContextMenuStrip";
+            resources.ApplyResources(playerContextMenuStrip, "playerContextMenuStrip");
             // 
             // titleMenuItem
             // 
-            this.titleMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            resources.ApplyResources(this.titleMenuItem, "titleMenuItem");
-            this.titleMenuItem.Name = "titleMenuItem";
+            titleMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(titleMenuItem, "titleMenuItem");
+            titleMenuItem.Name = "titleMenuItem";
             // 
             // titleSeparator
             // 
-            this.titleSeparator.Name = "titleSeparator";
-            resources.ApplyResources(this.titleSeparator, "titleSeparator");
+            titleSeparator.Name = "titleSeparator";
+            resources.ApplyResources(titleSeparator, "titleSeparator");
             // 
             // forceSoloMenuItem
             // 
-            this.forceSoloMenuItem.CheckOnClick = true;
-            this.forceSoloMenuItem.Name = "forceSoloMenuItem";
-            resources.ApplyResources(this.forceSoloMenuItem, "forceSoloMenuItem");
-            this.forceSoloMenuItem.Click += new System.EventHandler(this.ForceSoloMenuItem_Click);
+            forceSoloMenuItem.CheckOnClick = true;
+            forceSoloMenuItem.Name = "forceSoloMenuItem";
+            resources.ApplyResources(forceSoloMenuItem, "forceSoloMenuItem");
+            forceSoloMenuItem.Click += ForceSoloMenuItem_Click;
             // 
             // forceAllSingingMenuItem
             // 
-            this.forceAllSingingMenuItem.CheckOnClick = true;
-            this.forceAllSingingMenuItem.Name = "forceAllSingingMenuItem";
-            resources.ApplyResources(this.forceAllSingingMenuItem, "forceAllSingingMenuItem");
-            this.forceAllSingingMenuItem.Click += new System.EventHandler(this.ForceAllSingingMenuItem_Click);
+            forceAllSingingMenuItem.CheckOnClick = true;
+            forceAllSingingMenuItem.Name = "forceAllSingingMenuItem";
+            resources.ApplyResources(forceAllSingingMenuItem, "forceAllSingingMenuItem");
+            forceAllSingingMenuItem.Click += ForceAllSingingMenuItem_Click;
             // 
             // forceMuteSeparator
             // 
-            this.forceMuteSeparator.Name = "forceMuteSeparator";
-            resources.ApplyResources(this.forceMuteSeparator, "forceMuteSeparator");
+            forceMuteSeparator.Name = "forceMuteSeparator";
+            resources.ApplyResources(forceMuteSeparator, "forceMuteSeparator");
             // 
             // muteBgmMenuItem
             // 
-            this.muteBgmMenuItem.CheckOnClick = true;
-            this.muteBgmMenuItem.Name = "muteBgmMenuItem";
-            resources.ApplyResources(this.muteBgmMenuItem, "muteBgmMenuItem");
-            this.muteBgmMenuItem.Click += new System.EventHandler(this.MuteBgmMenuItem_Click);
+            muteBgmMenuItem.CheckOnClick = true;
+            muteBgmMenuItem.Name = "muteBgmMenuItem";
+            resources.ApplyResources(muteBgmMenuItem, "muteBgmMenuItem");
+            muteBgmMenuItem.Click += MuteBgmMenuItem_Click;
             // 
             // muteVoicesMenuItem
             // 
-            this.muteVoicesMenuItem.CheckOnClick = true;
-            this.muteVoicesMenuItem.Name = "muteVoicesMenuItem";
-            resources.ApplyResources(this.muteVoicesMenuItem, "muteVoicesMenuItem");
-            this.muteVoicesMenuItem.Click += new System.EventHandler(this.MuteVoicesMenuItem_Click);
+            muteVoicesMenuItem.CheckOnClick = true;
+            muteVoicesMenuItem.Name = "muteVoicesMenuItem";
+            resources.ApplyResources(muteVoicesMenuItem, "muteVoicesMenuItem");
+            muteVoicesMenuItem.Click += MuteVoicesMenuItem_Click;
             // 
             // exportSeparator
             // 
-            this.exportSeparator.Name = "exportSeparator";
-            resources.ApplyResources(this.exportSeparator, "exportSeparator");
+            exportSeparator.Name = "exportSeparator";
+            resources.ApplyResources(exportSeparator, "exportSeparator");
             // 
             // exportMenuItem
             // 
-            this.exportMenuItem.Name = "exportMenuItem";
-            resources.ApplyResources(this.exportMenuItem, "exportMenuItem");
-            this.exportMenuItem.Click += new System.EventHandler(this.ExportMenuItem_Click);
+            exportMenuItem.Name = "exportMenuItem";
+            resources.ApplyResources(exportMenuItem, "exportMenuItem");
+            exportMenuItem.Click += ExportMenuItem_Click;
             // 
             // PlayerForm
             // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ContextMenuStrip = this.playerContextMenuStrip;
-            this.Controls.Add(this.totalTimeLabel);
-            this.Controls.Add(this.currentTimeLabel);
-            this.Controls.Add(this.volumeLabel);
-            this.Controls.Add(this.volumeTrackbar);
-            this.Controls.Add(this.seekTrackBar);
-            this.Controls.Add(this.setupButton);
-            this.Controls.Add(this.stopButton);
-            this.Controls.Add(this.playButton);
-            this.Controls.Add(this.lyricsLabel);
-            this.Controls.Add(this.songInfoLabel);
-            this.Controls.Add(this.songTitleLabel);
-            this.Controls.Add(this.songJacketPictureBox);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.Name = "PlayerForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PlayerForm_FormClosing);
-            this.Load += new System.EventHandler(this.LiveMusicPlayerForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.songJacketPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seekTrackBar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.volumeTrackbar)).EndInit();
-            this.playerContextMenuStrip.ResumeLayout(false);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ContextMenuStrip = playerContextMenuStrip;
+            Controls.Add(totalTimeLabel);
+            Controls.Add(currentTimeLabel);
+            Controls.Add(volumeLabel);
+            Controls.Add(volumeTrackbar);
+            Controls.Add(seekTrackBar);
+            Controls.Add(setupButton);
+            Controls.Add(stopButton);
+            Controls.Add(playButton);
+            Controls.Add(lyricsLabel);
+            Controls.Add(songInfoLabel);
+            Controls.Add(songTitleLabel);
+            Controls.Add(songJacketPictureBox);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            Name = "PlayerForm";
+            FormClosing += PlayerForm_FormClosing;
+            Load += LiveMusicPlayerForm_Load;
+            ((System.ComponentModel.ISupportInitialize)songJacketPictureBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)seekTrackBar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)volumeTrackbar).EndInit();
+            playerContextMenuStrip.ResumeLayout(false);
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox songJacketPictureBox;
+        private Common.HighQualityPictureBox songJacketPictureBox;
         private System.Windows.Forms.Label songTitleLabel;
         private System.Windows.Forms.Label songInfoLabel;
         private System.Windows.Forms.Label lyricsLabel;

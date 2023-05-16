@@ -29,400 +29,399 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CardDetailsForm));
-            this.genderLabel = new System.Windows.Forms.Label();
-            this.birthdayLabel = new System.Windows.Forms.Label();
-            this.iconPictureBox = new System.Windows.Forms.PictureBox();
-            this.cvNameLabel = new System.Windows.Forms.Label();
-            this.nameLabel = new System.Windows.Forms.Label();
-            this.genderHintLabel = new System.Windows.Forms.Label();
-            this.birthDateHintLabel = new System.Windows.Forms.Label();
-            this.belowNameTablePanel = new DoubleBufferedTableLayoutPanel();
-            this.costumeComboBox = new System.Windows.Forms.ComboBox();
-            this.costumeHintLabel = new System.Windows.Forms.Label();
-            this.statsTablePanel = new DoubleBufferedTableLayoutPanel();
-            this.speedStatusDisplayLabel = new UmaMusumeExplorer.Controls.CharacterInfo.StatusDisplayLabel();
-            this.speedHintLabel = new System.Windows.Forms.Label();
-            this.staminaHintLabel = new System.Windows.Forms.Label();
-            this.powerHintLabel = new System.Windows.Forms.Label();
-            this.gutsHintLabel = new System.Windows.Forms.Label();
-            this.wisdomHintLabel = new System.Windows.Forms.Label();
-            this.staminaStatusDisplayLabel = new UmaMusumeExplorer.Controls.CharacterInfo.StatusDisplayLabel();
-            this.powerStatusDisplayLabel = new UmaMusumeExplorer.Controls.CharacterInfo.StatusDisplayLabel();
-            this.gutsStatusDisplayLabel = new UmaMusumeExplorer.Controls.CharacterInfo.StatusDisplayLabel();
-            this.wisdomStatusDisplayLabel = new UmaMusumeExplorer.Controls.CharacterInfo.StatusDisplayLabel();
-            this.aptitudeTableLayoutPanel = new DoubleBufferedTableLayoutPanel();
-            this.driveInRankedLabel = new UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel();
-            this.dirtRankedLabel = new UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel();
-            this.turfRankedLabel = new UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel();
-            this.fieldAptitudeLabel = new System.Windows.Forms.Label();
-            this.distanceAptitudeLabel = new System.Windows.Forms.Label();
-            this.runningStyleAptitudeLabel = new System.Windows.Forms.Label();
-            this.shortRankedLabel = new UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel();
-            this.mileRankedLabel = new UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel();
-            this.middleRankedLabel = new UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel();
-            this.longRankedLabel = new UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel();
-            this.escapeRankedLabel = new UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel();
-            this.leadingRankedLabel = new UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel();
-            this.insertRankedLabel = new UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel();
-            this.growthRateTableLayoutPanel = new DoubleBufferedTableLayoutPanel();
-            this.speedGrowthLabel = new System.Windows.Forms.Label();
-            this.staminaGrowthLabel = new System.Windows.Forms.Label();
-            this.powerGrowthLabel = new System.Windows.Forms.Label();
-            this.gutsGrowthLabel = new System.Windows.Forms.Label();
-            this.wisdomGrowthLabel = new System.Windows.Forms.Label();
-            this.growthRateLabel = new System.Windows.Forms.Label();
-            this.rarityComboBox = new System.Windows.Forms.ComboBox();
-            this.rarityHintLabel = new System.Windows.Forms.Label();
-            this.skillsTableLayoutPanel = new DoubleBufferedTableLayoutPanel();
-            this.skillsLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox)).BeginInit();
-            this.belowNameTablePanel.SuspendLayout();
-            this.statsTablePanel.SuspendLayout();
-            this.aptitudeTableLayoutPanel.SuspendLayout();
-            this.growthRateTableLayoutPanel.SuspendLayout();
-            this.SuspendLayout();
+            genderLabel = new System.Windows.Forms.Label();
+            birthdayLabel = new System.Windows.Forms.Label();
+            iconPictureBox = new Common.HighQualityPictureBox();
+            cvNameLabel = new System.Windows.Forms.Label();
+            nameLabel = new System.Windows.Forms.Label();
+            genderHintLabel = new System.Windows.Forms.Label();
+            birthDateHintLabel = new System.Windows.Forms.Label();
+            belowNameTablePanel = new DoubleBufferedTableLayoutPanel();
+            costumeComboBox = new System.Windows.Forms.ComboBox();
+            costumeHintLabel = new System.Windows.Forms.Label();
+            statsTablePanel = new DoubleBufferedTableLayoutPanel();
+            speedStatusDisplayLabel = new StatusDisplayLabel();
+            speedHintLabel = new System.Windows.Forms.Label();
+            staminaHintLabel = new System.Windows.Forms.Label();
+            powerHintLabel = new System.Windows.Forms.Label();
+            gutsHintLabel = new System.Windows.Forms.Label();
+            wisdomHintLabel = new System.Windows.Forms.Label();
+            staminaStatusDisplayLabel = new StatusDisplayLabel();
+            powerStatusDisplayLabel = new StatusDisplayLabel();
+            gutsStatusDisplayLabel = new StatusDisplayLabel();
+            wisdomStatusDisplayLabel = new StatusDisplayLabel();
+            aptitudeTableLayoutPanel = new DoubleBufferedTableLayoutPanel();
+            driveInRankedLabel = new RankedLabel();
+            dirtRankedLabel = new RankedLabel();
+            turfRankedLabel = new RankedLabel();
+            fieldAptitudeLabel = new System.Windows.Forms.Label();
+            distanceAptitudeLabel = new System.Windows.Forms.Label();
+            runningStyleAptitudeLabel = new System.Windows.Forms.Label();
+            shortRankedLabel = new RankedLabel();
+            mileRankedLabel = new RankedLabel();
+            middleRankedLabel = new RankedLabel();
+            longRankedLabel = new RankedLabel();
+            escapeRankedLabel = new RankedLabel();
+            leadingRankedLabel = new RankedLabel();
+            insertRankedLabel = new RankedLabel();
+            growthRateTableLayoutPanel = new DoubleBufferedTableLayoutPanel();
+            speedGrowthLabel = new System.Windows.Forms.Label();
+            staminaGrowthLabel = new System.Windows.Forms.Label();
+            powerGrowthLabel = new System.Windows.Forms.Label();
+            gutsGrowthLabel = new System.Windows.Forms.Label();
+            wisdomGrowthLabel = new System.Windows.Forms.Label();
+            growthRateLabel = new System.Windows.Forms.Label();
+            rarityComboBox = new System.Windows.Forms.ComboBox();
+            rarityHintLabel = new System.Windows.Forms.Label();
+            skillsTableLayoutPanel = new DoubleBufferedTableLayoutPanel();
+            skillsLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)iconPictureBox).BeginInit();
+            belowNameTablePanel.SuspendLayout();
+            statsTablePanel.SuspendLayout();
+            aptitudeTableLayoutPanel.SuspendLayout();
+            growthRateTableLayoutPanel.SuspendLayout();
+            SuspendLayout();
             // 
             // genderLabel
             // 
-            resources.ApplyResources(this.genderLabel, "genderLabel");
-            this.genderLabel.Name = "genderLabel";
+            resources.ApplyResources(genderLabel, "genderLabel");
+            genderLabel.Name = "genderLabel";
             // 
             // birthdayLabel
             // 
-            resources.ApplyResources(this.birthdayLabel, "birthdayLabel");
-            this.birthdayLabel.Name = "birthdayLabel";
+            resources.ApplyResources(birthdayLabel, "birthdayLabel");
+            birthdayLabel.Name = "birthdayLabel";
             // 
             // iconPictureBox
             // 
-            resources.ApplyResources(this.iconPictureBox, "iconPictureBox");
-            this.iconPictureBox.Name = "iconPictureBox";
-            this.iconPictureBox.TabStop = false;
+            resources.ApplyResources(iconPictureBox, "iconPictureBox");
+            iconPictureBox.Name = "iconPictureBox";
+            iconPictureBox.TabStop = false;
             // 
             // cvNameLabel
             // 
-            resources.ApplyResources(this.cvNameLabel, "cvNameLabel");
-            this.cvNameLabel.Name = "cvNameLabel";
+            resources.ApplyResources(cvNameLabel, "cvNameLabel");
+            cvNameLabel.Name = "cvNameLabel";
             // 
             // nameLabel
             // 
-            resources.ApplyResources(this.nameLabel, "nameLabel");
-            this.nameLabel.Name = "nameLabel";
+            resources.ApplyResources(nameLabel, "nameLabel");
+            nameLabel.Name = "nameLabel";
             // 
             // genderHintLabel
             // 
-            resources.ApplyResources(this.genderHintLabel, "genderHintLabel");
-            this.genderHintLabel.Name = "genderHintLabel";
+            resources.ApplyResources(genderHintLabel, "genderHintLabel");
+            genderHintLabel.Name = "genderHintLabel";
             // 
             // birthDateHintLabel
             // 
-            resources.ApplyResources(this.birthDateHintLabel, "birthDateHintLabel");
-            this.birthDateHintLabel.Name = "birthDateHintLabel";
+            resources.ApplyResources(birthDateHintLabel, "birthDateHintLabel");
+            birthDateHintLabel.Name = "birthDateHintLabel";
             // 
             // belowNameTablePanel
             // 
-            resources.ApplyResources(this.belowNameTablePanel, "belowNameTablePanel");
-            this.belowNameTablePanel.Controls.Add(this.genderHintLabel, 0, 0);
-            this.belowNameTablePanel.Controls.Add(this.birthDateHintLabel, 0, 1);
-            this.belowNameTablePanel.Controls.Add(this.birthdayLabel, 1, 1);
-            this.belowNameTablePanel.Controls.Add(this.genderLabel, 1, 0);
-            this.belowNameTablePanel.Name = "belowNameTablePanel";
+            resources.ApplyResources(belowNameTablePanel, "belowNameTablePanel");
+            belowNameTablePanel.Controls.Add(genderHintLabel, 0, 0);
+            belowNameTablePanel.Controls.Add(birthDateHintLabel, 0, 1);
+            belowNameTablePanel.Controls.Add(birthdayLabel, 1, 1);
+            belowNameTablePanel.Controls.Add(genderLabel, 1, 0);
+            belowNameTablePanel.Name = "belowNameTablePanel";
             // 
             // costumeComboBox
             // 
-            this.costumeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.costumeComboBox.FormattingEnabled = true;
-            resources.ApplyResources(this.costumeComboBox, "costumeComboBox");
-            this.costumeComboBox.Name = "costumeComboBox";
-            this.costumeComboBox.SelectedIndexChanged += new System.EventHandler(this.CostumeSelectComboBox_SelectedIndexChanged);
+            costumeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            costumeComboBox.FormattingEnabled = true;
+            resources.ApplyResources(costumeComboBox, "costumeComboBox");
+            costumeComboBox.Name = "costumeComboBox";
+            costumeComboBox.SelectedIndexChanged += CostumeSelectComboBox_SelectedIndexChanged;
             // 
             // costumeHintLabel
             // 
-            resources.ApplyResources(this.costumeHintLabel, "costumeHintLabel");
-            this.costumeHintLabel.Name = "costumeHintLabel";
+            resources.ApplyResources(costumeHintLabel, "costumeHintLabel");
+            costumeHintLabel.Name = "costumeHintLabel";
             // 
             // statsTablePanel
             // 
-            resources.ApplyResources(this.statsTablePanel, "statsTablePanel");
-            this.statsTablePanel.Controls.Add(this.speedStatusDisplayLabel, 0, 1);
-            this.statsTablePanel.Controls.Add(this.speedHintLabel, 0, 0);
-            this.statsTablePanel.Controls.Add(this.staminaHintLabel, 1, 0);
-            this.statsTablePanel.Controls.Add(this.powerHintLabel, 2, 0);
-            this.statsTablePanel.Controls.Add(this.gutsHintLabel, 3, 0);
-            this.statsTablePanel.Controls.Add(this.wisdomHintLabel, 4, 0);
-            this.statsTablePanel.Controls.Add(this.staminaStatusDisplayLabel, 1, 1);
-            this.statsTablePanel.Controls.Add(this.powerStatusDisplayLabel, 2, 1);
-            this.statsTablePanel.Controls.Add(this.gutsStatusDisplayLabel, 3, 1);
-            this.statsTablePanel.Controls.Add(this.wisdomStatusDisplayLabel, 4, 1);
-            this.statsTablePanel.Name = "statsTablePanel";
+            resources.ApplyResources(statsTablePanel, "statsTablePanel");
+            statsTablePanel.Controls.Add(speedStatusDisplayLabel, 0, 1);
+            statsTablePanel.Controls.Add(speedHintLabel, 0, 0);
+            statsTablePanel.Controls.Add(staminaHintLabel, 1, 0);
+            statsTablePanel.Controls.Add(powerHintLabel, 2, 0);
+            statsTablePanel.Controls.Add(gutsHintLabel, 3, 0);
+            statsTablePanel.Controls.Add(wisdomHintLabel, 4, 0);
+            statsTablePanel.Controls.Add(staminaStatusDisplayLabel, 1, 1);
+            statsTablePanel.Controls.Add(powerStatusDisplayLabel, 2, 1);
+            statsTablePanel.Controls.Add(gutsStatusDisplayLabel, 3, 1);
+            statsTablePanel.Controls.Add(wisdomStatusDisplayLabel, 4, 1);
+            statsTablePanel.Name = "statsTablePanel";
             // 
             // speedStatusDisplayLabel
             // 
-            resources.ApplyResources(this.speedStatusDisplayLabel, "speedStatusDisplayLabel");
-            this.speedStatusDisplayLabel.MaxValue = 1200;
-            this.speedStatusDisplayLabel.Name = "speedStatusDisplayLabel";
-            this.speedStatusDisplayLabel.Value = 50;
+            resources.ApplyResources(speedStatusDisplayLabel, "speedStatusDisplayLabel");
+            speedStatusDisplayLabel.MaxValue = 1200;
+            speedStatusDisplayLabel.Name = "speedStatusDisplayLabel";
+            speedStatusDisplayLabel.Value = 50;
             // 
             // speedHintLabel
             // 
-            resources.ApplyResources(this.speedHintLabel, "speedHintLabel");
-            this.speedHintLabel.Name = "speedHintLabel";
+            resources.ApplyResources(speedHintLabel, "speedHintLabel");
+            speedHintLabel.Name = "speedHintLabel";
             // 
             // staminaHintLabel
             // 
-            resources.ApplyResources(this.staminaHintLabel, "staminaHintLabel");
-            this.staminaHintLabel.Name = "staminaHintLabel";
+            resources.ApplyResources(staminaHintLabel, "staminaHintLabel");
+            staminaHintLabel.Name = "staminaHintLabel";
             // 
             // powerHintLabel
             // 
-            resources.ApplyResources(this.powerHintLabel, "powerHintLabel");
-            this.powerHintLabel.Name = "powerHintLabel";
+            resources.ApplyResources(powerHintLabel, "powerHintLabel");
+            powerHintLabel.Name = "powerHintLabel";
             // 
             // gutsHintLabel
             // 
-            resources.ApplyResources(this.gutsHintLabel, "gutsHintLabel");
-            this.gutsHintLabel.Name = "gutsHintLabel";
+            resources.ApplyResources(gutsHintLabel, "gutsHintLabel");
+            gutsHintLabel.Name = "gutsHintLabel";
             // 
             // wisdomHintLabel
             // 
-            resources.ApplyResources(this.wisdomHintLabel, "wisdomHintLabel");
-            this.wisdomHintLabel.Name = "wisdomHintLabel";
+            resources.ApplyResources(wisdomHintLabel, "wisdomHintLabel");
+            wisdomHintLabel.Name = "wisdomHintLabel";
             // 
             // staminaStatusDisplayLabel
             // 
-            resources.ApplyResources(this.staminaStatusDisplayLabel, "staminaStatusDisplayLabel");
-            this.staminaStatusDisplayLabel.MaxValue = 1200;
-            this.staminaStatusDisplayLabel.Name = "staminaStatusDisplayLabel";
-            this.staminaStatusDisplayLabel.Value = 50;
+            resources.ApplyResources(staminaStatusDisplayLabel, "staminaStatusDisplayLabel");
+            staminaStatusDisplayLabel.MaxValue = 1200;
+            staminaStatusDisplayLabel.Name = "staminaStatusDisplayLabel";
+            staminaStatusDisplayLabel.Value = 50;
             // 
             // powerStatusDisplayLabel
             // 
-            resources.ApplyResources(this.powerStatusDisplayLabel, "powerStatusDisplayLabel");
-            this.powerStatusDisplayLabel.MaxValue = 1200;
-            this.powerStatusDisplayLabel.Name = "powerStatusDisplayLabel";
-            this.powerStatusDisplayLabel.Value = 50;
+            resources.ApplyResources(powerStatusDisplayLabel, "powerStatusDisplayLabel");
+            powerStatusDisplayLabel.MaxValue = 1200;
+            powerStatusDisplayLabel.Name = "powerStatusDisplayLabel";
+            powerStatusDisplayLabel.Value = 50;
             // 
             // gutsStatusDisplayLabel
             // 
-            resources.ApplyResources(this.gutsStatusDisplayLabel, "gutsStatusDisplayLabel");
-            this.gutsStatusDisplayLabel.MaxValue = 1200;
-            this.gutsStatusDisplayLabel.Name = "gutsStatusDisplayLabel";
-            this.gutsStatusDisplayLabel.Value = 50;
+            resources.ApplyResources(gutsStatusDisplayLabel, "gutsStatusDisplayLabel");
+            gutsStatusDisplayLabel.MaxValue = 1200;
+            gutsStatusDisplayLabel.Name = "gutsStatusDisplayLabel";
+            gutsStatusDisplayLabel.Value = 50;
             // 
             // wisdomStatusDisplayLabel
             // 
-            resources.ApplyResources(this.wisdomStatusDisplayLabel, "wisdomStatusDisplayLabel");
-            this.wisdomStatusDisplayLabel.MaxValue = 1200;
-            this.wisdomStatusDisplayLabel.Name = "wisdomStatusDisplayLabel";
-            this.wisdomStatusDisplayLabel.Value = 50;
+            resources.ApplyResources(wisdomStatusDisplayLabel, "wisdomStatusDisplayLabel");
+            wisdomStatusDisplayLabel.MaxValue = 1200;
+            wisdomStatusDisplayLabel.Name = "wisdomStatusDisplayLabel";
+            wisdomStatusDisplayLabel.Value = 50;
             // 
             // aptitudeTableLayoutPanel
             // 
-            resources.ApplyResources(this.aptitudeTableLayoutPanel, "aptitudeTableLayoutPanel");
-            this.aptitudeTableLayoutPanel.Controls.Add(this.driveInRankedLabel, 4, 2);
-            this.aptitudeTableLayoutPanel.Controls.Add(this.dirtRankedLabel, 2, 0);
-            this.aptitudeTableLayoutPanel.Controls.Add(this.turfRankedLabel, 1, 0);
-            this.aptitudeTableLayoutPanel.Controls.Add(this.fieldAptitudeLabel, 0, 0);
-            this.aptitudeTableLayoutPanel.Controls.Add(this.distanceAptitudeLabel, 0, 1);
-            this.aptitudeTableLayoutPanel.Controls.Add(this.runningStyleAptitudeLabel, 0, 2);
-            this.aptitudeTableLayoutPanel.Controls.Add(this.shortRankedLabel, 1, 1);
-            this.aptitudeTableLayoutPanel.Controls.Add(this.mileRankedLabel, 2, 1);
-            this.aptitudeTableLayoutPanel.Controls.Add(this.middleRankedLabel, 3, 1);
-            this.aptitudeTableLayoutPanel.Controls.Add(this.longRankedLabel, 4, 1);
-            this.aptitudeTableLayoutPanel.Controls.Add(this.escapeRankedLabel, 1, 2);
-            this.aptitudeTableLayoutPanel.Controls.Add(this.leadingRankedLabel, 2, 2);
-            this.aptitudeTableLayoutPanel.Controls.Add(this.insertRankedLabel, 3, 2);
-            this.aptitudeTableLayoutPanel.Name = "aptitudeTableLayoutPanel";
+            resources.ApplyResources(aptitudeTableLayoutPanel, "aptitudeTableLayoutPanel");
+            aptitudeTableLayoutPanel.Controls.Add(driveInRankedLabel, 4, 2);
+            aptitudeTableLayoutPanel.Controls.Add(dirtRankedLabel, 2, 0);
+            aptitudeTableLayoutPanel.Controls.Add(turfRankedLabel, 1, 0);
+            aptitudeTableLayoutPanel.Controls.Add(fieldAptitudeLabel, 0, 0);
+            aptitudeTableLayoutPanel.Controls.Add(distanceAptitudeLabel, 0, 1);
+            aptitudeTableLayoutPanel.Controls.Add(runningStyleAptitudeLabel, 0, 2);
+            aptitudeTableLayoutPanel.Controls.Add(shortRankedLabel, 1, 1);
+            aptitudeTableLayoutPanel.Controls.Add(mileRankedLabel, 2, 1);
+            aptitudeTableLayoutPanel.Controls.Add(middleRankedLabel, 3, 1);
+            aptitudeTableLayoutPanel.Controls.Add(longRankedLabel, 4, 1);
+            aptitudeTableLayoutPanel.Controls.Add(escapeRankedLabel, 1, 2);
+            aptitudeTableLayoutPanel.Controls.Add(leadingRankedLabel, 2, 2);
+            aptitudeTableLayoutPanel.Controls.Add(insertRankedLabel, 3, 2);
+            aptitudeTableLayoutPanel.Name = "aptitudeTableLayoutPanel";
             // 
             // driveInRankedLabel
             // 
-            this.driveInRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.driveInRankedLabel, "driveInRankedLabel");
-            this.driveInRankedLabel.Name = "driveInRankedLabel";
-            this.driveInRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel.RankedLabelRank.Unknown;
+            driveInRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(driveInRankedLabel, "driveInRankedLabel");
+            driveInRankedLabel.Name = "driveInRankedLabel";
+            driveInRankedLabel.Rank = RankedLabel.RankedLabelRank.Unknown;
             // 
             // dirtRankedLabel
             // 
-            this.dirtRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.dirtRankedLabel, "dirtRankedLabel");
-            this.dirtRankedLabel.Name = "dirtRankedLabel";
-            this.dirtRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel.RankedLabelRank.Unknown;
+            dirtRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(dirtRankedLabel, "dirtRankedLabel");
+            dirtRankedLabel.Name = "dirtRankedLabel";
+            dirtRankedLabel.Rank = RankedLabel.RankedLabelRank.Unknown;
             // 
             // turfRankedLabel
             // 
-            this.turfRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.turfRankedLabel, "turfRankedLabel");
-            this.turfRankedLabel.Name = "turfRankedLabel";
-            this.turfRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel.RankedLabelRank.Unknown;
+            turfRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(turfRankedLabel, "turfRankedLabel");
+            turfRankedLabel.Name = "turfRankedLabel";
+            turfRankedLabel.Rank = RankedLabel.RankedLabelRank.Unknown;
             // 
             // fieldAptitudeLabel
             // 
-            resources.ApplyResources(this.fieldAptitudeLabel, "fieldAptitudeLabel");
-            this.fieldAptitudeLabel.Name = "fieldAptitudeLabel";
+            resources.ApplyResources(fieldAptitudeLabel, "fieldAptitudeLabel");
+            fieldAptitudeLabel.Name = "fieldAptitudeLabel";
             // 
             // distanceAptitudeLabel
             // 
-            resources.ApplyResources(this.distanceAptitudeLabel, "distanceAptitudeLabel");
-            this.distanceAptitudeLabel.Name = "distanceAptitudeLabel";
+            resources.ApplyResources(distanceAptitudeLabel, "distanceAptitudeLabel");
+            distanceAptitudeLabel.Name = "distanceAptitudeLabel";
             // 
             // runningStyleAptitudeLabel
             // 
-            resources.ApplyResources(this.runningStyleAptitudeLabel, "runningStyleAptitudeLabel");
-            this.runningStyleAptitudeLabel.Name = "runningStyleAptitudeLabel";
+            resources.ApplyResources(runningStyleAptitudeLabel, "runningStyleAptitudeLabel");
+            runningStyleAptitudeLabel.Name = "runningStyleAptitudeLabel";
             // 
             // shortRankedLabel
             // 
-            this.shortRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.shortRankedLabel, "shortRankedLabel");
-            this.shortRankedLabel.Name = "shortRankedLabel";
-            this.shortRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel.RankedLabelRank.Unknown;
+            shortRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(shortRankedLabel, "shortRankedLabel");
+            shortRankedLabel.Name = "shortRankedLabel";
+            shortRankedLabel.Rank = RankedLabel.RankedLabelRank.Unknown;
             // 
             // mileRankedLabel
             // 
-            this.mileRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.mileRankedLabel, "mileRankedLabel");
-            this.mileRankedLabel.Name = "mileRankedLabel";
-            this.mileRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel.RankedLabelRank.Unknown;
+            mileRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(mileRankedLabel, "mileRankedLabel");
+            mileRankedLabel.Name = "mileRankedLabel";
+            mileRankedLabel.Rank = RankedLabel.RankedLabelRank.Unknown;
             // 
             // middleRankedLabel
             // 
-            this.middleRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.middleRankedLabel, "middleRankedLabel");
-            this.middleRankedLabel.Name = "middleRankedLabel";
-            this.middleRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel.RankedLabelRank.Unknown;
+            middleRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(middleRankedLabel, "middleRankedLabel");
+            middleRankedLabel.Name = "middleRankedLabel";
+            middleRankedLabel.Rank = RankedLabel.RankedLabelRank.Unknown;
             // 
             // longRankedLabel
             // 
-            this.longRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.longRankedLabel, "longRankedLabel");
-            this.longRankedLabel.Name = "longRankedLabel";
-            this.longRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel.RankedLabelRank.Unknown;
+            longRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(longRankedLabel, "longRankedLabel");
+            longRankedLabel.Name = "longRankedLabel";
+            longRankedLabel.Rank = RankedLabel.RankedLabelRank.Unknown;
             // 
             // escapeRankedLabel
             // 
-            this.escapeRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.escapeRankedLabel, "escapeRankedLabel");
-            this.escapeRankedLabel.Name = "escapeRankedLabel";
-            this.escapeRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel.RankedLabelRank.Unknown;
+            escapeRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(escapeRankedLabel, "escapeRankedLabel");
+            escapeRankedLabel.Name = "escapeRankedLabel";
+            escapeRankedLabel.Rank = RankedLabel.RankedLabelRank.Unknown;
             // 
             // leadingRankedLabel
             // 
-            this.leadingRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.leadingRankedLabel, "leadingRankedLabel");
-            this.leadingRankedLabel.Name = "leadingRankedLabel";
-            this.leadingRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel.RankedLabelRank.Unknown;
+            leadingRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(leadingRankedLabel, "leadingRankedLabel");
+            leadingRankedLabel.Name = "leadingRankedLabel";
+            leadingRankedLabel.Rank = RankedLabel.RankedLabelRank.Unknown;
             // 
             // insertRankedLabel
             // 
-            this.insertRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.insertRankedLabel, "insertRankedLabel");
-            this.insertRankedLabel.Name = "insertRankedLabel";
-            this.insertRankedLabel.Rank = UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel.RankedLabelRank.Unknown;
+            insertRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(insertRankedLabel, "insertRankedLabel");
+            insertRankedLabel.Name = "insertRankedLabel";
+            insertRankedLabel.Rank = RankedLabel.RankedLabelRank.Unknown;
             // 
             // growthRateTableLayoutPanel
             // 
-            resources.ApplyResources(this.growthRateTableLayoutPanel, "growthRateTableLayoutPanel");
-            this.growthRateTableLayoutPanel.Controls.Add(this.speedGrowthLabel, 0, 0);
-            this.growthRateTableLayoutPanel.Controls.Add(this.staminaGrowthLabel, 1, 0);
-            this.growthRateTableLayoutPanel.Controls.Add(this.powerGrowthLabel, 2, 0);
-            this.growthRateTableLayoutPanel.Controls.Add(this.gutsGrowthLabel, 3, 0);
-            this.growthRateTableLayoutPanel.Controls.Add(this.wisdomGrowthLabel, 4, 0);
-            this.growthRateTableLayoutPanel.Name = "growthRateTableLayoutPanel";
+            resources.ApplyResources(growthRateTableLayoutPanel, "growthRateTableLayoutPanel");
+            growthRateTableLayoutPanel.Controls.Add(speedGrowthLabel, 0, 0);
+            growthRateTableLayoutPanel.Controls.Add(staminaGrowthLabel, 1, 0);
+            growthRateTableLayoutPanel.Controls.Add(powerGrowthLabel, 2, 0);
+            growthRateTableLayoutPanel.Controls.Add(gutsGrowthLabel, 3, 0);
+            growthRateTableLayoutPanel.Controls.Add(wisdomGrowthLabel, 4, 0);
+            growthRateTableLayoutPanel.Name = "growthRateTableLayoutPanel";
             // 
             // speedGrowthLabel
             // 
-            resources.ApplyResources(this.speedGrowthLabel, "speedGrowthLabel");
-            this.speedGrowthLabel.Name = "speedGrowthLabel";
+            resources.ApplyResources(speedGrowthLabel, "speedGrowthLabel");
+            speedGrowthLabel.Name = "speedGrowthLabel";
             // 
             // staminaGrowthLabel
             // 
-            resources.ApplyResources(this.staminaGrowthLabel, "staminaGrowthLabel");
-            this.staminaGrowthLabel.Name = "staminaGrowthLabel";
+            resources.ApplyResources(staminaGrowthLabel, "staminaGrowthLabel");
+            staminaGrowthLabel.Name = "staminaGrowthLabel";
             // 
             // powerGrowthLabel
             // 
-            resources.ApplyResources(this.powerGrowthLabel, "powerGrowthLabel");
-            this.powerGrowthLabel.Name = "powerGrowthLabel";
+            resources.ApplyResources(powerGrowthLabel, "powerGrowthLabel");
+            powerGrowthLabel.Name = "powerGrowthLabel";
             // 
             // gutsGrowthLabel
             // 
-            resources.ApplyResources(this.gutsGrowthLabel, "gutsGrowthLabel");
-            this.gutsGrowthLabel.Name = "gutsGrowthLabel";
+            resources.ApplyResources(gutsGrowthLabel, "gutsGrowthLabel");
+            gutsGrowthLabel.Name = "gutsGrowthLabel";
             // 
             // wisdomGrowthLabel
             // 
-            resources.ApplyResources(this.wisdomGrowthLabel, "wisdomGrowthLabel");
-            this.wisdomGrowthLabel.Name = "wisdomGrowthLabel";
+            resources.ApplyResources(wisdomGrowthLabel, "wisdomGrowthLabel");
+            wisdomGrowthLabel.Name = "wisdomGrowthLabel";
             // 
             // growthRateLabel
             // 
-            resources.ApplyResources(this.growthRateLabel, "growthRateLabel");
-            this.growthRateLabel.Name = "growthRateLabel";
+            resources.ApplyResources(growthRateLabel, "growthRateLabel");
+            growthRateLabel.Name = "growthRateLabel";
             // 
             // rarityComboBox
             // 
-            this.rarityComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.rarityComboBox.FormattingEnabled = true;
-            resources.ApplyResources(this.rarityComboBox, "rarityComboBox");
-            this.rarityComboBox.Name = "rarityComboBox";
-            this.rarityComboBox.SelectedIndexChanged += new System.EventHandler(this.RarityComboBox_SelectedIndexChanged);
+            rarityComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            rarityComboBox.FormattingEnabled = true;
+            resources.ApplyResources(rarityComboBox, "rarityComboBox");
+            rarityComboBox.Name = "rarityComboBox";
+            rarityComboBox.SelectedIndexChanged += RarityComboBox_SelectedIndexChanged;
             // 
             // rarityHintLabel
             // 
-            resources.ApplyResources(this.rarityHintLabel, "rarityHintLabel");
-            this.rarityHintLabel.Name = "rarityHintLabel";
+            resources.ApplyResources(rarityHintLabel, "rarityHintLabel");
+            rarityHintLabel.Name = "rarityHintLabel";
             // 
             // skillsTableLayoutPanel
             // 
-            resources.ApplyResources(this.skillsTableLayoutPanel, "skillsTableLayoutPanel");
-            this.skillsTableLayoutPanel.Name = "skillsTableLayoutPanel";
+            resources.ApplyResources(skillsTableLayoutPanel, "skillsTableLayoutPanel");
+            skillsTableLayoutPanel.Name = "skillsTableLayoutPanel";
             // 
             // skillsLabel
             // 
-            resources.ApplyResources(this.skillsLabel, "skillsLabel");
-            this.skillsLabel.Name = "skillsLabel";
+            resources.ApplyResources(skillsLabel, "skillsLabel");
+            skillsLabel.Name = "skillsLabel";
             // 
             // CardDetailsForm
             // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.skillsTableLayoutPanel);
-            this.Controls.Add(this.skillsLabel);
-            this.Controls.Add(this.growthRateLabel);
-            this.Controls.Add(this.aptitudeTableLayoutPanel);
-            this.Controls.Add(this.growthRateTableLayoutPanel);
-            this.Controls.Add(this.statsTablePanel);
-            this.Controls.Add(this.rarityHintLabel);
-            this.Controls.Add(this.rarityComboBox);
-            this.Controls.Add(this.costumeHintLabel);
-            this.Controls.Add(this.costumeComboBox);
-            this.Controls.Add(this.cvNameLabel);
-            this.Controls.Add(this.nameLabel);
-            this.Controls.Add(this.belowNameTablePanel);
-            this.Controls.Add(this.iconPictureBox);
-            this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.Name = "CardDetailsForm";
-            this.Load += new System.EventHandler(this.CardDetailsForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox)).EndInit();
-            this.belowNameTablePanel.ResumeLayout(false);
-            this.belowNameTablePanel.PerformLayout();
-            this.statsTablePanel.ResumeLayout(false);
-            this.statsTablePanel.PerformLayout();
-            this.aptitudeTableLayoutPanel.ResumeLayout(false);
-            this.aptitudeTableLayoutPanel.PerformLayout();
-            this.growthRateTableLayoutPanel.ResumeLayout(false);
-            this.growthRateTableLayoutPanel.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            Controls.Add(skillsTableLayoutPanel);
+            Controls.Add(skillsLabel);
+            Controls.Add(growthRateLabel);
+            Controls.Add(aptitudeTableLayoutPanel);
+            Controls.Add(growthRateTableLayoutPanel);
+            Controls.Add(statsTablePanel);
+            Controls.Add(rarityHintLabel);
+            Controls.Add(rarityComboBox);
+            Controls.Add(costumeHintLabel);
+            Controls.Add(costumeComboBox);
+            Controls.Add(cvNameLabel);
+            Controls.Add(nameLabel);
+            Controls.Add(belowNameTablePanel);
+            Controls.Add(iconPictureBox);
+            DoubleBuffered = true;
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            Name = "CardDetailsForm";
+            Load += CardDetailsForm_Load;
+            ((System.ComponentModel.ISupportInitialize)iconPictureBox).EndInit();
+            belowNameTablePanel.ResumeLayout(false);
+            belowNameTablePanel.PerformLayout();
+            statsTablePanel.ResumeLayout(false);
+            statsTablePanel.PerformLayout();
+            aptitudeTableLayoutPanel.ResumeLayout(false);
+            aptitudeTableLayoutPanel.PerformLayout();
+            growthRateTableLayoutPanel.ResumeLayout(false);
+            growthRateTableLayoutPanel.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private System.Windows.Forms.Label genderLabel;
         private System.Windows.Forms.Label birthdayLabel;
-        private System.Windows.Forms.PictureBox iconPictureBox;
+        private Common.HighQualityPictureBox iconPictureBox;
         private System.Windows.Forms.Label cvNameLabel;
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.Label genderHintLabel;

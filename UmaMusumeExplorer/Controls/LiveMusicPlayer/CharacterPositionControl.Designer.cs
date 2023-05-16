@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.positionIndexLabel = new System.Windows.Forms.Label();
-            this.characterPictureBox = new System.Windows.Forms.PictureBox();
+            this.characterPictureBox = new Common.HighQualityPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.characterPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,6 +74,6 @@
         #endregion
 
         private System.Windows.Forms.Label positionIndexLabel;
-        private System.Windows.Forms.PictureBox characterPictureBox;
+        private Common.HighQualityPictureBox characterPictureBox;
     }
 }

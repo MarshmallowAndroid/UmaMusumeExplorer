@@ -30,7 +30,7 @@
         {
             this.levelLabel = new System.Windows.Forms.Label();
             this.skillNameLabel = new System.Windows.Forms.Label();
-            this.iconPictureBox = new System.Windows.Forms.PictureBox();
+            this.iconPictureBox = new Common.HighQualityPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,6 +92,6 @@
 
         private System.Windows.Forms.Label levelLabel;
         private System.Windows.Forms.Label skillNameLabel;
-        private System.Windows.Forms.PictureBox iconPictureBox;
+        private Common.HighQualityPictureBox iconPictureBox;
     }
 }

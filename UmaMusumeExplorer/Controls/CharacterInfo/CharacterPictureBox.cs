@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UmaMusumeExplorer.Controls.Common;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo
 {
-    internal class CharacterPictureBox : PictureBox
+    internal class CharacterPictureBox : HighQualityPictureBox
     {
         private bool showPlayability = false;
         private readonly bool isPlayable;

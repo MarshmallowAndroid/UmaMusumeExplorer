@@ -120,7 +120,7 @@
     <value>2</value>
   </data>
   <data name="iconPictureBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
+    <value>0, 0</value>
   </data>
   <data name="iconPictureBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>150, 150</value>
@@ -136,7 +136,7 @@
     <value>iconPictureBox</value>
   </data>
   <data name="&gt;&gt;iconPictureBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>UmaMusumeExplorer.Controls.Common.HighQualityPictureBox, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconPictureBox.Parent" xml:space="preserve">
     <value>$this</value>
@@ -151,7 +151,7 @@
     <value>Segoe UI, 14.25pt</value>
   </data>
   <data name="cvNameLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>168, 49</value>
+    <value>156, 46</value>
   </data>
   <data name="cvNameLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 25</value>
@@ -181,7 +181,7 @@
     <value>Segoe UI, 20.25pt, style=Bold</value>
   </data>
   <data name="nameLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>168, 12</value>
+    <value>156, 9</value>
   </data>
   <data name="nameLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>104, 37</value>
@@ -268,7 +268,7 @@
     <value>2</value>
   </data>
   <data name="belowNameTablePanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>168, 107</value>
+    <value>156, 95</value>
   </data>
   <data name="belowNameTablePanel.RowCount" type="System.Int32, mscorlib">
     <value>2</value>
@@ -283,7 +283,7 @@
     <value>belowNameTablePanel</value>
   </data>
   <data name="&gt;&gt;belowNameTablePanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>UmaMusumeExplorer.Controls.CharacterInfo.DoubleBufferedTableLayoutPanel, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;belowNameTablePanel.Parent" xml:space="preserve">
     <value>$this</value>
@@ -295,7 +295,7 @@
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="genderHintLabel" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="birthDateHintLabel" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="birthdayLabel" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="genderLabel" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="costumeComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>73, 168</value>
+    <value>73, 156</value>
   </data>
   <data name="costumeComboBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>167, 23</value>
@@ -319,7 +319,7 @@
     <value>True</value>
   </data>
   <data name="costumeHintLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 171</value>
+    <value>12, 159</value>
   </data>
   <data name="costumeHintLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 15</value>
@@ -652,7 +652,7 @@
     <value>9</value>
   </data>
   <data name="statsTablePanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 197</value>
+    <value>12, 185</value>
   </data>
   <data name="statsTablePanel.RowCount" type="System.Int32, mscorlib">
     <value>2</value>
@@ -667,7 +667,7 @@
     <value>statsTablePanel</value>
   </data>
   <data name="&gt;&gt;statsTablePanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>UmaMusumeExplorer.Controls.CharacterInfo.DoubleBufferedTableLayoutPanel, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;statsTablePanel.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1045,7 +1045,7 @@
     <value>12</value>
   </data>
   <data name="aptitudeTableLayoutPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 294</value>
+    <value>12, 282</value>
   </data>
   <data name="aptitudeTableLayoutPanel.RowCount" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1060,7 +1060,7 @@
     <value>aptitudeTableLayoutPanel</value>
   </data>
   <data name="&gt;&gt;aptitudeTableLayoutPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>UmaMusumeExplorer.Controls.CharacterInfo.DoubleBufferedTableLayoutPanel, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;aptitudeTableLayoutPanel.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1246,7 +1246,7 @@
     <value>4</value>
   </data>
   <data name="growthRateTableLayoutPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 432</value>
+    <value>12, 419</value>
   </data>
   <data name="growthRateTableLayoutPanel.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1261,7 +1261,7 @@
     <value>growthRateTableLayoutPanel</value>
   </data>
   <data name="&gt;&gt;growthRateTableLayoutPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>UmaMusumeExplorer.Controls.CharacterInfo.DoubleBufferedTableLayoutPanel, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;growthRateTableLayoutPanel.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1276,7 +1276,7 @@
     <value>True</value>
   </data>
   <data name="growthRateLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 414</value>
+    <value>12, 401</value>
   </data>
   <data name="growthRateLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 15</value>
@@ -1300,7 +1300,7 @@
     <value>2</value>
   </data>
   <data name="rarityComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>289, 168</value>
+    <value>288, 156</value>
   </data>
   <data name="rarityComboBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>117, 23</value>
@@ -1324,7 +1324,7 @@
     <value>True</value>
   </data>
   <data name="rarityHintLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>246, 171</value>
+    <value>245, 159</value>
   </data>
   <data name="rarityHintLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>37, 15</value>
@@ -1357,13 +1357,13 @@
     <value>2</value>
   </data>
   <data name="skillsTableLayoutPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 505</value>
+    <value>12, 472</value>
   </data>
   <data name="skillsTableLayoutPanel.RowCount" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
   <data name="skillsTableLayoutPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>578, 196</value>
+    <value>578, 212</value>
   </data>
   <data name="skillsTableLayoutPanel.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -1372,7 +1372,7 @@
     <value>skillsTableLayoutPanel</value>
   </data>
   <data name="&gt;&gt;skillsTableLayoutPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>UmaMusumeExplorer.Controls.CharacterInfo.DoubleBufferedTableLayoutPanel, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;skillsTableLayoutPanel.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1390,7 +1390,7 @@
     <value>NoControl</value>
   </data>
   <data name="skillsLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 487</value>
+    <value>12, 454</value>
   </data>
   <data name="skillsLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>33, 15</value>
@@ -1420,7 +1420,10 @@
     <value>7, 15</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>601, 713</value>
+    <value>601, 696</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>Manual</value>
