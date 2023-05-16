@@ -30,6 +30,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             rarity = SkillRarity.Rarity1;
             iconId = 0;
 
+            Click += OnSkillClicked;
             iconPictureBox.Click += OnSkillClicked;
             skillNameLabel.Click += OnSkillClicked;
             levelLabel.Click += OnSkillClicked;
@@ -109,39 +110,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            Color[] colors = { Color.White, Color.LightSteelBlue };
-            float[] positions = { 0F, 1F };
-
-            switch (Rarity)
-            {
-                case SkillRarity.Rarity2:
-                    colors = new[]
-                    {
-                        Color.LightYellow,
-                        Color.Gold
-                    };
-                    break;
-                case SkillRarity.Rarity3:
-                case SkillRarity.Rarity4:
-                case SkillRarity.Rarity5:
-                    colors = new[] {
-                        Color.LightGreen,
-                        Color.DeepSkyBlue,
-                        Color.BlueViolet,
-                        Color.DeepPink
-                    };
-                    positions = new[] { 0F, 1 / 3F, 2 / 3F, 1F };
-                    break;
-                default:
-                    break;
-            }
-
-            LinearGradientBrush linearGradientBrush = new(ClientRectangle, Color.White, Color.White, LinearGradientMode.Horizontal);
-
-            ColorBlend colorBlend = new();
-            colorBlend.Positions = positions;
-            colorBlend.Colors = colors;
-            linearGradientBrush.InterpolationColors = colorBlend;
+            Brush linearGradientBrush = RarityColorGenerator.ColorFromRarity(rarity, ClientRectangle);
 
             Rectangle paddedRectangle = ClientRectangle;
             paddedRectangle.X += 2;

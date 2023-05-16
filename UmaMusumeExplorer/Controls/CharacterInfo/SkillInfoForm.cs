@@ -5,12 +5,14 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Controls.CharacterInfo.Classes;
+using UmaMusumeExplorer.Controls.CharacterInfo;
 using UmaMusumeExplorer.Game;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo
@@ -31,6 +33,15 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             skillInfoLabel.Text = AssetTables.GetText(AssetTables.SkillInfoTextDatas, skillId)
                 .Replace("\\n", "\n");
 
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+
+            int frameBorder = SystemInformation.BorderSize.Height;
+
+            Size newSize = Size;
+            newSize.Height -= SystemInformation.CaptionHeight + ((SystemInformation.FrameBorderSize.Height + SystemInformation.VerticalResizeBorderThickness - 1) * 2);
+            newSize.Width -= (SystemInformation.FrameBorderSize.Width + SystemInformation.HorizontalResizeBorderThickness - 1) * 2;
+
+            Size = newSize;
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
@@ -40,52 +51,88 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            Color[] colors = { Color.White, Color.LightSteelBlue };
-            float[] positions = { 0F, 1F };
+            Rectangle rectangle = ClientRectangle;
 
-            switch (rarity)
-            {
-                case SkillRarity.Rarity2:
-                    colors = new[]
-                    {
-                        Color.LightYellow,
-                        Color.Gold
-                    };
-                    break;
-                case SkillRarity.Rarity3:
-                case SkillRarity.Rarity4:
-                case SkillRarity.Rarity5:
-                    colors = new[] {
-                        Color.LightGreen,
-                        Color.DeepSkyBlue,
-                        Color.BlueViolet,
-                        Color.DeepPink
-                    };
-                    positions = new[] { 0F, 1 / 3F, 2 / 3F, 1F };
-                    break;
-                default:
-                    break;
-            }
+            Brush colorBrush = RarityColorGenerator.ColorFromRarity(rarity, rectangle);
 
-            LinearGradientBrush linearGradientBrush = new(ClientRectangle, Color.White, Color.White, LinearGradientMode.Horizontal);
+            Rectangle paddedRectangle = rectangle;
+            paddedRectangle.X += 4;
+            paddedRectangle.Y += 4;
+            paddedRectangle.Width -= 10;
+            paddedRectangle.Height -= 10;
 
-            ColorBlend colorBlend = new();
-            colorBlend.Positions = positions;
-            colorBlend.Colors = colors;
-            linearGradientBrush.InterpolationColors = colorBlend;
+            GraphicsPath path = new();
+            int diameter = 12;
+            Rectangle arc = new(paddedRectangle.Location, new Size(diameter, diameter));
+            path.AddArc(arc, 180, 90);
+            arc.X = paddedRectangle.Right - diameter;
+            path.AddArc(arc, 270, 90);
+            arc.Y = paddedRectangle.Bottom - diameter;
+            path.AddArc(arc, 0, 90);
+            arc.X = paddedRectangle.Left;
+            path.AddArc(arc, 90, 90);
+            path.CloseFigure();
 
-            Rectangle paddedRectangle = ClientRectangle;
-            paddedRectangle.X += 2;
-            paddedRectangle.Y += 2;
-            paddedRectangle.Width -= 4;
-            paddedRectangle.Height -= 4;
+            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
-            e.Graphics.FillRectangle(linearGradientBrush, ClientRectangle);
-            e.Graphics.FillRectangle(
+            SolidBrush broosh = new(Color.White);
+
+            e.Graphics.FillRectangle(colorBrush, rectangle);
+            //e.Graphics.FillRectangle(
+            //    new SolidBrush(Color.FromArgb(127, 255, 255, 255)),
+            //    paddedRectangle);
+            e.Graphics.FillPath(
                 new SolidBrush(Color.FromArgb(127, 255, 255, 255)),
-                paddedRectangle);
+                //new SolidBrush(Color.FromArgb(255, 24, 24, 24)),
+                path);
+            //e.Graphics.FillPath(linearGradientBrush, path);
 
             base.OnPaint(e);
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            switch (m.Msg)
+            {
+                case 131:
+                    //if (m.WParam.ToInt32() != 0)
+                    {
+                        NCCALCSIZE_PARAMS ncp = Marshal.PtrToStructure<NCCALCSIZE_PARAMS>(m.LParam);
+
+                        //ncp.rgrc[0].Top += SystemInformation.CaptionHeight + y;
+                        //ncp.rgrc[0].Left += x;
+                        //ncp.rgrc[0].bottom -= y;
+                        //ncp.rgrc[0].Right -= x;
+
+                        ncp.rgrc[0].top += 1;
+                        ncp.rgrc[0].left += 1;
+                        //ncp.rgrc[0].bottom -= 1;
+                        //ncp.rgrc[0].right -= 1;
+
+                        Marshal.StructureToPtr(ncp, m.LParam, true);
+
+                        m.Result = 0;
+                    }
+                    break;
+                default:
+                    base.WndProc(ref m);
+                    break;
+            }
+        }
+
+        struct RECT
+        {
+            public int left;
+            public int top;
+            public int right;
+            public int bottom;
+        }
+
+        struct NCCALCSIZE_PARAMS
+        {
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
+            public RECT[] rgrc;
+            public nint lppos;
         }
     }
 }
