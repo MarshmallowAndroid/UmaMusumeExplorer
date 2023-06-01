@@ -354,7 +354,6 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
             // RaceMusicSimulatorControl
             // 
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            BackColor = System.Drawing.SystemColors.Control;
             Controls.Add(panel);
             Controls.Add(loadButton);
             Controls.Add(bgmIdComboBox);

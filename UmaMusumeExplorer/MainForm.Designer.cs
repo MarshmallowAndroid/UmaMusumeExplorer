@@ -66,10 +66,10 @@ namespace UmaMusumeExplorer
             // 
             // fileBrowserTabPage
             // 
-            fileBrowserTabPage.BackColor = System.Drawing.SystemColors.Control;
             fileBrowserTabPage.Controls.Add(fileBrowserControl);
             resources.ApplyResources(fileBrowserTabPage, "fileBrowserTabPage");
             fileBrowserTabPage.Name = "fileBrowserTabPage";
+            fileBrowserTabPage.UseVisualStyleBackColor = true;
             // 
             // fileBrowserControl
             // 
@@ -81,6 +81,7 @@ namespace UmaMusumeExplorer
             audioPlayerTabPage.Controls.Add(audioPlayerControl);
             resources.ApplyResources(audioPlayerTabPage, "audioPlayerTabPage");
             audioPlayerTabPage.Name = "audioPlayerTabPage";
+            audioPlayerTabPage.UseVisualStyleBackColor = true;
             // 
             // audioPlayerControl
             // 
@@ -89,10 +90,10 @@ namespace UmaMusumeExplorer
             // 
             // liveMusicPlayerTabPage
             // 
-            liveMusicPlayerTabPage.BackColor = System.Drawing.SystemColors.Control;
             liveMusicPlayerTabPage.Controls.Add(liveMusicPlayerSongSelectControl);
             resources.ApplyResources(liveMusicPlayerTabPage, "liveMusicPlayerTabPage");
             liveMusicPlayerTabPage.Name = "liveMusicPlayerTabPage";
+            liveMusicPlayerTabPage.UseVisualStyleBackColor = true;
             // 
             // liveMusicPlayerSongSelectControl
             // 
@@ -101,23 +102,22 @@ namespace UmaMusumeExplorer
             // 
             // jukeboxTabPage
             // 
-            jukeboxTabPage.BackColor = System.Drawing.SystemColors.Control;
             jukeboxTabPage.Controls.Add(jukeboxControl);
             resources.ApplyResources(jukeboxTabPage, "jukeboxTabPage");
             jukeboxTabPage.Name = "jukeboxTabPage";
+            jukeboxTabPage.UseVisualStyleBackColor = true;
             // 
             // jukeboxControl
             // 
-            jukeboxControl.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(jukeboxControl, "jukeboxControl");
             jukeboxControl.Name = "jukeboxControl";
             // 
             // characterInfoTabPage
             // 
-            characterInfoTabPage.BackColor = System.Drawing.SystemColors.Control;
             characterInfoTabPage.Controls.Add(characterInfoControl);
             resources.ApplyResources(characterInfoTabPage, "characterInfoTabPage");
             characterInfoTabPage.Name = "characterInfoTabPage";
+            characterInfoTabPage.UseVisualStyleBackColor = true;
             // 
             // characterInfoControl
             // 
@@ -126,14 +126,13 @@ namespace UmaMusumeExplorer
             // 
             // raceMusicTabPage
             // 
-            raceMusicTabPage.BackColor = System.Drawing.SystemColors.Control;
             raceMusicTabPage.Controls.Add(raceSimulatorControl);
             resources.ApplyResources(raceMusicTabPage, "raceMusicTabPage");
             raceMusicTabPage.Name = "raceMusicTabPage";
+            raceMusicTabPage.UseVisualStyleBackColor = true;
             // 
             // raceSimulatorControl
             // 
-            raceSimulatorControl.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(raceSimulatorControl, "raceSimulatorControl");
             raceSimulatorControl.Name = "raceSimulatorControl";
             // 
