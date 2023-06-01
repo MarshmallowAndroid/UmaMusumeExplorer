@@ -27,7 +27,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
                 if (isPlayable && value)
                     BackColor = Color.LightGreen;
                 else
-                    BackColor = Color.FromKnownColor(KnownColor.Control);
+                    BackColor = Color.FromKnownColor(KnownColor.Transparent);
 
                 showPlayability = value;
             }
