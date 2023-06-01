@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -31,16 +32,17 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
 
         private int totalFiles;
 
-        private AwbReader awbReader;
         private UmaWaveStream umaWaveStream;
         private VolumeSampleProvider volumeSampleProvider;
-        private bool initialized = false;
 
         public AudioPlayerControl()
         {
             InitializeComponent();
 
             waveOut = new WaveOutEvent() { DesiredLatency = 100 };
+
+            if (Application.UseVisualStyles)
+                seekTrackBar.BackColor = Color.FromArgb(255, 249, 249, 249);
         }
 
         private void AudioPlayerControl_Load(object sender, EventArgs e)
@@ -90,21 +92,20 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             int currentFile = 0;
             foreach (var gameFile in awbOnly)
             {
-                string acbName = gameFile.BaseName[0..^4] + ".acb";
-                string acbPath = UmaDataHelper.GetPath(audioAssets.FirstOrDefault((gf) => gf.BaseName == acbName));
+                string baseName = gameFile.BaseName[0..^4];
+                string acbName = baseName + ".acb";
+                string acbPath = UmaDataHelper.GetPath(AssetTables.AudioAssets.FirstOrDefault((gf) => gf.BaseName == acbName));
+                string awbPath = UmaDataHelper.GetPath(gameFile);
 
-                if (File.Exists(UmaDataHelper.GetPath(gameFile)) && File.Exists(acbPath))
+                if (File.Exists(awbPath) && File.Exists(acbPath))
                 {
-                    FileStream awbFile = File.OpenRead(UmaDataHelper.GetPath(gameFile));
-                    AwbReader awbReader = new(awbFile);
+                    AtomAudioSource audioSource = new(baseName, acbPath, awbPath);
 
                     string name = gameFile.BaseName;
 
                     listViewItems.Add(new ListViewItem(new string[]
-                    { name[0..^4], awbReader.Waves.Count.ToString() })
-                    { Tag = gameFile });
-
-                    awbFile.Dispose();
+                    { baseName, audioSource.TrackCount.ToString() })
+                    { Tag = audioSource });
                 }
 
                 currentFile++;
@@ -143,9 +144,9 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
         private void FileListView_ItemActivate(object sender, EventArgs e)
         {
             ListView fileList = sender as ListView;
-            GameAsset gameFile = fileList.SelectedItems[0].Tag as GameAsset;
+            AudioSource audioSource = fileList.SelectedItems[0].Tag as AudioSource;
 
-            ChangeBank(gameFile);
+            ChangeAudioSource(audioSource);
         }
 
         private void TracksComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -154,19 +155,19 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
 
             ComboBox comboBox = sender as ComboBox;
 
-            int waveId = ((TrackComboBoxItem)comboBox.SelectedItem).WaveId;
-            awbReader = ((TrackComboBoxItem)comboBox.SelectedItem).AwbReader;
+            IAudioTrack audioTrack = ((TrackComboBoxItem)comboBox.SelectedItem).Track;
 
             lock (waveOutLock)
             {
+                waveOut?.Stop();
+
                 umaWaveStream?.Dispose();
-                umaWaveStream = new(awbReader, waveId);
+                umaWaveStream = (UmaWaveStream)audioTrack.WaveStream;
 
                 timeLengthLabel.Text = umaWaveStream.TotalTime.ToString("mm\\:ss");
 
                 InitializeWaveOut(umaWaveStream);
                 waveOut.Play();
-                initialized = true;
             }
 
             updateTimer.Enabled = true;
@@ -174,36 +175,34 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
 
         private void UpdateTimer_Tick(object sender, EventArgs e)
         {
-            if (!seekTrackBar.Capture)
-                seekTrackBar.Value = (int)((float)umaWaveStream.Position / umaWaveStream.Length * 100);
-
+            seekTrackBar.Value = (int)((float)umaWaveStream.Position / umaWaveStream.Length * 100);
             timeElapsedLabel.Text = umaWaveStream.CurrentTime.ToString("mm\\:ss");
         }
 
         private void SeekTrackBar_Scroll(object sender, EventArgs e)
         {
+            if (umaWaveStream is null) return;
+
             TrackBar trackBar = sender as TrackBar;
 
-            if (trackBar.Capture)
-                umaWaveStream.Position = (long)(umaWaveStream.Length * ((float)trackBar.Value / trackBar.Maximum)) - 1;
+            umaWaveStream.Position = (long)(umaWaveStream.Length * ((float)trackBar.Value / trackBar.Maximum)) - 1;
         }
 
         private void PlayButton_Click(object sender, EventArgs e)
         {
-            if (initialized)
+            if (umaWaveStream is null) return;
+
+            try
             {
-                try
-                {
-                    if (waveOut.PlaybackState == PlaybackState.Playing)
-                        waveOut.Pause();
-                    else
-                        waveOut.Play();
-                }
-                catch (Exception)
-                {
-                    InitializeWaveOut(umaWaveStream);
+                if (waveOut.PlaybackState == PlaybackState.Playing)
+                    waveOut.Pause();
+                else
                     waveOut.Play();
-                }
+            }
+            catch (Exception)
+            {
+                InitializeWaveOut(umaWaveStream);
+                waveOut.Play();
             }
         }
 
@@ -236,7 +235,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
                 newItem.Selected = true;
                 newItem.EnsureVisible();
 
-                ChangeBank((GameAsset)newItem.Tag);
+                ChangeAudioSource((AudioSource)newItem.Tag);
             }
         }
 
@@ -255,48 +254,43 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
                 newItem.Selected = true;
                 newItem.EnsureVisible();
 
-                ChangeBank((GameAsset)newItem.Tag);
+                ChangeAudioSource((AudioSource)newItem.Tag);
             }
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            if (tracksComboBox.SelectedItem is not null)
+            IAudioTrack audioTrack = ((TrackComboBoxItem)tracksComboBox.SelectedItem).Track;
+
+            SaveFileDialog save = new()
             {
-                string outputFileName = ((TrackComboBoxItem)tracksComboBox.SelectedItem).TrackName;
+                FileName = audioTrack.Name,
+                Filter = "16-bit PCM WAV|*.wav"
+            };
 
-                SaveFileDialog save = new()
+            DialogResult result = save.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                saveButton.Enabled = false;
+
+                Task.Run(() =>
                 {
-                    FileName = outputFileName,
-                    Filter = "16-bit PCM WAV|*.wav"
-                };
+                    UmaWaveStream copy = (UmaWaveStream)audioTrack.WaveStream;
+                    copy.Loop = false;
 
-                DialogResult result = save.ShowDialog();
+                    WaveFileWriter.CreateWaveFile16(save.FileName,
+                        new VolumeSampleProvider(copy.ToSampleProvider())
+                        {
+                            Volume = (float)amplifyUpDown.Value
+                        });
 
-                if (result == DialogResult.OK)
-                {
-                    saveButton.Enabled = false;
+                    MessageBox.Show("Wave file saved", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    int waveId = ((TrackComboBoxItem)tracksComboBox.SelectedItem).WaveId;
-                    UmaWaveStream copy = new(awbReader, waveId);
+                    copy.Dispose();
 
-                    Task.Run(() =>
-                    {
-                        copy.Loop = false;
-
-                        WaveFileWriter.CreateWaveFile16(save.FileName,
-                            new VolumeSampleProvider(copy.ToSampleProvider())
-                            {
-                                Volume = (float)amplifyUpDown.Value
-                            });
-
-                        MessageBox.Show("Wave file saved", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        copy.Dispose();
-
-                        Invoke(() => saveButton.Enabled = true);
-                    });
-                }
+                    Invoke(() => saveButton.Enabled = true);
+                });
             }
         }
 
@@ -355,39 +349,16 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             }
         }
 
-        private void ChangeBank(GameAsset gameFile)
+        private void ChangeAudioSource(AudioSource audioSource)
         {
-            lock (waveOutLock)
+            tracksComboBox.Items.Clear();
+            for (int i = 0; i < audioSource.Tracks.Length; i++)
             {
-                waveOut.Stop();
-                awbReader?.Dispose();
-
-                string awbPath = UmaDataHelper.GetPath(gameFile);
-                awbReader = new(File.OpenRead(awbPath));
-
-                string acbName = gameFile.BaseName[0..^4] + ".acb";
-                string acbPath = UmaDataHelper.GetPath(audioAssets.FirstOrDefault((gf) => gf.BaseName == acbName));
-                FileStream acbFile = File.OpenRead(acbPath);
-                AcbReader acbReader = new(acbFile);
-
-                tracksComboBox.Items.Clear();
-
-                foreach (var wave in awbReader.Waves)
-                {
-                    string waveNames = acbReader.GetWaveName(wave.WaveId, 0, false);
-
-                    tracksComboBox.Items.Add(new TrackComboBoxItem()
-                    {
-                        TrackName = waveNames,
-                        WaveId = wave.WaveId,
-                        AwbReader = awbReader
-                    });
-                }
-
-                acbFile.Dispose();
-
-                tracksComboBox.SelectedIndex = 0;
+                IAudioTrack track = audioSource.Tracks[i];
+                tracksComboBox.Items.Add(
+                    new TrackComboBoxItem(track.Name, i, track));
             }
+            tracksComboBox.SelectedIndex = 0;
         }
 
         private void InitializeWaveOut(WaveStream waveStream)
