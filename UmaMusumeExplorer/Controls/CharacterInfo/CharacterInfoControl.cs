@@ -67,7 +67,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             PictureBox charaIcon = sender as PictureBox;
             CharaData chara = charaIcon.Tag as CharaData;
 
-            CardDetailsForm details = new(chara);
+            CharacterInfoForm details = new(chara);
             ControlHelpers.ShowFormCenter(details, this);
         }
 
@@ -85,7 +85,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
         private void GoButton_Click(object sender, EventArgs e)
         {
-            if (charaListComboBox.SelectedItem is CharaComboBoxItem item) ControlHelpers.ShowFormCenter(new CardDetailsForm(item.CharaData), this);
+            if (charaListComboBox.SelectedItem is CharaComboBoxItem item) ControlHelpers.ShowFormCenter(new CharacterInfoForm(item.CharaData), this);
         }
 
         private void ShowPlayableCheckBox_CheckedChanged(object sender, EventArgs e)

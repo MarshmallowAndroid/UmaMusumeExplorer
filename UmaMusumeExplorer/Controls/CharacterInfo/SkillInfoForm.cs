@@ -75,8 +75,6 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
-            SolidBrush broosh = new(Color.White);
-
             e.Graphics.FillRectangle(colorBrush, rectangle);
             //e.Graphics.FillRectangle(
             //    new SolidBrush(Color.FromArgb(127, 255, 255, 255)),

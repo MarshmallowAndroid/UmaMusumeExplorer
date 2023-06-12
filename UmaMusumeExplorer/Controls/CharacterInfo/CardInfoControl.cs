@@ -1,33 +1,89 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Net.Http.Headers;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Controls.CharacterInfo.Classes;
 using UmaMusumeExplorer.Game;
 using static UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel;
-using static UmaMusumeExplorer.Controls.CharacterInfo.SkillButtonSmall;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo
 {
-    partial class CardDetailsForm : Form
+    public partial class CardInfoControl : UserControl
     {
-        private readonly CharaData charaData;
-
+        private CharaData charaData;
         private PinnedBitmap iconPinnedBitmap;
 
-        public CardDetailsForm(CharaData chara)
+        public CardInfoControl()
         {
             InitializeComponent();
-
-            charaData = chara;
         }
 
-        private void CardDetailsForm_Load(object sender, EventArgs e)
+        public CharaData CharaData
+        {
+            get
+            {
+                return charaData;
+            }
+
+            set
+            {
+                charaData = value;
+
+                if (charaData is not null)
+                    LoadCharaData();
+            }
+        }
+
+        private void CostumeSelectComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CardData cardData = (costumeComboBox.SelectedItem as CostumeComboBoxItem).CardData;
+
+            rarityComboBox.Items.Clear();
+            foreach (var rarityData in AssetTables.CardRarityDatas.Where(crd => crd.CardId == cardData.Id))
+            {
+                rarityComboBox.Items.Add(new RarityComboBoxItem(rarityData));
+            }
+
+            if (rarityComboBox.Items.Count > 0)
+                rarityComboBox.SelectedIndex = 0;
+            else
+            {
+                iconPinnedBitmap.Dispose();
+                iconPinnedBitmap = UnityAssets.GetCharaIcon(cardData.CharaId);
+                iconPictureBox.Image = iconPinnedBitmap.Bitmap;
+
+                UpdateStats(cardData, new CardRarityData());
+            }
+        }
+
+        private void RarityComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CardData cardData = (costumeComboBox.SelectedItem as CostumeComboBoxItem).CardData;
+            CardRarityData rarityData = (rarityComboBox.SelectedItem as RarityComboBoxItem).CardRarityData;
+
+            rarityData ??= new();
+
+            iconPinnedBitmap.Dispose();
+            iconPinnedBitmap = UnityAssets.GetCharaIcon(cardData.CharaId, rarityData.RaceDressId);
+            iconPictureBox.Image = iconPinnedBitmap.Bitmap;
+
+            UpdateStats(cardData, rarityData);
+        }
+
+        private void SkillButton_Click(object sender, EventArgs e)
+        {
+            SkillButtonSmall skillButton = sender as SkillButtonSmall;
+
+            ControlHelpers.ShowFormDialogCenter(new SkillInfoForm((int)skillButton.Tag), this);
+        }
+
+        private void LoadCharaData()
         {
             int id = charaData.Id;
             string charaName = AssetTables.GetText(AssetTables.CharaNameTextDatas, id);
@@ -65,42 +121,6 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
             if (costumeComboBox.Items.Count > 0)
                 costumeComboBox.SelectedIndex = 0;
-        }
-
-        private void CostumeSelectComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            CardData cardData = (costumeComboBox.SelectedItem as CostumeComboBoxItem).CardData;
-
-            rarityComboBox.Items.Clear();
-            foreach (var rarityData in AssetTables.CardRarityDatas.Where(crd => crd.CardId == cardData.Id))
-            {
-                rarityComboBox.Items.Add(new RarityComboBoxItem(rarityData));
-            }
-
-            if (rarityComboBox.Items.Count > 0)
-                rarityComboBox.SelectedIndex = 0;
-            else
-            {
-                iconPinnedBitmap.Dispose();
-                iconPinnedBitmap = UnityAssets.GetCharaIcon(cardData.CharaId);
-                iconPictureBox.Image = iconPinnedBitmap.Bitmap;
-
-                UpdateStats(cardData, new CardRarityData());
-            }
-        }
-
-        private void RarityComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            CardData cardData = (costumeComboBox.SelectedItem as CostumeComboBoxItem).CardData;
-            CardRarityData rarityData = (rarityComboBox.SelectedItem as RarityComboBoxItem).CardRarityData;
-
-            rarityData ??= new();
-
-            iconPinnedBitmap.Dispose();
-            iconPinnedBitmap = UnityAssets.GetCharaIcon(cardData.CharaId, rarityData.RaceDressId);
-            iconPictureBox.Image = iconPinnedBitmap.Bitmap;
-
-            UpdateStats(cardData, rarityData);
         }
 
         private void UpdateStats(CardData cardData, CardRarityData cardRarityData)
@@ -170,13 +190,6 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             skillButton.SkillClick += SkillButton_Click;
 
             return skillButton;
-        }
-
-        private void SkillButton_Click(object sender, EventArgs e)
-        {
-            SkillButtonSmall skillButton = sender as SkillButtonSmall;
-
-            ControlHelpers.ShowFormDialogCenter(new SkillInfoForm((int)skillButton.Tag), this);
         }
 
         private static Color ColorFromHexString(string hexString)

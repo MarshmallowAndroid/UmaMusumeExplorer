@@ -28,64 +28,58 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.levelLabel = new System.Windows.Forms.Label();
-            this.skillNameLabel = new System.Windows.Forms.Label();
-            this.iconPictureBox = new Common.HighQualityPictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox)).BeginInit();
-            this.SuspendLayout();
+            levelLabel = new System.Windows.Forms.Label();
+            skillNameLabel = new System.Windows.Forms.Label();
+            iconPictureBox = new Common.HighQualityPictureBox();
+            ((System.ComponentModel.ISupportInitialize)iconPictureBox).BeginInit();
+            SuspendLayout();
             // 
             // levelLabel
             // 
-            this.levelLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.levelLabel.BackColor = System.Drawing.Color.Transparent;
-            this.levelLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.levelLabel.Location = new System.Drawing.Point(238, 3);
-            this.levelLabel.Name = "levelLabel";
-            this.levelLabel.Size = new System.Drawing.Size(35, 32);
-            this.levelLabel.TabIndex = 4;
-            this.levelLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            levelLabel.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            levelLabel.BackColor = System.Drawing.Color.Transparent;
+            levelLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            levelLabel.Location = new System.Drawing.Point(272, 4);
+            levelLabel.Name = "levelLabel";
+            levelLabel.Size = new System.Drawing.Size(40, 43);
+            levelLabel.TabIndex = 4;
+            levelLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // skillNameLabel
             // 
-            this.skillNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.skillNameLabel.BackColor = System.Drawing.Color.Transparent;
-            this.skillNameLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.skillNameLabel.Location = new System.Drawing.Point(41, 3);
-            this.skillNameLabel.Name = "skillNameLabel";
-            this.skillNameLabel.Size = new System.Drawing.Size(191, 32);
-            this.skillNameLabel.TabIndex = 3;
-            this.skillNameLabel.Text = "Skill name";
-            this.skillNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            skillNameLabel.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            skillNameLabel.BackColor = System.Drawing.Color.Transparent;
+            skillNameLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            skillNameLabel.Location = new System.Drawing.Point(47, 4);
+            skillNameLabel.Name = "skillNameLabel";
+            skillNameLabel.Size = new System.Drawing.Size(218, 43);
+            skillNameLabel.TabIndex = 3;
+            skillNameLabel.Text = "Skill name";
+            skillNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // iconPictureBox
             // 
-            this.iconPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.iconPictureBox.BackColor = System.Drawing.Color.Transparent;
-            this.iconPictureBox.Location = new System.Drawing.Point(6, 6);
-            this.iconPictureBox.Margin = new System.Windows.Forms.Padding(6);
-            this.iconPictureBox.Name = "iconPictureBox";
-            this.iconPictureBox.Size = new System.Drawing.Size(26, 26);
-            this.iconPictureBox.TabIndex = 2;
-            this.iconPictureBox.TabStop = false;
+            iconPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            iconPictureBox.BackColor = System.Drawing.Color.Transparent;
+            iconPictureBox.Location = new System.Drawing.Point(7, 8);
+            iconPictureBox.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
+            iconPictureBox.Name = "iconPictureBox";
+            iconPictureBox.Size = new System.Drawing.Size(30, 35);
+            iconPictureBox.TabIndex = 2;
+            iconPictureBox.TabStop = false;
             // 
             // SkillButtonSmall
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.levelLabel);
-            this.Controls.Add(this.skillNameLabel);
-            this.Controls.Add(this.iconPictureBox);
-            this.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.DoubleBuffered = true;
-            this.Name = "SkillButtonSmall";
-            this.Size = new System.Drawing.Size(276, 38);
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            Controls.Add(levelLabel);
+            Controls.Add(skillNameLabel);
+            Controls.Add(iconPictureBox);
+            Cursor = System.Windows.Forms.Cursors.Hand;
+            DoubleBuffered = true;
+            Name = "SkillButtonSmall";
+            Size = new System.Drawing.Size(315, 51);
+            ((System.ComponentModel.ISupportInitialize)iconPictureBox).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
