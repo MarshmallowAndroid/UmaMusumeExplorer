@@ -30,31 +30,12 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CharacterInfoControl));
-            loadingProgressBar = new System.Windows.Forms.ProgressBar();
-            loadingBackgroundWorker = new System.ComponentModel.BackgroundWorker();
-            charactersPanel = new System.Windows.Forms.FlowLayoutPanel();
             selectLabel = new System.Windows.Forms.Label();
             goButton = new System.Windows.Forms.Button();
             charaListComboBox = new System.Windows.Forms.ComboBox();
             showPlayableCheckBox = new System.Windows.Forms.CheckBox();
+            characterItemsPanel = new Common.CharacterItemsPanel();
             SuspendLayout();
-            // 
-            // loadingProgressBar
-            // 
-            resources.ApplyResources(loadingProgressBar, "loadingProgressBar");
-            loadingProgressBar.Name = "loadingProgressBar";
-            // 
-            // loadingBackgroundWorker
-            // 
-            loadingBackgroundWorker.WorkerReportsProgress = true;
-            loadingBackgroundWorker.DoWork += LoadingBackgroundWorker_DoWork;
-            loadingBackgroundWorker.ProgressChanged += LoadingBackgroundWorker_ProgressChanged;
-            loadingBackgroundWorker.RunWorkerCompleted += LoadingBackgroundWorker_RunWorkerCompleted;
-            // 
-            // charactersPanel
-            // 
-            resources.ApplyResources(charactersPanel, "charactersPanel");
-            charactersPanel.Name = "charactersPanel";
             // 
             // selectLabel
             // 
@@ -83,15 +64,20 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             showPlayableCheckBox.UseVisualStyleBackColor = true;
             showPlayableCheckBox.CheckedChanged += ShowPlayableCheckBox_CheckedChanged;
             // 
+            // characterItemsPanel
+            // 
+            resources.ApplyResources(characterItemsPanel, "characterItemsPanel");
+            characterItemsPanel.Items = null;
+            characterItemsPanel.Name = "characterItemsPanel";
+            // 
             // CharacterInfoControl
             // 
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            Controls.Add(characterItemsPanel);
             Controls.Add(showPlayableCheckBox);
             Controls.Add(charaListComboBox);
             Controls.Add(goButton);
-            Controls.Add(loadingProgressBar);
             Controls.Add(selectLabel);
-            Controls.Add(charactersPanel);
             Name = "CharacterInfoControl";
             resources.ApplyResources(this, "$this");
             Load += CharacterInfoControl_Load;
@@ -100,12 +86,10 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
         }
 
         #endregion
-        private System.Windows.Forms.ProgressBar loadingProgressBar;
-        private System.ComponentModel.BackgroundWorker loadingBackgroundWorker;
-        private System.Windows.Forms.FlowLayoutPanel charactersPanel;
         private System.Windows.Forms.Label selectLabel;
         private System.Windows.Forms.Button goButton;
         private System.Windows.Forms.ComboBox charaListComboBox;
         private System.Windows.Forms.CheckBox showPlayableCheckBox;
+        private Common.CharacterItemsPanel characterItemsPanel;
     }
 }

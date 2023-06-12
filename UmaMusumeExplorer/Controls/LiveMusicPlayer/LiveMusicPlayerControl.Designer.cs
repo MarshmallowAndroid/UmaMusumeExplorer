@@ -28,40 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            loadingBackgroundWorker = new System.ComponentModel.BackgroundWorker();
-            loadingProgressBar = new System.Windows.Forms.ProgressBar();
-            jacketPanel = new System.Windows.Forms.FlowLayoutPanel();
+            songItemsPanel = new Common.SongItemsPanel();
             SuspendLayout();
             // 
-            // loadingBackgroundWorker
+            // songItemsPanel
             // 
-            loadingBackgroundWorker.WorkerReportsProgress = true;
-            loadingBackgroundWorker.DoWork += LoadingBackgroundWorker_DoWork;
-            loadingBackgroundWorker.ProgressChanged += LoadingBackgroundWorker_ProgressChanged;
-            loadingBackgroundWorker.RunWorkerCompleted += LoadingBackgroundWorker_RunWorkerCompleted;
-            // 
-            // loadingProgressBar
-            // 
-            loadingProgressBar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            loadingProgressBar.Location = new System.Drawing.Point(194, 253);
-            loadingProgressBar.Name = "loadingProgressBar";
-            loadingProgressBar.Size = new System.Drawing.Size(433, 23);
-            loadingProgressBar.TabIndex = 1;
-            // 
-            // jacketPanel
-            // 
-            jacketPanel.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            jacketPanel.AutoScroll = true;
-            jacketPanel.Location = new System.Drawing.Point(3, 3);
-            jacketPanel.Name = "jacketPanel";
-            jacketPanel.Size = new System.Drawing.Size(815, 522);
-            jacketPanel.TabIndex = 0;
+            songItemsPanel.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            songItemsPanel.Items = null;
+            songItemsPanel.Location = new System.Drawing.Point(3, 3);
+            songItemsPanel.Name = "songItemsPanel";
+            songItemsPanel.Size = new System.Drawing.Size(815, 522);
+            songItemsPanel.TabIndex = 0;
             // 
             // LiveMusicPlayerControl
             // 
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            Controls.Add(loadingProgressBar);
-            Controls.Add(jacketPanel);
+            Controls.Add(songItemsPanel);
             Name = "LiveMusicPlayerControl";
             Size = new System.Drawing.Size(821, 528);
             Load += LiveMusicPlayerSongSelectControl_Load;
@@ -69,8 +51,7 @@
         }
 
         #endregion
-        private System.ComponentModel.BackgroundWorker loadingBackgroundWorker;
-        private System.Windows.Forms.ProgressBar loadingProgressBar;
-        private System.Windows.Forms.FlowLayoutPanel jacketPanel;
+
+        private Common.SongItemsPanel songItemsPanel;
     }
 }

@@ -29,27 +29,27 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CharacterSelectForm));
-            this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.SuspendLayout();
+            characterItemsPanel = new Common.CharacterItemsPanel();
+            SuspendLayout();
             // 
-            // flowLayoutPanel
+            // characterItemsPanel
             // 
-            resources.ApplyResources(this.flowLayoutPanel, "flowLayoutPanel");
-            this.flowLayoutPanel.Name = "flowLayoutPanel";
+            resources.ApplyResources(characterItemsPanel, "characterItemsPanel");
+            characterItemsPanel.Items = null;
+            characterItemsPanel.Name = "characterItemsPanel";
             // 
             // CharacterSelectForm
             // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.flowLayoutPanel);
-            this.Name = "CharacterSelectForm";
-            this.Load += new System.EventHandler(this.CharacterSelectForm_Load);
-            this.ResumeLayout(false);
-
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            Controls.Add(characterItemsPanel);
+            Name = "CharacterSelectForm";
+            Load += CharacterSelectForm_Load;
+            ResumeLayout(false);
         }
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
+        private Common.CharacterItemsPanel characterItemsPanel;
     }
 }

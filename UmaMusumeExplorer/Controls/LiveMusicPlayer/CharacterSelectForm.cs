@@ -32,39 +32,27 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
         public int SelectedCharacter { get; private set; } = 0;
 
-        private void CharaIcon_Click(object sender, EventArgs e)
-        {
-            PictureBox pictureBox = sender as PictureBox;
-
-            SelectedCharacter = (pictureBox.Tag as CharaData).Id;
-
-            Close();
-        }
-
         private void CharacterSelectForm_Load(object sender, EventArgs e)
         {
-            List<Control> pictureBoxes = new();
-            foreach (var charaData in charaDatas)
+            characterItemsPanel.Filter = (cd) =>
             {
-                if (!allowedCharas.Contains(charaData.Id)) continue;
-
-                PictureBox charaIcon = new()
+                return allowedCharas.Contains(cd.Id);
+            };
+            characterItemsPanel.LoadingFinished = (s, e) =>
+            {
+                foreach (PictureBox charaIcon in characterItemsPanel.Controls)
                 {
-                    BackgroundImage = UnityAssets.GetCharaIcon(charaData.Id).Bitmap,
-                    BackgroundImageLayout = ImageLayout.Zoom,
-                    Cursor = Cursors.Hand,
-                    Height = 100,
-                    Width = 100,
-                    Tag = charaData
-                };
-
-                if (alreadySelected.Contains(charaData.Id)) charaIcon.BackColor = Color.FromArgb(234, 54, 128);
-
-                charaIcon.Click += CharaIcon_Click; ;
-                pictureBoxes.Add(charaIcon);
-            }
-
-            flowLayoutPanel.Controls.AddRange(pictureBoxes.ToArray());
+                    CharaData cd = charaIcon.Tag as CharaData;
+                    if (alreadySelected.Contains(cd.Id)) charaIcon.BackColor = Color.FromArgb(234, 54, 128);
+                }
+            };
+            characterItemsPanel.ItemClicked = (s, e) =>
+            {
+                PictureBox pictureBox = s as PictureBox;
+                SelectedCharacter = (pictureBox.Tag as CharaData).Id;
+                Close();
+            };
+            characterItemsPanel.Items = charaDatas;
         }
     }
 }
