@@ -18,7 +18,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
         {
             InitializeComponent();
 
-            characterItemsPanel.ItemClicked = (s, e) =>
+            characterItemsPanel.ItemClick = (s, e) =>
             {
                 PictureBox charaIcon = s as PictureBox;
                 CharaData chara = charaIcon.Tag as CharaData;

@@ -28,59 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            loadingBackgroundWorker = new System.ComponentModel.BackgroundWorker();
-            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            label1 = new System.Windows.Forms.Label();
-            comboBox1 = new System.Windows.Forms.ComboBox();
+            songItemsPanel = new Common.SongItemsPanel();
             SuspendLayout();
             // 
-            // loadingBackgroundWorker
+            // songItemsPanel
             // 
-            loadingBackgroundWorker.DoWork += loadingBackgroundWorker_DoWork;
-            // 
-            // flowLayoutPanel1
-            // 
-            flowLayoutPanel1.Location = new System.Drawing.Point(47, 56);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new System.Drawing.Size(352, 306);
-            flowLayoutPanel1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(81, 402);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(38, 15);
-            label1.TabIndex = 1;
-            label1.Text = "label1";
-            // 
-            // comboBox1
-            // 
-            comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new System.Drawing.Point(125, 399);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new System.Drawing.Size(121, 23);
-            comboBox1.TabIndex = 2;
+            songItemsPanel.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            songItemsPanel.Items = null;
+            songItemsPanel.Location = new System.Drawing.Point(3, 3);
+            songItemsPanel.Name = "songItemsPanel";
+            songItemsPanel.Size = new System.Drawing.Size(444, 545);
+            songItemsPanel.TabIndex = 0;
             // 
             // SongsControl
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            Controls.Add(comboBox1);
-            Controls.Add(label1);
-            Controls.Add(flowLayoutPanel1);
+            Controls.Add(songItemsPanel);
             Name = "SongsControl";
             Size = new System.Drawing.Size(450, 551);
             Load += SongsControl_Load;
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-        private System.ComponentModel.BackgroundWorker loadingBackgroundWorker;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+
+        private Common.SongItemsPanel songItemsPanel;
     }
 }

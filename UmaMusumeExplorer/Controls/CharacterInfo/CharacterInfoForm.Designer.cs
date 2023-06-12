@@ -33,8 +33,10 @@
             characterInfoTabPage = new System.Windows.Forms.TabPage();
             cardInfoControl = new CardInfoControl();
             songsTabPage = new System.Windows.Forms.TabPage();
+            songsControl = new SongsControl();
             characterInfoTabControl.SuspendLayout();
             characterInfoTabPage.SuspendLayout();
+            songsTabPage.SuspendLayout();
             SuspendLayout();
             // 
             // characterInfoTabControl
@@ -60,9 +62,16 @@
             // 
             // songsTabPage
             // 
+            songsTabPage.Controls.Add(songsControl);
             resources.ApplyResources(songsTabPage, "songsTabPage");
             songsTabPage.Name = "songsTabPage";
             songsTabPage.UseVisualStyleBackColor = true;
+            // 
+            // songsControl
+            // 
+            songsControl.CharaId = 0;
+            resources.ApplyResources(songsControl, "songsControl");
+            songsControl.Name = "songsControl";
             // 
             // CharacterInfoForm
             // 
@@ -76,6 +85,7 @@
             characterInfoTabControl.ResumeLayout(false);
             characterInfoTabPage.ResumeLayout(false);
             characterInfoTabPage.PerformLayout();
+            songsTabPage.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -84,5 +94,6 @@
         private System.Windows.Forms.TabPage characterInfoTabPage;
         private System.Windows.Forms.TabPage songsTabPage;
         private CardInfoControl cardInfoControl;
+        private SongsControl songsControl;
     }
 }

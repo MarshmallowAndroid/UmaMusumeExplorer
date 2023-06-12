@@ -23,20 +23,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
             id = musicId;
 
-            livePermissionData = AssetTables.LivePermissionDatas.Where(lpd => lpd.MusicId == musicId);
-            if (!livePermissionData.Any())
-            {
-                livePermissionData = new List<LivePermissionData>();
-
-                var matches = UmaDataHelper.GetGameAssetDataRows(ga => ga.BaseName.StartsWith($"snd_bgm_live_{musicId}_chara_") && ga.BaseName.EndsWith(".awb"));
-
-                foreach (var audioAsset in matches)
-                {
-                    int charaId = int.Parse(audioAsset.BaseName.Remove(0, $"snd_bgm_live_{musicId}_chara_".Length)[..4]);
-
-                    (livePermissionData as List<LivePermissionData>).Add(new LivePermissionData() { MusicId = musicId, CharaId = charaId });
-                }
-            }
+            livePermissionData = LivePermissionDataHelper.GetLivePermissionData(musicId);
 
             characterPositions = new CharacterPositionControl[singingMembers];
 

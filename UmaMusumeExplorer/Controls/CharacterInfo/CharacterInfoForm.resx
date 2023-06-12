@@ -140,7 +140,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="cardInfoControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>548, 747</value>
+    <value>574, 747</value>
   </data>
   <data name="cardInfoControl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -167,7 +167,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="characterInfoTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>554, 755</value>
+    <value>580, 755</value>
   </data>
   <data name="characterInfoTabPage.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -185,6 +185,30 @@
     <value>characterInfoTabControl</value>
   </data>
   <data name="&gt;&gt;characterInfoTabPage.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="songsControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="songsControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 4</value>
+  </data>
+  <data name="songsControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>548, 747</value>
+  </data>
+  <data name="songsControl.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;songsControl.Name" xml:space="preserve">
+    <value>songsControl</value>
+  </data>
+  <data name="&gt;&gt;songsControl.Type" xml:space="preserve">
+    <value>UmaMusumeExplorer.Controls.CharacterInfo.SongsControl, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;songsControl.Parent" xml:space="preserve">
+    <value>songsTabPage</value>
+  </data>
+  <data name="&gt;&gt;songsControl.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="songsTabPage.Location" type="System.Drawing.Point, System.Drawing">
@@ -224,7 +248,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="characterInfoTabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>562, 783</value>
+    <value>588, 783</value>
   </data>
   <data name="characterInfoTabControl.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -245,7 +269,7 @@
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>586, 809</value>
+    <value>612, 809</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>

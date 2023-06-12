@@ -16,7 +16,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
         {
             InitializeComponent();
 
-            songItemsPanel.ItemClicked += (s, e) =>
+            songItemsPanel.ItemClick += (s, e) =>
             {
                 LiveData liveData = (s as PictureBox).Tag as LiveData;
                 if (liveData is not null)

@@ -82,7 +82,7 @@ namespace UmaMusumeExplorer.Controls.Common
             {
                 Control control = null;
                 if (!ProcessItem(item, ref control) || (!Filter?.Invoke(item) ?? false)) continue;
-                control.Click += ItemClicked;
+                control.Click += ItemClick;
                 controls.Add(control);
 
                 loadingBackgroundWorker.ReportProgress((int)((float)itemNumber++ / items.Count() * 100.0F));
@@ -109,7 +109,7 @@ namespace UmaMusumeExplorer.Controls.Common
         }
 
         public EventHandler LoadingFinished;
-        public EventHandler ItemClicked;
+        public EventHandler ItemClick;
 
         public ShouldFilter Filter;
         public delegate bool ShouldFilter(TargetType item);

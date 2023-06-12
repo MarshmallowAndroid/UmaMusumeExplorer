@@ -16,14 +16,12 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 {
     partial class CharacterInfoForm : Form
     {
-        private readonly CharaData charaData;
-
         public CharacterInfoForm(CharaData chara)
         {
             InitializeComponent();
 
-            charaData = chara;
             cardInfoControl.CharaData = chara;
+            songsControl.CharaId = chara.Id;
 
             Text = AssetTables.GetText(AssetTables.CharaNameTextDatas, chara.Id);
         }

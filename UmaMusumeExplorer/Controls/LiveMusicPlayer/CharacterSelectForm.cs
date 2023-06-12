@@ -28,12 +28,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             {
                 alreadySelected.Add(character.CharacterId);
             }
-        }
 
-        public int SelectedCharacter { get; private set; } = 0;
-
-        private void CharacterSelectForm_Load(object sender, EventArgs e)
-        {
             characterItemsPanel.Filter = (cd) =>
             {
                 return allowedCharas.Contains(cd.Id);
@@ -46,12 +41,18 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
                     if (alreadySelected.Contains(cd.Id)) charaIcon.BackColor = Color.FromArgb(234, 54, 128);
                 }
             };
-            characterItemsPanel.ItemClicked = (s, e) =>
+            characterItemsPanel.ItemClick = (s, e) =>
             {
                 PictureBox pictureBox = s as PictureBox;
                 SelectedCharacter = (pictureBox.Tag as CharaData).Id;
                 Close();
             };
+        }
+
+        public int SelectedCharacter { get; private set; } = 0;
+
+        private void CharacterSelectForm_Load(object sender, EventArgs e)
+        {
             characterItemsPanel.Items = charaDatas;
         }
     }
