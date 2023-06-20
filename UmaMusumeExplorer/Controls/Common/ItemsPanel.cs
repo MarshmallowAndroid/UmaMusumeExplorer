@@ -81,9 +81,11 @@ namespace UmaMusumeExplorer.Controls.Common
             foreach (var item in items)
             {
                 Control control = null;
-                if (!ProcessItem(item, ref control) || (!Filter?.Invoke(item) ?? false)) continue;
-                control.Click += ItemClick;
-                controls.Add(control);
+                if (ProcessItem(item, ref control) && (Filter?.Invoke(item) ?? true))
+                {
+                    control.Click += ItemClick;
+                    controls.Add(control);
+                }
 
                 loadingBackgroundWorker.ReportProgress((int)((float)itemNumber++ / items.Count() * 100.0F));
             }
