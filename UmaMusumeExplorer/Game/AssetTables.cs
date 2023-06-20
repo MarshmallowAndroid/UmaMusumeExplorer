@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 using UmaMusumeData;
 using UmaMusumeData.Tables;
 
@@ -7,65 +9,84 @@ namespace UmaMusumeExplorer.Game
 {
     static class AssetTables
     {
-        private static readonly IEnumerable<GameAsset> audioGameFiles = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("sound/"));
+        public static void Initialize()
+        {
+            List<LoadAction> initializeActions = new()
+            {
+                () => { AudioAssets = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("sound/")); return "AudioAssets"; },
 
-        private static readonly IEnumerable<AvailableSkillSet> availableSkillSets = UmaDataHelper.GetMasterDatabaseRows<AvailableSkillSet>();
+                () => { AvailableSkillSets = UmaDataHelper.GetMasterDatabaseRows<AvailableSkillSet>(); return "AvailableSkillSets"; },
 
-        private static readonly IEnumerable<CardData> cardDatas = UmaDataHelper.GetMasterDatabaseRows<CardData>();
-        private static readonly IEnumerable<CardRarityData> cardRarityDatas = UmaDataHelper.GetMasterDatabaseRows<CardRarityData>();
-        private static readonly IEnumerable<CharaData> charaDatas = UmaDataHelper.GetMasterDatabaseRows<CharaData>();
+                () => { CardDatas = UmaDataHelper.GetMasterDatabaseRows<CardData>(); return "CardDatas"; },
+                () => { CardRarityDatas = UmaDataHelper.GetMasterDatabaseRows<CardRarityData>(); return "CardRarityDatas"; },
+                () => { CharaDatas = UmaDataHelper.GetMasterDatabaseRows<CharaData>(); return "CharaDatas"; },
 
-        private static readonly IEnumerable<JukeboxMusicData> jukeboxMusicDatas = UmaDataHelper.GetMasterDatabaseRows<JukeboxMusicData>();
+                () => { JukeboxMusicDatas = UmaDataHelper.GetMasterDatabaseRows<JukeboxMusicData>(); return "JukeboxMusicDatas"; },
 
-        private static readonly IEnumerable<LiveData> liveDatas = UmaDataHelper.GetMasterDatabaseRows<LiveData>();
-        private static readonly IEnumerable<LivePermissionData> livePermissionDatas = UmaDataHelper.GetMasterDatabaseRows<LivePermissionData>();
+                () => { LiveDatas = UmaDataHelper.GetMasterDatabaseRows<LiveData>(); return "LiveDatas"; },
+                () => { LivePermissionDatas = UmaDataHelper.GetMasterDatabaseRows<LivePermissionData>(); return "LivePermissionDatas"; },
 
-        private static readonly IEnumerable<RaceBgm> raceBgm = UmaDataHelper.GetMasterDatabaseRows<RaceBgm>();
-        private static readonly IEnumerable<RaceBgmPattern> raceBgmPatterns = UmaDataHelper.GetMasterDatabaseRows<RaceBgmPattern>();
+                () => { RaceBgm = UmaDataHelper.GetMasterDatabaseRows<RaceBgm>(); return "RaceBgm"; },
+                () => { RaceBgmPatterns = UmaDataHelper.GetMasterDatabaseRows<RaceBgmPattern>(); return "RaceBgmPatterns"; },
 
-        private static readonly IEnumerable<SkillSet> skillSets = UmaDataHelper.GetMasterDatabaseRows<SkillSet>();
-        private static readonly IEnumerable<SkillData> skillDatas = UmaDataHelper.GetMasterDatabaseRows<SkillData>();
+                () => { SkillSets = UmaDataHelper.GetMasterDatabaseRows<SkillSet>(); return "SkillSets"; },
+                () => { SkillDatas = UmaDataHelper.GetMasterDatabaseRows<SkillData>(); return "SkillDatas"; },
 
-        private static readonly IEnumerable<TextData> charaNameTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 170);
-        private static readonly IEnumerable<TextData> charaNameKatakanaTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 182);
-        private static readonly IEnumerable<TextData> charaVoiceNameTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 7);
-        private static readonly IEnumerable<TextData> charaCostumeNameTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 5);
+                () => { CharaNameTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 170); return "CharaNameTextDatas"; },
+                () => { CharaNameKatakanaTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 182); return "CharaNameKatakanaTextDatas"; },
+                () => { CharaVoiceNameTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 7); return "CharaVoiceNameTextDatas"; },
+                () => { CharaCostumeNameTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 5); return "CharaCostumeNameTextDatas"; },
 
-        private static readonly IEnumerable<TextData> liveNameTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 16);
-        private static readonly IEnumerable<TextData> liveInfoTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 17);
+                () => { LiveNameTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 16); return "LiveNameTextDatas"; },
+                () => { LiveInfoTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 17); return "LiveInfoTextDatas"; },
 
-        private static readonly IEnumerable<TextData> skillNameTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 47);
-        private static readonly IEnumerable<TextData> skillInfoTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 48);
+                () => { SkillNameTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 47); return "SkillNameTextDatas"; },
+                () => { SkillInfoTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 48); return "SkillInfoTextDatas"; }
+            };
 
-        public static IEnumerable<GameAsset> AudioAssets => audioGameFiles;
+            int completedActions = 0;
+            foreach (var action in initializeActions)
+            {
+                string name = action.Invoke();
+                UpdateProgress?.Invoke((int)((float)++completedActions / initializeActions.Count * 100), name);
+            }
+        }
 
-        public static IEnumerable<AvailableSkillSet> AvailableSkillSets => availableSkillSets;
+        public delegate string LoadAction();
 
-        public static IEnumerable<CardData> CardDatas => cardDatas;
-        public static IEnumerable<CardRarityData> CardRarityDatas => cardRarityDatas;
-        public static IEnumerable<CharaData> CharaDatas => charaDatas;
+        public delegate void ProgressUpdater(int progress, string loadedName);
 
-        public static IEnumerable<JukeboxMusicData> JukeboxMusicDatas => jukeboxMusicDatas;
+        public static ProgressUpdater UpdateProgress { get; set; }
 
-        public static IEnumerable<LiveData> LiveDatas => liveDatas;
-        public static IEnumerable<LivePermissionData> LivePermissionDatas => livePermissionDatas;
+        public static IEnumerable<GameAsset> AudioAssets { get; private set; }
 
-        public static IEnumerable<RaceBgm> RaceBgm => raceBgm;
-        public static IEnumerable<RaceBgmPattern> RaceBgmPatterns => raceBgmPatterns;
+        public static IEnumerable<AvailableSkillSet> AvailableSkillSets { get; private set; }
 
-        public static IEnumerable<SkillSet> SkillSets => skillSets;
-        public static IEnumerable<SkillData> SkillDatas => skillDatas;
+        public static IEnumerable<CardData> CardDatas { get; private set; }
+        public static IEnumerable<CardRarityData> CardRarityDatas { get; private set; }
+        public static IEnumerable<CharaData> CharaDatas { get; private set; }
 
-        public static IEnumerable<TextData> CharaCostumeNameTextDatas => charaCostumeNameTextDatas;
-        public static IEnumerable<TextData> CharaNameKatakanaTextDatas => charaNameKatakanaTextDatas;
-        public static IEnumerable<TextData> CharaNameTextDatas => charaNameTextDatas;
-        public static IEnumerable<TextData> CharaVoiceNameTextDatas => charaVoiceNameTextDatas;
+        public static IEnumerable<JukeboxMusicData> JukeboxMusicDatas { get; private set; }
 
-        public static IEnumerable<TextData> LiveNameTextDatas => liveNameTextDatas;
-        public static IEnumerable<TextData> LiveInfoTextDatas => liveInfoTextDatas;
+        public static IEnumerable<LiveData> LiveDatas { get; private set; }
+        public static IEnumerable<LivePermissionData> LivePermissionDatas { get; private set; }
 
-        public static IEnumerable<TextData> SkillNameTextDatas => skillNameTextDatas;
-        public static IEnumerable<TextData> SkillInfoTextDatas => skillInfoTextDatas;
+        public static IEnumerable<RaceBgm> RaceBgm { get; private set; }
+        public static IEnumerable<RaceBgmPattern> RaceBgmPatterns { get; private set; }
+
+        public static IEnumerable<SkillSet> SkillSets { get; private set; }
+        public static IEnumerable<SkillData> SkillDatas { get; private set; }
+
+        public static IEnumerable<TextData> CharaCostumeNameTextDatas { get; private set; }
+        public static IEnumerable<TextData> CharaNameKatakanaTextDatas { get; private set; }
+        public static IEnumerable<TextData> CharaNameTextDatas { get; private set; }
+        public static IEnumerable<TextData> CharaVoiceNameTextDatas { get; private set; }
+
+        public static IEnumerable<TextData> LiveNameTextDatas { get; private set; }
+        public static IEnumerable<TextData> LiveInfoTextDatas { get; private set; }
+
+        public static IEnumerable<TextData> SkillNameTextDatas { get; private set; }
+        public static IEnumerable<TextData> SkillInfoTextDatas { get; private set; }
 
         public static string GetText(IEnumerable<TextData> textDatas, int index)
         {
