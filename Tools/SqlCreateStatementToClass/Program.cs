@@ -18,23 +18,36 @@ if (createStatement != "")
     writer.WriteLine($"public class {UnderscoredToCamelCase(tableName)}");
     writer.WriteLine("{");
 
-    createStatement = createStatement[(createStatement.IndexOf('(') + 1)..];
+    createStatement = createStatement[(createStatement.IndexOf('('))..].Trim();
 
     Dictionary<string, string> properties = new();
 
     while (true)
     {
-        bool hasPrimaryKey = false;
-        if (createStatement.StartsWith(" PRIMARY KEY("))
-            hasPrimaryKey = true;
+        if (createStatement.StartsWith(','))
+            createStatement = createStatement[1..];
+        createStatement = createStatement.Trim();
 
-        if (hasPrimaryKey)
+        if (createStatement.StartsWith("PRIMARY KEY("))
         {
             while (true)
             {
                 string columnName = ExtractFromQuotesAndUpdate(ref createStatement);
                 properties[columnName] += " PRIMARY KEY";
-                if (!createStatement.StartsWith(","))
+                if (createStatement.StartsWith(")"))
+                {
+                    createStatement = createStatement[1..];
+                    break;
+                }
+            }
+        }
+        else if (createStatement.StartsWith("UNIQUE("))
+        {
+            while (true)
+            {
+                string columnName = ExtractFromQuotesAndUpdate(ref createStatement);
+                properties[columnName] += " UNIQUE";
+                if (createStatement.StartsWith(")"))
                 {
                     createStatement = createStatement[1..];
                     break;
@@ -45,14 +58,13 @@ if (createStatement != "")
         {
 
             int spaceIndex = createStatement.IndexOf(' ');
-            if (spaceIndex < 0)
-                break;
+            if (spaceIndex < 0) break;
 
             string columnName = ExtractFromQuotesAndUpdate(ref createStatement);
-            createStatement = createStatement[1..];
+            createStatement = createStatement.Trim();
 
             string type = createStatement[..createStatement.IndexOf(',')];
-            createStatement = createStatement[(type.Length + 1)..];
+            createStatement = createStatement[(type.Length)..];
 
             properties.Add(columnName, type);
         }
@@ -70,7 +82,10 @@ if (createStatement != "")
         };
 
         writer.Write("    ");
-        writer.WriteLine($"[Column(\"{property.Key}\"){(property.Value.Contains("NOT NULL") ? ", NotNull" : "")}{(property.Value.Contains("PRIMARY KEY") ? ", PrimaryKey" : "")}]");
+        writer.WriteLine($"[Column(\"{property.Key}\")" +
+            $"{(property.Value.Contains("NOT NULL") ? ", NotNull" : "")}" +
+            $"{(property.Value.Contains("PRIMARY KEY") ? ", PrimaryKey" : "")}" +
+            $"{(property.Value.Contains("UNIQUE") ? ", Unique" : "")}]");
         writer.Write("    ");
         writer.Write($"public {type} {UnderscoredToCamelCase(property.Key)} ");
 
