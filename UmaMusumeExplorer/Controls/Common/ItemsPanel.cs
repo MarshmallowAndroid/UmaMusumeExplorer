@@ -43,7 +43,7 @@ namespace UmaMusumeExplorer.Controls.Common
 
         private void LoadItems()
         {
-            if (!DesignMode && items is not null)
+            if (items is not null)
             {
                 SuspendLayout();
 

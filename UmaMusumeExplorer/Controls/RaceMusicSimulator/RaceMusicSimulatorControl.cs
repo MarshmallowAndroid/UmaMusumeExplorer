@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using UmaMusumeData;
 using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes;
 using UmaMusumeExplorer.Game;
@@ -12,7 +13,11 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
 {
     partial class RaceMusicSimulatorControl : UserControl
     {
-        private RaceBgm raceBgm;
+        private readonly IEnumerable<RaceBgm> raceBgms = AssetTables.RaceBgm;
+        private readonly IEnumerable<RaceBgmPattern> raceBgmPatterns = AssetTables.RaceBgmPatterns;
+        private readonly IEnumerable<GameAsset> audioAssets = AssetTables.AudioAssets;
+
+        private RaceBgm currentRaceBgm;
         private List<Pattern> firstPatternBgmList;
         private List<Pattern> secondPatternBgmList;
         private Pattern firstPattern;
@@ -39,11 +44,11 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
 
         private void RaceSimulatorControl_Load(object sender, EventArgs e)
         {
+            if (raceBgms is null) return;
+
             waveOut = new WaveOutEvent();
 
-            IEnumerable<RaceBgm> raceBgm = AssetTables.RaceBgm;
-
-            foreach (var bgm in raceBgm)
+            foreach (var bgm in raceBgms)
             {
                 bgmIdComboBox.Items.Add(new BgmComboBoxItem() { RaceBgm = bgm });
             }
@@ -138,20 +143,20 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
 
             if (bgmIdComboBox.SelectedItem is not BgmComboBoxItem comboBoxItem) return;
 
-            raceBgm = comboBoxItem.RaceBgm;
+            currentRaceBgm = comboBoxItem.RaceBgm;
 
-            RaceBgmPattern firstPatternTable = AssetTables.RaceBgmPatterns.FirstOrDefault(p =>
+            RaceBgmPattern firstPatternTable = raceBgmPatterns.FirstOrDefault(p =>
                 p.Id == comboBoxItem.RaceBgm.FirstBgmPattern);
-            RaceBgmPattern secondPatternTable = AssetTables.RaceBgmPatterns.FirstOrDefault(p =>
+            RaceBgmPattern secondPatternTable = raceBgmPatterns.FirstOrDefault(p =>
                 p.Id == comboBoxItem.RaceBgm.SecondBgmPattern);
 
             firstPatternBgmList = LoadPattern(firstPatternTable);
             secondPatternBgmList = LoadPattern(secondPatternTable);
 
-            paddockCueNameTextBox.Text = raceBgm.PaddockBgmCueName;
-            paddockCuesheetNameTextBox.Text = raceBgm.PaddockBgmCuesheetName;
-            entryTableCueNameTextBox.Text = raceBgm.EntrytableBgmCueName;
-            entryTableCuesheetNameTextBox.Text = raceBgm.EntrytableBgmCuesheetName;
+            paddockCueNameTextBox.Text = currentRaceBgm.PaddockBgmCueName;
+            paddockCuesheetNameTextBox.Text = currentRaceBgm.PaddockBgmCuesheetName;
+            entryTableCueNameTextBox.Text = currentRaceBgm.EntrytableBgmCueName;
+            entryTableCuesheetNameTextBox.Text = currentRaceBgm.EntrytableBgmCuesheetName;
 
             foreach (var item in firstPatternBgmList)
             {
@@ -167,8 +172,8 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
             firstPatternLengthComboBox.SelectedIndex = 0;
             secondPatternLengthComboBox.SelectedIndex = 0;
 
-            paddockBgm = new(AssetTables.AudioAssets, raceBgm.PaddockBgmCuesheetName, raceBgm.PaddockBgmCueName);
-            entryTableBgm = new(AssetTables.AudioAssets, raceBgm.EntrytableBgmCuesheetName, raceBgm.EntrytableBgmCueName);
+            paddockBgm = new(audioAssets, currentRaceBgm.PaddockBgmCuesheetName, currentRaceBgm.PaddockBgmCueName);
+            entryTableBgm = new(audioAssets, currentRaceBgm.EntrytableBgmCuesheetName, currentRaceBgm.EntrytableBgmCueName);
 
             mixer = new(WaveFormat.CreateIeeeFloatWaveFormat(
                 paddockBgm.UmaWaveStream.WaveFormat.SampleRate,
@@ -203,8 +208,8 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
                 resultCutInCueNameTextBox.Text = resultCutinBgmCueName;
                 resultListCuesheetNameTextBox.Text = resultListBgmCuesheetName;
                 resultListCueNameTextBox.Text = resultListBgmCueName;
-                resultCutinBgm = new Bgm(AssetTables.AudioAssets, resultCutinBgmCuesheetName, resultCutinBgmCueName);
-                resultListBgm = new Bgm(AssetTables.AudioAssets, resultListBgmCuesheetName, resultListBgmCueName);
+                resultCutinBgm = new Bgm(audioAssets, resultCutinBgmCuesheetName, resultCutinBgmCueName);
+                resultListBgm = new Bgm(audioAssets, resultListBgmCuesheetName, resultListBgmCueName);
             }
             else
             {
@@ -224,7 +229,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
                 firstPattern = firstPatternBgmList.FirstOrDefault(bi => bi.BgmTime == (int)comboBox.SelectedItem);
                 firstPatternCueNameTextBox.Text = firstPattern.BgmCueName;
                 firstPatternCuesheetNameTextBox.Text = firstPattern.BgmCuesheetName;
-                firstPatternBgm = new(AssetTables.AudioAssets, firstPattern.BgmCuesheetName, firstPattern.BgmCueName);
+                firstPatternBgm = new(audioAssets, firstPattern.BgmCuesheetName, firstPattern.BgmCueName);
             }
             else
             {
@@ -242,7 +247,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
                 secondPattern = secondPatternBgmList.FirstOrDefault(bi => bi.BgmTime == (int)comboBox.SelectedItem);
                 secondPatternCueNameTextBox.Text = secondPattern.BgmCueName;
                 secondPatternCuesheetNameTextBox.Text = secondPattern.BgmCuesheetName;
-                secondPatternBgm = new(AssetTables.AudioAssets, secondPattern.BgmCuesheetName, secondPattern.BgmCueName);
+                secondPatternBgm = new(audioAssets, secondPattern.BgmCuesheetName, secondPattern.BgmCueName);
             }
             else
             {
@@ -253,7 +258,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
 
         private void PlayButtons_Click(object sender, EventArgs e)
         {
-            if (raceBgm is null) return;
+            if (currentRaceBgm is null) return;
 
             Button button = sender as Button;
 
@@ -308,7 +313,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
 
         private void TogglePlayButton_Click(object sender, EventArgs e)
         {
-            if (raceBgm is null) return;
+            if (currentRaceBgm is null) return;
 
             try
             {

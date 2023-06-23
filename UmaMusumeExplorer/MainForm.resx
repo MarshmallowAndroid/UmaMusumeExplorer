@@ -229,31 +229,28 @@
   <data name="&gt;&gt;audioPlayerTabPage.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="liveMusicPlayerSongSelectControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="liveMusicPlayerControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="liveMusicPlayerSongSelectControl.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="liveMusicPlayerControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="liveMusicPlayerSongSelectControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="liveMusicPlayerSongSelectControl.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="liveMusicPlayerControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>988, 640</value>
   </data>
-  <data name="liveMusicPlayerSongSelectControl.TabIndex" type="System.Int32, mscorlib">
+  <data name="liveMusicPlayerControl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;liveMusicPlayerSongSelectControl.Name" xml:space="preserve">
-    <value>liveMusicPlayerSongSelectControl</value>
+  <data name="&gt;&gt;liveMusicPlayerControl.Name" xml:space="preserve">
+    <value>liveMusicPlayerControl</value>
   </data>
-  <data name="&gt;&gt;liveMusicPlayerSongSelectControl.Type" xml:space="preserve">
+  <data name="&gt;&gt;liveMusicPlayerControl.Type" xml:space="preserve">
     <value>UmaMusumeExplorer.Controls.LiveMusicPlayer.LiveMusicPlayerControl, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;liveMusicPlayerSongSelectControl.Parent" xml:space="preserve">
+  <data name="&gt;&gt;liveMusicPlayerControl.Parent" xml:space="preserve">
     <value>liveMusicPlayerTabPage</value>
   </data>
-  <data name="&gt;&gt;liveMusicPlayerSongSelectControl.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;liveMusicPlayerControl.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="liveMusicPlayerTabPage.Location" type="System.Drawing.Point, System.Drawing">
@@ -285,9 +282,6 @@
   </data>
   <data name="jukeboxControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
-  </data>
-  <data name="jukeboxControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
   </data>
   <data name="jukeboxControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>988, 640</value>

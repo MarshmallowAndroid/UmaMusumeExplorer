@@ -30,8 +30,9 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
         private void CharacterInfoControl_Load(object sender, EventArgs e)
         {
-            if (!DesignMode)
-                characterItemsPanel.Items = charaDatas;
+            if (charaDatas is null) return;
+
+            characterItemsPanel.Items = charaDatas;
 
             foreach (var item in charaDatas)
             {

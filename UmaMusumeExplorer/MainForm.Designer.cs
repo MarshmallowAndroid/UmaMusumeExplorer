@@ -36,7 +36,7 @@ namespace UmaMusumeExplorer
             audioPlayerTabPage = new System.Windows.Forms.TabPage();
             audioPlayerControl = new Controls.AudioPlayer.AudioPlayerControl();
             liveMusicPlayerTabPage = new System.Windows.Forms.TabPage();
-            liveMusicPlayerSongSelectControl = new Controls.LiveMusicPlayer.LiveMusicPlayerControl();
+            liveMusicPlayerControl = new Controls.LiveMusicPlayer.LiveMusicPlayerControl();
             jukeboxTabPage = new System.Windows.Forms.TabPage();
             jukeboxControl = new Controls.Jukebox.JukeboxControl();
             characterInfoTabPage = new System.Windows.Forms.TabPage();
@@ -90,15 +90,15 @@ namespace UmaMusumeExplorer
             // 
             // liveMusicPlayerTabPage
             // 
-            liveMusicPlayerTabPage.Controls.Add(liveMusicPlayerSongSelectControl);
+            liveMusicPlayerTabPage.Controls.Add(liveMusicPlayerControl);
             resources.ApplyResources(liveMusicPlayerTabPage, "liveMusicPlayerTabPage");
             liveMusicPlayerTabPage.Name = "liveMusicPlayerTabPage";
             liveMusicPlayerTabPage.UseVisualStyleBackColor = true;
             // 
-            // liveMusicPlayerSongSelectControl
+            // liveMusicPlayerControl
             // 
-            resources.ApplyResources(liveMusicPlayerSongSelectControl, "liveMusicPlayerSongSelectControl");
-            liveMusicPlayerSongSelectControl.Name = "liveMusicPlayerSongSelectControl";
+            resources.ApplyResources(liveMusicPlayerControl, "liveMusicPlayerControl");
+            liveMusicPlayerControl.Name = "liveMusicPlayerControl";
             // 
             // jukeboxTabPage
             // 
@@ -165,8 +165,9 @@ namespace UmaMusumeExplorer
         private System.Windows.Forms.TabPage liveMusicPlayerTabPage;
         private Controls.LiveMusicPlayer.LiveMusicPlayerControl liveMusicPlayerSongSelectControl;
         private System.Windows.Forms.TabPage jukeboxTabPage;
-        private Controls.Jukebox.JukeboxControl jukeboxControl;
         private Controls.FileBrowser.FileBrowserControl fileBrowserControl;
+        private Controls.LiveMusicPlayer.LiveMusicPlayerControl liveMusicPlayerControl;
+        private Controls.Jukebox.JukeboxControl jukeboxControl;
     }
 }
 

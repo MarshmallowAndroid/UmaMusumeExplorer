@@ -10,7 +10,7 @@ namespace UmaMusumeExplorer.Controls.Jukebox
 {
     partial class JukeboxControl : UserControl
     {
-        private readonly IEnumerable<JukeboxMusicData> jukeboxMusicDatas = AssetTables.JukeboxMusicDatas.OrderBy(l => l.Sort);
+        private readonly IEnumerable<JukeboxMusicData> jukeboxMusicDatas = AssetTables.JukeboxMusicDatas?.OrderBy(l => l.Sort);
 
         public JukeboxControl()
         {
@@ -23,7 +23,7 @@ namespace UmaMusumeExplorer.Controls.Jukebox
 
         private void LiveMusicPlayerSongSelectControl_Load(object sender, EventArgs e)
         {
-            if (!DesignMode) jukeboxItemsPanel.Items = jukeboxMusicDatas;
+            if (jukeboxMusicDatas is not null) jukeboxItemsPanel.Items = jukeboxMusicDatas;
         }
 
         private void RadioBuiton_CheckedChanegd(object sender, EventArgs e)

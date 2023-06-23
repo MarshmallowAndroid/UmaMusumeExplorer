@@ -47,6 +47,8 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
 
         private void AudioPlayerControl_Load(object sender, EventArgs e)
         {
+            if (audioAssets is null) return;
+
             audioTypeComboBox.SelectedIndex = 0;
 
             fileListView.Columns[0].Width = (int)(fileListView.Width * 0.80F);
@@ -68,7 +70,8 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             else
                 audioType = 'v';
 
-            awbOnly = audioAssets.Where((gf) => gf.Name.StartsWith($"sound/{audioType}/") && gf.BaseName.EndsWith(".awb"));
+            if (audioAssets is not null)
+                awbOnly = audioAssets.Where((gf) => gf.Name.StartsWith($"sound/{audioType}/") && gf.BaseName.EndsWith(".awb"));
             totalFiles = awbOnly.Count();
 
             fileListView.Items.Clear();

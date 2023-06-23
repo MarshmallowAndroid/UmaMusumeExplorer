@@ -17,7 +17,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 {
     public partial class SongsControl : UserControl
     {
-        List<LiveData> starringInSongs = new();
+        private readonly IEnumerable<LiveData> liveDatas = AssetTables.LiveDatas;
 
         public SongsControl()
         {
@@ -44,9 +44,8 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
         private void SongsControl_Load(object sender, EventArgs e)
         {
-
-            if (!DesignMode)
-                songItemsPanel.Items = AssetTables.LiveDatas;
+            if (liveDatas is not null)
+                songItemsPanel.Items = liveDatas;
         }
     }
 }

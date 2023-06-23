@@ -10,7 +10,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 {
     partial class LiveMusicPlayerControl : UserControl
     {
-        private readonly IEnumerable<LiveData> liveDatas = AssetTables.LiveDatas.OrderBy(l => l.Sort);
+        private readonly IEnumerable<LiveData> liveDatas = AssetTables.LiveDatas?.OrderBy(l => l.Sort);
 
         public LiveMusicPlayerControl()
         {
@@ -26,7 +26,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
         private void LiveMusicPlayerSongSelectControl_Load(object sender, EventArgs e)
         {
-            if (!DesignMode)
+            if (liveDatas is not null)
                 songItemsPanel.Items = liveDatas;
         }
     }
