@@ -52,7 +52,26 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
                 characterPositions[PositionToIndex(i, pivot)] = characterPositionControl;
             }
 
-            singersPanel.Controls.AddRange(characterPositions);
+            if (characterPositions.Length == 1)
+            {
+                Control[] fixedControls = new Control[3];
+
+                fixedControls[0] = new()
+                {
+                    Width = characterPositions[0].Width,
+                    Height = characterPositions[0].Height
+                };
+                fixedControls[1] = characterPositions[0];
+                fixedControls[2] = new()
+                {
+                    Width = characterPositions[0].Width,
+                    Height = characterPositions[0].Height
+                };
+
+                singersPanel.Controls.AddRange(fixedControls);
+            }
+            else
+                singersPanel.Controls.AddRange(characterPositions);
         }
 
         public void CharacterPositionPictureBoxClick(object sender, EventArgs e)

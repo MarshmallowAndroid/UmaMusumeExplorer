@@ -6,16 +6,16 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 {
     partial class CharacterPositionControl : UserControl
     {
-        private int characterIndex = 0;
+        private int characterPosition = 0;
         private int characterId = 0;
 
-        public CharacterPositionControl(int index, UnitSetupForm unitSetupForm)
+        public CharacterPositionControl(int position, UnitSetupForm unitSetupForm)
         {
             InitializeComponent();
 
-            characterIndex = index;
+            characterPosition = position;
 
-            positionIndexLabel.Text = characterIndex.ToString();
+            positionIndexLabel.Text = characterPosition.ToString();
             characterPictureBox.BackgroundImage = UnityAssets.GetCharaIcon(0).Bitmap;
 
             characterPictureBox.Click += unitSetupForm.CharacterPositionPictureBoxClick;
@@ -23,10 +23,10 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
         public int PositionIndex
         {
-            get { return characterIndex; }
+            get { return characterPosition; }
             set
             {
-                characterIndex = value;
+                characterPosition = value;
                 positionIndexLabel.Text = value.ToString();
 
                 Update();
