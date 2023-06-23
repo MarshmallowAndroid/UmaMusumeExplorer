@@ -7,23 +7,22 @@ namespace UmaMusumeExplorer
 {
     public partial class SplashForm : Form
     {
-        Thread loadThread;
+        private Thread loadThread;
 
         public SplashForm()
         {
             InitializeComponent();
-
-            AssetTables.UpdateProgress += UpdateProgress;
         }
 
         public void ShowLoadAndClose()
         {
-            loadThread = new(new ThreadStart(() =>
+            loadThread = new(() =>
             {
+                AssetTables.UpdateProgress += UpdateProgress;
                 AssetTables.Initialize();
                 AssetTables.UpdateProgress -= UpdateProgress;
                 Invoke(() => Close());
-            }));
+            });
             ShowDialog();
         }
 
