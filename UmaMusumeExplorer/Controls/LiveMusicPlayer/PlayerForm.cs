@@ -31,7 +31,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
         private readonly List<PartTrigger> partTriggers = new();
 
         private SongMixer songMixer;
-        private readonly WaveOutEvent waveOutEvent = new() { DesiredLatency = 250 };
+        private readonly IWavePlayer waveOut = new WaveOutEvent() { DesiredLatency = 250 };
 
         private readonly Thread lyricsThread;
         private int lyricsTriggerIndex = 0;
@@ -73,16 +73,16 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             if (lyricsThread.ThreadState.HasFlag(ThreadState.Unstarted))
                 lyricsThread.Start();
 
-            if (waveOutEvent.PlaybackState == PlaybackState.Playing)
+            if (waveOut.PlaybackState == PlaybackState.Playing)
             {
-                waveOutEvent.Pause();
+                waveOut.Pause();
             }
             else
             {
-                waveOutEvent.Play();
+                waveOut.Play();
             }
 
-            updateTimer.Enabled = waveOutEvent.PlaybackState == PlaybackState.Playing;
+            updateTimer.Enabled = waveOut.PlaybackState == PlaybackState.Playing;
         }
 
         private void UpdateTimer_Tick(object sender, EventArgs e)
@@ -96,8 +96,8 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             songJacketPinnedBitmap.Dispose();
             playbackFinished = true;
 
-            waveOutEvent.Stop();
-            waveOutEvent.Dispose();
+            waveOut.Stop();
+            waveOut.Dispose();
 
             assetsManager.Clear();
         }
@@ -110,8 +110,8 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
         private void VolumeTrackbar_Scroll(object sender, EventArgs e)
         {
-            waveOutEvent.Volume = volumeTrackbar.Value / 100.0F;
-            volumeLabel.Text = (int)Math.Ceiling(waveOutEvent.Volume * 100.0F) + "%";
+            waveOut.Volume = volumeTrackbar.Value / 100.0F;
+            volumeLabel.Text = (int)Math.Ceiling(waveOut.Volume * 100.0F) + "%";
         }
 
         private void SetupButton_Click(object sender, EventArgs e)
@@ -121,8 +121,8 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
         private void StopButton_Click(object sender, EventArgs e)
         {
-            waveOutEvent.Stop();
-            waveOutEvent.Dispose();
+            waveOut.Stop();
+            waveOut.Dispose();
             songMixer.Dispose();
             Close();
         }
@@ -185,8 +185,8 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             DialogResult result = saveFileDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
-                PlaybackState playbackState = waveOutEvent.PlaybackState;
-                waveOutEvent.Pause();
+                PlaybackState playbackState = waveOut.PlaybackState;
+                waveOut.Pause();
 
                 Task.Run(() =>
                 {
@@ -210,7 +210,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
                     lyricsTriggerIndex = 0;
 
                     if (playbackState == PlaybackState.Playing)
-                        waveOutEvent.Play();
+                        waveOut.Play();
 
                     Invoke(() =>
                     {
@@ -218,7 +218,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
                         setupButton.Enabled = true;
                         playButton.Enabled = true;
                         stopButton.Enabled = true;
-                        updateTimer.Enabled = waveOutEvent.PlaybackState == PlaybackState.Playing;
+                        updateTimer.Enabled = waveOut.PlaybackState == PlaybackState.Playing;
                     });
                 });
             }
@@ -289,9 +289,9 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             if (songMixer is null)
             {
                 songMixer = new(okeAwb, partTriggers);
-                waveOutEvent.Init(songMixer);
+                waveOut.Init(songMixer);
 
-                waveOutEvent.Play();
+                waveOut.Play();
 
                 lyricsThread.Start();
                 updateTimer.Enabled = true;
@@ -302,7 +302,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
             // Update the total time and volume track bars
             totalTimeLabel.Text = $"{songMixer.TotalTime:m\\:ss}";
-            int volume = (int)Math.Ceiling(waveOutEvent.Volume * 100.0F);
+            int volume = (int)Math.Ceiling(waveOut.Volume * 100.0F);
             volumeTrackbar.Value = volume;
             volumeLabel.Text = volume + "%";
 

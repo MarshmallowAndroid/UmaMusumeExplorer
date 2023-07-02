@@ -163,7 +163,6 @@ namespace UmaMusumeExplorer
         private Controls.CharacterInfo.CharacterInfoControl characterInfoControl;
         private System.Windows.Forms.TabPage fileBrowserTabPage;
         private System.Windows.Forms.TabPage liveMusicPlayerTabPage;
-        private Controls.LiveMusicPlayer.LiveMusicPlayerControl liveMusicPlayerSongSelectControl;
         private System.Windows.Forms.TabPage jukeboxTabPage;
         private Controls.FileBrowser.FileBrowserControl fileBrowserControl;
         private Controls.LiveMusicPlayer.LiveMusicPlayerControl liveMusicPlayerControl;

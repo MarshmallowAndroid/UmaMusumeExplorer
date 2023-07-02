@@ -18,8 +18,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer.Classes
         {
             get
             {
-                if (tracks is null)
-                    tracks = InitializeTracks();
+                tracks ??= InitializeTracks();
 
                 return tracks;
             }

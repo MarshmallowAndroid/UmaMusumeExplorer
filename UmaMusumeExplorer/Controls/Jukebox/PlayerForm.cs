@@ -29,7 +29,7 @@ namespace UmaMusumeExplorer.Controls.Jukebox
         private readonly PinnedBitmap songJacketPinnedBitmap;
 
         private UmaWaveStream musicWaveStream;
-        private readonly WaveOutEvent waveOutEvent = new() { DesiredLatency = 250 };
+        private readonly IWavePlayer waveOut = new WaveOutEvent() { DesiredLatency = 250 };
 
         public PlayerForm(JukeboxMusicData jukeboxMusic, SongLength length)
         {
@@ -56,16 +56,16 @@ namespace UmaMusumeExplorer.Controls.Jukebox
 
         private void PlayButton_Click(object sender, EventArgs e)
         {
-            if (waveOutEvent.PlaybackState == PlaybackState.Playing)
+            if (waveOut.PlaybackState == PlaybackState.Playing)
             {
-                waveOutEvent.Pause();
+                waveOut.Pause();
             }
             else
             {
-                waveOutEvent.Play();
+                waveOut.Play();
             }
 
-            updateTimer.Enabled = waveOutEvent.PlaybackState == PlaybackState.Playing;
+            updateTimer.Enabled = waveOut.PlaybackState == PlaybackState.Playing;
         }
 
         private void UpdateTimer_Tick(object sender, EventArgs e)
@@ -78,8 +78,8 @@ namespace UmaMusumeExplorer.Controls.Jukebox
         {
             songJacketPinnedBitmap.Dispose();
 
-            waveOutEvent.Stop();
-            waveOutEvent.Dispose();
+            waveOut.Stop();
+            waveOut.Dispose();
 
             assetsManager.Clear();
         }
@@ -91,8 +91,8 @@ namespace UmaMusumeExplorer.Controls.Jukebox
 
         private void VolumeTrackbar_Scroll(object sender, EventArgs e)
         {
-            waveOutEvent.Volume = volumeTrackbar.Value / 100.0F;
-            volumeLabel.Text = (int)Math.Ceiling(waveOutEvent.Volume * 100.0F) + "%";
+            waveOut.Volume = volumeTrackbar.Value / 100.0F;
+            volumeLabel.Text = (int)Math.Ceiling(waveOut.Volume * 100.0F) + "%";
         }
 
         private void SetupButton_Click(object sender, EventArgs e)
@@ -102,8 +102,8 @@ namespace UmaMusumeExplorer.Controls.Jukebox
 
         private void StopButton_Click(object sender, EventArgs e)
         {
-            waveOutEvent.Stop();
-            waveOutEvent.Dispose();
+            waveOut.Stop();
+            waveOut.Dispose();
             musicWaveStream.Dispose();
             Close();
         }
@@ -140,15 +140,15 @@ namespace UmaMusumeExplorer.Controls.Jukebox
             if (musicWaveStream is null)
             {
                 musicWaveStream = new(okeAwb, 0);
-                waveOutEvent.Init(new VolumeSampleProvider(musicWaveStream.ToSampleProvider()) { Volume = 4.0F });
-                waveOutEvent.Play();
+                waveOut.Init(new VolumeSampleProvider(musicWaveStream.ToSampleProvider()) { Volume = 4.0F });
+                waveOut.Play();
 
                 updateTimer.Enabled = true;
             }
 
             // Update the total time and volume track bars
             totalTimeLabel.Text = $"{musicWaveStream.TotalTime:m\\:ss}";
-            int volume = (int)Math.Ceiling(waveOutEvent.Volume * 100.0F);
+            int volume = (int)Math.Ceiling(waveOut.Volume * 100.0F);
             volumeTrackbar.Value = volume;
             volumeLabel.Text = volume + "%";
 

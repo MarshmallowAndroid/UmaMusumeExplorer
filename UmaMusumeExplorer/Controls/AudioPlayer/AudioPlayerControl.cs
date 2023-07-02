@@ -19,7 +19,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
 {
     partial class AudioPlayerControl : UserControl
     {
-        private readonly WaveOutEvent waveOut;
+        private readonly IWavePlayer waveOut;
         private readonly object waveOutLock = new();
 
         private readonly IEnumerable<GameAsset> audioAssets = AssetTables.AudioAssets;
@@ -288,7 +288,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
                             Volume = (float)amplifyUpDown.Value
                         });
 
-                    MessageBox.Show("Wave file saved", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Export complete.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     copy.Dispose();
 

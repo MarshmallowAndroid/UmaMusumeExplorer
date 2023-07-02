@@ -23,7 +23,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
         private Pattern firstPattern;
         private Pattern secondPattern;
 
-        private WaveOutEvent waveOut;
+        private IWavePlayer waveOut;
 
         private Bgm paddockBgm;
         private Bgm entryTableBgm;
