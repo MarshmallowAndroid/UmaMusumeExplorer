@@ -1,5 +1,6 @@
 ﻿using CriWareFormats;
 using NAudio.Wave;
+using NAudio.Wave.SampleProviders;
 using System;
 using System.Collections.Generic;
 using UmaMusumeAudio;
@@ -28,20 +29,20 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 
         private readonly object readLock = new();
 
-        public CharaTrack(AwbReader charaAwb, List<PartTrigger> partTriggers, int index)
+        public CharaTrack(WaveFormat targetWaveFormat, AwbReader charaAwb, List<PartTrigger> partTriggers, int index)
         {
             mainUmaWaveStream = new(charaAwb, 0);
-            mainSampleProvider = new(mainUmaWaveStream.ToSampleProvider());
+            mainSampleProvider = new(EnsureEqualSampleRate(targetWaveFormat, mainUmaWaveStream));
 
             if (charaAwb.Waves.Count > 1)
             {
                 secondUmaWaveStream = new(charaAwb, 1);
-                secondSampleProvider = new(secondUmaWaveStream.ToSampleProvider());
+                secondSampleProvider = new(EnsureEqualSampleRate(targetWaveFormat, secondUmaWaveStream));
             }
 
             foreach (var partTrigger in partTriggers)
             {
-                long sample = (long)(partTrigger.TimeMs / 1000.0F * mainUmaWaveStream.WaveFormat.SampleRate);
+                long sample = (long)(partTrigger.TimeMs / 1000.0F * mainSampleProvider.WaveFormat.SampleRate);
                 float volume = partTrigger.MemberVolumes[index] != 999.0F ? partTrigger.MemberVolumes[index] : 1.0F;
                 volume += partTrigger.VolumeRate != 999.0F ? 0.25F * partTrigger.VolumeRate : 0.0F;
 
@@ -55,9 +56,11 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             }
 
             positionIndex = index;
+
+            WaveFormat = targetWaveFormat;
         }
 
-        public WaveFormat WaveFormat => mainSampleProvider.WaveFormat;
+        public WaveFormat WaveFormat { get; }
 
         public long Position
         {
@@ -69,10 +72,12 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             {
                 lock (readLock)
                 {
-                    mainUmaWaveStream.Position = value;
-                    if (secondUmaWaveStream is not null) secondUmaWaveStream.Position = value;
+                    long fixedValue = value * mainUmaWaveStream.WaveFormat.SampleRate / WaveFormat.SampleRate;
 
-                    currentSample = mainUmaWaveStream.Position / mainUmaWaveStream.WaveFormat.Channels / (mainUmaWaveStream.WaveFormat.BitsPerSample / 8);
+                    mainUmaWaveStream.Position = fixedValue;
+                        if (secondUmaWaveStream is not null) secondUmaWaveStream.Position = fixedValue;
+
+                    currentSample = value / mainUmaWaveStream.WaveFormat.Channels / (mainUmaWaveStream.WaveFormat.BitsPerSample / 8);
 
                     triggerIndex = 0;
                 }
@@ -161,6 +166,14 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
         {
             mainUmaWaveStream.Dispose();
             secondUmaWaveStream?.Dispose();
+        }
+
+        private ISampleProvider EnsureEqualSampleRate(WaveFormat targetWaveFormat, WaveStream waveStream)
+        {
+            if (mainUmaWaveStream.WaveFormat.SampleRate != targetWaveFormat.SampleRate)
+                return new WdlResamplingSampleProvider(waveStream.ToSampleProvider(), targetWaveFormat.SampleRate);
+            else
+                return waveStream.ToSampleProvider();
         }
 
         private struct Trigger

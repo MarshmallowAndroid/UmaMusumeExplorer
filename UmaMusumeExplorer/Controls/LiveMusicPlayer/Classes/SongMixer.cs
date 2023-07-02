@@ -168,7 +168,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                 int currentIndex = 0;
                 foreach (var charaAwb in charaAwbs)
                 {
-                    CharaTrack charaTrack = new(charaAwb, partTriggers, currentIndex++)
+                    CharaTrack charaTrack = new(WaveFormat, charaAwb, partTriggers, currentIndex++)
                     {
                         AlwaysSing = alwaysSing,
                         CenterOnly = centerSolo,
