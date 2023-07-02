@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-string createStatement = args.Length > 1 ? args[0] : "";
+string createStatement = args.Length > 0 ? args[0] : "";
 
 if (createStatement == "")
     createStatement = Console.ReadLine() ?? "";
