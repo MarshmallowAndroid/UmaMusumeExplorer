@@ -13,7 +13,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer.Classes
         public AtomAudioTrack(string acbPath, string awbPath, int waveIndex)
         {
             using var acbFile = File.OpenRead(acbPath);
-            AcbNameLoader acbNameLoader = new(acbFile);
+            AcbParser acbNameLoader = new(acbFile);
 
             Name = acbNameLoader.LoadWaveName(waveIndex, 0, false);
 
