@@ -19,6 +19,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
     {
         private readonly IEnumerable<CharacterSystemText> systemTexts = AssetTables.CharacterSystemTexts;
         private readonly IWavePlayer waveOut = new WaveOutEvent() { DesiredLatency = 250 };
+        private readonly BackgroundWorker exportBackgroundWorker = new() { WorkerReportsProgress = true };
 
         private bool loaded = false;
         private IEnumerable<CharacterSystemText> selectedCharacterSystemTexts;
@@ -27,7 +28,6 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
         private IEnumerable<CharacterSystemText> finalFilteredSystemTexts;
         private PinnedBitmap iconPinnedBitmap;
 
-        private BackgroundWorker exportBackgroundWorker = new() { WorkerReportsProgress = true };
 
         public VoiceLinesControl()
         {
@@ -93,37 +93,24 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
         private void UpdateList()
         {
-            switch (categoryComboBox.SelectedIndex)
+            selectedCategorySystemTexts = categoryComboBox.SelectedIndex switch
             {
-                case 1:
-                    selectedCategorySystemTexts = selectedCostumeSystemTexts.Where(st => st.CueSheet.Contains("home"));
-                    break;
-
-                case 2:
-                    selectedCategorySystemTexts = selectedCostumeSystemTexts.Where(st => st.CueSheet.Contains("training"));
-                    break;
-
-                case 3:
-                    selectedCategorySystemTexts = selectedCostumeSystemTexts.Where(st => st.CueSheet.Contains("race"));
-                    break;
-
-                case 4:
-                    selectedCategorySystemTexts = selectedCostumeSystemTexts.Where(st =>
-                        !st.CueSheet.Contains("home") && !st.CueSheet.Contains("training") && !st.CueSheet.Contains("race"));
-                    break;
-
-                default:
-                    selectedCategorySystemTexts = selectedCostumeSystemTexts;
-                    break;
-            }
-
+                1 => selectedCostumeSystemTexts.Where(st => st.CueSheet.Contains("home")),
+                2 => selectedCostumeSystemTexts.Where(st => st.CueSheet.Contains("training")),
+                3 => selectedCostumeSystemTexts.Where(st => st.CueSheet.Contains("race")),
+                4 => selectedCostumeSystemTexts.Where(st => !st.CueSheet.Contains("home") &&
+                    !st.CueSheet.Contains("training") && !st.CueSheet.Contains("race")),
+                _ => selectedCostumeSystemTexts,
+            };
             finalFilteredSystemTexts = selectedCategorySystemTexts ?? selectedCostumeSystemTexts ?? selectedCharacterSystemTexts;
 
             voiceLineListPanel.Controls.Clear();
             foreach (var characterSystemText in finalFilteredSystemTexts)
             {
-                CharacterVoiceListItemControl listItem = new(characterSystemText, waveOut);
-                listItem.Width = voiceLineListPanel.Width - 6 - SystemInformation.VerticalScrollBarWidth;
+                CharacterVoiceListItemControl listItem = new(characterSystemText, waveOut)
+                {
+                    Width = voiceLineListPanel.Width - 6 - SystemInformation.VerticalScrollBarWidth
+                };
                 voiceLineListPanel.Controls.Add(listItem);
             }
         }
@@ -174,7 +161,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             loadingProgressBar.Visible = false;
         }
 
-        private string SanitizeFileName(string fileName)
+        private static string SanitizeFileName(string fileName)
         {
             foreach (var invalidChar in Path.GetInvalidFileNameChars())
             {
