@@ -1,0 +1,187 @@
+﻿using NAudio.Wave;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using UmaMusumeData.Tables;
+using UmaMusumeExplorer.Controls.CharacterInfo.Classes;
+using UmaMusumeExplorer.Game;
+
+namespace UmaMusumeExplorer.Controls.CharacterInfo
+{
+    public partial class VoiceLinesControl : UserControl
+    {
+        private readonly IEnumerable<CharacterSystemText> systemTexts = AssetTables.CharacterSystemTexts;
+        private readonly IWavePlayer waveOut = new WaveOutEvent() { DesiredLatency = 250 };
+
+        private bool loaded = false;
+        private IEnumerable<CharacterSystemText> selectedCharacterSystemTexts;
+        private IEnumerable<CharacterSystemText> selectedCostumeSystemTexts;
+        private IEnumerable<CharacterSystemText> selectedCategorySystemTexts;
+        private IEnumerable<CharacterSystemText> finalFilteredSystemTexts;
+        private PinnedBitmap iconPinnedBitmap;
+
+        private BackgroundWorker exportBackgroundWorker = new() { WorkerReportsProgress = true };
+
+        public VoiceLinesControl()
+        {
+            InitializeComponent();
+
+            exportBackgroundWorker.ProgressChanged += ExportBackgroundWorker_ProgressChanged;
+            exportBackgroundWorker.RunWorkerCompleted += ExportBackgroundWorker_RunWorkerCompleted;
+        }
+
+        public int CharacterId { get; set; }
+
+        public void StopAllPlayback()
+        {
+            waveOut.Stop();
+            waveOut.Dispose();
+        }
+
+        private void VoiceLinesControl_Load(object sender, EventArgs e)
+        {
+            if (systemTexts is not null)
+            {
+                costumeComboBox.SelectedIndex = 0;
+                categoryComboBox.SelectedIndex = 0;
+
+                foreach (var item in AssetTables.CardDatas.Where(cd => cd.CharaId == CharacterId))
+                {
+                    costumeComboBox.Items.Add(new CostumeComboBoxItem(item));
+                }
+
+                loaded = true;
+            }
+        }
+
+        private void CostumeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CardData cardData = (costumeComboBox.SelectedItem as CostumeComboBoxItem)?.CardData;
+
+            selectedCharacterSystemTexts = systemTexts.Where(st => st.CharacterId == CharacterId);
+            selectedCostumeSystemTexts = selectedCharacterSystemTexts;
+            iconPinnedBitmap = UnityAssets.GetCharaIcon(CharacterId);
+
+            if (cardData is not null)
+            {
+                CardRarityData rarityData = AssetTables.CardRarityDatas.Where(crd => crd.CardId == cardData.Id).FirstOrDefault();
+
+                rarityData ??= new();
+
+                selectedCostumeSystemTexts = selectedCharacterSystemTexts.Where(st => st.CueSheet.EndsWith(cardData.Id.ToString()));
+                iconPinnedBitmap = UnityAssets.GetCharaIcon(cardData.CharaId, rarityData.RaceDressId);
+            }
+
+            cardPictureBox.Image = iconPinnedBitmap.Bitmap;
+
+            if (!loaded) return;
+
+            UpdateList();
+        }
+
+        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateList();
+        }
+
+        private void UpdateList()
+        {
+            switch (categoryComboBox.SelectedIndex)
+            {
+                case 1:
+                    selectedCategorySystemTexts = selectedCostumeSystemTexts.Where(st => st.CueSheet.Contains("home"));
+                    break;
+
+                case 2:
+                    selectedCategorySystemTexts = selectedCostumeSystemTexts.Where(st => st.CueSheet.Contains("training"));
+                    break;
+
+                case 3:
+                    selectedCategorySystemTexts = selectedCostumeSystemTexts.Where(st => st.CueSheet.Contains("race"));
+                    break;
+
+                case 4:
+                    selectedCategorySystemTexts = selectedCostumeSystemTexts.Where(st =>
+                        !st.CueSheet.Contains("home") && !st.CueSheet.Contains("training") && !st.CueSheet.Contains("race"));
+                    break;
+
+                default:
+                    selectedCategorySystemTexts = selectedCostumeSystemTexts;
+                    break;
+            }
+
+            finalFilteredSystemTexts = selectedCategorySystemTexts ?? selectedCostumeSystemTexts ?? selectedCharacterSystemTexts;
+
+            voiceLineListPanel.Controls.Clear();
+            foreach (var characterSystemText in finalFilteredSystemTexts)
+            {
+                CharacterVoiceListItemControl listItem = new(characterSystemText, waveOut);
+                listItem.Width = voiceLineListPanel.Width - 6 - SystemInformation.VerticalScrollBarWidth;
+                voiceLineListPanel.Controls.Add(listItem);
+            }
+        }
+
+        private void ExportAllButton_Click(object sender, EventArgs e)
+        {
+            Export(false);
+        }
+
+        private void ExportSelectedButton_Click(object sender, EventArgs e)
+        {
+            Export(true);
+        }
+
+        private void Export(bool checkedOnly)
+        {
+            FolderBrowserDialog folderBrowserDialog = new();
+            if (folderBrowserDialog.ShowDialog() != DialogResult.OK) return;
+
+            exportBackgroundWorker.DoWork += (s, e) =>
+            {
+                Invoke(() => loadingProgressBar.Visible = true);
+
+                int currentItem = 0;
+                foreach (CharacterVoiceListItemControl control in voiceLineListPanel.Controls)
+                {
+                    if (!control.Checked && checkedOnly) continue;
+
+                    WaveStream waveStream = control.GetWaveStream();
+
+                    string outputPath = Path.Combine(folderBrowserDialog.SelectedPath,
+                        SanitizeFileName(control.CharacterSystemText.Text) + ".wav");
+                    WaveFileWriter.CreateWaveFile(outputPath, waveStream);
+
+                    exportBackgroundWorker.ReportProgress((int)((float)++currentItem / voiceLineListPanel.Controls.Count * 100F));
+                }
+            };
+            exportBackgroundWorker.RunWorkerAsync();
+        }
+
+        private void ExportBackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            loadingProgressBar.Value = e.ProgressPercentage;
+        }
+
+        private void ExportBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            loadingProgressBar.Visible = false;
+        }
+
+        private string SanitizeFileName(string fileName)
+        {
+            foreach (var invalidChar in Path.GetInvalidFileNameChars())
+            {
+                fileName = fileName.Replace(invalidChar, '_');
+            }
+
+            return fileName;
+        }
+    }
+}

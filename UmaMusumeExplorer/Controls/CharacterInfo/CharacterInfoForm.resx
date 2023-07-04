@@ -187,6 +187,57 @@
   <data name="&gt;&gt;characterInfoTabPage.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="voiceLinesControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="voiceLinesControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="voiceLinesControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>574, 749</value>
+  </data>
+  <data name="voiceLinesControl.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;voiceLinesControl.Name" xml:space="preserve">
+    <value>voiceLinesControl</value>
+  </data>
+  <data name="&gt;&gt;voiceLinesControl.Type" xml:space="preserve">
+    <value>UmaMusumeExplorer.Controls.CharacterInfo.VoiceLinesControl, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;voiceLinesControl.Parent" xml:space="preserve">
+    <value>voiceLinesTabPage</value>
+  </data>
+  <data name="&gt;&gt;voiceLinesControl.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="voiceLinesTabPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="voiceLinesTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="voiceLinesTabPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>580, 755</value>
+  </data>
+  <data name="voiceLinesTabPage.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="voiceLinesTabPage.Text" xml:space="preserve">
+    <value>Voice Lines</value>
+  </data>
+  <data name="&gt;&gt;voiceLinesTabPage.Name" xml:space="preserve">
+    <value>voiceLinesTabPage</value>
+  </data>
+  <data name="&gt;&gt;voiceLinesTabPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;voiceLinesTabPage.Parent" xml:space="preserve">
+    <value>characterInfoTabControl</value>
+  </data>
+  <data name="&gt;&gt;voiceLinesTabPage.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="songsControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -194,7 +245,7 @@
     <value>3, 4</value>
   </data>
   <data name="songsControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>548, 747</value>
+    <value>574, 747</value>
   </data>
   <data name="songsControl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -221,7 +272,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="songsTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>554, 755</value>
+    <value>580, 755</value>
   </data>
   <data name="songsTabPage.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -239,7 +290,7 @@
     <value>characterInfoTabControl</value>
   </data>
   <data name="&gt;&gt;songsTabPage.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="characterInfoTabControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 13</value>

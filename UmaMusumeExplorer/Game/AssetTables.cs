@@ -21,6 +21,8 @@ namespace UmaMusumeExplorer.Game
                 () => { CardRarityDatas = UmaDataHelper.GetMasterDatabaseRows<CardRarityData>(); return "CardRarityDatas"; },
                 () => { CharaDatas = UmaDataHelper.GetMasterDatabaseRows<CharaData>(); return "CharaDatas"; },
 
+                () => { CharacterSystemTexts = UmaDataHelper.GetMasterDatabaseRows<CharacterSystemText>(); return "CharacterSystemTexts"; },
+
                 () => { JukeboxMusicDatas = UmaDataHelper.GetMasterDatabaseRows<JukeboxMusicData>(); return "JukeboxMusicDatas"; },
 
                 () => { LiveDatas = UmaDataHelper.GetMasterDatabaseRows<LiveData>(); return "LiveDatas"; },
@@ -65,6 +67,8 @@ namespace UmaMusumeExplorer.Game
         public static IEnumerable<CardData> CardDatas { get; private set; }
         public static IEnumerable<CardRarityData> CardRarityDatas { get; private set; }
         public static IEnumerable<CharaData> CharaDatas { get; private set; }
+
+        public static IEnumerable<CharacterSystemText> CharacterSystemTexts { get; private set; }
 
         public static IEnumerable<JukeboxMusicData> JukeboxMusicDatas { get; private set; }
 

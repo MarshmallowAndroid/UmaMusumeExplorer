@@ -32,10 +32,13 @@
             characterInfoTabControl = new System.Windows.Forms.TabControl();
             characterInfoTabPage = new System.Windows.Forms.TabPage();
             cardInfoControl = new CardInfoControl();
+            voiceLinesTabPage = new System.Windows.Forms.TabPage();
+            voiceLinesControl = new VoiceLinesControl();
             songsTabPage = new System.Windows.Forms.TabPage();
             songsControl = new SongsControl();
             characterInfoTabControl.SuspendLayout();
             characterInfoTabPage.SuspendLayout();
+            voiceLinesTabPage.SuspendLayout();
             songsTabPage.SuspendLayout();
             SuspendLayout();
             // 
@@ -43,6 +46,7 @@
             // 
             resources.ApplyResources(characterInfoTabControl, "characterInfoTabControl");
             characterInfoTabControl.Controls.Add(characterInfoTabPage);
+            characterInfoTabControl.Controls.Add(voiceLinesTabPage);
             characterInfoTabControl.Controls.Add(songsTabPage);
             characterInfoTabControl.Name = "characterInfoTabControl";
             characterInfoTabControl.SelectedIndex = 0;
@@ -59,6 +63,19 @@
             resources.ApplyResources(cardInfoControl, "cardInfoControl");
             cardInfoControl.CharaData = null;
             cardInfoControl.Name = "cardInfoControl";
+            // 
+            // voiceLinesTabPage
+            // 
+            voiceLinesTabPage.Controls.Add(voiceLinesControl);
+            resources.ApplyResources(voiceLinesTabPage, "voiceLinesTabPage");
+            voiceLinesTabPage.Name = "voiceLinesTabPage";
+            voiceLinesTabPage.UseVisualStyleBackColor = true;
+            // 
+            // voiceLinesControl
+            // 
+            voiceLinesControl.CharacterId = 0;
+            resources.ApplyResources(voiceLinesControl, "voiceLinesControl");
+            voiceLinesControl.Name = "voiceLinesControl";
             // 
             // songsTabPage
             // 
@@ -82,9 +99,11 @@
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "CharacterInfoForm";
+            FormClosing += CharacterInfoForm_FormClosing;
             characterInfoTabControl.ResumeLayout(false);
             characterInfoTabPage.ResumeLayout(false);
             characterInfoTabPage.PerformLayout();
+            voiceLinesTabPage.ResumeLayout(false);
             songsTabPage.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -95,5 +114,7 @@
         private System.Windows.Forms.TabPage songsTabPage;
         private CardInfoControl cardInfoControl;
         private SongsControl songsControl;
+        private System.Windows.Forms.TabPage voiceLinesTabPage;
+        private VoiceLinesControl voiceLinesControl;
     }
 }

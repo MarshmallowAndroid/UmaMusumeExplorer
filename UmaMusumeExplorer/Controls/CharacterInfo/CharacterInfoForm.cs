@@ -21,9 +21,15 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             InitializeComponent();
 
             cardInfoControl.CharaData = chara;
+            voiceLinesControl.CharacterId = chara.Id;
             songsControl.CharaId = chara.Id;
 
             Text = AssetTables.GetText(AssetTables.CharaNameTextDatas, chara.Id);
+        }
+
+        private void CharacterInfoForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            voiceLinesControl.StopAllPlayback();
         }
     }
 }
