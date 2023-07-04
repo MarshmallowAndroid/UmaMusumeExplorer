@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UmaMusumeData.Tables;
@@ -88,7 +87,6 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             int id = charaData.Id;
             string charaName = AssetTables.GetText(AssetTables.CharaNameTextDatas, id);
 
-            Text = charaName;
             nameLabel.Text = charaName;
 
             string katakana = AssetTables.GetText(AssetTables.CharaNameKatakanaTextDatas, id);
@@ -205,42 +203,6 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
         private static byte GetBrightness(Color color)
         {
             return (byte)((color.R + color.R + color.G + color.G + color.B + color.B) / 6);
-        }
-    }
-
-    class CostumeComboBoxItem
-    {
-        public CostumeComboBoxItem(CardData cardData)
-        {
-            CardData = cardData;
-        }
-
-        public CardData CardData { get; }
-
-        public override string ToString()
-        {
-            return AssetTables.GetText(AssetTables.CharaCostumeNameTextDatas, CardData.Id);
-        }
-    }
-
-    class RarityComboBoxItem
-    {
-        public RarityComboBoxItem(CardRarityData cardRarityData)
-        {
-            CardRarityData = cardRarityData;
-        }
-
-        public CardRarityData CardRarityData { get; }
-
-        public override string ToString()
-        {
-            StringBuilder starsString = new();
-            for (int i = 0; i < CardRarityData.Rarity; i++)
-            {
-                starsString.Append('★');
-            }
-
-            return starsString.ToString();
         }
     }
 }
