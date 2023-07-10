@@ -2,6 +2,7 @@
 using NAudio.Wave;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -134,8 +135,15 @@ namespace UmaMusumeAudio
                 byte[] blockBytes = hcaFileReader.ReadBytes(info.BlockSize);
                 if (blockBytes.Length > 0)
                 {
-                    decoder.DecodeBlock(blockBytes);
-                    decoder.ReadSamples16(sampleBuffer);
+                    try
+                    {
+                        decoder.DecodeBlock(blockBytes);
+                        decoder.ReadSamples16(sampleBuffer);
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.WriteLine("HCA decoder threw an exception: " + e.Message);
+                    }
                 }
             }
         }
