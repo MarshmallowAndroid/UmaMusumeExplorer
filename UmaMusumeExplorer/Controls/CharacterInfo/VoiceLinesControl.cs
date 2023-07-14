@@ -28,7 +28,6 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
         private IEnumerable<CharacterSystemText> finalFilteredSystemTexts;
         private PinnedBitmap iconPinnedBitmap;
 
-
         public VoiceLinesControl()
         {
             InitializeComponent();

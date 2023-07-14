@@ -19,9 +19,9 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 {
     public partial class CharacterVoiceListItemControl : UserControl
     {
-        private readonly Timer animationTimer = new();
-
         private WaveStream voiceWaveStream;
+        private Timer animationTimer;
+        private bool processingClick = false;
 
         public CharacterVoiceListItemControl()
         {
@@ -29,23 +29,15 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
             DoubleBuffered = true;
 
-            idLabel.MouseClick += ClickHit;
-            voiceLineTextLabel.MouseClick += ClickHit;
-
-            animationTimer.Enabled = true;
-            animationTimer.Interval = 50;
-            animationTimer.Tick += (s, e) =>
-            {
-                if (voiceWaveStream is not null)
-                    voiceLineTextLabel.Progress = (float)voiceWaveStream.Position / voiceWaveStream.Length;
-            };
+            idLabel.Click += ClickHit;
+            idLabel.DoubleClick += ClickHit;
         }
 
         public CharacterVoiceListItemControl(CharacterSystemText systemText, IWavePlayer waveOut) : this()
         {
             CharacterSystemText = systemText;
 
-            idLabel.Text = $"ID {systemText.VoiceId}";
+            idLabel.Text = systemText.VoiceId.ToString();
             voiceLineTextLabel.Text = systemText.Text;
             playButton.Click += (s, e) =>
             {
@@ -59,23 +51,35 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
                 if (!File.Exists(awbPath)) return;
 
+                waveOut.PlaybackStopped -= PlaybackStopped;
+
                 if (waveOut.PlaybackState == PlaybackState.Playing)
-                {
-                    waveOut.PlaybackStopped -= PlaybackStopped;
                     waveOut.Stop();
-                }
+
+                voiceWaveStream?.Dispose();
 
                 AcbReader acb = new(File.OpenRead(acbPath));
                 AwbReader awb = new(File.OpenRead(awbPath));
 
                 voiceWaveStream = new UmaWaveStream(awb, acb.GetWaveIdFromCueId(systemText.CueId));
 
+                animationTimer?.Stop();
+                animationTimer?.Dispose();
+
+                animationTimer = new();
+                animationTimer.Enabled = true;
+                animationTimer.Interval = 50;
+                animationTimer.Tick += (s, e) =>
+                {
+                    if (voiceWaveStream is not null)
+                        voiceLineTextLabel.Progress = (float)voiceWaveStream.Position / voiceWaveStream.Length;
+                };
                 animationTimer.Start();
+
+                waveOut.PlaybackStopped += PlaybackStopped;
 
                 waveOut.Init(voiceWaveStream);
                 waveOut.Play();
-
-                waveOut.PlaybackStopped += PlaybackStopped;
             };
         }
 
@@ -103,13 +107,33 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
         private void ClickHit(object sender, EventArgs e)
         {
-            checkBox.Checked = !checkBox.Checked;
+            if (processingClick) return;
+
+            processingClick = true;
+
+            try
+            {
+                MouseEventArgs mouseEventArgs = e as MouseEventArgs;
+                if (mouseEventArgs.Button != MouseButtons.Left) return;
+
+                checkBox.Checked = !checkBox.Checked;
+            }
+            finally
+            {
+                processingClick = false;
+            }
+        }
+
+        private void VoiceLineTextLabel_DoubleClick(object sender, EventArgs e)
+        {
+            Clipboard.SetText(voiceLineTextLabel.Text);
         }
 
         private void PlaybackStopped(object sender, EventArgs e)
         {
-            animationTimer.Stop();
             voiceLineTextLabel.Progress = 0;
+            animationTimer.Stop();
+            animationTimer.Dispose();
         }
     }
 }

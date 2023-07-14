@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            voiceLineListPanel = new System.Windows.Forms.FlowLayoutPanel();
             cardPictureBox = new Common.HighQualityPictureBox();
             costumeHintLabel = new System.Windows.Forms.Label();
             costumeComboBox = new System.Windows.Forms.ComboBox();
@@ -37,17 +36,9 @@
             exportAllButton = new System.Windows.Forms.Button();
             exportSelectedButton = new System.Windows.Forms.Button();
             loadingProgressBar = new System.Windows.Forms.ProgressBar();
+            voiceLineListPanel = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)cardPictureBox).BeginInit();
             SuspendLayout();
-            // 
-            // voiceLineListPanel
-            // 
-            voiceLineListPanel.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            voiceLineListPanel.AutoScroll = true;
-            voiceLineListPanel.Location = new System.Drawing.Point(3, 90);
-            voiceLineListPanel.Name = "voiceLineListPanel";
-            voiceLineListPanel.Size = new System.Drawing.Size(584, 688);
-            voiceLineListPanel.TabIndex = 0;
             // 
             // cardPictureBox
             // 
@@ -129,6 +120,15 @@
             loadingProgressBar.TabIndex = 5;
             loadingProgressBar.Visible = false;
             // 
+            // voiceLineListPanel
+            // 
+            voiceLineListPanel.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            voiceLineListPanel.AutoScroll = true;
+            voiceLineListPanel.Location = new System.Drawing.Point(3, 90);
+            voiceLineListPanel.Name = "voiceLineListPanel";
+            voiceLineListPanel.Size = new System.Drawing.Size(584, 688);
+            voiceLineListPanel.TabIndex = 0;
+            // 
             // VoiceLinesControl
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -151,8 +151,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.FlowLayoutPanel voiceLineListPanel;
         private Common.HighQualityPictureBox cardPictureBox;
         private System.Windows.Forms.Label costumeHintLabel;
         private System.Windows.Forms.ComboBox costumeComboBox;
@@ -161,5 +159,6 @@
         private System.Windows.Forms.Button exportAllButton;
         private System.Windows.Forms.Button exportSelectedButton;
         private System.Windows.Forms.ProgressBar loadingProgressBar;
+        private System.Windows.Forms.FlowLayoutPanel voiceLineListPanel;
     }
 }

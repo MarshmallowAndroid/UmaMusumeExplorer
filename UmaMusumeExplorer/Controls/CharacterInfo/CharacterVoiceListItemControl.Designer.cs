@@ -74,6 +74,7 @@
             voiceLineTextLabel.Size = new System.Drawing.Size(316, 68);
             voiceLineTextLabel.TabIndex = 4;
             voiceLineTextLabel.Text = "Voice line";
+            voiceLineTextLabel.Click += VoiceLineTextLabel_DoubleClick;
             // 
             // CharacterVoiceListItemControl
             // 
@@ -86,6 +87,7 @@
             Name = "CharacterVoiceListItemControl";
             Size = new System.Drawing.Size(373, 95);
             Click += ClickHit;
+            DoubleClick += ClickHit;
             ResumeLayout(false);
             PerformLayout();
         }
