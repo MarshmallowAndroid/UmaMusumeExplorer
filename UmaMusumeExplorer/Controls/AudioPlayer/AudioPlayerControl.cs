@@ -140,7 +140,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
                 fileListView.Items.AddRange(targetItems.ToArray());
             }
 
-            fileListView.Columns[0].Width = (int)(fileListView.ClientSize.Width * (float)0.80);
+            fileListView.Columns[0].Width = (int)(fileListView.ClientSize.Width * (float)0.80F);
             fileListView.Columns[1].Width = -2;
         }
 
@@ -150,6 +150,19 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             AudioSource audioSource = fileList.SelectedItems[0].Tag as AudioSource;
 
             ChangeAudioSource(audioSource);
+        }
+
+        private void FileListView_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.A)
+            {
+                e.SuppressKeyPress = true;
+
+                foreach (ListViewItem item in fileListView.Items)
+                {
+                    item.Selected = true;
+                }
+            }
         }
 
         private void TracksComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -261,40 +274,10 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             }
         }
 
-        private void SaveButton_Click(object sender, EventArgs e)
+        private void ExportButton_Click(object sender, EventArgs e)
         {
             IAudioTrack audioTrack = ((TrackComboBoxItem)tracksComboBox.SelectedItem).Track;
-
-            SaveFileDialog save = new()
-            {
-                FileName = audioTrack.Name,
-                Filter = "16-bit PCM WAV|*.wav"
-            };
-
-            DialogResult result = save.ShowDialog();
-
-            if (result == DialogResult.OK)
-            {
-                saveButton.Enabled = false;
-
-                Task.Run(() =>
-                {
-                    UmaWaveStream copy = (UmaWaveStream)audioTrack.WaveStream;
-                    copy.Loop = false;
-
-                    WaveFileWriter.CreateWaveFile16(save.FileName,
-                        new VolumeSampleProvider(copy.ToSampleProvider())
-                        {
-                            Volume = (float)amplifyUpDown.Value
-                        });
-
-                    MessageBox.Show("Export complete.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    copy.Dispose();
-
-                    Invoke(() => saveButton.Enabled = true);
-                });
-            }
+            ExportTrack(audioTrack);
         }
 
         private void ConfigureLoopButton_Click(object sender, EventArgs e)
@@ -340,6 +323,16 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             fileListView.Items.AddRange(targetItems.ToArray());
         }
 
+        private void ExportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<AudioSource> audioSources = new();
+            foreach (ListViewItem item in fileListView.SelectedItems)
+            {
+                audioSources.Add((AudioSource)item.Tag);
+            }
+            ExportBank(audioSources.ToArray());
+        }
+
         private void Filter()
         {
             if (filterPredicate is not null)
@@ -369,6 +362,83 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             waveOut.Stop();
             volumeSampleProvider = new VolumeSampleProvider(waveStream.ToSampleProvider()) { Volume = (float)amplifyUpDown.Value };
             waveOut.Init(volumeSampleProvider);
+        }
+
+        private void ExportBank(AudioSource[] audioSources)
+        {
+            FolderBrowserDialog folderBrowser = new();
+
+            if (audioSources.Length == 1)
+            {
+                AudioSource single = audioSources[0];
+                if (single.Tracks.Length == 1)
+                    ExportTrack(single.Tracks[0]);
+                else
+                {
+                    DialogResult result = folderBrowser.ShowDialog();
+                    if (result != DialogResult.OK) return;
+
+                    string selected = folderBrowser.SelectedPath;
+                    string directory = Path.Combine(selected, single.Name);
+
+                    Directory.CreateDirectory(directory);
+
+                    Task.Run(() =>
+                    {
+                        foreach (var track in single.Tracks)
+                        {
+                            UmaWaveStream copy = (UmaWaveStream)track.WaveStream;
+                            copy.Loop = false;
+                            WaveFileWriter.CreateWaveFile16(Path.Combine(directory, track.Name + ".wav"), copy.ToSampleProvider());
+
+                            copy.Dispose();
+                            Invoke(() => exportButton.Enabled = true);
+                        }
+
+                        MessageBox.Show("Export complete.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    });
+                }
+            }
+            else
+            {
+                DialogResult result = folderBrowser.ShowDialog();
+                if (result != DialogResult.OK) return;
+
+                string directory = folderBrowser.SelectedPath;
+
+                ControlHelpers.ShowFormCenter(new MultipleExportDialog(audioSources, directory), this);
+            }
+        }
+
+        private void ExportTrack(IAudioTrack audioTrack)
+        {
+            SaveFileDialog save = new()
+            {
+                FileName = audioTrack.Name,
+                Filter = "16-bit PCM WAV|*.wav"
+            };
+
+            DialogResult result = save.ShowDialog();
+            if (result != DialogResult.OK) return;
+
+            exportButton.Enabled = false;
+            Task.Run(() =>
+            {
+                UmaWaveStream copy = (UmaWaveStream)audioTrack.WaveStream;
+                copy.Loop = false;
+
+                WaveFileWriter.CreateWaveFile16(save.FileName,
+                    new VolumeSampleProvider(copy.ToSampleProvider())
+                    {
+                        Volume = (float)amplifyUpDown.Value
+                    });
+
+                MessageBox.Show("Export complete.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                copy.Dispose();
+
+                Invoke(() => exportButton.Enabled = true);
+            });
         }
     }
 }

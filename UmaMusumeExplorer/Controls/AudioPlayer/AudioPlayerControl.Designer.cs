@@ -34,6 +34,8 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             fileListView = new System.Windows.Forms.ListView();
             nameHeader = new System.Windows.Forms.ColumnHeader();
             tracksHeader = new System.Windows.Forms.ColumnHeader();
+            multiSelectContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(components);
+            exportSelectedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             loadingBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             tracksComboBox = new System.Windows.Forms.ComboBox();
             loadingProgressBar = new System.Windows.Forms.ProgressBar();
@@ -50,7 +52,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             amplifyUpDown = new System.Windows.Forms.NumericUpDown();
             amplifyLabel = new System.Windows.Forms.Label();
             configureLoopButton = new System.Windows.Forms.Button();
-            saveButton = new System.Windows.Forms.Button();
+            exportButton = new System.Windows.Forms.Button();
             timeLengthLabel = new System.Windows.Forms.Label();
             timeElapsedLabel = new System.Windows.Forms.Label();
             seekTrackBar = new System.Windows.Forms.TrackBar();
@@ -61,6 +63,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             nextBankButton = new System.Windows.Forms.Button();
             playButton = new System.Windows.Forms.Button();
             updateTimer = new System.Windows.Forms.Timer(components);
+            multiSelectContextMenuStrip.SuspendLayout();
             tableLayoutPanel.SuspendLayout();
             leftPanel.SuspendLayout();
             rightPanel.SuspendLayout();
@@ -73,13 +76,14 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             // 
             resources.ApplyResources(fileListView, "fileListView");
             fileListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] { nameHeader, tracksHeader });
+            fileListView.ContextMenuStrip = multiSelectContextMenuStrip;
             fileListView.FullRowSelect = true;
-            fileListView.MultiSelect = false;
             fileListView.Name = "fileListView";
             fileListView.Sorting = System.Windows.Forms.SortOrder.Ascending;
             fileListView.UseCompatibleStateImageBehavior = false;
             fileListView.View = System.Windows.Forms.View.Details;
             fileListView.ItemActivate += FileListView_ItemActivate;
+            fileListView.KeyDown += FileListView_KeyDown;
             // 
             // nameHeader
             // 
@@ -88,6 +92,18 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             // tracksHeader
             // 
             resources.ApplyResources(tracksHeader, "tracksHeader");
+            // 
+            // multiSelectContextMenuStrip
+            // 
+            multiSelectContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { exportSelectedToolStripMenuItem });
+            multiSelectContextMenuStrip.Name = "multiSelectContextMenuStrip";
+            resources.ApplyResources(multiSelectContextMenuStrip, "multiSelectContextMenuStrip");
+            // 
+            // exportSelectedToolStripMenuItem
+            // 
+            exportSelectedToolStripMenuItem.Name = "exportSelectedToolStripMenuItem";
+            resources.ApplyResources(exportSelectedToolStripMenuItem, "exportSelectedToolStripMenuItem");
+            exportSelectedToolStripMenuItem.Click += ExportToolStripMenuItem_Click;
             // 
             // loadingBackgroundWorker
             // 
@@ -180,7 +196,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             rightPanel.Controls.Add(amplifyUpDown);
             rightPanel.Controls.Add(amplifyLabel);
             rightPanel.Controls.Add(configureLoopButton);
-            rightPanel.Controls.Add(saveButton);
+            rightPanel.Controls.Add(exportButton);
             rightPanel.Controls.Add(timeLengthLabel);
             rightPanel.Controls.Add(timeElapsedLabel);
             rightPanel.Controls.Add(seekTrackBar);
@@ -211,12 +227,12 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             configureLoopButton.UseVisualStyleBackColor = true;
             configureLoopButton.Click += ConfigureLoopButton_Click;
             // 
-            // saveButton
+            // exportButton
             // 
-            resources.ApplyResources(saveButton, "saveButton");
-            saveButton.Name = "saveButton";
-            saveButton.UseVisualStyleBackColor = true;
-            saveButton.Click += SaveButton_Click;
+            resources.ApplyResources(exportButton, "exportButton");
+            exportButton.Name = "exportButton";
+            exportButton.UseVisualStyleBackColor = true;
+            exportButton.Click += ExportButton_Click;
             // 
             // timeLengthLabel
             // 
@@ -292,6 +308,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             Controls.Add(tableLayoutPanel);
             Name = "AudioPlayerControl";
             Load += AudioPlayerControl_Load;
+            multiSelectContextMenuStrip.ResumeLayout(false);
             tableLayoutPanel.ResumeLayout(false);
             leftPanel.ResumeLayout(false);
             leftPanel.PerformLayout();
@@ -323,7 +340,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
         private System.Windows.Forms.Timer updateTimer;
         private System.Windows.Forms.Label timeLengthLabel;
         private System.Windows.Forms.Label timeElapsedLabel;
-        private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Button exportButton;
         private System.Windows.Forms.Label loadingFileNameLabel;
         private System.Windows.Forms.Button configureLoopButton;
         private System.Windows.Forms.Label amplifyLabel;
@@ -334,5 +351,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
         private System.Windows.Forms.TextBox searchBox;
         private System.Windows.Forms.Button filterButton;
         private System.Windows.Forms.Label searchLabel;
+        private System.Windows.Forms.ContextMenuStrip multiSelectContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem exportSelectedToolStripMenuItem;
     }
 }

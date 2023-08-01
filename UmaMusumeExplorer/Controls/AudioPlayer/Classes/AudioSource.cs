@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UmaMusumeExplorer.Controls.AudioPlayer.Classes
 {
-    internal abstract class AudioSource
+    public abstract class AudioSource
     {
         private IAudioTrack[] tracks;
 
@@ -19,7 +19,6 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer.Classes
             get
             {
                 tracks ??= InitializeTracks();
-
                 return tracks;
             }
         }

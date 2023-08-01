@@ -3,7 +3,7 @@ using System;
 
 namespace UmaMusumeExplorer.Controls.AudioPlayer.Classes
 {
-    internal interface IAudioTrack
+    public interface IAudioTrack
     {
         public string Name { get; }
 
