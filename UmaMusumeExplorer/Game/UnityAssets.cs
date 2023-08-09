@@ -38,7 +38,7 @@ namespace UmaMusumeExplorer.Game
             imagePointerContainers.Clear();
         }
 
-        public static PinnedBitmap GetCharaIcon(int id, int raceDressId = 0)
+        public static PinnedBitmap GetCharaIcon(int id, int raceDressId = 0, int plate = 1)
         {
             if (!charaIconsLoaded)
             {
@@ -69,7 +69,7 @@ namespace UmaMusumeExplorer.Game
             }
 
             if (raceDressId > 0)
-                imageStringBuilder.Append($"_{raceDressId:d6}_02");
+                imageStringBuilder.Append($"_{raceDressId:d6}_{plate:d2}");
 
             string imageString = imageStringBuilder.ToString();
 

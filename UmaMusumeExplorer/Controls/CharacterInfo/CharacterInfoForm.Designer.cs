@@ -60,8 +60,8 @@
             // 
             // cardInfoControl
             // 
-            resources.ApplyResources(cardInfoControl, "cardInfoControl");
             cardInfoControl.CharaData = null;
+            resources.ApplyResources(cardInfoControl, "cardInfoControl");
             cardInfoControl.Name = "cardInfoControl";
             // 
             // voiceLinesTabPage
@@ -102,7 +102,6 @@
             FormClosing += CharacterInfoForm_FormClosing;
             characterInfoTabControl.ResumeLayout(false);
             characterInfoTabPage.ResumeLayout(false);
-            characterInfoTabPage.PerformLayout();
             voiceLinesTabPage.ResumeLayout(false);
             songsTabPage.ResumeLayout(false);
             ResumeLayout(false);

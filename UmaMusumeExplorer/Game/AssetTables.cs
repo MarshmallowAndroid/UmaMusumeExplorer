@@ -34,13 +34,10 @@ namespace UmaMusumeExplorer.Game
                 () => { SkillSets = UmaDataHelper.GetMasterDatabaseRows<SkillSet>(); return "SkillSets"; },
                 () => { SkillDatas = UmaDataHelper.GetMasterDatabaseRows<SkillData>(); return "SkillDatas"; },
 
-                () => { CharaNameTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 170); return "CharaNameTextDatas"; },
-                () => { CharaNameKatakanaTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 182); return "CharaNameKatakanaTextDatas"; },
-                () => { CharaVoiceNameTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 7); return "CharaVoiceNameTextDatas"; },
-                () => { CharaCostumeNameTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 5); return "CharaCostumeNameTextDatas"; },
+                () => { SingleModeSkillNeedPoints = UmaDataHelper.GetMasterDatabaseRows<SingleModeSkillNeedPoint>(); return "SingleModeSkillNeedPoints"; },
 
-                () => { LiveNameTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 16); return "LiveNameTextDatas"; },
-                () => { LiveInfoTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 17); return "LiveInfoTextDatas"; },
+                () => { SkillUpgradeConditions = UmaDataHelper.GetMasterDatabaseRows<SkillUpgradeCondition>(); return "SkillUpgradeConditions"; },
+                () => { SkillUpgradeDescriptions = UmaDataHelper.GetMasterDatabaseRows<SkillUpgradeDescription>(); return "SkillUpgradeDescriptions"; },
 
                 () => { TextData = UmaDataHelper.GetMasterDatabaseRows<TextData>(); return "TextData"; }
             };
@@ -80,13 +77,10 @@ namespace UmaMusumeExplorer.Game
         public static IEnumerable<SkillSet> SkillSets { get; private set; }
         public static IEnumerable<SkillData> SkillDatas { get; private set; }
 
-        public static IEnumerable<TextData> CharaCostumeNameTextDatas { get; private set; }
-        public static IEnumerable<TextData> CharaNameKatakanaTextDatas { get; private set; }
-        public static IEnumerable<TextData> CharaNameTextDatas { get; private set; }
-        public static IEnumerable<TextData> CharaVoiceNameTextDatas { get; private set; }
+        public static IEnumerable<SingleModeSkillNeedPoint> SingleModeSkillNeedPoints { get; private set; }
 
-        public static IEnumerable<TextData> LiveNameTextDatas { get; private set; }
-        public static IEnumerable<TextData> LiveInfoTextDatas { get; private set; }
+        public static IEnumerable<SkillUpgradeCondition> SkillUpgradeConditions { get; private set; }
+        public static IEnumerable<SkillUpgradeDescription> SkillUpgradeDescriptions { get; private set; }
 
         public static IEnumerable<TextData> TextData { get; private set; }
 

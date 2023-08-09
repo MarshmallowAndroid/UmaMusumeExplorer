@@ -32,6 +32,9 @@
             skillNameLabel = new System.Windows.Forms.Label();
             skillDescriptionLabel = new System.Windows.Forms.Label();
             closeButton = new System.Windows.Forms.Button();
+            skillPointHint = new System.Windows.Forms.Label();
+            skillPointNeededLabel = new System.Windows.Forms.Label();
+            evolutionButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox).BeginInit();
             SuspendLayout();
             // 
@@ -56,15 +59,15 @@
             skillNameLabel.Text = "Skill name";
             skillNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // skillInfoLabel
+            // skillDescriptionLabel
             // 
-            skillInfoLabel.BackColor = System.Drawing.Color.Transparent;
-            skillInfoLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            skillInfoLabel.Location = new System.Drawing.Point(114, 40);
-            skillInfoLabel.Name = "skillInfoLabel";
-            skillInfoLabel.Size = new System.Drawing.Size(389, 68);
-            skillInfoLabel.TabIndex = 1;
-            skillInfoLabel.Text = "Skill info";
+            skillDescriptionLabel.BackColor = System.Drawing.Color.Transparent;
+            skillDescriptionLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            skillDescriptionLabel.Location = new System.Drawing.Point(120, 39);
+            skillDescriptionLabel.Name = "skillDescriptionLabel";
+            skillDescriptionLabel.Size = new System.Drawing.Size(384, 75);
+            skillDescriptionLabel.TabIndex = 1;
+            skillDescriptionLabel.Text = "Skill description";
             // 
             // closeButton
             // 
@@ -76,13 +79,51 @@
             closeButton.UseVisualStyleBackColor = true;
             closeButton.Click += CloseButton_Click;
             // 
+            // skillPointHint
+            // 
+            skillPointHint.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            skillPointHint.AutoSize = true;
+            skillPointHint.BackColor = System.Drawing.Color.White;
+            skillPointHint.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            skillPointHint.Location = new System.Drawing.Point(475, 18);
+            skillPointHint.Name = "skillPointHint";
+            skillPointHint.Size = new System.Drawing.Size(63, 21);
+            skillPointHint.TabIndex = 2;
+            skillPointHint.Text = "Skill Pt";
+            skillPointHint.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            skillPointHint.Visible = false;
+            // 
+            // skillPointNeededLabel
+            // 
+            skillPointNeededLabel.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            skillPointNeededLabel.BackColor = System.Drawing.Color.Transparent;
+            skillPointNeededLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            skillPointNeededLabel.Location = new System.Drawing.Point(544, 18);
+            skillPointNeededLabel.Name = "skillPointNeededLabel";
+            skillPointNeededLabel.Size = new System.Drawing.Size(39, 21);
+            skillPointNeededLabel.TabIndex = 3;
+            skillPointNeededLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // evolutionButton
+            // 
+            evolutionButton.Location = new System.Drawing.Point(18, 120);
+            evolutionButton.Name = "evolutionButton";
+            evolutionButton.Size = new System.Drawing.Size(96, 23);
+            evolutionButton.TabIndex = 4;
+            evolutionButton.Text = "Evolution";
+            evolutionButton.UseVisualStyleBackColor = true;
+            evolutionButton.Visible = false;
+            // 
             // SkillInfoForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(515, 175);
+            ClientSize = new System.Drawing.Size(601, 177);
+            Controls.Add(evolutionButton);
             Controls.Add(closeButton);
-            Controls.Add(skillInfoLabel);
+            Controls.Add(skillDescriptionLabel);
+            Controls.Add(skillPointNeededLabel);
+            Controls.Add(skillPointHint);
             Controls.Add(skillNameLabel);
             Controls.Add(iconPictureBox);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -91,16 +132,22 @@
             Name = "SkillInfoForm";
             Padding = new System.Windows.Forms.Padding(15);
             StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            Text = "SkillInfoForm";
+            MouseDown += SkillInfoForm_MouseDown;
+            MouseMove += SkillInfoForm_MouseMove;
+            MouseUp += SkillInfoForm_MouseUp;
             ((System.ComponentModel.ISupportInitialize)iconPictureBox).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private System.Windows.Forms.Label skillNameLabel;
-        private System.Windows.Forms.Label skillInfoLabel;
+        private System.Windows.Forms.Label skillDescriptionLabel;
         private System.Windows.Forms.Button closeButton;
         private Common.HighQualityPictureBox iconPictureBox;
+        private System.Windows.Forms.Label skillPointHint;
+        private System.Windows.Forms.Label skillPointNeededLabel;
+        private System.Windows.Forms.Button evolutionButton;
     }
 }

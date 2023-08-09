@@ -74,6 +74,8 @@
             wisdomStatusDisplayLabel = new StatusDisplayLabel();
             rarityComboBox = new System.Windows.Forms.ComboBox();
             rarityHintLabel = new System.Windows.Forms.Label();
+            levelHintLabel = new System.Windows.Forms.Label();
+            levelComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox).BeginInit();
             belowNameTablePanel.SuspendLayout();
             aptitudeTableLayoutPanel.SuspendLayout();
@@ -93,12 +95,12 @@
             // 
             // skillsTableLayoutPanel
             // 
-            skillsTableLayoutPanel.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            skillsTableLayoutPanel.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             skillsTableLayoutPanel.AutoScroll = true;
             skillsTableLayoutPanel.ColumnCount = 2;
             skillsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             skillsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            skillsTableLayoutPanel.Location = new System.Drawing.Point(2, 507);
+            skillsTableLayoutPanel.Location = new System.Drawing.Point(2, 510);
             skillsTableLayoutPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             skillsTableLayoutPanel.Name = "skillsTableLayoutPanel";
             skillsTableLayoutPanel.RowCount = 4;
@@ -106,8 +108,8 @@
             skillsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             skillsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             skillsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            skillsTableLayoutPanel.Size = new System.Drawing.Size(596, 220);
-            skillsTableLayoutPanel.TabIndex = 12;
+            skillsTableLayoutPanel.Size = new System.Drawing.Size(563, 261);
+            skillsTableLayoutPanel.TabIndex = 14;
             // 
             // belowNameTablePanel
             // 
@@ -124,7 +126,7 @@
             belowNameTablePanel.RowCount = 2;
             belowNameTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             belowNameTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            belowNameTablePanel.Size = new System.Drawing.Size(388, 73);
+            belowNameTablePanel.Size = new System.Drawing.Size(407, 73);
             belowNameTablePanel.TabIndex = 2;
             // 
             // genderHintLabel
@@ -175,10 +177,11 @@
             // 
             skillsLabel.AutoSize = true;
             skillsLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            skillsLabel.Location = new System.Drawing.Point(2, 488);
+            skillsLabel.Location = new System.Drawing.Point(2, 491);
+            skillsLabel.Margin = new System.Windows.Forms.Padding(3, 9, 3, 0);
             skillsLabel.Name = "skillsLabel";
             skillsLabel.Size = new System.Drawing.Size(33, 15);
-            skillsLabel.TabIndex = 11;
+            skillsLabel.TabIndex = 13;
             skillsLabel.Text = "Skills";
             // 
             // nameLabel
@@ -196,10 +199,11 @@
             // 
             growthRateLabel.AutoSize = true;
             growthRateLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            growthRateLabel.Location = new System.Drawing.Point(2, 421);
+            growthRateLabel.Location = new System.Drawing.Point(2, 424);
+            growthRateLabel.Margin = new System.Windows.Forms.Padding(3, 9, 3, 0);
             growthRateLabel.Name = "growthRateLabel";
             growthRateLabel.Size = new System.Drawing.Size(69, 15);
-            growthRateLabel.TabIndex = 9;
+            growthRateLabel.TabIndex = 11;
             growthRateLabel.Text = "Growth rate";
             // 
             // cvNameLabel
@@ -242,18 +246,18 @@
             aptitudeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             aptitudeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             aptitudeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            aptitudeTableLayoutPanel.Size = new System.Drawing.Size(596, 118);
-            aptitudeTableLayoutPanel.TabIndex = 8;
+            aptitudeTableLayoutPanel.Size = new System.Drawing.Size(563, 118);
+            aptitudeTableLayoutPanel.TabIndex = 10;
             // 
             // driveInRankedLabel
             // 
             driveInRankedLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             driveInRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            driveInRankedLabel.Location = new System.Drawing.Point(479, 83);
+            driveInRankedLabel.Location = new System.Drawing.Point(451, 83);
             driveInRankedLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             driveInRankedLabel.Name = "driveInRankedLabel";
             driveInRankedLabel.Rank = RankedLabel.RankedLabelRank.Unknown;
-            driveInRankedLabel.Size = new System.Drawing.Size(114, 30);
+            driveInRankedLabel.Size = new System.Drawing.Size(109, 30);
             driveInRankedLabel.TabIndex = 12;
             driveInRankedLabel.Text = "Drive-in";
             // 
@@ -261,11 +265,11 @@
             // 
             dirtRankedLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             dirtRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            dirtRankedLabel.Location = new System.Drawing.Point(241, 5);
+            dirtRankedLabel.Location = new System.Drawing.Point(227, 5);
             dirtRankedLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             dirtRankedLabel.Name = "dirtRankedLabel";
             dirtRankedLabel.Rank = RankedLabel.RankedLabelRank.Unknown;
-            dirtRankedLabel.Size = new System.Drawing.Size(112, 29);
+            dirtRankedLabel.Size = new System.Drawing.Size(106, 29);
             dirtRankedLabel.TabIndex = 2;
             dirtRankedLabel.Text = "Dirt";
             // 
@@ -273,11 +277,11 @@
             // 
             turfRankedLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             turfRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            turfRankedLabel.Location = new System.Drawing.Point(122, 5);
+            turfRankedLabel.Location = new System.Drawing.Point(115, 5);
             turfRankedLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             turfRankedLabel.Name = "turfRankedLabel";
             turfRankedLabel.Rank = RankedLabel.RankedLabelRank.Unknown;
-            turfRankedLabel.Size = new System.Drawing.Size(112, 29);
+            turfRankedLabel.Size = new System.Drawing.Size(106, 29);
             turfRankedLabel.TabIndex = 1;
             turfRankedLabel.Text = "Turf";
             // 
@@ -318,11 +322,11 @@
             // 
             shortRankedLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             shortRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            shortRankedLabel.Location = new System.Drawing.Point(122, 44);
+            shortRankedLabel.Location = new System.Drawing.Point(115, 44);
             shortRankedLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             shortRankedLabel.Name = "shortRankedLabel";
             shortRankedLabel.Rank = RankedLabel.RankedLabelRank.Unknown;
-            shortRankedLabel.Size = new System.Drawing.Size(112, 29);
+            shortRankedLabel.Size = new System.Drawing.Size(106, 29);
             shortRankedLabel.TabIndex = 4;
             shortRankedLabel.Text = "Short";
             // 
@@ -330,11 +334,11 @@
             // 
             mileRankedLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             mileRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            mileRankedLabel.Location = new System.Drawing.Point(241, 44);
+            mileRankedLabel.Location = new System.Drawing.Point(227, 44);
             mileRankedLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             mileRankedLabel.Name = "mileRankedLabel";
             mileRankedLabel.Rank = RankedLabel.RankedLabelRank.Unknown;
-            mileRankedLabel.Size = new System.Drawing.Size(112, 29);
+            mileRankedLabel.Size = new System.Drawing.Size(106, 29);
             mileRankedLabel.TabIndex = 5;
             mileRankedLabel.Text = "Mile";
             // 
@@ -342,11 +346,11 @@
             // 
             middleRankedLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             middleRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            middleRankedLabel.Location = new System.Drawing.Point(360, 44);
+            middleRankedLabel.Location = new System.Drawing.Point(339, 44);
             middleRankedLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             middleRankedLabel.Name = "middleRankedLabel";
             middleRankedLabel.Rank = RankedLabel.RankedLabelRank.Unknown;
-            middleRankedLabel.Size = new System.Drawing.Size(112, 29);
+            middleRankedLabel.Size = new System.Drawing.Size(106, 29);
             middleRankedLabel.TabIndex = 6;
             middleRankedLabel.Text = "Middle";
             // 
@@ -354,11 +358,11 @@
             // 
             longRankedLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             longRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            longRankedLabel.Location = new System.Drawing.Point(479, 44);
+            longRankedLabel.Location = new System.Drawing.Point(451, 44);
             longRankedLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             longRankedLabel.Name = "longRankedLabel";
             longRankedLabel.Rank = RankedLabel.RankedLabelRank.Unknown;
-            longRankedLabel.Size = new System.Drawing.Size(114, 29);
+            longRankedLabel.Size = new System.Drawing.Size(109, 29);
             longRankedLabel.TabIndex = 7;
             longRankedLabel.Text = "Long";
             // 
@@ -366,11 +370,11 @@
             // 
             escapeRankedLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             escapeRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            escapeRankedLabel.Location = new System.Drawing.Point(122, 83);
+            escapeRankedLabel.Location = new System.Drawing.Point(115, 83);
             escapeRankedLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             escapeRankedLabel.Name = "escapeRankedLabel";
             escapeRankedLabel.Rank = RankedLabel.RankedLabelRank.Unknown;
-            escapeRankedLabel.Size = new System.Drawing.Size(112, 30);
+            escapeRankedLabel.Size = new System.Drawing.Size(106, 30);
             escapeRankedLabel.TabIndex = 9;
             escapeRankedLabel.Text = "Escape";
             // 
@@ -378,11 +382,11 @@
             // 
             leadingRankedLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             leadingRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            leadingRankedLabel.Location = new System.Drawing.Point(241, 83);
+            leadingRankedLabel.Location = new System.Drawing.Point(227, 83);
             leadingRankedLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             leadingRankedLabel.Name = "leadingRankedLabel";
             leadingRankedLabel.Rank = RankedLabel.RankedLabelRank.Unknown;
-            leadingRankedLabel.Size = new System.Drawing.Size(112, 30);
+            leadingRankedLabel.Size = new System.Drawing.Size(106, 30);
             leadingRankedLabel.TabIndex = 10;
             leadingRankedLabel.Text = "Leading";
             // 
@@ -390,11 +394,11 @@
             // 
             insertRankedLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             insertRankedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            insertRankedLabel.Location = new System.Drawing.Point(360, 83);
+            insertRankedLabel.Location = new System.Drawing.Point(339, 83);
             insertRankedLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             insertRankedLabel.Name = "insertRankedLabel";
             insertRankedLabel.Rank = RankedLabel.RankedLabelRank.Unknown;
-            insertRankedLabel.Size = new System.Drawing.Size(112, 30);
+            insertRankedLabel.Size = new System.Drawing.Size(106, 30);
             insertRankedLabel.TabIndex = 11;
             insertRankedLabel.Text = "Insert";
             // 
@@ -424,14 +428,14 @@
             growthRateTableLayoutPanel.Controls.Add(powerGrowthLabel, 2, 0);
             growthRateTableLayoutPanel.Controls.Add(gutsGrowthLabel, 3, 0);
             growthRateTableLayoutPanel.Controls.Add(wisdomGrowthLabel, 4, 0);
-            growthRateTableLayoutPanel.Location = new System.Drawing.Point(2, 440);
+            growthRateTableLayoutPanel.Location = new System.Drawing.Point(2, 443);
             growthRateTableLayoutPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             growthRateTableLayoutPanel.Name = "growthRateTableLayoutPanel";
             growthRateTableLayoutPanel.RowCount = 1;
             growthRateTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             growthRateTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
-            growthRateTableLayoutPanel.Size = new System.Drawing.Size(596, 35);
-            growthRateTableLayoutPanel.TabIndex = 10;
+            growthRateTableLayoutPanel.Size = new System.Drawing.Size(563, 35);
+            growthRateTableLayoutPanel.TabIndex = 12;
             // 
             // speedGrowthLabel
             // 
@@ -439,7 +443,7 @@
             speedGrowthLabel.AutoSize = true;
             speedGrowthLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             speedGrowthLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            speedGrowthLabel.Location = new System.Drawing.Point(43, 7);
+            speedGrowthLabel.Location = new System.Drawing.Point(40, 7);
             speedGrowthLabel.Name = "speedGrowthLabel";
             speedGrowthLabel.Size = new System.Drawing.Size(33, 21);
             speedGrowthLabel.TabIndex = 0;
@@ -451,7 +455,7 @@
             staminaGrowthLabel.AutoSize = true;
             staminaGrowthLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             staminaGrowthLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            staminaGrowthLabel.Location = new System.Drawing.Point(162, 7);
+            staminaGrowthLabel.Location = new System.Drawing.Point(152, 7);
             staminaGrowthLabel.Name = "staminaGrowthLabel";
             staminaGrowthLabel.Size = new System.Drawing.Size(33, 21);
             staminaGrowthLabel.TabIndex = 1;
@@ -463,7 +467,7 @@
             powerGrowthLabel.AutoSize = true;
             powerGrowthLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             powerGrowthLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            powerGrowthLabel.Location = new System.Drawing.Point(281, 7);
+            powerGrowthLabel.Location = new System.Drawing.Point(264, 7);
             powerGrowthLabel.Name = "powerGrowthLabel";
             powerGrowthLabel.Size = new System.Drawing.Size(33, 21);
             powerGrowthLabel.TabIndex = 2;
@@ -475,7 +479,7 @@
             gutsGrowthLabel.AutoSize = true;
             gutsGrowthLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             gutsGrowthLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            gutsGrowthLabel.Location = new System.Drawing.Point(400, 7);
+            gutsGrowthLabel.Location = new System.Drawing.Point(376, 7);
             gutsGrowthLabel.Name = "gutsGrowthLabel";
             gutsGrowthLabel.Size = new System.Drawing.Size(33, 21);
             gutsGrowthLabel.TabIndex = 3;
@@ -487,7 +491,7 @@
             wisdomGrowthLabel.AutoSize = true;
             wisdomGrowthLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             wisdomGrowthLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            wisdomGrowthLabel.Location = new System.Drawing.Point(519, 7);
+            wisdomGrowthLabel.Location = new System.Drawing.Point(489, 7);
             wisdomGrowthLabel.Name = "wisdomGrowthLabel";
             wisdomGrowthLabel.Size = new System.Drawing.Size(33, 21);
             wisdomGrowthLabel.TabIndex = 4;
@@ -529,15 +533,15 @@
             statsTablePanel.RowCount = 2;
             statsTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             statsTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            statsTablePanel.Size = new System.Drawing.Size(596, 94);
-            statsTablePanel.TabIndex = 7;
+            statsTablePanel.Size = new System.Drawing.Size(563, 94);
+            statsTablePanel.TabIndex = 9;
             // 
             // speedStatusDisplayLabel
             // 
             speedStatusDisplayLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             speedStatusDisplayLabel.AutoSize = true;
             speedStatusDisplayLabel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            speedStatusDisplayLabel.Location = new System.Drawing.Point(17, 25);
+            speedStatusDisplayLabel.Location = new System.Drawing.Point(13, 25);
             speedStatusDisplayLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             speedStatusDisplayLabel.MaxValue = 1200;
             speedStatusDisplayLabel.Name = "speedStatusDisplayLabel";
@@ -550,7 +554,7 @@
             speedHintLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             speedHintLabel.AutoSize = true;
             speedHintLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            speedHintLabel.Location = new System.Drawing.Point(40, 1);
+            speedHintLabel.Location = new System.Drawing.Point(37, 1);
             speedHintLabel.Name = "speedHintLabel";
             speedHintLabel.Size = new System.Drawing.Size(39, 15);
             speedHintLabel.TabIndex = 0;
@@ -561,7 +565,7 @@
             staminaHintLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             staminaHintLabel.AutoSize = true;
             staminaHintLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            staminaHintLabel.Location = new System.Drawing.Point(154, 1);
+            staminaHintLabel.Location = new System.Drawing.Point(143, 1);
             staminaHintLabel.Name = "staminaHintLabel";
             staminaHintLabel.Size = new System.Drawing.Size(50, 15);
             staminaHintLabel.TabIndex = 2;
@@ -572,7 +576,7 @@
             powerHintLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             powerHintLabel.AutoSize = true;
             powerHintLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            powerHintLabel.Location = new System.Drawing.Point(278, 1);
+            powerHintLabel.Location = new System.Drawing.Point(260, 1);
             powerHintLabel.Name = "powerHintLabel";
             powerHintLabel.Size = new System.Drawing.Size(40, 15);
             powerHintLabel.TabIndex = 4;
@@ -583,7 +587,7 @@
             gutsHintLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             gutsHintLabel.AutoSize = true;
             gutsHintLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            gutsHintLabel.Location = new System.Drawing.Point(401, 1);
+            gutsHintLabel.Location = new System.Drawing.Point(377, 1);
             gutsHintLabel.Name = "gutsHintLabel";
             gutsHintLabel.Size = new System.Drawing.Size(31, 15);
             gutsHintLabel.TabIndex = 6;
@@ -594,7 +598,7 @@
             wisdomHintLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             wisdomHintLabel.AutoSize = true;
             wisdomHintLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            wisdomHintLabel.Location = new System.Drawing.Point(510, 1);
+            wisdomHintLabel.Location = new System.Drawing.Point(480, 1);
             wisdomHintLabel.Name = "wisdomHintLabel";
             wisdomHintLabel.Size = new System.Drawing.Size(51, 15);
             wisdomHintLabel.TabIndex = 8;
@@ -605,7 +609,7 @@
             staminaStatusDisplayLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             staminaStatusDisplayLabel.AutoSize = true;
             staminaStatusDisplayLabel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            staminaStatusDisplayLabel.Location = new System.Drawing.Point(136, 25);
+            staminaStatusDisplayLabel.Location = new System.Drawing.Point(125, 25);
             staminaStatusDisplayLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             staminaStatusDisplayLabel.MaxValue = 1200;
             staminaStatusDisplayLabel.Name = "staminaStatusDisplayLabel";
@@ -618,7 +622,7 @@
             powerStatusDisplayLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             powerStatusDisplayLabel.AutoSize = true;
             powerStatusDisplayLabel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            powerStatusDisplayLabel.Location = new System.Drawing.Point(255, 25);
+            powerStatusDisplayLabel.Location = new System.Drawing.Point(237, 25);
             powerStatusDisplayLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             powerStatusDisplayLabel.MaxValue = 1200;
             powerStatusDisplayLabel.Name = "powerStatusDisplayLabel";
@@ -631,7 +635,7 @@
             gutsStatusDisplayLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             gutsStatusDisplayLabel.AutoSize = true;
             gutsStatusDisplayLabel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            gutsStatusDisplayLabel.Location = new System.Drawing.Point(374, 25);
+            gutsStatusDisplayLabel.Location = new System.Drawing.Point(349, 25);
             gutsStatusDisplayLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             gutsStatusDisplayLabel.MaxValue = 1200;
             gutsStatusDisplayLabel.Name = "gutsStatusDisplayLabel";
@@ -644,7 +648,7 @@
             wisdomStatusDisplayLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             wisdomStatusDisplayLabel.AutoSize = true;
             wisdomStatusDisplayLabel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            wisdomStatusDisplayLabel.Location = new System.Drawing.Point(493, 25);
+            wisdomStatusDisplayLabel.Location = new System.Drawing.Point(462, 25);
             wisdomStatusDisplayLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             wisdomStatusDisplayLabel.MaxValue = 1200;
             wisdomStatusDisplayLabel.Name = "wisdomStatusDisplayLabel";
@@ -661,7 +665,7 @@
             rarityComboBox.Name = "rarityComboBox";
             rarityComboBox.Size = new System.Drawing.Size(133, 23);
             rarityComboBox.TabIndex = 6;
-            rarityComboBox.SelectedIndexChanged += RarityComboBox_SelectedIndexChanged;
+            rarityComboBox.SelectedIndexChanged += RarityOrLevelComboBox_SelectedIndexChanged;
             // 
             // rarityHintLabel
             // 
@@ -673,11 +677,31 @@
             rarityHintLabel.TabIndex = 5;
             rarityHintLabel.Text = "Rarity";
             // 
+            // levelHintLabel
+            // 
+            levelHintLabel.AutoSize = true;
+            levelHintLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            levelHintLabel.Location = new System.Drawing.Point(441, 163);
+            levelHintLabel.Name = "levelHintLabel";
+            levelHintLabel.Size = new System.Drawing.Size(34, 15);
+            levelHintLabel.TabIndex = 7;
+            levelHintLabel.Text = "Level";
+            // 
+            // levelComboBox
+            // 
+            levelComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            levelComboBox.FormattingEnabled = true;
+            levelComboBox.Items.AddRange(new object[] { "1", "2", "3", "4", "5" });
+            levelComboBox.Location = new System.Drawing.Point(481, 160);
+            levelComboBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            levelComboBox.Name = "levelComboBox";
+            levelComboBox.Size = new System.Drawing.Size(84, 23);
+            levelComboBox.TabIndex = 8;
+            levelComboBox.SelectedIndexChanged += RarityOrLevelComboBox_SelectedIndexChanged;
+            // 
             // CardInfoControl
             // 
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            AutoSize = true;
-            AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             Controls.Add(iconPictureBox);
             Controls.Add(skillsTableLayoutPanel);
             Controls.Add(belowNameTablePanel);
@@ -690,11 +714,12 @@
             Controls.Add(growthRateTableLayoutPanel);
             Controls.Add(costumeHintLabel);
             Controls.Add(statsTablePanel);
+            Controls.Add(levelComboBox);
             Controls.Add(rarityComboBox);
+            Controls.Add(levelHintLabel);
             Controls.Add(rarityHintLabel);
-            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             Name = "CardInfoControl";
-            Size = new System.Drawing.Size(601, 731);
+            Size = new System.Drawing.Size(568, 775);
             ((System.ComponentModel.ISupportInitialize)iconPictureBox).EndInit();
             belowNameTablePanel.ResumeLayout(false);
             belowNameTablePanel.PerformLayout();
@@ -756,5 +781,7 @@
         private StatusDisplayLabel wisdomStatusDisplayLabel;
         private System.Windows.Forms.ComboBox rarityComboBox;
         private System.Windows.Forms.Label rarityHintLabel;
+        private System.Windows.Forms.Label levelHintLabel;
+        private System.Windows.Forms.ComboBox levelComboBox;
     }
 }

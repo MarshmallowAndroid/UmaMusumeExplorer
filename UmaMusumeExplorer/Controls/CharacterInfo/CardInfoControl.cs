@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,6 +17,8 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 {
     public partial class CardInfoControl : UserControl
     {
+        private readonly IEnumerable<SkillData> skillDatas = AssetTables.SkillDatas;
+
         private CharaData charaData;
         private PinnedBitmap iconPinnedBitmap;
 
@@ -33,10 +36,10 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
             set
             {
-                charaData = value;
+                if (value is null) return;
 
-                if (charaData is not null)
-                    LoadCharaData();
+                charaData = value;
+                LoadCharaData();
             }
         }
 
@@ -58,29 +61,22 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
                 iconPinnedBitmap = UnityAssets.GetCharaIcon(cardData.CharaId);
                 iconPictureBox.Image = iconPinnedBitmap.Bitmap;
 
-                UpdateStats(cardData, new CardRarityData());
+                UpdateStats(cardData, new CardRarityData(), levelComboBox.SelectedIndex + 1);
             }
+
+            levelComboBox.SelectedIndex = 0;
         }
 
-        private void RarityComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void RarityOrLevelComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CardData cardData = (costumeComboBox.SelectedItem as CostumeComboBoxItem).CardData;
-            CardRarityData rarityData = (rarityComboBox.SelectedItem as RarityComboBoxItem).CardRarityData;
-
-            rarityData ??= new();
-
-            iconPinnedBitmap.Dispose();
-            iconPinnedBitmap = UnityAssets.GetCharaIcon(cardData.CharaId, rarityData.RaceDressId);
-            iconPictureBox.Image = iconPinnedBitmap.Bitmap;
-
-            UpdateStats(cardData, rarityData);
+            UpdateIconAndStats();
         }
 
         private void SkillButton_Click(object sender, EventArgs e)
         {
-            SkillButtonSmall skillButton = sender as SkillButtonSmall;
+            SkillSmall skillSmall = sender as SkillSmall;
 
-            ControlHelpers.ShowFormDialogCenter(new SkillInfoForm((int)skillButton.Tag), this);
+            ControlHelpers.ShowFormDialogCenter(new SkillInfoForm(skillSmall.Skill, skillSmall.EvolveSkill), this);
         }
 
         private void LoadCharaData()
@@ -122,7 +118,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
                 costumeComboBox.SelectedIndex = 0;
         }
 
-        private void UpdateStats(CardData cardData, CardRarityData cardRarityData)
+        private void UpdateStats(CardData cardData, CardRarityData cardRarityData, int level)
         {
             speedStatusDisplayLabel.Value = cardRarityData.Speed;
             staminaStatusDisplayLabel.Value = cardRarityData.Stamina;
@@ -155,16 +151,16 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             if (uniqueSkillSet is not null)
             {
                 IEnumerable<AvailableSkillSet> availableSkillSet = AssetTables.AvailableSkillSets
-                    .Where(a => a.AvailableSkillSetId == cardData.AvailableSkillSetId)
+                    .Where(a => a.AvailableSkillSetId == cardData.AvailableSkillSetId && a.NeedRank <= level)
                     .OrderBy(a => a.SkillId);
 
-                skillsTableLayoutPanel.Controls.Add(ButtonFromSkillData(uniqueSkillSet.SkillId1, uniqueSkillSet.SkillLevel1), 0, 0);
+                skillsTableLayoutPanel.Controls.Add(ButtonFromSkillId(uniqueSkillSet.SkillId1, cardData.Id, uniqueSkillSet.SkillLevel1), 0, 0);
 
                 int currentColumn = 1;
                 int currentRow = 0;
                 foreach (var availableSkill in availableSkillSet)
                 {
-                    skillsTableLayoutPanel.Controls.Add(ButtonFromSkillData(availableSkill.SkillId), currentColumn % 2, currentRow);
+                    skillsTableLayoutPanel.Controls.Add(ButtonFromSkillId(availableSkill.SkillId, cardData.Id), currentColumn % 2, currentRow);
 
                     currentColumn++;
                     if (currentColumn % 2 == 0)
@@ -173,22 +169,46 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             }
         }
 
-        private SkillButtonSmall ButtonFromSkillData(int skillId, int level = 0)
+        private void UpdateIconAndStats()
         {
-            SkillData skill = AssetTables.SkillDatas.First(s => s.Id == skillId);
-            SkillButtonSmall skillButton = new()
+            CardData cardData = (costumeComboBox.SelectedItem as CostumeComboBoxItem).CardData;
+            CardRarityData rarityData = (rarityComboBox.SelectedItem as RarityComboBoxItem).CardRarityData;
+
+            rarityData ??= new();
+
+            int level = levelComboBox.SelectedIndex + 1;
+
+            iconPinnedBitmap.Dispose();
+            iconPinnedBitmap = UnityAssets.GetCharaIcon(cardData.CharaId, rarityData.RaceDressId, level > 2 ? 2 : 1);
+            iconPictureBox.Image = iconPinnedBitmap.Bitmap;
+
+            UpdateStats(cardData, rarityData, level);
+        }
+
+        private SkillSmall ButtonFromSkillId(int skillId, int cardId, int level = 0)
+        {
+            SkillData skill = skillDatas.First(s => s.Id == skillId);
+
+            SkillData evolveSkill = null;
+
+            if (skill.Rarity > 1)
+            {
+                IEnumerable<SkillData> sameConditions = skillDatas.Where(s => s.Condition1 == skill.Condition1);
+                IEnumerable<SkillUpgradeDescription> evolveSkillDescriptions = AssetTables.SkillUpgradeDescriptions.Where(s => s.CardId == cardId);
+                evolveSkill = sameConditions.Where(s => evolveSkillDescriptions.Where(es => es.SkillId == s.Id).Any()).FirstOrDefault();
+            }
+
+            SkillSmall skillSmall = new(skill)
             {
                 Dock = DockStyle.Fill,
-                IconId = skill.IconId,
-                Rarity = (SkillRarity)skill.Rarity,
+                Background = (SkillBackground)skill.Rarity,
                 SkillLevel = level,
-                SkillName = AssetTables.GetText(AssetTables.SkillNameTextDatas, skillId),
-                Tag = skill.Id
+                EvolveSkill = evolveSkill
             };
 
-            skillButton.SkillClick += SkillButton_Click;
+            skillSmall.SkillClick += SkillButton_Click;
 
-            return skillButton;
+            return skillSmall;
         }
 
         private static Color ColorFromHexString(string hexString)

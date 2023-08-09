@@ -14,6 +14,7 @@ using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Controls.CharacterInfo.Classes;
 using UmaMusumeExplorer.Controls.CharacterInfo;
 using UmaMusumeExplorer.Game;
+using System.Diagnostics;
 using UmaMusumeData;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo
@@ -22,7 +23,10 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
     {
         private readonly SkillBackground rarity;
 
-        public SkillInfoForm(int skillId)
+        private bool dragging = false;
+        private Point clickPoint;
+
+        public SkillInfoForm(SkillData skill, SkillData evolutionSkill)
         {
             InitializeComponent();
 
@@ -35,20 +39,50 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
                 .Replace("\\n", "\n");
             iconPictureBox.BackgroundImage = UnityAssets.GetSkillIcon(skill.IconId).Bitmap;
 
-            FormBorderStyle = FormBorderStyle.FixedSingle;
+            SingleModeSkillNeedPoint needSkillPoint = AssetTables.SingleModeSkillNeedPoints.FirstOrDefault(s => s.Id == skill.Id);
 
-            int frameBorder = SystemInformation.BorderSize.Height;
+            if (needSkillPoint is not null)
+            {
+                skillPointHint.Visible = true;
+                skillPointNeededLabel.Text = needSkillPoint.NeedSkillPoint.ToString();
+            }
 
-            Size newSize = Size;
-            newSize.Height -= SystemInformation.CaptionHeight + ((SystemInformation.FrameBorderSize.Height + SystemInformation.VerticalResizeBorderThickness - 1) * 2);
-            newSize.Width -= (SystemInformation.FrameBorderSize.Width + SystemInformation.HorizontalResizeBorderThickness - 1) * 2;
+            if (evolutionSkill is not null)
+                evolutionButton.Visible = true;
 
-            Size = newSize;
+            evolutionButton.Click += (s, e) =>
+            {
+                ControlHelpers.ShowFormDialogCenter(new SkillEvolutionDetailsForm(skill, evolutionSkill), this);
+            };
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void SkillInfoForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            dragging = true;
+            clickPoint = e.Location;
+        }
+
+        private void SkillInfoForm_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (dragging)
+            {
+                Point point = Location;
+
+                point.X += e.Location.X - clickPoint.X;
+                point.Y += e.Location.Y - clickPoint.Y;
+
+                Location = point;
+            }
+        }
+
+        private void SkillInfoForm_MouseUp(object sender, MouseEventArgs e)
+        {
+            dragging = false;
         }
 
         private void SetBorderlessAndAdjust()
