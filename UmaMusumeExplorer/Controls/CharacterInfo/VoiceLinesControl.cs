@@ -104,12 +104,11 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             finalFilteredSystemTexts = selectedCategorySystemTexts ?? selectedCostumeSystemTexts ?? selectedCharacterSystemTexts;
 
             voiceLineListPanel.Controls.Clear();
+
             foreach (var characterSystemText in finalFilteredSystemTexts)
             {
-                CharacterVoiceListItemControl listItem = new(characterSystemText, waveOut)
-                {
-                    Width = voiceLineListPanel.Width - 6 - SystemInformation.VerticalScrollBarWidth
-                };
+                CharacterVoiceListItemControl listItem = new(characterSystemText, waveOut);
+                listItem.Width = voiceLineListPanel.Width - listItem.Margin.Horizontal - SystemInformation.VerticalScrollBarWidth;
                 voiceLineListPanel.Controls.Add(listItem);
             }
         }
