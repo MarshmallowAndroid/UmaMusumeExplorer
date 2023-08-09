@@ -30,7 +30,7 @@
         {
             iconPictureBox = new Common.HighQualityPictureBox();
             skillNameLabel = new System.Windows.Forms.Label();
-            skillInfoLabel = new System.Windows.Forms.Label();
+            skillDescriptionLabel = new System.Windows.Forms.Label();
             closeButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox).BeginInit();
             SuspendLayout();
@@ -39,7 +39,7 @@
             // 
             iconPictureBox.BackColor = System.Drawing.Color.Transparent;
             iconPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            iconPictureBox.Location = new System.Drawing.Point(12, 12);
+            iconPictureBox.Location = new System.Drawing.Point(18, 18);
             iconPictureBox.Name = "iconPictureBox";
             iconPictureBox.Size = new System.Drawing.Size(96, 96);
             iconPictureBox.TabIndex = 0;
@@ -49,10 +49,10 @@
             // 
             skillNameLabel.BackColor = System.Drawing.Color.Transparent;
             skillNameLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            skillNameLabel.Location = new System.Drawing.Point(114, 12);
+            skillNameLabel.Location = new System.Drawing.Point(120, 18);
             skillNameLabel.Name = "skillNameLabel";
-            skillNameLabel.Size = new System.Drawing.Size(389, 28);
-            skillNameLabel.TabIndex = 1;
+            skillNameLabel.Size = new System.Drawing.Size(384, 21);
+            skillNameLabel.TabIndex = 0;
             skillNameLabel.Text = "Skill name";
             skillNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -68,10 +68,10 @@
             // 
             // closeButton
             // 
-            closeButton.Location = new System.Drawing.Point(220, 140);
+            closeButton.Location = new System.Drawing.Point(263, 142);
             closeButton.Name = "closeButton";
             closeButton.Size = new System.Drawing.Size(75, 23);
-            closeButton.TabIndex = 2;
+            closeButton.TabIndex = 5;
             closeButton.Text = "Close";
             closeButton.UseVisualStyleBackColor = true;
             closeButton.Click += CloseButton_Click;
@@ -89,6 +89,7 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "SkillInfoForm";
+            Padding = new System.Windows.Forms.Padding(15);
             StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             Text = "SkillInfoForm";
             ((System.ComponentModel.ISupportInitialize)iconPictureBox).EndInit();

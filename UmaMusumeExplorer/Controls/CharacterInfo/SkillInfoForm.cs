@@ -20,20 +20,20 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 {
     public partial class SkillInfoForm : Form
     {
-        private readonly SkillRarity rarity;
+        private readonly SkillBackground rarity;
 
         public SkillInfoForm(int skillId)
         {
             InitializeComponent();
 
-            SkillData skillData = AssetTables.SkillDatas.First(s => s.Id == skillId);
-            rarity = (SkillRarity)skillData.Rarity;
+            SetBorderlessAndAdjust();
 
-            iconPictureBox.BackgroundImage = UnityAssets.GetSkillIcon(skillData.IconId).Bitmap;
-            skillNameLabel.Text = AssetTables.GetText(AssetTables.SkillNameTextDatas, skillId);
+            rarity = (SkillBackground)skill.Rarity;
+
             skillNameLabel.Text = AssetTables.GetText(TextCategory.MasterSkillName, skill.Id);
             skillDescriptionLabel.Text = AssetTables.GetText(TextCategory.MasterSkillExplain, skill.Id)
                 .Replace("\\n", "\n");
+            iconPictureBox.BackgroundImage = UnityAssets.GetSkillIcon(skill.IconId).Bitmap;
 
             FormBorderStyle = FormBorderStyle.FixedSingle;
 
@@ -51,11 +51,22 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             Close();
         }
 
+        private void SetBorderlessAndAdjust()
+        {
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+
+            Size newSize = Size;
+            newSize.Height -= SystemInformation.CaptionHeight + ((SystemInformation.FrameBorderSize.Height + SystemInformation.VerticalResizeBorderThickness - 1) * 2);
+            newSize.Width -= (SystemInformation.FrameBorderSize.Width + SystemInformation.HorizontalResizeBorderThickness - 1) * 2;
+
+            Size = newSize;
+        }
+
         protected override void OnPaint(PaintEventArgs e)
         {
             Rectangle rectangle = ClientRectangle;
 
-            Brush colorBrush = RarityColorGenerator.ColorFromRarity(rarity, rectangle);
+            Brush colorBrush = SkillColorGenerator.ColorFromType(rarity, rectangle, out Brush backgroundBrush);
 
             Rectangle paddedRectangle = rectangle;
             paddedRectangle.X += 4;
@@ -77,7 +88,8 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
-            e.Graphics.FillRectangle(colorBrush, rectangle);
+            e.Graphics.FillRectangle(backgroundBrush, rectangle);
+            e.Graphics.FillPath(colorBrush, path);
             //e.Graphics.FillRectangle(
             //    new SolidBrush(Color.FromArgb(127, 255, 255, 255)),
             //    paddedRectangle);
@@ -120,6 +132,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             }
         }
 
+        [StructLayout(LayoutKind.Sequential)]
         struct RECT
         {
             public int left;
@@ -128,6 +141,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             public int bottom;
         }
 
+        [StructLayout(LayoutKind.Sequential)]
         struct NCCALCSIZE_PARAMS
         {
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]

@@ -8,25 +8,30 @@ using System.Threading.Tasks;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo.Classes
 {
-    internal static class RarityColorGenerator
+    internal static class SkillColorGenerator
     {
-        public static Brush ColorFromRarity(SkillRarity rarity, Rectangle colorBounds)
+        public static Brush ColorFromType(SkillBackground rarity, Rectangle colorBounds, out Brush backgroundBrush)
         {
             Color[] colors = { Color.White, Color.LightSteelBlue };
             float[] positions = { 0F, 1F };
 
+            backgroundBrush = new SolidBrush(Color.LightSteelBlue);
+
+            bool duplicateBackground = false;
+
             switch (rarity)
             {
-                case SkillRarity.Rarity2:
+                case SkillBackground.Rarity2:
                     colors = new[]
                     {
                         Color.LightYellow,
                         Color.Gold
                     };
+                    backgroundBrush = new SolidBrush(Color.Gold);
                     break;
-                case SkillRarity.Rarity3:
-                case SkillRarity.Rarity4:
-                case SkillRarity.Rarity5:
+                case SkillBackground.Rarity3:
+                case SkillBackground.Rarity4:
+                case SkillBackground.Rarity5:
                     colors = new[] {
                         Color.LightGreen,
                         Color.DeepSkyBlue,
@@ -34,6 +39,15 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo.Classes
                         Color.DeepPink
                     };
                     positions = new[] { 0F, 1 / 3F, 2 / 3F, 1F };
+                    duplicateBackground = true;
+                    break;
+                case SkillBackground.Evolution:
+                    colors = new[]
+                    {
+                        Color.Pink,
+                        Color.HotPink
+                    };
+                    backgroundBrush = new SolidBrush(Color.HotPink);
                     break;
                 default:
                     break;
@@ -45,6 +59,9 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo.Classes
             colorBlend.Positions = positions;
             colorBlend.Colors = colors;
             linearGradientBrush.InterpolationColors = colorBlend;
+
+            if (duplicateBackground)
+                backgroundBrush = linearGradientBrush;
 
             return linearGradientBrush;
         }

@@ -10,8 +10,6 @@ using UmaMusumeData;
 using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Controls.CharacterInfo.Classes;
 using UmaMusumeExplorer.Game;
-using static UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel;
-using static UmaMusumeExplorer.Controls.CharacterInfo.SkillButtonSmall;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo
 {
