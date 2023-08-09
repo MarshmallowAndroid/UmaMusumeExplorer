@@ -18,12 +18,12 @@ namespace UmaMusumeExplorer.Controls.Common
             base.OnPaint(pe);
         }
 
-        protected override void OnPaintBackground(PaintEventArgs pevent)
+        protected override void OnPaintBackground(PaintEventArgs pe)
         {
-            pevent.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-            pevent.Graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
-            pevent.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-            base.OnPaintBackground(pevent);
+            pe.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            pe.Graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+            pe.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+            base.OnPaintBackground(pe);
         }
     }
 }
