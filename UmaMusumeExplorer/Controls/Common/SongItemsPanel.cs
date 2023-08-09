@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UmaMusumeData;
 using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Controls.LiveMusicPlayer;
 using UmaMusumeExplorer.Game;
@@ -27,7 +28,7 @@ namespace UmaMusumeExplorer.Controls.Common
             };
 
             ToolTip toolTip = new();
-            toolTip.SetToolTip(jacket, $"{liveData.MusicId}: {AssetTables.GetText(AssetTables.LiveNameTextDatas, liveData.MusicId)}");
+            toolTip.SetToolTip(jacket, $"{liveData.MusicId}: {AssetTables.GetText(TextCategory.MasterLiveTitle, liveData.MusicId)}");
 
             return true;
         }

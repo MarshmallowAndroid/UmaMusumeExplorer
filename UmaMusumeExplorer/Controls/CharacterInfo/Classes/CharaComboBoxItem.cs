@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using UmaMusumeData;
 using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Game;
 
@@ -15,7 +16,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo.Classes
 
         public override string ToString()
         {
-            return CharaData.Id.ToString() + ": " + AssetTables.GetText(AssetTables.CharaNameTextDatas, CharaData.Id);
+            return CharaData.Id.ToString() + ": " + AssetTables.GetText(TextCategory.MasterCharaName, CharaData.Id);
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UmaMusumeData;
 using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Controls.CharacterInfo;
 using UmaMusumeExplorer.Game;
@@ -26,7 +27,7 @@ namespace UmaMusumeExplorer.Controls.Common
             };
 
             ToolTip toolTip = new();
-            toolTip.SetToolTip(characterPictureBox, $"{charaData.Id}: {AssetTables.GetText(AssetTables.CharaNameTextDatas, charaData.Id)}");
+            toolTip.SetToolTip(characterPictureBox, $"{charaData.Id}: {AssetTables.GetText(TextCategory.MasterCharaName, charaData.Id)}");
 
             return true;
         }

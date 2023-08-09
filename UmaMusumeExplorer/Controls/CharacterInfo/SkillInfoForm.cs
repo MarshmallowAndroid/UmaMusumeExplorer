@@ -14,6 +14,7 @@ using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Controls.CharacterInfo.Classes;
 using UmaMusumeExplorer.Controls.CharacterInfo;
 using UmaMusumeExplorer.Game;
+using UmaMusumeData;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo
 {
@@ -30,7 +31,8 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
             iconPictureBox.BackgroundImage = UnityAssets.GetSkillIcon(skillData.IconId).Bitmap;
             skillNameLabel.Text = AssetTables.GetText(AssetTables.SkillNameTextDatas, skillId);
-            skillInfoLabel.Text = AssetTables.GetText(AssetTables.SkillInfoTextDatas, skillId)
+            skillNameLabel.Text = AssetTables.GetText(TextCategory.MasterSkillName, skill.Id);
+            skillDescriptionLabel.Text = AssetTables.GetText(TextCategory.MasterSkillExplain, skill.Id)
                 .Replace("\\n", "\n");
 
             FormBorderStyle = FormBorderStyle.FixedSingle;

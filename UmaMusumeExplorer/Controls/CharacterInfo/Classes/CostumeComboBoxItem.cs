@@ -1,4 +1,5 @@
-﻿using UmaMusumeData.Tables;
+﻿using UmaMusumeData;
+using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Game;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo.Classes
@@ -14,7 +15,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo.Classes
 
         public override string ToString()
         {
-            return AssetTables.GetText(AssetTables.CharaCostumeNameTextDatas, CardData.Id);
+            return AssetTables.GetText(TextCategory.MasterCardTitleName, CardData.Id);
         }
     }
 }

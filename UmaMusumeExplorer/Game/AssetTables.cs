@@ -42,8 +42,7 @@ namespace UmaMusumeExplorer.Game
                 () => { LiveNameTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 16); return "LiveNameTextDatas"; },
                 () => { LiveInfoTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 17); return "LiveInfoTextDatas"; },
 
-                () => { SkillNameTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 47); return "SkillNameTextDatas"; },
-                () => { SkillInfoTextDatas = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 48); return "SkillInfoTextDatas"; }
+                () => { TextData = UmaDataHelper.GetMasterDatabaseRows<TextData>(); return "TextData"; }
             };
 
             int completedActions = 0;
@@ -89,12 +88,11 @@ namespace UmaMusumeExplorer.Game
         public static IEnumerable<TextData> LiveNameTextDatas { get; private set; }
         public static IEnumerable<TextData> LiveInfoTextDatas { get; private set; }
 
-        public static IEnumerable<TextData> SkillNameTextDatas { get; private set; }
-        public static IEnumerable<TextData> SkillInfoTextDatas { get; private set; }
+        public static IEnumerable<TextData> TextData { get; private set; }
 
-        public static string GetText(IEnumerable<TextData> textDatas, int index)
+        public static string GetText(TextCategory category, int index)
         {
-            return textDatas.First(td => td.Index == index).Text;
+            return TextData.First(td => td.Category == (int)category && td.Index == index).Text;
         }
     }
 }

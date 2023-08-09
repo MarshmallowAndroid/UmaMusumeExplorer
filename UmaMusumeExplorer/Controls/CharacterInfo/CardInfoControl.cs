@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UmaMusumeData;
 using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Controls.CharacterInfo.Classes;
 using UmaMusumeExplorer.Game;
@@ -85,21 +86,21 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
         private void LoadCharaData()
         {
             int id = charaData.Id;
-            string charaName = AssetTables.GetText(AssetTables.CharaNameTextDatas, id);
+            string charaName = AssetTables.GetText(TextCategory.MasterCharaName, id);
 
             nameLabel.Text = charaName;
 
-            string katakana = AssetTables.GetText(AssetTables.CharaNameKatakanaTextDatas, id);
+            string furigana = AssetTables.GetText(TextCategory.MasterCharaFurigana, id);
 
-            if (!katakana.Equals(nameLabel.Text))
-                nameLabel.Text += $"（{AssetTables.GetText(AssetTables.CharaNameKatakanaTextDatas, id)}）";
+            if (!furigana.Equals(nameLabel.Text))
+                nameLabel.Text += $"（{AssetTables.GetText(TextCategory.MasterCharaFurigana, id)}）";
             nameLabel.BackColor = ColorFromHexString(charaData.UIColorMain);
             if (GetBrightness(nameLabel.BackColor) > 128)
                 nameLabel.ForeColor = Color.Black;
             else
                 nameLabel.ForeColor = Color.White;
 
-            cvNameLabel.Text = "CV. " + AssetTables.GetText(AssetTables.CharaVoiceNameTextDatas, id);
+            cvNameLabel.Text = "CV. " + AssetTables.GetText(TextCategory.MasterCharaCv, id);
             cvNameLabel.BackColor = ColorFromHexString(charaData.UIColorSub);
             if (GetBrightness(cvNameLabel.BackColor) > 128)
                 cvNameLabel.ForeColor = Color.Black;

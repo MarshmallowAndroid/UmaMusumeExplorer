@@ -49,8 +49,8 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
             songJacketPinnedBitmap = UnityAssets.GetJacket(musicId, 'l');
             songJacketPictureBox.BackgroundImage = songJacketPinnedBitmap.Bitmap;
-            songTitleLabel.Text = songTitle = AssetTables.GetText(AssetTables.LiveNameTextDatas, musicId);
-            songInfoLabel.Text = AssetTables.GetText(AssetTables.LiveInfoTextDatas, musicId).Replace("\\n", "\n");
+            songTitleLabel.Text = songTitle = AssetTables.GetText(TextCategory.MasterLiveTitle, musicId);
+            songInfoLabel.Text = AssetTables.GetText(TextCategory.MasterLiveAuthor, musicId).Replace("\\n", "\n");
 
             LoadMusicScore();
 
@@ -280,7 +280,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
                 if (charaAwb is null) return ShowFileNotFound();
 
                 charaAwbs.Add(charaAwb);
-                currentSingers.Add(AssetTables.GetText(AssetTables.CharaNameTextDatas, item.CharacterId));
+                currentSingers.Add(AssetTables.GetText(TextCategory.MasterCharaName, item.CharacterId));
             }
 
             long previousPosition = songMixer?.Position ?? 0;

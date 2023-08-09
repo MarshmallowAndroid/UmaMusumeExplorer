@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Windows.Forms;
+using UmaMusumeData;
 using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Controls.CharacterInfo.Classes;
 using UmaMusumeExplorer.Game;
@@ -24,7 +25,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             voiceLinesControl.CharacterId = chara.Id;
             songsControl.CharaId = chara.Id;
 
-            Text = AssetTables.GetText(AssetTables.CharaNameTextDatas, chara.Id);
+            Text = AssetTables.GetText(TextCategory.MasterCharaName, chara.Id);
         }
 
         private void CharacterInfoForm_FormClosing(object sender, FormClosingEventArgs e)

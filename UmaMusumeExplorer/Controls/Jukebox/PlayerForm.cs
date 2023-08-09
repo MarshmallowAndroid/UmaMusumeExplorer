@@ -41,8 +41,8 @@ namespace UmaMusumeExplorer.Controls.Jukebox
 
             songJacketPinnedBitmap = UnityAssets.GetJacket(musicId, 'l');
             songJacketPictureBox.BackgroundImage = songJacketPinnedBitmap.Bitmap;
-            songTitleLabel.Text = AssetTables.GetText(AssetTables.LiveNameTextDatas, musicId);
-            songInfoLabel.Text = AssetTables.GetText(AssetTables.LiveInfoTextDatas, musicId).Replace("\\n", "\n");
+            songTitleLabel.Text = AssetTables.GetText(TextCategory.MasterLiveTitle, musicId);
+            songInfoLabel.Text = AssetTables.GetText(TextCategory.MasterLiveAuthor, musicId).Replace("\\n", "\n");
         }
 
         private void LiveMusicPlayerForm_Load(object sender, EventArgs e)

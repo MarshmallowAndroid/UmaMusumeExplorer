@@ -5,6 +5,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UmaMusumeData;
 using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Controls.Common;
 using UmaMusumeExplorer.Game;
@@ -35,7 +36,7 @@ namespace UmaMusumeExplorer.Controls.Jukebox
             };
 
             ToolTip toolTip = new();
-            toolTip.SetToolTip(jacket, $"{jukeboxMusicData.MusicId}: {AssetTables.GetText(AssetTables.LiveNameTextDatas, jukeboxMusicData.MusicId)}");
+            toolTip.SetToolTip(jacket, $"{jukeboxMusicData.MusicId}: {AssetTables.GetText(TextCategory.MasterLiveTitle, jukeboxMusicData.MusicId)}");
 
             return true;
         }
