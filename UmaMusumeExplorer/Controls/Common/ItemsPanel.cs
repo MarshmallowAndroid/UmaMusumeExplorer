@@ -17,6 +17,8 @@ namespace UmaMusumeExplorer.Controls.Common
 
         public ItemsPanel()
         {
+            DoubleBuffered = true;
+
             loadingBackgroundWorker.WorkerReportsProgress = true;
             loadingBackgroundWorker.DoWork += LoadingBackgroundWorker_DoWork;
             loadingBackgroundWorker.ProgressChanged += LoadingBackgroundWorker_ProgressChanged;
@@ -45,14 +47,11 @@ namespace UmaMusumeExplorer.Controls.Common
         {
             if (items is not null)
             {
-                SuspendLayout();
-
                 AutoScroll = false;
 
                 Controls.Clear();
 
                 Panel tempPanel = new();
-                tempPanel.SuspendLayout();
                 tempPanel.Width = Width;
                 tempPanel.Height = Height;
 
@@ -60,12 +59,8 @@ namespace UmaMusumeExplorer.Controls.Common
                 loadingProgressBar.Left = (tempPanel.Width / 2) - (loadingProgressBar.Width / 2);
                 loadingProgressBar.Top = (tempPanel.Height / 2) - (loadingProgressBar.Height / 2);
                 tempPanel.Controls.Add(loadingProgressBar);
-                tempPanel.ResumeLayout(true);
 
                 Controls.Add(tempPanel);
-
-                ResumeLayout(false);
-                PerformLayout();
 
                 loadingBackgroundWorker.RunWorkerAsync();
             }
