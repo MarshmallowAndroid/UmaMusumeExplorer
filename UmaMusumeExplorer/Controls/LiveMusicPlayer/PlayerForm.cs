@@ -251,7 +251,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             IEnumerable<GameAsset> audioAssets = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith($"sound/l/{musicId}"));
 
             // Get BGM without sound effects
-            AwbReader okeAwb = GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicId}_oke_02.awb")));
+            AwbReader okeAwb = GetAwbFile(audioAssets.First(aa => aa.BaseName == $"snd_bgm_live_{musicId}_oke_02.awb"));
 
             if (okeAwb is null) return ShowFileNotFound();
 
@@ -275,7 +275,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             List<AwbReader> charaAwbs = new(singingMembers);
             foreach (var item in unitSetupForm.CharacterPositions)
             {
-                AwbReader charaAwb = GetAwbFile(audioAssets.First(aa => aa.BaseName.Equals($"snd_bgm_live_{musicId}_chara_{item.CharacterId}_01.awb")));
+                AwbReader charaAwb = GetAwbFile(audioAssets.First(aa => aa.BaseName == $"snd_bgm_live_{musicId}_chara_{item.CharacterId}_01.awb"));
 
                 if (charaAwb is null) return ShowFileNotFound();
 

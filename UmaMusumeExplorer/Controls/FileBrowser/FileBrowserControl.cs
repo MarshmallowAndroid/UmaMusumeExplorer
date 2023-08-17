@@ -54,7 +54,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
 
             string convertedNodePath = "";
 
-            if (expandingNode.Text.Equals("Root"))
+            if (expandingNode.Text == "Root")
                 assetList = targetAssets;
             else
             {
@@ -67,7 +67,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             foreach (var assetValue in assetList)
             {
                 GameAsset asset = assetValue.Value;
-                string assetName = expandingNode.Text.Equals("Root") ? asset.Name : asset.Name[(convertedNodePath.Length + 1)..];
+                string assetName = expandingNode.Text == "Root" ? asset.Name : asset.Name[(convertedNodePath.Length + 1)..];
 
                 int firstSlashIndex = assetName.IndexOf('/');
                 if (firstSlashIndex < 1)
@@ -110,7 +110,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             TreeNode node = fileTreeView.SelectedNode;
 
             if (node is null) return;
-            if (node.FullPath.Equals("Root")) return;
+            if (node.FullPath == "Root") return;
 
             GameAsset asset = (GameAsset)node.Tag;
 

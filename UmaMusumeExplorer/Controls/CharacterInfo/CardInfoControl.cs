@@ -88,7 +88,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
             string furigana = AssetTables.GetText(TextCategory.MasterCharaFurigana, id);
 
-            if (!furigana.Equals(nameLabel.Text))
+            if (furigana != nameLabel.Text)
                 nameLabel.Text += $"（{AssetTables.GetText(TextCategory.MasterCharaFurigana, id)}）";
             nameLabel.BackColor = ColorFromHexString(charaData.UIColorMain);
             if (GetBrightness(nameLabel.BackColor) > 128)
