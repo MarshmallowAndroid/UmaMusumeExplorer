@@ -333,7 +333,11 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             lyricsCsv.ReadCsvLine();
             while (!lyricsCsv.EndOfStream)
             {
-                LyricsTrigger trigger = new(lyricsCsv.ReadCsvLine());
+                string line = lyricsCsv.ReadCsvLine();
+
+                if (string.IsNullOrEmpty(line)) continue;
+
+                LyricsTrigger trigger = new(line);
                 lyricsTriggers.Add(trigger);
             }
 
