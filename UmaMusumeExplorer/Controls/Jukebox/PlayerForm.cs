@@ -1,5 +1,5 @@
 ﻿using AssetStudio;
-using CriWareFormats;
+using CriWareLibrary;
 using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
 using System;

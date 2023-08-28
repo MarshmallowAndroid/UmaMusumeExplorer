@@ -1,4 +1,4 @@
-﻿using CriWareFormats;
+﻿using CriWareLibrary;
 using NAudio.Wave;
 using System.IO;
 using UmaMusumeAudio;

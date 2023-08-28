@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using UmaMusumeData.Tables;
 using UmaMusumeData;
 using AssetStudio;
-using CriWareFormats;
+using CriWareLibrary;
 
 namespace LiveMusicPlayerCli
 {

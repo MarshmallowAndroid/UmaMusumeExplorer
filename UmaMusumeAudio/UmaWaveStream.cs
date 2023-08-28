@@ -1,7 +1,7 @@
 ﻿using NAudio.Wave;
 using System;
 using System.IO;
-using CriWareFormats;
+using CriWareLibrary;
 
 namespace UmaMusumeAudio
 {

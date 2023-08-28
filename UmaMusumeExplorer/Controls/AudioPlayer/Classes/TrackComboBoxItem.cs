@@ -1,4 +1,4 @@
-﻿using CriWareFormats;
+﻿using CriWareLibrary;
 
 namespace UmaMusumeExplorer.Controls.AudioPlayer.Classes
 {
