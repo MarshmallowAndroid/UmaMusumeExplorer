@@ -2,11 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using UmaMusumeData.Tables;
-using UmaMusumeExplorer.Game;
 
 namespace UmaMusumeExplorer.Controls.Common
 {
@@ -68,9 +64,6 @@ namespace UmaMusumeExplorer.Controls.Common
 
         private void LoadingBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            IProgress<int> defaultProgress = AssetStudio.Progress.Default;
-            AssetStudio.Progress.Default = new LoadingProgress(loadingBackgroundWorker.ReportProgress);
-
             List<Control> controls = new();
             int itemNumber = 0;
             foreach (var item in items)
@@ -85,7 +78,6 @@ namespace UmaMusumeExplorer.Controls.Common
                 loadingBackgroundWorker.ReportProgress((int)((float)itemNumber++ / items.Count() * 100.0F));
             }
 
-            AssetStudio.Progress.Default = defaultProgress;
             e.Result = controls.ToArray();
         }
 
@@ -97,10 +89,10 @@ namespace UmaMusumeExplorer.Controls.Common
 
         private void LoadingBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            AutoScroll = true;
-
             Controls.Clear();
             Controls.AddRange((Control[])e.Result);
+
+            AutoScroll = true;
 
             LoadingFinished?.Invoke(this, EventArgs.Empty);
         }
