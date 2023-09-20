@@ -44,7 +44,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             {
                 long sample = (long)(partTrigger.TimeMs / 1000.0F * mainSampleProvider.WaveFormat.SampleRate);
                 float volume = partTrigger.MemberVolumes[index] != 999.0F ? partTrigger.MemberVolumes[index] : 1.0F;
-                volume += partTrigger.VolumeRate != 999.0F ? 0.25F * partTrigger.VolumeRate : 0.0F;
+                volume += partTrigger.VolumeRate != 999.0F ? partTrigger.VolumeRate * 0.25F : 0.0F;
 
                 triggers.Add(
                     new Trigger(

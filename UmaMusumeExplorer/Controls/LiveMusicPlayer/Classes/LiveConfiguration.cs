@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Windows.Forms;
 
 namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 {
@@ -55,14 +57,14 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             {
                 int songId = reader.ReadInt32();
                 int memberCount = reader.ReadByte();
-
                 int[] members = new int[memberCount];
                 for (int j = 0; j < memberCount; j++)
                 {
                     members[j] = reader.ReadInt32();
                 }
+                bool sfx = reader.ReadBoolean();
 
-                SongConfiguration songConfiguration = new(songId, members);
+                SongConfiguration songConfiguration = new(songId, members, sfx);
                 songConfigurations[songId] = songConfiguration;
             }
 
@@ -81,26 +83,16 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             {
                 writer.Write(songConfiguration.Value.SongId);
                 writer.Write((byte)songConfiguration.Value.Members.Length);
-
                 foreach (var member in songConfiguration.Value.Members)
                 {
                     writer.Write(member);
                 }
+                writer.Write(songConfiguration.Value.Sfx);
             }
 
             CloseFile();
         }
     }
 
-    class SongConfiguration
-    {
-        public int SongId;
-        public int[] Members;
-
-        public SongConfiguration(int songId, int[] members)
-        {
-            SongId = songId;
-            Members = members;
-        }
-    }
+    record SongConfiguration(int SongId, int[] Members, bool Sfx);
 }

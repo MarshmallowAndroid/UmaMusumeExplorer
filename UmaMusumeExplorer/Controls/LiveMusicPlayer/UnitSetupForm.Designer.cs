@@ -29,45 +29,54 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UnitSetupForm));
-            this.singersPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.confirmButton = new System.Windows.Forms.Button();
-            this.tableLayoutPanel.SuspendLayout();
-            this.SuspendLayout();
+            singersPanel = new System.Windows.Forms.FlowLayoutPanel();
+            tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            confirmButton = new System.Windows.Forms.Button();
+            sfxCheckBox = new System.Windows.Forms.CheckBox();
+            tableLayoutPanel.SuspendLayout();
+            SuspendLayout();
             // 
             // singersPanel
             // 
-            resources.ApplyResources(this.singersPanel, "singersPanel");
-            this.singersPanel.Name = "singersPanel";
+            resources.ApplyResources(singersPanel, "singersPanel");
+            singersPanel.Name = "singersPanel";
             // 
             // tableLayoutPanel
             // 
-            resources.ApplyResources(this.tableLayoutPanel, "tableLayoutPanel");
-            this.tableLayoutPanel.Controls.Add(this.singersPanel, 0, 0);
-            this.tableLayoutPanel.Controls.Add(this.confirmButton, 0, 1);
-            this.tableLayoutPanel.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
-            this.tableLayoutPanel.Name = "tableLayoutPanel";
+            resources.ApplyResources(tableLayoutPanel, "tableLayoutPanel");
+            tableLayoutPanel.Controls.Add(singersPanel, 0, 0);
+            tableLayoutPanel.Controls.Add(confirmButton, 0, 1);
+            tableLayoutPanel.Controls.Add(sfxCheckBox, 0, 2);
+            tableLayoutPanel.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            tableLayoutPanel.Name = "tableLayoutPanel";
             // 
             // confirmButton
             // 
-            resources.ApplyResources(this.confirmButton, "confirmButton");
-            this.confirmButton.Name = "confirmButton";
-            this.confirmButton.UseVisualStyleBackColor = true;
-            this.confirmButton.Click += new System.EventHandler(this.ConfirmButton_Click);
+            resources.ApplyResources(confirmButton, "confirmButton");
+            confirmButton.Name = "confirmButton";
+            confirmButton.UseVisualStyleBackColor = true;
+            confirmButton.Click += ConfirmButton_Click;
+            // 
+            // sfxCheckBox
+            // 
+            resources.ApplyResources(sfxCheckBox, "sfxCheckBox");
+            sfxCheckBox.Checked = true;
+            sfxCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            sfxCheckBox.Name = "sfxCheckBox";
+            sfxCheckBox.UseVisualStyleBackColor = true;
             // 
             // UnitSetupForm
             // 
-            this.AcceptButton = this.confirmButton;
+            AcceptButton = confirmButton;
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tableLayoutPanel);
-            this.MaximizeBox = false;
-            this.Name = "UnitSetupForm";
-            this.tableLayoutPanel.ResumeLayout(false);
-            this.tableLayoutPanel.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            Controls.Add(tableLayoutPanel);
+            MaximizeBox = false;
+            Name = "UnitSetupForm";
+            tableLayoutPanel.ResumeLayout(false);
+            tableLayoutPanel.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -75,5 +84,6 @@
         private System.Windows.Forms.FlowLayoutPanel singersPanel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
         private System.Windows.Forms.Button confirmButton;
+        private System.Windows.Forms.CheckBox sfxCheckBox;
     }
 }

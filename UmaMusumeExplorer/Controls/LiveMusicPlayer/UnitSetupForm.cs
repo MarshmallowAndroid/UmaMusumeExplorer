@@ -22,17 +22,17 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             InitializeComponent();
 
             id = musicId;
-
             livePermissionData = LivePermissionDataHelper.GetLivePermissionData(musicId);
-
             characterPositions = new CharacterPositionControl[singingMembers];
 
-            AddUnitMembers();
+            LoadSongConfiguration();
         }
 
         public CharacterPositionControl[] CharacterPositions { get; private set; } = null;
 
-        public void AddUnitMembers()
+        public bool Sfx => sfxCheckBox.Checked;
+
+        public void LoadSongConfiguration()
         {
             SongConfiguration songConfiguration = LiveConfiguration.LoadConfiguration(id);
 
@@ -72,6 +72,9 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             }
             else
                 singersPanel.Controls.AddRange(characterPositions);
+
+            if (songConfiguration is not null)
+                sfxCheckBox.Checked = songConfiguration.Sfx;
         }
 
         public void CharacterPositionPictureBoxClick(object sender, EventArgs e)
@@ -110,7 +113,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
                 members[i] = characterPositions[PositionToIndex(i, pivot)].CharacterId;
             }
 
-            SongConfiguration songConfiguration = new(id, members);
+            SongConfiguration songConfiguration = new(id, members, sfxCheckBox.Checked);
             LiveConfiguration.SaveConfiguration(songConfiguration);
 
             Close();

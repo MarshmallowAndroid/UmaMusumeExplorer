@@ -8,11 +8,11 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 {
     class SongMixer : ISampleProvider, IDisposable
     {
-        private readonly UmaWaveStream okeWaveStream;
-        private readonly ISampleProvider okeSampleProvider;
+        private UmaWaveStream okeWaveStream;
+        private ISampleProvider okeSampleProvider;
+        private readonly List<PartTrigger> partTriggers = new();
 
         private readonly List<CharaTrack> charaTracks = new();
-        private readonly List<PartTrigger> partTriggers = new();
         private readonly List<VolumeTrigger> volumeTriggers = new();
 
         private readonly object readLock = new();
@@ -176,6 +176,18 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                     };
                     charaTracks.Add(charaTrack);
                 }
+            }
+        }
+
+        public void ChangeOke(AwbReader okeAwb)
+        {
+            lock (readLock)
+            {
+                long position = okeWaveStream.Position;
+
+                okeWaveStream = new(okeAwb, 0);
+                okeWaveStream.Position = position;
+                okeSampleProvider = okeWaveStream.ToSampleProvider();
             }
         }
 

@@ -250,11 +250,6 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             // Get possible audio assets for music ID
             IEnumerable<GameAsset> audioAssets = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith($"sound/l/{musicId}"));
 
-            // Get BGM without sound effects
-            AwbReader okeAwb = GetAwbFile(audioAssets.First(aa => aa.BaseName == $"snd_bgm_live_{musicId}_oke_02.awb"));
-
-            if (okeAwb is null) return ShowFileNotFound();
-
             // Retrieve count of members that actually sing
             int singingMembers = GetSingingMembers();
 
@@ -262,6 +257,10 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             UnitSetupForm unitSetupForm = new(musicId, singingMembers);
             unitSetupForm.Text = songTitleLabel.Text + " " + unitSetupForm.Text;
             ControlHelpers.ShowFormDialogCenter(unitSetupForm, this);
+
+            // Get BGM with or without sound effects
+            AwbReader okeAwb = GetAwbFile(audioAssets.First(aa => aa.BaseName == $"snd_bgm_live_{musicId}_oke_0{(unitSetupForm.Sfx ? '1' : '2')}.awb"));
+            if (okeAwb is null) return ShowFileNotFound();
 
             // Abort unit setup when character selection is not confirmed
             if (unitSetupForm.CharacterPositions is null) return false;
@@ -296,6 +295,8 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
                 lyricsThread.Start();
                 updateTimer.Enabled = true;
             }
+            else
+                songMixer.ChangeOke(okeAwb);
 
             // Initialize tracks, can be done during playback
             songMixer.InitializeCharaTracks(charaAwbs);
@@ -310,7 +311,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             return true;
         }
 
-        private bool ShowFileNotFound()
+        private static bool ShowFileNotFound()
         {
             MessageBox.Show("Live music data not found. Please download all resources in the game.", "Assets not found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             return false;
