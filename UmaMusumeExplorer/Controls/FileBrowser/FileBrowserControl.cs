@@ -29,11 +29,6 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
 
         private void FileBrowserControl_Load(object sender, EventArgs e)
         {
-            foreach (var gameAsset in UmaDataHelper.GetGameAssetDataRows())
-            {
-                gameAssets.Add(gameAsset.Name, gameAsset);
-            }
-
             TreeNode rootNode = new("Root");
             rootNode.Nodes.Add("");
 
@@ -47,6 +42,14 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
 
         private void FileTreeView_BeforeExpand(object sender, TreeViewCancelEventArgs e)
         {
+            if (gameAssets.Count == 0)
+            {
+                foreach (var gameAsset in UmaDataHelper.GetGameAssetDataRows())
+                {
+                    gameAssets.Add(gameAsset.Name, gameAsset);
+                }
+            }
+
             TreeNode expandingNode = e.Node;
             expandingNode.Nodes.Clear();
 
@@ -121,7 +124,6 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             else
             {
                 string convertedNodePath = node.FullPath["Root/".Length..];
-
                 IEnumerable<KeyValuePair<string, GameAsset>> assetsToAdd = targetAssets.Where(ga => ga.Key.StartsWith(convertedNodePath + '/'));
 
                 int itemCount = assetsToAdd.Count();
