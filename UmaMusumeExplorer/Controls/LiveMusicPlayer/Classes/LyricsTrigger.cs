@@ -14,7 +14,9 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             string[] columns = Split(lyricsCsvLine, ',');
             TimeMs = int.Parse(columns[0]);
             Lyrics = columns[1]
-                .Replace("[COMMA]", ",");
+                .Replace("[COMMA]", ",")
+                .Replace("&&", "&")
+                .Replace("\\n", "\n");
         }
 
         private string[] Split(string toSplit, char splitChar)
