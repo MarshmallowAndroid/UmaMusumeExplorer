@@ -385,11 +385,12 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
 
                     Task.Run(() =>
                     {
+                        int currentTrack = 1;
                         foreach (var track in single.Tracks)
                         {
                             UmaWaveStream copy = (UmaWaveStream)track.WaveStream;
                             copy.Loop = false;
-                            WaveFileWriter.CreateWaveFile16(Path.Combine(directory, track.Name + ".wav"), copy.ToSampleProvider());
+                            WaveFileWriter.CreateWaveFile16(Path.Combine(directory, track.Name + $"_{currentTrack++:d2}.wav"), copy.ToSampleProvider());
 
                             copy.Dispose();
                             Invoke(() => exportButton.Enabled = true);
