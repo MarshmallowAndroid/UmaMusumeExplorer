@@ -35,8 +35,9 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             songItemsPanel.ItemClick += (s, e) =>
             {
                 LiveData liveData = (s as PictureBox).Tag as LiveData;
+                LiveManager liveManager = new(liveData);
                 if (liveData is not null)
-                    ControlHelpers.ShowFormCenter(new PlayerForm(liveData), this);
+                    ControlHelpers.ShowFormCenter(new PlayerForm(liveManager), this);
             };
         }
 

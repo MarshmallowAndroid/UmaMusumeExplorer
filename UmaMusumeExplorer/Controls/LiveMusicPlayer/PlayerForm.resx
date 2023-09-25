@@ -1,4 +1,64 @@
-﻿<root>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema 
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -57,19 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="songJacketPictureBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="songJacketPictureBox.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Zoom</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="songJacketPictureBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>145, 12</value>
+    <value>12, 12</value>
   </data>
   <data name="songJacketPictureBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 256</value>
+    <value>192, 192</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="songJacketPictureBox.TabIndex" type="System.Int32, mscorlib">
@@ -85,19 +142,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;songJacketPictureBox.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>16</value>
   </data>
-  <metadata name="songTitleLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="songTitleLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 20.25pt, style=Bold</value>
   </data>
   <data name="songTitleLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 271</value>
+    <value>210, 12</value>
   </data>
   <data name="songTitleLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>523, 74</value>
+    <value>432, 53</value>
   </data>
   <data name="songTitleLabel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -118,19 +172,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;songTitleLabel.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>15</value>
   </data>
-  <metadata name="songInfoLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="songInfoLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 15.75pt</value>
+    <value>Segoe UI, 12pt</value>
   </data>
   <data name="songInfoLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 345</value>
+    <value>210, 65</value>
   </data>
   <data name="songInfoLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>523, 110</value>
+    <value>432, 139</value>
   </data>
   <data name="songInfoLabel.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -151,19 +202,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;songInfoLabel.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>14</value>
   </data>
-  <metadata name="lyricsLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="lyricsLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 14.25pt</value>
   </data>
   <data name="lyricsLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 455</value>
+    <value>12, 624</value>
   </data>
   <data name="lyricsLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>523, 58</value>
+    <value>630, 58</value>
   </data>
   <data name="lyricsLabel.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -181,16 +229,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lyricsLabel.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>13</value>
   </data>
-  <metadata name="playButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="playButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="playButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>181, 593</value>
+    <value>235, 295</value>
   </data>
   <data name="playButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>185, 51</value>
@@ -211,16 +256,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;playButton.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>12</value>
   </data>
-  <metadata name="stopButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="stopButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="stopButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>465, 593</value>
+    <value>572, 295</value>
   </data>
   <data name="stopButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 51</value>
@@ -241,16 +283,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;stopButton.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>11</value>
   </data>
-  <metadata name="setupButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="setupButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="setupButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 593</value>
+    <value>12, 295</value>
   </data>
   <data name="setupButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 51</value>
@@ -271,16 +310,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;setupButton.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>10</value>
   </data>
-  <metadata name="seekTrackBar.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="seekTrackBar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 542</value>
+    <value>12, 244</value>
   </data>
   <data name="seekTrackBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>523, 45</value>
+    <value>630, 45</value>
   </data>
   <data name="seekTrackBar.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -295,13 +331,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;seekTrackBar.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>9</value>
   </data>
-  <metadata name="volumeTrackbar.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="volumeTrackbar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>150, 650</value>
+    <value>204, 352</value>
   </data>
   <data name="volumeTrackbar.Size" type="System.Drawing.Size, System.Drawing">
     <value>247, 45</value>
@@ -319,16 +352,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;volumeTrackbar.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>8</value>
   </data>
-  <metadata name="volumeLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="volumeLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="volumeLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>254, 698</value>
+    <value>316, 400</value>
   </data>
   <data name="volumeLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 15</value>
@@ -349,16 +379,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;volumeLabel.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>7</value>
   </data>
-  <metadata name="currentTimeLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="currentTimeLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="currentTimeLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 513</value>
+    <value>12, 207</value>
   </data>
   <data name="currentTimeLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 34</value>
@@ -382,16 +409,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;currentTimeLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>6</value>
   </data>
-  <metadata name="totalTimeLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="totalTimeLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="totalTimeLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>465, 513</value>
+    <value>572, 207</value>
   </data>
   <data name="totalTimeLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 34</value>
@@ -415,85 +439,190 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;totalTimeLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>5</value>
   </data>
   <metadata name="updateTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="playerContextMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>138, 17</value>
-  </metadata>
-  <data name="titleMenuItem.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="expandButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 396</value>
   </data>
-  <data name="titleMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>199, 22</value>
+  <data name="expandButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 23</value>
   </data>
-  <data name="titleMenuItem.Text" xml:space="preserve">
-    <value>Live Music Player Menu</value>
+  <data name="expandButton.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
   </data>
-  <data name="titleSeparator.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 6</value>
+  <data name="expandButton.Text" xml:space="preserve">
+    <value>Expand / Collapse</value>
   </data>
-  <data name="forceSoloMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>199, 22</value>
+  <data name="&gt;&gt;expandButton.Name" xml:space="preserve">
+    <value>expandButton</value>
   </data>
-  <data name="forceSoloMenuItem.Text" xml:space="preserve">
-    <value>Force center solo</value>
+  <data name="&gt;&gt;expandButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="forceAllSingingMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>199, 22</value>
+  <data name="&gt;&gt;expandButton.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="forceAllSingingMenuItem.Text" xml:space="preserve">
-    <value>Force all singing</value>
+  <data name="&gt;&gt;expandButton.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
-  <data name="forceMuteSeparator.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 6</value>
+  <data name="charaContainerPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
   </data>
-  <data name="muteBgmMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>199, 22</value>
+  <data name="charaContainerPanel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="muteBgmMenuItem.Text" xml:space="preserve">
+  <data name="charaContainerPanel.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="charaContainerPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>315, 72</value>
+  </data>
+  <data name="charaContainerPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="charaContainerPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;charaContainerPanel.Name" xml:space="preserve">
+    <value>charaContainerPanel</value>
+  </data>
+  <data name="&gt;&gt;charaContainerPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;charaContainerPanel.Parent" xml:space="preserve">
+    <value>charaContainerContainerPanel</value>
+  </data>
+  <data name="&gt;&gt;charaContainerPanel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="charaContainerContainerPanel.ColumnCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="charaContainerContainerPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 476</value>
+  </data>
+  <data name="charaContainerContainerPanel.RowCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="charaContainerContainerPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>630, 145</value>
+  </data>
+  <data name="charaContainerContainerPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;charaContainerContainerPanel.Name" xml:space="preserve">
+    <value>charaContainerContainerPanel</value>
+  </data>
+  <data name="&gt;&gt;charaContainerContainerPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;charaContainerContainerPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;charaContainerContainerPanel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="charaContainerContainerPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="charaContainerPanel" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100,Absolute,20" /&gt;&lt;Rows Styles="Percent,100,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="customVoiceControlCheckBox.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="customVoiceControlCheckBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>255, 445</value>
+  </data>
+  <data name="customVoiceControlCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 25</value>
+  </data>
+  <data name="customVoiceControlCheckBox.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="customVoiceControlCheckBox.Text" xml:space="preserve">
+    <value>Custom Voice Control</value>
+  </data>
+  <data name="customVoiceControlCheckBox.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;customVoiceControlCheckBox.Name" xml:space="preserve">
+    <value>customVoiceControlCheckBox</value>
+  </data>
+  <data name="&gt;&gt;customVoiceControlCheckBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;customVoiceControlCheckBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;customVoiceControlCheckBox.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="muteBgmCheckBox.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="muteBgmCheckBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="muteBgmCheckBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 445</value>
+  </data>
+  <data name="muteBgmCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 25</value>
+  </data>
+  <data name="muteBgmCheckBox.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="muteBgmCheckBox.Text" xml:space="preserve">
     <value>Mute BGM</value>
   </data>
-  <data name="muteVoicesMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>199, 22</value>
+  <data name="muteBgmCheckBox.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
   </data>
-  <data name="muteVoicesMenuItem.Text" xml:space="preserve">
-    <value>Mute voices</value>
+  <data name="&gt;&gt;muteBgmCheckBox.Name" xml:space="preserve">
+    <value>muteBgmCheckBox</value>
   </data>
-  <data name="exportSeparator.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 6</value>
+  <data name="&gt;&gt;muteBgmCheckBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="exportMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>199, 22</value>
+  <data name="&gt;&gt;muteBgmCheckBox.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="exportMenuItem.Text" xml:space="preserve">
-    <value>Export to WAV</value>
+  <data name="&gt;&gt;muteBgmCheckBox.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="playerContextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 154</value>
+  <data name="exportButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>497, 445</value>
   </data>
-  <data name="playerContextMenuStrip.Text" xml:space="preserve">
-    <value>Live Music Player Menu</value>
+  <data name="exportButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 25</value>
   </data>
-  <data name="&gt;&gt;playerContextMenuStrip.Name" xml:space="preserve">
-    <value>playerContextMenuStrip</value>
+  <data name="exportButton.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
   </data>
-  <data name="&gt;&gt;playerContextMenuStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="exportButton.Text" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="&gt;&gt;exportButton.Name" xml:space="preserve">
+    <value>exportButton</value>
+  </data>
+  <data name="&gt;&gt;exportButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;exportButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;exportButton.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>7, 15</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>547, 722</value>
+    <value>654, 691</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>Manual</value>
@@ -506,60 +635,6 @@
   </data>
   <data name="&gt;&gt;updateTimer.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;titleMenuItem.Name" xml:space="preserve">
-    <value>titleMenuItem</value>
-  </data>
-  <data name="&gt;&gt;titleMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;titleSeparator.Name" xml:space="preserve">
-    <value>titleSeparator</value>
-  </data>
-  <data name="&gt;&gt;titleSeparator.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;forceSoloMenuItem.Name" xml:space="preserve">
-    <value>forceSoloMenuItem</value>
-  </data>
-  <data name="&gt;&gt;forceSoloMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;forceAllSingingMenuItem.Name" xml:space="preserve">
-    <value>forceAllSingingMenuItem</value>
-  </data>
-  <data name="&gt;&gt;forceAllSingingMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;forceMuteSeparator.Name" xml:space="preserve">
-    <value>forceMuteSeparator</value>
-  </data>
-  <data name="&gt;&gt;forceMuteSeparator.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;muteBgmMenuItem.Name" xml:space="preserve">
-    <value>muteBgmMenuItem</value>
-  </data>
-  <data name="&gt;&gt;muteBgmMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;muteVoicesMenuItem.Name" xml:space="preserve">
-    <value>muteVoicesMenuItem</value>
-  </data>
-  <data name="&gt;&gt;muteVoicesMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;exportSeparator.Name" xml:space="preserve">
-    <value>exportSeparator</value>
-  </data>
-  <data name="&gt;&gt;exportSeparator.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;exportMenuItem.Name" xml:space="preserve">
-    <value>exportMenuItem</value>
-  </data>
-  <data name="&gt;&gt;exportMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>PlayerForm</value>

@@ -15,7 +15,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
     {
         private readonly int id;
         private readonly IEnumerable<LivePermissionData> livePermissionData;
-        private readonly CharacterPositionControl[] characterPositions;
+        private CharacterPosition[] characterPositions;
 
         public UnitSetupForm(int musicId, int singingMembers)
         {
@@ -23,12 +23,14 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
             id = musicId;
             livePermissionData = LivePermissionDataHelper.GetLivePermissionData(musicId);
-            characterPositions = new CharacterPositionControl[singingMembers];
+            characterPositions = new CharacterPosition[singingMembers];
+
+            Text = AssetTables.GetText(TextCategory.MasterLiveTitle, id) + " " + Text;
 
             LoadSongConfiguration();
         }
 
-        public CharacterPositionControl[] CharacterPositions { get; private set; } = null;
+        public CharacterPosition[] CharacterPositions { get; private set; } = null;
 
         public bool Sfx => sfxCheckBox.Checked;
 
@@ -36,20 +38,27 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
         {
             SongConfiguration songConfiguration = LiveConfiguration.LoadConfiguration(id);
 
+            CharacterPositionControl[] controls = new CharacterPositionControl[characterPositions.Length];
+
             int pivot = characterPositions.Length / 2;
             for (int i = 0; i < characterPositions.Length; i++)
             {
-                CharacterPositionControl characterPositionControl = new(i + 1, this)
+                int characterId;
+                if (songConfiguration is not null)
+                    characterId = songConfiguration.Members[i];
+                else
+                    characterId = livePermissionData.ElementAt(i).CharaId;
+
+                CharacterPositionControl characterPositionControl = new(i + 1, CharacterPositionPictureBoxClick)
                 {
+                    CharacterId = characterId,
                     TabIndex = i
                 };
 
-                if (songConfiguration is not null)
-                    characterPositionControl.CharacterId = songConfiguration.Members[i];
-                else
-                    characterPositionControl.CharacterId = livePermissionData.ElementAt(i).CharaId;
-
-                characterPositions[PositionToIndex(i, pivot)] = characterPositionControl;
+                int positionAsIndex = PositionToIndex(i, pivot);
+                controls[positionAsIndex] = characterPositionControl;
+                characterPositions[positionAsIndex].CharacterId = characterId;
+                characterPositions[positionAsIndex].Position = i;
             }
 
             if (characterPositions.Length == 1)
@@ -58,20 +67,20 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
                 fixedControls[0] = new()
                 {
-                    Width = characterPositions[0].Width,
-                    Height = characterPositions[0].Height
+                    Width = controls[0].Width,
+                    Height = controls[0].Height
                 };
-                fixedControls[1] = characterPositions[0];
+                fixedControls[1] = controls[0];
                 fixedControls[2] = new()
                 {
-                    Width = characterPositions[0].Width,
-                    Height = characterPositions[0].Height
+                    Width = controls[0].Width,
+                    Height = controls[0].Height
                 };
 
                 singersPanel.Controls.AddRange(fixedControls);
             }
             else
-                singersPanel.Controls.AddRange(characterPositions);
+                singersPanel.Controls.AddRange(controls);
 
             if (songConfiguration is not null)
                 sfxCheckBox.Checked = songConfiguration.Sfx;
@@ -79,10 +88,10 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
         public void CharacterPositionPictureBoxClick(object sender, EventArgs e)
         {
-            PictureBox characterPositionPixtureBox = sender as PictureBox;
-            CharacterPositionControl characterPositionControl = characterPositionPixtureBox.Parent as CharacterPositionControl;
+            if (sender is not PictureBox characterPositionPixtureBox) return;
+            if (characterPositionPixtureBox.Parent is not CharacterPositionControl clickedCharacterPositionControl) return;
 
-            int initialCharacter = characterPositionControl.CharacterId;
+            int initialCharacter = clickedCharacterPositionControl.CharacterId;
 
             CharacterSelectForm characterSelectForm = new(livePermissionData, characterPositions);
             ControlHelpers.ShowFormDialogCenter(characterSelectForm, this);
@@ -91,15 +100,13 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
             if (selectedCharacter == 0) return;
 
-            foreach (var characterPosition in characterPositions)
+            foreach (CharacterPositionControl characterPosition in singersPanel.Controls)
             {
                 if (characterPosition.CharacterId == selectedCharacter)
-                {
                     characterPosition.CharacterId = initialCharacter;
-                }
             }
 
-            characterPositionControl.CharacterId = selectedCharacter;
+            clickedCharacterPositionControl.CharacterId = selectedCharacter;
         }
 
         private void ConfirmButton_Click(object sender, EventArgs e)
@@ -108,9 +115,13 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
             int pivot = characterPositions.Length / 2;
             int[] members = new int[characterPositions.Length];
+
             for (int i = 0; i < characterPositions.Length; i++)
             {
-                members[i] = characterPositions[PositionToIndex(i, pivot)].CharacterId;
+                int positionAsIndex = PositionToIndex(i, pivot);
+                int characterId = (singersPanel.Controls[positionAsIndex] as CharacterPositionControl).CharacterId;
+                members[i] = CharacterPositions[positionAsIndex].CharacterId = characterId;
+                CharacterPositions[positionAsIndex].Position = i;
             }
 
             SongConfiguration songConfiguration = new(id, members, sfxCheckBox.Checked);

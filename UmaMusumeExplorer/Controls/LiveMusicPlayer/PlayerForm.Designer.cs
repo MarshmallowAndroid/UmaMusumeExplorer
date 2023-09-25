@@ -43,20 +43,16 @@
             currentTimeLabel = new System.Windows.Forms.Label();
             totalTimeLabel = new System.Windows.Forms.Label();
             updateTimer = new System.Windows.Forms.Timer(components);
-            playerContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(components);
-            titleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            titleSeparator = new System.Windows.Forms.ToolStripSeparator();
-            forceSoloMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            forceAllSingingMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            forceMuteSeparator = new System.Windows.Forms.ToolStripSeparator();
-            muteBgmMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            muteVoicesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            exportSeparator = new System.Windows.Forms.ToolStripSeparator();
-            exportMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            expandButton = new System.Windows.Forms.Button();
+            charaContainerPanel = new System.Windows.Forms.FlowLayoutPanel();
+            charaContainerContainerPanel = new System.Windows.Forms.TableLayoutPanel();
+            customVoiceControlCheckBox = new System.Windows.Forms.CheckBox();
+            muteBgmCheckBox = new System.Windows.Forms.CheckBox();
+            exportButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)songJacketPictureBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)seekTrackBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)volumeTrackbar).BeginInit();
-            playerContextMenuStrip.SuspendLayout();
+            charaContainerContainerPanel.SuspendLayout();
             SuspendLayout();
             // 
             // songJacketPictureBox
@@ -139,72 +135,54 @@
             updateTimer.Interval = 500;
             updateTimer.Tick += UpdateTimer_Tick;
             // 
-            // playerContextMenuStrip
+            // expandButton
             // 
-            playerContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { titleMenuItem, titleSeparator, forceSoloMenuItem, forceAllSingingMenuItem, forceMuteSeparator, muteBgmMenuItem, muteVoicesMenuItem, exportSeparator, exportMenuItem });
-            playerContextMenuStrip.Name = "playerContextMenuStrip";
-            resources.ApplyResources(playerContextMenuStrip, "playerContextMenuStrip");
+            resources.ApplyResources(expandButton, "expandButton");
+            expandButton.Name = "expandButton";
+            expandButton.UseVisualStyleBackColor = true;
+            expandButton.Click += ExpandButton_Click;
             // 
-            // titleMenuItem
+            // charaContainerPanel
             // 
-            titleMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            resources.ApplyResources(titleMenuItem, "titleMenuItem");
-            titleMenuItem.Name = "titleMenuItem";
+            resources.ApplyResources(charaContainerPanel, "charaContainerPanel");
+            charaContainerPanel.Name = "charaContainerPanel";
             // 
-            // titleSeparator
+            // charaContainerContainerPanel
             // 
-            titleSeparator.Name = "titleSeparator";
-            resources.ApplyResources(titleSeparator, "titleSeparator");
+            resources.ApplyResources(charaContainerContainerPanel, "charaContainerContainerPanel");
+            charaContainerContainerPanel.Controls.Add(charaContainerPanel, 0, 0);
+            charaContainerContainerPanel.Name = "charaContainerContainerPanel";
             // 
-            // forceSoloMenuItem
+            // customVoiceControlCheckBox
             // 
-            forceSoloMenuItem.CheckOnClick = true;
-            forceSoloMenuItem.Name = "forceSoloMenuItem";
-            resources.ApplyResources(forceSoloMenuItem, "forceSoloMenuItem");
-            forceSoloMenuItem.Click += ForceSoloMenuItem_Click;
+            resources.ApplyResources(customVoiceControlCheckBox, "customVoiceControlCheckBox");
+            customVoiceControlCheckBox.Name = "customVoiceControlCheckBox";
+            customVoiceControlCheckBox.UseVisualStyleBackColor = true;
+            customVoiceControlCheckBox.CheckedChanged += CustomVoiceControlCheckBox_CheckedChanged;
             // 
-            // forceAllSingingMenuItem
+            // muteBgmCheckBox
             // 
-            forceAllSingingMenuItem.CheckOnClick = true;
-            forceAllSingingMenuItem.Name = "forceAllSingingMenuItem";
-            resources.ApplyResources(forceAllSingingMenuItem, "forceAllSingingMenuItem");
-            forceAllSingingMenuItem.Click += ForceAllSingingMenuItem_Click;
+            resources.ApplyResources(muteBgmCheckBox, "muteBgmCheckBox");
+            muteBgmCheckBox.Name = "muteBgmCheckBox";
+            muteBgmCheckBox.UseVisualStyleBackColor = true;
+            muteBgmCheckBox.CheckedChanged += MuteBgmCheckBox_CheckedChanged;
             // 
-            // forceMuteSeparator
+            // exportButton
             // 
-            forceMuteSeparator.Name = "forceMuteSeparator";
-            resources.ApplyResources(forceMuteSeparator, "forceMuteSeparator");
-            // 
-            // muteBgmMenuItem
-            // 
-            muteBgmMenuItem.CheckOnClick = true;
-            muteBgmMenuItem.Name = "muteBgmMenuItem";
-            resources.ApplyResources(muteBgmMenuItem, "muteBgmMenuItem");
-            muteBgmMenuItem.Click += MuteBgmMenuItem_Click;
-            // 
-            // muteVoicesMenuItem
-            // 
-            muteVoicesMenuItem.CheckOnClick = true;
-            muteVoicesMenuItem.Name = "muteVoicesMenuItem";
-            resources.ApplyResources(muteVoicesMenuItem, "muteVoicesMenuItem");
-            muteVoicesMenuItem.Click += MuteVoicesMenuItem_Click;
-            // 
-            // exportSeparator
-            // 
-            exportSeparator.Name = "exportSeparator";
-            resources.ApplyResources(exportSeparator, "exportSeparator");
-            // 
-            // exportMenuItem
-            // 
-            exportMenuItem.Name = "exportMenuItem";
-            resources.ApplyResources(exportMenuItem, "exportMenuItem");
-            exportMenuItem.Click += ExportMenuItem_Click;
+            resources.ApplyResources(exportButton, "exportButton");
+            exportButton.Name = "exportButton";
+            exportButton.UseVisualStyleBackColor = true;
+            exportButton.Click += ExportButton_Click;
             // 
             // PlayerForm
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ContextMenuStrip = playerContextMenuStrip;
+            Controls.Add(exportButton);
+            Controls.Add(muteBgmCheckBox);
+            Controls.Add(customVoiceControlCheckBox);
+            Controls.Add(charaContainerContainerPanel);
+            Controls.Add(expandButton);
             Controls.Add(totalTimeLabel);
             Controls.Add(currentTimeLabel);
             Controls.Add(volumeLabel);
@@ -225,7 +203,8 @@
             ((System.ComponentModel.ISupportInitialize)songJacketPictureBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)seekTrackBar).EndInit();
             ((System.ComponentModel.ISupportInitialize)volumeTrackbar).EndInit();
-            playerContextMenuStrip.ResumeLayout(false);
+            charaContainerContainerPanel.ResumeLayout(false);
+            charaContainerContainerPanel.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -245,15 +224,11 @@
         private System.Windows.Forms.Label currentTimeLabel;
         private System.Windows.Forms.Label totalTimeLabel;
         private System.Windows.Forms.Timer updateTimer;
-        private System.Windows.Forms.ContextMenuStrip playerContextMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem titleMenuItem;
-        private System.Windows.Forms.ToolStripSeparator titleSeparator;
-        private System.Windows.Forms.ToolStripMenuItem forceSoloMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem muteBgmMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem muteVoicesMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem forceAllSingingMenuItem;
-        private System.Windows.Forms.ToolStripSeparator forceMuteSeparator;
-        private System.Windows.Forms.ToolStripSeparator exportSeparator;
-        private System.Windows.Forms.ToolStripMenuItem exportMenuItem;
+        private System.Windows.Forms.Button expandButton;
+        private System.Windows.Forms.FlowLayoutPanel charaContainerPanel;
+        private System.Windows.Forms.TableLayoutPanel charaContainerContainerPanel;
+        private System.Windows.Forms.CheckBox customVoiceControlCheckBox;
+        private System.Windows.Forms.CheckBox muteBgmCheckBox;
+        private System.Windows.Forms.Button exportButton;
     }
 }

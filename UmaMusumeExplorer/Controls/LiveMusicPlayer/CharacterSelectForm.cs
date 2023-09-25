@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using UmaMusumeData.Tables;
+using UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes;
 using UmaMusumeExplorer.Game;
 
 namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
@@ -14,7 +15,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
         private readonly List<int> allowedCharas = new();
         private readonly List<int> alreadySelected = new();
 
-        public CharacterSelectForm(IEnumerable<LivePermissionData> permissionData, CharacterPositionControl[] characters)
+        public CharacterSelectForm(IEnumerable<LivePermissionData> permissionData, CharacterPosition[] characters)
         {
             InitializeComponent();
 
@@ -33,7 +34,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             {
                 return allowedCharas.Contains(cd.Id);
             };
-            characterItemsPanel.LoadingFinished = (s, e) =>
+            characterItemsPanel.LoadingFinished += (s, e) =>
             {
                 foreach (PictureBox charaIcon in characterItemsPanel.Controls)
                 {
@@ -41,7 +42,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
                     if (alreadySelected.Contains(cd.Id)) charaIcon.BackColor = Color.FromArgb(234, 54, 128);
                 }
             };
-            characterItemsPanel.ItemClick = (s, e) =>
+            characterItemsPanel.ItemClick += (s, e) =>
             {
                 PictureBox pictureBox = s as PictureBox;
                 SelectedCharacter = (pictureBox.Tag as CharaData).Id;

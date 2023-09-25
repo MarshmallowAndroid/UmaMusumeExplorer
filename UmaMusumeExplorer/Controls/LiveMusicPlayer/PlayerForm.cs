@@ -3,10 +3,10 @@ using CriWareLibrary;
 using NAudio.Wave;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,63 +15,92 @@ using UmaMusumeData;
 using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes;
 using UmaMusumeExplorer.Game;
+using Color = System.Drawing.Color;
 
 namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 {
     partial class PlayerForm : Form
     {
-        private readonly LiveData liveData;
+        private readonly LiveManager liveManager;
         private readonly int musicId;
         private readonly string songTitle;
 
         private readonly AssetsManager assetsManager = new();
         private readonly PinnedBitmap songJacketPinnedBitmap;
 
-        private readonly List<LyricsTrigger> lyricsTriggers = new();
-        private readonly List<PartTrigger> partTriggers = new();
+        private List<LyricsTrigger> lyricsTriggers = new();
 
         private SongMixer songMixer;
         private readonly IWavePlayer waveOut = new WaveOutEvent() { DesiredLatency = 250 };
 
         private readonly Thread lyricsThread;
+        private readonly Thread voicesThread;
         private int lyricsTriggerIndex = 0;
         private bool seeked = false;
         private bool playbackFinished = false;
 
-        private readonly List<string> currentSingers = new();
+        private string[] currentSingers;
+        private bool[] singersEnabled;
 
-        public PlayerForm(LiveData live)
+        private readonly FormAnimator animator;
+        private bool expanded = false;
+
+        public PlayerForm(LiveManager live)
         {
             InitializeComponent();
 
-            liveData = live;
+            liveManager = live;
             musicId = live.MusicId;
+            songTitle = AssetTables.GetText(TextCategory.MasterLiveTitle, musicId);
 
             songJacketPinnedBitmap = UnityAssets.GetJacket(musicId, 'l');
             songJacketPictureBox.BackgroundImage = songJacketPinnedBitmap.Bitmap;
-            songTitleLabel.Text = songTitle = AssetTables.GetText(TextCategory.MasterLiveTitle, musicId);
+            songTitleLabel.Text = songTitle;
             songInfoLabel.Text = AssetTables.GetText(TextCategory.MasterLiveAuthor, musicId).Replace("\\n", "\n");
 
-            LoadMusicScore();
-
             lyricsThread = new(DoLyricsPlayback);
+            voicesThread = new(DoVoiceUpdate);
 
             Icon = Icon.FromHandle(songJacketPinnedBitmap.Bitmap.GetHicon());
+
+            animator = new(this, 470, 730);
+
+            // collapsed: 470
+            // expanded: 730
+
+            Height = 470;
         }
 
         private void LiveMusicPlayerForm_Load(object sender, EventArgs e)
         {
-            if (!SetupUnit())
-            {
-                Close();
-                return;
-            }
+            songMixer = liveManager.SongMixer;
+            lyricsTriggers = liveManager.LyricsTriggers;
+
+            waveOut.Init(songMixer);
+            waveOut.Play();
+
+            lyricsThread.Start();
+            voicesThread.Start();
+            updateTimer.Enabled = true;
+
+            singersEnabled = new bool[liveManager.CharacterPositions.Length];
+
+            // Update the total time and volume track bars
+            totalTimeLabel.Text = $"{songMixer.TotalTime:m\\:ss}";
+            int volume = (int)Math.Ceiling(waveOut.Volume * 100.0F);
+            volumeTrackbar.Value = volume;
+            volumeLabel.Text = volume + "%";
+
+            AddCharacters();
         }
 
         private void PlayButton_Click(object sender, EventArgs e)
         {
             if (lyricsThread.ThreadState.HasFlag(ThreadState.Unstarted))
                 lyricsThread.Start();
+
+            if (voicesThread.ThreadState.HasFlag(ThreadState.Unstarted))
+                voicesThread.Start();
 
             if (waveOut.PlaybackState == PlaybackState.Playing)
             {
@@ -116,7 +145,9 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
         private void SetupButton_Click(object sender, EventArgs e)
         {
-            SetupUnit();
+            if (!liveManager.Setup(this)) return;
+
+            AddCharacters();
         }
 
         private void StopButton_Click(object sender, EventArgs e)
@@ -127,52 +158,15 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             Close();
         }
 
-        private void ForceSoloMenuItem_Click(object sender, EventArgs e)
-        {
-            ToolStripMenuItem item = sender as ToolStripMenuItem;
-            songMixer.CenterOnly = item.Checked;
-
-            if (forceAllSingingMenuItem.Checked) forceAllSingingMenuItem.Checked = false;
-            songMixer.AllSing = forceAllSingingMenuItem.Checked;
-        }
-
-        private void ForceAllSingingMenuItem_Click(object sender, EventArgs e)
-        {
-            ToolStripMenuItem item = sender as ToolStripMenuItem;
-            songMixer.AllSing = item.Checked;
-
-            if (forceSoloMenuItem.Checked) forceSoloMenuItem.Checked = false;
-            songMixer.CenterOnly = forceSoloMenuItem.Checked;
-        }
-
-        private void MuteBgmMenuItem_Click(object sender, EventArgs e)
-        {
-            ToolStripMenuItem item = sender as ToolStripMenuItem;
-            songMixer.MuteBgm = item.Checked;
-
-            if (muteVoicesMenuItem.Checked) muteVoicesMenuItem.Checked = false;
-            songMixer.MuteVoices = muteVoicesMenuItem.Checked;
-        }
-
-        private void MuteVoicesMenuItem_Click(object sender, EventArgs e)
-        {
-            ToolStripMenuItem item = sender as ToolStripMenuItem;
-            songMixer.MuteVoices = item.Checked;
-
-            if (muteBgmMenuItem.Checked) muteBgmMenuItem.Checked = false;
-            songMixer.MuteBgm = muteBgmMenuItem.Checked;
-        }
-
-        private void ExportMenuItem_Click(object sender, EventArgs e)
+        private void ExportButton_Click(object sender, EventArgs e)
         {
             StringBuilder fileNameString = new();
             fileNameString.Append(songTitle + " (");
-            for (int i = 0; i < currentSingers.Count; i++)
+            for (int i = 0; i < currentSingers.Length; i++)
             {
+                if (!songMixer.CharaTracks[i].Enabled) continue;
+                if (i > 0) fileNameString.Append('・');
                 fileNameString.Append(currentSingers[i]);
-
-                if (songMixer.CenterOnly) break;
-                if (i < currentSingers.Count - 1) fileNameString.Append('・');
             }
             fileNameString.Append(").wav");
 
@@ -224,143 +218,74 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             }
         }
 
-        private int GetSingingMembers()
+        private void MuteBgmCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            bool[] membersSing = new bool[partTriggers[0].MemberTracks.Length];
+            songMixer.MuteBgm = muteBgmCheckBox.Checked;
+        }
 
-            foreach (var partTrigger in partTriggers)
+        private void CustomVoiceControlCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            songMixer.CustomMode = customVoiceControlCheckBox.Checked;
+
+            foreach (var control in charaContainerPanel.Controls)
             {
-                for (int i = 0; i < partTrigger.MemberTracks.Length; i++)
+                if (control is CharacterPositionControl chara)
                 {
-                    if (partTrigger.MemberTracks[i] > 0) membersSing[i] = true;
+                    CharaTrack track = songMixer.CharaTracks[chara.Position];
+
+                    if (customVoiceControlCheckBox.Checked)
+                    {
+                        track.Enabled = singersEnabled[chara.Position];
+                    }
+                    else
+                    {
+                        track.Enabled = true;
+                    }
+
+                    chara.BackColor = track.Enabled ? Color.FromKnownColor(KnownColor.Control) : Color.FromKnownColor(KnownColor.ControlDark);
                 }
             }
-
-            int activeMembers = 0;
-            for (int i = 0; i < membersSing.Length; i++)
-            {
-                if (membersSing[i]) activeMembers++;
-            }
-
-            return activeMembers;
         }
 
-        private bool SetupUnit()
+        private void ExpandButton_Click(object sender, EventArgs e)
         {
-            // Get possible audio assets for music ID
-            IEnumerable<GameAsset> audioAssets = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith($"sound/l/{musicId}"));
-
-            // Retrieve count of members that actually sing
-            int singingMembers = GetSingingMembers();
-
-            // Launch unit setup
-            UnitSetupForm unitSetupForm = new(musicId, singingMembers);
-            unitSetupForm.Text = songTitleLabel.Text + " " + unitSetupForm.Text;
-            ControlHelpers.ShowFormDialogCenter(unitSetupForm, this);
-
-            // Get BGM with or without sound effects
-            AwbReader okeAwb = GetAwbFile(audioAssets.First(aa => aa.BaseName == $"snd_bgm_live_{musicId}_oke_0{(unitSetupForm.Sfx ? '1' : '2')}.awb"));
-            if (okeAwb is null) return ShowFileNotFound();
-
-            // Abort unit setup when character selection is not confirmed
-            if (unitSetupForm.CharacterPositions is null) return false;
-
-            // Sort by position indices
-            Array.Sort(unitSetupForm.CharacterPositions, (a, b) => a.PositionIndex.CompareTo(b.PositionIndex));
-
-            currentSingers.Clear();
-
-            // Add AWB files for the selected characters
-            List<AwbReader> charaAwbs = new(singingMembers);
-            foreach (var item in unitSetupForm.CharacterPositions)
-            {
-                AwbReader charaAwb = GetAwbFile(audioAssets.First(aa => aa.BaseName == $"snd_bgm_live_{musicId}_chara_{item.CharacterId}_01.awb"));
-
-                if (charaAwb is null) return ShowFileNotFound();
-
-                charaAwbs.Add(charaAwb);
-                currentSingers.Add(AssetTables.GetText(TextCategory.MasterCharaName, item.CharacterId));
-            }
-
-            long previousPosition = songMixer?.Position ?? 0;
-
-            // Initialize song mixer on first playback
-            if (songMixer is null)
-            {
-                songMixer = new(okeAwb, partTriggers);
-                waveOut.Init(songMixer);
-
-                waveOut.Play();
-
-                lyricsThread.Start();
-                updateTimer.Enabled = true;
-            }
+            if (!expanded)
+                expanded = animator.Expand();
             else
-                songMixer.ChangeOke(okeAwb);
-
-            // Initialize tracks, can be done during playback
-            songMixer.InitializeCharaTracks(charaAwbs);
-
-            // Update the total time and volume track bars
-            totalTimeLabel.Text = $"{songMixer.TotalTime:m\\:ss}";
-            int volume = (int)Math.Ceiling(waveOut.Volume * 100.0F);
-            volumeTrackbar.Value = volume;
-            volumeLabel.Text = volume + "%";
-
-            // Unit setup success
-            return true;
+                expanded = !animator.Collapse();
         }
 
-        private static bool ShowFileNotFound()
+        private void AddCharacters()
         {
-            MessageBox.Show("Live music data not found. Please download all resources in the game.", "Assets not found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            return false;
-        }
+            currentSingers = new string[liveManager.CharacterPositions.Length];
 
-        private void LoadMusicScore()
-        {
-            IEnumerable<GameAsset> musicScoreAssets = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith($"live/musicscores/m{liveData.MusicId}"));
-
-            if (!musicScoreAssets.Any()) return;
-
-            List<string> assetPaths = new();
-            foreach (var item in musicScoreAssets)
+            // Add characters position controls to voice control panel
+            charaContainerPanel.Controls.Clear();
+            foreach (var characterPosition in liveManager.CharacterPositions)
             {
-                assetPaths.Add(UmaDataHelper.GetPath(item));
-            }
-            assetsManager.LoadFiles(assetPaths.ToArray());
+                charaContainerPanel.Controls.Add(
+                    new CharacterPositionControl(characterPosition.Position, CharacterClick)
+                    {
+                        CharacterId = characterPosition.CharacterId,
+                        FontSize = 12F,
+                        Height = 140,
+                        Position = characterPosition.Position,
+                        Width = 70
+                    });
 
-            CsvReader lyricsCsv = GetLiveCsv(liveData.MusicId, "lyrics");
-            lyricsCsv.ReadCsvLine();
-            while (!lyricsCsv.EndOfStream)
-            {
-                string line = lyricsCsv.ReadCsvLine();
-
-                if (string.IsNullOrEmpty(line)) continue;
-
-                LyricsTrigger trigger = new(line);
-                lyricsTriggers.Add(trigger);
-            }
-
-            CsvReader partCsv = GetLiveCsv(liveData.MusicId, "part");
-            bool hasVolumeRate = partCsv.ReadCsvLine().Contains("volume_rate");
-            while (!partCsv.EndOfStream)
-            {
-                PartTrigger trigger = new(partCsv.ReadCsvLine(), hasVolumeRate);
-                partTriggers.Add(trigger);
+                currentSingers[characterPosition.Position] = AssetTables.GetText(TextCategory.MasterCharaName, characterPosition.CharacterId);
             }
         }
 
-        private CsvReader GetLiveCsv(int musicId, string category)
+        private void CharacterClick(object sender, EventArgs e)
         {
-            string idString = $"{musicId:d4}";
-
-            SerializedFile targetAsset = assetsManager.assetsFileList.FirstOrDefault(
-                a => (a.Objects.FirstOrDefault(o => o.type == ClassIDType.TextAsset) as NamedObject)?.m_Name.Equals($"m{idString}_{category}") ?? false);
-            if (targetAsset is null) return null;
-            TextAsset textAsset = targetAsset.Objects.First(o => o.type == ClassIDType.TextAsset) as TextAsset;
-
-            return new CsvReader(new MemoryStream(textAsset.m_Script));
+            if (customVoiceControlCheckBox.Checked)
+            {
+                CharacterPositionControl character = (sender as Control).Parent as CharacterPositionControl;
+                CharaTrack track = songMixer.CharaTracks[character.Position];
+                track.Enabled = !track.Enabled;
+                singersEnabled[character.Position] = track.Enabled;
+            }
         }
 
         private void DoLyricsPlayback()
@@ -379,7 +304,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
                 {
                     TryInvoke(() =>
                     {
-                        lyricsLabel.Text = lyricsTriggers[lyricsTriggerIndex].Lyrics.Replace("&", "&&");
+                        lyricsLabel.Text = lyricsTriggers[lyricsTriggerIndex].Lyrics;
                     });
 
                     if (lyricsTriggerIndex < lyricsTriggers.Count - 1)
@@ -391,13 +316,30 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             }
         }
 
-        private static AwbReader GetAwbFile(GameAsset gameFile)
+        private void DoVoiceUpdate()
         {
-            string awbPath = UmaDataHelper.GetPath(gameFile);
-            if (File.Exists(awbPath))
-                return new(File.OpenRead(awbPath));
-            else
-                return null;
+            while (!playbackFinished)
+            {
+                if (songMixer.CharaTracks.Count > 0)
+                {
+                    foreach (var control in charaContainerPanel.Controls)
+                    {
+                        if (control is not CharacterPositionControl chara) continue;
+                        TryInvoke(() =>
+                        {
+                            chara.Disabled = !songMixer.CharaTracks[chara.Position].Active && !customVoiceControlCheckBox.Checked;
+
+                            //if (customVoiceControlCheckBox.Checked)
+                            //{
+                            chara.BackColor = songMixer.CharaTracks[chara.Position].Enabled ?
+                                Color.FromKnownColor(KnownColor.Control) : Color.FromKnownColor(KnownColor.ControlDark);
+                            //}
+                        });
+                    }
+                }
+
+                Thread.Sleep(1);
+            }
         }
 
         private void TryInvoke(Action action)

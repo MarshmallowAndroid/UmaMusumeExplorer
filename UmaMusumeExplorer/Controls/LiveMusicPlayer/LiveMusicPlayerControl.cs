@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 using UmaMusumeData.Tables;
+using UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes;
 using UmaMusumeExplorer.Game;
 
 namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
@@ -20,7 +21,12 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             {
                 LiveData liveData = (s as PictureBox).Tag as LiveData;
                 if (liveData is not null)
-                    ControlHelpers.ShowFormCenter(new PlayerForm(liveData), this);
+                {
+                    LiveManager liveManager = new(liveData);
+
+                    if (liveManager.Setup(this))
+                        ControlHelpers.ShowFormCenter(new PlayerForm(liveManager), this);
+                }
             };
         }
 

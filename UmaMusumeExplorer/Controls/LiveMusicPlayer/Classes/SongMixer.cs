@@ -2,6 +2,7 @@
 using NAudio.Wave;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UmaMusumeAudio;
 
 namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
@@ -11,14 +12,13 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
         private UmaWaveStream okeWaveStream;
         private ISampleProvider okeSampleProvider;
         private readonly List<PartTrigger> partTriggers = new();
-
-        private readonly List<CharaTrack> charaTracks = new();
         private readonly List<VolumeTrigger> volumeTriggers = new();
 
         private readonly object readLock = new();
 
         private readonly float allActiveVolume;
 
+        private bool customMode;
         private float[] charaTracksBuffer;
         private float[] okeBuffer;
         private float volumeMultiplier = 1.0F;
@@ -49,6 +49,25 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             allActiveVolume = 1.0F / (parts[0].MemberVolumes.Length + 1) + 0.5F;
         }
 
+        public List<CharaTrack> CharaTracks { get; } = new();
+
+        public bool MuteBgm { get; set; }
+
+        public bool CustomMode
+        {
+            get => customMode;
+            set
+            {
+                customMode = value;
+                foreach (var charaTracks in CharaTracks)
+                {
+                    charaTracks.ForceSing = customMode;
+                }
+            }
+        }
+
+        public bool MuteVoices { get; set; }
+
         public WaveFormat WaveFormat => okeSampleProvider.WaveFormat;
 
         public long Position
@@ -62,7 +81,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                 lock (readLock)
                 {
                     okeWaveStream.Position = value;
-                    foreach (var charaTrack in charaTracks)
+                    foreach (var charaTrack in CharaTracks)
                     {
                         charaTrack.Position = value;
                     }
@@ -78,103 +97,37 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 
         public TimeSpan TotalTime => okeWaveStream.TotalTime;
 
-        public bool CenterOnly
-        {
-            get
-            {
-                bool centerOnly = false;
-
-                lock (readLock)
-                {
-                    foreach (var charaTrack in charaTracks)
-                    {
-                        centerOnly = charaTrack.CenterOnly;
-                    }
-                }
-
-                return centerOnly;
-            }
-
-            set
-            {
-                lock (readLock)
-                {
-                    foreach (var charaTrack in charaTracks)
-                    {
-                        charaTrack.CenterOnly = value;
-                    }
-                }
-            }
-        }
-
-        public bool AllSing
-        {
-            get
-            {
-                bool alwaysSinging = false;
-
-                lock (readLock)
-                {
-                    foreach (var charaTrack in charaTracks)
-                    {
-                        alwaysSinging = charaTrack.AlwaysSing;
-                    }
-                }
-
-                return alwaysSinging;
-            }
-
-            set
-            {
-                lock (readLock)
-                {
-                    foreach (var charaTrack in charaTracks)
-                    {
-                        charaTrack.AlwaysSing = value;
-                    }
-
-                    if (value)
-                        volumeMultiplier = allActiveVolume;
-                    else
-                    {
-                        if (volumeTriggerIndex > 0)
-                            volumeTriggerIndex--;
-                        volumeMultiplier = volumeTriggers[volumeTriggerIndex].Volume;
-                    }
-                }
-            }
-        }
-
-        public bool MuteBgm { get; set; }
-
-        public bool MuteVoices { get; set; }
-
-        public void InitializeCharaTracks(List<AwbReader> charaAwbs)
+        public void InitializeCharaTracks(AwbReader[] charaAwbs)
         {
             lock (readLock)
             {
-                bool alwaysSing = false;
-                bool centerSolo = false;
+                bool[] enabledStates = new bool[charaAwbs.Length];
+                bool[] alwaysSingStates = new bool[charaAwbs.Length];
 
-                foreach (var charaTrack in charaTracks)
+                for (int i = 0; i < enabledStates.Length; i++)
                 {
-                    alwaysSing = charaTrack.AlwaysSing;
-                    centerSolo = charaTrack.CenterOnly;
-                    charaTrack.Dispose();
+                    if (CharaTracks.Count == charaAwbs.Length)
+                    {
+                        enabledStates[i] = CharaTracks[i].Enabled;
+                        alwaysSingStates[i] = CharaTracks[i].ForceSing;
+                    }
+                    else
+                    {
+                        enabledStates[i] = true;
+                    }
                 }
 
-                charaTracks.Clear();
+                CharaTracks.Clear();
 
                 int currentIndex = 0;
-                foreach (var charaAwb in charaAwbs)
+                for (int i = 0; i < charaAwbs.Length; i++)
                 {
-                    CharaTrack charaTrack = new(WaveFormat, charaAwb, partTriggers, currentIndex++)
-                    {
-                        AlwaysSing = alwaysSing,
-                        CenterOnly = centerSolo,
-                        Position = okeWaveStream.Position
-                    };
-                    charaTracks.Add(charaTrack);
+                    CharaTrack newCharaTrack = new(WaveFormat, charaAwbs[i], partTriggers, currentIndex++);
+                    newCharaTrack.Position = okeWaveStream.Position;
+                    newCharaTrack.Enabled = enabledStates[i];
+                    newCharaTrack.ForceSing = alwaysSingStates[i];
+
+                    CharaTracks.Add(newCharaTrack);
                 }
             }
         }
@@ -206,10 +159,11 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             }
 
             int read;
+            int active = 0;
 
             lock (readLock)
             {
-                foreach (var charaTrack in charaTracks)
+                foreach (var charaTrack in CharaTracks)
                 {
                     charaTrack.Read(charaTracksBuffer, offset, count);
 
@@ -219,6 +173,8 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                     {
                         buffer[i] += charaTracksBuffer[i];
                     }
+
+                    if (charaTrack.Enabled) active++;
                 }
 
                 read = okeSampleProvider.Read(okeBuffer, offset, count);
@@ -228,10 +184,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             {
                 while (currentSample >= volumeTriggers[volumeTriggerIndex].Sample)
                 {
-                    if (AllSing)
-                        volumeMultiplier = allActiveVolume;
-                    else
-                        volumeMultiplier = volumeTriggers[volumeTriggerIndex].Volume;
+                    volumeMultiplier = volumeTriggers[volumeTriggerIndex].Volume;
 
                     if (volumeTriggerIndex < volumeTriggers.Count - 1) volumeTriggerIndex++;
                     else break;
@@ -240,7 +193,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                 for (int j = 0; j < WaveFormat.Channels; j++)
                 {
                     int index = i * WaveFormat.Channels + j;
-                    buffer[index] *= CenterOnly ? 1.0F : volumeMultiplier;
+                    buffer[index] *= CustomMode ? (1.0F / (active + 1) + 0.5F) : volumeMultiplier;
                     buffer[index] += MuteBgm ? 0 : okeBuffer[index];
                 }
 
@@ -254,7 +207,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
         {
             okeWaveStream.Dispose();
 
-            foreach (var charaTrack in charaTracks)
+            foreach (var charaTrack in CharaTracks)
             {
                 charaTrack.Dispose();
             }

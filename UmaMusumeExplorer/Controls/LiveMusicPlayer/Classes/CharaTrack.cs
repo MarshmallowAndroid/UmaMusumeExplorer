@@ -75,7 +75,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                     long fixedValue = value * mainUmaWaveStream.WaveFormat.SampleRate / WaveFormat.SampleRate;
 
                     mainUmaWaveStream.Position = fixedValue;
-                        if (secondUmaWaveStream is not null) secondUmaWaveStream.Position = fixedValue;
+                    if (secondUmaWaveStream is not null) secondUmaWaveStream.Position = fixedValue;
 
                     currentSample = value / mainUmaWaveStream.WaveFormat.Channels / (mainUmaWaveStream.WaveFormat.BitsPerSample / 8);
 
@@ -84,9 +84,11 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             }
         }
 
-        public bool CenterOnly { get; set; }
+        public bool Enabled { get; set; }
 
-        public bool AlwaysSing { get; set; }
+        public bool ForceSing { get; set; }
+
+        public bool Active { get; private set; }
 
         public int Read(float[] buffer, int offset, int count)
         {
@@ -145,19 +147,25 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                 {
                     int index = i * WaveFormat.Channels + j;
 
-                    if ((CenterOnly && positionIndex == 0) || AlwaysSing)
+                    if (ForceSing)
                     {
                         buffer[index] = mainBuffer[index];
                         if (secondBuffer is not null) buffer[index] += secondBuffer[index];
                     }
-                    else if (!CenterOnly && targetBuffer is not null)
+                    else if (targetBuffer is not null)
                         buffer[index] = targetBuffer[index] * volumeMultiplier;
                     else
                         buffer[index] = 0;
+
+                    if (!Enabled)
+                        buffer[index] = 0;
+
+                    Active = targetBuffer is not null;
                 }
 
                 currentSample++;
             }
+
 
             return mainRead;
         }
