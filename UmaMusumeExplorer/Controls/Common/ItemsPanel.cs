@@ -97,8 +97,8 @@ namespace UmaMusumeExplorer.Controls.Common
             LoadingFinished?.Invoke(this, EventArgs.Empty);
         }
 
-        public EventHandler LoadingFinished;
-        public EventHandler ItemClick;
+        public event EventHandler LoadingFinished;
+        public event EventHandler ItemClick;
 
         public ShouldFilter Filter;
         public delegate bool ShouldFilter(TargetType item);
