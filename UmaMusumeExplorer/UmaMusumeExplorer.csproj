@@ -25,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AssetsTools.NET\AssetsTools.NET.Texture\AssetsTools.NET.Texture.csproj" />
     <ProjectReference Include="..\AssetsTools.NET\AssetTools.NET\AssetsTools.NET.csproj" />
     <ProjectReference Include="..\AssetStudio\AssetStudioUtility\AssetStudioUtility.csproj" />
     <ProjectReference Include="..\AssetStudio\AssetStudio\AssetStudio.csproj" />
@@ -47,13 +48,5 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-
-  <Target Name="CopyDllsBuild" AfterTargets="AfterBuild">
-    <Copy SourceFiles="$(ProjectDir)..\AssetStudio\Texture2DDecoderNative\bin\x64\$(Configuration)\Texture2DDecoderNative.dll" DestinationFolder="$(OutDir)x64" />
-  </Target>
-    
-  <Target Name="CopyDllsPublish" AfterTargets="Publish">
-    <Copy SourceFiles="$(ProjectDir)..\AssetStudio\Texture2DDecoderNative\bin\x64\$(Configuration)\Texture2DDecoderNative.dll" DestinationFolder="$(PublishDir)x64" />
-  </Target>
 
 </Project>

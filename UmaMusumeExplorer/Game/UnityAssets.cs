@@ -1,7 +1,10 @@
-﻿using AssetStudio;
+﻿using AssetsTools.NET;
+using AssetsTools.NET.Extra;
+using AssetsTools.NET.Texture;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -31,10 +34,10 @@ namespace UmaMusumeExplorer.Game
                 imagePointerContainers.Value.ImageHandle.Free();
             }
 
-            charaIconAssetsManager.Clear();
-            skillIconAssetsManager.Clear();
-            jacketsAssetsManager.Clear();
-            generalAssetsManager.Clear();
+            charaIconAssetsManager.UnloadAll();
+            skillIconAssetsManager.UnloadAll();
+            jacketsAssetsManager.UnloadAll();
+            generalAssetsManager.UnloadAll();
             imagePointerContainers.Clear();
         }
 
@@ -52,8 +55,7 @@ namespace UmaMusumeExplorer.Game
                     if (chrIconRegex.IsMatch(c.BaseName) || chrCardIconRegex.IsMatch(c.BaseName) || c.BaseName == "chr_icon_round_0000")
                         imagePaths.Add(UmaDataHelper.GetPath(c));
                 });
-
-                charaIconAssetsManager.LoadFiles(imagePaths.ToArray());
+                LoadFiles(charaIconAssetsManager, imagePaths);
 
                 charaIconsLoaded = true;
             }
@@ -75,17 +77,13 @@ namespace UmaMusumeExplorer.Game
 
             if (imagePointerContainers.ContainsKey(imageString)) return PinnedBitmapFromKey(imageString);
 
-            SerializedFile targetAsset = GetFile(charaIconAssetsManager, imageString, ClassIDType.Texture2D);
-            Texture2D texture = targetAsset.Objects.First(o => o.type == ClassIDType.Texture2D) as Texture2D;
-
-            Image<Bgra32> image = texture.ConvertToImage(true);
+            Image<Bgra32> image = GetImage(charaIconAssetsManager, imageString);
 
             int adjustedHeight = (int)(image.Height * 1.115F);
             image.Mutate(o => o.Resize(image.Width, adjustedHeight));
 
             imagePointerContainers.Add(imageString,
-                new ImagePointerContainer(
-                   GCHandle.Alloc(image.ConvertToBytes(), GCHandleType.Pinned), image.Width, adjustedHeight));
+                new ImagePointerContainer(GCHandle.Alloc(image.ToBytes(), GCHandleType.Pinned), image.Width, adjustedHeight));
 
             return PinnedBitmapFromKey(imageString);
         }
@@ -95,7 +93,7 @@ namespace UmaMusumeExplorer.Game
             if (!skillIconsLoaded)
             {
                 List<GameAsset> skillIconAssetRows = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("outgame/skillicon/utx_ico_skill_"));
-                skillIconAssetsManager.LoadFiles(GetFilePaths(skillIconAssetRows));
+                LoadFiles(skillIconAssetsManager, GetFilePaths(skillIconAssetRows));
                 skillIconsLoaded = true;
             }
 
@@ -113,14 +111,10 @@ namespace UmaMusumeExplorer.Game
 
             if (imagePointerContainers.ContainsKey(imageString)) return PinnedBitmapFromKey(imageString);
 
-            SerializedFile targetAsset = GetFile(skillIconAssetsManager, imageString, ClassIDType.Texture2D);
-            Texture2D texture = targetAsset.Objects.First(o => o.type == ClassIDType.Texture2D) as Texture2D;
-
-            Image<Bgra32> image = texture.ConvertToImage(true);
+            Image<Bgra32> image = GetImage(skillIconAssetsManager, imageString);
 
             imagePointerContainers.Add(imageString,
-                new ImagePointerContainer(
-                   GCHandle.Alloc(image.ConvertToBytes(), GCHandleType.Pinned), image.Width, image.Height));
+                new ImagePointerContainer(GCHandle.Alloc(image.ToBytes(), GCHandleType.Pinned), image.Width, image.Height));
 
             return PinnedBitmapFromKey(imageString);
         }
@@ -130,7 +124,7 @@ namespace UmaMusumeExplorer.Game
             if (!jacketIconsLoaded)
             {
                 List<GameAsset> liveJacketAssetRows = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("live/jacket/jacket_icon_l_"));
-                jacketsAssetsManager.LoadFiles(GetFilePaths(liveJacketAssetRows));
+                LoadFiles(jacketsAssetsManager, GetFilePaths(liveJacketAssetRows));
                 jacketIconsLoaded = true;
             }
 
@@ -139,32 +133,83 @@ namespace UmaMusumeExplorer.Game
             StringBuilder imageStringBuilder = new();
             imageStringBuilder.Append($"jacket_icon_{size}_{idString}");
 
-            string imageString = imageStringBuilder.ToString();
+            string imageName = imageStringBuilder.ToString();
 
-            if (imagePointerContainers.ContainsKey(imageString)) return PinnedBitmapFromKey(imageString);
+            if (imagePointerContainers.ContainsKey(imageName)) return PinnedBitmapFromKey(imageName);
 
-            SerializedFile targetAsset = GetFile(jacketsAssetsManager, imageString, ClassIDType.Texture2D);
-            targetAsset ??= GetFile(jacketsAssetsManager, $"jacket_icon_{size}_0000", ClassIDType.Texture2D);
-            Texture2D texture = targetAsset.Objects.First(o => o.type == ClassIDType.Texture2D) as Texture2D;
+            Image<Bgra32> image = GetImage(jacketsAssetsManager, imageName);
+            image ??= GetImage(jacketsAssetsManager, $"jacket_icon_{size}_0000");
+            AddLoadedImage(imageName, image);            
 
-            Image<Bgra32> image = texture.ConvertToImage(true);
-
-            imagePointerContainers.Add(imageString,
-                new ImagePointerContainer(
-                   GCHandle.Alloc(image.ConvertToBytes(), GCHandleType.Pinned), image.Width, image.Height));
-
-            return PinnedBitmapFromKey(imageString);
+            return PinnedBitmapFromKey(imageName);
         }
 
-        public static StreamReader GetLiveCsv(int musicId, string category)
+        //public static StreamReader GetLiveCsv(int musicId, string category)
+        //{
+        //    string idString = $"{musicId:d4}";
+
+        //    SerializedFile targetAsset = GetFile(generalAssetsManager, $"m{idString}_{category}", ClassIDType.TextAsset);
+        //    if (targetAsset is null) return null;
+        //    TextAsset textAsset = targetAsset.Objects.First(o => o.type == ClassIDType.TextAsset) as TextAsset;
+
+        //    return new StreamReader(new MemoryStream(textAsset.m_Script));
+        //}
+
+        private static void AddLoadedImage<TPixel>(string imageName, Image<TPixel> image) where TPixel : unmanaged, IPixel<TPixel>
         {
-            string idString = $"{musicId:d4}";
+            imagePointerContainers.Add(imageName,
+                new ImagePointerContainer(GCHandle.Alloc(image.ToBytes(), GCHandleType.Pinned), image.Width, image.Height));
+        }
 
-            SerializedFile targetAsset = GetFile(generalAssetsManager, $"m{idString}_{category}", ClassIDType.TextAsset);
-            if (targetAsset is null) return null;
-            TextAsset textAsset = targetAsset.Objects.First(o => o.type == ClassIDType.TextAsset) as TextAsset;
+        private static Image<Bgra32> GetImage(AssetsManager assetsManager, string imageName)
+        {
+            AssetTypeValueField baseField = GetFileBaseField(assetsManager, imageName, AssetClassID.Texture2D, out AssetsFileInstance assetsFileInstance);
+            if (baseField is null) return null;
+            TextureFile textureFile = TextureFile.ReadTextureFile(baseField);
+            Image<Bgra32> image = Image.LoadPixelData<Bgra32>(textureFile.GetTextureData(assetsFileInstance), textureFile.m_Width, textureFile.m_Height);
+            image.Mutate(o => o.Flip(FlipMode.Vertical));
+            return image;
+        }
 
-            return new StreamReader(new MemoryStream(textAsset.m_Script));
+        private static byte[] ToBytes<TPixel>(this Image<TPixel> image) where TPixel : unmanaged, IPixel<TPixel>
+        {
+            byte[] imageBytes = null;
+            if (image.TryGetSinglePixelSpan(out Span<TPixel> span))
+                imageBytes = MemoryMarshal.AsBytes(span).ToArray();
+
+            return imageBytes;
+        }
+
+        private static AssetTypeValueField GetFileBaseField(AssetsManager assetsManager, string objectName, AssetClassID classId, out AssetsFileInstance assetsFileInstance)
+        {
+            assetsFileInstance = null;
+
+            foreach (var file in assetsManager.Files)
+            {
+                foreach (var asset in file.file.GetAssetsOfType(classId))
+                {
+                    AssetTypeValueField baseField = assetsManager.GetBaseField(file, asset);
+                    if (baseField["m_Name"].AsString == objectName)
+                    {
+                        assetsFileInstance = file;
+                        return baseField;
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        private static void LoadFiles(AssetsManager assetsManager, IEnumerable<string> filePaths)
+        {
+            foreach (var file in filePaths)
+            {
+                BundleFileInstance bundle = assetsManager.LoadBundleFile(file);
+                foreach (var assetsFile in bundle.file.GetAllFileNames())
+                {
+                    assetsManager.LoadAssetsFileFromBundle(bundle, assetsFile);
+                }
+            }
         }
 
         private static string[] GetFilePaths(List<GameAsset> gameAssets)
@@ -178,12 +223,6 @@ namespace UmaMusumeExplorer.Game
             }
 
             return paths.ToArray();
-        }
-
-        private static SerializedFile GetFile(AssetsManager assetsManager, string objectName, ClassIDType classIdType)
-        {
-            return assetsManager.assetsFileList.FirstOrDefault(
-                a => (a.Objects.FirstOrDefault(o => o.type == classIdType) as NamedObject)?.m_Name.Equals(objectName) ?? false);
         }
 
         private static PinnedBitmap PinnedBitmapFromKey(string key) =>

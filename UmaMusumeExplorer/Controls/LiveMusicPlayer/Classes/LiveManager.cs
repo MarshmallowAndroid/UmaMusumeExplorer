@@ -184,7 +184,6 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                     AssetTypeValueField baseField = assetsManager.GetBaseField(assetsManagerFile, asset);
                     if (baseField["m_Name"].AsString == fileName)
                         return new(new MemoryStream(baseField["m_Script"].AsByteArray));
-
                 }
             }
 
