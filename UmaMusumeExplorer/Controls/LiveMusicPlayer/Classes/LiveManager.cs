@@ -1,4 +1,5 @@
-﻿using AssetStudio;
+﻿using AssetsTools.NET;
+using AssetsTools.NET.Extra;
 using CriWareLibrary;
 using NAudio.Wave;
 using System;
@@ -16,8 +17,6 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 {
     internal class LiveManager
     {
-        private readonly AssetsManager assetsManager = new();
-
         public LiveManager(LiveData liveData)
         {
             MusicId = liveData.MusicId;
@@ -141,14 +140,18 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 
             if (!musicScoreAssets.Any()) return;
 
-            List<string> assetPaths = new();
+            AssetsManager assetsManager = new();
             foreach (var item in musicScoreAssets)
             {
-                assetPaths.Add(UmaDataHelper.GetPath(item));
-            }
-            assetsManager.LoadFiles(assetPaths.ToArray());
+                BundleFileInstance bundle = assetsManager.LoadBundleFile(UmaDataHelper.GetPath(item));
 
-            CsvReader lyricsCsv = GetLiveCsv("lyrics");
+                foreach (var assetFileName in bundle.file.GetAllFileNames())
+                {
+                    assetsManager.LoadAssetsFileFromBundle(bundle, assetFileName, false);
+                }
+            }
+
+            CsvReader lyricsCsv = GetLiveCsv(assetsManager, "lyrics");
             lyricsCsv.ReadCsvLine();
             while (!lyricsCsv.EndOfStream)
             {
@@ -160,7 +163,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                 LyricsTriggers.Add(trigger);
             }
 
-            CsvReader partCsv = GetLiveCsv("part");
+            CsvReader partCsv = GetLiveCsv(assetsManager, "part");
             bool hasVolumeRate = partCsv.ReadCsvLine().Contains("volume_rate");
             while (!partCsv.EndOfStream)
             {
@@ -169,16 +172,23 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             }
         }
 
-        private CsvReader GetLiveCsv(string category)
+        private CsvReader GetLiveCsv(AssetsManager assetsManager, string category)
         {
             string idString = $"{MusicId:d4}";
+            string fileName = $"m{idString}_{category}";
 
-            SerializedFile targetAsset = assetsManager.assetsFileList.FirstOrDefault(
-                a => (a.Objects.FirstOrDefault(o => o.type == ClassIDType.TextAsset) as NamedObject)?.m_Name.Equals($"m{idString}_{category}") ?? false);
-            if (targetAsset is null) return null;
-            if (targetAsset.Objects.First(o => o.type == ClassIDType.TextAsset) is not TextAsset textAsset) return null;
+            foreach (var assetsManagerFile in assetsManager.Files)
+            {
+                foreach (var asset in assetsManagerFile.file.AssetInfos)
+                {
+                    AssetTypeValueField baseField = assetsManager.GetBaseField(assetsManagerFile, asset);
+                    if (baseField["m_Name"].AsString == fileName)
+                        return new(new MemoryStream(baseField["m_Script"].AsByteArray));
 
-            return new CsvReader(new MemoryStream(textAsset.m_Script));
+                }
+            }
+
+            return null;
         }
 
         private static AwbReader GetAwbFile(GameAsset gameFile)
