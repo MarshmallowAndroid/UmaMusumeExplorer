@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
@@ -13,7 +11,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
         private readonly int defaultHeight;
         private readonly int expandedHeight;
 
-        private readonly Timer timer;
+        private readonly PreciseTimer timer;
 
         private AnimationTarget target;
         private float currentProgress = 0F;
@@ -26,29 +24,28 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             this.defaultHeight = defaultHeight;
             this.expandedHeight = expandedHeight;
 
-            timer = new();
-            timer.Interval = (int)(1000F / 60F);
-            timer.Tick += Timer_Tick;
+            timer = new((int)(1000F / 30F));
+            timer.Elapsed += Elapsed;
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
+        private void Elapsed()
         {
             if (target == AnimationTarget.Expand)
             {
-                form.Height = AnimateValue(defaultHeight, expandedHeight, currentProgress, EaseInOutQuart);
-                form.Top = AnimateValue(recordedTop, recordedTop - (expandedHeight / 2 / 4), currentProgress, EaseInOutQuart);
+                form.Invoke(() => form.Height = AnimateValue(defaultHeight, expandedHeight, currentProgress, Ease));
+                form.Invoke(() => form.Top = AnimateValue(recordedTop, recordedTop - (expandedHeight / 2 / 4), currentProgress, Ease));
             }
             else
             {
-                form.Height = AnimateValue(expandedHeight, defaultHeight, currentProgress, EaseInOutQuart);
-                form.Top = AnimateValue(recordedTop, recordedTop + (expandedHeight / 2 / 4), currentProgress, EaseInOutQuart);
+                form.Invoke(() => form.Height = AnimateValue(expandedHeight, defaultHeight, currentProgress, Ease));
+                form.Invoke(() => form.Top = AnimateValue(recordedTop, recordedTop + (expandedHeight / 2 / 4), currentProgress, Ease));
             }
 
-            if (!finished)
-                currentProgress += timer.Interval / 400F;
-
-            if (currentProgress >= 1F)
+            if (currentProgress > 1F)
                 finished = true;
+
+            if (!finished)
+                currentProgress += timer.Interval / 600F;
 
             if (finished)
             {
@@ -109,15 +106,121 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             return value;
         }
 
-        private static float EaseInOutQuart(float x)
+        private static float Ease(float x)
         {
-            return (float)(x < 0.5f ? 8f * x * x * x * x : 1f - Math.Pow(-2f * x + 2f, 4f) / 2f);
+            // Formulas from https://easings.net/
+
+            // EaseInOutCubic
+            //return (float)(x < 0.5F ? 8F * x * x * x * x : 1F - Math.Pow(-2F * x + 2F, 4F) / 2F);
+
+            // EaseOutCubic
+            //return (float)(1F - Math.Pow(1F - x, 3));
+
+            // EaseOutExpo
+            return (float)(x == 1 ? 1 : 1 - Math.Pow(2, -10 * x));
+
+            // EaseOutBack
+            //const float c1 = 1.70158f;
+            //const float c3 = c1 + 1;
+            //return (float)(1 + c3 * Math.Pow(x - 1, 3) + c1 * Math.Pow(x - 1, 2));
+
+            // EaseOutElastic
+            //const float c4 = (float)(2 * Math.PI / 3);
+            //return (float)(x == 0 ? 0 : x == 1 ? 1 : (Math.Pow(2, -10 * x) * Math.Sin(((x * 10) - 0.75) * c4)) + 1);
+
+            // EaseOutBounce
+            //const float n1 = 7.5625f;
+            //const float d1 = 2.75f;
+            //if (x < 1 / d1)
+            //{
+            //    return n1 * x * x;
+            //}
+            //else if (x < 2 / d1)
+            //{
+            //    return (float)(n1 * (x -= 1.5f / d1) * x + 0.75);
+            //}
+            //else if (x < 2.5 / d1)
+            //{
+            //    return (float)(n1 * (x -= 2.25f / d1) * x + 0.9375);
+            //}
+            //else
+            //{
+            //    return (float)(n1 * (x -= 2.625f / d1) * x + 0.984375);
+            //}
         }
 
         private enum AnimationTarget
         {
             Expand,
             Collapse
+        }
+
+        class PreciseTimer
+        {
+            private Thread timerThread;
+            private bool continueRunning;
+
+            public PreciseTimer(float interval)
+            {
+                Interval = interval;
+            }
+
+            public float Interval { get; }
+
+            public void Start()
+            {
+                timerThread = new Thread(RunTimer)
+                {
+                    IsBackground = true
+                };
+                timerThread.Start();
+                continueRunning = true;
+            }
+
+            public void Stop()
+            {
+                continueRunning = false;
+            }
+
+            private void RunTimer()
+            {
+                Stopwatch stopwatch = new();
+                stopwatch.Start();
+
+                double next = 0d;
+                while (continueRunning)
+                {
+                    next += Interval;
+
+                    double elapsed;
+                    while (true)
+                    {
+                        elapsed = ElapsedMillis(stopwatch);
+                        double difference = next - elapsed;
+                        if (difference <= 0f) break;
+                        else Thread.SpinWait(10);
+                        if (!continueRunning) return;
+                    }
+
+                    Elapsed?.Invoke();
+
+                    if (!continueRunning) return;
+
+                    if (stopwatch.Elapsed.TotalSeconds >= 10d)
+                    {
+                        next = 0d;
+                        stopwatch.Restart();
+                    }
+                }
+            }
+
+            private static double ElapsedMillis(Stopwatch stopwatch)
+            {
+                return stopwatch.ElapsedTicks * (1000f / Stopwatch.Frequency);
+            }
+
+            public delegate void PreciseTimerEventHandler();
+            public event PreciseTimerEventHandler Elapsed;
         }
     }
 }
