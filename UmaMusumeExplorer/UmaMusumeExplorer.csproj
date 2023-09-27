@@ -27,8 +27,6 @@
   <ItemGroup>
     <ProjectReference Include="..\AssetsTools.NET\AssetsTools.NET.Texture\AssetsTools.NET.Texture.csproj" />
     <ProjectReference Include="..\AssetsTools.NET\AssetTools.NET\AssetsTools.NET.csproj" />
-    <ProjectReference Include="..\AssetStudio\AssetStudioUtility\AssetStudioUtility.csproj" />
-    <ProjectReference Include="..\AssetStudio\AssetStudio\AssetStudio.csproj" />
     <ProjectReference Include="..\CriWareLibrary\CriWareLibrary\CriWareLibrary.csproj" />
     <ProjectReference Include="..\UmaMusumeAudio\UmaMusumeAudio.csproj" />
     <ProjectReference Include="..\UmaMusumeData\UmaMusumeData.csproj" />

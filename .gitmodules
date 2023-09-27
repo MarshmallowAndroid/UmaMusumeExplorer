@@ -10,3 +10,6 @@
 [submodule "CriWareLibrary"]
 	path = CriWareLibrary
 	url = https://github.com/MarshmallowAndroid/CriWareLibrary
+[submodule "AssetsTools.NET"]
+	path = AssetsTools.NET
+	url = https://github.com/nesrak1/AssetsTools.NET.git

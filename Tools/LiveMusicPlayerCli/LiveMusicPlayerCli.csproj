@@ -13,7 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\AssetStudio\AssetStudio\AssetStudio.csproj" />
     <ProjectReference Include="..\..\ClHcaSharp\ClHcaSharp\ClHcaSharp.csproj" />
     <ProjectReference Include="..\..\UmaMusumeAudio\UmaMusumeAudio.csproj" />
     <ProjectReference Include="..\..\UmaMusumeData\UmaMusumeData.csproj" />
