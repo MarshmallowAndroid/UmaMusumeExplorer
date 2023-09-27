@@ -19,7 +19,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
             characterPosition = position;
 
-            positionIndexLabel.Text = characterPosition.ToString();
+            positionIndexLabel.Text = (characterPosition + 1).ToString();
             characterPictureBox.BackgroundImage = UnityAssets.GetCharaIcon(0).Bitmap;
 
             characterPictureBox.Click += clickEventHandler;
@@ -31,7 +31,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             set
             {
                 characterPosition = value;
-                positionIndexLabel.Text = value.ToString();
+                positionIndexLabel.Text = (value + 1).ToString();
 
                 Update();
             }

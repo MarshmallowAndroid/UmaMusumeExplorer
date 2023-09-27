@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using UmaMusumeData;
 using UmaMusumeData.Tables;
-using UmaMusumeExplorer.Controls.LiveMusicPlayer;
 using UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes;
 using UmaMusumeExplorer.Game;
 
@@ -49,7 +47,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
                 else
                     characterId = livePermissionData.ElementAt(i).CharaId;
 
-                CharacterPositionControl characterPositionControl = new(i + 1, CharacterPositionPictureBoxClick)
+                CharacterPositionControl characterPositionControl = new(i, CharacterPositionPictureBoxClick)
                 {
                     CharacterId = characterId,
                     TabIndex = i
