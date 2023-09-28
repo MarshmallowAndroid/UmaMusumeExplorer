@@ -19,9 +19,7 @@ jobs:
         with:
           msbuild-architecture: x64
       - name: Build .NET project
-        run: |
-          msbuild .\AssetStudio\Texture2DDecoderNative -p:Configuration=Release
-          dotnet publish .\UmaMusumeExplorer --no-self-contained -r win-x64 -c Release -p:PublishSingleFile=true
+        run: dotnet publish .\UmaMusumeExplorer --no-self-contained -r win-x64 -c Release -p:PublishSingleFile=true
       - name: Zip up files
         run: Compress-Archive ${env:GITHUB_WORKSPACE}\UmaMusumeExplorer\bin\Release\net7.0-windows\win-x64\publish\* build-win-x64.zip
       - name: Upload build artifact
