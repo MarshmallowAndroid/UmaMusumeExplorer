@@ -14,10 +14,10 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
             characterItemsPanel.ItemClick += (s, e) =>
             {
-                PictureBox charaIcon = s as PictureBox;
-                CharaData chara = charaIcon.Tag as CharaData;
+                if (s is not PictureBox pictureBox) return;
+                if (pictureBox.Tag is not CharaData charaData) return;
 
-                CharacterInfoForm details = new(chara);
+                CharacterInfoForm details = new(charaData);
                 ControlHelpers.ShowFormCenter(details, this);
             };
         }

@@ -1,4 +1,4 @@
-﻿namespace UmaMusumeExplorer.Controls.CharacterInfo
+﻿namespace UmaMusumeExplorer.Controls.CharacterInfo.Classes
 {
     public enum Rank
     {

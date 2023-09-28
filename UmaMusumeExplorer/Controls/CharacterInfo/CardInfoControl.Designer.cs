@@ -1,4 +1,6 @@
-﻿namespace UmaMusumeExplorer.Controls.CharacterInfo
+﻿using UmaMusumeExplorer.Controls.CharacterInfo.Classes;
+
+namespace UmaMusumeExplorer.Controls.CharacterInfo
 {
     partial class CardInfoControl
     {

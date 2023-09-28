@@ -6,7 +6,7 @@ namespace UmaMusumeExplorer.Controls.Common
 {
     internal class SongItemsPanel : ItemsPanel<LiveData>
     {
-        public override bool ProcessItem(LiveData liveData, ref Control jacket)
+        public override bool ProcessItem(LiveData liveData, ref Control? jacket)
         {
             if (liveData.HasLive == 0) return false;
 

@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using UmaMusumeData;
+﻿using UmaMusumeData;
 using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Controls.CharacterInfo.Classes;
 using UmaMusumeExplorer.Game;
@@ -12,7 +11,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
     {
         private int skillLevel;
         private SkillBackground rarity;
-        private SkillData evolveSkill;
+        private SkillData? evolveSkill;
 
         public SkillSmall(SkillData skill)
         {
@@ -35,10 +34,6 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
         public SkillData Skill { get; }
 
-        [Browsable(true)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-        [EditorBrowsable(EditorBrowsableState.Always)]
-        [RefreshProperties(RefreshProperties.All)]
         public int SkillLevel
         {
             get => skillLevel;
@@ -55,10 +50,6 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             }
         }
 
-        [Browsable(true)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-        [EditorBrowsable(EditorBrowsableState.Always)]
-        [RefreshProperties(RefreshProperties.All)]
         public SkillBackground Background
         {
             get => rarity;
@@ -69,11 +60,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             }
         }
 
-        [Browsable(true)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-        [EditorBrowsable(EditorBrowsableState.Always)]
-        [RefreshProperties(RefreshProperties.All)]
-        public SkillData EvolveSkill
+        public SkillData? EvolveSkill
         {
             get => evolveSkill;
             set
@@ -84,9 +71,9 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             }
         }
 
-        public event EventHandler SkillClick;
+        public event EventHandler? SkillClick;
 
-        private void OnSkillClicked(object sender, EventArgs e)
+        private void OnSkillClicked(object? sender, EventArgs e)
         {
             SkillClick?.Invoke(this, e);
         }

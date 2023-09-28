@@ -5,7 +5,7 @@ namespace UmaMusumeExplorer.Controls.Common
     internal abstract class ItemsPanel<TargetType> : FlowLayoutPanel
     {
         private readonly BackgroundWorker loadingBackgroundWorker = new();
-        private IEnumerable<TargetType> items;
+        private IEnumerable<TargetType>? items;
 
         public ItemsPanel()
         {
@@ -23,7 +23,7 @@ namespace UmaMusumeExplorer.Controls.Common
             LoadItems();
         }
 
-        public IEnumerable<TargetType> Items
+        public IEnumerable<TargetType>? Items
         {
             get => items;
             set
@@ -33,8 +33,9 @@ namespace UmaMusumeExplorer.Controls.Common
             }
         }
 
-        public abstract bool ProcessItem(TargetType item, ref Control displayControl);
+        public abstract bool ProcessItem(TargetType item, ref Control? displayControl);
 
+        // Temporarily adds a panel with a progress bar to show loading progress.
         private void LoadItems()
         {
             if (items is not null)
@@ -58,14 +59,16 @@ namespace UmaMusumeExplorer.Controls.Common
             }
         }
 
-        private void LoadingBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        private void LoadingBackgroundWorker_DoWork(object? sender, DoWorkEventArgs e)
         {
+            if (items is null) return;
+
             List<Control> controls = new();
             int itemNumber = 0;
             foreach (var item in items)
             {
-                Control control = null;
-                if (ProcessItem(item, ref control) && (Filter?.Invoke(item) ?? true))
+                Control? control = null;
+                if (ProcessItem(item, ref control) && (Filter?.Invoke(item) ?? true) && control is not null)
                 {
                     control.Click += ItemClick;
                     controls.Add(control);
@@ -77,26 +80,29 @@ namespace UmaMusumeExplorer.Controls.Common
             e.Result = controls.ToArray();
         }
 
-        private void LoadingBackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private void LoadingBackgroundWorker_ProgressChanged(object? sender, ProgressChangedEventArgs e)
         {
-            // Progress bar
-            (Controls[0].Controls[0] as ProgressBar).Value = e.ProgressPercentage;
+            // This control > temp panel control > progress bar
+            if (Controls[0].Controls[0] is not ProgressBar progressBar) return;
+            progressBar.Value = e.ProgressPercentage;
         }
 
-        private void LoadingBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void LoadingBackgroundWorker_RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs e)
         {
             Controls.Clear();
-            Controls.AddRange((Control[])e.Result);
+
+            if (e.Result is Control[] result)
+                Controls.AddRange(result);
 
             AutoScroll = true;
 
             LoadingFinished?.Invoke(this, EventArgs.Empty);
         }
 
-        public event EventHandler LoadingFinished;
-        public event EventHandler ItemClick;
+        public event EventHandler? LoadingFinished;
+        public event EventHandler? ItemClick;
 
-        public ShouldFilter Filter;
+        public ShouldFilter? Filter;
         public delegate bool ShouldFilter(TargetType item);
     }
 }

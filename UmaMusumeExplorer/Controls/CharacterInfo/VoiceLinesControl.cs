@@ -14,11 +14,11 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
         private readonly BackgroundWorker exportBackgroundWorker = new() { WorkerReportsProgress = true };
 
         private bool loaded = false;
-        private IEnumerable<CharacterSystemText> selectedCharacterSystemTexts;
-        private IEnumerable<CharacterSystemText> selectedCostumeSystemTexts;
-        private IEnumerable<CharacterSystemText> selectedCategorySystemTexts;
-        private IEnumerable<CharacterSystemText> finalFilteredSystemTexts;
-        private PinnedBitmap iconPinnedBitmap;
+        private IEnumerable<CharacterSystemText>? selectedCharacterSystemTexts;
+        private IEnumerable<CharacterSystemText>? selectedCostumeSystemTexts;
+        private IEnumerable<CharacterSystemText>? selectedCategorySystemTexts;
+        private IEnumerable<CharacterSystemText>? finalFilteredSystemTexts;
+        private PinnedBitmap? iconPinnedBitmap;
 
         public VoiceLinesControl()
         {
@@ -36,7 +36,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             waveOut.Dispose();
         }
 
-        private void VoiceLinesControl_Load(object sender, EventArgs e)
+        private void VoiceLinesControl_Load(object? sender, EventArgs e)
         {
             if (systemTexts is not null)
             {
@@ -52,9 +52,9 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             }
         }
 
-        private void CostumeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void CostumeComboBox_SelectedIndexChanged(object? sender, EventArgs e)
         {
-            CardData cardData = (costumeComboBox.SelectedItem as CostumeComboBoxItem)?.CardData;
+            CardData? cardData = (costumeComboBox.SelectedItem as CostumeComboBoxItem)?.CardData ?? null;
 
             selectedCharacterSystemTexts = systemTexts.Where(st => st.CharacterId == CharacterId);
             selectedCostumeSystemTexts = selectedCharacterSystemTexts;
@@ -62,8 +62,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
             if (cardData is not null)
             {
-                CardRarityData rarityData = AssetTables.CardRarityDatas.Where(crd => crd.CardId == cardData.Id).FirstOrDefault();
-
+                CardRarityData? rarityData = AssetTables.CardRarityDatas.Where(crd => crd.CardId == cardData.Id).FirstOrDefault();
                 rarityData ??= new();
 
                 selectedCostumeSystemTexts = selectedCharacterSystemTexts.Where(st => st.CueSheet.EndsWith(cardData.Id.ToString()));
@@ -84,6 +83,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
         private void UpdateList()
         {
+            if (selectedCostumeSystemTexts is null) return;
             selectedCategorySystemTexts = categoryComboBox.SelectedIndex switch
             {
                 1 => selectedCostumeSystemTexts.Where(st => st.CueSheet.Contains("home")),
@@ -97,6 +97,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
             voiceLineListPanel.Controls.Clear();
 
+            if (finalFilteredSystemTexts is null) return;
             foreach (var characterSystemText in finalFilteredSystemTexts)
             {
                 CharacterVoiceListItemControl listItem = new(characterSystemText, waveOut);
@@ -128,8 +129,9 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
                 foreach (CharacterVoiceListItemControl control in voiceLineListPanel.Controls)
                 {
                     if (!control.Checked && checkedOnly) continue;
+                    if (control.CharacterSystemText is null) continue;
 
-                    WaveStream waveStream = control.GetWaveStream();
+                    WaveStream? waveStream = control.GetWaveStream();
 
                     string outputPath = Path.Combine(folderBrowserDialog.SelectedPath,
                         SanitizeFileName(control.CharacterSystemText.Text) + ".wav");
@@ -141,12 +143,12 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             exportBackgroundWorker.RunWorkerAsync();
         }
 
-        private void ExportBackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private void ExportBackgroundWorker_ProgressChanged(object? sender, ProgressChangedEventArgs e)
         {
             loadingProgressBar.Value = e.ProgressPercentage;
         }
 
-        private void ExportBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void ExportBackgroundWorker_RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs e)
         {
             loadingProgressBar.Visible = false;
         }

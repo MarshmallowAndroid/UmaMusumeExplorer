@@ -9,8 +9,8 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 {
     public partial class CharacterVoiceListItemControl : UserControl
     {
-        private WaveStream voiceWaveStream;
-        private Timer animationTimer;
+        private WaveStream? voiceWaveStream;
+        private Timer? animationTimer;
         private bool processingClick = false;
 
         public CharacterVoiceListItemControl()
@@ -31,34 +31,23 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             voiceLineTextLabel.Text = systemText.Text;
             playButton.Click += (s, e) =>
             {
-                GameAsset acbAsset = AssetTables.AudioAssets.FirstOrDefault(a => a.BaseName == systemText.CueSheet + ".acb");
-                GameAsset awbAsset = AssetTables.AudioAssets.FirstOrDefault(a => a.BaseName == systemText.CueSheet + ".awb");
-
-                if (acbAsset is null && awbAsset is null) return;
-
-                string acbPath = UmaDataHelper.GetPath(acbAsset);
-                string awbPath = UmaDataHelper.GetPath(awbAsset);
-
-                if (!File.Exists(awbPath)) return;
-
                 waveOut.PlaybackStopped -= PlaybackStopped;
 
                 if (waveOut.PlaybackState == PlaybackState.Playing)
                     waveOut.Stop();
 
                 voiceWaveStream?.Dispose();
+                voiceWaveStream = GetWaveStream();
 
-                AcbReader acb = new(File.OpenRead(acbPath));
-                AwbReader awb = new(File.OpenRead(awbPath));
-
-                voiceWaveStream = new UmaWaveStream(awb, acb.GetWaveIdFromCueId(systemText.CueId));
-
+                voiceLineTextLabel.Progress = 0;
                 animationTimer?.Stop();
                 animationTimer?.Dispose();
 
-                animationTimer = new();
-                animationTimer.Enabled = true;
-                animationTimer.Interval = 50;
+                animationTimer = new()
+                {
+                    Enabled = true,
+                    Interval = 50
+                };
                 animationTimer.Tick += (s, e) =>
                 {
                     if (voiceWaveStream is not null)
@@ -73,12 +62,16 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             };
         }
 
-        public CharacterSystemText CharacterSystemText { get; }
+        public CharacterSystemText? CharacterSystemText { get; }
 
-        public WaveStream GetWaveStream()
+        public bool Checked => checkBox.Checked;
+
+        public WaveStream? GetWaveStream()
         {
-            GameAsset acbAsset = AssetTables.AudioAssets.FirstOrDefault(a => a.BaseName == CharacterSystemText.CueSheet + ".acb");
-            GameAsset awbAsset = AssetTables.AudioAssets.FirstOrDefault(a => a.BaseName == CharacterSystemText.CueSheet + ".awb");
+            if (CharacterSystemText is null) return null;
+
+            GameAsset? acbAsset = AssetTables.AudioAssets.FirstOrDefault(a => a.BaseName == CharacterSystemText.CueSheet + ".acb");
+            GameAsset? awbAsset = AssetTables.AudioAssets.FirstOrDefault(a => a.BaseName == CharacterSystemText.CueSheet + ".awb");
 
             if (acbAsset is null && awbAsset is null) return null;
 
@@ -93,9 +86,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             return new UmaWaveStream(awb, acb.GetWaveIdFromCueId(CharacterSystemText.CueId));
         }
 
-        public bool Checked => checkBox.Checked;
-
-        private void ClickHit(object sender, EventArgs e)
+        private void ClickHit(object? sender, EventArgs e)
         {
             if (processingClick) return;
 
@@ -103,7 +94,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
             try
             {
-                MouseEventArgs mouseEventArgs = e as MouseEventArgs;
+                if (e is not MouseEventArgs mouseEventArgs) return;
                 if (mouseEventArgs.Button != MouseButtons.Left) return;
 
                 checkBox.Checked = !checkBox.Checked;
@@ -114,16 +105,15 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             }
         }
 
-        private void VoiceLineTextLabel_DoubleClick(object sender, EventArgs e)
+        private void VoiceLineTextLabel_DoubleClick(object? sender, EventArgs e)
         {
             Clipboard.SetText(voiceLineTextLabel.Text);
         }
 
-        private void PlaybackStopped(object sender, EventArgs e)
+        private void PlaybackStopped(object? sender, EventArgs e)
         {
             voiceLineTextLabel.Progress = 0;
-            animationTimer.Stop();
-            animationTimer.Dispose();
+            animationTimer?.Stop();
         }
     }
 }

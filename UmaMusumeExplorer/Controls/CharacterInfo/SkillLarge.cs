@@ -9,7 +9,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 {
     public partial class SkillLarge : UserControl
     {
-        public SkillData skill;
+        public SkillData? skill;
         public SkillBackground background;
 
         public SkillLarge()
@@ -17,7 +17,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             InitializeComponent();
         }
 
-        public SkillData Skill
+        public SkillData? Skill
         {
             get => skill;
             set

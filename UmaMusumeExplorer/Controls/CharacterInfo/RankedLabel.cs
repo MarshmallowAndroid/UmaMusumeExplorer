@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+﻿using UmaMusumeExplorer.Controls.CharacterInfo.Classes;
 using Color = System.Drawing.Color;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo
@@ -14,10 +14,6 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             Rank = Rank.Unknown;
         }
 
-        [Browsable(true)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-        [EditorBrowsable(EditorBrowsableState.Always)]
-        [RefreshProperties(RefreshProperties.All)]
         public Rank Rank
         {
             get
@@ -74,11 +70,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
         //public override string Text { get => base.Text; set => base.Text = value; }
 
-        [Browsable(true)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-        [EditorBrowsable(EditorBrowsableState.Always)]
-        [RefreshProperties(RefreshProperties.All)]
-        public override string Text
+        public new string Text
         {
             get
             {

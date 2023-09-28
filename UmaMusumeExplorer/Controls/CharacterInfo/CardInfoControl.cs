@@ -11,15 +11,15 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
     {
         private readonly IEnumerable<SkillData> skillDatas = AssetTables.SkillDatas;
 
-        private CharaData charaData;
-        private PinnedBitmap iconPinnedBitmap;
+        private CharaData? charaData;
+        private PinnedBitmap? iconPinnedBitmap;
 
         public CardInfoControl()
         {
             InitializeComponent();
         }
 
-        public CharaData CharaData
+        public CharaData? CharaData
         {
             get
             {
@@ -37,7 +37,8 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
         private void CostumeSelectComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CardData cardData = (costumeComboBox.SelectedItem as CostumeComboBoxItem).CardData;
+            if (costumeComboBox.SelectedItem is not CostumeComboBoxItem selectedItem) return;
+            CardData cardData = selectedItem.CardData;
 
             rarityComboBox.Items.Clear();
             foreach (var rarityData in AssetTables.CardRarityDatas.Where(crd => crd.CardId == cardData.Id))
@@ -49,7 +50,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
                 rarityComboBox.SelectedIndex = 0;
             else
             {
-                iconPinnedBitmap.Dispose();
+                iconPinnedBitmap?.Dispose();
                 iconPinnedBitmap = UnityAssets.GetCharaIcon(cardData.CharaId);
                 iconPictureBox.Image = iconPinnedBitmap.Bitmap;
 
@@ -64,15 +65,16 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             UpdateIconAndStats();
         }
 
-        private void SkillButton_Click(object sender, EventArgs e)
+        private void SkillButton_Click(object? sender, EventArgs e)
         {
-            SkillSmall skillSmall = sender as SkillSmall;
-
+            if (sender is not SkillSmall skillSmall) return;
             ControlHelpers.ShowFormDialogCenter(new SkillInfoForm(skillSmall.Skill, skillSmall.EvolveSkill), this);
         }
 
         private void LoadCharaData()
         {
+            if (charaData is null) return;
+
             int id = charaData.Id;
             string charaName = AssetTables.GetText(TextCategory.MasterCharaName, id);
 
@@ -139,7 +141,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
             skillsTableLayoutPanel.Controls.Clear();
 
-            SkillSet uniqueSkillSet = AssetTables.SkillSets.FirstOrDefault(s => s.Id == cardRarityData.SkillSet);
+            SkillSet? uniqueSkillSet = AssetTables.SkillSets.FirstOrDefault(s => s.Id == cardRarityData.SkillSet);
             if (uniqueSkillSet is not null)
             {
                 IEnumerable<AvailableSkillSet> availableSkillSet = AssetTables.AvailableSkillSets
@@ -163,14 +165,17 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
         private void UpdateIconAndStats()
         {
-            CardData cardData = (costumeComboBox.SelectedItem as CostumeComboBoxItem).CardData;
-            CardRarityData rarityData = (rarityComboBox.SelectedItem as RarityComboBoxItem).CardRarityData;
+            if (costumeComboBox.SelectedItem is not CostumeComboBoxItem selectedCostumeItem) return;
+            if (rarityComboBox.SelectedItem is not RarityComboBoxItem selectedRarityItem) return;
+
+            CardData cardData = selectedCostumeItem.CardData;
+            CardRarityData rarityData = selectedRarityItem.CardRarityData;
 
             rarityData ??= new();
 
             int level = levelComboBox.SelectedIndex + 1;
 
-            iconPinnedBitmap.Dispose();
+            iconPinnedBitmap?.Dispose();
             iconPinnedBitmap = UnityAssets.GetCharaIcon(cardData.CharaId, rarityData.RaceDressId, level > 2 ? 2 : 1);
             iconPictureBox.Image = iconPinnedBitmap.Bitmap;
 
@@ -180,8 +185,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
         private SkillSmall ButtonFromSkillId(int skillId, int cardId, int level = 0)
         {
             SkillData skill = skillDatas.First(s => s.Id == skillId);
-
-            SkillData evolveSkill = null;
+            SkillData? evolveSkill = null;
 
             if (skill.Rarity > 1)
             {

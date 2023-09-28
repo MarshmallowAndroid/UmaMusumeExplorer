@@ -24,10 +24,16 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             };
             songItemsPanel.ItemClick += (s, e) =>
             {
-                LiveData liveData = (s as PictureBox).Tag as LiveData;
-                LiveManager liveManager = new(liveData);
+                if (s is not PictureBox pictureBox) return;
+                if (pictureBox.Tag is not LiveData liveData) return;
+
                 if (liveData is not null)
-                    ControlHelpers.ShowFormCenter(new PlayerForm(liveManager), this);
+                {
+                    LiveManager liveManager = new(liveData);
+
+                    if (liveManager.Setup(this))
+                        ControlHelpers.ShowFormCenter(new PlayerForm(liveManager), this);
+                }
             };
         }
 

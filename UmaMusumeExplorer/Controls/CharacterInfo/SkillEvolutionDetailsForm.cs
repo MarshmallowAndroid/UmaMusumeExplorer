@@ -9,14 +9,14 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
         private readonly IEnumerable<SkillUpgradeCondition> skillUpgradeConditions = AssetTables.SkillUpgradeConditions;
         private readonly int evolutionSkillId;
 
-        public SkillEvolutionDetailsForm(SkillData skill, SkillData evolutionSkill)
+        public SkillEvolutionDetailsForm(SkillData skill, SkillData? evolutionSkill)
         {
             InitializeComponent();
 
             toEvolveSkill.Skill = skill;
             evolvedSkill.Skill = evolutionSkill;
 
-            evolutionSkillId = evolutionSkill.Id;
+            evolutionSkillId = evolutionSkill?.Id ?? 0;
         }
 
         private void SkillEvolutionDetailsForm_Load(object sender, EventArgs e)

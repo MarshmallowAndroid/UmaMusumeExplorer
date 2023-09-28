@@ -18,7 +18,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
         private bool dragging = false;
         private Point clickPoint;
 
-        public SkillInfoForm(SkillData skill, SkillData evolutionSkill)
+        public SkillInfoForm(SkillData skill, SkillData? evolutionSkill)
         {
             InitializeComponent();
 
@@ -31,7 +31,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
                 .Replace("\\n", "\n");
             iconPictureBox.BackgroundImage = UnityAssets.GetSkillIcon(skill.IconId).Bitmap;
 
-            SingleModeSkillNeedPoint needSkillPoint = AssetTables.SingleModeSkillNeedPoints.FirstOrDefault(s => s.Id == skill.Id);
+            SingleModeSkillNeedPoint? needSkillPoint = AssetTables.SingleModeSkillNeedPoints.FirstOrDefault(s => s.Id == skill.Id);
 
             if (needSkillPoint is not null)
             {

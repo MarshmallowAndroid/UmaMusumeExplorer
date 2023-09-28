@@ -7,7 +7,7 @@ namespace UmaMusumeExplorer.Controls.Common
 {
     internal class CharacterItemsPanel : ItemsPanel<CharaData>
     {
-        public override bool ProcessItem(CharaData charaData, ref Control characterPictureBox)
+        public override bool ProcessItem(CharaData charaData, ref Control? characterPictureBox)
         {
             bool playable = AssetTables.CardDatas.Any(cd => cd.CharaId == charaData.Id);
             characterPictureBox = new CharacterPictureBox(playable)
