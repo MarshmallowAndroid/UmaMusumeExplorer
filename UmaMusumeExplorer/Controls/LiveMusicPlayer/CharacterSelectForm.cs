@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Windows.Forms;
-using UmaMusumeData.Tables;
+﻿using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes;
 using UmaMusumeExplorer.Game;
 

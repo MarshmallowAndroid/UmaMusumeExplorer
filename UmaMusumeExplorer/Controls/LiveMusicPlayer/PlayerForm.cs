@@ -1,11 +1,5 @@
 ﻿using NAudio.Wave;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using UmaMusumeData;
 using UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes;
 using UmaMusumeExplorer.Game;

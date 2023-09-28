@@ -1,6 +1,4 @@
-﻿using CriWareLibrary;
-
-namespace UmaMusumeExplorer.Controls.AudioPlayer.Classes
+﻿namespace UmaMusumeExplorer.Controls.AudioPlayer.Classes
 {
     record TrackComboBoxItem(string TrackName, int Index, IAudioTrack Track)
     {

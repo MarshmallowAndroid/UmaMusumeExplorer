@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
+﻿namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 {
     class PartTrigger
     {

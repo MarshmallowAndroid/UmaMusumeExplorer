@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using UmaMusumeData;
+﻿using UmaMusumeData;
 using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Game;
 

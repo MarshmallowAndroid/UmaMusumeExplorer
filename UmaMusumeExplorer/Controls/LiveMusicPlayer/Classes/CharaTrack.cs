@@ -1,8 +1,6 @@
 ﻿using CriWareLibrary;
 using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
-using System;
-using System.Collections.Generic;
 using UmaMusumeAudio;
 
 namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes

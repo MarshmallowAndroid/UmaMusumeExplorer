@@ -1,6 +1,4 @@
-﻿using System.Windows.Forms;
-using UmaMusumeExplorer.Controls;
-using UmaMusumeExplorer.Game;
+﻿using UmaMusumeExplorer.Controls;
 
 namespace UmaMusumeExplorer
 {

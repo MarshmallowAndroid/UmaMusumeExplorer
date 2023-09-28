@@ -1,9 +1,5 @@
 ﻿using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
 using UmaMusumeData;
 using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes;

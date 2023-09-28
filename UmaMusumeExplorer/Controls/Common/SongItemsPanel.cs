@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using UmaMusumeData;
+﻿using UmaMusumeData;
 using UmaMusumeData.Tables;
-using UmaMusumeExplorer.Controls.LiveMusicPlayer;
 using UmaMusumeExplorer.Game;
 
 namespace UmaMusumeExplorer.Controls.Common

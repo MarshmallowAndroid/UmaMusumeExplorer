@@ -1,7 +1,4 @@
 ﻿using System.ComponentModel;
-using System.Drawing;
-using System.Windows.Forms;
-using UmaMusumeExplorer.Controls.CharacterInfo.Classes;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo
 {

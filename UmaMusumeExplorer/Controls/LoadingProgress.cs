@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace UmaMusumeExplorer.Controls
+﻿namespace UmaMusumeExplorer.Controls
 {
     class LoadingProgress : IProgress<int>
     {

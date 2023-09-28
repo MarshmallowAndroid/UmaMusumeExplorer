@@ -1,8 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
-using System.Drawing;
-using UmaMusumeExplorer.Controls.LiveMusicPlayer;
-using UmaMusumeExplorer.Game;
+﻿using UmaMusumeExplorer.Game;
 
 namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 {

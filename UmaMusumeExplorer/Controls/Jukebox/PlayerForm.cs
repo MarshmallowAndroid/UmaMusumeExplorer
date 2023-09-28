@@ -1,11 +1,6 @@
 ﻿using CriWareLibrary;
 using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Windows.Forms;
 using UmaMusumeAudio;
 using UmaMusumeData;
 using UmaMusumeData.Tables;

@@ -1,6 +1,5 @@
 ﻿using CriWareLibrary;
 using NAudio.Wave;
-using System.IO;
 using UmaMusumeAudio;
 
 namespace UmaMusumeExplorer.Controls.AudioPlayer.Classes

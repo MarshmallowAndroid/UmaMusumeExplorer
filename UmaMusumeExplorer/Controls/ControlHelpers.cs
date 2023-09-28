@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Windows.Forms;
-
-namespace UmaMusumeExplorer.Controls
+﻿namespace UmaMusumeExplorer.Controls
 {
     static class ControlHelpers
     {

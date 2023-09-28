@@ -1,8 +1,5 @@
 ﻿using CriWareLibrary;
 using NAudio.Wave;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using UmaMusumeAudio;
 
 namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes

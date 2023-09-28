@@ -1,21 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Linq;
+﻿using System.Drawing.Drawing2D;
 using System.Runtime.InteropServices;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using UmaMusumeData;
 using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Controls.CharacterInfo.Classes;
-using UmaMusumeExplorer.Controls.CharacterInfo;
 using UmaMusumeExplorer.Game;
-using System.Diagnostics;
-using UmaMusumeData;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo
 {

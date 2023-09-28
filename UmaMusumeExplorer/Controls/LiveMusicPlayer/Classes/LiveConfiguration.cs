@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Windows.Forms;
-
-namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
+﻿namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 {
     static class LiveConfiguration
     {

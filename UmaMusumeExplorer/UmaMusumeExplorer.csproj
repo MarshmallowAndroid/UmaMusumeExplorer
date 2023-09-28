@@ -1,10 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net7.0-windows</TargetFramework>
-    <UseWindowsForms>true</UseWindowsForms>
-    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+	<OutputType>WinExe</OutputType>
+	<TargetFramework>net7.0-windows</TargetFramework>
+	<Nullable>enable</Nullable>
+	<UseWindowsForms>true</UseWindowsForms>
+	<ImplicitUsings>enable</ImplicitUsings>
     <StartupObject>UmaMusumeExplorer.Program</StartupObject>
     <ApplicationIcon>Resources\ProgramIcon.ico</ApplicationIcon>
     <FileVersion>1.2.8.0</FileVersion>
