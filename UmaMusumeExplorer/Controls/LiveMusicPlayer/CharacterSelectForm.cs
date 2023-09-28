@@ -1,6 +1,7 @@
 ﻿using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes;
 using UmaMusumeExplorer.Game;
+using Color = System.Drawing.Color;
 
 namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 {

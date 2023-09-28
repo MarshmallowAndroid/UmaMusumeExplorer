@@ -3,7 +3,7 @@ using UmaMusumeData;
 using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Controls.CharacterInfo.Classes;
 using UmaMusumeExplorer.Game;
-using static UmaMusumeExplorer.Controls.CharacterInfo.RankedLabel;
+using Color = System.Drawing.Color;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo
 {
@@ -118,18 +118,18 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             gutsStatusDisplayLabel.Value = cardRarityData.Guts;
             wisdomStatusDisplayLabel.Value = cardRarityData.Wiz;
 
-            turfRankedLabel.Rank = (RankedLabelRank)cardRarityData.ProperGroundTurf;
-            dirtRankedLabel.Rank = (RankedLabelRank)cardRarityData.ProperGroundDirt;
+            turfRankedLabel.Rank = (Rank)cardRarityData.ProperGroundTurf;
+            dirtRankedLabel.Rank = (Rank)cardRarityData.ProperGroundDirt;
 
-            shortRankedLabel.Rank = (RankedLabelRank)cardRarityData.ProperDistanceShort;
-            mileRankedLabel.Rank = (RankedLabelRank)cardRarityData.ProperDistanceMile;
-            middleRankedLabel.Rank = (RankedLabelRank)cardRarityData.ProperDistanceMiddle;
-            longRankedLabel.Rank = (RankedLabelRank)cardRarityData.ProperDistanceLong;
+            shortRankedLabel.Rank = (Rank)cardRarityData.ProperDistanceShort;
+            mileRankedLabel.Rank = (Rank)cardRarityData.ProperDistanceMile;
+            middleRankedLabel.Rank = (Rank)cardRarityData.ProperDistanceMiddle;
+            longRankedLabel.Rank = (Rank)cardRarityData.ProperDistanceLong;
 
-            escapeRankedLabel.Rank = (RankedLabelRank)cardRarityData.ProperRunningStyleNige;
-            leadingRankedLabel.Rank = (RankedLabelRank)cardRarityData.ProperRunningStyleSenko;
-            insertRankedLabel.Rank = (RankedLabelRank)cardRarityData.ProperRunningStyleSashi;
-            driveInRankedLabel.Rank = (RankedLabelRank)cardRarityData.ProperRunningStyleOikomi;
+            escapeRankedLabel.Rank = (Rank)cardRarityData.ProperRunningStyleNige;
+            leadingRankedLabel.Rank = (Rank)cardRarityData.ProperRunningStyleSenko;
+            insertRankedLabel.Rank = (Rank)cardRarityData.ProperRunningStyleSashi;
+            driveInRankedLabel.Rank = (Rank)cardRarityData.ProperRunningStyleOikomi;
 
             speedGrowthLabel.Text = cardData.TalentSpeed.ToString() + "%";
             staminaGrowthLabel.Text = cardData.TalentStamina.ToString() + "%";

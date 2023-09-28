@@ -3,6 +3,7 @@ using NAudio.Wave;
 using UmaMusumeAudio;
 using UmaMusumeData;
 using UmaMusumeExplorer.Game;
+using Timer = System.Windows.Forms.Timer;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo
 {

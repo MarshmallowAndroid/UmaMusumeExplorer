@@ -1,23 +1,24 @@
 ﻿using System.ComponentModel;
+using Color = System.Drawing.Color;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo
 {
     partial class RankedLabel : UserControl
     {
-        private RankedLabelRank rank;
+        private Rank rank;
 
         public RankedLabel()
         {
             InitializeComponent();
 
-            Rank = RankedLabelRank.Unknown;
+            Rank = Rank.Unknown;
         }
 
         [Browsable(true)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         [EditorBrowsable(EditorBrowsableState.Always)]
         [RefreshProperties(RefreshProperties.All)]
-        public RankedLabelRank Rank
+        public Rank Rank
         {
             get
             {
@@ -29,35 +30,35 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
                 switch (rank)
                 {
-                    case RankedLabelRank.G:
+                    case Rank.G:
                         rankLabel.Text = "G";
                         rankLabel.ForeColor = Color.DarkGray;
                         break;
-                    case RankedLabelRank.F:
+                    case Rank.F:
                         rankLabel.Text = "F";
                         rankLabel.ForeColor = Color.SlateBlue;
                         break;
-                    case RankedLabelRank.E:
+                    case Rank.E:
                         rankLabel.Text = "E";
                         rankLabel.ForeColor = Color.DarkViolet;
                         break;
-                    case RankedLabelRank.D:
+                    case Rank.D:
                         rankLabel.Text = "D";
                         rankLabel.ForeColor = Color.DeepSkyBlue;
                         break;
-                    case RankedLabelRank.C:
+                    case Rank.C:
                         rankLabel.Text = "C";
                         rankLabel.ForeColor = Color.LimeGreen;
                         break;
-                    case RankedLabelRank.B:
+                    case Rank.B:
                         rankLabel.Text = "B";
                         rankLabel.ForeColor = Color.HotPink;
                         break;
-                    case RankedLabelRank.A:
+                    case Rank.A:
                         rankLabel.Text = "A";
                         rankLabel.ForeColor = Color.OrangeRed;
                         break;
-                    case RankedLabelRank.S:
+                    case Rank.S:
                         rankLabel.Text = "S";
                         rankLabel.ForeColor = Color.Goldenrod;
                         break;
@@ -88,19 +89,6 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
                 textLabel.Text = value;
                 Invalidate();
             }
-        }
-
-        public enum RankedLabelRank
-        {
-            Unknown,
-            G,
-            F,
-            E,
-            D,
-            C,
-            B,
-            A,
-            S
         }
     }
 }

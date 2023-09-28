@@ -1,4 +1,5 @@
 ﻿using System.Drawing.Drawing2D;
+using Rectangle = System.Drawing.Rectangle;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo
 {

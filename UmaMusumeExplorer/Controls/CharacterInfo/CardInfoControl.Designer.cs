@@ -256,7 +256,7 @@
             driveInRankedLabel.Location = new System.Drawing.Point(451, 83);
             driveInRankedLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             driveInRankedLabel.Name = "driveInRankedLabel";
-            driveInRankedLabel.Rank = RankedLabel.RankedLabelRank.Unknown;
+            driveInRankedLabel.Rank = Rank.Unknown;
             driveInRankedLabel.Size = new System.Drawing.Size(109, 30);
             driveInRankedLabel.TabIndex = 12;
             driveInRankedLabel.Text = "Drive-in";
@@ -268,7 +268,7 @@
             dirtRankedLabel.Location = new System.Drawing.Point(227, 5);
             dirtRankedLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             dirtRankedLabel.Name = "dirtRankedLabel";
-            dirtRankedLabel.Rank = RankedLabel.RankedLabelRank.Unknown;
+            dirtRankedLabel.Rank = Rank.Unknown;
             dirtRankedLabel.Size = new System.Drawing.Size(106, 29);
             dirtRankedLabel.TabIndex = 2;
             dirtRankedLabel.Text = "Dirt";
@@ -280,7 +280,7 @@
             turfRankedLabel.Location = new System.Drawing.Point(115, 5);
             turfRankedLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             turfRankedLabel.Name = "turfRankedLabel";
-            turfRankedLabel.Rank = RankedLabel.RankedLabelRank.Unknown;
+            turfRankedLabel.Rank = Rank.Unknown;
             turfRankedLabel.Size = new System.Drawing.Size(106, 29);
             turfRankedLabel.TabIndex = 1;
             turfRankedLabel.Text = "Turf";
@@ -325,7 +325,7 @@
             shortRankedLabel.Location = new System.Drawing.Point(115, 44);
             shortRankedLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             shortRankedLabel.Name = "shortRankedLabel";
-            shortRankedLabel.Rank = RankedLabel.RankedLabelRank.Unknown;
+            shortRankedLabel.Rank = Rank.Unknown;
             shortRankedLabel.Size = new System.Drawing.Size(106, 29);
             shortRankedLabel.TabIndex = 4;
             shortRankedLabel.Text = "Short";
@@ -337,7 +337,7 @@
             mileRankedLabel.Location = new System.Drawing.Point(227, 44);
             mileRankedLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             mileRankedLabel.Name = "mileRankedLabel";
-            mileRankedLabel.Rank = RankedLabel.RankedLabelRank.Unknown;
+            mileRankedLabel.Rank = Rank.Unknown;
             mileRankedLabel.Size = new System.Drawing.Size(106, 29);
             mileRankedLabel.TabIndex = 5;
             mileRankedLabel.Text = "Mile";
@@ -349,7 +349,7 @@
             middleRankedLabel.Location = new System.Drawing.Point(339, 44);
             middleRankedLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             middleRankedLabel.Name = "middleRankedLabel";
-            middleRankedLabel.Rank = RankedLabel.RankedLabelRank.Unknown;
+            middleRankedLabel.Rank = Rank.Unknown;
             middleRankedLabel.Size = new System.Drawing.Size(106, 29);
             middleRankedLabel.TabIndex = 6;
             middleRankedLabel.Text = "Middle";
@@ -361,7 +361,7 @@
             longRankedLabel.Location = new System.Drawing.Point(451, 44);
             longRankedLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             longRankedLabel.Name = "longRankedLabel";
-            longRankedLabel.Rank = RankedLabel.RankedLabelRank.Unknown;
+            longRankedLabel.Rank = Rank.Unknown;
             longRankedLabel.Size = new System.Drawing.Size(109, 29);
             longRankedLabel.TabIndex = 7;
             longRankedLabel.Text = "Long";
@@ -373,7 +373,7 @@
             escapeRankedLabel.Location = new System.Drawing.Point(115, 83);
             escapeRankedLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             escapeRankedLabel.Name = "escapeRankedLabel";
-            escapeRankedLabel.Rank = RankedLabel.RankedLabelRank.Unknown;
+            escapeRankedLabel.Rank = Rank.Unknown;
             escapeRankedLabel.Size = new System.Drawing.Size(106, 30);
             escapeRankedLabel.TabIndex = 9;
             escapeRankedLabel.Text = "Escape";
@@ -385,7 +385,7 @@
             leadingRankedLabel.Location = new System.Drawing.Point(227, 83);
             leadingRankedLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             leadingRankedLabel.Name = "leadingRankedLabel";
-            leadingRankedLabel.Rank = RankedLabel.RankedLabelRank.Unknown;
+            leadingRankedLabel.Rank = Rank.Unknown;
             leadingRankedLabel.Size = new System.Drawing.Size(106, 30);
             leadingRankedLabel.TabIndex = 10;
             leadingRankedLabel.Text = "Leading";
@@ -397,7 +397,7 @@
             insertRankedLabel.Location = new System.Drawing.Point(339, 83);
             insertRankedLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             insertRankedLabel.Name = "insertRankedLabel";
-            insertRankedLabel.Rank = RankedLabel.RankedLabelRank.Unknown;
+            insertRankedLabel.Rank = Rank.Unknown;
             insertRankedLabel.Size = new System.Drawing.Size(106, 30);
             insertRankedLabel.TabIndex = 11;
             insertRankedLabel.Text = "Insert";

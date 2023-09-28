@@ -1,4 +1,5 @@
 ﻿using UmaMusumeExplorer.Game;
+using Image = System.Drawing.Image;
 
 namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 {

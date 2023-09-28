@@ -1,4 +1,6 @@
 ﻿using System.Drawing.Drawing2D;
+using Color = System.Drawing.Color;
+using Rectangle = System.Drawing.Rectangle;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo.Classes
 {

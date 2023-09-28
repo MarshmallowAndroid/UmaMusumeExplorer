@@ -6,6 +6,7 @@ using UmaMusumeAudio;
 using UmaMusumeData;
 using UmaMusumeExplorer.Controls.AudioPlayer.Classes;
 using UmaMusumeExplorer.Game;
+using Color = System.Drawing.Color;
 
 namespace UmaMusumeExplorer.Controls.AudioPlayer
 {

@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using UmaMusumeData;
+using Image = SixLabors.ImageSharp.Image;
 
 namespace UmaMusumeExplorer.Game
 {

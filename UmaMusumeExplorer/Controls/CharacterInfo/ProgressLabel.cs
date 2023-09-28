@@ -1,4 +1,7 @@
-﻿namespace UmaMusumeExplorer.Controls.CharacterInfo
+﻿using Color = System.Drawing.Color;
+using Rectangle = System.Drawing.Rectangle;
+
+namespace UmaMusumeExplorer.Controls.CharacterInfo
 {
     internal class ProgressLabel : Label
     {

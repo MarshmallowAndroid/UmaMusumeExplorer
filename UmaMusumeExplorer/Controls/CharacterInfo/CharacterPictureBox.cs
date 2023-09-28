@@ -1,4 +1,5 @@
 ﻿using UmaMusumeExplorer.Controls.Common;
+using Color = System.Drawing.Color;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo
 {
