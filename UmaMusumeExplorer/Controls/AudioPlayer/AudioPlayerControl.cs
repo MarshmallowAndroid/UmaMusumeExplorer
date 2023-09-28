@@ -17,16 +17,16 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
 
         private readonly IEnumerable<GameAsset> audioAssets = AssetTables.AudioAssets;
         private char audioType;
-        private IEnumerable<GameAsset> awbOnly;
+        private IEnumerable<GameAsset>? awbOnly;
 
-        private IEnumerable<ListViewItem> defaultItems;
-        private IEnumerable<ListViewItem> targetItems;
-        private Func<ListViewItem, bool> filterPredicate = null;
+        private IEnumerable<ListViewItem>? defaultItems;
+        private IEnumerable<ListViewItem>? targetItems;
+        private Func<ListViewItem, bool>? filterPredicate = null;
 
         private int totalFiles;
 
-        private UmaWaveStream umaWaveStream;
-        private VolumeSampleProvider volumeSampleProvider;
+        private UmaWaveStream? umaWaveStream;
+        private VolumeSampleProvider? volumeSampleProvider;
 
         public AudioPlayerControl()
         {
@@ -65,6 +65,9 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
 
             if (audioAssets is not null)
                 awbOnly = audioAssets.Where((gf) => gf.Name.StartsWith($"sound/{audioType}/") && gf.BaseName.EndsWith(".awb"));
+
+            if (awbOnly is null) return;
+
             totalFiles = awbOnly.Count();
 
             fileListView.Items.Clear();
@@ -79,7 +82,8 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
 
         private void LoadingBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            BackgroundWorker backgroundWorker = sender as BackgroundWorker;
+            if (sender is not BackgroundWorker backgroundWorker) return;
+            if (awbOnly is null) return;
 
             List<ListViewItem> listViewItems = new();
 
@@ -116,7 +120,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
         private void LoadingBackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             loadingProgressBar.Value = (int)((float)e.ProgressPercentage / totalFiles * 100);
-            loadingFileNameLabel.Text = (string)e.UserState;
+            loadingFileNameLabel.Text = e.UserState as string;
         }
 
         private void LoadingBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -130,7 +134,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             {
                 defaultItems = e.Result as List<ListViewItem>;
                 Filter();
-                fileListView.Items.AddRange(targetItems.ToArray());
+                fileListView.Items.AddRange(targetItems?.ToArray());
             }
 
             fileListView.Columns[0].Width = (int)(fileListView.ClientSize.Width * (float)0.80F);
@@ -139,9 +143,8 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
 
         private void FileListView_ItemActivate(object sender, EventArgs e)
         {
-            ListView fileList = sender as ListView;
-            AudioSource audioSource = fileList.SelectedItems[0].Tag as AudioSource;
-
+            if (sender is not ListView fileList) return;
+            AudioSource? audioSource = fileList.SelectedItems[0].Tag as AudioSource;
             ChangeAudioSource(audioSource);
         }
 
@@ -162,8 +165,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
         {
             updateTimer.Enabled = false;
 
-            ComboBox comboBox = sender as ComboBox;
-
+            if (sender is not ComboBox comboBox) return;
             IAudioTrack audioTrack = ((TrackComboBoxItem)comboBox.SelectedItem).Track;
 
             lock (waveOutLock)
@@ -176,7 +178,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
                 timeLengthLabel.Text = umaWaveStream.TotalTime.ToString("mm\\:ss");
 
                 InitializeWaveOut(umaWaveStream);
-                waveOut.Play();
+                waveOut?.Play();
             }
 
             updateTimer.Enabled = true;
@@ -184,16 +186,15 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
 
         private void UpdateTimer_Tick(object sender, EventArgs e)
         {
+            if (umaWaveStream is null) return;
             seekTrackBar.Value = (int)((float)umaWaveStream.Position / umaWaveStream.Length * 100);
             timeElapsedLabel.Text = umaWaveStream.CurrentTime.ToString("mm\\:ss");
         }
 
         private void SeekTrackBar_Scroll(object sender, EventArgs e)
         {
+            if (sender is not TrackBar trackBar) return;
             if (umaWaveStream is null) return;
-
-            TrackBar trackBar = sender as TrackBar;
-
             umaWaveStream.Position = (long)(umaWaveStream.Length * ((float)trackBar.Value / trackBar.Maximum)) - 1;
         }
 
@@ -313,7 +314,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             Filter();
 
             fileListView.Items.Clear();
-            fileListView.Items.AddRange(targetItems.ToArray());
+            fileListView.Items.AddRange(targetItems?.ToArray());
         }
 
         private void ExportToolStripMenuItem_Click(object sender, EventArgs e)
@@ -330,7 +331,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
         {
             if (filterPredicate is not null)
             {
-                targetItems = defaultItems.Where(filterPredicate);
+                targetItems = defaultItems?.Where(filterPredicate);
             }
             else
             {
@@ -338,8 +339,10 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             }
         }
 
-        private void ChangeAudioSource(AudioSource audioSource)
+        private void ChangeAudioSource(AudioSource? audioSource)
         {
+            if (audioSource is null) return;
+
             tracksComboBox.Items.Clear();
             for (int i = 0; i < audioSource.Tracks.Length; i++)
             {

@@ -2,7 +2,7 @@
 {
     public abstract class AudioSource
     {
-        private IAudioTrack[] tracks;
+        private IAudioTrack[]? tracks;
 
         public abstract string Name { get; }
 

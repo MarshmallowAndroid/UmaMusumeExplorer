@@ -66,7 +66,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
         {
             progressBar.Value = e.ProgressPercentage;
 
-            State state = (State)e.UserState;
+            if (e.UserState is not State state) return;
 
             currentFileLabel.Text = "Exporing " + state.Name;
             progressLabel.Text = $"{state.CurrentFile} of {sources.Length}";
