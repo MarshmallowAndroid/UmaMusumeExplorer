@@ -1,20 +1,14 @@
-﻿using AssetStudio;
-using CriWareLibrary;
+﻿using CriWareLibrary;
 using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using UmaMusumeAudio;
 using UmaMusumeData;
 using UmaMusumeData.Tables;
-using UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes;
 using UmaMusumeExplorer.Game;
 
 namespace UmaMusumeExplorer.Controls.Jukebox
@@ -25,7 +19,6 @@ namespace UmaMusumeExplorer.Controls.Jukebox
         private readonly SongLength songLength;
         private readonly int musicId;
 
-        private readonly AssetsManager assetsManager = new();
         private readonly PinnedBitmap songJacketPinnedBitmap;
 
         private UmaWaveStream musicWaveStream;
@@ -80,8 +73,6 @@ namespace UmaMusumeExplorer.Controls.Jukebox
 
             waveOut.Stop();
             waveOut.Dispose();
-
-            assetsManager.Clear();
         }
 
         private void SeekTrackBar_Scroll(object sender, EventArgs e)

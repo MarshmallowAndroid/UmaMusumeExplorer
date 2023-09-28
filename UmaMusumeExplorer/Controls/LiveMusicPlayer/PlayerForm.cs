@@ -1,18 +1,12 @@
-﻿using AssetStudio;
-using CriWareLibrary;
-using NAudio.Wave;
+﻿using NAudio.Wave;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UmaMusumeData;
-using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes;
 using UmaMusumeExplorer.Game;
 using Color = System.Drawing.Color;
@@ -25,7 +19,6 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
         private readonly int musicId;
         private readonly string songTitle;
 
-        private readonly AssetsManager assetsManager = new();
         private readonly PinnedBitmap songJacketPinnedBitmap;
 
         private List<LyricsTrigger> lyricsTriggers = new();
@@ -127,8 +120,6 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
             waveOut.Stop();
             waveOut.Dispose();
-
-            assetsManager.Clear();
         }
 
         private void SeekTrackBar_Scroll(object sender, EventArgs e)

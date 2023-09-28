@@ -139,7 +139,7 @@ namespace UmaMusumeExplorer.Game
 
             Image<Bgra32> image = GetImage(jacketsAssetsManager, imageName);
             image ??= GetImage(jacketsAssetsManager, $"jacket_icon_{size}_0000");
-            AddLoadedImage(imageName, image);            
+            AddLoadedImage(imageName, image);
 
             return PinnedBitmapFromKey(imageName);
         }
@@ -173,11 +173,12 @@ namespace UmaMusumeExplorer.Game
 
         private static byte[] ToBytes<TPixel>(this Image<TPixel> image) where TPixel : unmanaged, IPixel<TPixel>
         {
-            byte[] imageBytes = null;
-            if (image.TryGetSinglePixelSpan(out Span<TPixel> span))
-                imageBytes = MemoryMarshal.AsBytes(span).ToArray();
+            if (image.DangerousTryGetSinglePixelMemory(out Memory<TPixel> memory))
+            {
+                return MemoryMarshal.Cast<TPixel, byte>(memory.Span).ToArray();
+            }
 
-            return imageBytes;
+            return null;
         }
 
         private static AssetTypeValueField GetFileBaseField(AssetsManager assetsManager, string objectName, AssetClassID classId, out AssetsFileInstance assetsFileInstance)
