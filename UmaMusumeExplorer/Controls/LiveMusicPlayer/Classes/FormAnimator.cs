@@ -154,7 +154,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 
         class PreciseTimer
         {
-            private Thread timerThread;
+            private Thread? timerThread;
             private bool continueRunning;
 
             public PreciseTimer(float interval)
@@ -217,7 +217,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             }
 
             public delegate void PreciseTimerEventHandler();
-            public event PreciseTimerEventHandler Elapsed;
+            public event PreciseTimerEventHandler? Elapsed;
         }
     }
 }

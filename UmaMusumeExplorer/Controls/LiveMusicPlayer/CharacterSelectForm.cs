@@ -1,4 +1,5 @@
-﻿using UmaMusumeData.Tables;
+﻿using System.Net.Security;
+using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes;
 using UmaMusumeExplorer.Game;
 using Color = System.Drawing.Color;
@@ -35,14 +36,15 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             {
                 foreach (PictureBox charaIcon in characterItemsPanel.Controls)
                 {
-                    CharaData cd = charaIcon.Tag as CharaData;
+                    if (charaIcon.Tag as CharaData is not CharaData cd) return;
                     if (alreadySelected.Contains(cd.Id)) charaIcon.BackColor = Color.FromArgb(234, 54, 128);
                 }
             };
             characterItemsPanel.ItemClick += (s, e) =>
             {
-                PictureBox pictureBox = s as PictureBox;
-                SelectedCharacter = (pictureBox.Tag as CharaData).Id;
+                if (s is not PictureBox pictureBox) return;
+                if (pictureBox.Tag is not CharaData cd) return;
+                SelectedCharacter = cd.Id;
                 Close();
             };
         }

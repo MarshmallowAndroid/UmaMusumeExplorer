@@ -7,19 +7,19 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 {
     class CharaTrack : ISampleProvider, IDisposable
     {
-        private readonly UmaWaveStream mainUmaWaveStream;
-        private readonly UmaWaveStream secondUmaWaveStream;
+        private readonly UmaWaveStream? mainUmaWaveStream;
+        private readonly UmaWaveStream? secondUmaWaveStream;
 
         private readonly PanSampleProvider mainSampleProvider;
-        private readonly PanSampleProvider secondSampleProvider;
+        private readonly PanSampleProvider? secondSampleProvider;
 
         private readonly List<Trigger> triggers = new();
 
         private readonly int positionIndex;
 
-        private float[] mainBuffer;
-        private float[] secondBuffer;
-        private float[] targetBuffer;
+        private float[]? mainBuffer;
+        private float[]? secondBuffer;
+        private float[]? targetBuffer;
 
         private long currentSample = 0;
         private int triggerIndex = 0;
@@ -64,12 +64,14 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
         {
             get
             {
-                return mainUmaWaveStream.Position;
+                return mainUmaWaveStream?.Position ?? 0;
             }
             set
             {
                 lock (readLock)
                 {
+                    if (mainUmaWaveStream is null) return;
+
                     long fixedValue = value * mainUmaWaveStream.WaveFormat.SampleRate / WaveFormat.SampleRate;
 
                     mainUmaWaveStream.Position = fixedValue;
@@ -90,12 +92,8 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 
         public int Read(float[] buffer, int offset, int count)
         {
-            if ((mainBuffer is null && secondBuffer is null) ||
-                (mainBuffer.Length != count && secondBuffer.Length != count))
-            {
-                mainBuffer = new float[count];
-                secondBuffer = new float[count];
-            }
+            mainBuffer = EnsureBuffer(mainBuffer, count);
+            secondBuffer = EnsureBuffer(secondBuffer, count);
 
             int mainRead;
 
@@ -170,13 +168,20 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 
         public void Dispose()
         {
-            mainUmaWaveStream.Dispose();
+            mainUmaWaveStream?.Dispose();
             secondUmaWaveStream?.Dispose();
+        }
+
+        private static float[] EnsureBuffer(float[]? buffer, int length)
+        {
+            if (buffer == null || buffer.Length < length)
+                return new float[length];
+            return buffer;
         }
 
         private ISampleProvider EnsureEqualSampleRate(WaveFormat targetWaveFormat, WaveStream waveStream)
         {
-            if (mainUmaWaveStream.WaveFormat.SampleRate != targetWaveFormat.SampleRate)
+            if (mainUmaWaveStream?.WaveFormat.SampleRate != targetWaveFormat.SampleRate)
                 return new WdlResamplingSampleProvider(waveStream.ToSampleProvider(), targetWaveFormat.SampleRate);
             else
                 return waveStream.ToSampleProvider();

@@ -6,7 +6,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 {
     partial class LiveMusicPlayerControl : UserControl
     {
-        private readonly IEnumerable<LiveData> liveDatas = AssetTables.LiveDatas?.OrderBy(l => l.Sort);
+        private readonly IEnumerable<LiveData>? liveDatas = AssetTables.LiveDatas?.OrderBy(l => l.Sort);
 
         public LiveMusicPlayerControl()
         {
@@ -14,7 +14,9 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
             songItemsPanel.ItemClick += (s, e) =>
             {
-                LiveData liveData = (s as PictureBox).Tag as LiveData;
+                if (s is not PictureBox pictureBox) return;
+                if (pictureBox.Tag is not LiveData liveData) return;
+
                 if (liveData is not null)
                 {
                     LiveManager liveManager = new(liveData);

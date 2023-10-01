@@ -19,9 +19,9 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 
         public List<PartTrigger> PartTriggers { get; } = new();
 
-        public SongMixer SongMixer { get; private set; }
+        public SongMixer? SongMixer { get; private set; }
 
-        public CharacterPosition[] CharacterPositions { get; private set; }
+        public CharacterPosition[]? CharacterPositions { get; private set; }
 
         public List<LyricsTrigger> LyricsTriggers { get; } = new();
 
@@ -39,11 +39,11 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             CharacterPositions = unitSetupForm.CharacterPositions;
 
             // Get BGM with or without sound effects
-            AwbReader okeAwb = GetAwbFile(audioAssets.First(aa => aa.BaseName == $"snd_bgm_live_{MusicId}_oke_0{(unitSetupForm.Sfx ? '1' : '2')}.awb"));
+            AwbReader? okeAwb = GetAwbFile(audioAssets.First(aa => aa.BaseName == $"snd_bgm_live_{MusicId}_oke_0{(unitSetupForm.Sfx ? '1' : '2')}.awb"));
             if (okeAwb is null) return ShowFileNotFound();
 
             // Abort unit setup when character selection is not confirmed
-            if (unitSetupForm.CharacterPositions is null) return false;
+            if (CharacterPositions is null) return false;
 
             // Add characters position controls to voice control panel
             //charaContainerPanel.Controls.Clear();
@@ -70,7 +70,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 
             foreach (var characterPosition in CharacterPositions)
             {
-                AwbReader charaAwb = GetAwbFile(audioAssets.First(aa => aa.BaseName == $"snd_bgm_live_{MusicId}_chara_{characterPosition.CharacterId}_01.awb"));
+                AwbReader? charaAwb = GetAwbFile(audioAssets.First(aa => aa.BaseName == $"snd_bgm_live_{MusicId}_chara_{characterPosition.CharacterId}_01.awb"));
                 if (charaAwb is null) return ShowFileNotFound();
                 charaAwbs[characterPosition.Position] = charaAwb;
             }
@@ -142,28 +142,34 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                 }
             }
 
-            CsvReader lyricsCsv = GetLiveCsv(assetsManager, "lyrics");
-            lyricsCsv.ReadCsvLine();
-            while (!lyricsCsv.EndOfStream)
+            CsvReader? lyricsCsv = GetLiveCsv(assetsManager, "lyrics");
+            if (lyricsCsv is not null)
             {
-                string line = lyricsCsv.ReadCsvLine();
+                lyricsCsv.ReadCsvLine();
+                while (!lyricsCsv.EndOfStream)
+                {
+                    string line = lyricsCsv.ReadCsvLine();
 
-                if (string.IsNullOrEmpty(line)) continue;
+                    if (string.IsNullOrEmpty(line)) continue;
 
-                LyricsTrigger trigger = new(line);
-                LyricsTriggers.Add(trigger);
+                    LyricsTrigger trigger = new(line);
+                    LyricsTriggers.Add(trigger);
+                }
             }
 
-            CsvReader partCsv = GetLiveCsv(assetsManager, "part");
-            bool hasVolumeRate = partCsv.ReadCsvLine().Contains("volume_rate");
-            while (!partCsv.EndOfStream)
+            CsvReader? partCsv = GetLiveCsv(assetsManager, "part");
+            if (partCsv is not null)
             {
-                PartTrigger trigger = new(partCsv.ReadCsvLine(), hasVolumeRate);
-                PartTriggers.Add(trigger);
+                bool hasVolumeRate = partCsv.ReadCsvLine().Contains("volume_rate");
+                while (!partCsv.EndOfStream)
+                {
+                    PartTrigger trigger = new(partCsv.ReadCsvLine(), hasVolumeRate);
+                    PartTriggers.Add(trigger);
+                }
             }
         }
 
-        private CsvReader GetLiveCsv(AssetsManager assetsManager, string category)
+        private CsvReader? GetLiveCsv(AssetsManager assetsManager, string category)
         {
             string idString = $"{MusicId:d4}";
             string fileName = $"m{idString}_{category}";
@@ -181,7 +187,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             return null;
         }
 
-        private static AwbReader GetAwbFile(GameAsset gameFile)
+        private static AwbReader? GetAwbFile(GameAsset gameFile)
         {
             string awbPath = UmaDataHelper.GetPath(gameFile);
             if (File.Exists(awbPath))

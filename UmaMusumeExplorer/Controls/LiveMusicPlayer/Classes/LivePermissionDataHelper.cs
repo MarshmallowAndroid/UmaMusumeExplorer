@@ -19,7 +19,8 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                 {
                     int charaId = int.Parse(audioAsset.BaseName.Remove(0, $"snd_bgm_live_{musicId}_chara_".Length)[..4]);
 
-                    (livePermissionData as List<LivePermissionData>).Add(new LivePermissionData() { MusicId = musicId, CharaId = charaId });
+                    if (livePermissionData is not List<LivePermissionData> list) continue;
+                    list.Add(new LivePermissionData() { MusicId = musicId, CharaId = charaId });
                 }
             }
 

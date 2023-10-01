@@ -1,4 +1,5 @@
 ﻿using NAudio.Wave;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using UmaMusumeData;
 using UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes;
@@ -12,24 +13,25 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
         private readonly LiveManager liveManager;
         private readonly int musicId;
         private readonly string songTitle;
-
         private readonly PinnedBitmap songJacketPinnedBitmap;
-
-        private List<LyricsTrigger> lyricsTriggers = new();
-
-        private SongMixer songMixer;
-        private readonly IWavePlayer waveOut = new WaveOutEvent() { DesiredLatency = 250 };
 
         private readonly Thread lyricsThread;
         private readonly Thread voicesThread;
+
+        private readonly FormAnimator animator;
+
+        private readonly IWavePlayer waveOut = new WaveOutEvent() { DesiredLatency = 250 };
+
+        private SongMixer? songMixer;
+        private List<LyricsTrigger>? lyricsTriggers;
+
         private int lyricsTriggerIndex = 0;
         private bool seeked = false;
         private bool playbackFinished = false;
 
-        private string[] currentSingers;
-        private bool[] singersEnabled;
+        private string[]? currentSingers;
+        private bool[]? singersEnabled;
 
-        private readonly FormAnimator animator;
         private bool expanded = false;
 
         public PlayerForm(LiveManager live)
@@ -103,6 +105,8 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
         private void UpdateTimer_Tick(object sender, EventArgs e)
         {
+            if (songMixer is null) return;
+
             currentTimeLabel.Text = $"{songMixer.CurrentTime:m\\:ss}";
             seekTrackBar.Value = (int)(songMixer.CurrentTime / songMixer.TotalTime * 100.0F);
         }
@@ -118,6 +122,8 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
         private void SeekTrackBar_Scroll(object sender, EventArgs e)
         {
+            if (songMixer is null) return;
+
             songMixer.Position = (long)(songMixer.Length * (float)(seekTrackBar.Value / 100.0F));
             seeked = true;
         }
@@ -139,12 +145,15 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
         {
             waveOut.Stop();
             waveOut.Dispose();
-            songMixer.Dispose();
+            songMixer?.Dispose();
             Close();
         }
 
         private void ExportButton_Click(object sender, EventArgs e)
         {
+            if (songMixer is null) return;
+            if (currentSingers is null) return;
+
             StringBuilder fileNameString = new();
             fileNameString.Append(songTitle + " (");
             for (int i = 0; i < currentSingers.Length; i++)
@@ -205,11 +214,16 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
         private void MuteBgmCheckBox_CheckedChanged(object sender, EventArgs e)
         {
+            if (songMixer is null) return;
+
             songMixer.MuteBgm = muteBgmCheckBox.Checked;
         }
 
         private void CustomVoiceControlCheckBox_CheckedChanged(object sender, EventArgs e)
         {
+            if (songMixer is null) return;
+            if (singersEnabled is null) return;
+
             songMixer.CustomMode = customVoiceControlCheckBox.Checked;
 
             foreach (var control in charaContainerPanel.Controls)
@@ -262,11 +276,16 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             }
         }
 
-        private void CharacterClick(object sender, EventArgs e)
+        private void CharacterClick(object? sender, EventArgs e)
         {
             if (customVoiceControlCheckBox.Checked)
             {
-                CharacterPositionControl character = (sender as Control).Parent as CharacterPositionControl;
+                if (sender is not Control control) return;
+                if (control.Parent is not CharacterPositionControl character) return;
+
+                if (songMixer is null) return;
+                if (singersEnabled is null) return;
+
                 CharaTrack track = songMixer.CharaTracks[character.Position];
                 track.Enabled = !track.Enabled;
                 singersEnabled[character.Position] = track.Enabled;
@@ -275,29 +294,49 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
         private void DoLyricsPlayback()
         {
+            double msElapsed;
+
             while (!playbackFinished)
             {
-                double msElapsed = songMixer.CurrentTime.TotalMilliseconds;
+                Thread.Sleep(1);
+
+                if (songMixer is null) continue;
+                if (lyricsTriggers is null) continue;
+
+                msElapsed = songMixer.CurrentTime.TotalMilliseconds;
 
                 if (seeked)
                 {
                     lyricsTriggerIndex = 0;
-                    seeked = false;
-                }
+                    while (msElapsed >= lyricsTriggers[lyricsTriggerIndex].TimeMs)
+                    {
+                        if (lyricsTriggerIndex < lyricsTriggers.Count - 1)
+                            lyricsTriggerIndex++;
+                        else break;
+                    }
 
-                while (msElapsed >= lyricsTriggers[lyricsTriggerIndex].TimeMs)
-                {
                     TryInvoke(() =>
                     {
-                        lyricsLabel.Text = lyricsTriggers[lyricsTriggerIndex].Lyrics;
+                        lyricsLabel.Text = lyricsTriggers[lyricsTriggerIndex - 1].Lyrics;
                     });
 
-                    if (lyricsTriggerIndex < lyricsTriggers.Count - 1)
-                        lyricsTriggerIndex++;
-                    else break;
+                    seeked = false;
                 }
+                else
+                {
+                    while (msElapsed >= lyricsTriggers[lyricsTriggerIndex].TimeMs)
+                    {
+                        TryInvoke(() =>
+                        {
+                            lyricsLabel.Text = lyricsTriggers[lyricsTriggerIndex].Lyrics;
+                        });
 
-                Thread.Sleep(1);
+                        if (lyricsTriggerIndex < lyricsTriggers.Count - 1)
+                            lyricsTriggerIndex++;
+                        else break;
+                    }
+
+                }
             }
         }
 
@@ -305,7 +344,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
         {
             while (!playbackFinished)
             {
-                if (songMixer.CharaTracks.Count > 0)
+                if (songMixer?.CharaTracks.Count > 0)
                 {
                     foreach (var control in charaContainerPanel.Controls)
                     {

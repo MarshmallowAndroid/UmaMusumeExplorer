@@ -2,8 +2,6 @@
 {
     static class LiveConfiguration
     {
-        private static FileStream configurationFile;
-
         private static readonly Dictionary<int, SongConfiguration> songConfigurations = new();
 
         public static void SaveConfiguration(SongConfiguration songConfiguration)
@@ -15,7 +13,7 @@
             WriteConfigurationFile();
         }
 
-        public static SongConfiguration LoadConfiguration(int songId)
+        public static SongConfiguration? LoadConfiguration(int songId)
         {
             songConfigurations.Clear();
             ReadConfigurationFile();
@@ -26,24 +24,21 @@
             return null;
         }
 
-        private static void OpenFile()
+        private static FileStream OpenFile()
         {
-            configurationFile = new("LiveConfiguration.dat", FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            return new("LiveConfiguration.dat", FileMode.OpenOrCreate, FileAccess.ReadWrite);
         }
-
-        private static void CloseFile() => configurationFile.Dispose();
 
         private static void ReadConfigurationFile()
         {
-            OpenFile();
-
+            FileStream configurationFile = OpenFile();
             BinaryReader reader = new(configurationFile);
 
             reader.BaseStream.Position = 0;
 
             if (reader.BaseStream.Length == 0)
             {
-                CloseFile();
+                configurationFile.Dispose();
                 return;
             }
 
@@ -63,13 +58,12 @@
                 songConfigurations[songId] = songConfiguration;
             }
 
-            CloseFile();
+            configurationFile.Dispose();
         }
 
         private static void WriteConfigurationFile()
         {
-            OpenFile();
-
+            FileStream configurationFile = OpenFile();
             BinaryWriter writer = new(configurationFile);
             writer.BaseStream.Position = 0;
 
@@ -85,7 +79,7 @@
                 writer.Write(songConfiguration.Value.Sfx);
             }
 
-            CloseFile();
+            configurationFile.Dispose();
         }
     }
 

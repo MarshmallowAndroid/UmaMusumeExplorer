@@ -13,11 +13,9 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 
         private readonly object readLock = new();
 
-        private readonly float allActiveVolume;
-
         private bool customMode;
-        private float[] charaTracksBuffer;
-        private float[] okeBuffer;
+        private float[]? charaTracksBuffer;
+        private float[]? okeBuffer;
         private float volumeMultiplier = 1.0F;
 
         private long currentSample = 0;
@@ -42,8 +40,6 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                 long sample = (long)(partTrigger.TimeMs / 1000.0F * WaveFormat.SampleRate);
                 volumeTriggers.Add(new VolumeTrigger(sample, activeSingers));
             }
-
-            allActiveVolume = 1.0F / (parts[0].MemberVolumes.Length + 1) + 0.5F;
         }
 
         public List<CharaTrack> CharaTracks { get; } = new();
@@ -119,10 +115,12 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                 int currentIndex = 0;
                 for (int i = 0; i < charaAwbs.Length; i++)
                 {
-                    CharaTrack newCharaTrack = new(WaveFormat, charaAwbs[i], partTriggers, currentIndex++);
-                    newCharaTrack.Position = okeWaveStream.Position;
-                    newCharaTrack.Enabled = enabledStates[i];
-                    newCharaTrack.ForceSing = alwaysSingStates[i];
+                    CharaTrack newCharaTrack = new(WaveFormat, charaAwbs[i], partTriggers, currentIndex++)
+                    {
+                        Position = okeWaveStream.Position,
+                        Enabled = enabledStates[i],
+                        ForceSing = alwaysSingStates[i]
+                    };
 
                     CharaTracks.Add(newCharaTrack);
                 }
@@ -135,20 +133,18 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             {
                 long position = okeWaveStream.Position;
 
-                okeWaveStream = new(okeAwb, 0);
-                okeWaveStream.Position = position;
+                okeWaveStream = new(okeAwb, 0)
+                {
+                    Position = position
+                };
                 okeSampleProvider = okeWaveStream.ToSampleProvider();
             }
         }
 
         public int Read(float[] buffer, int offset, int count)
         {
-            if ((charaTracksBuffer is null && okeBuffer is null) ||
-                (charaTracksBuffer.Length != count || okeBuffer.Length != count))
-            {
-                charaTracksBuffer = new float[count];
-                okeBuffer = new float[count];
-            }
+            okeBuffer = EnsureBuffer(okeBuffer, count);
+            charaTracksBuffer = EnsureBuffer(charaTracksBuffer, count);
 
             for (int i = 0; i < count; i++)
             {
@@ -208,6 +204,13 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             {
                 charaTrack.Dispose();
             }
+        }
+
+        private static float[] EnsureBuffer(float[]? buffer, int length)
+        {
+            if (buffer == null || buffer.Length < length)
+                return new float[length];
+            return buffer;
         }
 
         private struct VolumeTrigger

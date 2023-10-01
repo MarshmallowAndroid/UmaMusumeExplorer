@@ -7,7 +7,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
     {
         private int characterPosition = 0;
         private int characterId = 0;
-        private Image characterImage;
+        private Image? characterImage;
         private bool disabled = false;
 
         public CharacterPositionControl(int position, EventHandler clickEventHandler)
