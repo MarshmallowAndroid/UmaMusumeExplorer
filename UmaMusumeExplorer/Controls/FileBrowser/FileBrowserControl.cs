@@ -8,10 +8,10 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
 {
     partial class FileBrowserControl : UserControl
     {
-        private readonly SortedDictionary<string, GameAsset> gameAssets = new();
-        private IDictionary<string, GameAsset> searchedAssets;
-        private IDictionary<string, GameAsset> targetAssets;
-        private readonly SortedDictionary<string, GameAsset> selectedAssets = new();
+        private readonly SortedDictionary<string, GameAsset>? gameAssets = new();
+        private IDictionary<string, GameAsset>? searchedAssets;
+        private IDictionary<string, GameAsset>? targetAssets;
+        private readonly SortedDictionary<string, GameAsset>? selectedAssets = new();
 
         private bool searched;
 
@@ -35,7 +35,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
 
         private void FileTreeView_BeforeExpand(object sender, TreeViewCancelEventArgs e)
         {
-            if (gameAssets.Count == 0)
+            if (gameAssets?.Count == 0)
             {
                 foreach (var gameAsset in UmaDataHelper.GetGameAssetDataRows())
                 {
@@ -43,12 +43,15 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
                 }
             }
 
-            TreeNode expandingNode = e.Node;
+            TreeNode? expandingNode = e.Node;
+            if (expandingNode is null) return;
             expandingNode.Nodes.Clear();
 
             IEnumerable<KeyValuePair<string, GameAsset>> assetList;
 
             string convertedNodePath = "";
+
+            if (targetAssets is null) return;
 
             if (expandingNode.Text == "Root")
                 assetList = targetAssets;
@@ -116,6 +119,8 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             }
             else
             {
+                if (targetAssets is null) return;
+
                 string convertedNodePath = node.FullPath["Root/".Length..];
                 IEnumerable<KeyValuePair<string, GameAsset>> assetsToAdd = targetAssets.Where(ga => ga.Key.StartsWith(convertedNodePath + '/'));
 
@@ -142,6 +147,8 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
                     }
                 });
             }
+
+            if (selectedAssets is null) return;
 
             await Task.Run(() =>
             {
@@ -205,16 +212,16 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             foreach (ListViewItem item in selectedItems)
             {
                 extractListView.Items.Remove(item);
-                selectedAssets.Remove(((GameAsset)item.Tag).Name);
+                selectedAssets?.Remove(((GameAsset)item.Tag).Name);
             }
 
-            totalFileCountLabel.Text = $"{selectedAssets.Count} files";
-            totalFileSizeLabel.Text = GenerateSizeString(selectedAssets.Values.Sum(a => a.Length));
+            totalFileCountLabel.Text = $"{selectedAssets?.Count} files";
+            totalFileSizeLabel.Text = GenerateSizeString(selectedAssets?.Values.Sum(a => a.Length) ?? 0);
         }
 
         private void ClearButton_Click(object sender, EventArgs e)
         {
-            selectedAssets.Clear();
+            selectedAssets?.Clear();
             extractListView.Items.Clear();
 
             totalFileCountLabel.Text = $"0 files";
@@ -240,7 +247,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             int finished = 0;
             foreach (ListViewItem item in extractListView.Items)
             {
-                GameAsset asset = item.Tag as GameAsset;
+                if (item.Tag is not GameAsset asset) continue;
 
                 copyTasks[index] = new Task(() =>
                 {
@@ -250,8 +257,9 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
                     string realFilePath = Path.Combine(outputDirectory, realFileName);
                     string destinationDirectory;
 
-                    if (!string.IsNullOrEmpty(Path.GetDirectoryName(realFileName)))
-                        destinationDirectory = Path.Combine(outputDirectory, Path.GetDirectoryName(realFileName));
+                    string? directoryName = Path.GetDirectoryName(realFileName);
+                    if (!string.IsNullOrEmpty(directoryName))
+                        destinationDirectory = Path.Combine(outputDirectory, directoryName);
                     else destinationDirectory = outputDirectory;
 
                     Directory.CreateDirectory(destinationDirectory);
@@ -315,7 +323,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             }
             else
             {
-                searchedAssets.Clear();
+                searchedAssets?.Clear();
                 targetAssets = gameAssets;
 
                 searched = false;
@@ -328,6 +336,8 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
 
         private bool SelectedAssetsHaveDependencies()
         {
+            if (selectedAssets is null) return false;
+
             foreach (var asset in selectedAssets.Values)
             {
                 if (asset.Dependencies.Any()) return true;
@@ -342,7 +352,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
 
             foreach (var dependency in gameAsset.Dependencies.Split(';'))
             {
-                GameAsset dependencyAsset = gameAssets[dependency];
+                GameAsset? dependencyAsset = gameAssets?[dependency] ?? null;
 
                 if (dependencyAsset is not null)
                 {
@@ -357,6 +367,8 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
 
         private void UpdateSelectedAssets(GameAsset asset, bool isChecked)
         {
+            if (selectedAssets is null) return;
+
             TreeNode[] matching = fileTreeView.Nodes.Find(asset.Name, true);
             if (matching.Length > 0) matching[0].Checked = isChecked;
 
