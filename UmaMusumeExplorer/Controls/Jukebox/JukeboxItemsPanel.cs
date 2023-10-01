@@ -9,7 +9,7 @@ namespace UmaMusumeExplorer.Controls.Jukebox
     {
         public SongLength CurrentSongLength { get; set; }
 
-        public override bool ProcessItem(JukeboxMusicData jukeboxMusicData, ref Control jacket)
+        public override bool ProcessItem(JukeboxMusicData jukeboxMusicData, ref Control? jacket)
         {
             jacket = new PictureBox()
             {
@@ -23,7 +23,9 @@ namespace UmaMusumeExplorer.Controls.Jukebox
 
             jacket.Click += (s, e) =>
             {
-                JukeboxMusicData jukeBoxData = (s as PictureBox).Tag as JukeboxMusicData;
+                if (s is not PictureBox pictureBox) return;
+                if (pictureBox.Tag is not JukeboxMusicData jukeBoxData) return;
+
                 if (jukeBoxData is not null)
                     ControlHelpers.ShowFormCenter(new PlayerForm(jukeBoxData, CurrentSongLength), this);
             };
