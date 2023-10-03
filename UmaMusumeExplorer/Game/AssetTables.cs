@@ -9,33 +9,33 @@ namespace UmaMusumeExplorer.Game
         {
             List<LoadAction> initializeActions = new()
             {
-                () => { AudioAssets = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("sound/")); return "AudioAssets"; },
+                () => { AudioAssets.AddRange(UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("sound/"))); return "AudioAssets"; },
 
-                () => { AvailableSkillSets = UmaDataHelper.GetMasterDatabaseRows<AvailableSkillSet>(); return "AvailableSkillSets"; },
+                () => { AvailableSkillSets.AddRange(UmaDataHelper.GetMasterDatabaseRows<AvailableSkillSet>()); return "AvailableSkillSets"; },
 
-                () => { CardDatas = UmaDataHelper.GetMasterDatabaseRows<CardData>(); return "CardDatas"; },
-                () => { CardRarityDatas = UmaDataHelper.GetMasterDatabaseRows<CardRarityData>(); return "CardRarityDatas"; },
-                () => { CharaDatas = UmaDataHelper.GetMasterDatabaseRows<CharaData>(); return "CharaDatas"; },
+                () => { CardDatas.AddRange(UmaDataHelper.GetMasterDatabaseRows<CardData>()); return "CardDatas"; },
+                () => { CardRarityDatas.AddRange(UmaDataHelper.GetMasterDatabaseRows<CardRarityData>()); return "CardRarityDatas"; },
+                () => { CharaDatas.AddRange(UmaDataHelper.GetMasterDatabaseRows<CharaData>()); return "CharaDatas"; },
 
-                () => { CharacterSystemTexts = UmaDataHelper.GetMasterDatabaseRows<CharacterSystemText>(); return "CharacterSystemTexts"; },
+                () => { CharacterSystemTexts.AddRange(UmaDataHelper.GetMasterDatabaseRows<CharacterSystemText>()); return "CharacterSystemTexts"; },
 
-                () => { JukeboxMusicDatas = UmaDataHelper.GetMasterDatabaseRows<JukeboxMusicData>(); return "JukeboxMusicDatas"; },
+                () => { JukeboxMusicDatas.AddRange(UmaDataHelper.GetMasterDatabaseRows<JukeboxMusicData>()); return "JukeboxMusicDatas"; },
 
-                () => { LiveDatas = UmaDataHelper.GetMasterDatabaseRows<LiveData>(); return "LiveDatas"; },
-                () => { LivePermissionDatas = UmaDataHelper.GetMasterDatabaseRows<LivePermissionData>(); return "LivePermissionDatas"; },
+                () => { LiveDatas.AddRange(UmaDataHelper.GetMasterDatabaseRows<LiveData>()); return "LiveDatas"; },
+                () => { LivePermissionDatas.AddRange(UmaDataHelper.GetMasterDatabaseRows<LivePermissionData>()); return "LivePermissionDatas"; },
 
-                () => { RaceBgm = UmaDataHelper.GetMasterDatabaseRows<RaceBgm>(); return "RaceBgm"; },
-                () => { RaceBgmPatterns = UmaDataHelper.GetMasterDatabaseRows<RaceBgmPattern>(); return "RaceBgmPatterns"; },
+                () => { RaceBgm.AddRange(UmaDataHelper.GetMasterDatabaseRows<RaceBgm>()); return "RaceBgm"; },
+                () => { RaceBgmPatterns.AddRange(UmaDataHelper.GetMasterDatabaseRows<RaceBgmPattern>()); return "RaceBgmPatterns"; },
 
-                () => { SkillSets = UmaDataHelper.GetMasterDatabaseRows<SkillSet>(); return "SkillSets"; },
-                () => { SkillDatas = UmaDataHelper.GetMasterDatabaseRows<SkillData>(); return "SkillDatas"; },
+                () => { SkillSets.AddRange(UmaDataHelper.GetMasterDatabaseRows<SkillSet>()); return "SkillSets"; },
+                () => { SkillDatas.AddRange(UmaDataHelper.GetMasterDatabaseRows<SkillData>()); return "SkillDatas"; },
 
-                () => { SingleModeSkillNeedPoints = UmaDataHelper.GetMasterDatabaseRows<SingleModeSkillNeedPoint>(); return "SingleModeSkillNeedPoints"; },
+                () => { SingleModeSkillNeedPoints.AddRange(UmaDataHelper.GetMasterDatabaseRows<SingleModeSkillNeedPoint>()); return "SingleModeSkillNeedPoints"; },
 
-                () => { SkillUpgradeConditions = UmaDataHelper.GetMasterDatabaseRows<SkillUpgradeCondition>(); return "SkillUpgradeConditions"; },
-                () => { SkillUpgradeDescriptions = UmaDataHelper.GetMasterDatabaseRows<SkillUpgradeDescription>(); return "SkillUpgradeDescriptions"; },
+                () => { SkillUpgradeConditions.AddRange(UmaDataHelper.GetMasterDatabaseRows<SkillUpgradeCondition>()); return "SkillUpgradeConditions"; },
+                () => { SkillUpgradeDescriptions.AddRange(UmaDataHelper.GetMasterDatabaseRows<SkillUpgradeDescription>()); return "SkillUpgradeDescriptions"; },
 
-                () => { TextData = UmaDataHelper.GetMasterDatabaseRows<TextData>(); return "TextData"; }
+                () => { TextData.AddRange(UmaDataHelper.GetMasterDatabaseRows<TextData>()); return "TextData"; }
             };
 
             int completedActions = 0;
@@ -52,33 +52,33 @@ namespace UmaMusumeExplorer.Game
 
         public static ProgressUpdater? UpdateProgress { get; set; }
 
-        public static IEnumerable<GameAsset> AudioAssets { get; private set; }
+        public static List<GameAsset> AudioAssets { get; private set; } = new();
 
-        public static IEnumerable<AvailableSkillSet> AvailableSkillSets { get; private set; }
+        public static List<AvailableSkillSet> AvailableSkillSets { get; private set; } = new();
 
-        public static IEnumerable<CardData> CardDatas { get; private set; }
-        public static IEnumerable<CardRarityData> CardRarityDatas { get; private set; }
-        public static IEnumerable<CharaData> CharaDatas { get; private set; }
+        public static List<CardData> CardDatas { get; private set; } = new();
+        public static List<CardRarityData> CardRarityDatas { get; private set; } = new();
+        public static List<CharaData> CharaDatas { get; private set; } = new();
 
-        public static IEnumerable<CharacterSystemText> CharacterSystemTexts { get; private set; }
+        public static List<CharacterSystemText> CharacterSystemTexts { get; private set; } = new();
 
-        public static IEnumerable<JukeboxMusicData> JukeboxMusicDatas { get; private set; }
+        public static List<JukeboxMusicData> JukeboxMusicDatas { get; private set; } = new();
 
-        public static IEnumerable<LiveData> LiveDatas { get; private set; }
-        public static IEnumerable<LivePermissionData> LivePermissionDatas { get; private set; }
+        public static List<LiveData> LiveDatas { get; private set; } = new();
+        public static List<LivePermissionData> LivePermissionDatas { get; private set; } = new();
 
-        public static IEnumerable<RaceBgm> RaceBgm { get; private set; }
-        public static IEnumerable<RaceBgmPattern> RaceBgmPatterns { get; private set; }
+        public static List<RaceBgm> RaceBgm { get; private set; } = new();
+        public static List<RaceBgmPattern> RaceBgmPatterns { get; private set; } = new();
 
-        public static IEnumerable<SkillSet> SkillSets { get; private set; }
-        public static IEnumerable<SkillData> SkillDatas { get; private set; }
+        public static List<SkillSet> SkillSets { get; private set; } = new();
+        public static List<SkillData> SkillDatas { get; private set; } = new();
 
-        public static IEnumerable<SingleModeSkillNeedPoint> SingleModeSkillNeedPoints { get; private set; }
+        public static List<SingleModeSkillNeedPoint> SingleModeSkillNeedPoints { get; private set; } = new();
 
-        public static IEnumerable<SkillUpgradeCondition> SkillUpgradeConditions { get; private set; }
-        public static IEnumerable<SkillUpgradeDescription> SkillUpgradeDescriptions { get; private set; }
+        public static List<SkillUpgradeCondition> SkillUpgradeConditions { get; private set; } = new();
+        public static List<SkillUpgradeDescription> SkillUpgradeDescriptions { get; private set; } = new();
 
-        public static IEnumerable<TextData> TextData { get; private set; }
+        public static List<TextData> TextData { get; private set; } = new();
 
         public static string GetText(TextCategory category, int index)
         {
