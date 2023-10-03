@@ -69,7 +69,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
                 iconPinnedBitmap = UnityAssets.GetCharaIcon(cardData.CharaId, rarityData.RaceDressId);
             }
 
-            cardPictureBox.Image = iconPinnedBitmap.Bitmap;
+            cardPictureBox.Image = iconPinnedBitmap?.Bitmap;
 
             if (!loaded) return;
 

@@ -4,7 +4,7 @@ namespace UmaMusumeExplorer
 {
     public partial class SplashForm : Form
     {
-        private Thread loadThread;
+        private Thread? loadThread;
 
         public SplashForm()
         {
@@ -34,7 +34,7 @@ namespace UmaMusumeExplorer
 
         private void SplashForm_Load(object sender, EventArgs e)
         {
-            loadThread.Start();
+            loadThread?.Start();
         }
     }
 }

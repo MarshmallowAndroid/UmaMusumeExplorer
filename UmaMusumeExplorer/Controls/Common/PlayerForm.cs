@@ -1,24 +1,23 @@
 ﻿using NAudio.Wave;
-using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using UmaMusumeData;
-using UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes;
+using UmaMusumeExplorer.Controls.Common.Classes;
 using UmaMusumeExplorer.Game;
 using Color = System.Drawing.Color;
 
-namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
+namespace UmaMusumeExplorer.Controls.Common
 {
     partial class PlayerForm : Form
     {
-        private readonly LiveManager liveManager;
+        private readonly MusicManager liveManager;
         private readonly int musicId;
         private readonly string songTitle;
-        private readonly PinnedBitmap songJacketPinnedBitmap;
+        private readonly PinnedBitmap? songJacketPinnedBitmap;
 
-        private readonly Thread lyricsThread;
-        private readonly Thread voicesThread;
+        private readonly Thread? lyricsThread;
+        private readonly Thread? voicesThread;
 
-        private readonly FormAnimator animator;
+        private readonly FormAnimator? animator;
 
         private readonly IWavePlayer waveOut = new WaveOutEvent() { DesiredLatency = 250 };
 
@@ -34,48 +33,62 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
         private bool expanded = false;
 
-        public PlayerForm(LiveManager live)
+        public PlayerForm(MusicManager manager)
         {
             InitializeComponent();
 
-            liveManager = live;
-            musicId = live.MusicId;
+            liveManager = manager;
+            musicId = manager.MusicId;
             songTitle = AssetTables.GetText(TextCategory.MasterLiveTitle, musicId);
 
             songJacketPinnedBitmap = UnityAssets.GetJacket(musicId, 'l');
-            songJacketPictureBox.BackgroundImage = songJacketPinnedBitmap.Bitmap;
+            songJacketPictureBox.BackgroundImage = songJacketPinnedBitmap?.Bitmap;
             songTitleLabel.Text = songTitle;
             songInfoLabel.Text = AssetTables.GetText(TextCategory.MasterLiveAuthor, musicId).Replace("\\n", "\n");
 
-            lyricsThread = new(DoLyricsPlayback);
-            voicesThread = new(DoVoiceUpdate);
+            if (liveManager.CharacterPositions is not null)
+            {
+                lyricsThread = new(DoLyricsPlayback);
+                voicesThread = new(DoVoiceUpdate);
+                animator = new(this, 470, 730);
 
-            Icon = Icon.FromHandle(songJacketPinnedBitmap.Bitmap.GetHicon());
-
-            animator = new(this, 470, 730);
-
-            // collapsed: 470
-            // expanded: 730
+                // collapsed: 470
+                // expanded: 730
+            }
+            else
+            {
+                setupButton.Visible = false;
+                expandButton.Visible = false;
+            }
 
             Height = 470;
+
+            if (songJacketPinnedBitmap is not null)
+                Icon = Icon.FromHandle(songJacketPinnedBitmap.Bitmap.GetHicon());
         }
 
         private void LiveMusicPlayerForm_Load(object sender, EventArgs e)
         {
-            songMixer = liveManager.SongMixer;
+            if (liveManager.SampleProvider is null)
+            {
+                Close();
+                return;
+            }
+
+            songMixer = liveManager.SampleProvider as SongMixer;
             lyricsTriggers = liveManager.LyricsTriggers;
 
-            waveOut.Init(songMixer);
+            waveOut.Init(liveManager.SampleProvider);
             waveOut.Play();
 
-            lyricsThread.Start();
-            voicesThread.Start();
+            lyricsThread?.Start();
+            voicesThread?.Start();
             updateTimer.Enabled = true;
 
-            singersEnabled = new bool[liveManager.CharacterPositions.Length];
+            singersEnabled = new bool[liveManager.CharacterPositions?.Length ?? 0];
 
             // Update the total time and volume track bars
-            totalTimeLabel.Text = $"{songMixer.TotalTime:m\\:ss}";
+            totalTimeLabel.Text = $"{songMixer?.TotalTime:m\\:ss}";
             int volume = (int)Math.Ceiling(waveOut.Volume * 100.0F);
             volumeTrackbar.Value = volume;
             volumeLabel.Text = volume + "%";
@@ -85,10 +98,10 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
         private void PlayButton_Click(object sender, EventArgs e)
         {
-            if (lyricsThread.ThreadState.HasFlag(ThreadState.Unstarted))
+            if (lyricsThread is not null && lyricsThread.ThreadState.HasFlag(ThreadState.Unstarted))
                 lyricsThread.Start();
 
-            if (voicesThread.ThreadState.HasFlag(ThreadState.Unstarted))
+            if (voicesThread is not null && voicesThread.ThreadState.HasFlag(ThreadState.Unstarted))
                 voicesThread.Start();
 
             if (waveOut.PlaybackState == PlaybackState.Playing)
@@ -113,7 +126,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
         private void PlayerForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            songJacketPinnedBitmap.Dispose();
+            songJacketPinnedBitmap?.Dispose();
             playbackFinished = true;
 
             waveOut.Stop();
@@ -137,7 +150,6 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
         private void SetupButton_Click(object sender, EventArgs e)
         {
             if (!liveManager.Setup(this)) return;
-
             AddCharacters();
         }
 
@@ -248,6 +260,8 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
         private void ExpandButton_Click(object sender, EventArgs e)
         {
+            if (animator is null) return;
+
             if (!expanded)
                 expanded = animator.Expand();
             else
@@ -256,6 +270,8 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
         private void AddCharacters()
         {
+            if (liveManager.CharacterPositions is null) return;
+
             currentSingers = new string[liveManager.CharacterPositions.Length];
 
             // Add characters position controls to voice control panel

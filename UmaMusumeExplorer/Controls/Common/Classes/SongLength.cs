@@ -1,4 +1,4 @@
-﻿namespace UmaMusumeExplorer.Controls.Jukebox
+﻿namespace UmaMusumeExplorer.Controls.Common.Classes
 {
     public enum SongLength
     {

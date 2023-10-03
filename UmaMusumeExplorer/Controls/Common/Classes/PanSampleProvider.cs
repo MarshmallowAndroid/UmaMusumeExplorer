@@ -1,6 +1,6 @@
 ﻿using NAudio.Wave;
 
-namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
+namespace UmaMusumeExplorer.Controls.Common.Classes
 {
     class PanSampleProvider : ISampleProvider
     {

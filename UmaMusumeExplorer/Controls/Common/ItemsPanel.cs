@@ -44,9 +44,11 @@ namespace UmaMusumeExplorer.Controls.Common
 
                 Controls.Clear();
 
-                Panel tempPanel = new();
-                tempPanel.Width = Width;
-                tempPanel.Height = Height;
+                Panel tempPanel = new()
+                {
+                    Width = Width,
+                    Height = Height
+                };
 
                 ProgressBar loadingProgressBar = new() { Width = tempPanel.Width / 2 };
                 loadingProgressBar.Left = (tempPanel.Width / 2) - (loadingProgressBar.Width / 2);

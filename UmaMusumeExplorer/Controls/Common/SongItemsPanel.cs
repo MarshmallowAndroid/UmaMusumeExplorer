@@ -12,7 +12,7 @@ namespace UmaMusumeExplorer.Controls.Common
 
             jacket = new PictureBox()
             {
-                BackgroundImage = UnityAssets.GetJacket(liveData.MusicId, 'l').Bitmap,
+                BackgroundImage = UnityAssets.GetJacket(liveData.MusicId, 'l')?.Bitmap,
                 BackgroundImageLayout = ImageLayout.Zoom,
                 Cursor = Cursors.Hand,
                 Height = 130,

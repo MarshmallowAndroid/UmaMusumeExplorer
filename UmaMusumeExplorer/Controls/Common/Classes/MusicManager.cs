@@ -1,25 +1,34 @@
 ﻿using AssetsTools.NET;
 using AssetsTools.NET.Extra;
 using CriWareLibrary;
+using NAudio.Wave.SampleProviders;
+using NAudio.Wave;
 using UmaMusumeData;
 using UmaMusumeData.Tables;
+using UmaMusumeExplorer.Controls.LiveMusicPlayer;
+using UmaMusumeAudio;
 
-namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
+namespace UmaMusumeExplorer.Controls.Common.Classes
 {
-    internal class LiveManager
+    internal class MusicManager
     {
-        public LiveManager(LiveData liveData)
+        public MusicManager(LiveData liveData)
         {
             MusicId = liveData.MusicId;
-
             LoadMusicScore();
+        }
+
+        public MusicManager(JukeboxMusicData jukeboxMusicData, SongLength songLength)
+        {
+            MusicId = jukeboxMusicData.MusicId;
+            LoadJukeBoxMusic(jukeboxMusicData, songLength);
         }
 
         public int MusicId { get; }
 
         public List<PartTrigger> PartTriggers { get; } = new();
 
-        public SongMixer? SongMixer { get; private set; }
+        public ISampleProvider? SampleProvider { get; private set; }
 
         public CharacterPosition[]? CharacterPositions { get; private set; }
 
@@ -75,18 +84,18 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                 charaAwbs[characterPosition.Position] = charaAwb;
             }
 
-            long previousPosition = SongMixer?.Position ?? 0;
-
             // Initialize song mixer on first playback
-            if (SongMixer is null)
+            SongMixer songMixer = new(okeAwb, PartTriggers);
+
+            if (SampleProvider is null)
             {
-                SongMixer = new(okeAwb, PartTriggers);
+                SampleProvider = songMixer;
             }
             else // Otherwise, change background music
-                SongMixer.ChangeOke(okeAwb);
+                songMixer.ChangeOke(okeAwb);
 
             // Initialize tracks, can be done during playback
-            SongMixer.InitializeCharaTracks(charaAwbs);
+            songMixer.InitializeCharaTracks(charaAwbs);
 
             // Unit setup success
             return true;
@@ -169,6 +178,42 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             }
         }
 
+        private void LoadJukeBoxMusic(JukeboxMusicData jukeboxMusicData, SongLength songLength)
+        {
+            string cueSheetName = "";
+
+            if (songLength == SongLength.ShortVersion)
+            {
+                cueSheetName = jukeboxMusicData.BgmCuesheetNameShort;
+
+                if (cueSheetName == string.Empty)
+                {
+                    MessageBox.Show("Music has no short version. Playing game size version instead.", "No short version", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cueSheetName = jukeboxMusicData.BgmCuesheetNameGamesize;
+                }
+            }
+            else
+            {
+                cueSheetName = jukeboxMusicData.BgmCuesheetNameGamesize;
+            }
+
+            // Get possible audio assets for music ID
+            IEnumerable<GameAsset> audioAssets = UmaDataHelper.GetGameAssetDataRows(
+                ga => ga.Name.ToLower().Contains(cueSheetName.ToLower() + ".awb"));
+
+            // Get BGM without sound effects
+            AwbReader? okeAwb = GetAwbFile(audioAssets.First());
+
+            if (okeAwb is null)
+            {
+                ShowFileNotFound();
+                return;
+            }
+
+            // Initialize song mixer on first playback
+            SampleProvider ??= new VolumeSampleProvider(new UmaWaveStream(okeAwb, 0).ToSampleProvider()) { Volume = 4.0F };
+        }
+
         private CsvReader? GetLiveCsv(AssetsManager assetsManager, string category)
         {
             string idString = $"{MusicId:d4}";
@@ -198,7 +243,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 
         private static bool ShowFileNotFound()
         {
-            MessageBox.Show("Live music data not found. Please download all resources in the game.", "Assets not found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            MessageBox.Show("Music data not found. Please download all resources in the game.", "Assets not found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             return false;
         }
     }

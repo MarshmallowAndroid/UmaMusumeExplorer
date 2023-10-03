@@ -29,7 +29,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             skillNameLabel.Text = AssetTables.GetText(TextCategory.MasterSkillName, skill.Id);
             skillDescriptionLabel.Text = AssetTables.GetText(TextCategory.MasterSkillExplain, skill.Id)
                 .Replace("\\n", "\n");
-            iconPictureBox.BackgroundImage = UnityAssets.GetSkillIcon(skill.IconId).Bitmap;
+            iconPictureBox.BackgroundImage = UnityAssets.GetSkillIcon(skill.IconId)?.Bitmap;
 
             SingleModeSkillNeedPoint? needSkillPoint = AssetTables.SingleModeSkillNeedPoints.FirstOrDefault(s => s.Id == skill.Id);
 

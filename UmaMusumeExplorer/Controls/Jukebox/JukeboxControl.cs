@@ -1,11 +1,12 @@
 ﻿using UmaMusumeData.Tables;
+using UmaMusumeExplorer.Controls.Common.Classes;
 using UmaMusumeExplorer.Game;
 
 namespace UmaMusumeExplorer.Controls.Jukebox
 {
     partial class JukeboxControl : UserControl
     {
-        private readonly IEnumerable<JukeboxMusicData> jukeboxMusicDatas = AssetTables.JukeboxMusicDatas?.OrderBy(l => l.Sort);
+        private readonly IEnumerable<JukeboxMusicData>? jukeboxMusicDatas = AssetTables.JukeboxMusicDatas?.OrderBy(l => l.Sort);
 
         public JukeboxControl()
         {
@@ -23,8 +24,7 @@ namespace UmaMusumeExplorer.Controls.Jukebox
 
         private void RadioBuiton_CheckedChanegd(object sender, EventArgs e)
         {
-            RadioButton radioButton = sender as RadioButton;
-
+            if (sender is not RadioButton radioButton) return;
             if (radioButton.Tag is not null)
             {
                 if (radioButton.Checked)

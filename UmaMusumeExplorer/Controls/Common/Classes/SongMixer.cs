@@ -2,13 +2,13 @@
 using NAudio.Wave;
 using UmaMusumeAudio;
 
-namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
+namespace UmaMusumeExplorer.Controls.Common.Classes
 {
     class SongMixer : ISampleProvider, IDisposable
     {
         private UmaWaveStream okeWaveStream;
         private ISampleProvider okeSampleProvider;
-        private readonly List<PartTrigger> partTriggers = new();
+        private readonly List<PartTrigger> partTriggers;
         private readonly List<VolumeTrigger> volumeTriggers = new();
 
         private readonly object readLock = new();
@@ -27,7 +27,6 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             okeSampleProvider = okeWaveStream.ToSampleProvider();
 
             partTriggers = parts;
-
             foreach (var partTrigger in partTriggers)
             {
                 int activeSingers = 0;
@@ -175,18 +174,21 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
 
             for (int i = offset; i < count / WaveFormat.Channels; i++)
             {
-                while (currentSample >= volumeTriggers[volumeTriggerIndex].Sample)
+                if (volumeTriggers.Count > 0)
                 {
-                    volumeMultiplier = volumeTriggers[volumeTriggerIndex].Volume;
+                    while (currentSample >= volumeTriggers[volumeTriggerIndex].Sample)
+                    {
+                        volumeMultiplier = volumeTriggers[volumeTriggerIndex].Volume;
 
-                    if (volumeTriggerIndex < volumeTriggers.Count - 1) volumeTriggerIndex++;
-                    else break;
+                        if (volumeTriggerIndex < volumeTriggers.Count - 1) volumeTriggerIndex++;
+                        else break;
+                    }
                 }
 
                 for (int j = 0; j < WaveFormat.Channels; j++)
                 {
                     int index = i * WaveFormat.Channels + j;
-                    buffer[index] *= CustomMode ? (1.0F / (active + 1) + 0.5F) : volumeMultiplier;
+                    buffer[index] *= CustomMode ? 1.0F / (active + 1) + 0.5F : volumeMultiplier;
                     buffer[index] += MuteBgm ? 0 : okeBuffer[index];
                 }
 

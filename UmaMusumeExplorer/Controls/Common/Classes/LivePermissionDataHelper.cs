@@ -2,7 +2,7 @@
 using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Game;
 
-namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
+namespace UmaMusumeExplorer.Controls.Common.Classes
 {
     static class LivePermissionDataHelper
     {

@@ -50,7 +50,7 @@ namespace UmaMusumeExplorer.Game
 
         public delegate void ProgressUpdater(int progress, string loadedName);
 
-        public static ProgressUpdater UpdateProgress { get; set; }
+        public static ProgressUpdater? UpdateProgress { get; set; }
 
         public static IEnumerable<GameAsset> AudioAssets { get; private set; }
 

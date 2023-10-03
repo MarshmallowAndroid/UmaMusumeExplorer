@@ -12,7 +12,7 @@ namespace UmaMusumeExplorer.Controls.Common
             bool playable = AssetTables.CardDatas.Any(cd => cd.CharaId == charaData.Id);
             characterPictureBox = new CharacterPictureBox(playable)
             {
-                BackgroundImage = UnityAssets.GetCharaIcon(charaData.Id).Bitmap,
+                BackgroundImage = UnityAssets.GetCharaIcon(charaData.Id)?.Bitmap,
                 BackgroundImageLayout = ImageLayout.Zoom,
                 Cursor = Cursors.Hand,
                 Height = 100,

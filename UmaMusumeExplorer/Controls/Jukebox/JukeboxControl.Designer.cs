@@ -1,4 +1,6 @@
-﻿namespace UmaMusumeExplorer.Controls.Jukebox
+﻿using UmaMusumeExplorer.Controls.Common.Classes;
+
+namespace UmaMusumeExplorer.Controls.Jukebox
 {
     partial class JukeboxControl
     {

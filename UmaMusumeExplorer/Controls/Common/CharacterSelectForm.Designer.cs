@@ -1,4 +1,4 @@
-﻿namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
+﻿namespace UmaMusumeExplorer.Controls.Common
 {
     partial class CharacterSelectForm
     {

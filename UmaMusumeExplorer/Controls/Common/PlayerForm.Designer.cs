@@ -1,4 +1,4 @@
-﻿namespace UmaMusumeExplorer.Controls.Jukebox
+﻿namespace UmaMusumeExplorer.Controls.Common
 {
     partial class PlayerForm
     {
@@ -33,17 +33,26 @@
             songJacketPictureBox = new Common.HighQualityPictureBox();
             songTitleLabel = new System.Windows.Forms.Label();
             songInfoLabel = new System.Windows.Forms.Label();
+            lyricsLabel = new System.Windows.Forms.Label();
             playButton = new System.Windows.Forms.Button();
             stopButton = new System.Windows.Forms.Button();
+            setupButton = new System.Windows.Forms.Button();
             seekTrackBar = new System.Windows.Forms.TrackBar();
             volumeTrackbar = new System.Windows.Forms.TrackBar();
             volumeLabel = new System.Windows.Forms.Label();
             currentTimeLabel = new System.Windows.Forms.Label();
             totalTimeLabel = new System.Windows.Forms.Label();
             updateTimer = new System.Windows.Forms.Timer(components);
+            expandButton = new System.Windows.Forms.Button();
+            charaContainerPanel = new System.Windows.Forms.FlowLayoutPanel();
+            charaContainerContainerPanel = new System.Windows.Forms.TableLayoutPanel();
+            customVoiceControlCheckBox = new System.Windows.Forms.CheckBox();
+            muteBgmCheckBox = new System.Windows.Forms.CheckBox();
+            exportButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)songJacketPictureBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)seekTrackBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)volumeTrackbar).BeginInit();
+            charaContainerContainerPanel.SuspendLayout();
             SuspendLayout();
             // 
             // songJacketPictureBox
@@ -62,6 +71,11 @@
             resources.ApplyResources(songInfoLabel, "songInfoLabel");
             songInfoLabel.Name = "songInfoLabel";
             // 
+            // lyricsLabel
+            // 
+            resources.ApplyResources(lyricsLabel, "lyricsLabel");
+            lyricsLabel.Name = "lyricsLabel";
+            // 
             // playButton
             // 
             resources.ApplyResources(playButton, "playButton");
@@ -75,6 +89,13 @@
             stopButton.Name = "stopButton";
             stopButton.UseVisualStyleBackColor = true;
             stopButton.Click += StopButton_Click;
+            // 
+            // setupButton
+            // 
+            resources.ApplyResources(setupButton, "setupButton");
+            setupButton.Name = "setupButton";
+            setupButton.UseVisualStyleBackColor = true;
+            setupButton.Click += SetupButton_Click;
             // 
             // seekTrackBar
             // 
@@ -114,17 +135,63 @@
             updateTimer.Interval = 500;
             updateTimer.Tick += UpdateTimer_Tick;
             // 
+            // expandButton
+            // 
+            resources.ApplyResources(expandButton, "expandButton");
+            expandButton.Name = "expandButton";
+            expandButton.UseVisualStyleBackColor = true;
+            expandButton.Click += ExpandButton_Click;
+            // 
+            // charaContainerPanel
+            // 
+            resources.ApplyResources(charaContainerPanel, "charaContainerPanel");
+            charaContainerPanel.Name = "charaContainerPanel";
+            // 
+            // charaContainerContainerPanel
+            // 
+            resources.ApplyResources(charaContainerContainerPanel, "charaContainerContainerPanel");
+            charaContainerContainerPanel.Controls.Add(charaContainerPanel, 0, 0);
+            charaContainerContainerPanel.Name = "charaContainerContainerPanel";
+            // 
+            // customVoiceControlCheckBox
+            // 
+            resources.ApplyResources(customVoiceControlCheckBox, "customVoiceControlCheckBox");
+            customVoiceControlCheckBox.Name = "customVoiceControlCheckBox";
+            customVoiceControlCheckBox.UseVisualStyleBackColor = true;
+            customVoiceControlCheckBox.CheckedChanged += CustomVoiceControlCheckBox_CheckedChanged;
+            // 
+            // muteBgmCheckBox
+            // 
+            resources.ApplyResources(muteBgmCheckBox, "muteBgmCheckBox");
+            muteBgmCheckBox.Name = "muteBgmCheckBox";
+            muteBgmCheckBox.UseVisualStyleBackColor = true;
+            muteBgmCheckBox.CheckedChanged += MuteBgmCheckBox_CheckedChanged;
+            // 
+            // exportButton
+            // 
+            resources.ApplyResources(exportButton, "exportButton");
+            exportButton.Name = "exportButton";
+            exportButton.UseVisualStyleBackColor = true;
+            exportButton.Click += ExportButton_Click;
+            // 
             // PlayerForm
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            Controls.Add(exportButton);
+            Controls.Add(muteBgmCheckBox);
+            Controls.Add(customVoiceControlCheckBox);
+            Controls.Add(charaContainerContainerPanel);
+            Controls.Add(expandButton);
             Controls.Add(totalTimeLabel);
             Controls.Add(currentTimeLabel);
             Controls.Add(volumeLabel);
             Controls.Add(volumeTrackbar);
             Controls.Add(seekTrackBar);
+            Controls.Add(setupButton);
             Controls.Add(stopButton);
             Controls.Add(playButton);
+            Controls.Add(lyricsLabel);
             Controls.Add(songInfoLabel);
             Controls.Add(songTitleLabel);
             Controls.Add(songJacketPictureBox);
@@ -136,6 +203,8 @@
             ((System.ComponentModel.ISupportInitialize)songJacketPictureBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)seekTrackBar).EndInit();
             ((System.ComponentModel.ISupportInitialize)volumeTrackbar).EndInit();
+            charaContainerContainerPanel.ResumeLayout(false);
+            charaContainerContainerPanel.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -145,13 +214,21 @@
         private Common.HighQualityPictureBox songJacketPictureBox;
         private System.Windows.Forms.Label songTitleLabel;
         private System.Windows.Forms.Label songInfoLabel;
+        private System.Windows.Forms.Label lyricsLabel;
         private System.Windows.Forms.Button playButton;
         private System.Windows.Forms.Button stopButton;
+        private System.Windows.Forms.Button setupButton;
         private System.Windows.Forms.TrackBar seekTrackBar;
         private System.Windows.Forms.TrackBar volumeTrackbar;
         private System.Windows.Forms.Label volumeLabel;
         private System.Windows.Forms.Label currentTimeLabel;
         private System.Windows.Forms.Label totalTimeLabel;
         private System.Windows.Forms.Timer updateTimer;
+        private System.Windows.Forms.Button expandButton;
+        private System.Windows.Forms.FlowLayoutPanel charaContainerPanel;
+        private System.Windows.Forms.TableLayoutPanel charaContainerContainerPanel;
+        private System.Windows.Forms.CheckBox customVoiceControlCheckBox;
+        private System.Windows.Forms.CheckBox muteBgmCheckBox;
+        private System.Windows.Forms.Button exportButton;
     }
 }

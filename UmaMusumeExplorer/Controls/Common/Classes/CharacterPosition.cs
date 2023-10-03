@@ -1,4 +1,4 @@
-﻿namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
+﻿namespace UmaMusumeExplorer.Controls.Common.Classes
 {
     internal struct CharacterPosition
     {

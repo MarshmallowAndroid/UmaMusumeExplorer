@@ -1,10 +1,10 @@
 ﻿using System.Net.Security;
 using UmaMusumeData.Tables;
-using UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes;
+using UmaMusumeExplorer.Controls.Common.Classes;
 using UmaMusumeExplorer.Game;
 using Color = System.Drawing.Color;
 
-namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
+namespace UmaMusumeExplorer.Controls.Common
 {
     partial class CharacterSelectForm : Form
     {

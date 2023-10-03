@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
+namespace UmaMusumeExplorer.Controls.Common.Classes
 {
     internal class FormAnimator
     {
@@ -30,12 +30,12 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
             if (target == AnimationTarget.Expand)
             {
                 form.Invoke(() => form.Height = AnimateValue(defaultHeight, expandedHeight, currentProgress, Ease));
-                form.Invoke(() => form.Top = AnimateValue(recordedTop, recordedTop - (expandedHeight / 2 / 4), currentProgress, Ease));
+                form.Invoke(() => form.Top = AnimateValue(recordedTop, recordedTop - expandedHeight / 2 / 4, currentProgress, Ease));
             }
             else
             {
                 form.Invoke(() => form.Height = AnimateValue(expandedHeight, defaultHeight, currentProgress, Ease));
-                form.Invoke(() => form.Top = AnimateValue(recordedTop, recordedTop + (expandedHeight / 2 / 4), currentProgress, Ease));
+                form.Invoke(() => form.Top = AnimateValue(recordedTop, recordedTop + expandedHeight / 2 / 4, currentProgress, Ease));
             }
 
             if (currentProgress > 1F)

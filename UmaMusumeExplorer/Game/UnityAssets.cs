@@ -1,6 +1,7 @@
 ﻿using AssetsTools.NET;
 using AssetsTools.NET.Extra;
 using AssetsTools.NET.Texture;
+using SixLabors.ImageSharp;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -35,7 +36,7 @@ namespace UmaMusumeExplorer.Game
             imagePointerContainers.Clear();
         }
 
-        public static PinnedBitmap GetCharaIcon(int id, int raceDressId = 0, int plate = 1)
+        public static PinnedBitmap? GetCharaIcon(int id, int raceDressId = 0, int plate = 1)
         {
             if (!charaIconsLoaded)
             {
@@ -67,22 +68,23 @@ namespace UmaMusumeExplorer.Game
             if (raceDressId > 0)
                 imageStringBuilder.Append($"_{raceDressId:d6}_{plate:d2}");
 
-            string imageString = imageStringBuilder.ToString();
+            string imageName = imageStringBuilder.ToString();
 
-            if (imagePointerContainers.ContainsKey(imageString)) return PinnedBitmapFromKey(imageString);
+            if (imagePointerContainers.ContainsKey(imageName)) return PinnedBitmapFromKey(imageName);
 
-            Image<Bgra32> image = GetImage(charaIconAssetsManager, imageString);
+            Image<Bgra32>? image = GetImage(charaIconAssetsManager, imageName);
+
+            if (image is null) return null;
 
             int adjustedHeight = (int)(image.Height * 1.115F);
             image.Mutate(o => o.Resize(image.Width, adjustedHeight));
 
-            imagePointerContainers.Add(imageString,
-                new ImagePointerContainer(GCHandle.Alloc(image.ToBytes(), GCHandleType.Pinned), image.Width, adjustedHeight));
+            AddLoadedImage(imageName, image);
 
-            return PinnedBitmapFromKey(imageString);
+            return PinnedBitmapFromKey(imageName);
         }
 
-        public static PinnedBitmap GetSkillIcon(int id)
+        public static PinnedBitmap? GetSkillIcon(int id)
         {
             if (!skillIconsLoaded)
             {
@@ -101,19 +103,20 @@ namespace UmaMusumeExplorer.Game
             StringBuilder imageStringBuilder = new();
             imageStringBuilder.Append($"utx_ico_skill_{idString}");
 
-            string imageString = imageStringBuilder.ToString();
+            string imageName = imageStringBuilder.ToString();
 
-            if (imagePointerContainers.ContainsKey(imageString)) return PinnedBitmapFromKey(imageString);
+            if (imagePointerContainers.ContainsKey(imageName)) return PinnedBitmapFromKey(imageName);
 
-            Image<Bgra32> image = GetImage(skillIconAssetsManager, imageString);
+            Image<Bgra32>? image = GetImage(skillIconAssetsManager, imageName);
 
-            imagePointerContainers.Add(imageString,
-                new ImagePointerContainer(GCHandle.Alloc(image.ToBytes(), GCHandleType.Pinned), image.Width, image.Height));
+            if (image is null) return null;
 
-            return PinnedBitmapFromKey(imageString);
+            AddLoadedImage(imageName, image);
+
+            return PinnedBitmapFromKey(imageName);
         }
 
-        public static PinnedBitmap GetJacket(int musicId, char size = 'm')
+        public static PinnedBitmap? GetJacket(int musicId, char size = 'm')
         {
             if (!jacketIconsLoaded)
             {
@@ -131,8 +134,11 @@ namespace UmaMusumeExplorer.Game
 
             if (imagePointerContainers.ContainsKey(imageName)) return PinnedBitmapFromKey(imageName);
 
-            Image<Bgra32> image = GetImage(jacketsAssetsManager, imageName);
+            Image<Bgra32>? image = GetImage(jacketsAssetsManager, imageName);
             image ??= GetImage(jacketsAssetsManager, $"jacket_icon_{size}_0000");
+
+            if (image is null) return null;
+
             AddLoadedImage(imageName, image);
 
             return PinnedBitmapFromKey(imageName);
@@ -155,9 +161,9 @@ namespace UmaMusumeExplorer.Game
                 new ImagePointerContainer(GCHandle.Alloc(image.ToBytes(), GCHandleType.Pinned), image.Width, image.Height));
         }
 
-        private static Image<Bgra32> GetImage(AssetsManager assetsManager, string imageName)
+        private static Image<Bgra32>? GetImage(AssetsManager assetsManager, string imageName)
         {
-            AssetTypeValueField baseField = GetFileBaseField(assetsManager, imageName, AssetClassID.Texture2D, out AssetsFileInstance assetsFileInstance);
+            AssetTypeValueField? baseField = GetFileBaseField(assetsManager, imageName, AssetClassID.Texture2D, out AssetsFileInstance? assetsFileInstance);
             if (baseField is null) return null;
             TextureFile textureFile = TextureFile.ReadTextureFile(baseField);
             Image<Bgra32> image = Image.LoadPixelData<Bgra32>(textureFile.GetTextureData(assetsFileInstance), textureFile.m_Width, textureFile.m_Height);
@@ -165,7 +171,7 @@ namespace UmaMusumeExplorer.Game
             return image;
         }
 
-        private static byte[] ToBytes<TPixel>(this Image<TPixel> image) where TPixel : unmanaged, IPixel<TPixel>
+        private static byte[]? ToBytes<TPixel>(this Image<TPixel> image) where TPixel : unmanaged, IPixel<TPixel>
         {
             if (image.DangerousTryGetSinglePixelMemory(out Memory<TPixel> memory))
             {
@@ -175,7 +181,7 @@ namespace UmaMusumeExplorer.Game
             return null;
         }
 
-        private static AssetTypeValueField GetFileBaseField(AssetsManager assetsManager, string objectName, AssetClassID classId, out AssetsFileInstance assetsFileInstance)
+        private static AssetTypeValueField? GetFileBaseField(AssetsManager assetsManager, string objectName, AssetClassID classId, out AssetsFileInstance? assetsFileInstance)
         {
             assetsFileInstance = null;
 

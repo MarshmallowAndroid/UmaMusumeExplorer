@@ -1,5 +1,6 @@
 ﻿using UmaMusumeData.Tables;
-using UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes;
+using UmaMusumeExplorer.Controls.Common;
+using UmaMusumeExplorer.Controls.Common.Classes;
 using UmaMusumeExplorer.Game;
 
 namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
@@ -19,7 +20,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
                 if (liveData is not null)
                 {
-                    LiveManager liveManager = new(liveData);
+                    MusicManager liveManager = new(liveData);
 
                     if (liveManager.Setup(this))
                         ControlHelpers.ShowFormCenter(new PlayerForm(liveManager), this);

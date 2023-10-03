@@ -3,7 +3,7 @@ using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
 using UmaMusumeAudio;
 
-namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
+namespace UmaMusumeExplorer.Controls.Common.Classes
 {
     class CharaTrack : ISampleProvider, IDisposable
     {
@@ -14,8 +14,6 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
         private readonly PanSampleProvider? secondSampleProvider;
 
         private readonly List<Trigger> triggers = new();
-
-        private readonly int positionIndex;
 
         private float[]? mainBuffer;
         private float[]? secondBuffer;
@@ -52,8 +50,6 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
                         partTrigger.MemberPans[index],
                         partTrigger.VolumeRate));
             }
-
-            positionIndex = index;
 
             WaveFormat = targetWaveFormat;
         }

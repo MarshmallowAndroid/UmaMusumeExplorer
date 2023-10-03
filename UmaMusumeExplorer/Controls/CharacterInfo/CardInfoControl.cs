@@ -52,7 +52,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             {
                 iconPinnedBitmap?.Dispose();
                 iconPinnedBitmap = UnityAssets.GetCharaIcon(cardData.CharaId);
-                iconPictureBox.Image = iconPinnedBitmap.Bitmap;
+                iconPictureBox.Image = iconPinnedBitmap?.Bitmap;
 
                 UpdateStats(cardData, new CardRarityData(), levelComboBox.SelectedIndex + 1);
             }
@@ -101,7 +101,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             birthdayLabel.Text = $"{charaData.BirthDay}/{charaData.BirthMonth}/{charaData.BirthYear} ({DateTime.Now.Year - charaData.BirthYear} years)";
 
             iconPinnedBitmap = UnityAssets.GetCharaIcon(id);
-            iconPictureBox.Image = iconPinnedBitmap.Bitmap;
+            iconPictureBox.Image = iconPinnedBitmap?.Bitmap;
 
             foreach (var item in AssetTables.CardDatas.Where(cd => cd.CharaId == charaData.Id))
             {
@@ -177,7 +177,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
             iconPinnedBitmap?.Dispose();
             iconPinnedBitmap = UnityAssets.GetCharaIcon(cardData.CharaId, rarityData.RaceDressId, level > 2 ? 2 : 1);
-            iconPictureBox.Image = iconPinnedBitmap.Bitmap;
+            iconPictureBox.Image = iconPinnedBitmap?.Bitmap;
 
             UpdateStats(cardData, rarityData, level);
         }

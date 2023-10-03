@@ -1,6 +1,7 @@
 ﻿using UmaMusumeData;
 using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Controls.Common;
+using UmaMusumeExplorer.Controls.Common.Classes;
 using UmaMusumeExplorer.Game;
 
 namespace UmaMusumeExplorer.Controls.Jukebox
@@ -13,7 +14,7 @@ namespace UmaMusumeExplorer.Controls.Jukebox
         {
             jacket = new PictureBox()
             {
-                BackgroundImage = UnityAssets.GetJacket(jukeboxMusicData.MusicId, 'l').Bitmap,
+                BackgroundImage = UnityAssets.GetJacket(jukeboxMusicData.MusicId, 'l')?.Bitmap,
                 BackgroundImageLayout = ImageLayout.Zoom,
                 Cursor = Cursors.Hand,
                 Height = 130,
@@ -25,9 +26,11 @@ namespace UmaMusumeExplorer.Controls.Jukebox
             {
                 if (s is not PictureBox pictureBox) return;
                 if (pictureBox.Tag is not JukeboxMusicData jukeBoxData) return;
-
                 if (jukeBoxData is not null)
-                    ControlHelpers.ShowFormCenter(new PlayerForm(jukeBoxData, CurrentSongLength), this);
+                {
+                    MusicManager liveManager = new(jukeBoxData, CurrentSongLength);
+                    ControlHelpers.ShowFormCenter(new PlayerForm(liveManager), this);
+                }
             };
 
             ToolTip toolTip = new();

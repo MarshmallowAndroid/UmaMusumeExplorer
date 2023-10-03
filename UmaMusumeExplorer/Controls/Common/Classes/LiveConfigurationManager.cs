@@ -1,6 +1,6 @@
-﻿namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
+﻿namespace UmaMusumeExplorer.Controls.Common.Classes
 {
-    static class LiveConfiguration
+    static class LiveConfigurationManager
     {
         private static readonly Dictionary<int, SongConfiguration> songConfigurations = new();
 

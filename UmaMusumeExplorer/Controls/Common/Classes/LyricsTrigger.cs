@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes
+namespace UmaMusumeExplorer.Controls.Common.Classes
 {
     class LyricsTrigger
     {

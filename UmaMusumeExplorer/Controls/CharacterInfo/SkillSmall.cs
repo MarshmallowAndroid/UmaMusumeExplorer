@@ -18,7 +18,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             InitializeComponent();
 
             skillNameLabel.Text = AssetTables.GetText(TextCategory.MasterSkillName, skill.Id);
-            iconPictureBox.Image = UnityAssets.GetSkillIcon(skill.IconId).Bitmap;
+            iconPictureBox.Image = UnityAssets.GetSkillIcon(skill.IconId)?.Bitmap;
 
             Skill = skill;
 

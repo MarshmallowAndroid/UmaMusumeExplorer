@@ -1,9 +1,9 @@
 ﻿using UmaMusumeData;
 using UmaMusumeData.Tables;
-using UmaMusumeExplorer.Controls.LiveMusicPlayer.Classes;
+using UmaMusumeExplorer.Controls.Common.Classes;
 using UmaMusumeExplorer.Game;
 
-namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
+namespace UmaMusumeExplorer.Controls.Common
 {
     partial class UnitSetupForm : Form
     {
@@ -30,7 +30,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
         public void LoadSongConfiguration()
         {
-            SongConfiguration? songConfiguration = LiveConfiguration.LoadConfiguration(id);
+            SongConfiguration? songConfiguration = LiveConfigurationManager.LoadConfiguration(id);
 
             CharacterPositionControl[] controls = new CharacterPositionControl[characterPositions.Length];
 
@@ -115,7 +115,6 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
         private void ConfirmButton_Click(object sender, EventArgs e)
         {
-            int pivot = characterPositions.Length / 2;
             int[] members = new int[characterPositions.Length];
 
             for (int i = 0; i < characterPositions.Length; i++)
@@ -125,7 +124,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             }
 
             SongConfiguration songConfiguration = new(id, members, sfxCheckBox.Checked);
-            LiveConfiguration.SaveConfiguration(songConfiguration);
+            LiveConfigurationManager.SaveConfiguration(songConfiguration);
 
             CharacterPositions = characterPositions;
 

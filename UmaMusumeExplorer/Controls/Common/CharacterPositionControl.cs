@@ -1,7 +1,7 @@
 ﻿using UmaMusumeExplorer.Game;
 using Image = System.Drawing.Image;
 
-namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
+namespace UmaMusumeExplorer.Controls.Common
 {
     partial class CharacterPositionControl : UserControl
     {
@@ -17,7 +17,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             characterPosition = position;
 
             positionIndexLabel.Text = (characterPosition + 1).ToString();
-            characterPictureBox.BackgroundImage = UnityAssets.GetCharaIcon(0).Bitmap;
+            characterPictureBox.BackgroundImage = UnityAssets.GetCharaIcon(0)?.Bitmap;
 
             characterPictureBox.Click += clickEventHandler;
         }
@@ -40,7 +40,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
             set
             {
                 characterId = value;
-                characterPictureBox.BackgroundImage = characterImage = UnityAssets.GetCharaIcon(characterId).Bitmap;
+                characterPictureBox.BackgroundImage = characterImage = UnityAssets.GetCharaIcon(characterId)?.Bitmap;
 
                 Update();
             }
