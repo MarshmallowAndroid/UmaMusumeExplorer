@@ -46,15 +46,19 @@
             form.Top = top;
         }
 
-        public static Form GetParentForm(Control control)
+        public static Form GetParentForm(Control? control)
         {
             if (control is Form parentForm)
             {
                 return parentForm;
             }
-            else return GetParentForm(control.Parent);
+            else return GetParentForm(control?.Parent);
         }
 
-        private static void FormClosed(object sender, FormClosedEventArgs e) => OpenedForms.Remove(sender as Form);
+        private static void FormClosed(object? sender, FormClosedEventArgs e)
+        {
+            if (sender is not Form form) return;
+            OpenedForms.Remove(form);
+        }
     }
 }
