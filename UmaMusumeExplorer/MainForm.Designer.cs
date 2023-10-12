@@ -30,19 +30,19 @@ namespace UmaMusumeExplorer
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            tabControl = new System.Windows.Forms.TabControl();
-            fileBrowserTabPage = new System.Windows.Forms.TabPage();
+            tabControl = new TabControl();
+            fileBrowserTabPage = new TabPage();
             fileBrowserControl = new Controls.FileBrowser.FileBrowserControl();
-            audioPlayerTabPage = new System.Windows.Forms.TabPage();
+            audioPlayerTabPage = new TabPage();
             audioPlayerControl = new Controls.AudioPlayer.AudioPlayerControl();
-            liveMusicPlayerTabPage = new System.Windows.Forms.TabPage();
+            liveMusicPlayerTabPage = new TabPage();
             liveMusicPlayerControl = new Controls.LiveMusicPlayer.LiveMusicPlayerControl();
-            jukeboxTabPage = new System.Windows.Forms.TabPage();
+            jukeboxTabPage = new TabPage();
             jukeboxControl = new Controls.Jukebox.JukeboxControl();
-            characterInfoTabPage = new System.Windows.Forms.TabPage();
+            characterInfoTabPage = new TabPage();
             characterInfoControl = new Controls.CharacterInfo.CharacterInfoControl();
-            raceMusicTabPage = new System.Windows.Forms.TabPage();
-            raceSimulatorControl = new Controls.RaceMusicSimulator.RaceMusicSimulatorControl();
+            raceMusicTabPage = new TabPage();
+            raceMusicPlayerControl = new Controls.RaceMusicPlayer.RaceMusicPlayerControl();
             tabControl.SuspendLayout();
             fileBrowserTabPage.SuspendLayout();
             audioPlayerTabPage.SuspendLayout();
@@ -126,20 +126,20 @@ namespace UmaMusumeExplorer
             // 
             // raceMusicTabPage
             // 
-            raceMusicTabPage.Controls.Add(raceSimulatorControl);
+            raceMusicTabPage.Controls.Add(raceMusicPlayerControl);
             resources.ApplyResources(raceMusicTabPage, "raceMusicTabPage");
             raceMusicTabPage.Name = "raceMusicTabPage";
             raceMusicTabPage.UseVisualStyleBackColor = true;
             // 
-            // raceSimulatorControl
+            // raceMusicPlayerControl
             // 
-            resources.ApplyResources(raceSimulatorControl, "raceSimulatorControl");
-            raceSimulatorControl.Name = "raceSimulatorControl";
+            resources.ApplyResources(raceMusicPlayerControl, "raceMusicPlayerControl");
+            raceMusicPlayerControl.Name = "raceMusicPlayerControl";
             // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(tabControl);
             Name = "MainForm";
             FormClosing += MainForm_FormClosing;
@@ -154,18 +154,18 @@ namespace UmaMusumeExplorer
         }
 
         #endregion
-        private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.TabPage raceMusicTabPage;
-        private UmaMusumeExplorer.Controls.RaceMusicSimulator.RaceMusicSimulatorControl raceSimulatorControl;
-        private System.Windows.Forms.TabPage audioPlayerTabPage;
-        private UmaMusumeExplorer.Controls.AudioPlayer.AudioPlayerControl audioPlayerControl;
-        private System.Windows.Forms.TabPage characterInfoTabPage;
+        private TabControl tabControl;
+        private TabPage raceMusicTabPage;
+        private Controls.RaceMusicPlayer.RaceMusicPlayerControl raceMusicPlayerControl;
+        private TabPage audioPlayerTabPage;
+        private Controls.AudioPlayer.AudioPlayerControl audioPlayerControl;
+        private TabPage characterInfoTabPage;
         private Controls.CharacterInfo.CharacterInfoControl characterInfoControl;
-        private System.Windows.Forms.TabPage fileBrowserTabPage;
-        private System.Windows.Forms.TabPage liveMusicPlayerTabPage;
-        private System.Windows.Forms.TabPage jukeboxTabPage;
+        private TabPage fileBrowserTabPage;
         private Controls.FileBrowser.FileBrowserControl fileBrowserControl;
+        private TabPage liveMusicPlayerTabPage;
         private Controls.LiveMusicPlayer.LiveMusicPlayerControl liveMusicPlayerControl;
+        private TabPage jukeboxTabPage;
         private Controls.Jukebox.JukeboxControl jukeboxControl;
     }
 }

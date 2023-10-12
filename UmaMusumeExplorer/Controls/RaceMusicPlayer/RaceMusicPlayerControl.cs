@@ -2,12 +2,12 @@
 using NAudio.Wave.SampleProviders;
 using UmaMusumeData;
 using UmaMusumeData.Tables;
-using UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes;
+using UmaMusumeExplorer.Controls.RaceMusicPlayer.Classes;
 using UmaMusumeExplorer.Game;
 
-namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
+namespace UmaMusumeExplorer.Controls.RaceMusicPlayer
 {
-    partial class RaceMusicSimulatorControl : UserControl
+    partial class RaceMusicPlayerControl : UserControl
     {
         private readonly IEnumerable<RaceBgm> raceBgms = AssetTables.RaceBgm;
         private readonly IEnumerable<RaceBgmPattern> raceBgmPatterns = AssetTables.RaceBgmPatterns;
@@ -33,7 +33,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
 
         private string lastPressedButtonName = "";
 
-        public RaceMusicSimulatorControl()
+        public RaceMusicPlayerControl()
         {
             InitializeComponent();
         }
@@ -49,7 +49,8 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
                 bgmIdComboBox.Items.Add(new BgmComboBoxItem() { RaceBgm = bgm });
             }
 
-            bgmIdComboBox.SelectedIndex = 0;
+            if (bgmIdComboBox.Items.Count > 0)
+                bgmIdComboBox.SelectedIndex = 0;
         }
 
         private void BgmIdComboBox_SelectedIndexChanged(object sender, EventArgs e)

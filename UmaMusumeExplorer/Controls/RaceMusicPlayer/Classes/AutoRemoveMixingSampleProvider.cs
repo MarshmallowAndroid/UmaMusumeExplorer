@@ -2,14 +2,14 @@
 using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
 
-namespace UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes
+namespace UmaMusumeExplorer.Controls.RaceMusicPlayer.Classes
 {
     // Modified MixingSampleProvider from NAudio that removes an input when an event triggers.
     class AutoRemoveMixingSampleProvider : ISampleProvider
     {
         private readonly List<ISampleProvider> sources;
 
-        private float[] sourceBuffer;
+        private float[]? sourceBuffer;
 
         public IEnumerable<ISampleProvider> MixerInputs => sources;
 
@@ -17,7 +17,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes
 
         public WaveFormat WaveFormat { get; private set; }
 
-        public event EventHandler<SampleProviderEventArgs> MixerInputEnded;
+        public event EventHandler<SampleProviderEventArgs>? MixerInputEnded;
 
         public AutoRemoveMixingSampleProvider(WaveFormat waveFormat)
         {
@@ -37,6 +37,8 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes
             {
                 AddMixerInput(source);
             }
+
+            WaveFormat = sources.First().WaveFormat;
 
             if (this.sources.Count == 0)
             {

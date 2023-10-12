@@ -1,6 +1,6 @@
 ﻿using NAudio.Wave;
 
-namespace UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes
+namespace UmaMusumeExplorer.Controls.RaceMusicPlayer.Classes
 {
     // Sample provider interface that uses events to signal the end of sample modification (fades, delays, etc.)
     interface IEventSampleProvider : ISampleProvider

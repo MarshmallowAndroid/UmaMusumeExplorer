@@ -1,7 +1,7 @@
 ﻿using NAudio.Wave;
-using static UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes.IEventSampleProvider;
+using static UmaMusumeExplorer.Controls.RaceMusicPlayer.Classes.IEventSampleProvider;
 
-namespace UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes
+namespace UmaMusumeExplorer.Controls.RaceMusicPlayer.Classes
 {
     // Implementation of NAudio's FadeInOutSampleProvider that invokes an event after fading.
     class FadeInOutEventSampleProvider : IEventSampleProvider
@@ -29,7 +29,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes
         public FadeInOutEventSampleProvider(ISampleProvider source, bool initiallySilent = false)
         {
             this.source = source;
-            fadeState = ((!initiallySilent) ? FadeState.FullVolume : FadeState.Silence);
+            fadeState = !initiallySilent ? FadeState.FullVolume : FadeState.Silence;
         }
 
         public void BeginFadeIn(double fadeDurationInMilliseconds)
@@ -37,7 +37,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes
             lock (lockObject)
             {
                 fadeSamplePosition = 0;
-                fadeSampleCount = (int)(fadeDurationInMilliseconds * (double)source.WaveFormat.SampleRate / 1000.0);
+                fadeSampleCount = (int)(fadeDurationInMilliseconds * source.WaveFormat.SampleRate / 1000.0);
                 fadeState = FadeState.FadingIn;
             }
         }
@@ -47,7 +47,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes
             lock (lockObject)
             {
                 fadeSamplePosition = 0;
-                fadeSampleCount = (int)(fadeDurationInMilliseconds * (double)source.WaveFormat.SampleRate / 1000.0);
+                fadeSampleCount = (int)(fadeDurationInMilliseconds * source.WaveFormat.SampleRate / 1000.0);
                 fadeState = FadeState.FadingOut;
             }
         }
@@ -94,7 +94,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes
             int num = 0;
             while (num < sourceSamplesRead)
             {
-                float num2 = 1F - (float)fadeSamplePosition / (float)fadeSampleCount;
+                float num2 = 1F - fadeSamplePosition / (float)fadeSampleCount;
                 for (int i = 0; i < source.WaveFormat.Channels; i++)
                 {
                     buffer[offset + num++] *= num2;
@@ -116,7 +116,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes
             int num = 0;
             while (num < sourceSamplesRead)
             {
-                float num2 = (float)fadeSamplePosition / (float)fadeSampleCount;
+                float num2 = fadeSamplePosition / (float)fadeSampleCount;
                 for (int i = 0; i < source.WaveFormat.Channels; i++)
                 {
                     buffer[offset + num++] *= num2;

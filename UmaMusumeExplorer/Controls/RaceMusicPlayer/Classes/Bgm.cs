@@ -2,7 +2,7 @@
 using UmaMusumeAudio;
 using UmaMusumeData;
 
-namespace UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes
+namespace UmaMusumeExplorer.Controls.RaceMusicPlayer.Classes
 {
     public class Bgm : IDisposable
     {

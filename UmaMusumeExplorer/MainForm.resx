@@ -18,7 +18,7 @@
     <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
     <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
     <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing"">Blue</data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
     <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
         <value>[base64 mime encoded serialized .NET Framework object]</value>
     </data>
@@ -121,20 +121,6 @@
   <data name="tabControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="fileBrowserControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="fileBrowserControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="fileBrowserControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>982, 634</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="fileBrowserControl.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;fileBrowserControl.Name" xml:space="preserve">
     <value>fileBrowserControl</value>
   </data>
@@ -147,6 +133,7 @@
   <data name="&gt;&gt;fileBrowserControl.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="fileBrowserTabPage.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 24</value>
   </data>
@@ -157,6 +144,7 @@
   <data name="fileBrowserTabPage.Size" type="System.Drawing.Size, System.Drawing">
     <value>988, 640</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="fileBrowserTabPage.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
@@ -173,21 +161,6 @@
     <value>tabControl</value>
   </data>
   <data name="&gt;&gt;fileBrowserTabPage.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="audioPlayerControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="audioPlayerControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="audioPlayerControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="audioPlayerControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>982, 634</value>
-  </data>
-  <data name="audioPlayerControl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="&gt;&gt;audioPlayerControl.Name" xml:space="preserve">
@@ -229,18 +202,6 @@
   <data name="&gt;&gt;audioPlayerTabPage.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="liveMusicPlayerControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="liveMusicPlayerControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="liveMusicPlayerControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>988, 640</value>
-  </data>
-  <data name="liveMusicPlayerControl.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;liveMusicPlayerControl.Name" xml:space="preserve">
     <value>liveMusicPlayerControl</value>
   </data>
@@ -277,18 +238,6 @@
   <data name="&gt;&gt;liveMusicPlayerTabPage.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="jukeboxControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="jukeboxControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="jukeboxControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>988, 640</value>
-  </data>
-  <data name="jukeboxControl.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;jukeboxControl.Name" xml:space="preserve">
     <value>jukeboxControl</value>
   </data>
@@ -324,21 +273,6 @@
   </data>
   <data name="&gt;&gt;jukeboxTabPage.ZOrder" xml:space="preserve">
     <value>3</value>
-  </data>
-  <data name="characterInfoControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="characterInfoControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="characterInfoControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="characterInfoControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>982, 634</value>
-  </data>
-  <data name="characterInfoControl.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
   </data>
   <data name="&gt;&gt;characterInfoControl.Name" xml:space="preserve">
     <value>characterInfoControl</value>
@@ -379,31 +313,16 @@
   <data name="&gt;&gt;characterInfoTabPage.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="raceSimulatorControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="&gt;&gt;raceMusicPlayerControl.Name" xml:space="preserve">
+    <value>raceMusicPlayerControl</value>
   </data>
-  <data name="raceSimulatorControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+  <data name="&gt;&gt;raceMusicPlayerControl.Type" xml:space="preserve">
+    <value>UmaMusumeExplorer.Controls.RaceMusicPlayer.RaceMusicPlayerControl, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="raceSimulatorControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="raceSimulatorControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>982, 634</value>
-  </data>
-  <data name="raceSimulatorControl.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;raceSimulatorControl.Name" xml:space="preserve">
-    <value>raceSimulatorControl</value>
-  </data>
-  <data name="&gt;&gt;raceSimulatorControl.Type" xml:space="preserve">
-    <value>UmaMusumeExplorer.Controls.RaceMusicSimulator.RaceMusicSimulatorControl, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;raceSimulatorControl.Parent" xml:space="preserve">
+  <data name="&gt;&gt;raceMusicPlayerControl.Parent" xml:space="preserve">
     <value>raceMusicTabPage</value>
   </data>
-  <data name="&gt;&gt;raceSimulatorControl.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;raceMusicPlayerControl.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="raceMusicTabPage.Location" type="System.Drawing.Point, System.Drawing">
@@ -419,7 +338,7 @@
     <value>1</value>
   </data>
   <data name="raceMusicTabPage.Text" xml:space="preserve">
-    <value>Race Music Simulator</value>
+    <value>Race Music Player</value>
   </data>
   <data name="&gt;&gt;raceMusicTabPage.Name" xml:space="preserve">
     <value>raceMusicTabPage</value>
@@ -452,6 +371,159 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="fileBrowserControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="fileBrowserControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="fileBrowserControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>982, 634</value>
+  </data>
+  <data name="fileBrowserControl.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;fileBrowserControl.Name" xml:space="preserve">
+    <value>fileBrowserControl</value>
+  </data>
+  <data name="&gt;&gt;fileBrowserControl.Type" xml:space="preserve">
+    <value>UmaMusumeExplorer.Controls.FileBrowser.FileBrowserControl, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;fileBrowserControl.Parent" xml:space="preserve">
+    <value>fileBrowserTabPage</value>
+  </data>
+  <data name="&gt;&gt;fileBrowserControl.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="audioPlayerControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="audioPlayerControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="audioPlayerControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="audioPlayerControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>982, 634</value>
+  </data>
+  <data name="audioPlayerControl.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;audioPlayerControl.Name" xml:space="preserve">
+    <value>audioPlayerControl</value>
+  </data>
+  <data name="&gt;&gt;audioPlayerControl.Type" xml:space="preserve">
+    <value>UmaMusumeExplorer.Controls.AudioPlayer.AudioPlayerControl, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;audioPlayerControl.Parent" xml:space="preserve">
+    <value>audioPlayerTabPage</value>
+  </data>
+  <data name="&gt;&gt;audioPlayerControl.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="liveMusicPlayerControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="liveMusicPlayerControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="liveMusicPlayerControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>988, 640</value>
+  </data>
+  <data name="liveMusicPlayerControl.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;liveMusicPlayerControl.Name" xml:space="preserve">
+    <value>liveMusicPlayerControl</value>
+  </data>
+  <data name="&gt;&gt;liveMusicPlayerControl.Type" xml:space="preserve">
+    <value>UmaMusumeExplorer.Controls.LiveMusicPlayer.LiveMusicPlayerControl, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;liveMusicPlayerControl.Parent" xml:space="preserve">
+    <value>liveMusicPlayerTabPage</value>
+  </data>
+  <data name="&gt;&gt;liveMusicPlayerControl.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="jukeboxControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="jukeboxControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="jukeboxControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>988, 640</value>
+  </data>
+  <data name="jukeboxControl.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;jukeboxControl.Name" xml:space="preserve">
+    <value>jukeboxControl</value>
+  </data>
+  <data name="&gt;&gt;jukeboxControl.Type" xml:space="preserve">
+    <value>UmaMusumeExplorer.Controls.Jukebox.JukeboxControl, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;jukeboxControl.Parent" xml:space="preserve">
+    <value>jukeboxTabPage</value>
+  </data>
+  <data name="&gt;&gt;jukeboxControl.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="characterInfoControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="characterInfoControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="characterInfoControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="characterInfoControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>982, 634</value>
+  </data>
+  <data name="characterInfoControl.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;characterInfoControl.Name" xml:space="preserve">
+    <value>characterInfoControl</value>
+  </data>
+  <data name="&gt;&gt;characterInfoControl.Type" xml:space="preserve">
+    <value>UmaMusumeExplorer.Controls.CharacterInfo.CharacterInfoControl, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;characterInfoControl.Parent" xml:space="preserve">
+    <value>characterInfoTabPage</value>
+  </data>
+  <data name="&gt;&gt;characterInfoControl.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="raceMusicPlayerControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="raceMusicPlayerControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="raceMusicPlayerControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="raceMusicPlayerControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>982, 634</value>
+  </data>
+  <data name="raceMusicPlayerControl.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;raceMusicPlayerControl.Name" xml:space="preserve">
+    <value>raceMusicPlayerControl</value>
+  </data>
+  <data name="&gt;&gt;raceMusicPlayerControl.Type" xml:space="preserve">
+    <value>UmaMusumeExplorer.Controls.RaceMusicPlayer.RaceMusicPlayerControl, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;raceMusicPlayerControl.Parent" xml:space="preserve">
+    <value>raceMusicTabPage</value>
+  </data>
+  <data name="&gt;&gt;raceMusicPlayerControl.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

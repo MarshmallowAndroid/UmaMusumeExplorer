@@ -1,4 +1,4 @@
-﻿namespace UmaMusumeExplorer.Controls.RaceMusicSimulator.Classes
+﻿namespace UmaMusumeExplorer.Controls.RaceMusicPlayer.Classes
 {
     public class Pattern
     {

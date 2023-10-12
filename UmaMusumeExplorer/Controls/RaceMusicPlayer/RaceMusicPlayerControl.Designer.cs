@@ -1,7 +1,7 @@
 ﻿
-namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
+namespace UmaMusumeExplorer.Controls.RaceMusicPlayer
 {
-    partial class RaceMusicSimulatorControl
+    partial class RaceMusicPlayerControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicSimulator
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RaceMusicSimulatorControl));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RaceMusicPlayerControl));
             bgmIdComboBox = new System.Windows.Forms.ComboBox();
             loadButton = new System.Windows.Forms.Button();
             groupBox1 = new System.Windows.Forms.GroupBox();
