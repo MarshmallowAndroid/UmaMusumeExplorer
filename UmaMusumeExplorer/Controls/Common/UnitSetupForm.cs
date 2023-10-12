@@ -133,14 +133,13 @@ namespace UmaMusumeExplorer.Controls.Common
 
         private void UpdateCharacterPositions()
         {
+            int index = 0;
             foreach (Control control in singersPanel.Controls)
             {
                 if (control is not CharacterPositionControl characterPositionControl) continue;
 
-                int index = characterPositionControl.Position;
-                int characterId = characterPositionControl.CharacterId;
-                characterPositions[index].CharacterId = characterId;
-                characterPositions[index].Position = index;
+                characterPositions[index].CharacterId = characterPositionControl.CharacterId;
+                characterPositions[index++].Position = characterPositionControl.Position;
             }
         }
 
