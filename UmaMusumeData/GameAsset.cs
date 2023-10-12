@@ -33,9 +33,9 @@ namespace UmaMusumeData
             }
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
-            return ((GameAsset)obj).Hash == Hash;
+            return (obj as GameAsset)?.Hash == Hash;
         }
 
         public override int GetHashCode()

@@ -14,7 +14,7 @@ namespace UmaMusumeData
         private static readonly string metaFile = Path.Combine(umaMusumeDirectory, "meta");
         private static readonly string masterFile = Path.Combine(umaMusumeDirectory, "master", "master.mdb");
 
-        public static string GetPath(GameAsset gameFile)
+        public static string GetPath(GameAsset? gameFile)
         {
             if (gameFile is not null)
             {
@@ -28,20 +28,20 @@ namespace UmaMusumeData
 
         public static string GetPath(IEnumerable<GameAsset> gameAssetList, string gameFileBaseName)
         {
-            GameAsset gameFile = gameAssetList.FirstOrDefault(gf => gf.BaseName == gameFileBaseName);
+            GameAsset? gameFile = gameAssetList.FirstOrDefault(gf => gf.BaseName == gameFileBaseName);
 
             if (gameFile is not null)
                 return GetPath(gameFile);
             else return "";
         }
 
-        public static List<GameAsset> GetGameAssetDataRows(Func<GameAsset, bool> condition = null)
+        public static List<GameAsset> GetGameAssetDataRows(Func<GameAsset, bool>? condition = null)
             => GetRows(metaFile, condition);
 
-        public static List<T> GetMasterDatabaseRows<T>(Func<T, bool> condition = null) where T : new()
+        public static List<T> GetMasterDatabaseRows<T>(Func<T, bool>? condition = null) where T : new()
             => GetRows(masterFile, condition);
 
-        private static List<T> GetRows<T>(string databaseFile, Func<T, bool> condition = null) where T : new()
+        private static List<T> GetRows<T>(string databaseFile, Func<T, bool>? condition = null) where T : new()
         {
             SQLiteConnection connection = new(databaseFile);
 

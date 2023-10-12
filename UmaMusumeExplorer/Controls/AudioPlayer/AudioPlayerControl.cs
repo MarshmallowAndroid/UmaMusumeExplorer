@@ -40,7 +40,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
 
         private void AudioPlayerControl_Load(object sender, EventArgs e)
         {
-            if (audioAssets is null) return;
+            if (!audioAssets.Any()) return;
 
             audioTypeComboBox.SelectedIndex = 0;
 
