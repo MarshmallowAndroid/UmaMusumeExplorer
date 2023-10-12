@@ -1,4 +1,5 @@
 ﻿using NAudio.Wave;
+using NAudio.Wave.SampleProviders;
 using System.Text;
 using UmaMusumeData;
 using UmaMusumeExplorer.Controls.Common.Classes;
@@ -10,6 +11,7 @@ namespace UmaMusumeExplorer.Controls.Common
     partial class PlayerForm : Form
     {
         private readonly MusicManager liveManager;
+        private readonly IExtendedSampleProvider? sampleProvider;
         private readonly int musicId;
         private readonly string songTitle;
         private readonly PinnedBitmap? songJacketPinnedBitmap;
@@ -21,6 +23,7 @@ namespace UmaMusumeExplorer.Controls.Common
 
         private readonly IWavePlayer waveOut = new WaveOutEvent() { DesiredLatency = 250 };
 
+        //private IExtendedSampleProvider sampleProvider;
         private SongMixer? songMixer;
         private List<LyricsTrigger>? lyricsTriggers;
 
@@ -38,6 +41,7 @@ namespace UmaMusumeExplorer.Controls.Common
             InitializeComponent();
 
             liveManager = manager;
+            sampleProvider = manager.SampleProvider;
             musicId = manager.MusicId;
             songTitle = AssetTables.GetText(TextCategory.MasterLiveTitle, musicId);
 
@@ -78,7 +82,10 @@ namespace UmaMusumeExplorer.Controls.Common
             songMixer = liveManager.SampleProvider as SongMixer;
             lyricsTriggers = liveManager.LyricsTriggers;
 
-            waveOut.Init(liveManager.SampleProvider);
+            if (songMixer is not null)
+                waveOut.Init(songMixer);
+            else
+                waveOut.Init(new VolumeSampleProvider(sampleProvider) { Volume = 4.0f });
             waveOut.Play();
 
             lyricsThread?.Start();
@@ -88,7 +95,7 @@ namespace UmaMusumeExplorer.Controls.Common
             singersEnabled = new bool[liveManager.CharacterPositions?.Length ?? 0];
 
             // Update the total time and volume track bars
-            totalTimeLabel.Text = $"{songMixer?.TotalTime:m\\:ss}";
+            totalTimeLabel.Text = $"{sampleProvider?.TotalTime:m\\:ss}";
             int volume = (int)Math.Ceiling(waveOut.Volume * 100.0F);
             volumeTrackbar.Value = volume;
             volumeLabel.Text = volume + "%";
@@ -118,10 +125,10 @@ namespace UmaMusumeExplorer.Controls.Common
 
         private void UpdateTimer_Tick(object sender, EventArgs e)
         {
-            if (songMixer is null) return;
+            if (sampleProvider is null) return;
 
-            currentTimeLabel.Text = $"{songMixer.CurrentTime:m\\:ss}";
-            seekTrackBar.Value = (int)(songMixer.CurrentTime / songMixer.TotalTime * 100.0F);
+            currentTimeLabel.Text = $"{sampleProvider.CurrentTime:m\\:ss}";
+            seekTrackBar.Value = (int)(sampleProvider.CurrentTime / sampleProvider.TotalTime * 100.0F);
         }
 
         private void PlayerForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -135,9 +142,9 @@ namespace UmaMusumeExplorer.Controls.Common
 
         private void SeekTrackBar_Scroll(object sender, EventArgs e)
         {
-            if (songMixer is null) return;
+            if (sampleProvider is null) return;
 
-            songMixer.Position = (long)(songMixer.Length * (float)(seekTrackBar.Value / 100.0F));
+            sampleProvider.Position = (long)(sampleProvider.Length * (float)(seekTrackBar.Value / 100.0F));
             seeked = true;
         }
 
@@ -149,7 +156,7 @@ namespace UmaMusumeExplorer.Controls.Common
 
         private void SetupButton_Click(object sender, EventArgs e)
         {
-            if (!liveManager.Setup(this)) return;
+            if (!liveManager.SetupLive(this)) return;
             AddCharacters();
         }
 
@@ -163,6 +170,7 @@ namespace UmaMusumeExplorer.Controls.Common
 
         private void ExportButton_Click(object sender, EventArgs e)
         {
+            if (sampleProvider is null) return;
             if (songMixer is null) return;
             if (currentSingers is null) return;
 
@@ -188,12 +196,12 @@ namespace UmaMusumeExplorer.Controls.Common
                 PlaybackState playbackState = waveOut.PlaybackState;
                 waveOut.Pause();
 
-                Task.Run(() =>
+                Task.Run((Action)(() =>
                 {
-                    long restorePosition = songMixer.Position;
+                    long restorePosition = sampleProvider.Position;
                     string restoreInfo = songInfoLabel.Text;
 
-                    songMixer.Position = 0;
+                    sampleProvider.Position = 0;
                     lyricsTriggerIndex = 0;
                     Invoke(() =>
                     {
@@ -204,9 +212,9 @@ namespace UmaMusumeExplorer.Controls.Common
                         updateTimer.Enabled = true;
                     });
 
-                    WaveFileWriter.CreateWaveFile16(saveFileDialog.FileName, songMixer);
+                    WaveFileWriter.CreateWaveFile16(saveFileDialog.FileName, (ISampleProvider)this.sampleProvider);
 
-                    songMixer.Position = restorePosition;
+                    sampleProvider.Position = restorePosition;
                     lyricsTriggerIndex = 0;
 
                     if (playbackState == PlaybackState.Playing)
@@ -220,7 +228,7 @@ namespace UmaMusumeExplorer.Controls.Common
                         stopButton.Enabled = true;
                         updateTimer.Enabled = waveOut.PlaybackState == PlaybackState.Playing;
                     });
-                });
+                }));
             }
         }
 
@@ -316,10 +324,11 @@ namespace UmaMusumeExplorer.Controls.Common
             {
                 Thread.Sleep(1);
 
+                if (sampleProvider is null) continue;
                 if (songMixer is null) continue;
                 if (lyricsTriggers is null) continue;
 
-                msElapsed = songMixer.CurrentTime.TotalMilliseconds;
+                msElapsed = sampleProvider.CurrentTime.TotalMilliseconds;
 
                 if (seeked)
                 {

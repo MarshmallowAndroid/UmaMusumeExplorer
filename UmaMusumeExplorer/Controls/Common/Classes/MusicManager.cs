@@ -28,7 +28,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
 
         public List<PartTrigger> PartTriggers { get; } = new();
 
-        public ISampleProvider? SampleProvider { get; private set; }
+        public IExtendedSampleProvider? SampleProvider { get; private set; }
 
         public CharacterPosition[]? CharacterPositions { get; private set; }
 
@@ -211,7 +211,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
             }
 
             // Initialize song mixer on first playback
-            SampleProvider ??= new VolumeSampleProvider(new UmaWaveStream(okeAwb, 0).ToSampleProvider()) { Volume = 4.0F };
+            SampleProvider ??= new ExtendedSampleProvider(new UmaWaveStream(okeAwb, 0));
         }
 
         private CsvReader? GetLiveCsv(AssetsManager assetsManager, string category)

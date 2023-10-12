@@ -4,7 +4,7 @@ using UmaMusumeAudio;
 
 namespace UmaMusumeExplorer.Controls.Common.Classes
 {
-    class SongMixer : ISampleProvider, IDisposable
+    class SongMixer : IExtendedSampleProvider, IDisposable
     {
         private UmaWaveStream okeWaveStream;
         private ISampleProvider okeSampleProvider;
