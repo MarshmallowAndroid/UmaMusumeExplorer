@@ -1,12 +1,5 @@
 ﻿using ClHcaSharp;
 using NAudio.Wave;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UmaMusumeAudio
 {
@@ -28,7 +21,7 @@ namespace UmaMusumeAudio
             hcaFileStream = hcaFile;
             hcaFileReader = new(hcaFile);
             decoder = new(hcaFile, key);
-            info = decoder.GetInfo();
+            info = decoder.HcaInfo;
             dataStart = hcaFile.Position;
 
             sampleBuffer = new short[info.ChannelCount][];
@@ -135,15 +128,15 @@ namespace UmaMusumeAudio
                 byte[] blockBytes = hcaFileReader.ReadBytes(info.BlockSize);
                 if (blockBytes.Length > 0)
                 {
-                    try
-                    {
-                        decoder.DecodeBlock(blockBytes);
-                        decoder.ReadSamples16(sampleBuffer);
-                    }
-                    catch (Exception e)
-                    {
-                        Debug.WriteLine("HCA decoder threw an exception: " + e.Message);
-                    }
+                    //try
+                    //{
+                    decoder.DecodeBlock(blockBytes);
+                    decoder.ReadSamples16(sampleBuffer);
+                    //}
+                    //catch (Exception e)
+                    //{
+                    //    Debug.WriteLine("HCA decoder threw an exception: " + e.Message);
+                    //}
                 }
             }
         }
