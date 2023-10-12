@@ -34,7 +34,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
 
         public List<LyricsTrigger> LyricsTriggers { get; } = new();
 
-        public bool Setup(Control parent)
+        public bool SetupLive(Control parent)
         {
             // Get possible audio assets for music ID
             IEnumerable<GameAsset> audioAssets = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith($"sound/l/{MusicId}"));

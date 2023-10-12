@@ -31,7 +31,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
                 {
                     MusicManager liveManager = new(liveData);
 
-                    if (liveManager.Setup(this))
+                    if (liveManager.SetupLive(this))
                         ControlHelpers.ShowFormCenter(new PlayerForm(liveManager), this);
                 }
             };
