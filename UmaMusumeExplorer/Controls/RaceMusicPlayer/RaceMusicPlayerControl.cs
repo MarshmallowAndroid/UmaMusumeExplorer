@@ -13,23 +13,23 @@ namespace UmaMusumeExplorer.Controls.RaceMusicPlayer
         private readonly IEnumerable<RaceBgmPattern> raceBgmPatterns = AssetTables.RaceBgmPatterns;
         private readonly IEnumerable<GameAsset> audioAssets = AssetTables.AudioAssets;
 
-        private RaceBgm currentRaceBgm;
-        private List<Pattern> firstPatternBgmList;
-        private List<Pattern> secondPatternBgmList;
-        private Pattern firstPattern;
-        private Pattern secondPattern;
+        private RaceBgm? currentRaceBgm;
+        private List<Pattern>? firstPatternBgmList;
+        private List<Pattern>? secondPatternBgmList;
+        private Pattern? firstPattern;
+        private Pattern? secondPattern;
 
-        private IWavePlayer waveOut;
+        private IWavePlayer? waveOut;
 
-        private Bgm paddockBgm;
-        private Bgm entryTableBgm;
-        private Bgm resultCutinBgm;
-        private Bgm resultListBgm;
-        private Bgm firstPatternBgm;
-        private Bgm secondPatternBgm;
+        private Bgm? paddockBgm;
+        private Bgm? entryTableBgm;
+        private Bgm? resultCutinBgm;
+        private Bgm? resultListBgm;
+        private Bgm? firstPatternBgm;
+        private Bgm? secondPatternBgm;
 
-        private AutoRemoveMixingSampleProvider mixer;
-        private VolumeSampleProvider volumeSampleProvider;
+        private AutoRemoveMixingSampleProvider? mixer;
+        private VolumeSampleProvider? volumeSampleProvider;
 
         private string lastPressedButtonName = "";
 
@@ -67,7 +67,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicPlayer
             firstPatternLengthComboBox.Items.Clear();
             secondPatternLengthComboBox.Items.Clear();
 
-            waveOut.Stop();
+            waveOut?.Stop();
 
             paddockBgm?.Dispose();
             entryTableBgm?.Dispose();
@@ -86,7 +86,9 @@ namespace UmaMusumeExplorer.Controls.RaceMusicPlayer
             int validItems = 0;
             foreach (var property in type.GetProperties())
             {
-                object propertyValue = property.GetValue(pattern);
+                object? propertyValue = property.GetValue(pattern);
+
+                if (propertyValue is null) continue;
 
                 switch (property.PropertyType.Name)
                 {
@@ -108,12 +110,12 @@ namespace UmaMusumeExplorer.Controls.RaceMusicPlayer
                 else if (property.Name.StartsWith("BgmCueName"))
                 {
                     int index = int.Parse(property.Name.Replace("BgmCueName", ""));
-                    bgmCueNames.Add(index, propertyValue as string);
+                    bgmCueNames.Add(index, (propertyValue as string) ?? "");
                 }
                 else if (property.Name.StartsWith("BgmCuesheetName"))
                 {
                     int index = int.Parse(property.Name.Replace("BgmCuesheetName", ""));
-                    bgmCuesheetNames.Add(index, propertyValue as string);
+                    bgmCuesheetNames.Add(index, (propertyValue as string) ?? "");
                 }
 
                 validItems++;
@@ -136,19 +138,23 @@ namespace UmaMusumeExplorer.Controls.RaceMusicPlayer
 
         private void LoadButton_Click(object sender, EventArgs e)
         {
-            waveOut.Stop();
+            waveOut?.Stop();
 
             if (bgmIdComboBox.SelectedItem is not BgmComboBoxItem comboBoxItem) return;
 
             currentRaceBgm = comboBoxItem.RaceBgm;
 
-            RaceBgmPattern firstPatternTable = raceBgmPatterns.FirstOrDefault(p =>
-                p.Id == comboBoxItem.RaceBgm.FirstBgmPattern);
-            RaceBgmPattern secondPatternTable = raceBgmPatterns.FirstOrDefault(p =>
-                p.Id == comboBoxItem.RaceBgm.SecondBgmPattern);
+            RaceBgmPattern? firstPatternTable = raceBgmPatterns.FirstOrDefault(p =>
+                p.Id == comboBoxItem.RaceBgm?.FirstBgmPattern);
+            RaceBgmPattern? secondPatternTable = raceBgmPatterns.FirstOrDefault(p =>
+                p.Id == comboBoxItem.RaceBgm?.SecondBgmPattern);
+
+            if (firstPatternTable is null || secondPatternTable is null) return;
 
             firstPatternBgmList = LoadPattern(firstPatternTable);
             secondPatternBgmList = LoadPattern(secondPatternTable);
+
+            if (currentRaceBgm is null) return;
 
             paddockCueNameTextBox.Text = currentRaceBgm.PaddockBgmCueName;
             paddockCuesheetNameTextBox.Text = currentRaceBgm.PaddockBgmCuesheetName;
@@ -183,23 +189,27 @@ namespace UmaMusumeExplorer.Controls.RaceMusicPlayer
             };
 
             waveOut.Init(volumeSampleProvider);
-            waveOut.Play();
+            waveOut?.Play();
         }
 
         private void RaceResultComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ComboBox comboBox = sender as ComboBox;
-            RaceBgm raceBgm = (bgmIdComboBox.SelectedItem as BgmComboBoxItem).RaceBgm;
+            if (sender is not ComboBox comboBox) return;
+            if (bgmIdComboBox.SelectedItem is not BgmComboBoxItem item) return;
+            RaceBgm? raceBgm = item.RaceBgm;
+
+            if (raceBgm is null) return;
+
             Type type = raceBgm.GetType();
 
             int propertyIndex = comboBox.SelectedIndex + 1;
 
             if (propertyIndex > 0)
             {
-                string resultCutinBgmCuesheetName = type.GetProperty("ResultCutinBgmCuesheetName" + propertyIndex).GetValue(raceBgm).ToString();
-                string resultCutinBgmCueName = type.GetProperty("ResultCutinBgmCueName" + propertyIndex).GetValue(raceBgm).ToString();
-                string resultListBgmCuesheetName = type.GetProperty("ResultListBgmCuesheetName" + propertyIndex).GetValue(raceBgm).ToString();
-                string resultListBgmCueName = type.GetProperty("ResultListBgmCueName" + propertyIndex).GetValue(raceBgm).ToString();
+                string resultCutinBgmCuesheetName = type.GetProperty("ResultCutinBgmCuesheetName" + propertyIndex)?.GetValue(raceBgm)?.ToString() ?? "";
+                string resultCutinBgmCueName = type.GetProperty("ResultCutinBgmCueName" + propertyIndex)?.GetValue(raceBgm)?.ToString() ?? "";
+                string resultListBgmCuesheetName = type.GetProperty("ResultListBgmCuesheetName" + propertyIndex)?.GetValue(raceBgm)?.ToString() ?? "";
+                string resultListBgmCueName = type.GetProperty("ResultListBgmCueName" + propertyIndex)?.GetValue(raceBgm)?.ToString() ?? "";
 
                 resultCutInCuesheetNameTextBox.Text = resultCutinBgmCuesheetName;
                 resultCutInCueNameTextBox.Text = resultCutinBgmCueName;
@@ -219,11 +229,14 @@ namespace UmaMusumeExplorer.Controls.RaceMusicPlayer
 
         private void FirstPatternLengthComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ComboBox comboBox = (ComboBox)sender;
+            if (sender is not ComboBox comboBox) return;
 
             if (comboBox.SelectedIndex >= 0)
             {
-                firstPattern = firstPatternBgmList.FirstOrDefault(bi => bi.BgmTime == (int)comboBox.SelectedItem);
+                firstPattern = firstPatternBgmList?.FirstOrDefault(bi => bi.BgmTime == (int)comboBox.SelectedItem);
+
+                if (firstPattern is null) return;
+
                 firstPatternCueNameTextBox.Text = firstPattern.BgmCueName;
                 firstPatternCuesheetNameTextBox.Text = firstPattern.BgmCuesheetName;
                 firstPatternBgm = new(audioAssets, firstPattern.BgmCuesheetName, firstPattern.BgmCueName);
@@ -237,11 +250,14 @@ namespace UmaMusumeExplorer.Controls.RaceMusicPlayer
 
         private void SecondPatternLengthComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ComboBox comboBox = sender as ComboBox;
+            if (sender is not ComboBox comboBox) return;
 
             if (comboBox.SelectedIndex >= 0)
             {
-                secondPattern = secondPatternBgmList.FirstOrDefault(bi => bi.BgmTime == (int)comboBox.SelectedItem);
+                secondPattern = secondPatternBgmList?.FirstOrDefault(bi => bi.BgmTime == (int)comboBox.SelectedItem);
+
+                if (secondPattern is null) return;
+
                 secondPatternCueNameTextBox.Text = secondPattern.BgmCueName;
                 secondPatternCuesheetNameTextBox.Text = secondPattern.BgmCuesheetName;
                 secondPatternBgm = new(audioAssets, secondPattern.BgmCuesheetName, secondPattern.BgmCueName);
@@ -255,9 +271,16 @@ namespace UmaMusumeExplorer.Controls.RaceMusicPlayer
 
         private void PlayButtons_Click(object sender, EventArgs e)
         {
-            if (currentRaceBgm is null) return;
+            if (sender is not Button button) return;
 
-            Button button = sender as Button;
+            if (currentRaceBgm is null) return;
+            if (mixer is null) return;
+            if (paddockBgm is null) return;
+            if (entryTableBgm is null) return;
+            if (resultCutinBgm is null) return;
+            if (resultListBgm is null) return;
+            if (firstPatternBgm is null) return;
+            if (secondPatternBgm is null) return;
 
             if (mixer.MixerInputs.Any())
             {
@@ -305,7 +328,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicPlayer
                     break;
             }
 
-            waveOut.Play();
+            waveOut?.Play();
         }
 
         private void TogglePlayButton_Click(object sender, EventArgs e)
@@ -314,15 +337,15 @@ namespace UmaMusumeExplorer.Controls.RaceMusicPlayer
 
             try
             {
-                if (waveOut.PlaybackState == PlaybackState.Playing)
+                if (waveOut?.PlaybackState == PlaybackState.Playing)
                     waveOut.Pause();
                 else
-                    waveOut.Play();
+                    waveOut?.Play();
             }
             catch (Exception)
             {
                 waveOut.Init(volumeSampleProvider);
-                waveOut.Play();
+                waveOut?.Play();
             }
         }
 
@@ -333,6 +356,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicPlayer
 
         private void AmplifyUpDown_ValueChanged(object sender, EventArgs e)
         {
+            if (volumeSampleProvider is null) return;
             volumeSampleProvider.Volume = (float)amplifyUpDown.Value;
         }
     }

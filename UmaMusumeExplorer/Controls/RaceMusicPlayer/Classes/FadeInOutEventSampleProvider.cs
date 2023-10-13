@@ -79,7 +79,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicPlayer.Classes
             }
         }
 
-        public event SampleProvideEventHandler OnSampleProviderEvent;
+        public event SampleProvideEventHandler? OnSampleProviderEvent;
 
         private static void ClearBuffer(float[] buffer, int offset, int count)
         {
