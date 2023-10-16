@@ -5,7 +5,6 @@ namespace UmaMusumeData
     [Table("a")]
     public class ManifestEntry
     {
-        [PrimaryKey]
         [Column("i")]
         public int Id { get; set; }
 
@@ -14,6 +13,9 @@ namespace UmaMusumeData
 
         [Column("d")]
         public string Dependencies { get; set; } = "";
+
+        [Column("g"), NotNull]
+        public AssetBundleGroup Group { get; set; }
 
         [Column("l"), NotNull]
         public int Length { get; set; }
@@ -26,6 +28,15 @@ namespace UmaMusumeData
 
         [Column("m"), NotNull]
         public string Manifest { get; set; } = "";
+
+        [Column("k"), NotNull]
+        public ManifestEntryKind Kind { get; set; }
+
+        [Column("s"), NotNull]
+        public byte State { get; set; }
+
+        [Column("p"), NotNull]
+        public int Priority { get; set; }
 
         public string BaseName
         {
