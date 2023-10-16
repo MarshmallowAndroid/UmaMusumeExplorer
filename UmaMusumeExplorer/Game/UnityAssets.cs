@@ -48,8 +48,8 @@ namespace UmaMusumeExplorer.Game
                 Regex chrCardIconRegex = new(@"\bchr_icon_[0-9]{4}_[0-9]{6}_[0-9]{2}\b");
 
                 List<string> imagePaths = new();
-                List<ManifestEntry> charaAssetRows = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("chara/"));
-                charaAssetRows.ForEach(c =>
+                List<ManifestEntry> charaAssetEntryRows = UmaDataHelper.GetManifestEntryDataRows(ga => ga.Name.StartsWith("chara/"));
+                charaAssetEntryRows.ForEach(c =>
                 {
                     if (chrIconRegex.IsMatch(c.BaseName) || chrCardIconRegex.IsMatch(c.BaseName) || c.BaseName == "chr_icon_round_0000")
                         imagePaths.Add(UmaDataHelper.GetPath(c));
@@ -87,8 +87,8 @@ namespace UmaMusumeExplorer.Game
         {
             if (!skillIconsLoaded)
             {
-                List<ManifestEntry> skillIconAssetRows = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("outgame/skillicon/utx_ico_skill_"));
-                LoadFiles(skillIconAssetsManager, GetFilePaths(skillIconAssetRows));
+                List<ManifestEntry> skillIconAssetEntryRows = UmaDataHelper.GetManifestEntryDataRows(ga => ga.Name.StartsWith("outgame/skillicon/utx_ico_skill_"));
+                LoadFiles(skillIconAssetsManager, GetFilePaths(skillIconAssetEntryRows));
                 skillIconsLoaded = true;
             }
 
@@ -115,8 +115,8 @@ namespace UmaMusumeExplorer.Game
         {
             if (!jacketIconsLoaded)
             {
-                List<ManifestEntry> liveJacketAssetRows = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("live/jacket/jacket_icon_l_"));
-                LoadFiles(jacketsAssetsManager, GetFilePaths(liveJacketAssetRows));
+                List<ManifestEntry> liveJacketAssetEntryRows = UmaDataHelper.GetManifestEntryDataRows(ga => ga.Name.StartsWith("live/jacket/jacket_icon_l_"));
+                LoadFiles(jacketsAssetsManager, GetFilePaths(liveJacketAssetEntryRows));
                 jacketIconsLoaded = true;
             }
 
@@ -142,8 +142,8 @@ namespace UmaMusumeExplorer.Game
                 Regex supportCardIconRegex = new(@"\bsupport_thumb_[0-9]{5}\b");
 
                 List<string> imagePaths = new();
-                List<ManifestEntry> supportCardAssetRows = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("supportcard/"));
-                supportCardAssetRows.ForEach(c =>
+                List<ManifestEntry> supportCardAssetEntryRows = UmaDataHelper.GetManifestEntryDataRows(ga => ga.Name.StartsWith("supportcard/"));
+                supportCardAssetEntryRows.ForEach(c =>
                 {
                     if (supportCardIconRegex.IsMatch(c.BaseName.ToLower()) || c.BaseName.ToLower() == "support_thumb_00000")
                         imagePaths.Add(UmaDataHelper.GetPath(c));
@@ -248,12 +248,12 @@ namespace UmaMusumeExplorer.Game
             }
         }
 
-        private static string[] GetFilePaths(List<ManifestEntry> gameAssets)
+        private static string[] GetFilePaths(List<ManifestEntry> entries)
         {
             List<string> paths = new();
-            foreach (ManifestEntry asset in gameAssets)
+            foreach (ManifestEntry entry in entries)
             {
-                string path = UmaDataHelper.GetPath(asset);
+                string path = UmaDataHelper.GetPath(entry);
                 if (path != string.Empty) paths.Add(path);
             }
             return paths.ToArray();

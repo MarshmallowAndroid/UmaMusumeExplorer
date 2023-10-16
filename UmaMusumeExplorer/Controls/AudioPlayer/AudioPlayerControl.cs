@@ -15,7 +15,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
         private readonly IWavePlayer waveOut;
         private readonly object waveOutLock = new();
 
-        private readonly IEnumerable<ManifestEntry> audioAssets = AssetTables.AudioAssets;
+        private readonly IEnumerable<ManifestEntry> audioAssetEntries = AssetTables.AudioAssetEntries;
         private char audioType;
         private IEnumerable<ManifestEntry>? awbOnly;
 
@@ -40,7 +40,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
 
         private void AudioPlayerControl_Load(object sender, EventArgs e)
         {
-            if (!audioAssets.Any()) return;
+            if (!audioAssetEntries.Any()) return;
 
             audioTypeComboBox.SelectedIndex = 0;
 
@@ -63,7 +63,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             else
                 audioType = 'v';
 
-            awbOnly = audioAssets.Where((gf) => gf.Name.StartsWith($"sound/{audioType}/") && gf.BaseName.EndsWith(".awb"));
+            awbOnly = audioAssetEntries.Where((gf) => gf.Name.StartsWith($"sound/{audioType}/") && gf.BaseName.EndsWith(".awb"));
             if (awbOnly is null) return;
 
             totalFiles = awbOnly.Count();
@@ -92,7 +92,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             {
                 string baseName = gameFile.BaseName[0..^4];
                 string acbName = baseName + ".acb";
-                string acbPath = UmaDataHelper.GetPath(AssetTables.AudioAssets.FirstOrDefault((gf) => gf.BaseName == acbName));
+                string acbPath = UmaDataHelper.GetPath(AssetTables.AudioAssetEntries.FirstOrDefault((gf) => gf.BaseName == acbName));
                 string awbPath = UmaDataHelper.GetPath(gameFile);
 
                 if (File.Exists(awbPath) && File.Exists(acbPath))

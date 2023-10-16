@@ -13,7 +13,7 @@ namespace UmaMusumeExplorer.Game
             IEnumerable<PropertyInfo> properties = assetTablesType.GetProperties().Where(p => p.PropertyType.Name == "List`1");
 
             Queue<LoadAction> customLoadAction = new();
-            customLoadAction.Enqueue(() => { AudioAssets.AddRange(UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("sound/"))); return "AudioAssets"; });
+            customLoadAction.Enqueue(() => { AudioAssetEntries.AddRange(UmaDataHelper.GetManifestEntryDataRows(ga => ga.Name.StartsWith("sound/"))); return "AudioAssetEntries"; });
 
             int completed = 0;
             foreach (var property in properties)
@@ -42,7 +42,7 @@ namespace UmaMusumeExplorer.Game
 
         public static ProgressUpdater? UpdateProgress { get; set; }
 
-        public static List<ManifestEntry> AudioAssets { get; private set; } = new();
+        public static List<ManifestEntry> AudioAssetEntries { get; private set; } = new();
 
         public static List<AvailableSkillSet> AvailableSkillSets { get; private set; } = new();
 

@@ -14,11 +14,11 @@ namespace UmaMusumeData
         private static readonly string metaFile = Path.Combine(umaMusumeDirectory, "meta");
         private static readonly string masterFile = Path.Combine(umaMusumeDirectory, "master", "master.mdb");
 
-        public static string GetPath(ManifestEntry? gameFile)
+        public static string GetPath(ManifestEntry? entry)
         {
-            if (gameFile is not null)
+            if (entry is not null)
             {
-                string path = Path.Combine(dataDirectory, gameFile.HashName[..2], gameFile.HashName);
+                string path = Path.Combine(dataDirectory, entry.HashName[..2], entry.HashName);
 
                 if (File.Exists(path)) return path;
                 else return "";
@@ -26,16 +26,16 @@ namespace UmaMusumeData
             else return "";
         }
 
-        public static string GetPath(IEnumerable<ManifestEntry> gameAssetList, string gameFileBaseName)
+        public static string GetPath(IEnumerable<ManifestEntry> entryList, string gameFileBaseName)
         {
-            ManifestEntry? gameFile = gameAssetList.FirstOrDefault(gf => gf.BaseName == gameFileBaseName);
+            ManifestEntry? entry = entryList.FirstOrDefault(gf => gf.BaseName == gameFileBaseName);
 
-            if (gameFile is not null)
-                return GetPath(gameFile);
+            if (entry is not null)
+                return GetPath(entry);
             else return "";
         }
 
-        public static List<ManifestEntry> GetGameAssetDataRows(Func<ManifestEntry, bool>? condition = null)
+        public static List<ManifestEntry> GetManifestEntryDataRows(Func<ManifestEntry, bool>? condition = null)
             => GetRows(metaFile, condition);
 
         public static List<T> GetMasterDatabaseRows<T>(Func<T, bool>? condition = null) where T : new()

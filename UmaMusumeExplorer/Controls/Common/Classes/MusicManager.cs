@@ -37,7 +37,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
         public bool SetupLive(Control parent)
         {
             // Get possible audio assets for music ID
-            IEnumerable<ManifestEntry> audioAssets = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith($"sound/l/{MusicId}"));
+            IEnumerable<ManifestEntry> audioAssetEntries = UmaDataHelper.GetManifestEntryDataRows(ga => ga.Name.StartsWith($"sound/l/{MusicId}"));
 
             // Retrieve count of members that actually sing
             int singingMembers = GetSingingMembers();
@@ -48,7 +48,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
             CharacterPositions = unitSetupForm.CharacterPositions;
 
             // Get BGM with or without sound effects
-            AwbReader? okeAwb = GetAwbFile(audioAssets.First(aa => aa.BaseName == $"snd_bgm_live_{MusicId}_oke_0{(unitSetupForm.Sfx ? '1' : '2')}.awb"));
+            AwbReader? okeAwb = GetAwbFile(audioAssetEntries.First(aa => aa.BaseName == $"snd_bgm_live_{MusicId}_oke_0{(unitSetupForm.Sfx ? '1' : '2')}.awb"));
             if (okeAwb is null) return ShowFileNotFound();
 
             // Abort unit setup when character selection is not confirmed
@@ -79,7 +79,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
 
             foreach (var characterPosition in CharacterPositions)
             {
-                AwbReader? charaAwb = GetAwbFile(audioAssets.First(aa => aa.BaseName == $"snd_bgm_live_{MusicId}_chara_{characterPosition.CharacterId}_01.awb"));
+                AwbReader? charaAwb = GetAwbFile(audioAssetEntries.First(aa => aa.BaseName == $"snd_bgm_live_{MusicId}_chara_{characterPosition.CharacterId}_01.awb"));
                 if (charaAwb is null) return ShowFileNotFound();
                 charaAwbs[characterPosition.Position] = charaAwb;
             }
@@ -136,12 +136,12 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
 
         private void LoadMusicScore()
         {
-            IEnumerable<ManifestEntry> musicScoreAssets = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith($"live/musicscores/m{MusicId}"));
+            IEnumerable<ManifestEntry> musicScoreAssetEntries = UmaDataHelper.GetManifestEntryDataRows(ga => ga.Name.StartsWith($"live/musicscores/m{MusicId}"));
 
-            if (!musicScoreAssets.Any()) return;
+            if (!musicScoreAssetEntries.Any()) return;
 
             AssetsManager assetsManager = new();
-            foreach (var item in musicScoreAssets)
+            foreach (var item in musicScoreAssetEntries)
             {
                 BundleFileInstance bundle = assetsManager.LoadBundleFile(UmaDataHelper.GetPath(item));
 
@@ -198,11 +198,11 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
             }
 
             // Get possible audio assets for music ID
-            IEnumerable<ManifestEntry> audioAssets = UmaDataHelper.GetGameAssetDataRows(
+            IEnumerable<ManifestEntry> audioAssetEntries = UmaDataHelper.GetManifestEntryDataRows(
                 ga => ga.Name.ToLower().Contains(cueSheetName.ToLower() + ".awb"));
 
             // Get BGM without sound effects
-            AwbReader? okeAwb = GetAwbFile(audioAssets.First());
+            AwbReader? okeAwb = GetAwbFile(audioAssetEntries.First());
 
             if (okeAwb is null)
             {
@@ -243,7 +243,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
 
         private static bool ShowFileNotFound()
         {
-            MessageBox.Show("Music data not found. Please download all resources in the game.", "Assets not found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            MessageBox.Show("Music data not found. Please download all resources in the game.", "Asset not found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             return false;
         }
     }

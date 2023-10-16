@@ -13,7 +13,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
             {
                 livePermissionData = new List<LivePermissionData>();
 
-                var matches = UmaDataHelper.GetGameAssetDataRows(ga => ga.BaseName.StartsWith($"snd_bgm_live_{musicId}_chara_") && ga.BaseName.EndsWith(".awb"));
+                var matches = UmaDataHelper.GetManifestEntryDataRows(ga => ga.BaseName.StartsWith($"snd_bgm_live_{musicId}_chara_") && ga.BaseName.EndsWith(".awb"));
 
                 foreach (var audioAsset in matches)
                 {

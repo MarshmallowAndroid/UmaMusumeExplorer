@@ -11,7 +11,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicPlayer
     {
         private readonly IEnumerable<RaceBgm> raceBgms = AssetTables.RaceBgms;
         private readonly IEnumerable<RaceBgmPattern> raceBgmPatterns = AssetTables.RaceBgmPatterns;
-        private readonly IEnumerable<ManifestEntry> audioAssets = AssetTables.AudioAssets;
+        private readonly IEnumerable<ManifestEntry> audioAssetEntries = AssetTables.AudioAssetEntries;
 
         private RaceBgm? currentRaceBgm;
         private List<Pattern>? firstPatternBgmList;
@@ -175,8 +175,8 @@ namespace UmaMusumeExplorer.Controls.RaceMusicPlayer
             firstPatternLengthComboBox.SelectedIndex = 0;
             secondPatternLengthComboBox.SelectedIndex = 0;
 
-            paddockBgm = new(audioAssets, currentRaceBgm.PaddockBgmCuesheetName, currentRaceBgm.PaddockBgmCueName);
-            entryTableBgm = new(audioAssets, currentRaceBgm.EntrytableBgmCuesheetName, currentRaceBgm.EntrytableBgmCueName);
+            paddockBgm = new(audioAssetEntries, currentRaceBgm.PaddockBgmCuesheetName, currentRaceBgm.PaddockBgmCueName);
+            entryTableBgm = new(audioAssetEntries, currentRaceBgm.EntrytableBgmCuesheetName, currentRaceBgm.EntrytableBgmCueName);
 
             mixer = new(WaveFormat.CreateIeeeFloatWaveFormat(
                 paddockBgm.UmaWaveStream.WaveFormat.SampleRate,
@@ -215,8 +215,8 @@ namespace UmaMusumeExplorer.Controls.RaceMusicPlayer
                 resultCutInCueNameTextBox.Text = resultCutinBgmCueName;
                 resultListCuesheetNameTextBox.Text = resultListBgmCuesheetName;
                 resultListCueNameTextBox.Text = resultListBgmCueName;
-                resultCutinBgm = new Bgm(audioAssets, resultCutinBgmCuesheetName, resultCutinBgmCueName);
-                resultListBgm = new Bgm(audioAssets, resultListBgmCuesheetName, resultListBgmCueName);
+                resultCutinBgm = new Bgm(audioAssetEntries, resultCutinBgmCuesheetName, resultCutinBgmCueName);
+                resultListBgm = new Bgm(audioAssetEntries, resultListBgmCuesheetName, resultListBgmCueName);
             }
             else
             {
@@ -239,7 +239,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicPlayer
 
                 firstPatternCueNameTextBox.Text = firstPattern.BgmCueName;
                 firstPatternCuesheetNameTextBox.Text = firstPattern.BgmCuesheetName;
-                firstPatternBgm = new(audioAssets, firstPattern.BgmCuesheetName, firstPattern.BgmCueName);
+                firstPatternBgm = new(audioAssetEntries, firstPattern.BgmCuesheetName, firstPattern.BgmCueName);
             }
             else
             {
@@ -260,7 +260,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicPlayer
 
                 secondPatternCueNameTextBox.Text = secondPattern.BgmCueName;
                 secondPatternCuesheetNameTextBox.Text = secondPattern.BgmCuesheetName;
-                secondPatternBgm = new(audioAssets, secondPattern.BgmCuesheetName, secondPattern.BgmCueName);
+                secondPatternBgm = new(audioAssetEntries, secondPattern.BgmCuesheetName, secondPattern.BgmCueName);
             }
             else
             {

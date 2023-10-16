@@ -190,7 +190,7 @@ namespace LiveMusicPlayerCli
             if (!livePermissionData.Any())
             {
                 livePermissionData = new List<LivePermissionData>();
-                var matches = AssetTables.AudioAssets.Where(ga => ga.BaseName.StartsWith($"snd_bgm_live_{musicId}_chara_") && ga.BaseName.EndsWith(".awb"));
+                var matches = AssetTables.AudioAssetEntries.Where(ga => ga.BaseName.StartsWith($"snd_bgm_live_{musicId}_chara_") && ga.BaseName.EndsWith(".awb"));
                 foreach (var audioAsset in matches)
                 {
                     int charaId = int.Parse(audioAsset.BaseName.Remove(0, $"snd_bgm_live_{musicId}_chara_".Length)[..4]);

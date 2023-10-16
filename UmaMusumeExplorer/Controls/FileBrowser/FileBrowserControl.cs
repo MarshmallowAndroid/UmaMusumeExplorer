@@ -8,10 +8,10 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
 {
     partial class FileBrowserControl : UserControl
     {
-        private readonly SortedDictionary<string, ManifestEntry>? gameAssets = new();
-        private IDictionary<string, ManifestEntry>? searchedAssets;
-        private IDictionary<string, ManifestEntry>? targetAssets;
-        private readonly SortedDictionary<string, ManifestEntry>? selectedAssets = new();
+        private readonly SortedDictionary<string, ManifestEntry>? entries = new();
+        private IDictionary<string, ManifestEntry>? searchedEntries;
+        private IDictionary<string, ManifestEntry>? targetEntries;
+        private readonly SortedDictionary<string, ManifestEntry>? selectedEntries = new();
 
         private bool searched;
 
@@ -30,16 +30,16 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             extractListView.Columns[0].Width = (int)(extractListView.Width * 0.80F);
             extractListView.Columns[1].Width = -2;
 
-            targetAssets = gameAssets;
+            targetEntries = entries;
         }
 
         private void FileTreeView_BeforeExpand(object sender, TreeViewCancelEventArgs e)
         {
-            if (gameAssets?.Count == 0)
+            if (entries?.Count == 0)
             {
-                foreach (var gameAsset in UmaDataHelper.GetGameAssetDataRows())
+                foreach (var entry in UmaDataHelper.GetManifestEntryDataRows())
                 {
-                    gameAssets.Add(gameAsset.Name, gameAsset);
+                    entries.Add(entry.Name, entry);
                 }
             }
 
@@ -47,33 +47,33 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             if (expandingNode is null) return;
             expandingNode.Nodes.Clear();
 
-            IEnumerable<KeyValuePair<string, ManifestEntry>> assetList;
+            IEnumerable<KeyValuePair<string, ManifestEntry>> entryList;
 
             string convertedNodePath = "";
 
-            if (targetAssets is null) return;
+            if (targetEntries is null) return;
 
             if (expandingNode.Text == "Root")
-                assetList = targetAssets;
+                entryList = targetEntries;
             else
             {
                 convertedNodePath = expandingNode.FullPath["Root/".Length..];
-                assetList = targetAssets.Where(ga => ga.Key.StartsWith(convertedNodePath + "/"));
+                entryList = targetEntries.Where(ga => ga.Key.StartsWith(convertedNodePath + "/"));
             }
 
             SortedDictionary<string, ManifestEntry> files = new();
 
-            foreach (var assetValue in assetList)
+            foreach (var entryValue in entryList)
             {
-                ManifestEntry asset = assetValue.Value;
-                string assetName = expandingNode.Text == "Root" ? asset.Name : asset.Name[(convertedNodePath.Length + 1)..];
+                ManifestEntry entry = entryValue.Value;
+                string entryName = expandingNode.Text == "Root" ? entry.Name : entry.Name[(convertedNodePath.Length + 1)..];
 
-                int firstSlashIndex = assetName.IndexOf('/');
+                int firstSlashIndex = entryName.IndexOf('/');
                 if (firstSlashIndex < 1)
-                    files.Add(asset.Name, asset);
+                    files.Add(entry.Name, entry);
                 else
                 {
-                    string nodeName = assetName[..firstSlashIndex];
+                    string nodeName = entryName[..firstSlashIndex];
                     string nodeKey = convertedNodePath + '/' + nodeName;
 
                     if (!expandingNode.Nodes.ContainsKey(nodeKey))
@@ -111,20 +111,20 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             if (node is null) return;
             if (node.FullPath == "Root") return;
 
-            ManifestEntry asset = (ManifestEntry)node.Tag;
+            ManifestEntry entry = (ManifestEntry)node.Tag;
 
-            if (asset is not null)
+            if (entry is not null)
             {
-                UpdateSelectedAssets(asset, node.Checked);
+                UpdateSelectedEntries(entry, node.Checked);
             }
             else
             {
-                if (targetAssets is null) return;
+                if (targetEntries is null) return;
 
                 string convertedNodePath = node.FullPath["Root/".Length..];
-                IEnumerable<KeyValuePair<string, ManifestEntry>> assetsToAdd = targetAssets.Where(ga => ga.Key.StartsWith(convertedNodePath + '/'));
+                IEnumerable<KeyValuePair<string, ManifestEntry>> entriesToAdd = targetEntries.Where(ga => ga.Key.StartsWith(convertedNodePath + '/'));
 
-                int itemCount = assetsToAdd.Count();
+                int itemCount = entriesToAdd.Count();
                 if (itemCount > 10000)
                 {
                     DialogResult confirmResult =
@@ -136,61 +136,61 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
 
                 await Task.Run(() =>
                 {
-                    int currentAsset = 0;
-                    foreach (var item in assetsToAdd)
+                    int currentEntry = 0;
+                    foreach (var item in entriesToAdd)
                     {
-                        Invoke(() => UpdateSelectedAssets(item.Value, node.Checked));
-                        currentAsset++;
+                        Invoke(() => UpdateSelectedEntries(item.Value, node.Checked));
+                        currentEntry++;
 
-                        float percent = (float)currentAsset / itemCount;
+                        float percent = (float)currentEntry / itemCount;
                         Invoke(() => progressBar.Value = (int)(percent * 100.0F));
                     }
                 });
             }
 
-            if (selectedAssets is null) return;
+            if (selectedEntries is null) return;
 
             await Task.Run(() =>
             {
                 List<ListViewItem> dependencyItems = new();
-                if (SelectedAssetsHaveDependencies())
+                if (SelectedEntryHasDependencies())
                 {
                     DialogResult addDependencyResult = MessageBox.Show("Include dependencies?", "Dependencies found", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                     if (addDependencyResult == DialogResult.Yes)
                     {
                         List<ManifestEntry> dependencies = new();
-                        int currentAsset = 0;
-                        int assetCount = selectedAssets.Count;
-                        foreach (var selectedAsset in selectedAssets.Values)
+                        int currentEntry = 0;
+                        int entryCount = selectedEntries.Count;
+                        foreach (var selectedEntry in selectedEntries.Values)
                         {
-                            AddDependenciesRecurse(dependencies, selectedAsset);
-                            currentAsset++;
+                            AddDependenciesRecurse(dependencies, selectedEntry);
+                            currentEntry++;
 
-                            float percent = (float)currentAsset / assetCount;
+                            float percent = (float)currentEntry / entryCount;
                             Invoke(() => progressBar.Value = (int)(percent * 100.0F));
                         }
 
-                        foreach (var dependencyAsset in dependencies)
+                        foreach (var dependencyEntry in dependencies)
                         {
-                            Invoke(() => UpdateSelectedAssets(dependencyAsset, node.Checked));
+                            Invoke(() => UpdateSelectedEntries(dependencyEntry, node.Checked));
 
-                            ListViewItem item = new(dependencyAsset.Name);
-                            item.SubItems.Add(GenerateSizeString(dependencyAsset.Length));
-                            item.Tag = dependencyAsset;
+                            ListViewItem item = new(dependencyEntry.Name);
+                            item.SubItems.Add(GenerateSizeString(dependencyEntry.Length));
+                            item.Tag = dependencyEntry;
 
                             dependencyItems.Add(item);
                         }
                     }
                 }
 
-                ListViewItem[] items = new ListViewItem[selectedAssets.Count];
+                ListViewItem[] items = new ListViewItem[selectedEntries.Count];
                 int index = 0;
-                foreach (var selectedAsset in selectedAssets.Values)
+                foreach (var selectedEntry in selectedEntries.Values)
                 {
-                    ListViewItem item = new(selectedAsset.Name);
-                    item.SubItems.Add(GenerateSizeString(selectedAsset.Length));
-                    item.Tag = selectedAsset;
+                    ListViewItem item = new(selectedEntry.Name);
+                    item.SubItems.Add(GenerateSizeString(selectedEntry.Length));
+                    item.Tag = selectedEntry;
                     items[index++] = item;
                 }
 
@@ -199,8 +199,8 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
                     extractListView.Items.Clear();
                     extractListView.Items.AddRange(items);
 
-                    totalFileCountLabel.Text = $"{selectedAssets.Count} files";
-                    totalFileSizeLabel.Text = GenerateSizeString(selectedAssets.Sum(a => (long)a.Value.Length));
+                    totalFileCountLabel.Text = $"{selectedEntries.Count} files";
+                    totalFileSizeLabel.Text = GenerateSizeString(selectedEntries.Sum(a => (long)a.Value.Length));
                 });
             });
         }
@@ -212,16 +212,16 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             foreach (ListViewItem item in selectedItems)
             {
                 extractListView.Items.Remove(item);
-                selectedAssets?.Remove(((ManifestEntry)item.Tag).Name);
+                selectedEntries?.Remove(((ManifestEntry)item.Tag).Name);
             }
 
-            totalFileCountLabel.Text = $"{selectedAssets?.Count} files";
-            totalFileSizeLabel.Text = GenerateSizeString(selectedAssets?.Values.Sum(a => a.Length) ?? 0);
+            totalFileCountLabel.Text = $"{selectedEntries?.Count} files";
+            totalFileSizeLabel.Text = GenerateSizeString(selectedEntries?.Values.Sum(a => a.Length) ?? 0);
         }
 
         private void ClearButton_Click(object sender, EventArgs e)
         {
-            selectedAssets?.Clear();
+            selectedEntries?.Clear();
             extractListView.Items.Clear();
 
             totalFileCountLabel.Text = $"0 files";
@@ -247,13 +247,13 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             int finished = 0;
             foreach (ListViewItem item in extractListView.Items)
             {
-                if (item.Tag is not ManifestEntry asset) continue;
+                if (item.Tag is not ManifestEntry entry) continue;
 
                 copyTasks[index] = new Task(() =>
                 {
-                    string dataFilePath = UmaDataHelper.GetPath(asset);
-                    string realFileName = asset.Name.TrimStart('/');
-                    if (asset.Manifest.StartsWith("manifest")) realFileName += ".manifest";
+                    string dataFilePath = UmaDataHelper.GetPath(entry);
+                    string realFileName = entry.Name.TrimStart('/');
+                    if (entry.Manifest.StartsWith("manifest")) realFileName += ".manifest";
                     string realFilePath = Path.Combine(outputDirectory, realFileName);
                     string destinationDirectory;
 
@@ -285,9 +285,9 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
         {
             if (fileTreeView.SelectedNode is null) return;
 
-            if (fileTreeView.SelectedNode.Tag is ManifestEntry asset)
+            if (fileTreeView.SelectedNode.Tag is ManifestEntry entry)
             {
-                string dataFilePath = UmaDataHelper.GetPath(asset);
+                string dataFilePath = UmaDataHelper.GetPath(entry);
 
                 if (!File.Exists(dataFilePath))
                 {
@@ -312,19 +312,19 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
         {
             if (!searched)
             {
-                searchedAssets = UmaDataHelper.GetGameAssetDataRows()
+                searchedEntries = UmaDataHelper.GetManifestEntryDataRows()
                     .Where(ga => ga.Name.Contains(searchTextBox.Text))
                     .OrderBy(ga => ga.Name)
                     .ToDictionary(ga => ga.Name);
-                targetAssets = searchedAssets;
+                targetEntries = searchedEntries;
 
                 searched = true;
                 searchButton.Text = "Reset";
             }
             else
             {
-                searchedAssets?.Clear();
-                targetAssets = gameAssets;
+                searchedEntries?.Clear();
+                targetEntries = entries;
 
                 searched = false;
                 searchButton.Text = "Search";
@@ -334,46 +334,46 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             fileTreeView.Nodes[0].Nodes.Add("");
         }
 
-        private bool SelectedAssetsHaveDependencies()
+        private bool SelectedEntryHasDependencies()
         {
-            if (selectedAssets is null) return false;
+            if (selectedEntries is null) return false;
 
-            foreach (var asset in selectedAssets.Values)
+            foreach (var entry in selectedEntries.Values)
             {
-                if (asset.Dependencies.Any()) return true;
+                if (entry.Dependencies.Any()) return true;
             }
 
             return false;
         }
 
-        private void AddDependenciesRecurse(List<ManifestEntry> dependencyList, ManifestEntry gameAsset, int iteration = 0)
+        private void AddDependenciesRecurse(List<ManifestEntry> dependencyList, ManifestEntry entry, int iteration = 0)
         {
-            if (gameAsset.Dependencies == "") return;
+            if (entry.Dependencies == "") return;
 
-            foreach (var dependency in gameAsset.Dependencies.Split(';'))
+            foreach (var dependency in entry.Dependencies.Split(';'))
             {
-                ManifestEntry? dependencyAsset = gameAssets?[dependency] ?? null;
+                ManifestEntry? dependencyEntry = entries?[dependency] ?? null;
 
-                if (dependencyAsset is not null)
+                if (dependencyEntry is not null)
                 {
                     if (iteration <= 100)
-                        AddDependenciesRecurse(dependencyList, dependencyAsset, ++iteration);
+                        AddDependenciesRecurse(dependencyList, dependencyEntry, ++iteration);
 
-                    if (!dependencyList.Contains(dependencyAsset))
-                        dependencyList.Add(dependencyAsset);
+                    if (!dependencyList.Contains(dependencyEntry))
+                        dependencyList.Add(dependencyEntry);
                 }
             }
         }
 
-        private void UpdateSelectedAssets(ManifestEntry asset, bool isChecked)
+        private void UpdateSelectedEntries(ManifestEntry entry, bool isChecked)
         {
-            if (selectedAssets is null) return;
+            if (selectedEntries is null) return;
 
-            TreeNode[] matching = fileTreeView.Nodes.Find(asset.Name, true);
+            TreeNode[] matching = fileTreeView.Nodes.Find(entry.Name, true);
             if (matching.Length > 0) matching[0].Checked = isChecked;
 
-            if (!selectedAssets.ContainsKey(asset.Name))
-                selectedAssets.Add(asset.Name, asset);
+            if (!selectedEntries.ContainsKey(entry.Name))
+                selectedEntries.Add(entry.Name, entry);
         }
 
         private static string GenerateSizeString(long length)
