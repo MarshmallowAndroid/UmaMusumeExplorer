@@ -2,6 +2,7 @@
 using AssetsTools.NET.Extra;
 using AssetsTools.NET.Texture;
 using SixLabors.ImageSharp;
+using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -15,12 +16,14 @@ namespace UmaMusumeExplorer.Game
         private static readonly AssetsManager charaIconAssetsManager = new();
         private static readonly AssetsManager skillIconAssetsManager = new();
         private static readonly AssetsManager jacketsAssetsManager = new();
+        private static readonly AssetsManager supportCardIconAssetsManager = new();
         private static readonly AssetsManager generalAssetsManager = new();
         private static readonly Dictionary<string, ImagePointerContainer> imagePointerContainers = new();
 
         private static bool charaIconsLoaded = false;
         private static bool skillIconsLoaded = false;
         private static bool jacketIconsLoaded = false;
+        private static bool supportCardIconsLoaded = false;
 
         public static void ClearLoadedFiles()
         {
@@ -32,6 +35,7 @@ namespace UmaMusumeExplorer.Game
             charaIconAssetsManager.UnloadAll();
             skillIconAssetsManager.UnloadAll();
             jacketsAssetsManager.UnloadAll();
+            supportCardIconAssetsManager.UnloadAll();
             generalAssetsManager.UnloadAll();
             imagePointerContainers.Clear();
         }
@@ -44,7 +48,7 @@ namespace UmaMusumeExplorer.Game
                 Regex chrCardIconRegex = new(@"\bchr_icon_[0-9]{4}_[0-9]{6}_[0-9]{2}\b");
 
                 List<string> imagePaths = new();
-                List<GameAsset> charaAssetRows = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("chara/"));
+                List<ManifestEntry> charaAssetRows = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("chara/"));
                 charaAssetRows.ForEach(c =>
                 {
                     if (chrIconRegex.IsMatch(c.BaseName) || chrCardIconRegex.IsMatch(c.BaseName) || c.BaseName == "chr_icon_round_0000")
@@ -56,7 +60,6 @@ namespace UmaMusumeExplorer.Game
             }
 
             string idString = $"{id:d4}";
-
             StringBuilder imageStringBuilder = new();
             imageStringBuilder.Append($"chr_icon_{idString}");
             if (idString == "0000")
@@ -64,23 +67,19 @@ namespace UmaMusumeExplorer.Game
                 imageStringBuilder.Clear();
                 imageStringBuilder.Append("chr_icon_round_0000");
             }
-
             if (raceDressId > 0)
                 imageStringBuilder.Append($"_{raceDressId:d6}_{plate:d2}");
-
             string imageName = imageStringBuilder.ToString();
 
             if (imagePointerContainers.ContainsKey(imageName)) return PinnedBitmapFromKey(imageName);
 
             Image<Bgra32>? image = GetImage(charaIconAssetsManager, imageName);
-
             if (image is null) return null;
 
             int adjustedHeight = (int)(image.Height * 1.115F);
             image.Mutate(o => o.Resize(image.Width, adjustedHeight));
 
             AddLoadedImage(imageName, image);
-
             return PinnedBitmapFromKey(imageName);
         }
 
@@ -88,13 +87,12 @@ namespace UmaMusumeExplorer.Game
         {
             if (!skillIconsLoaded)
             {
-                List<GameAsset> skillIconAssetRows = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("outgame/skillicon/utx_ico_skill_"));
+                List<ManifestEntry> skillIconAssetRows = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("outgame/skillicon/utx_ico_skill_"));
                 LoadFiles(skillIconAssetsManager, GetFilePaths(skillIconAssetRows));
                 skillIconsLoaded = true;
             }
 
             string idString;
-
             if (id == 0)
                 idString = "00000";
             else
@@ -102,45 +100,83 @@ namespace UmaMusumeExplorer.Game
 
             StringBuilder imageStringBuilder = new();
             imageStringBuilder.Append($"utx_ico_skill_{idString}");
-
             string imageName = imageStringBuilder.ToString();
 
             if (imagePointerContainers.ContainsKey(imageName)) return PinnedBitmapFromKey(imageName);
 
             Image<Bgra32>? image = GetImage(skillIconAssetsManager, imageName);
-
             if (image is null) return null;
 
             AddLoadedImage(imageName, image);
-
             return PinnedBitmapFromKey(imageName);
         }
 
-        public static PinnedBitmap? GetJacket(int musicId, char size = 'm')
+        public static PinnedBitmap? GetJacket(int id, char size = 'm')
         {
             if (!jacketIconsLoaded)
             {
-                List<GameAsset> liveJacketAssetRows = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("live/jacket/jacket_icon_l_"));
+                List<ManifestEntry> liveJacketAssetRows = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("live/jacket/jacket_icon_l_"));
                 LoadFiles(jacketsAssetsManager, GetFilePaths(liveJacketAssetRows));
                 jacketIconsLoaded = true;
             }
 
-            string idString = $"{musicId:d4}";
-
+            string idString = $"{id:d4}";
             StringBuilder imageStringBuilder = new();
             imageStringBuilder.Append($"jacket_icon_{size}_{idString}");
-
             string imageName = imageStringBuilder.ToString();
 
             if (imagePointerContainers.ContainsKey(imageName)) return PinnedBitmapFromKey(imageName);
 
             Image<Bgra32>? image = GetImage(jacketsAssetsManager, imageName);
             image ??= GetImage(jacketsAssetsManager, $"jacket_icon_{size}_0000");
+            if (image is null) return null;
+
+            AddLoadedImage(imageName, image);
+            return PinnedBitmapFromKey(imageName);
+        }
+
+        public static PinnedBitmap? GetSupportCardIcon(int id)
+        {
+            if (!supportCardIconsLoaded)
+            {
+                Regex supportCardIconRegex = new(@"\bsupport_thumb_[0-9]{5}\b");
+
+                List<string> imagePaths = new();
+                List<ManifestEntry> supportCardAssetRows = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("supportcard/"));
+                supportCardAssetRows.ForEach(c =>
+                {
+                    if (supportCardIconRegex.IsMatch(c.BaseName.ToLower()) || c.BaseName.ToLower() == "support_thumb_00000")
+                        imagePaths.Add(UmaDataHelper.GetPath(c));
+                });
+                LoadFiles(supportCardIconAssetsManager, imagePaths);
+                supportCardIconsLoaded = true;
+            }
+
+            string idString = $"{id:d5}";
+            StringBuilder imageStringBuilder = new();
+            imageStringBuilder.Append($"support_thumb_{idString}");
+            string imageName = imageStringBuilder.ToString();
+
+            if (imagePointerContainers.ContainsKey(imageName)) return PinnedBitmapFromKey(imageName);
+
+            Image<Bgra32>? image = GetImage(supportCardIconAssetsManager, imageName);
+
+            if (image is null)
+            {
+                image = GetImage(supportCardIconAssetsManager, $"support_thumb_00000");
+                if (image is null) return null;
+                int adjustedHeight = (int)(image.Height / 2 * ((float)19 / 15));
+                image.Mutate(o => o.Resize(image.Width, adjustedHeight));
+            }
+            else
+            {
+                int adjustedHeight = (int)(image.Height * ((float)19 / 15));
+                image.Mutate(o => o.Resize(image.Width, adjustedHeight));
+            }
 
             if (image is null) return null;
 
             AddLoadedImage(imageName, image);
-
             return PinnedBitmapFromKey(imageName);
         }
 
@@ -184,13 +220,12 @@ namespace UmaMusumeExplorer.Game
         private static AssetTypeValueField? GetFileBaseField(AssetsManager assetsManager, string objectName, AssetClassID classId, out AssetsFileInstance? assetsFileInstance)
         {
             assetsFileInstance = null;
-
             foreach (var file in assetsManager.Files)
             {
                 foreach (var asset in file.file.GetAssetsOfType(classId))
                 {
                     AssetTypeValueField baseField = assetsManager.GetBaseField(file, asset);
-                    if (baseField["m_Name"].AsString == objectName)
+                    if (baseField["m_Name"].AsString.ToLower() == objectName)
                     {
                         assetsFileInstance = file;
                         return baseField;
@@ -213,16 +248,14 @@ namespace UmaMusumeExplorer.Game
             }
         }
 
-        private static string[] GetFilePaths(List<GameAsset> gameAssets)
+        private static string[] GetFilePaths(List<ManifestEntry> gameAssets)
         {
             List<string> paths = new();
-
-            foreach (GameAsset asset in gameAssets)
+            foreach (ManifestEntry asset in gameAssets)
             {
                 string path = UmaDataHelper.GetPath(asset);
                 if (path != string.Empty) paths.Add(path);
             }
-
             return paths.ToArray();
         }
 
@@ -230,21 +263,5 @@ namespace UmaMusumeExplorer.Game
             new(imagePointerContainers[key].ImageHandle.AddrOfPinnedObject(),
                 imagePointerContainers[key].Width,
                 imagePointerContainers[key].Height);
-    }
-
-    class ImagePointerContainer
-    {
-        public ImagePointerContainer(GCHandle imageHandle, int width, int height)
-        {
-            ImageHandle = imageHandle;
-            Width = width;
-            Height = height;
-        }
-
-        public GCHandle ImageHandle { get; }
-
-        public int Width { get; }
-
-        public int Height { get; }
     }
 }

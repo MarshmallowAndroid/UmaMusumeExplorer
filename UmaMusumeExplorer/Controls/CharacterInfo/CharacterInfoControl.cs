@@ -1,5 +1,6 @@
 ﻿using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Controls.CharacterInfo.Classes;
+using UmaMusumeExplorer.Controls.Common;
 using UmaMusumeExplorer.Game;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo
@@ -24,8 +25,6 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
         private void CharacterInfoControl_Load(object sender, EventArgs e)
         {
-            if (charaDatas is null) return;
-
             characterItemsPanel.Items = charaDatas;
 
             foreach (var item in charaDatas)
@@ -41,9 +40,9 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
         private void ShowPlayableCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            foreach (CharacterPictureBox cpb in characterItemsPanel.Controls)
+            foreach (HighlightPictureBox hpb in characterItemsPanel.Controls)
             {
-                cpb.ShowPlayability = showPlayableCheckBox.Checked;
+                hpb.ShowHighlight = markPlayableCheckBox.Checked;
             }
         }
     }

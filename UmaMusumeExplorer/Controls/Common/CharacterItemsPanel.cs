@@ -10,7 +10,7 @@ namespace UmaMusumeExplorer.Controls.Common
         public override bool ProcessItem(CharaData charaData, ref Control? characterPictureBox)
         {
             bool playable = AssetTables.CardDatas.Any(cd => cd.CharaId == charaData.Id);
-            characterPictureBox = new CharacterPictureBox(playable)
+            characterPictureBox = new HighlightPictureBox(playable)
             {
                 BackgroundImage = UnityAssets.GetCharaIcon(charaData.Id)?.Bitmap,
                 BackgroundImageLayout = ImageLayout.Zoom,

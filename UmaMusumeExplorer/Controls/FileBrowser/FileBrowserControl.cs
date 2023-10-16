@@ -8,10 +8,10 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
 {
     partial class FileBrowserControl : UserControl
     {
-        private readonly SortedDictionary<string, GameAsset>? gameAssets = new();
-        private IDictionary<string, GameAsset>? searchedAssets;
-        private IDictionary<string, GameAsset>? targetAssets;
-        private readonly SortedDictionary<string, GameAsset>? selectedAssets = new();
+        private readonly SortedDictionary<string, ManifestEntry>? gameAssets = new();
+        private IDictionary<string, ManifestEntry>? searchedAssets;
+        private IDictionary<string, ManifestEntry>? targetAssets;
+        private readonly SortedDictionary<string, ManifestEntry>? selectedAssets = new();
 
         private bool searched;
 
@@ -47,7 +47,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             if (expandingNode is null) return;
             expandingNode.Nodes.Clear();
 
-            IEnumerable<KeyValuePair<string, GameAsset>> assetList;
+            IEnumerable<KeyValuePair<string, ManifestEntry>> assetList;
 
             string convertedNodePath = "";
 
@@ -61,11 +61,11 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
                 assetList = targetAssets.Where(ga => ga.Key.StartsWith(convertedNodePath + "/"));
             }
 
-            SortedDictionary<string, GameAsset> files = new();
+            SortedDictionary<string, ManifestEntry> files = new();
 
             foreach (var assetValue in assetList)
             {
-                GameAsset asset = assetValue.Value;
+                ManifestEntry asset = assetValue.Value;
                 string assetName = expandingNode.Text == "Root" ? asset.Name : asset.Name[(convertedNodePath.Length + 1)..];
 
                 int firstSlashIndex = assetName.IndexOf('/');
@@ -111,7 +111,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             if (node is null) return;
             if (node.FullPath == "Root") return;
 
-            GameAsset asset = (GameAsset)node.Tag;
+            ManifestEntry asset = (ManifestEntry)node.Tag;
 
             if (asset is not null)
             {
@@ -122,7 +122,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
                 if (targetAssets is null) return;
 
                 string convertedNodePath = node.FullPath["Root/".Length..];
-                IEnumerable<KeyValuePair<string, GameAsset>> assetsToAdd = targetAssets.Where(ga => ga.Key.StartsWith(convertedNodePath + '/'));
+                IEnumerable<KeyValuePair<string, ManifestEntry>> assetsToAdd = targetAssets.Where(ga => ga.Key.StartsWith(convertedNodePath + '/'));
 
                 int itemCount = assetsToAdd.Count();
                 if (itemCount > 10000)
@@ -159,7 +159,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
 
                     if (addDependencyResult == DialogResult.Yes)
                     {
-                        List<GameAsset> dependencies = new();
+                        List<ManifestEntry> dependencies = new();
                         int currentAsset = 0;
                         int assetCount = selectedAssets.Count;
                         foreach (var selectedAsset in selectedAssets.Values)
@@ -212,7 +212,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             foreach (ListViewItem item in selectedItems)
             {
                 extractListView.Items.Remove(item);
-                selectedAssets?.Remove(((GameAsset)item.Tag).Name);
+                selectedAssets?.Remove(((ManifestEntry)item.Tag).Name);
             }
 
             totalFileCountLabel.Text = $"{selectedAssets?.Count} files";
@@ -247,7 +247,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             int finished = 0;
             foreach (ListViewItem item in extractListView.Items)
             {
-                if (item.Tag is not GameAsset asset) continue;
+                if (item.Tag is not ManifestEntry asset) continue;
 
                 copyTasks[index] = new Task(() =>
                 {
@@ -285,7 +285,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
         {
             if (fileTreeView.SelectedNode is null) return;
 
-            if (fileTreeView.SelectedNode.Tag is GameAsset asset)
+            if (fileTreeView.SelectedNode.Tag is ManifestEntry asset)
             {
                 string dataFilePath = UmaDataHelper.GetPath(asset);
 
@@ -303,7 +303,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
         {
             if (fileTreeView.SelectedNode is null) return;
 
-            bool isFolder = (GameAsset)fileTreeView.SelectedNode.Tag is null;
+            bool isFolder = (ManifestEntry)fileTreeView.SelectedNode.Tag is null;
             toolStripSeparator1.Visible = !isFolder;
             openFileLocationToolStripMenuItem.Visible = !isFolder;
         }
@@ -346,13 +346,13 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             return false;
         }
 
-        private void AddDependenciesRecurse(List<GameAsset> dependencyList, GameAsset gameAsset, int iteration = 0)
+        private void AddDependenciesRecurse(List<ManifestEntry> dependencyList, ManifestEntry gameAsset, int iteration = 0)
         {
             if (gameAsset.Dependencies == "") return;
 
             foreach (var dependency in gameAsset.Dependencies.Split(';'))
             {
-                GameAsset? dependencyAsset = gameAssets?[dependency] ?? null;
+                ManifestEntry? dependencyAsset = gameAssets?[dependency] ?? null;
 
                 if (dependencyAsset is not null)
                 {
@@ -365,7 +365,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             }
         }
 
-        private void UpdateSelectedAssets(GameAsset asset, bool isChecked)
+        private void UpdateSelectedAssets(ManifestEntry asset, bool isChecked)
         {
             if (selectedAssets is null) return;
 

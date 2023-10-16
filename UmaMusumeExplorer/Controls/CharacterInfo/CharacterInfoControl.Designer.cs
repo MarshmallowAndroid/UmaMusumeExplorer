@@ -30,10 +30,10 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CharacterInfoControl));
-            selectLabel = new System.Windows.Forms.Label();
-            goButton = new System.Windows.Forms.Button();
-            charaListComboBox = new System.Windows.Forms.ComboBox();
-            showPlayableCheckBox = new System.Windows.Forms.CheckBox();
+            selectLabel = new Label();
+            goButton = new Button();
+            charaListComboBox = new ComboBox();
+            markPlayableCheckBox = new CheckBox();
             characterItemsPanel = new Common.CharacterItemsPanel();
             SuspendLayout();
             // 
@@ -51,18 +51,18 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             // 
             // charaListComboBox
             // 
-            charaListComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            charaListComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            charaListComboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            charaListComboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
             charaListComboBox.FormattingEnabled = true;
             resources.ApplyResources(charaListComboBox, "charaListComboBox");
             charaListComboBox.Name = "charaListComboBox";
             // 
-            // showPlayableCheckBox
+            // markPlayableCheckBox
             // 
-            resources.ApplyResources(showPlayableCheckBox, "showPlayableCheckBox");
-            showPlayableCheckBox.Name = "showPlayableCheckBox";
-            showPlayableCheckBox.UseVisualStyleBackColor = true;
-            showPlayableCheckBox.CheckedChanged += ShowPlayableCheckBox_CheckedChanged;
+            resources.ApplyResources(markPlayableCheckBox, "markPlayableCheckBox");
+            markPlayableCheckBox.Name = "markPlayableCheckBox";
+            markPlayableCheckBox.UseVisualStyleBackColor = true;
+            markPlayableCheckBox.CheckedChanged += ShowPlayableCheckBox_CheckedChanged;
             // 
             // characterItemsPanel
             // 
@@ -72,9 +72,9 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             // 
             // CharacterInfoControl
             // 
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            AutoScaleMode = AutoScaleMode.Inherit;
             Controls.Add(characterItemsPanel);
-            Controls.Add(showPlayableCheckBox);
+            Controls.Add(markPlayableCheckBox);
             Controls.Add(charaListComboBox);
             Controls.Add(goButton);
             Controls.Add(selectLabel);
@@ -86,10 +86,10 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
         }
 
         #endregion
-        private System.Windows.Forms.Label selectLabel;
-        private System.Windows.Forms.Button goButton;
-        private System.Windows.Forms.ComboBox charaListComboBox;
-        private System.Windows.Forms.CheckBox showPlayableCheckBox;
+        private Label selectLabel;
+        private Button goButton;
+        private ComboBox charaListComboBox;
+        private CheckBox markPlayableCheckBox;
         private Common.CharacterItemsPanel characterItemsPanel;
     }
 }

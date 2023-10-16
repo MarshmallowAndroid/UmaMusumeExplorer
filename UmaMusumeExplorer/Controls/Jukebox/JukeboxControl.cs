@@ -19,7 +19,7 @@ namespace UmaMusumeExplorer.Controls.Jukebox
 
         private void LiveMusicPlayerSongSelectControl_Load(object sender, EventArgs e)
         {
-            if (jukeboxMusicDatas is not null) jukeboxItemsPanel.Items = jukeboxMusicDatas;
+            jukeboxItemsPanel.Items = jukeboxMusicDatas;
         }
 
         private void RadioBuiton_CheckedChanegd(object sender, EventArgs e)

@@ -9,9 +9,9 @@ namespace UmaMusumeExplorer.Controls.RaceMusicPlayer
 {
     partial class RaceMusicPlayerControl : UserControl
     {
-        private readonly IEnumerable<RaceBgm> raceBgms = AssetTables.RaceBgm;
+        private readonly IEnumerable<RaceBgm> raceBgms = AssetTables.RaceBgms;
         private readonly IEnumerable<RaceBgmPattern> raceBgmPatterns = AssetTables.RaceBgmPatterns;
-        private readonly IEnumerable<GameAsset> audioAssets = AssetTables.AudioAssets;
+        private readonly IEnumerable<ManifestEntry> audioAssets = AssetTables.AudioAssets;
 
         private RaceBgm? currentRaceBgm;
         private List<Pattern>? firstPatternBgmList;

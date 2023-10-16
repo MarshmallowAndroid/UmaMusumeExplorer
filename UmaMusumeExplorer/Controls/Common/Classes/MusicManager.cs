@@ -37,7 +37,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
         public bool SetupLive(Control parent)
         {
             // Get possible audio assets for music ID
-            IEnumerable<GameAsset> audioAssets = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith($"sound/l/{MusicId}"));
+            IEnumerable<ManifestEntry> audioAssets = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith($"sound/l/{MusicId}"));
 
             // Retrieve count of members that actually sing
             int singingMembers = GetSingingMembers();
@@ -136,7 +136,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
 
         private void LoadMusicScore()
         {
-            IEnumerable<GameAsset> musicScoreAssets = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith($"live/musicscores/m{MusicId}"));
+            IEnumerable<ManifestEntry> musicScoreAssets = UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith($"live/musicscores/m{MusicId}"));
 
             if (!musicScoreAssets.Any()) return;
 
@@ -198,7 +198,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
             }
 
             // Get possible audio assets for music ID
-            IEnumerable<GameAsset> audioAssets = UmaDataHelper.GetGameAssetDataRows(
+            IEnumerable<ManifestEntry> audioAssets = UmaDataHelper.GetGameAssetDataRows(
                 ga => ga.Name.ToLower().Contains(cueSheetName.ToLower() + ".awb"));
 
             // Get BGM without sound effects
@@ -232,7 +232,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
             return null;
         }
 
-        private static AwbReader? GetAwbFile(GameAsset gameFile)
+        private static AwbReader? GetAwbFile(ManifestEntry gameFile)
         {
             string awbPath = UmaDataHelper.GetPath(gameFile);
             if (File.Exists(awbPath))

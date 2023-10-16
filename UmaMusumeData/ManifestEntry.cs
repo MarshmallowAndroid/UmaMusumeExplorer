@@ -3,7 +3,7 @@
 namespace UmaMusumeData
 {
     [Table("a")]
-    public class GameAsset
+    public class ManifestEntry
     {
         [PrimaryKey]
         [Column("i")]
@@ -18,8 +18,11 @@ namespace UmaMusumeData
         [Column("l"), NotNull]
         public int Length { get; set; }
 
+        [Column("c"), NotNull]
+        public long Checksum { get; set; }
+
         [Column("h"), NotNull]
-        public string Hash { get; set; } = "";
+        public string HashName { get; set; } = "";
 
         [Column("m"), NotNull]
         public string Manifest { get; set; } = "";
@@ -35,12 +38,12 @@ namespace UmaMusumeData
 
         public override bool Equals(object? obj)
         {
-            return (obj as GameAsset)?.Hash == Hash;
+            return (obj as ManifestEntry)?.HashName == HashName;
         }
 
         public override int GetHashCode()
         {
-            return Hash.GetHashCode();
+            return HashName.GetHashCode();
         }
     }
 }

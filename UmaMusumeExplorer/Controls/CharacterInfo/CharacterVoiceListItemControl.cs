@@ -70,8 +70,8 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
         {
             if (CharacterSystemText is null) return null;
 
-            GameAsset? acbAsset = AssetTables.AudioAssets.FirstOrDefault(a => a.BaseName == CharacterSystemText.CueSheet + ".acb");
-            GameAsset? awbAsset = AssetTables.AudioAssets.FirstOrDefault(a => a.BaseName == CharacterSystemText.CueSheet + ".awb");
+            ManifestEntry? acbAsset = AssetTables.AudioAssets.FirstOrDefault(a => a.BaseName == CharacterSystemText.CueSheet + ".acb");
+            ManifestEntry? awbAsset = AssetTables.AudioAssets.FirstOrDefault(a => a.BaseName == CharacterSystemText.CueSheet + ".awb");
 
             if (acbAsset is null && awbAsset is null) return null;
 

@@ -30,8 +30,7 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 
         private void LiveMusicPlayerSongSelectControl_Load(object sender, EventArgs e)
         {
-            if (liveDatas is not null)
-                songItemsPanel.Items = liveDatas;
+            songItemsPanel.Items = liveDatas;
         }
     }
 }

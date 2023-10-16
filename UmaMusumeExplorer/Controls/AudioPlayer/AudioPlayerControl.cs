@@ -15,9 +15,9 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
         private readonly IWavePlayer waveOut;
         private readonly object waveOutLock = new();
 
-        private readonly IEnumerable<GameAsset> audioAssets = AssetTables.AudioAssets;
+        private readonly IEnumerable<ManifestEntry> audioAssets = AssetTables.AudioAssets;
         private char audioType;
-        private IEnumerable<GameAsset>? awbOnly;
+        private IEnumerable<ManifestEntry>? awbOnly;
 
         private IEnumerable<ListViewItem>? defaultItems;
         private IEnumerable<ListViewItem>? targetItems;
@@ -63,9 +63,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             else
                 audioType = 'v';
 
-            if (audioAssets is not null)
-                awbOnly = audioAssets.Where((gf) => gf.Name.StartsWith($"sound/{audioType}/") && gf.BaseName.EndsWith(".awb"));
-
+            awbOnly = audioAssets.Where((gf) => gf.Name.StartsWith($"sound/{audioType}/") && gf.BaseName.EndsWith(".awb"));
             if (awbOnly is null) return;
 
             totalFiles = awbOnly.Count();

@@ -41,6 +41,8 @@ namespace UmaMusumeExplorer
             jukeboxControl = new Controls.Jukebox.JukeboxControl();
             characterInfoTabPage = new TabPage();
             characterInfoControl = new Controls.CharacterInfo.CharacterInfoControl();
+            supportCardsTabPage = new TabPage();
+            supportCardInfoControl = new Controls.SupportCardInfo.SupportCardInfoControl();
             raceMusicTabPage = new TabPage();
             raceMusicPlayerControl = new Controls.RaceMusicPlayer.RaceMusicPlayerControl();
             tabControl.SuspendLayout();
@@ -49,6 +51,7 @@ namespace UmaMusumeExplorer
             liveMusicPlayerTabPage.SuspendLayout();
             jukeboxTabPage.SuspendLayout();
             characterInfoTabPage.SuspendLayout();
+            supportCardsTabPage.SuspendLayout();
             raceMusicTabPage.SuspendLayout();
             SuspendLayout();
             // 
@@ -60,6 +63,7 @@ namespace UmaMusumeExplorer
             tabControl.Controls.Add(liveMusicPlayerTabPage);
             tabControl.Controls.Add(jukeboxTabPage);
             tabControl.Controls.Add(characterInfoTabPage);
+            tabControl.Controls.Add(supportCardsTabPage);
             tabControl.Controls.Add(raceMusicTabPage);
             tabControl.Name = "tabControl";
             tabControl.SelectedIndex = 0;
@@ -124,6 +128,18 @@ namespace UmaMusumeExplorer
             resources.ApplyResources(characterInfoControl, "characterInfoControl");
             characterInfoControl.Name = "characterInfoControl";
             // 
+            // supportCardsTabPage
+            // 
+            supportCardsTabPage.Controls.Add(supportCardInfoControl);
+            resources.ApplyResources(supportCardsTabPage, "supportCardsTabPage");
+            supportCardsTabPage.Name = "supportCardsTabPage";
+            supportCardsTabPage.UseVisualStyleBackColor = true;
+            // 
+            // supportCardInfoControl
+            // 
+            resources.ApplyResources(supportCardInfoControl, "supportCardInfoControl");
+            supportCardInfoControl.Name = "supportCardInfoControl";
+            // 
             // raceMusicTabPage
             // 
             raceMusicTabPage.Controls.Add(raceMusicPlayerControl);
@@ -149,6 +165,7 @@ namespace UmaMusumeExplorer
             liveMusicPlayerTabPage.ResumeLayout(false);
             jukeboxTabPage.ResumeLayout(false);
             characterInfoTabPage.ResumeLayout(false);
+            supportCardsTabPage.ResumeLayout(false);
             raceMusicTabPage.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -167,6 +184,8 @@ namespace UmaMusumeExplorer
         private Controls.LiveMusicPlayer.LiveMusicPlayerControl liveMusicPlayerControl;
         private TabPage jukeboxTabPage;
         private Controls.Jukebox.JukeboxControl jukeboxControl;
+        private TabPage supportCardsTabPage;
+        private Controls.SupportCardInfo.SupportCardInfoControl supportCardInfoControl;
     }
 }
 

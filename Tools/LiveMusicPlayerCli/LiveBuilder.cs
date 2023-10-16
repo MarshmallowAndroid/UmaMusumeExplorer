@@ -16,7 +16,7 @@ namespace LiveMusicPlayerCli
         private readonly AssetsManager assetsManager = new();
 
         private readonly int musicId;
-        private readonly IEnumerable<GameAsset> audioAssets;
+        private readonly IEnumerable<ManifestEntry> audioAssets;
         private readonly List<PartTrigger> partTriggers = new();
         private readonly AwbReader? okeAwb;
         private readonly List<AwbReader> singerAwbs = new();
@@ -94,7 +94,7 @@ namespace LiveMusicPlayerCli
             return activeMembers;
         }
 
-        private void LoadFiles(IEnumerable<GameAsset> assets)
+        private void LoadFiles(IEnumerable<ManifestEntry> assets)
         {
             if (!assets.Any()) return;
 
@@ -121,11 +121,11 @@ namespace LiveMusicPlayerCli
                 return null;
         }
 
-        private static AwbReader? GetAwbFile(GameAsset? gameFile)
+        private static AwbReader? GetAwbFile(ManifestEntry? entry)
         {
-            if (gameFile is not null)
+            if (entry is not null)
             {
-                string awbPath = UmaDataHelper.GetPath(gameFile);
+                string awbPath = UmaDataHelper.GetPath(entry);
                 if (File.Exists(awbPath)) return new(File.OpenRead(awbPath));
             }
 

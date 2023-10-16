@@ -8,7 +8,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicPlayer.Classes
     {
         private readonly AwbReader awbReader;
 
-        public Bgm(IEnumerable<GameAsset> gameAssetList, string cuesheetName, string cueName)
+        public Bgm(IEnumerable<ManifestEntry> gameAssetList, string cuesheetName, string cueName)
         {
             string lower = cuesheetName.ToLower();
             string awbPath = UmaDataHelper.GetPath(gameAssetList, lower + ".awb");

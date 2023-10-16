@@ -1,4 +1,6 @@
-﻿using UmaMusumeData;
+﻿using System.Reflection;
+using System.Runtime.CompilerServices;
+using UmaMusumeData;
 using UmaMusumeData.Tables;
 
 namespace UmaMusumeExplorer.Game
@@ -7,42 +9,30 @@ namespace UmaMusumeExplorer.Game
     {
         public static void Initialize()
         {
-            List<LoadAction> initializeActions = new()
+            Type assetTablesType = typeof(AssetTables);
+            IEnumerable<PropertyInfo> properties = assetTablesType.GetProperties().Where(p => p.PropertyType.Name == "List`1");
+
+            Queue<LoadAction> customLoadAction = new();
+            customLoadAction.Enqueue(() => { AudioAssets.AddRange(UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("sound/"))); return "AudioAssets"; });
+
+            int completed = 0;
+            foreach (var property in properties)
             {
-                () => { AudioAssets.AddRange(UmaDataHelper.GetGameAssetDataRows(ga => ga.Name.StartsWith("sound/"))); return "AudioAssets"; },
+                Type listType = property.PropertyType.GenericTypeArguments[0];
 
-                () => { AvailableSkillSets.AddRange(UmaDataHelper.GetMasterDatabaseRows<AvailableSkillSet>()); return "AvailableSkillSets"; },
+                string name = property.Name;
+                if (name == (listType.Name + "s"))
+                {
+                    MethodInfo? targetMethod = (typeof(UmaDataHelper).GetMethod("GetMasterDatabaseRows")?.MakeGenericMethod(listType)) ??
+                        throw new Exception("Could not find suitable method.");
+                    property.SetValue(null, targetMethod.Invoke(null, new object?[] { null }));
+                }
+                else
+                {
+                    name = customLoadAction.Dequeue().Invoke();
+                }
 
-                () => { CardDatas.AddRange(UmaDataHelper.GetMasterDatabaseRows<CardData>()); return "CardDatas"; },
-                () => { CardRarityDatas.AddRange(UmaDataHelper.GetMasterDatabaseRows<CardRarityData>()); return "CardRarityDatas"; },
-                () => { CharaDatas.AddRange(UmaDataHelper.GetMasterDatabaseRows<CharaData>()); return "CharaDatas"; },
-
-                () => { CharacterSystemTexts.AddRange(UmaDataHelper.GetMasterDatabaseRows<CharacterSystemText>()); return "CharacterSystemTexts"; },
-
-                () => { JukeboxMusicDatas.AddRange(UmaDataHelper.GetMasterDatabaseRows<JukeboxMusicData>()); return "JukeboxMusicDatas"; },
-
-                () => { LiveDatas.AddRange(UmaDataHelper.GetMasterDatabaseRows<LiveData>()); return "LiveDatas"; },
-                () => { LivePermissionDatas.AddRange(UmaDataHelper.GetMasterDatabaseRows<LivePermissionData>()); return "LivePermissionDatas"; },
-
-                () => { RaceBgm.AddRange(UmaDataHelper.GetMasterDatabaseRows<RaceBgm>()); return "RaceBgm"; },
-                () => { RaceBgmPatterns.AddRange(UmaDataHelper.GetMasterDatabaseRows<RaceBgmPattern>()); return "RaceBgmPatterns"; },
-
-                () => { SkillSets.AddRange(UmaDataHelper.GetMasterDatabaseRows<SkillSet>()); return "SkillSets"; },
-                () => { SkillDatas.AddRange(UmaDataHelper.GetMasterDatabaseRows<SkillData>()); return "SkillDatas"; },
-
-                () => { SingleModeSkillNeedPoints.AddRange(UmaDataHelper.GetMasterDatabaseRows<SingleModeSkillNeedPoint>()); return "SingleModeSkillNeedPoints"; },
-
-                () => { SkillUpgradeConditions.AddRange(UmaDataHelper.GetMasterDatabaseRows<SkillUpgradeCondition>()); return "SkillUpgradeConditions"; },
-                () => { SkillUpgradeDescriptions.AddRange(UmaDataHelper.GetMasterDatabaseRows<SkillUpgradeDescription>()); return "SkillUpgradeDescriptions"; },
-
-                () => { TextData.AddRange(UmaDataHelper.GetMasterDatabaseRows<TextData>()); return "TextData"; }
-            };
-
-            int completedActions = 0;
-            foreach (var action in initializeActions)
-            {
-                string name = action.Invoke();
-                UpdateProgress?.Invoke((int)((float)++completedActions / initializeActions.Count * 100), name);
+                UpdateProgress?.Invoke((int)((float)++completed / properties.Count() * 100), name);
             }
         }
 
@@ -52,7 +42,7 @@ namespace UmaMusumeExplorer.Game
 
         public static ProgressUpdater? UpdateProgress { get; set; }
 
-        public static List<GameAsset> AudioAssets { get; private set; } = new();
+        public static List<ManifestEntry> AudioAssets { get; private set; } = new();
 
         public static List<AvailableSkillSet> AvailableSkillSets { get; private set; } = new();
 
@@ -62,12 +52,14 @@ namespace UmaMusumeExplorer.Game
 
         public static List<CharacterSystemText> CharacterSystemTexts { get; private set; } = new();
 
+        public static List<GachaAvailable> GachaAvailables { get; private set; } = new();
+
         public static List<JukeboxMusicData> JukeboxMusicDatas { get; private set; } = new();
 
         public static List<LiveData> LiveDatas { get; private set; } = new();
         public static List<LivePermissionData> LivePermissionDatas { get; private set; } = new();
 
-        public static List<RaceBgm> RaceBgm { get; private set; } = new();
+        public static List<RaceBgm> RaceBgms { get; private set; } = new();
         public static List<RaceBgmPattern> RaceBgmPatterns { get; private set; } = new();
 
         public static List<SkillSet> SkillSets { get; private set; } = new();
@@ -78,11 +70,13 @@ namespace UmaMusumeExplorer.Game
         public static List<SkillUpgradeCondition> SkillUpgradeConditions { get; private set; } = new();
         public static List<SkillUpgradeDescription> SkillUpgradeDescriptions { get; private set; } = new();
 
-        public static List<TextData> TextData { get; private set; } = new();
+        public static List<SupportCardData> SupportCardDatas { get; private set; } = new();
+
+        public static List<TextData> TextDatas { get; private set; } = new();
 
         public static string GetText(TextCategory category, int index)
         {
-            return TextData.First(td => td.Category == (int)category && td.Index == index).Text;
+            return TextDatas.First(td => td.Category == (int)category && td.Index == index).Text;
         }
     }
 }

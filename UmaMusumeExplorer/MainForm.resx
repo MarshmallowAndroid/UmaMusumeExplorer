@@ -329,13 +329,10 @@
     <value>Fill</value>
   </data>
   <data name="characterInfoControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="characterInfoControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>0, 0</value>
   </data>
   <data name="characterInfoControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>982, 634</value>
+    <value>988, 640</value>
   </data>
   <data name="characterInfoControl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -354,9 +351,6 @@
   </data>
   <data name="characterInfoTabPage.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 24</value>
-  </data>
-  <data name="characterInfoTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
   </data>
   <data name="characterInfoTabPage.Size" type="System.Drawing.Size, System.Drawing">
     <value>988, 640</value>
@@ -378,6 +372,54 @@
   </data>
   <data name="&gt;&gt;characterInfoTabPage.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="supportCardInfoControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="supportCardInfoControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="supportCardInfoControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>988, 640</value>
+  </data>
+  <data name="supportCardInfoControl.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;supportCardInfoControl.Name" xml:space="preserve">
+    <value>supportCardInfoControl</value>
+  </data>
+  <data name="&gt;&gt;supportCardInfoControl.Type" xml:space="preserve">
+    <value>UmaMusumeExplorer.Controls.SupportCardInfo.SupportCardInfoControl, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;supportCardInfoControl.Parent" xml:space="preserve">
+    <value>supportCardsTabPage</value>
+  </data>
+  <data name="&gt;&gt;supportCardInfoControl.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="supportCardsTabPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="supportCardsTabPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>988, 640</value>
+  </data>
+  <data name="supportCardsTabPage.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="supportCardsTabPage.Text" xml:space="preserve">
+    <value>Support Cards</value>
+  </data>
+  <data name="&gt;&gt;supportCardsTabPage.Name" xml:space="preserve">
+    <value>supportCardsTabPage</value>
+  </data>
+  <data name="&gt;&gt;supportCardsTabPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;supportCardsTabPage.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;supportCardsTabPage.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="raceMusicPlayerControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -431,7 +473,7 @@
     <value>tabControl</value>
   </data>
   <data name="&gt;&gt;raceMusicTabPage.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 12</value>
