@@ -132,6 +132,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
             {
                 long position = okeWaveStream.Position;
 
+                okeWaveStream.Dispose();
                 okeWaveStream = new(okeAwb, 0)
                 {
                     Position = position

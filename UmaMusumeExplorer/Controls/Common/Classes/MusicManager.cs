@@ -85,14 +85,11 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
             }
 
             // Initialize song mixer on first playback
-            SongMixer songMixer = new(okeAwb, PartTriggers);
+            SampleProvider ??= new SongMixer(okeAwb, PartTriggers);
+            if (SampleProvider is not SongMixer songMixer) return false;
 
-            if (SampleProvider is null)
-            {
-                SampleProvider = songMixer;
-            }
-            else // Otherwise, change background music
-                songMixer.ChangeOke(okeAwb);
+            // Change background music
+            songMixer.ChangeOke(okeAwb);
 
             // Initialize tracks, can be done during playback
             songMixer.InitializeCharaTracks(charaAwbs);
