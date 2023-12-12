@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using UmaMusumeData;
+using UmaMusumeExplorer.Controls.Common;
 using Image = SixLabors.ImageSharp.Image;
 
 namespace UmaMusumeExplorer.Game
@@ -238,14 +239,15 @@ namespace UmaMusumeExplorer.Game
 
         private static void LoadFiles(AssetsManager assetsManager, IEnumerable<string> filePaths)
         {
-            foreach (var file in filePaths)
-            {
-                BundleFileInstance bundle = assetsManager.LoadBundleFile(file);
-                foreach (var assetsFile in bundle.file.GetAllFileNames())
-                {
-                    assetsManager.LoadAssetsFileFromBundle(bundle, assetsFile);
-                }
-            }
+            //foreach (var file in filePaths)
+            //{
+            //    BundleFileInstance bundle = assetsManager.LoadBundleFile(file);
+            //    foreach (var assetsFile in bundle.file.GetAllFileNames())
+            //    {
+            //        assetsManager.LoadAssetsFileFromBundle(bundle, assetsFile);
+            //    }
+            //}
+            new LoadingForm(assetsManager, filePaths).ShowDialog();
         }
 
         private static string[] GetFilePaths(List<ManifestEntry> entries)

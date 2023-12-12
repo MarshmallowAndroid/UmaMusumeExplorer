@@ -194,7 +194,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
                     {
                         elapsed = ElapsedMillis(stopwatch);
                         double difference = next - elapsed;
-                        if (difference <= 0f) break;
+                        if (difference <= 0F) break;
                         else Thread.SpinWait(10);
                         if (!continueRunning) return;
                     }
@@ -213,7 +213,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
 
             private static double ElapsedMillis(Stopwatch stopwatch)
             {
-                return stopwatch.ElapsedTicks * (1000f / Stopwatch.Frequency);
+                return stopwatch.ElapsedTicks * (1000F / Stopwatch.Frequency);
             }
 
             public delegate void PreciseTimerEventHandler();

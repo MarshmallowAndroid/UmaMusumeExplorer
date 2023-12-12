@@ -85,7 +85,7 @@ namespace UmaMusumeExplorer.Controls.Common
             if (songMixer is not null)
                 waveOut.Init(songMixer);
             else
-                waveOut.Init(new VolumeSampleProvider(sampleProvider) { Volume = 4.0f });
+                waveOut.Init(new VolumeSampleProvider(sampleProvider) { Volume = 4.0F });
             waveOut.Play();
 
             lyricsThread?.Start();
