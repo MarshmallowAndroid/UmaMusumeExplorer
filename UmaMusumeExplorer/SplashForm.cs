@@ -11,14 +11,25 @@ namespace UmaMusumeExplorer
             InitializeComponent();
         }
 
+        public event EventHandler? OnLoadSuccess;
+
         public void ShowLoadAndClose()
         {
             loadThread = new(() =>
             {
-                AssetTables.UpdateProgress += UpdateProgress;
-                AssetTables.Initialize();
-                AssetTables.UpdateProgress -= UpdateProgress;
-                Invoke(() => Close());
+                try
+                {
+                    AssetTables.UpdateProgress += UpdateProgress;
+                    AssetTables.Initialize();
+                    AssetTables.UpdateProgress -= UpdateProgress;
+                    Invoke(() => Close());
+                    OnLoadSuccess?.Invoke(this, EventArgs.Empty);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Error reading tables. Please launch the game and allow itself to repair.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Application.Exit();
+                }
             });
             ShowDialog();
         }

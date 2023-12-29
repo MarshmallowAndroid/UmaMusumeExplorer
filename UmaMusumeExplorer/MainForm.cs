@@ -1,4 +1,5 @@
 ﻿using UmaMusumeExplorer.Controls;
+using UmaMusumeExplorer.Game;
 
 namespace UmaMusumeExplorer
 {
@@ -6,8 +7,6 @@ namespace UmaMusumeExplorer
     {
         public MainForm()
         {
-            new SplashForm().ShowLoadAndClose();
-
             InitializeComponent();
         }
 

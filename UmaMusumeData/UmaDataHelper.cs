@@ -45,16 +45,23 @@ namespace UmaMusumeData
         {
             SQLiteConnection connection = new(databaseFile);
 
-            List<T> rows;
-            if (condition is not null)
-                rows = connection.Table<T>().Where(condition).ToList();
-            else
-                rows = connection.Table<T>().ToList();
+            try
+            {
+                List<T> rows;
+                if (condition is not null)
+                    rows = connection.Table<T>().Where(condition).ToList();
+                else
+                    rows = connection.Table<T>().ToList();
 
-            connection.Close();
-            connection.Dispose();
+                connection.Close();
+                connection.Dispose();
 
-            return rows;
+                return rows;
+            }
+            catch (SQLiteException)
+            {
+                throw;
+            }
         }
     }
 }
