@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using UmaMusumeData;
+using UmaMusumeExplorer.Controls;
 using UmaMusumeExplorer.Controls.Common;
 using Image = SixLabors.ImageSharp.Image;
 
@@ -25,6 +26,8 @@ namespace UmaMusumeExplorer.Game
         private static bool skillIconsLoaded = false;
         private static bool jacketIconsLoaded = false;
         private static bool supportCardIconsLoaded = false;
+
+        public static Form? MainForm { get; set; }
 
         public static void ClearLoadedFiles()
         {
@@ -247,7 +250,8 @@ namespace UmaMusumeExplorer.Game
             //        assetsManager.LoadAssetsFileFromBundle(bundle, assetsFile);
             //    }
             //}
-            new LoadingForm(assetsManager, filePaths).ShowDialog();
+            if (MainForm is not null)
+                ControlHelpers.ShowFormDialogCenter(new LoadingForm(assetsManager, filePaths), MainForm);
         }
 
         private static string[] GetFilePaths(List<ManifestEntry> entries)
