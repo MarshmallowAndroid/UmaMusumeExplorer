@@ -30,9 +30,9 @@ namespace UmaMusumeExplorer.Controls.Jukebox
         /// </summary>
         private void InitializeComponent()
         {
-            lengthSelectLabel = new System.Windows.Forms.Label();
-            shortVersionRadioButton = new System.Windows.Forms.RadioButton();
-            gameSizeVersionRadioButton = new System.Windows.Forms.RadioButton();
+            lengthSelectLabel = new Label();
+            shortVersionRadioButton = new RadioButton();
+            gameSizeVersionRadioButton = new RadioButton();
             jukeboxItemsPanel = new JukeboxItemsPanel();
             SuspendLayout();
             // 
@@ -41,37 +41,37 @@ namespace UmaMusumeExplorer.Controls.Jukebox
             lengthSelectLabel.AutoSize = true;
             lengthSelectLabel.Location = new System.Drawing.Point(3, 5);
             lengthSelectLabel.Name = "lengthSelectLabel";
-            lengthSelectLabel.Size = new System.Drawing.Size(78, 15);
+            lengthSelectLabel.Size = new System.Drawing.Size(77, 15);
             lengthSelectLabel.TabIndex = 0;
-            lengthSelectLabel.Text = "Length Select";
+            lengthSelectLabel.Text = "Length select";
             // 
             // shortVersionRadioButton
             // 
             shortVersionRadioButton.AutoSize = true;
-            shortVersionRadioButton.Location = new System.Drawing.Point(87, 3);
+            shortVersionRadioButton.Location = new System.Drawing.Point(86, 3);
             shortVersionRadioButton.Name = "shortVersionRadioButton";
             shortVersionRadioButton.Size = new System.Drawing.Size(94, 19);
             shortVersionRadioButton.TabIndex = 1;
             shortVersionRadioButton.TabStop = true;
-            shortVersionRadioButton.Text = "Short Version";
+            shortVersionRadioButton.Text = "Short version";
             shortVersionRadioButton.UseVisualStyleBackColor = true;
             shortVersionRadioButton.CheckedChanged += RadioBuiton_CheckedChanegd;
             // 
             // gameSizeVersionRadioButton
             // 
             gameSizeVersionRadioButton.AutoSize = true;
-            gameSizeVersionRadioButton.Location = new System.Drawing.Point(187, 3);
+            gameSizeVersionRadioButton.Location = new System.Drawing.Point(186, 3);
             gameSizeVersionRadioButton.Name = "gameSizeVersionRadioButton";
-            gameSizeVersionRadioButton.Size = new System.Drawing.Size(120, 19);
+            gameSizeVersionRadioButton.Size = new System.Drawing.Size(121, 19);
             gameSizeVersionRadioButton.TabIndex = 2;
             gameSizeVersionRadioButton.TabStop = true;
-            gameSizeVersionRadioButton.Text = "Game Size Version";
+            gameSizeVersionRadioButton.Text = "Game-size version";
             gameSizeVersionRadioButton.UseVisualStyleBackColor = true;
             gameSizeVersionRadioButton.CheckedChanged += RadioBuiton_CheckedChanegd;
             // 
             // jukeboxItemsPanel
             // 
-            jukeboxItemsPanel.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            jukeboxItemsPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             jukeboxItemsPanel.CurrentSongLength = SongLength.ShortVersion;
             jukeboxItemsPanel.Items = null;
             jukeboxItemsPanel.Location = new System.Drawing.Point(3, 28);
@@ -81,7 +81,7 @@ namespace UmaMusumeExplorer.Controls.Jukebox
             // 
             // JukeboxControl
             // 
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            AutoScaleMode = AutoScaleMode.Inherit;
             Controls.Add(jukeboxItemsPanel);
             Controls.Add(gameSizeVersionRadioButton);
             Controls.Add(shortVersionRadioButton);
