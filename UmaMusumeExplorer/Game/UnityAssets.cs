@@ -1,8 +1,6 @@
 ﻿using AssetsTools.NET;
 using AssetsTools.NET.Extra;
 using AssetsTools.NET.Texture;
-using SixLabors.ImageSharp;
-using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -251,7 +249,9 @@ namespace UmaMusumeExplorer.Game
             //    }
             //}
             if (MainForm is not null)
-                ControlHelpers.ShowFormDialogCenter(new LoadingForm(assetsManager, filePaths), MainForm);
+            {
+                MainForm.Invoke(() => ControlHelpers.ShowFormDialogCenter(new LoadingForm(assetsManager, filePaths), MainForm));
+            }
         }
 
         private static string[] GetFilePaths(List<ManifestEntry> entries)

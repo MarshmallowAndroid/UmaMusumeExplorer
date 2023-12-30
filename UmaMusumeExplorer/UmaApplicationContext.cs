@@ -11,18 +11,15 @@ namespace UmaMusumeExplorer
     {
         public UmaApplicationContext()
         {
-
             SplashForm splashForm = new();
-            splashForm.ShowLoadAndClose();
-
-            splashForm.OnLoadSuccess += (s, e) =>
+            if (splashForm.LoadAndClose())
             {
                 MainForm mainForm = new();
                 mainForm.Show();
                 mainForm.FormClosed += (s, e) => ExitThread();
 
                 UnityAssets.MainForm = mainForm;
-            };
+            }
         }
     }
 }

@@ -5,15 +5,14 @@ namespace UmaMusumeExplorer
     public partial class SplashForm : Form
     {
         private Thread? loadThread;
+        private bool loadSuccess = false;
 
         public SplashForm()
         {
             InitializeComponent();
         }
 
-        public event EventHandler? OnLoadSuccess;
-
-        public void ShowLoadAndClose()
+        public bool LoadAndClose()
         {
             loadThread = new(() =>
             {
@@ -23,7 +22,7 @@ namespace UmaMusumeExplorer
                     AssetTables.Initialize();
                     AssetTables.UpdateProgress -= UpdateProgress;
                     Invoke(() => Close());
-                    OnLoadSuccess?.Invoke(this, EventArgs.Empty);
+                    loadSuccess = true;
                 }
                 catch (Exception)
                 {
@@ -32,6 +31,8 @@ namespace UmaMusumeExplorer
                 }
             });
             ShowDialog();
+
+            return loadSuccess;
         }
 
         private void UpdateProgress(int progress, string name)
