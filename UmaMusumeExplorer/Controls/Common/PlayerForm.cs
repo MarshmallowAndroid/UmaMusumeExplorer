@@ -196,7 +196,7 @@ namespace UmaMusumeExplorer.Controls.Common
                 PlaybackState playbackState = waveOut.PlaybackState;
                 waveOut.Pause();
 
-                Task.Run((Action)(() =>
+                Task.Run(() =>
                 {
                     long restorePosition = sampleProvider.Position;
                     string restoreInfo = songInfoLabel.Text;
@@ -228,7 +228,7 @@ namespace UmaMusumeExplorer.Controls.Common
                         stopButton.Enabled = true;
                         updateTimer.Enabled = waveOut.PlaybackState == PlaybackState.Playing;
                     });
-                }));
+                });
             }
         }
 
