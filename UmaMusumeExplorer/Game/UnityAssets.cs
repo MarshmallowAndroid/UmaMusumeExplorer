@@ -1,6 +1,9 @@
 ﻿using AssetsTools.NET;
 using AssetsTools.NET.Extra;
 using AssetsTools.NET.Texture;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.PixelFormats;
+using SixLabors.ImageSharp.Processing;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
