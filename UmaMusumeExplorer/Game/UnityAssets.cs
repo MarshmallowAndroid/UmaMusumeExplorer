@@ -251,10 +251,7 @@ namespace UmaMusumeExplorer.Game
             //        assetsManager.LoadAssetsFileFromBundle(bundle, assetsFile);
             //    }
             //}
-            if (MainForm is not null)
-            {
-                MainForm.Invoke(() => ControlHelpers.ShowFormDialogCenter(new LoadingForm(assetsManager, filePaths), MainForm));
-            }
+            MainForm?.Invoke(() => ControlHelpers.ShowFormDialogCenter(new LoadingForm(assetsManager, filePaths), MainForm));
         }
 
         private static string[] GetFilePaths(List<ManifestEntry> entries)

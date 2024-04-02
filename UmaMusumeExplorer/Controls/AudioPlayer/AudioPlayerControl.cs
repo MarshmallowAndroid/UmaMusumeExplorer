@@ -50,18 +50,15 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
 
         private void AudioTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (audioTypeComboBox.SelectedIndex == 0)
-                audioType = 'b';
-            else if (audioTypeComboBox.SelectedIndex == 1)
-                audioType = 'c';
-            else if (audioTypeComboBox.SelectedIndex == 2)
-                audioType = 'j';
-            else if (audioTypeComboBox.SelectedIndex == 3)
-                audioType = 'l';
-            else if (audioTypeComboBox.SelectedIndex == 4)
-                audioType = 's';
-            else
-                audioType = 'v';
+            audioType = audioTypeComboBox.SelectedIndex switch
+            {
+                0 => 'b',
+                1 => 'c',
+                2 => 'j',
+                3 => 'l',
+                4 => 's',
+                _ => 'v',
+            };
 
             awbOnly = audioAssetEntries.Where((gf) => gf.Name.StartsWith($"sound/{audioType}/") && gf.BaseName.EndsWith(".awb"));
             if (awbOnly is null) return;

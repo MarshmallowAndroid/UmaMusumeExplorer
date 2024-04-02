@@ -35,9 +35,9 @@
             // 
             // loadingProgressBar
             // 
-            loadingProgressBar.Location = new System.Drawing.Point(12, 60);
+            loadingProgressBar.Location = new Point(12, 60);
             loadingProgressBar.Name = "loadingProgressBar";
-            loadingProgressBar.Size = new System.Drawing.Size(497, 25);
+            loadingProgressBar.Size = new Size(497, 25);
             loadingProgressBar.TabIndex = 0;
             // 
             // loadingBackgroundWorker
@@ -50,23 +50,23 @@
             // statusLabel
             // 
             statusLabel.AutoSize = true;
-            statusLabel.Location = new System.Drawing.Point(12, 9);
+            statusLabel.Location = new Point(12, 9);
             statusLabel.Name = "statusLabel";
-            statusLabel.Size = new System.Drawing.Size(132, 15);
+            statusLabel.Size = new Size(132, 15);
             statusLabel.TabIndex = 1;
             statusLabel.Text = "Loading AssetBundles...";
             // 
             // LoadingForm
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(521, 97);
+            ClientSize = new Size(521, 97);
             Controls.Add(statusLabel);
             Controls.Add(loadingProgressBar);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "LoadingForm";
-            StartPosition = FormStartPosition.CenterScreen;
+            StartPosition = FormStartPosition.Manual;
             Text = "Loading...";
             Load += LoadingForm_Load;
             ResumeLayout(false);

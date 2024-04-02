@@ -35,6 +35,8 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
 
         private void FileTreeView_BeforeExpand(object sender, TreeViewCancelEventArgs e)
         {
+            Cursor = Cursors.WaitCursor;
+
             if (entries?.Count == 0)
             {
                 foreach (var entry in UmaDataHelper.GetManifestEntryDataRows())
@@ -102,6 +104,8 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
                     node.Tag = file;
                 }
             }
+
+            Cursor = Cursors.Default;
         }
 
         private async void AddToolStripMenuItem_Click(object sender, EventArgs e)
@@ -393,7 +397,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             return sizeString.ToString();
         }
 
-        private void NodesFromPath(TreeNode sourceNode, string path)
+        private static void NodesFromPath(TreeNode sourceNode, string path)
         {
             int lastSlashIndex = path.IndexOf('/');
             if (lastSlashIndex < 1)
