@@ -2,6 +2,7 @@
 using NAudio.Wave;
 using UmaMusumeAudio;
 using UmaMusumeData;
+using UmaMusumeData.Tables;
 using UmaMusumeExplorer.Game;
 using Timer = System.Windows.Forms.Timer;
 
