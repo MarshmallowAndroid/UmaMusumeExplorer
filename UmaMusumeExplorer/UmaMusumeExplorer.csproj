@@ -8,9 +8,9 @@
 	<ImplicitUsings>enable</ImplicitUsings>
     <StartupObject>UmaMusumeExplorer.Program</StartupObject>
     <ApplicationIcon>Resources\ProgramIcon.ico</ApplicationIcon>
-    <FileVersion>1.2.8.0</FileVersion>
-    <AssemblyVersion>1.2.8.0</AssemblyVersion>
-    <Version>1.2.8</Version>
+    <FileVersion>1.2.9.0</FileVersion>
+    <AssemblyVersion>1.2.9.0</AssemblyVersion>
+    <Version>1.2.9</Version>
     <Product>Uma Musume Explorer</Product>
     <AssemblyTitle>Uma Musume Explorer</AssemblyTitle>
     <Authors>Jacob Tarun</Authors>
