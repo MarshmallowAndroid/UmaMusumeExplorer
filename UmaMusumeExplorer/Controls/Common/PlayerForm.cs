@@ -50,11 +50,16 @@ namespace UmaMusumeExplorer.Controls.Common
             songTitleLabel.Text = songTitle;
             songInfoLabel.Text = AssetTables.GetText(TextCategory.MasterLiveAuthor, musicId).Replace("\\n", "\n");
 
+            float heightFactor = AutoScaleDimensions.Height / 96F;
+
+            int collapsedHeight = (int)(heightFactor * 470);
+            int expandedHeight = (int)(heightFactor * 730);
+
             if (liveManager.CharacterPositions is not null)
             {
                 lyricsThread = new(DoLyricsPlayback);
                 voicesThread = new(DoVoiceUpdate);
-                animator = new(this, 470, 730);
+                animator = new(this, collapsedHeight, expandedHeight);
 
                 // collapsed: 470
                 // expanded: 730
@@ -65,7 +70,7 @@ namespace UmaMusumeExplorer.Controls.Common
                 expandButton.Visible = false;
             }
 
-            Height = 470;
+            Height = collapsedHeight;
 
             if (songJacketPinnedBitmap is not null)
                 Icon = Icon.FromHandle(songJacketPinnedBitmap.Bitmap.GetHicon());

@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="songJacketPictureBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="songJacketPictureBox.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Zoom</value>
@@ -144,6 +147,9 @@
   <data name="&gt;&gt;songJacketPictureBox.ZOrder" xml:space="preserve">
     <value>16</value>
   </data>
+  <metadata name="songTitleLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="songTitleLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 20.25pt, style=Bold</value>
   </data>
@@ -174,6 +180,9 @@
   <data name="&gt;&gt;songTitleLabel.ZOrder" xml:space="preserve">
     <value>15</value>
   </data>
+  <metadata name="songInfoLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="songInfoLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt</value>
   </data>
@@ -204,6 +213,9 @@
   <data name="&gt;&gt;songInfoLabel.ZOrder" xml:space="preserve">
     <value>14</value>
   </data>
+  <metadata name="lyricsLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lyricsLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 14.25pt</value>
   </data>
@@ -231,6 +243,9 @@
   <data name="&gt;&gt;lyricsLabel.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
+  <metadata name="playButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="playButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt</value>
   </data>
@@ -258,6 +273,9 @@
   <data name="&gt;&gt;playButton.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
+  <metadata name="stopButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="stopButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt</value>
   </data>
@@ -285,6 +303,9 @@
   <data name="&gt;&gt;stopButton.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
+  <metadata name="setupButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="setupButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt</value>
   </data>
@@ -312,6 +333,9 @@
   <data name="&gt;&gt;setupButton.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
+  <metadata name="seekTrackBar.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="seekTrackBar.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 244</value>
   </data>
@@ -333,6 +357,9 @@
   <data name="&gt;&gt;seekTrackBar.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <metadata name="volumeTrackbar.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="volumeTrackbar.Location" type="System.Drawing.Point, System.Drawing">
     <value>204, 352</value>
   </data>
@@ -354,6 +381,9 @@
   <data name="&gt;&gt;volumeTrackbar.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <metadata name="volumeLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="volumeLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -381,6 +411,9 @@
   <data name="&gt;&gt;volumeLabel.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <metadata name="currentTimeLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="currentTimeLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt</value>
   </data>
@@ -411,6 +444,9 @@
   <data name="&gt;&gt;currentTimeLabel.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <metadata name="totalTimeLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="totalTimeLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt</value>
   </data>
@@ -444,6 +480,9 @@
   <metadata name="updateTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <metadata name="expandButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="expandButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 396</value>
   </data>
@@ -468,6 +507,9 @@
   <data name="&gt;&gt;expandButton.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <metadata name="charaContainerPanel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="charaContainerPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -498,6 +540,9 @@
   <data name="&gt;&gt;charaContainerPanel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="charaContainerContainerPanel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="charaContainerContainerPanel.ColumnCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
@@ -528,6 +573,9 @@
   <data name="charaContainerContainerPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="charaContainerPanel" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100,Absolute,20" /&gt;&lt;Rows Styles="Percent,100,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
+  <metadata name="customVoiceControlCheckBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="customVoiceControlCheckBox.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
     <value>Button</value>
   </data>
@@ -558,6 +606,9 @@
   <data name="&gt;&gt;customVoiceControlCheckBox.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <metadata name="muteBgmCheckBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="muteBgmCheckBox.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
     <value>Button</value>
   </data>
@@ -591,6 +642,9 @@
   <data name="&gt;&gt;muteBgmCheckBox.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <metadata name="exportButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="exportButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>497, 445</value>
   </data>
@@ -618,8 +672,11 @@
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>7, 15</value>
+    <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>654, 691</value>

@@ -30,25 +30,25 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlayerForm));
-            songJacketPictureBox = new Common.HighQualityPictureBox();
-            songTitleLabel = new System.Windows.Forms.Label();
-            songInfoLabel = new System.Windows.Forms.Label();
-            lyricsLabel = new System.Windows.Forms.Label();
-            playButton = new System.Windows.Forms.Button();
-            stopButton = new System.Windows.Forms.Button();
-            setupButton = new System.Windows.Forms.Button();
-            seekTrackBar = new System.Windows.Forms.TrackBar();
-            volumeTrackbar = new System.Windows.Forms.TrackBar();
-            volumeLabel = new System.Windows.Forms.Label();
-            currentTimeLabel = new System.Windows.Forms.Label();
-            totalTimeLabel = new System.Windows.Forms.Label();
+            songJacketPictureBox = new HighQualityPictureBox();
+            songTitleLabel = new Label();
+            songInfoLabel = new Label();
+            lyricsLabel = new Label();
+            playButton = new Button();
+            stopButton = new Button();
+            setupButton = new Button();
+            seekTrackBar = new TrackBar();
+            volumeTrackbar = new TrackBar();
+            volumeLabel = new Label();
+            currentTimeLabel = new Label();
+            totalTimeLabel = new Label();
             updateTimer = new System.Windows.Forms.Timer(components);
-            expandButton = new System.Windows.Forms.Button();
-            charaContainerPanel = new System.Windows.Forms.FlowLayoutPanel();
-            charaContainerContainerPanel = new System.Windows.Forms.TableLayoutPanel();
-            customVoiceControlCheckBox = new System.Windows.Forms.CheckBox();
-            muteBgmCheckBox = new System.Windows.Forms.CheckBox();
-            exportButton = new System.Windows.Forms.Button();
+            expandButton = new Button();
+            charaContainerPanel = new FlowLayoutPanel();
+            charaContainerContainerPanel = new TableLayoutPanel();
+            customVoiceControlCheckBox = new CheckBox();
+            muteBgmCheckBox = new CheckBox();
+            exportButton = new Button();
             ((System.ComponentModel.ISupportInitialize)songJacketPictureBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)seekTrackBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)volumeTrackbar).BeginInit();
@@ -103,7 +103,7 @@
             seekTrackBar.Maximum = 100;
             seekTrackBar.Name = "seekTrackBar";
             seekTrackBar.TickFrequency = 0;
-            seekTrackBar.TickStyle = System.Windows.Forms.TickStyle.Both;
+            seekTrackBar.TickStyle = TickStyle.Both;
             seekTrackBar.Scroll += SeekTrackBar_Scroll;
             // 
             // volumeTrackbar
@@ -112,7 +112,7 @@
             volumeTrackbar.Maximum = 100;
             volumeTrackbar.Name = "volumeTrackbar";
             volumeTrackbar.TickFrequency = 50;
-            volumeTrackbar.TickStyle = System.Windows.Forms.TickStyle.Both;
+            volumeTrackbar.TickStyle = TickStyle.Both;
             volumeTrackbar.Scroll += VolumeTrackbar_Scroll;
             // 
             // volumeLabel
@@ -177,7 +177,7 @@
             // PlayerForm
             // 
             resources.ApplyResources(this, "$this");
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.Dpi;
             Controls.Add(exportButton);
             Controls.Add(muteBgmCheckBox);
             Controls.Add(customVoiceControlCheckBox);
@@ -195,7 +195,7 @@
             Controls.Add(songInfoLabel);
             Controls.Add(songTitleLabel);
             Controls.Add(songJacketPictureBox);
-            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "PlayerForm";
             FormClosing += PlayerForm_FormClosing;
