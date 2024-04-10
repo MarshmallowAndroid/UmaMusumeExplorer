@@ -85,6 +85,7 @@ namespace UmaMusumeExplorer.Controls.Common
         private void LoadingBackgroundWorker_ProgressChanged(object? sender, ProgressChangedEventArgs e)
         {
             // This control > temp panel control > progress bar
+            if (Controls.Count < 1) return;
             if (Controls[0].Controls[0] is not ProgressBar progressBar) return;
             progressBar.Value = e.ProgressPercentage;
         }
