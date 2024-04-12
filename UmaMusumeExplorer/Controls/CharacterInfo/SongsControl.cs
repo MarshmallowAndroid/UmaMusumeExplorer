@@ -13,6 +13,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
         {
             InitializeComponent();
 
+            songItemsPanel.Indeterminate = true;
             songItemsPanel.Filter = (item) =>
             {
                 IEnumerable<LivePermissionData> livePermissionData = LivePermissionDataHelper.GetLivePermissionData(item.MusicId);

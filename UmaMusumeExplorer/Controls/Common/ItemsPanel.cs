@@ -6,6 +6,7 @@ namespace UmaMusumeExplorer.Controls.Common
     {
         private readonly BackgroundWorker loadingBackgroundWorker = new();
         private IEnumerable<TargetType>? items;
+        private bool indeterminate = false;
 
         public ItemsPanel()
         {
@@ -13,7 +14,6 @@ namespace UmaMusumeExplorer.Controls.Common
 
             loadingBackgroundWorker.WorkerReportsProgress = true;
             loadingBackgroundWorker.DoWork += LoadingBackgroundWorker_DoWork;
-            loadingBackgroundWorker.ProgressChanged += LoadingBackgroundWorker_ProgressChanged;
             loadingBackgroundWorker.RunWorkerCompleted += LoadingBackgroundWorker_RunWorkerCompleted;
         }
 
@@ -35,6 +35,18 @@ namespace UmaMusumeExplorer.Controls.Common
 
         public abstract bool ProcessItem(TargetType item, ref Control? displayControl);
 
+        public bool Indeterminate
+        {
+            get
+            {
+                return indeterminate;
+            }
+            set
+            {
+                indeterminate = value;
+            }
+        }
+
         // Temporarily adds a panel with a progress bar to show loading progress.
         private void LoadItems()
         {
@@ -51,8 +63,19 @@ namespace UmaMusumeExplorer.Controls.Common
                 };
 
                 ProgressBar loadingProgressBar = new() { Width = tempPanel.Width / 2 };
+                loadingProgressBar.MarqueeAnimationSpeed = 16;
                 loadingProgressBar.Left = (tempPanel.Width / 2) - (loadingProgressBar.Width / 2);
                 loadingProgressBar.Top = (tempPanel.Height / 2) - (loadingProgressBar.Height / 2);
+
+                if (indeterminate)
+                {
+                    loadingProgressBar.Style = ProgressBarStyle.Marquee;
+                }
+                else
+                {
+                    loadingBackgroundWorker.ProgressChanged += LoadingBackgroundWorker_ProgressChanged;
+                }
+
                 tempPanel.Controls.Add(loadingProgressBar);
 
                 Controls.Add(tempPanel);
@@ -94,10 +117,28 @@ namespace UmaMusumeExplorer.Controls.Common
         {
             Controls.Clear();
 
-            if (e.Result is Control[] result)
+            if (e.Result is Control[] result && result.Length > 0)
+            {
                 Controls.AddRange(result);
+                AutoScroll = true;
+            }
+            else
+            {
+                Panel tempPanel = new()
+                {
+                    Width = Width,
+                    Height = Height
+                };
 
-            AutoScroll = true;
+                Label noItemsLabel = new() { AutoSize = true, Text = "No items" };
+                noItemsLabel.Left = (tempPanel.Width / 2) - (noItemsLabel.Width / 2);
+                noItemsLabel.Top = (tempPanel.Height / 2) - (noItemsLabel.Height / 2);
+
+                tempPanel.Controls.Add(noItemsLabel);
+
+                Controls.Add(tempPanel);
+                AutoScroll = false;
+            }
 
             LoadingFinished?.Invoke(this, EventArgs.Empty);
         }
