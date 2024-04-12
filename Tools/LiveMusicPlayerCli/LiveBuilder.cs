@@ -25,8 +25,8 @@ namespace LiveMusicPlayerCli
         {
             musicId = id;
 
-            LoadFiles(UmaDataHelper.GetManifestEntryDataRows(ga => ga.Name.StartsWith($"live/musicscores/m{musicId}")));
-            audioAssets = UmaDataHelper.GetManifestEntryDataRows(ga => ga.Name.StartsWith($"sound/l/{musicId}"));
+            LoadFiles(UmaDataHelper.GetManifestEntries(ga => ga.Name.StartsWith($"live/musicscores/m{musicId}")));
+            audioAssets = UmaDataHelper.GetManifestEntries(ga => ga.Name.StartsWith($"sound/l/{musicId}"));
 
             StreamReader? partCsv = GetLiveCsv(musicId, "part");
             if (partCsv is null)

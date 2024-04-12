@@ -10,7 +10,7 @@ namespace LiveMusicPlayerCli
 {
     internal static class AssetTables
     {
-        public static IEnumerable<ManifestEntry> AudioAssetEntries { get; } = UmaDataHelper.GetManifestEntryDataRows(ga => ga.Name.StartsWith("sound/"));
+        public static IEnumerable<ManifestEntry> AudioAssetEntries { get; } = UmaDataHelper.GetManifestEntries(ga => ga.Name.StartsWith("sound/"));
 
         public static IEnumerable<TextData> CharaNameTextDatas { get; } = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 170);
         public static IEnumerable<TextData> CharaNameKatakanaTextDatas { get; } = UmaDataHelper.GetMasterDatabaseRows<TextData>(td => td.Category == 182);

@@ -39,7 +39,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
 
             if (entries?.Count == 0)
             {
-                foreach (var entry in UmaDataHelper.GetManifestEntryDataRows())
+                foreach (var entry in UmaDataHelper.GetManifestEntries())
                 {
                     entries.Add(entry.Name, entry);
                 }
@@ -316,7 +316,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
         {
             if (!searched)
             {
-                searchedEntries = UmaDataHelper.GetManifestEntryDataRows()
+                searchedEntries = UmaDataHelper.GetManifestEntries()
                     .Where(ga => ga.Name.Contains(searchTextBox.Text))
                     .OrderBy(ga => ga.Name)
                     .ToDictionary(ga => ga.Name);

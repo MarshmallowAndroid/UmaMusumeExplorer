@@ -13,7 +13,7 @@ namespace UmaMusumeExplorer.Game
             IEnumerable<PropertyInfo> properties = assetTablesType.GetProperties().Where(p => p.PropertyType.Name == "List`1");
 
             Queue<LoadAction> customLoadAction = new();
-            customLoadAction.Enqueue(() => { AudioAssetEntries.AddRange(UmaDataHelper.GetManifestEntryDataRows(ga => ga.Name.StartsWith("sound/"))); return "AudioAssetEntries"; });
+            customLoadAction.Enqueue(() => { AudioAssetEntries.AddRange(UmaDataHelper.GetManifestEntries(ga => ga.Name.StartsWith("sound/"))); return "AudioAssetEntries"; });
 
             int completed = 0;
             foreach (var property in properties)

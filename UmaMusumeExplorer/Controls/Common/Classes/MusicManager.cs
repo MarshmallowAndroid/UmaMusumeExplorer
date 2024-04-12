@@ -37,7 +37,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
         public bool SetupLive(Control parent)
         {
             // Get possible audio assets for music ID
-            IEnumerable<ManifestEntry> audioAssetEntries = UmaDataHelper.GetManifestEntryDataRows(ga => ga.Name.StartsWith($"sound/l/{MusicId}"));
+            IEnumerable<ManifestEntry> audioAssetEntries = UmaDataHelper.GetManifestEntries(ga => ga.Name.StartsWith($"sound/l/{MusicId}"));
 
             // Retrieve count of members that actually sing
             int singingMembers = GetSingingMembers();
@@ -133,7 +133,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
 
         private void LoadMusicScore()
         {
-            IEnumerable<ManifestEntry> musicScoreAssetEntries = UmaDataHelper.GetManifestEntryDataRows(ga => ga.Name.StartsWith($"live/musicscores/m{MusicId}"));
+            IEnumerable<ManifestEntry> musicScoreAssetEntries = UmaDataHelper.GetManifestEntries(ga => ga.Name.StartsWith($"live/musicscores/m{MusicId}"));
 
             if (!musicScoreAssetEntries.Any()) return;
 
@@ -195,7 +195,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
             }
 
             // Get possible audio assets for music ID
-            IEnumerable<ManifestEntry> audioAssetEntries = UmaDataHelper.GetManifestEntryDataRows(
+            IEnumerable<ManifestEntry> audioAssetEntries = UmaDataHelper.GetManifestEntries(
                 ga => ga.Name.ToLower().Contains(cueSheetName.ToLower() + ".awb"));
 
             // Get BGM without sound effects

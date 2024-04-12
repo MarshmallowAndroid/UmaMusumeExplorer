@@ -53,7 +53,7 @@ namespace UmaMusumeExplorer.Game
                 Regex chrCardIconRegex = new(@"\bchr_icon_[0-9]{4}_[0-9]{6}_[0-9]{2}\b");
 
                 List<string> imagePaths = new();
-                List<ManifestEntry> charaAssetEntryRows = UmaDataHelper.GetManifestEntryDataRows(ga => ga.Name.StartsWith("chara/"));
+                List<ManifestEntry> charaAssetEntryRows = UmaDataHelper.GetManifestEntries(ga => ga.Name.StartsWith("chara/"));
                 charaAssetEntryRows.ForEach(c =>
                 {
                     if (chrIconRegex.IsMatch(c.BaseName) || chrCardIconRegex.IsMatch(c.BaseName) || c.BaseName == "chr_icon_round_0000")
@@ -92,7 +92,7 @@ namespace UmaMusumeExplorer.Game
         {
             if (!skillIconsLoaded)
             {
-                List<ManifestEntry> skillIconAssetEntryRows = UmaDataHelper.GetManifestEntryDataRows(ga => ga.Name.StartsWith("outgame/skillicon/utx_ico_skill_"));
+                List<ManifestEntry> skillIconAssetEntryRows = UmaDataHelper.GetManifestEntries(ga => ga.Name.StartsWith("outgame/skillicon/utx_ico_skill_"));
                 LoadFiles(skillIconAssetsManager, GetFilePaths(skillIconAssetEntryRows));
                 skillIconsLoaded = true;
             }
@@ -120,7 +120,7 @@ namespace UmaMusumeExplorer.Game
         {
             if (!jacketIconsLoaded)
             {
-                List<ManifestEntry> liveJacketAssetEntryRows = UmaDataHelper.GetManifestEntryDataRows(ga => ga.Name.StartsWith("live/jacket/jacket_icon_l_"));
+                List<ManifestEntry> liveJacketAssetEntryRows = UmaDataHelper.GetManifestEntries(ga => ga.Name.StartsWith("live/jacket/jacket_icon_l_"));
                 LoadFiles(jacketsAssetsManager, GetFilePaths(liveJacketAssetEntryRows));
                 jacketIconsLoaded = true;
             }
@@ -147,7 +147,7 @@ namespace UmaMusumeExplorer.Game
                 Regex supportCardIconRegex = new(@"\bsupport_thumb_[0-9]{5}\b");
 
                 List<string> imagePaths = new();
-                List<ManifestEntry> supportCardAssetEntryRows = UmaDataHelper.GetManifestEntryDataRows(ga => ga.Name.StartsWith("supportcard/"));
+                List<ManifestEntry> supportCardAssetEntryRows = UmaDataHelper.GetManifestEntries(ga => ga.Name.StartsWith("supportcard/"));
                 supportCardAssetEntryRows.ForEach(c =>
                 {
                     if (supportCardIconRegex.IsMatch(c.BaseName.ToLower()) || c.BaseName.ToLower() == "support_thumb_00000")
