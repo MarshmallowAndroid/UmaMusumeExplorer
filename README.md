@@ -23,4 +23,4 @@ Game data such as stats is not modified in any way, and can be viewed with any S
 
 * [sqlite-net](https://github.com/praeclarum/sqlite-net) for SQLite functionality
 * [vgmstream](https://github.com/vgmstream/vgmstream) for the CRIWARE code
-* [AssetStudio](https://github.com/Perfare/AssetStudio) for reading Unity assets
+* [AssetsTools.NET](https://github.com/nesrak1/AssetsTools.NET) for reading Unity assets
