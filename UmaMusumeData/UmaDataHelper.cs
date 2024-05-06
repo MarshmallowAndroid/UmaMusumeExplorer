@@ -52,10 +52,10 @@ namespace UmaMusumeData
 
         private static List<T> GetRows<T>(string databaseFile, Func<T, bool>? condition = null) where T : new()
         {
-            SQLiteConnection connection = new(databaseFile);
-
             try
             {
+                SQLiteConnection connection = new(databaseFile, SQLiteOpenFlags.ReadOnly);
+
                 List<T> rows;
                 if (condition is not null)
                     rows = connection.Table<T>().Where(condition).ToList();

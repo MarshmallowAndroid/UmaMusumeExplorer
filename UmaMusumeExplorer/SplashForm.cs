@@ -24,9 +24,9 @@ namespace UmaMusumeExplorer
                     Invoke(() => Close());
                     loadSuccess = true;
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    MessageBox.Show("Error reading tables. Please launch the game and allow itself to repair.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Error reading tables. Please launch the game and allow itself to repair.\n\nMessage:\n{e.InnerException?.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Application.Exit();
                 }
             });
