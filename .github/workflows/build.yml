@@ -19,9 +19,9 @@ jobs:
         with:
           msbuild-architecture: x64
       - name: Generate AssetsTools.NET texture decoder CMake config
-        run: cmake -S .\UmaMusumeExplorer\AssetsTools.NET -B .\UmaMusumeExplorer\AssetsTools.NET\build
+        run: cmake -S .\AssetsTools.NET -B .\UmaMusumeExplorer\AssetsTools.NET\build
       - name: Build AssetsTools.NET texture decoder
-        run: cmake --build .\UmaMusumeExplorer\AssetsTools.NET\build
+        run: cmake --build .\AssetsTools.NET\build
       - name: Build .NET project
         run: dotnet publish .\UmaMusumeExplorer --no-self-contained -r win-x64 -c Release -p:PublishSingleFile=true
       - name: Zip up files
