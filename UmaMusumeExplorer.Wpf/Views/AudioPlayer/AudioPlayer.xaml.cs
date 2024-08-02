@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using UmaMusumeExplorer.Wpf.Helpers;
+using UmaMusumeExplorer.Wpf.ViewModels;
 
 namespace UmaMusumeExplorer.Wpf.Views.AudioPlayer
 {
@@ -25,6 +26,7 @@ namespace UmaMusumeExplorer.Wpf.Views.AudioPlayer
         public AudioPlayer()
         {
             InitializeComponent();
+            DataContext = new AudioPlayerViewModel();
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
