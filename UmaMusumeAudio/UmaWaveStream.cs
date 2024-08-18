@@ -7,11 +7,6 @@ namespace UmaMusumeAudio
 {
     public class UmaWaveStream : WaveStream
     {
-        /*
-         * Open Umamusume > umamusume_Data > resources.assets with a hex editor.
-         * Check the results when finding the string "StreamingAssets".
-         * The key should be near a string named "cri_auth". 
-         */
         private const ulong umaMusumeKey = 75923756697503;
 
         private readonly HcaWaveStream hcaWaveStream;
