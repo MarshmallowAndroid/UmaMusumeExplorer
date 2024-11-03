@@ -204,7 +204,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
                     extractListView.Items.AddRange(items);
 
                     totalFileCountLabel.Text = $"{selectedEntries.Count} files";
-                    totalFileSizeLabel.Text = GenerateSizeString(selectedEntries.Sum(a => (long)a.Value.Length));
+                    totalFileSizeLabel.Text = GenerateSizeString(selectedEntries.Sum(a => a.Value.Length));
                 });
             });
         }
