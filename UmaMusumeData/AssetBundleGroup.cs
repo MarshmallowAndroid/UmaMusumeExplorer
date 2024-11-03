@@ -9,14 +9,14 @@ namespace UmaMusumeData
     [Flags]
     public enum AssetBundleGroup : int
     {
-        Default = 0,
-        DeleteOnLogin = 1,
-        DownloadLogin = 2,
-        Tutorial = 4,
-        HomeLogin = 8,
-        RequiredTutorialStart = 16,
-        DelayRelease = 32,
-        RealFanfare = 64,
-        WithRealFanfare = 128
+        Default = 0x00,
+        DeleteOnLogin = 0x01,
+        DownloadLogin = 0x02,
+        Tutorial = 0x04,
+        HomeLogin = 0x08,
+        RequiredTutorialStart = 0x10,
+        DelayRelease = 0x20,
+        RealFanfare = 0x40,
+        WithRealFanfare = 0x80
     }
 }

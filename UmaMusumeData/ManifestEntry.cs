@@ -5,7 +5,7 @@ namespace UmaMusumeData
     [Table("a")]
     public class ManifestEntry
     {
-        [Column("i")]
+        [Column("i"), PrimaryKey]
         public int Id { get; set; }
 
         [Column("n"), NotNull]
@@ -18,7 +18,7 @@ namespace UmaMusumeData
         public AssetBundleGroup Group { get; set; }
 
         [Column("l"), NotNull]
-        public int Length { get; set; }
+        public long Length { get; set; }
 
         [Column("c"), NotNull]
         public long Checksum { get; set; }

@@ -8,13 +8,13 @@ namespace UmaMusumeData
 {
     public enum ManifestEntryKind : byte
     {
-        Default = 0,
-        AssetManifest = 1,
-        PlatformManifest = 2,
-        RootManifest = 3,
-        Master = 10,
-        Sound = 11,
-        Movie = 12,
-        Font = 13
+        Default = 0x0,
+        AssetManifest = 0x1,
+        PlatformManifest = 0x2,
+        RootManifest = 0x3,
+        Master = 0xA,
+        Sound = 0xB,
+        Movie = 0xC,
+        Font = 0xD
     }
 }
