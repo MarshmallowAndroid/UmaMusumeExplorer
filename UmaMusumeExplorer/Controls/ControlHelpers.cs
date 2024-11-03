@@ -15,12 +15,12 @@
             OpenedForms.Clear();
         }
 
-        public static void ShowFormDialogCenter(Form form, Control source)
+        public static DialogResult ShowFormDialogCenter(Form form, Control source)
         {
             SetNewLocation(form, source);
             Form parentForm = GetParentForm(source);
             form.Icon = parentForm.Icon;
-            form.ShowDialog(parentForm);
+            return form.ShowDialog(parentForm);
         }
 
         public static void ShowFormCenter(Form form, Control source)

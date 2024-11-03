@@ -129,6 +129,8 @@ namespace UmaMusumeExplorer.Controls.Common
             CharacterPositions = characterPositions;
 
             Close();
+
+            DialogResult = DialogResult.OK;
         }
 
         private void UpdateCharacterPositions()

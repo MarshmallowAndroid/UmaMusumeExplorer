@@ -44,7 +44,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
 
             // Show unit setup form
             UnitSetupForm unitSetupForm = new(MusicId, singingMembers);
-            ControlHelpers.ShowFormDialogCenter(unitSetupForm, parent);
+            if (ControlHelpers.ShowFormDialogCenter(unitSetupForm, parent) != DialogResult.OK) return false;
             CharacterPositions = unitSetupForm.CharacterPositions;
 
             // Get BGM with or without sound effects
