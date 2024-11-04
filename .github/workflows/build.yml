@@ -25,9 +25,9 @@ jobs:
       - name: Build .NET project
         run: dotnet publish .\UmaMusumeExplorer --no-self-contained -r win-x64 -c Release -p:PublishSingleFile=true
       - name: Zip up files
-        run: Compress-Archive .\UmaMusumeExplorer\bin\Release\net7.0-windows\win-x64\publish\* build-win-x64.zip
+        run: Compress-Archive .\UmaMusumeExplorer\bin\Release\net8.0-windows\win-x64\publish\* build-win-x64.zip
       - name: Upload build artifact
         uses: actions/upload-artifact@v3.1.0
         with:
           name: build-win-x64
-          path: .\UmaMusumeExplorer\bin\Release\net7.0-windows\win-x64\publish\
+          path: .\UmaMusumeExplorer\bin\Release\net8.0-windows\win-x64\publish\
