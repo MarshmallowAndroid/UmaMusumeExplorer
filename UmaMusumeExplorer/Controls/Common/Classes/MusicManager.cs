@@ -232,15 +232,22 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
         private static AwbReader? GetAwbFile(ManifestEntry gameFile)
         {
             string awbPath = UmaDataHelper.GetPath(gameFile);
-            if (File.Exists(awbPath))
-                return new(File.OpenRead(awbPath));
-            else
+            string cachePath = Path.Combine("LiveCache", gameFile.BaseName);
+
+            string path = awbPath;
+
+            if (!File.Exists(path))
+                path = cachePath;
+
+            if (!File.Exists(path))
                 return null;
+            else
+                return new AwbReader(File.OpenRead(path));
         }
 
         private static bool ShowFileNotFound()
         {
-            MessageBox.Show("Music data not found. Please download all resources in the game.", "Asset not found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            MessageBox.Show("Music resource not found. Please download all resources in the game.", "Asset not found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             return false;
         }
     }

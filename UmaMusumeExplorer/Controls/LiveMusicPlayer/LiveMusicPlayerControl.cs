@@ -32,5 +32,10 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
         {
             songItemsPanel.Items = liveDatas;
         }
+
+        private void LinkLabelDownload_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ControlHelpers.ShowFormCenter(new DownloadWorkaroundForm(), this);
+        }
     }
 }

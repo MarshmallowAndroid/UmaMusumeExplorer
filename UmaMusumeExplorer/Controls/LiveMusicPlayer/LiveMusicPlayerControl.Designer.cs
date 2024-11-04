@@ -29,29 +29,45 @@
         private void InitializeComponent()
         {
             songItemsPanel = new Common.SongItemsPanel();
+            linkLabelDownload = new LinkLabel();
             SuspendLayout();
             // 
             // songItemsPanel
             // 
-            songItemsPanel.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            songItemsPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            songItemsPanel.Indeterminate = false;
             songItemsPanel.Items = null;
-            songItemsPanel.Location = new System.Drawing.Point(3, 3);
+            songItemsPanel.Location = new Point(3, 18);
             songItemsPanel.Name = "songItemsPanel";
-            songItemsPanel.Size = new System.Drawing.Size(815, 522);
+            songItemsPanel.Size = new Size(815, 507);
             songItemsPanel.TabIndex = 0;
+            // 
+            // linkLabelDownload
+            // 
+            linkLabelDownload.AutoSize = true;
+            linkLabelDownload.Location = new Point(3, 0);
+            linkLabelDownload.Name = "linkLabelDownload";
+            linkLabelDownload.Size = new Size(143, 15);
+            linkLabelDownload.TabIndex = 2;
+            linkLabelDownload.TabStop = true;
+            linkLabelDownload.Text = "Live audio data download";
+            linkLabelDownload.LinkClicked += LinkLabelDownload_LinkClicked;
             // 
             // LiveMusicPlayerControl
             // 
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            AutoScaleMode = AutoScaleMode.Inherit;
+            Controls.Add(linkLabelDownload);
             Controls.Add(songItemsPanel);
             Name = "LiveMusicPlayerControl";
-            Size = new System.Drawing.Size(821, 528);
+            Size = new Size(821, 528);
             Load += LiveMusicPlayerSongSelectControl_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Common.SongItemsPanel songItemsPanel;
+        private LinkLabel linkLabelDownload;
     }
 }
