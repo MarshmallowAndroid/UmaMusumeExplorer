@@ -207,7 +207,7 @@ namespace UmaMusumeExplorer.Game
             AssetTypeValueField? baseField = GetFileBaseField(assetsManager, imageName, AssetClassID.Texture2D, out AssetsFileInstance? assetsFileInstance);
             if (baseField is null) return null;
             TextureFile textureFile = TextureFile.ReadTextureFile(baseField);
-            Image<Bgra32> image = Image.LoadPixelData<Bgra32>(textureFile.GetTextureData(assetsFileInstance), textureFile.m_Width, textureFile.m_Height);
+            Image<Bgra32> image = Image.LoadPixelData<Bgra32>(textureFile.DecodeTextureRaw(textureFile.FillPictureData(assetsFileInstance)), textureFile.m_Width, textureFile.m_Height);
             image.Mutate(o => o.Flip(FlipMode.Vertical));
             return image;
         }
