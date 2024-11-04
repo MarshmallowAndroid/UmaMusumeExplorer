@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <PackageReference Include="NAudio.WinForms" Version="2.2.1" />
-    <PackageReference Include="SixLabors.ImageSharp" Version="3.1.4" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="3.1.5" />
     <PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
   </ItemGroup>
 
