@@ -9,18 +9,29 @@ namespace UmaMusumeData
     public static class UmaDataHelper
     {
         private static readonly string localLow = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "Low");
-        private static readonly string umaMusumeDirectory = Path.Combine(localLow, "Cygames", "umamusume");
-        private static readonly string dataDirectory = Path.Combine(umaMusumeDirectory, "dat");
-        private static readonly string metaFile = Path.Combine(umaMusumeDirectory, "meta");
-        private static readonly string masterFile = Path.Combine(umaMusumeDirectory, "master", "master.mdb");
+        private static string umaMusumeDirectory = Path.Combine(localLow, "Cygames", "umamusume");
 
         private static List<ManifestEntry>? manifestEntries;
+
+        public static string UmaMusumeDirectory { get => umaMusumeDirectory; set => umaMusumeDirectory = value; }
+
+        public static string DataDirectory => Path.Combine(UmaMusumeDirectory, "dat");
+
+        public static string MetaFile => Path.Combine(UmaMusumeDirectory, "meta");
+
+        public static string MasterFile => Path.Combine(UmaMusumeDirectory, "master", "master.mdb");
+
+        public static bool CheckDirectory()
+        {
+            return Directory.Exists(UmaMusumeDirectory) &&
+                File.Exists(MetaFile) && File.Exists(MasterFile);
+        }
 
         public static string GetPath(ManifestEntry? entry)
         {
             if (entry is not null)
             {
-                string path = Path.Combine(dataDirectory, entry.HashName[..2], entry.HashName);
+                string path = Path.Combine(DataDirectory, entry.HashName[..2], entry.HashName);
 
                 if (File.Exists(path)) return path;
                 else return "";
@@ -39,7 +50,7 @@ namespace UmaMusumeData
 
         public static List<ManifestEntry> GetManifestEntries(Func<ManifestEntry, bool>? condition = null)
         {
-            manifestEntries ??= GetRows<ManifestEntry>(metaFile);
+            manifestEntries ??= GetRows<ManifestEntry>(MetaFile);
 
             if (condition is not null)
                 return manifestEntries.Where(condition).ToList();
@@ -48,7 +59,7 @@ namespace UmaMusumeData
         }
 
         public static List<T> GetMasterDatabaseRows<T>(Func<T, bool>? condition = null) where T : new()
-            => GetRows(masterFile, condition);
+            => GetRows(MasterFile, condition);
 
         private static List<T> GetRows<T>(string databaseFile, Func<T, bool>? condition = null) where T : new()
         {

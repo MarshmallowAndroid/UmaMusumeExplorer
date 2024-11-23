@@ -30,6 +30,7 @@ namespace UmaMusumeExplorer
                     Application.Exit();
                 }
             });
+            TopMost = true;
             ShowDialog();
 
             return loadSuccess;
