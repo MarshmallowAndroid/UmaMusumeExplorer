@@ -8,10 +8,10 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
 {
     partial class FileBrowserControl : UserControl
     {
-        private readonly SortedDictionary<string, ManifestEntry>? entries = new();
+        private readonly SortedDictionary<string, ManifestEntry> entries = new();
         private IDictionary<string, ManifestEntry>? searchedEntries;
         private IDictionary<string, ManifestEntry>? targetEntries;
-        private readonly SortedDictionary<string, ManifestEntry>? selectedEntries = new();
+        private readonly SortedDictionary<string, ManifestEntry> selectedEntries = new();
 
         private bool searched;
 
@@ -37,13 +37,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
         {
             Cursor = Cursors.WaitCursor;
 
-            if (entries?.Count == 0)
-            {
-                foreach (var entry in UmaDataHelper.GetManifestEntries())
-                {
-                    entries.Add(entry.Name, entry);
-                }
-            }
+            LoadEntries();
 
             TreeNode? expandingNode = e.Node;
             if (expandingNode is null) return;
@@ -81,7 +75,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
                     if (!expandingNode.Nodes.ContainsKey(nodeKey))
                     {
                         expandingNode.Nodes.Add(nodeKey, nodeName);
-                        expandingNode.Nodes[nodeKey].Nodes.Add("");
+                        expandingNode.Nodes[nodeKey]?.Nodes.Add("");
                     }
                 }
             }
@@ -97,15 +91,29 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
                 {
                     expandingNode.Nodes.Add(file.Name, fileName);
 
-                    TreeNode node = expandingNode.Nodes[file.Name];
+                    TreeNode? node = expandingNode.Nodes[file.Name];
 
-                    node.ImageIndex = 1;
-                    node.SelectedImageIndex = 1;
-                    node.Tag = file;
+                    if (node is not null)
+                    {
+                        node.ImageIndex = 1;
+                        node.SelectedImageIndex = 1;
+                        node.Tag = file;
+                    }
                 }
             }
 
             Cursor = Cursors.Default;
+        }
+
+        private void LoadEntries()
+        {
+            if (entries.Count == 0)
+            {
+                foreach (var entry in UmaDataHelper.GetManifestEntries())
+                {
+                    entries.Add(entry.Name, entry);
+                }
+            }
         }
 
         private async void AddToolStripMenuItem_Click(object sender, EventArgs e)
@@ -113,44 +121,50 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             TreeNode node = fileTreeView.SelectedNode;
 
             if (node is null) return;
-            if (node.FullPath == "Root") return;
 
-            ManifestEntry entry = (ManifestEntry)node.Tag;
+            LoadEntries();
 
-            if (entry is not null)
+            IEnumerable<KeyValuePair<string, ManifestEntry>> entriesToAdd = entries;
+
+            if (node.FullPath != "Root")
             {
-                UpdateSelectedEntries(entry, node.Checked);
-            }
-            else
-            {
-                if (targetEntries is null) return;
+                ManifestEntry entry = (ManifestEntry)node.Tag;
 
-                string convertedNodePath = node.FullPath["Root/".Length..];
-                IEnumerable<KeyValuePair<string, ManifestEntry>> entriesToAdd = targetEntries.Where(ga => ga.Key.StartsWith(convertedNodePath + '/'));
-
-                int itemCount = entriesToAdd.Count();
-                if (itemCount > 10000)
+                if (entry is not null)
                 {
-                    DialogResult confirmResult =
-                        MessageBox.Show($"Adding {itemCount} items. This might take a long time.\n\nProceed?", "Warning",
-                        MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                    if (confirmResult == DialogResult.No) return;
+                    UpdateSelectedEntries(entry, node.Checked);
                 }
-
-                await Task.Run(() =>
+                else
                 {
-                    int currentEntry = 0;
-                    foreach (var item in entriesToAdd)
-                    {
-                        Invoke(() => UpdateSelectedEntries(item.Value, node.Checked));
-                        currentEntry++;
+                    if (targetEntries is null) return;
 
-                        float percent = (float)currentEntry / itemCount;
-                        Invoke(() => progressBar.Value = (int)(percent * 100.0F));
-                    }
-                });
+                    string convertedNodePath = node.FullPath["Root/".Length..];
+                    entriesToAdd = targetEntries.Where(ga => ga.Key.StartsWith(convertedNodePath + '/'));
+                }
             }
+
+            int itemCount = entriesToAdd.Count();
+            if (itemCount > 10000)
+            {
+                DialogResult confirmResult =
+                    MessageBox.Show($"Adding {itemCount} items. This might take a long time.\n\nProceed?", "Warning",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (confirmResult == DialogResult.No) return;
+            }
+
+            await Task.Run(() =>
+            {
+                int currentEntry = 0;
+                foreach (var item in entriesToAdd)
+                {
+                    Invoke(() => UpdateSelectedEntries(item.Value, node.Checked));
+                    currentEntry++;
+
+                    float percent = (float)currentEntry / itemCount;
+                    Invoke(() => progressBar.Value = (int)(percent * 100.0F));
+                }
+            });
 
             if (selectedEntries is null) return;
 
@@ -215,8 +229,11 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
 
             foreach (ListViewItem item in selectedItems)
             {
-                extractListView.Items.Remove(item);
-                selectedEntries?.Remove(((ManifestEntry)item.Tag).Name);
+                if (item.Tag is ManifestEntry itemTag)
+                {
+                    extractListView.Items.Remove(item);
+                    selectedEntries?.Remove(itemTag.Name);
+                }
             }
 
             totalFileCountLabel.Text = $"{selectedEntries?.Count} files";
@@ -356,7 +373,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
 
             foreach (var dependency in entry.Dependencies.Split(';'))
             {
-                ManifestEntry? dependencyEntry = entries?[dependency] ?? null;
+                ManifestEntry? dependencyEntry = entries[dependency] ?? null;
 
                 if (dependencyEntry is not null)
                 {
@@ -397,8 +414,10 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             return sizeString.ToString();
         }
 
-        private static void NodesFromPath(TreeNode sourceNode, string path)
+        private static void NodesFromPath(TreeNode? sourceNode, string path)
         {
+            if (sourceNode is null) return;
+
             int lastSlashIndex = path.IndexOf('/');
             if (lastSlashIndex < 1)
             {
