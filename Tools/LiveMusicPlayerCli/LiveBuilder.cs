@@ -6,8 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using UmaMusumeData.Tables;
 using UmaMusumeData;
-using AssetStudio;
+using AssetsTools.NET;
 using CriWareLibrary;
+using AssetsTools.NET.Extra;
 
 namespace LiveMusicPlayerCli
 {
@@ -41,8 +42,6 @@ namespace LiveMusicPlayerCli
             okeAwb = GetAwbFile(audioAssets.FirstOrDefault(aa => aa.BaseName.Equals($"snd_bgm_live_{musicId}_oke_02.awb")));
 
             Singers = new int[GetSingingMemberCount()];
-
-            assetsManager.Clear();
         }
 
         public int[] Singers { get; }
@@ -102,23 +101,28 @@ namespace LiveMusicPlayerCli
             foreach (var item in assets)
             {
                 assetPaths.Add(UmaDataHelper.GetPath(item));
+                BundleFileInstance bundleFileInstance = assetsManager.LoadBundleFile(UmaDataHelper.GetPath(item));
+                foreach (var bundleFile in bundleFileInstance.file.GetAllFileNames())
+                {
+                    assetsManager.LoadAssetsFileFromBundle(bundleFileInstance, bundleFile);
+                }
             }
-            assetsManager.LoadFiles(assetPaths.ToArray());
         }
 
         private StreamReader? GetLiveCsv(int musicId, string category)
         {
-            string idString = $"{musicId:d4}";
+            //string idString = $"{musicId:d4}";
 
-            SerializedFile? targetAsset = assetsManager.assetsFileList.FirstOrDefault(
-                a => (a.Objects.FirstOrDefault(o => o.type == ClassIDType.TextAsset) as NamedObject)?.m_Name.Equals($"m{idString}_{category}") ?? false);
-            if (targetAsset is null) return null;
-            TextAsset? textAsset = targetAsset.Objects.First(o => o.type == ClassIDType.TextAsset) as TextAsset;
+            //SerializedFile? targetAsset = assetsManager.assetsFileList.FirstOrDefault(
+            //    a => (a.Objects.FirstOrDefault(o => o.type == ClassIDType.TextAsset) as NamedObject)?.m_Name.Equals($"m{idString}_{category}") ?? false);
+            //if (targetAsset is null) return null;
+            //TextAsset? textAsset = targetAsset.Objects.First(o => o.type == ClassIDType.TextAsset) as TextAsset;
 
-            if (textAsset is not null)
-                return new StreamReader(new MemoryStream(textAsset.m_Script));
-            else
-                return null;
+            //if (textAsset is not null)
+            //    return new StreamReader(new MemoryStream(textAsset.m_Script));
+            //else
+            //    return null;
+            return null;
         }
 
         private static AwbReader? GetAwbFile(ManifestEntry? entry)

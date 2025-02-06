@@ -1,12 +1,14 @@
-﻿using CriWareFormats;
+﻿using CriWareLibrary;
+using CriWareLibrary.Common;
 using NAudio.Wave;
 using SQLite;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading;
-using UmaMusumeAudio;
+using static SQLite.SQLite3;
 
 namespace PlayerCli
 {
@@ -14,6 +16,9 @@ namespace PlayerCli
     {
         static void Main(string[] args)
         {
+            byte[] boob = new byte[] { 0x11, 0x22, 0x33, 0x44, 0xAA, 0xBB, 0xCC, 0xDD };
+            BinaryReaderEndian binaryReaderEndian = new BinaryReaderEndian(new MemoryStream(boob));
+            binaryReaderEndian.ReadUInt64BE();
             Console.CursorVisible = false;
 
             // Initialize the output device.
@@ -24,31 +29,28 @@ namespace PlayerCli
             string dataDirectory = "";
             List<GameFile> gameFiles = null;
 
-            if (!directRead)
-            {
-                // Should be the same for all users.
-                string localLow = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "Low");
-                string umaMusumeDirectory = Path.Combine(localLow, "Cygames", "umamusume");
-                string metaFile = Path.Combine(umaMusumeDirectory, "meta");
+            // Should be the same for all users.
+            string localLow = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "Low");
+            string umaMusumeDirectory = Path.Combine(localLow, "Cygames", "umamusume");
+            string metaFile = Path.Combine(umaMusumeDirectory, "meta");
 
-                // UmaMusume meta file is just an SQLite database.
-                SQLiteConnection connection = new(metaFile);
-                dataDirectory = Path.Combine(Path.GetDirectoryName(metaFile), "dat");
+            // UmaMusume meta file is just an SQLite database.
+            SQLiteConnection connection = new(metaFile);
+            dataDirectory = Path.Combine(Path.GetDirectoryName(metaFile), "dat");
 
-                // Queries the list of game files. Schema of the table is defined in the GameFile class.
-                gameFiles = connection.Table<GameFile>()
-                    .Where((gf) => gf.Name.Contains("bgm_") /*&& !gf.Name.Contains("race")*/ && !gf.Name.Contains("live"))
-                    .ToList();
-                // Sort game files by their names.
-                gameFiles.Sort((gf1, gf2) => { return string.Compare(gf1.Name, gf2.Name); });
+            // Queries the list of game files. Schema of the table is defined in the GameFile class.
+            gameFiles = connection.Table<GameFile>()
+                .Where((gf) => gf.Name.Contains("bgm_") /*&& !gf.Name.Contains("race")*/ && !gf.Name.Contains("live"))
+                .ToList();
+            // Sort game files by their names.
+            gameFiles.Sort((gf1, gf2) => { return string.Compare(gf1.Name, gf2.Name); });
 
-                // Store filtered game files in a new list (we only want BGM).
-                //var filtered = new List<GameFile>();
+            // Store filtered game files in a new list (we only want BGM).
+            //var filtered = new List<GameFile>();
 
-                // Close the SQLite connection.
-                connection.Close();
-                connection.Dispose();
-            }
+            // Close the SQLite connection.
+            connection.Close();
+            connection.Dispose();
 
             //foreach (var gameFile in gameFiles)
             //{
@@ -106,8 +108,6 @@ namespace PlayerCli
                         }
                     }
 
-                    GameFile result;
-                    GameFile resultAcb;
                     while (!autoFileChange)
                     {
                         Console.Write("\nSelect file: ");
@@ -127,21 +127,20 @@ namespace PlayerCli
                         if (index >= 0) break;
                     }
                     Console.WriteLine();
-
-                    string awbFileName = fileNames[index];
-                    // Get the bank file, and its partner cue file (for the track names).
-                    result = gameFiles.Find((gf) => gf.Name == awbFileName);
-                    resultAcb = gameFiles.Find((gf) => gf.Name == awbFileName.Substring(0, awbFileName.IndexOf(".awb")) + ".acb");
-
-                    // Get the data file paths (the "obfuscated" ones).
-                    awbPath = Path.Combine(dataDirectory, result.Hash.Substring(0, 2), result.Hash);
-                    acbPath = Path.Combine(dataDirectory, resultAcb.Hash.Substring(0, 2), resultAcb.Hash);
                 }
                 else
                 {
-                    awbPath = args[0];
-                    acbPath = awbPath.Remove(awbPath.Length - 4) + ".acb";
+                    index = fileNames.FindIndex((fn) => fn.Contains(args[0]));
                 }
+
+                string awbFileName = fileNames[index];
+                // Get the bank file, and its partner cue file (for the track names).
+                GameFile result = gameFiles.Find((gf) => gf.Name == awbFileName);
+                GameFile resultAcb = gameFiles.Find((gf) => gf.Name == awbFileName.Substring(0, awbFileName.IndexOf(".awb")) + ".acb");
+
+                // Get the data file paths (the "obfuscated" ones).
+                awbPath = Path.Combine(dataDirectory, result.Hash.Substring(0, 2), result.Hash);
+                acbPath = Path.Combine(dataDirectory, resultAcb.Hash.Substring(0, 2), resultAcb.Hash);
 
                 // Read the files.
                 AwbReader awb = new(File.OpenRead(awbPath));

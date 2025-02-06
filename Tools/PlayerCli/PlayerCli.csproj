@@ -12,7 +12,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\UmaMusumeAudio\UmaMusumeAudio.csproj" />
+    <ProjectReference Include="..\..\ClHcaSharp\ClHcaSharp\ClHcaSharp.csproj" />
+    <ProjectReference Include="..\..\CriWareLibrary\CriWareLibrary\CriWareLibrary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
 
 </Project>
