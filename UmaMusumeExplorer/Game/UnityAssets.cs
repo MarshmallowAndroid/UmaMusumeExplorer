@@ -198,8 +198,11 @@ namespace UmaMusumeExplorer.Game
 
         private static void AddLoadedImage<TPixel>(string imageName, Image<TPixel> image) where TPixel : unmanaged, IPixel<TPixel>
         {
-            imagePointerContainers.Add(imageName,
-                new ImagePointerContainer(GCHandle.Alloc(image.ToBytes(), GCHandleType.Pinned), image.Width, image.Height));
+            lock (imagePointerContainers)
+            {
+                imagePointerContainers.Add(imageName,
+                    new ImagePointerContainer(GCHandle.Alloc(image.ToBytes(), GCHandleType.Pinned), image.Width, image.Height));
+            }
         }
 
         private static Image<Bgra32>? GetImage(AssetsManager assetsManager, string imageName)
