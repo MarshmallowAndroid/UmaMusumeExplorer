@@ -38,12 +38,13 @@
             progressBarCache = new ProgressBar();
             buttonRevert = new Button();
             labelStep5 = new Label();
+            label1 = new Label();
             SuspendLayout();
             // 
             // labelTitle
             // 
             labelTitle.AutoSize = true;
-            labelTitle.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            labelTitle.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             labelTitle.Location = new Point(12, 9);
             labelTitle.Name = "labelTitle";
             labelTitle.Size = new Size(284, 15);
@@ -80,7 +81,7 @@
             // 
             // buttonCacheFiles
             // 
-            buttonCacheFiles.Location = new Point(12, 103);
+            buttonCacheFiles.Location = new Point(12, 118);
             buttonCacheFiles.Name = "buttonCacheFiles";
             buttonCacheFiles.Size = new Size(537, 25);
             buttonCacheFiles.TabIndex = 5;
@@ -91,32 +92,33 @@
             // labelStep3
             // 
             labelStep3.AutoSize = true;
-            labelStep3.Location = new Point(12, 85);
+            labelStep3.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            labelStep3.Location = new Point(12, 100);
             labelStep3.Name = "labelStep3";
-            labelStep3.Size = new Size(486, 15);
+            labelStep3.Size = new Size(371, 15);
             labelStep3.TabIndex = 4;
-            labelStep3.Text = "3. Close the game, then click the button below to begin caching the downloaded resources\r\n";
+            labelStep3.Text = "4. OPTIONAL: Click the button below cache the downloaded resources\r\n";
             // 
             // labelStep4
             // 
             labelStep4.AutoSize = true;
-            labelStep4.Location = new Point(12, 160);
+            labelStep4.Location = new Point(12, 175);
             labelStep4.MaximumSize = new Size(787, 0);
             labelStep4.Name = "labelStep4";
-            labelStep4.Size = new Size(492, 15);
+            labelStep4.Size = new Size(353, 15);
             labelStep4.TabIndex = 7;
-            labelStep4.Text = "4. After caching is complete, click the button below to revert the changes made to the game";
+            labelStep4.Text = "4. Click the button below to revert the changes made to the game";
             // 
             // progressBarCache
             // 
-            progressBarCache.Location = new Point(12, 134);
+            progressBarCache.Location = new Point(12, 149);
             progressBarCache.Name = "progressBarCache";
             progressBarCache.Size = new Size(536, 23);
             progressBarCache.TabIndex = 6;
             // 
             // buttonRevert
             // 
-            buttonRevert.Location = new Point(12, 178);
+            buttonRevert.Location = new Point(12, 193);
             buttonRevert.Name = "buttonRevert";
             buttonRevert.Size = new Size(537, 25);
             buttonRevert.TabIndex = 8;
@@ -127,24 +129,34 @@
             // labelStep5
             // 
             labelStep5.AutoSize = true;
-            labelStep5.Location = new Point(12, 206);
+            labelStep5.Location = new Point(12, 221);
             labelStep5.MaximumSize = new Size(787, 0);
             labelStep5.Name = "labelStep5";
             labelStep5.Size = new Size(115, 15);
             labelStep5.TabIndex = 9;
             labelStep5.Text = "5. Close this window";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(12, 85);
+            label1.Name = "label1";
+            label1.Size = new Size(101, 15);
+            label1.TabIndex = 4;
+            label1.Text = "3. Close the game";
+            // 
             // DownloadWorkaroundForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(561, 230);
+            ClientSize = new Size(561, 245);
             Controls.Add(progressBarCache);
             Controls.Add(buttonRevert);
             Controls.Add(buttonCacheFiles);
             Controls.Add(buttonModifyDatabase);
             Controls.Add(labelStep5);
             Controls.Add(labelStep4);
+            Controls.Add(label1);
             Controls.Add(labelStep3);
             Controls.Add(labelStep2);
             Controls.Add(labelStep1);
@@ -170,5 +182,6 @@
         private ProgressBar progressBarCache;
         private Button buttonRevert;
         private Label labelStep5;
+        private Label label1;
     }
 }

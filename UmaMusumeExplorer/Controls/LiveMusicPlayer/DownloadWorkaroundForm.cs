@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using SQLite;
 using UmaMusumeData;
 
@@ -20,13 +14,18 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
         private static readonly string metaFile = Path.Combine(umaMusumeDirectory, "meta");
         private static readonly string metaFileBackup = metaFile + ".bak";
 
-        private readonly List<ManifestEntry> liveAudioEntries = UmaDataHelper.GetManifestEntries(e => e.Name.StartsWith("sound/l/")).ToList();
+        private readonly List<ManifestEntry> liveAudioEntries = [.. UmaDataHelper.GetManifestEntries(e => e.Name.StartsWith("sound/l/"))];
 
         public DownloadWorkaroundForm()
         {
             InitializeComponent();
 
-            labelStep2.Text += $" ({GenerateSizeString(liveAudioEntries.Sum(s => s.Length))})";
+            Task.Run(() =>
+            {
+                long totalSize = liveAudioEntries.Sum(s => s.Length);
+                List<ManifestEntry> existingEntries = [.. liveAudioEntries.Where(e => File.Exists(UmaDataHelper.GetPath(e)))];
+                Invoke(() => labelStep2.Text += $" ({GenerateSizeString(totalSize - existingEntries.Sum(e => e.Length))})");
+            });
         }
 
         private void ButtonModifyDatabase_Click(object sender, EventArgs e)
