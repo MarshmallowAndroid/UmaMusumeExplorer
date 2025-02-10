@@ -1,11 +1,8 @@
 ﻿using AssetsTools.NET;
 using AssetsTools.NET.Extra;
 using CriWareLibrary;
-using NAudio.Wave.SampleProviders;
-using NAudio.Wave;
 using UmaMusumeData;
 using UmaMusumeData.Tables;
-using UmaMusumeExplorer.Controls.LiveMusicPlayer;
 using UmaMusumeAudio;
 
 namespace UmaMusumeExplorer.Controls.Common.Classes
@@ -49,7 +46,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
 
             // Get BGM with or without sound effects
             AwbReader? okeAwb = GetAwbFile(audioAssetEntries.First(aa => aa.BaseName == $"snd_bgm_live_{MusicId}_oke_0{(unitSetupForm.Sfx ? '1' : '2')}.awb"));
-            if (okeAwb is null) return ShowFileNotFound();
+            if (okeAwb is null) return ShowMissingResources();
 
             // Abort unit setup when character selection is not confirmed
             if (CharacterPositions is null) return false;
@@ -80,7 +77,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
             foreach (var characterPosition in CharacterPositions)
             {
                 AwbReader? charaAwb = GetAwbFile(audioAssetEntries.First(aa => aa.BaseName == $"snd_bgm_live_{MusicId}_chara_{characterPosition.CharacterId}_01.awb"));
-                if (charaAwb is null) return ShowFileNotFound();
+                if (charaAwb is null) return ShowMissingResources();
                 charaAwbs[characterPosition.Position] = charaAwb;
             }
 
@@ -203,7 +200,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
 
             if (okeAwb is null)
             {
-                ShowFileNotFound();
+                ShowMissingResources();
                 return;
             }
 
@@ -245,9 +242,9 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
                 return new AwbReader(File.OpenRead(path));
         }
 
-        private static bool ShowFileNotFound()
+        private static bool ShowMissingResources()
         {
-            MessageBox.Show("Music resource not found. Please download all resources in the game.", "Asset not found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            MessageBox.Show("Missing resources for selected music. Please download all resources in the game.", "Missing resources", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             return false;
         }
     }
