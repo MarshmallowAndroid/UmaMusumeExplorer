@@ -45,7 +45,7 @@
             cardPictureBox.Location = new Point(3, 3);
             cardPictureBox.Name = "cardPictureBox";
             cardPictureBox.Size = new Size(73, 81);
-            cardPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            cardPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             cardPictureBox.TabIndex = 1;
             cardPictureBox.TabStop = false;
             // 
