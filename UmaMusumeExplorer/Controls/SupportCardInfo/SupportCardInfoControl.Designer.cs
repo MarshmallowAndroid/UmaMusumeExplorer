@@ -35,32 +35,33 @@
             // supportCardItemsPanel
             // 
             supportCardItemsPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            supportCardItemsPanel.Indeterminate = false;
             supportCardItemsPanel.Items = null;
-            supportCardItemsPanel.Location = new System.Drawing.Point(3, 28);
+            supportCardItemsPanel.Location = new Point(3, 28);
             supportCardItemsPanel.Name = "supportCardItemsPanel";
-            supportCardItemsPanel.Size = new System.Drawing.Size(732, 306);
+            supportCardItemsPanel.Size = new Size(732, 306);
             supportCardItemsPanel.TabIndex = 0;
             // 
             // markLimitedCheckBox
             // 
             markLimitedCheckBox.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             markLimitedCheckBox.AutoSize = true;
-            markLimitedCheckBox.Location = new System.Drawing.Point(611, 3);
+            markLimitedCheckBox.Location = new Point(612, 3);
             markLimitedCheckBox.Name = "markLimitedCheckBox";
-            markLimitedCheckBox.Size = new System.Drawing.Size(124, 19);
+            markLimitedCheckBox.Size = new Size(123, 19);
             markLimitedCheckBox.TabIndex = 1;
-            markLimitedCheckBox.Text = "Mark limited cards";
+            markLimitedCheckBox.Text = "Mark special cards";
             markLimitedCheckBox.UseVisualStyleBackColor = true;
             markLimitedCheckBox.CheckedChanged += MarkLimitedCheckBox_CheckedChanged;
             // 
             // SupportCardInfoControl
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(markLimitedCheckBox);
             Controls.Add(supportCardItemsPanel);
             Name = "SupportCardInfoControl";
-            Size = new System.Drawing.Size(738, 337);
+            Size = new Size(738, 337);
             Load += SupportCardInfoControl_Load;
             ResumeLayout(false);
             PerformLayout();

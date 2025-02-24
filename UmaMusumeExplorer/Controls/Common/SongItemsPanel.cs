@@ -15,8 +15,8 @@ namespace UmaMusumeExplorer.Controls.Common
                 BackgroundImage = UnityAssets.GetJacket(liveData.MusicId, 'l')?.Bitmap,
                 BackgroundImageLayout = ImageLayout.Zoom,
                 Cursor = Cursors.Hand,
-                Height = 130,
-                Width = 130,
+                Height = 128,
+                Width = 128,
                 Tag = liveData
             };
 

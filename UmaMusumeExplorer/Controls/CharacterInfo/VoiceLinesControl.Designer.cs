@@ -28,73 +28,73 @@
         /// </summary>
         private void InitializeComponent()
         {
-            cardPictureBox = new Common.HighQualityPictureBox();
-            costumeHintLabel = new System.Windows.Forms.Label();
-            costumeComboBox = new System.Windows.Forms.ComboBox();
-            categoryHintLabel = new System.Windows.Forms.Label();
-            categoryComboBox = new System.Windows.Forms.ComboBox();
-            exportAllButton = new System.Windows.Forms.Button();
-            exportSelectedButton = new System.Windows.Forms.Button();
-            loadingProgressBar = new System.Windows.Forms.ProgressBar();
-            voiceLineListPanel = new System.Windows.Forms.FlowLayoutPanel();
+            cardPictureBox = new UmaMusumeExplorer.Controls.Common.HighQualityPictureBox();
+            costumeHintLabel = new Label();
+            costumeComboBox = new ComboBox();
+            categoryHintLabel = new Label();
+            categoryComboBox = new ComboBox();
+            exportAllButton = new Button();
+            exportSelectedButton = new Button();
+            loadingProgressBar = new ProgressBar();
+            voiceLineListPanel = new FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)cardPictureBox).BeginInit();
             SuspendLayout();
             // 
             // cardPictureBox
             // 
-            cardPictureBox.Location = new System.Drawing.Point(3, 3);
+            cardPictureBox.Location = new Point(3, 3);
             cardPictureBox.Name = "cardPictureBox";
-            cardPictureBox.Size = new System.Drawing.Size(81, 81);
-            cardPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            cardPictureBox.Size = new Size(73, 81);
+            cardPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             cardPictureBox.TabIndex = 1;
             cardPictureBox.TabStop = false;
             // 
             // costumeHintLabel
             // 
             costumeHintLabel.AutoSize = true;
-            costumeHintLabel.Location = new System.Drawing.Point(90, 6);
+            costumeHintLabel.Location = new Point(82, 6);
             costumeHintLabel.Name = "costumeHintLabel";
-            costumeHintLabel.Size = new System.Drawing.Size(55, 15);
+            costumeHintLabel.Size = new Size(55, 15);
             costumeHintLabel.TabIndex = 2;
             costumeHintLabel.Text = "Costume";
             // 
             // costumeComboBox
             // 
-            costumeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            costumeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             costumeComboBox.FormattingEnabled = true;
             costumeComboBox.Items.AddRange(new object[] { "All" });
-            costumeComboBox.Location = new System.Drawing.Point(151, 3);
+            costumeComboBox.Location = new Point(143, 3);
             costumeComboBox.Name = "costumeComboBox";
-            costumeComboBox.Size = new System.Drawing.Size(189, 23);
+            costumeComboBox.Size = new Size(189, 23);
             costumeComboBox.TabIndex = 3;
             costumeComboBox.SelectedIndexChanged += CostumeComboBox_SelectedIndexChanged;
             // 
             // categoryHintLabel
             // 
             categoryHintLabel.AutoSize = true;
-            categoryHintLabel.Location = new System.Drawing.Point(90, 35);
+            categoryHintLabel.Location = new Point(82, 35);
             categoryHintLabel.Name = "categoryHintLabel";
-            categoryHintLabel.Size = new System.Drawing.Size(55, 15);
+            categoryHintLabel.Size = new Size(55, 15);
             categoryHintLabel.TabIndex = 2;
             categoryHintLabel.Text = "Category";
             // 
             // categoryComboBox
             // 
-            categoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            categoryComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             categoryComboBox.FormattingEnabled = true;
             categoryComboBox.Items.AddRange(new object[] { "All", "Home", "Training", "Race", "Miscellaneous" });
-            categoryComboBox.Location = new System.Drawing.Point(151, 32);
+            categoryComboBox.Location = new Point(143, 32);
             categoryComboBox.Name = "categoryComboBox";
-            categoryComboBox.Size = new System.Drawing.Size(189, 23);
+            categoryComboBox.Size = new Size(189, 23);
             categoryComboBox.TabIndex = 3;
             categoryComboBox.SelectedIndexChanged += CategoryComboBox_SelectedIndexChanged;
             // 
             // exportAllButton
             // 
-            exportAllButton.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            exportAllButton.Location = new System.Drawing.Point(473, 57);
+            exportAllButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            exportAllButton.Location = new Point(473, 57);
             exportAllButton.Name = "exportAllButton";
-            exportAllButton.Size = new System.Drawing.Size(114, 27);
+            exportAllButton.Size = new Size(114, 27);
             exportAllButton.TabIndex = 4;
             exportAllButton.Text = "Export all";
             exportAllButton.UseVisualStyleBackColor = true;
@@ -102,10 +102,10 @@
             // 
             // exportSelectedButton
             // 
-            exportSelectedButton.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            exportSelectedButton.Location = new System.Drawing.Point(473, 24);
+            exportSelectedButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            exportSelectedButton.Location = new Point(473, 24);
             exportSelectedButton.Name = "exportSelectedButton";
-            exportSelectedButton.Size = new System.Drawing.Size(114, 27);
+            exportSelectedButton.Size = new Size(114, 27);
             exportSelectedButton.TabIndex = 4;
             exportSelectedButton.Text = "Export selected";
             exportSelectedButton.UseVisualStyleBackColor = true;
@@ -113,26 +113,26 @@
             // 
             // loadingProgressBar
             // 
-            loadingProgressBar.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            loadingProgressBar.Location = new System.Drawing.Point(90, 61);
+            loadingProgressBar.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            loadingProgressBar.Location = new Point(82, 61);
             loadingProgressBar.Name = "loadingProgressBar";
-            loadingProgressBar.Size = new System.Drawing.Size(377, 23);
+            loadingProgressBar.Size = new Size(385, 23);
             loadingProgressBar.TabIndex = 5;
             loadingProgressBar.Visible = false;
             // 
             // voiceLineListPanel
             // 
-            voiceLineListPanel.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            voiceLineListPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             voiceLineListPanel.AutoScroll = true;
-            voiceLineListPanel.Location = new System.Drawing.Point(3, 90);
+            voiceLineListPanel.Location = new Point(3, 90);
             voiceLineListPanel.Name = "voiceLineListPanel";
-            voiceLineListPanel.Size = new System.Drawing.Size(584, 688);
+            voiceLineListPanel.Size = new Size(584, 688);
             voiceLineListPanel.TabIndex = 0;
             // 
             // VoiceLinesControl
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(loadingProgressBar);
             Controls.Add(exportSelectedButton);
             Controls.Add(exportAllButton);
@@ -143,7 +143,7 @@
             Controls.Add(cardPictureBox);
             Controls.Add(voiceLineListPanel);
             Name = "VoiceLinesControl";
-            Size = new System.Drawing.Size(590, 781);
+            Size = new Size(590, 781);
             Load += VoiceLinesControl_Load;
             ((System.ComponentModel.ISupportInitialize)cardPictureBox).EndInit();
             ResumeLayout(false);
