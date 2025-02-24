@@ -292,13 +292,12 @@ namespace UmaMusumeExplorer.Controls.Common
             foreach (var characterPosition in liveManager.CharacterPositions)
             {
                 charaContainerPanel.Controls.Add(
-                    new CharacterPositionControl(characterPosition.Position, CharacterClick)
+                    new CharacterPositionControl(characterPosition.Position, CharacterClick, 70)
                     {
                         CharacterId = characterPosition.CharacterId,
                         FontSize = 12F,
                         Height = 140,
-                        Position = characterPosition.Position,
-                        Width = 70
+                        Position = characterPosition.Position
                     });
 
                 currentSingers[characterPosition.Position] = AssetTables.GetText(TextCategory.MasterCharaName, characterPosition.CharacterId);
