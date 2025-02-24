@@ -93,7 +93,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
 
             // For Legend-Changer
             int mainCharacterId = CharacterPositions.First(p => p.Position == 0).CharacterId;
-            int announcerGender = random.Next(2, 3);
+            int announcerGender = random.Next(1, 3);
 
             // Voice over for certain Umamusume with either male or female announcer
             AwbReader? voiceOverAwb = GetAwbFile(audioAssetEntries.FirstOrDefault(aa => aa.BaseName == $"snd_bgm_live_{musicId}_vo_{mainCharacterId}_{announcerGender:d2}.awb"));
