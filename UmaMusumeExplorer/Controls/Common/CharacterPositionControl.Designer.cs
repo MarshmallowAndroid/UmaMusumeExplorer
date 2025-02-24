@@ -28,43 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
-            positionIndexLabel = new System.Windows.Forms.Label();
-            characterPictureBox = new Common.HighQualityPictureBox();
+            positionIndexLabel = new Label();
+            characterPictureBox = new HighQualityPictureBox();
             ((System.ComponentModel.ISupportInitialize)characterPictureBox).BeginInit();
             SuspendLayout();
             // 
             // positionIndexLabel
             // 
-            positionIndexLabel.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            positionIndexLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            positionIndexLabel.Location = new System.Drawing.Point(3, 3);
-            positionIndexLabel.Margin = new System.Windows.Forms.Padding(3);
+            positionIndexLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            positionIndexLabel.Font = new Font("Segoe UI", 15.75F);
+            positionIndexLabel.Location = new Point(3, 3);
+            positionIndexLabel.Margin = new Padding(3);
             positionIndexLabel.Name = "positionIndexLabel";
-            positionIndexLabel.Size = new System.Drawing.Size(120, 30);
+            positionIndexLabel.Size = new Size(109, 30);
             positionIndexLabel.TabIndex = 0;
             positionIndexLabel.Text = "0";
-            positionIndexLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            positionIndexLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // characterPictureBox
             // 
-            characterPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            characterPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            characterPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            characterPictureBox.Location = new System.Drawing.Point(3, 39);
+            characterPictureBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            characterPictureBox.BackgroundImageLayout = ImageLayout.Stretch;
+            characterPictureBox.Cursor = Cursors.Hand;
+            characterPictureBox.Location = new Point(3, 39);
             characterPictureBox.Name = "characterPictureBox";
-            characterPictureBox.Size = new System.Drawing.Size(120, 120);
+            characterPictureBox.Size = new Size(109, 120);
             characterPictureBox.TabIndex = 1;
             characterPictureBox.TabStop = false;
             // 
             // CharacterPositionControl
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             Controls.Add(characterPictureBox);
             Controls.Add(positionIndexLabel);
             Name = "CharacterPositionControl";
-            Size = new System.Drawing.Size(126, 162);
+            Size = new Size(115, 162);
             ((System.ComponentModel.ISupportInitialize)characterPictureBox).EndInit();
             ResumeLayout(false);
         }

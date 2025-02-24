@@ -81,8 +81,8 @@ namespace UmaMusumeExplorer.Game
             Image<Bgra32>? image = GetImage(charaIconAssetsManager, imageName);
             if (image is null) return null;
 
-            int adjustedHeight = (int)(image.Height * 1.115F);
-            image.Mutate(o => o.Resize(image.Width, adjustedHeight));
+            //int adjustedHeight = (int)(image.Height * 1.1);
+            //image.Mutate(o => o.Resize(image.Width, adjustedHeight));
 
             AddLoadedImage(imageName, image);
             return PinnedBitmapFromKey(imageName);
@@ -166,18 +166,7 @@ namespace UmaMusumeExplorer.Game
 
             Image<Bgra32>? image = GetImage(supportCardIconAssetsManager, imageName);
 
-            if (image is null)
-            {
-                image = GetImage(supportCardIconAssetsManager, $"support_thumb_00000");
-                if (image is null) return null;
-                int adjustedHeight = (int)(image.Height / 2 * ((float)19 / 15));
-                image.Mutate(o => o.Resize(image.Width, adjustedHeight));
-            }
-            else
-            {
-                int adjustedHeight = (int)(image.Height * ((float)19 / 15));
-                image.Mutate(o => o.Resize(image.Width, adjustedHeight));
-            }
+            image ??= GetImage(supportCardIconAssetsManager, $"support_thumb_00000");
 
             if (image is null) return null;
 

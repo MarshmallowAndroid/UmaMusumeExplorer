@@ -19,11 +19,10 @@ namespace UmaMusumeExplorer.Controls.SupportCardInfo
             supportCardPictureBox = new HighlightPictureBox(limited)
             {
                 BackgroundImage = UnityAssets.GetSupportCardIcon(supportCardData.Id)?.Bitmap,
-                BackgroundImageLayout = ImageLayout.Zoom,
+                BackgroundImageLayout = ImageLayout.Stretch,
                 Cursor = Cursors.Hand,
-                Height = 100,
-                //Height = 126,
-                Width = 100,
+                Height = 166,
+                Width = 127,
                 Tag = supportCardData
             };
 

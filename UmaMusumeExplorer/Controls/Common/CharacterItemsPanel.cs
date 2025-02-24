@@ -13,10 +13,10 @@ namespace UmaMusumeExplorer.Controls.Common
             characterPictureBox = new HighlightPictureBox(playable)
             {
                 BackgroundImage = UnityAssets.GetCharaIcon(charaData.Id)?.Bitmap,
-                BackgroundImageLayout = ImageLayout.Zoom,
+                BackgroundImageLayout = ImageLayout.Stretch,
                 Cursor = Cursors.Hand,
-                Height = 100,
-                Width = 100,
+                Height = 108,
+                Width = 98,
                 Tag = charaData
             };
 
