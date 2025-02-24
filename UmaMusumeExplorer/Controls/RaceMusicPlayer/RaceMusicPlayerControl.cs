@@ -233,7 +233,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicPlayer
 
             if (comboBox.SelectedIndex >= 0)
             {
-                firstPattern = firstPatternBgmList?.FirstOrDefault(bi => bi.BgmTime == (int)comboBox.SelectedItem);
+                firstPattern = firstPatternBgmList?.FirstOrDefault(bi => bi.BgmTime == (int)(comboBox.SelectedItem ?? 0));
 
                 if (firstPattern is null) return;
 
@@ -254,7 +254,7 @@ namespace UmaMusumeExplorer.Controls.RaceMusicPlayer
 
             if (comboBox.SelectedIndex >= 0)
             {
-                secondPattern = secondPatternBgmList?.FirstOrDefault(bi => bi.BgmTime == (int)comboBox.SelectedItem);
+                secondPattern = secondPatternBgmList?.FirstOrDefault(bi => bi.BgmTime == (int)(comboBox.SelectedItem ?? 0));
 
                 if (secondPattern is null) return;
 

@@ -21,7 +21,6 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
         private float[]? okeBuffer;
         private float[]? charaTracksBuffer;
         private float[]? voiceOverBuffer;
-        private int voiceOverRead;
         private float volumeMultiplier = 1.0F;
 
         private long currentSample = 0;

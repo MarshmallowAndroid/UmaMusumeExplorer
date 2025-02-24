@@ -129,7 +129,8 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             {
                 defaultItems = e.Result as List<ListViewItem>;
                 Filter();
-                fileListView.Items.AddRange(targetItems?.ToArray());
+                if (targetItems is not null)
+                    fileListView.Items.AddRange(targetItems.ToArray());
             }
 
             fileListView.Columns[0].Width = (int)(fileListView.ClientSize.Width * (float)0.80F);
@@ -161,7 +162,8 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             updateTimer.Enabled = false;
 
             if (sender is not ComboBox comboBox) return;
-            IAudioTrack audioTrack = ((TrackComboBoxItem)comboBox.SelectedItem).Track;
+            if (comboBox.SelectedItem is not TrackComboBoxItem trackComboBoxItem) return;
+            IAudioTrack audioTrack = trackComboBoxItem.Track;
 
             lock (waveOutLock)
             {
@@ -240,7 +242,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
                 newItem.Selected = true;
                 newItem.EnsureVisible();
 
-                ChangeAudioSource((AudioSource)newItem.Tag);
+                ChangeAudioSource((AudioSource?)newItem.Tag);
             }
         }
 
@@ -259,13 +261,14 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
                 newItem.Selected = true;
                 newItem.EnsureVisible();
 
-                ChangeAudioSource((AudioSource)newItem.Tag);
+                ChangeAudioSource((AudioSource?)newItem.Tag);
             }
         }
 
         private void ExportButton_Click(object sender, EventArgs e)
         {
-            IAudioTrack audioTrack = ((TrackComboBoxItem)tracksComboBox.SelectedItem).Track;
+            if (tracksComboBox.SelectedItem is not TrackComboBoxItem tracksComboBoxItem) return;
+            IAudioTrack audioTrack = tracksComboBoxItem.Track;
             ExportTrack(audioTrack);
         }
 
@@ -309,7 +312,9 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             Filter();
 
             fileListView.Items.Clear();
-            fileListView.Items.AddRange(targetItems?.ToArray());
+
+            if (targetItems is not null)
+                fileListView.Items.AddRange(targetItems.ToArray());
         }
 
         private void ExportToolStripMenuItem_Click(object sender, EventArgs e)
@@ -317,7 +322,8 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             List<AudioSource> audioSources = new();
             foreach (ListViewItem item in fileListView.SelectedItems)
             {
-                audioSources.Add((AudioSource)item.Tag);
+                if (item.Tag is AudioSource audioSource)
+                    audioSources.Add(audioSource);
             }
             ExportBank(audioSources.ToArray());
         }
