@@ -133,6 +133,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
                 if (entry is not null)
                 {
                     UpdateSelectedEntries(entry, node.Checked);
+                    entriesToAdd = selectedEntries;
                 }
                 else
                 {
