@@ -10,7 +10,7 @@ namespace UmaMusumeExplorer.Controls.Common
         private Image? characterImage;
         private bool disabled = false;
 
-        public CharacterPositionControl(int position, EventHandler clickEventHandler)
+        public CharacterPositionControl(int position, EventHandler clickEventHandler, int width = -1)
         {
             InitializeComponent();
 
@@ -20,6 +20,12 @@ namespace UmaMusumeExplorer.Controls.Common
             characterPictureBox.BackgroundImage = UnityAssets.GetCharaIcon(0)?.Bitmap;
 
             characterPictureBox.Click += clickEventHandler;
+
+            if (width > 0)
+            {
+                Width = width;
+                characterPictureBox.Height = (int)(characterPictureBox.Width * 1.1F);
+            }
         }
 
         public int Position
