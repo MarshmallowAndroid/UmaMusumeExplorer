@@ -1,5 +1,6 @@
 ﻿using CriWareLibrary;
 using NAudio.Wave;
+using NAudio.Wave.SampleProviders;
 using UmaMusumeAudio;
 
 namespace UmaMusumeExplorer.Controls.Common.Classes
@@ -10,12 +11,17 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
         private ISampleProvider okeSampleProvider;
         private readonly List<PartTrigger> partTriggers;
         private readonly List<VolumeTrigger> volumeTriggers = new();
+        private UmaWaveStream? voiceOverWaveStream;
+        private ISampleProvider? voiceOverSampleProvider;
+        private int voiceTrigger;
 
         private readonly object readLock = new();
 
         private bool customMode;
-        private float[]? charaTracksBuffer;
         private float[]? okeBuffer;
+        private float[]? charaTracksBuffer;
+        private float[]? voiceOverBuffer;
+        private int voiceOverRead;
         private float volumeMultiplier = 1.0F;
 
         private long currentSample = 0;
@@ -41,7 +47,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
             }
         }
 
-        public List<CharaTrack> CharaTracks { get; } = new();
+        public List<CharaTrack> CharaTracks { get; } = [];
 
         public bool MuteBgm { get; set; }
 
@@ -79,6 +85,27 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
                     }
                     currentSample = okeWaveStream.Position / okeWaveStream.WaveFormat.Channels / (okeWaveStream.WaveFormat.BitsPerSample / 8);
                     volumeTriggerIndex = 0;
+
+                    if (voiceOverWaveStream is not null)
+                    {
+                        long newTrigger = 0;
+                        if (currentSample < voiceTrigger)
+                        {
+                            newTrigger = voiceTrigger - currentSample;
+                            voiceOverWaveStream.Position = 0;
+                        }
+                        else
+                        {
+                            voiceOverWaveStream.Position = (currentSample - voiceTrigger)
+                                * voiceOverWaveStream.WaveFormat.Channels
+                                * (voiceOverWaveStream.WaveFormat.BitsPerSample / 8);
+                        }
+
+                        voiceOverSampleProvider = new OffsetSampleProvider(voiceOverWaveStream.ToSampleProvider())
+                        {
+                            DelayBySamples = (int)newTrigger * WaveFormat.Channels
+                        };
+                    }
                 }
             }
         }
@@ -126,6 +153,19 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
             }
         }
 
+        public void InitializeVoiceOver(AwbReader voiceOverAwb, int timeMs)
+        {
+            lock (readLock)
+            {
+                voiceTrigger = (int)(timeMs / 1000F * WaveFormat.SampleRate);
+                voiceOverWaveStream = new(voiceOverAwb, 0);
+                voiceOverSampleProvider = new OffsetSampleProvider(voiceOverWaveStream.ToSampleProvider())
+                {
+                    DelayBySamples = voiceTrigger * WaveFormat.Channels
+                };
+            }
+        }
+
         public void ChangeOke(AwbReader okeAwb)
         {
             lock (readLock)
@@ -145,6 +185,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
         {
             okeBuffer = EnsureBuffer(okeBuffer, count);
             charaTracksBuffer = EnsureBuffer(charaTracksBuffer, count);
+            voiceOverBuffer = EnsureBuffer(voiceOverBuffer, count);
 
             for (int i = 0; i < count; i++)
             {
@@ -171,6 +212,8 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
                 }
 
                 read = okeSampleProvider.Read(okeBuffer, offset, count);
+
+                voiceOverSampleProvider?.Read(voiceOverBuffer, offset, count);
             }
 
             for (int i = offset; i < count / WaveFormat.Channels; i++)
@@ -191,6 +234,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
                     int index = i * WaveFormat.Channels + j;
                     buffer[index] *= CustomMode ? 1.0F / (active + 1) + 0.5F : volumeMultiplier;
                     buffer[index] += MuteBgm ? 0 : okeBuffer[index];
+                    buffer[index] += voiceOverBuffer[index];
                 }
 
                 currentSample++;

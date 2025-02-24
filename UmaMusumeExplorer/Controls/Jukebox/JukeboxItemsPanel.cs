@@ -28,8 +28,10 @@ namespace UmaMusumeExplorer.Controls.Jukebox
                 if (pictureBox.Tag is not JukeboxMusicData jukeBoxData) return;
                 if (jukeBoxData is not null)
                 {
-                    MusicManager liveManager = new(jukeBoxData, CurrentSongLength);
-                    ControlHelpers.ShowFormCenter(new PlayerForm(liveManager), this);
+                    MusicManager jukeBoxManager = new(jukeBoxData);
+
+                    if (jukeBoxManager.SetupJukeBoxMusic(CurrentSongLength))
+                        ControlHelpers.ShowFormCenter(new PlayerForm(jukeBoxManager), this);
                 }
             };
 
