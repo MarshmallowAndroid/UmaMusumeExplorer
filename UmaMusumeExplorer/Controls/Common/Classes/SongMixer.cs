@@ -85,26 +85,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
                     currentSample = okeWaveStream.Position / okeWaveStream.WaveFormat.Channels / (okeWaveStream.WaveFormat.BitsPerSample / 8);
                     volumeTriggerIndex = 0;
 
-                    if (voiceOverWaveStream is not null)
-                    {
-                        long newTrigger = 0;
-                        if (currentSample < voiceTrigger)
-                        {
-                            newTrigger = voiceTrigger - currentSample;
-                            voiceOverWaveStream.Position = 0;
-                        }
-                        else
-                        {
-                            voiceOverWaveStream.Position = (currentSample - voiceTrigger)
-                                * voiceOverWaveStream.WaveFormat.Channels
-                                * (voiceOverWaveStream.WaveFormat.BitsPerSample / 8);
-                        }
-
-                        voiceOverSampleProvider = new OffsetSampleProvider(voiceOverWaveStream.ToSampleProvider())
-                        {
-                            DelayBySamples = (int)newTrigger * WaveFormat.Channels
-                        };
-                    }
+                    AdjustVoiceOverPosition();
                 }
             }
         }
@@ -158,10 +139,8 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
             {
                 voiceTrigger = (int)(timeMs / 1000F * WaveFormat.SampleRate);
                 voiceOverWaveStream = new(voiceOverAwb, 0);
-                voiceOverSampleProvider = new OffsetSampleProvider(voiceOverWaveStream.ToSampleProvider())
-                {
-                    DelayBySamples = voiceTrigger * WaveFormat.Channels
-                };
+
+                AdjustVoiceOverPosition();
             }
         }
 
@@ -250,6 +229,30 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
             {
                 charaTrack.Dispose();
             }
+        }
+
+        private void AdjustVoiceOverPosition()
+        {
+            if (voiceOverWaveStream is null) return;
+
+            long newTrigger = 0;
+            if (currentSample < voiceTrigger)
+            {
+                newTrigger = voiceTrigger - currentSample;
+                voiceOverWaveStream.Position = 0;
+            }
+            else
+            {
+                voiceOverWaveStream.Position = Math.Min((currentSample - voiceTrigger)
+                    * voiceOverWaveStream.WaveFormat.Channels
+                    * (voiceOverWaveStream.WaveFormat.BitsPerSample / 8),
+                    voiceOverWaveStream.Length);
+            }
+
+            voiceOverSampleProvider = new OffsetSampleProvider(voiceOverWaveStream.ToSampleProvider())
+            {
+                DelayBySamples = (int)newTrigger * WaveFormat.Channels
+            };
         }
 
         private static float[] EnsureBuffer(float[]? buffer, int length)
