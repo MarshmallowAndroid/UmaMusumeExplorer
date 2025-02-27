@@ -16,6 +16,8 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
         private readonly string cueSheetNameShort = "";
         private readonly string cueSheetNameGameSize = "";
 
+        private bool musicScoreLoaded = false;
+
         public MusicManager(LiveData liveData)
         {
             musicId = liveData.MusicId;
@@ -86,7 +88,8 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
             if (SampleProvider is not SongMixer songMixer) return false;
 
             // Change background music
-            songMixer.ChangeOke(okeAwb);
+            if (songMixer.Position > 0)
+                songMixer.ChangeOke(okeAwb);
 
             // Initialize tracks, can be done during playback
             songMixer.InitializeCharaTracks(charaAwbs);
@@ -161,20 +164,10 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
             return activeMembers;
         }
 
-        //private void CharacterClick(object sender, EventArgs e)
-        //{
-        //    if (customVoiceControlCheckBox.Checked)
-        //    {
-        //        CharacterPositionControl character = (sender as Control).Parent as CharacterPositionControl;
-        //        int charaIndex = character.PositionIndex - 1;
-        //        CharaTrack track = songMixer.CharaTracks[charaIndex];
-        //        track.Enabled = !track.Enabled;
-        //        singersEnabled[charaIndex] = track.Enabled;
-        //    }
-        //}
-
         private bool LoadMusicScore()
         {
+            if (musicScoreLoaded) return true;
+
             IEnumerable<ManifestEntry> musicScoreAssetEntries = UmaDataHelper.GetManifestEntries(ga => ga.Name.StartsWith($"live/musicscores/m{musicId}"));
             ManifestEntry? timelineEntry = UmaDataHelper.GetManifestEntries(ga => ga.Name.StartsWith($"cutt/cutt_son{musicId}/son{musicId}_camera")).FirstOrDefault();
 
@@ -212,7 +205,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
 
             VoiceTrigger = (int)(GetLiveTimelineData(assetsManager) / 60F * 1000F);
 
-            return true;
+            return musicScoreLoaded = true;
         }
 
         private CsvReader? GetLiveCsv(AssetsManager assetsManager, string category)
@@ -239,7 +232,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
             return field[0]["frame"].AsInt;
         }
 
-        private void LoadAsset(AssetsManager assetsManager, ManifestEntry manifestEntry)
+        private static void LoadAsset(AssetsManager assetsManager, ManifestEntry manifestEntry)
         {
             BundleFileInstance bundle = assetsManager.LoadBundleFile(UmaDataHelper.GetPath(manifestEntry));
             foreach (var assetFileName in bundle.file.GetAllFileNames())
@@ -248,7 +241,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
             }
         }
 
-        private AssetTypeValueField? GetAssetBaseField(AssetsManager assetsManager, string name)
+        private static AssetTypeValueField? GetAssetBaseField(AssetsManager assetsManager, string name)
         {
             foreach (var assetsManagerFile in assetsManager.Files)
             {
