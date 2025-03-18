@@ -30,24 +30,24 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FileBrowserControl));
-            fileTreeView = new System.Windows.Forms.TreeView();
-            treeViewContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(components);
-            addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            openFileLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            treeViewImageList = new System.Windows.Forms.ImageList(components);
-            extractButton = new System.Windows.Forms.Button();
-            extractListView = new System.Windows.Forms.ListView();
-            nameHeader = new System.Windows.Forms.ColumnHeader();
-            sizeHeader = new System.Windows.Forms.ColumnHeader();
-            extractListContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(components);
-            removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            totalFileSizeLabel = new System.Windows.Forms.Label();
-            totalFileCountLabel = new System.Windows.Forms.Label();
-            clearButton = new System.Windows.Forms.Button();
-            progressBar = new System.Windows.Forms.ProgressBar();
-            searchTextBox = new System.Windows.Forms.TextBox();
-            searchButton = new System.Windows.Forms.Button();
+            fileTreeView = new TreeView();
+            treeViewContextMenuStrip = new ContextMenuStrip(components);
+            addToolStripMenuItem = new ToolStripMenuItem();
+            toolStripSeparator1 = new ToolStripSeparator();
+            openFileLocationToolStripMenuItem = new ToolStripMenuItem();
+            treeViewImageList = new ImageList(components);
+            extractButton = new Button();
+            extractListView = new ListView();
+            nameHeader = new ColumnHeader();
+            sizeHeader = new ColumnHeader();
+            extractListContextMenuStrip = new ContextMenuStrip(components);
+            removeToolStripMenuItem = new ToolStripMenuItem();
+            totalFileSizeLabel = new Label();
+            totalFileCountLabel = new Label();
+            clearButton = new Button();
+            progressBar = new ProgressBar();
+            searchTextBox = new TextBox();
+            searchButton = new Button();
             treeViewContextMenuStrip.SuspendLayout();
             extractListContextMenuStrip.SuspendLayout();
             SuspendLayout();
@@ -63,8 +63,8 @@
             // 
             // treeViewContextMenuStrip
             // 
-            treeViewContextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            treeViewContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { addToolStripMenuItem, toolStripSeparator1, openFileLocationToolStripMenuItem });
+            treeViewContextMenuStrip.ImageScalingSize = new Size(20, 20);
+            treeViewContextMenuStrip.Items.AddRange(new ToolStripItem[] { addToolStripMenuItem, toolStripSeparator1, openFileLocationToolStripMenuItem });
             treeViewContextMenuStrip.Name = "treeViewContextMenuStrip";
             resources.ApplyResources(treeViewContextMenuStrip, "treeViewContextMenuStrip");
             treeViewContextMenuStrip.Opening += TreeViewContextMenuStrip_Opening;
@@ -88,9 +88,9 @@
             // 
             // treeViewImageList
             // 
-            treeViewImageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
-            treeViewImageList.ImageStream = (System.Windows.Forms.ImageListStreamer)resources.GetObject("treeViewImageList.ImageStream");
-            treeViewImageList.TransparentColor = System.Drawing.Color.Transparent;
+            treeViewImageList.ColorDepth = ColorDepth.Depth32Bit;
+            treeViewImageList.ImageStream = (ImageListStreamer)resources.GetObject("treeViewImageList.ImageStream");
+            treeViewImageList.TransparentColor = Color.Transparent;
             treeViewImageList.Images.SetKeyName(0, "FolderIcon.ico");
             treeViewImageList.Images.SetKeyName(1, "FileIcon.ico");
             // 
@@ -104,12 +104,13 @@
             // extractListView
             // 
             resources.ApplyResources(extractListView, "extractListView");
-            extractListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] { nameHeader, sizeHeader });
+            extractListView.Columns.AddRange(new ColumnHeader[] { nameHeader, sizeHeader });
             extractListView.ContextMenuStrip = extractListContextMenuStrip;
             extractListView.FullRowSelect = true;
             extractListView.Name = "extractListView";
             extractListView.UseCompatibleStateImageBehavior = false;
-            extractListView.View = System.Windows.Forms.View.Details;
+            extractListView.View = View.Details;
+            extractListView.Resize += ExtractListView_Resize;
             // 
             // nameHeader
             // 
@@ -121,8 +122,8 @@
             // 
             // extractListContextMenuStrip
             // 
-            extractListContextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            extractListContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { removeToolStripMenuItem });
+            extractListContextMenuStrip.ImageScalingSize = new Size(20, 20);
+            extractListContextMenuStrip.Items.AddRange(new ToolStripItem[] { removeToolStripMenuItem });
             extractListContextMenuStrip.Name = "extractListContextMenuStrip";
             resources.ApplyResources(extractListContextMenuStrip, "extractListContextMenuStrip");
             // 
@@ -168,7 +169,7 @@
             // 
             // FileBrowserControl
             // 
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            AutoScaleMode = AutoScaleMode.Inherit;
             Controls.Add(searchButton);
             Controls.Add(searchTextBox);
             Controls.Add(progressBar);

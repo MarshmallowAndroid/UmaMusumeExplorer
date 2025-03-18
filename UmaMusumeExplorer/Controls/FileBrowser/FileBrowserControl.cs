@@ -8,10 +8,10 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
 {
     partial class FileBrowserControl : UserControl
     {
-        private readonly SortedDictionary<string, ManifestEntry> entries = new();
-        private IDictionary<string, ManifestEntry>? searchedEntries;
+        private readonly SortedDictionary<string, ManifestEntry> entries = [];
+        private Dictionary<string, ManifestEntry>? searchedEntries;
         private IDictionary<string, ManifestEntry>? targetEntries;
-        private readonly SortedDictionary<string, ManifestEntry> selectedEntries = new();
+        private readonly SortedDictionary<string, ManifestEntry> selectedEntries = [];
 
         private bool searched;
 
@@ -26,9 +26,6 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             rootNode.Nodes.Add("");
 
             fileTreeView.Nodes.Add(rootNode);
-
-            extractListView.Columns[0].Width = (int)(extractListView.Width * 0.80F);
-            extractListView.Columns[1].Width = -2;
 
             targetEntries = entries;
         }
@@ -57,7 +54,7 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
                 entryList = targetEntries.Where(ga => ga.Key.StartsWith(convertedNodePath + "/"));
             }
 
-            SortedDictionary<string, ManifestEntry> files = new();
+            SortedDictionary<string, ManifestEntry> files = [];
 
             foreach (var entryValue in entryList)
             {
@@ -103,17 +100,6 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             }
 
             Cursor = Cursors.Default;
-        }
-
-        private void LoadEntries()
-        {
-            if (entries.Count == 0)
-            {
-                foreach (var entry in UmaDataHelper.GetManifestEntries())
-                {
-                    entries.Add(entry.Name, entry);
-                }
-            }
         }
 
         private async void AddToolStripMenuItem_Click(object sender, EventArgs e)
@@ -171,14 +157,14 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
 
             await Task.Run(() =>
             {
-                List<ListViewItem> dependencyItems = new();
+                List<ListViewItem> dependencyItems = [];
                 if (SelectedEntryHasDependencies())
                 {
                     DialogResult addDependencyResult = MessageBox.Show("Include dependencies?", "Dependencies found", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                     if (addDependencyResult == DialogResult.Yes)
                     {
-                        List<ManifestEntry> dependencies = new();
+                        List<ManifestEntry> dependencies = [];
                         int currentEntry = 0;
                         int entryCount = selectedEntries.Count;
                         foreach (var selectedEntry in selectedEntries.Values)
@@ -356,13 +342,30 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
             fileTreeView.Nodes[0].Nodes.Add("");
         }
 
+        private void ExtractListView_Resize(object sender, EventArgs e)
+        {
+            extractListView.Columns[0].Width = (int)(extractListView.Width * 0.80F);
+            extractListView.Columns[1].Width = -2;
+        }
+
+        private void LoadEntries()
+        {
+            if (entries.Count == 0)
+            {
+                foreach (var entry in UmaDataHelper.GetManifestEntries())
+                {
+                    entries.Add(entry.Name, entry);
+                }
+            }
+        }
+
         private bool SelectedEntryHasDependencies()
         {
             if (selectedEntries is null) return false;
 
             foreach (var entry in selectedEntries.Values)
             {
-                if (entry.Dependencies.Any()) return true;
+                if (entry.Dependencies.Length != 0) return true;
             }
 
             return false;
@@ -402,10 +405,10 @@ namespace UmaMusumeExplorer.Controls.FileBrowser
         {
             StringBuilder sizeString = new();
 
-            string[] units = new string[]
-            {
+            string[] units =
+            [
                 "B", "KB", "MB", "GB"
-            };
+            ];
 
             int unitIndex = (int)Math.Floor(Math.Log(length, 10) / 3);
             unitIndex = unitIndex >= 0 ? unitIndex : 0;
