@@ -12,7 +12,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
 {
     partial class AudioPlayerControl : UserControl
     {
-        private readonly IWavePlayer waveOut;
+        private readonly WaveOutEvent waveOut;
         private readonly object waveOutLock = new();
 
         private readonly IEnumerable<ManifestEntry> audioAssetEntries = AssetTables.AudioAssetEntries;
@@ -43,9 +43,6 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             if (!audioAssetEntries.Any()) return;
 
             audioTypeComboBox.SelectedIndex = 0;
-
-            fileListView.Columns[0].Width = (int)(fileListView.Width * 0.80F);
-            fileListView.Columns[1].Width = -2;
         }
 
         private void AudioTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -80,7 +77,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             if (sender is not BackgroundWorker backgroundWorker) return;
             if (awbOnly is null) return;
 
-            List<ListViewItem> listViewItems = new();
+            List<ListViewItem> listViewItems = [];
 
             backgroundWorker.ReportProgress(0);
 
@@ -98,8 +95,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
 
                     string name = gameFile.BaseName;
 
-                    listViewItems.Add(new ListViewItem(new string[]
-                    { baseName, audioSource.TrackCount.ToString() })
+                    listViewItems.Add(new ListViewItem([baseName, audioSource.TrackCount.ToString()])
                     { Tag = audioSource });
                 }
 
@@ -130,7 +126,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
                 defaultItems = e.Result as List<ListViewItem>;
                 Filter();
                 if (targetItems is not null)
-                    fileListView.Items.AddRange(targetItems.ToArray());
+                    fileListView.Items.AddRange([.. targetItems]);
             }
 
             fileListView.Columns[0].Width = (int)(fileListView.ClientSize.Width * (float)0.80F);
@@ -314,18 +310,24 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             fileListView.Items.Clear();
 
             if (targetItems is not null)
-                fileListView.Items.AddRange(targetItems.ToArray());
+                fileListView.Items.AddRange([.. targetItems]);
         }
 
         private void ExportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            List<AudioSource> audioSources = new();
+            List<AudioSource> audioSources = [];
             foreach (ListViewItem item in fileListView.SelectedItems)
             {
                 if (item.Tag is AudioSource audioSource)
                     audioSources.Add(audioSource);
             }
-            ExportBank(audioSources.ToArray());
+            ExportBank([.. audioSources]);
+        }
+
+        private void FileListView_Resize(object sender, EventArgs e)
+        {
+            fileListView.Columns[0].Width = (int)(fileListView.Width * 0.80F);
+            fileListView.Columns[1].Width = -2;
         }
 
         private void Filter()

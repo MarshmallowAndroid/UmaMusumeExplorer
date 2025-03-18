@@ -31,37 +31,37 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AudioPlayerControl));
-            fileListView = new System.Windows.Forms.ListView();
-            nameHeader = new System.Windows.Forms.ColumnHeader();
-            tracksHeader = new System.Windows.Forms.ColumnHeader();
-            multiSelectContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(components);
-            exportSelectedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            fileListView = new ListView();
+            nameHeader = new ColumnHeader();
+            tracksHeader = new ColumnHeader();
+            multiSelectContextMenuStrip = new ContextMenuStrip(components);
+            exportSelectedToolStripMenuItem = new ToolStripMenuItem();
             loadingBackgroundWorker = new System.ComponentModel.BackgroundWorker();
-            tracksComboBox = new System.Windows.Forms.ComboBox();
-            loadingProgressBar = new System.Windows.Forms.ProgressBar();
-            tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            leftPanel = new System.Windows.Forms.Panel();
-            searchBox = new System.Windows.Forms.TextBox();
-            filterButton = new System.Windows.Forms.Button();
-            refreshButton = new System.Windows.Forms.Button();
-            audioTypeComboBox = new System.Windows.Forms.ComboBox();
-            searchLabel = new System.Windows.Forms.Label();
-            audioTypeLabel = new System.Windows.Forms.Label();
-            loadingFileNameLabel = new System.Windows.Forms.Label();
-            rightPanel = new System.Windows.Forms.Panel();
-            amplifyUpDown = new System.Windows.Forms.NumericUpDown();
-            amplifyLabel = new System.Windows.Forms.Label();
-            configureLoopButton = new System.Windows.Forms.Button();
-            exportButton = new System.Windows.Forms.Button();
-            timeLengthLabel = new System.Windows.Forms.Label();
-            timeElapsedLabel = new System.Windows.Forms.Label();
-            seekTrackBar = new System.Windows.Forms.TrackBar();
-            controlsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            prevTrackButton = new System.Windows.Forms.Button();
-            nextTrackButton = new System.Windows.Forms.Button();
-            prevBankButton = new System.Windows.Forms.Button();
-            nextBankButton = new System.Windows.Forms.Button();
-            playButton = new System.Windows.Forms.Button();
+            tracksComboBox = new ComboBox();
+            loadingProgressBar = new ProgressBar();
+            tableLayoutPanel = new TableLayoutPanel();
+            leftPanel = new Panel();
+            searchBox = new TextBox();
+            filterButton = new Button();
+            refreshButton = new Button();
+            audioTypeComboBox = new ComboBox();
+            searchLabel = new Label();
+            audioTypeLabel = new Label();
+            loadingFileNameLabel = new Label();
+            rightPanel = new Panel();
+            amplifyUpDown = new NumericUpDown();
+            amplifyLabel = new Label();
+            configureLoopButton = new Button();
+            exportButton = new Button();
+            timeLengthLabel = new Label();
+            timeElapsedLabel = new Label();
+            seekTrackBar = new TrackBar();
+            controlsTableLayoutPanel = new TableLayoutPanel();
+            prevTrackButton = new Button();
+            nextTrackButton = new Button();
+            prevBankButton = new Button();
+            nextBankButton = new Button();
+            playButton = new Button();
             updateTimer = new System.Windows.Forms.Timer(components);
             multiSelectContextMenuStrip.SuspendLayout();
             tableLayoutPanel.SuspendLayout();
@@ -75,15 +75,16 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             // fileListView
             // 
             resources.ApplyResources(fileListView, "fileListView");
-            fileListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] { nameHeader, tracksHeader });
+            fileListView.Columns.AddRange(new ColumnHeader[] { nameHeader, tracksHeader });
             fileListView.ContextMenuStrip = multiSelectContextMenuStrip;
             fileListView.FullRowSelect = true;
             fileListView.Name = "fileListView";
-            fileListView.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            fileListView.Sorting = SortOrder.Ascending;
             fileListView.UseCompatibleStateImageBehavior = false;
-            fileListView.View = System.Windows.Forms.View.Details;
+            fileListView.View = View.Details;
             fileListView.ItemActivate += FileListView_ItemActivate;
             fileListView.KeyDown += FileListView_KeyDown;
+            fileListView.Resize += FileListView_Resize;
             // 
             // nameHeader
             // 
@@ -95,7 +96,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             // 
             // multiSelectContextMenuStrip
             // 
-            multiSelectContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { exportSelectedToolStripMenuItem });
+            multiSelectContextMenuStrip.Items.AddRange(new ToolStripItem[] { exportSelectedToolStripMenuItem });
             multiSelectContextMenuStrip.Name = "multiSelectContextMenuStrip";
             resources.ApplyResources(multiSelectContextMenuStrip, "multiSelectContextMenuStrip");
             // 
@@ -116,7 +117,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             // tracksComboBox
             // 
             resources.ApplyResources(tracksComboBox, "tracksComboBox");
-            tracksComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            tracksComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             tracksComboBox.FormattingEnabled = true;
             tracksComboBox.Name = "tracksComboBox";
             tracksComboBox.SelectedIndexChanged += TracksComboBox_SelectedIndexChanged;
@@ -168,7 +169,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             // 
             // audioTypeComboBox
             // 
-            audioTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            audioTypeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             audioTypeComboBox.FormattingEnabled = true;
             audioTypeComboBox.Items.AddRange(new object[] { resources.GetString("audioTypeComboBox.Items"), resources.GetString("audioTypeComboBox.Items1"), resources.GetString("audioTypeComboBox.Items2"), resources.GetString("audioTypeComboBox.Items3"), resources.GetString("audioTypeComboBox.Items4"), resources.GetString("audioTypeComboBox.Items5") });
             resources.ApplyResources(audioTypeComboBox, "audioTypeComboBox");
@@ -188,7 +189,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             // loadingFileNameLabel
             // 
             resources.ApplyResources(loadingFileNameLabel, "loadingFileNameLabel");
-            loadingFileNameLabel.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            loadingFileNameLabel.BackColor = SystemColors.ControlLightLight;
             loadingFileNameLabel.Name = "loadingFileNameLabel";
             // 
             // rightPanel
@@ -250,7 +251,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             seekTrackBar.Maximum = 100;
             seekTrackBar.Name = "seekTrackBar";
             seekTrackBar.TickFrequency = 0;
-            seekTrackBar.TickStyle = System.Windows.Forms.TickStyle.Both;
+            seekTrackBar.TickStyle = TickStyle.Both;
             seekTrackBar.Scroll += SeekTrackBar_Scroll;
             // 
             // controlsTableLayoutPanel
@@ -304,7 +305,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             // AudioPlayerControl
             // 
             resources.ApplyResources(this, "$this");
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(tableLayoutPanel);
             Name = "AudioPlayerControl";
             Load += AudioPlayerControl_Load;
