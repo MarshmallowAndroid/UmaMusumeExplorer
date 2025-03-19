@@ -28,52 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
-            iconPictureBox = new Common.HighQualityPictureBox();
-            skillNameLabel = new System.Windows.Forms.Label();
-            skillDescriptionLabel = new System.Windows.Forms.Label();
-            closeButton = new System.Windows.Forms.Button();
-            skillPointHint = new System.Windows.Forms.Label();
-            skillPointNeededLabel = new System.Windows.Forms.Label();
-            evolutionButton = new System.Windows.Forms.Button();
+            iconPictureBox = new UmaMusumeExplorer.Controls.Common.HighQualityPictureBox();
+            skillNameLabel = new Label();
+            skillDescriptionLabel = new Label();
+            closeButton = new Button();
+            skillPointHint = new Label();
+            skillPointNeededLabel = new Label();
+            evolutionButton = new Button();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox).BeginInit();
             SuspendLayout();
             // 
             // iconPictureBox
             // 
-            iconPictureBox.BackColor = System.Drawing.Color.Transparent;
-            iconPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            iconPictureBox.Location = new System.Drawing.Point(18, 18);
+            iconPictureBox.BackColor = Color.Transparent;
+            iconPictureBox.BackgroundImageLayout = ImageLayout.Zoom;
+            iconPictureBox.Location = new Point(18, 18);
             iconPictureBox.Name = "iconPictureBox";
-            iconPictureBox.Size = new System.Drawing.Size(96, 96);
+            iconPictureBox.Size = new Size(96, 96);
             iconPictureBox.TabIndex = 0;
             iconPictureBox.TabStop = false;
             // 
             // skillNameLabel
             // 
-            skillNameLabel.BackColor = System.Drawing.Color.Transparent;
-            skillNameLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            skillNameLabel.Location = new System.Drawing.Point(120, 18);
+            skillNameLabel.BackColor = Color.Transparent;
+            skillNameLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            skillNameLabel.Location = new Point(120, 18);
             skillNameLabel.Name = "skillNameLabel";
-            skillNameLabel.Size = new System.Drawing.Size(384, 21);
+            skillNameLabel.Size = new Size(384, 21);
             skillNameLabel.TabIndex = 0;
             skillNameLabel.Text = "Skill name";
-            skillNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            skillNameLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // skillDescriptionLabel
             // 
-            skillDescriptionLabel.BackColor = System.Drawing.Color.Transparent;
-            skillDescriptionLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            skillDescriptionLabel.Location = new System.Drawing.Point(120, 39);
+            skillDescriptionLabel.BackColor = Color.Transparent;
+            skillDescriptionLabel.Font = new Font("Segoe UI", 12F);
+            skillDescriptionLabel.Location = new Point(120, 39);
             skillDescriptionLabel.Name = "skillDescriptionLabel";
-            skillDescriptionLabel.Size = new System.Drawing.Size(384, 75);
+            skillDescriptionLabel.Size = new Size(384, 104);
             skillDescriptionLabel.TabIndex = 1;
             skillDescriptionLabel.Text = "Skill description";
             // 
             // closeButton
             // 
-            closeButton.Location = new System.Drawing.Point(263, 142);
+            closeButton.Anchor = AnchorStyles.Bottom;
+            closeButton.Location = new Point(263, 186);
             closeButton.Name = "closeButton";
-            closeButton.Size = new System.Drawing.Size(75, 23);
+            closeButton.Size = new Size(75, 23);
             closeButton.TabIndex = 5;
             closeButton.Text = "Close";
             closeButton.UseVisualStyleBackColor = true;
@@ -81,34 +82,34 @@
             // 
             // skillPointHint
             // 
-            skillPointHint.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            skillPointHint.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             skillPointHint.AutoSize = true;
-            skillPointHint.BackColor = System.Drawing.Color.White;
-            skillPointHint.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            skillPointHint.Location = new System.Drawing.Point(475, 18);
+            skillPointHint.BackColor = Color.White;
+            skillPointHint.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            skillPointHint.Location = new Point(475, 18);
             skillPointHint.Name = "skillPointHint";
-            skillPointHint.Size = new System.Drawing.Size(63, 21);
+            skillPointHint.Size = new Size(63, 21);
             skillPointHint.TabIndex = 2;
             skillPointHint.Text = "Skill Pt";
-            skillPointHint.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            skillPointHint.TextAlign = ContentAlignment.MiddleLeft;
             skillPointHint.Visible = false;
             // 
             // skillPointNeededLabel
             // 
-            skillPointNeededLabel.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            skillPointNeededLabel.BackColor = System.Drawing.Color.Transparent;
-            skillPointNeededLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            skillPointNeededLabel.Location = new System.Drawing.Point(544, 18);
+            skillPointNeededLabel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            skillPointNeededLabel.BackColor = Color.Transparent;
+            skillPointNeededLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            skillPointNeededLabel.Location = new Point(544, 18);
             skillPointNeededLabel.Name = "skillPointNeededLabel";
-            skillPointNeededLabel.Size = new System.Drawing.Size(39, 21);
+            skillPointNeededLabel.Size = new Size(39, 21);
             skillPointNeededLabel.TabIndex = 3;
-            skillPointNeededLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            skillPointNeededLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // evolutionButton
             // 
-            evolutionButton.Location = new System.Drawing.Point(18, 120);
+            evolutionButton.Location = new Point(18, 120);
             evolutionButton.Name = "evolutionButton";
-            evolutionButton.Size = new System.Drawing.Size(96, 23);
+            evolutionButton.Size = new Size(96, 23);
             evolutionButton.TabIndex = 4;
             evolutionButton.Text = "Evolution";
             evolutionButton.UseVisualStyleBackColor = true;
@@ -116,9 +117,9 @@
             // 
             // SkillInfoForm
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(601, 177);
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(601, 221);
             Controls.Add(evolutionButton);
             Controls.Add(closeButton);
             Controls.Add(skillDescriptionLabel);
@@ -126,12 +127,12 @@
             Controls.Add(skillPointHint);
             Controls.Add(skillNameLabel);
             Controls.Add(iconPictureBox);
-            FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "SkillInfoForm";
-            Padding = new System.Windows.Forms.Padding(15);
-            StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            Padding = new Padding(15);
+            StartPosition = FormStartPosition.Manual;
             MouseDown += SkillInfoForm_MouseDown;
             MouseMove += SkillInfoForm_MouseMove;
             MouseUp += SkillInfoForm_MouseUp;
