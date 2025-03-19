@@ -13,6 +13,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             cardInfoControl.CharaData = chara;
             voiceLinesControl.CharaId = chara.Id;
             songsControl.CharaId = chara.Id;
+            supportCardsControl.CharaId = chara.Id;
 
             Text = AssetTables.GetText(TextCategory.MasterCharaName, chara.Id);
         }

@@ -29,17 +29,20 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CharacterInfoForm));
-            characterInfoTabControl = new System.Windows.Forms.TabControl();
-            characterInfoTabPage = new System.Windows.Forms.TabPage();
+            characterInfoTabControl = new TabControl();
+            characterInfoTabPage = new TabPage();
             cardInfoControl = new CardInfoControl();
-            voiceLinesTabPage = new System.Windows.Forms.TabPage();
+            voiceLinesTabPage = new TabPage();
             voiceLinesControl = new VoiceLinesControl();
-            songsTabPage = new System.Windows.Forms.TabPage();
+            songsTabPage = new TabPage();
             songsControl = new SongsControl();
+            supportCardsTabPage = new TabPage();
+            supportCardsControl = new SupportCardsControl();
             characterInfoTabControl.SuspendLayout();
             characterInfoTabPage.SuspendLayout();
             voiceLinesTabPage.SuspendLayout();
             songsTabPage.SuspendLayout();
+            supportCardsTabPage.SuspendLayout();
             SuspendLayout();
             // 
             // characterInfoTabControl
@@ -48,6 +51,7 @@
             characterInfoTabControl.Controls.Add(characterInfoTabPage);
             characterInfoTabControl.Controls.Add(voiceLinesTabPage);
             characterInfoTabControl.Controls.Add(songsTabPage);
+            characterInfoTabControl.Controls.Add(supportCardsTabPage);
             characterInfoTabControl.Name = "characterInfoTabControl";
             characterInfoTabControl.SelectedIndex = 0;
             // 
@@ -73,7 +77,7 @@
             // 
             // voiceLinesControl
             // 
-            voiceLinesControl.CharacterId = 0;
+            voiceLinesControl.CharaId = 0;
             resources.ApplyResources(voiceLinesControl, "voiceLinesControl");
             voiceLinesControl.Name = "voiceLinesControl";
             // 
@@ -90,13 +94,26 @@
             resources.ApplyResources(songsControl, "songsControl");
             songsControl.Name = "songsControl";
             // 
+            // supportCardsTabPage
+            // 
+            supportCardsTabPage.Controls.Add(supportCardsControl);
+            resources.ApplyResources(supportCardsTabPage, "supportCardsTabPage");
+            supportCardsTabPage.Name = "supportCardsTabPage";
+            supportCardsTabPage.UseVisualStyleBackColor = true;
+            // 
+            // supportCardsControl
+            // 
+            supportCardsControl.CharaId = 0;
+            resources.ApplyResources(supportCardsControl, "supportCardsControl");
+            supportCardsControl.Name = "supportCardsControl";
+            // 
             // CharacterInfoForm
             // 
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            AutoScaleMode = AutoScaleMode.Inherit;
             resources.ApplyResources(this, "$this");
             Controls.Add(characterInfoTabControl);
             DoubleBuffered = true;
-            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "CharacterInfoForm";
             FormClosing += CharacterInfoForm_FormClosing;
@@ -104,6 +121,7 @@
             characterInfoTabPage.ResumeLayout(false);
             voiceLinesTabPage.ResumeLayout(false);
             songsTabPage.ResumeLayout(false);
+            supportCardsTabPage.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -115,5 +133,7 @@
         private SongsControl songsControl;
         private System.Windows.Forms.TabPage voiceLinesTabPage;
         private VoiceLinesControl voiceLinesControl;
+        private TabPage supportCardsTabPage;
+        private SupportCardsControl supportCardsControl;
     }
 }
