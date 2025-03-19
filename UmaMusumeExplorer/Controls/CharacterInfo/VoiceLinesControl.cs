@@ -28,7 +28,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             exportBackgroundWorker.RunWorkerCompleted += ExportBackgroundWorker_RunWorkerCompleted;
         }
 
-        public int CharacterId { get; set; }
+        public int CharaId { get; set; }
 
         public void StopAllPlayback()
         {
@@ -43,7 +43,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
                 costumeComboBox.SelectedIndex = 0;
                 categoryComboBox.SelectedIndex = 0;
 
-                foreach (var item in AssetTables.CardDatas.Where(cd => cd.CharaId == CharacterId))
+                foreach (var item in AssetTables.CardDatas.Where(cd => cd.CharaId == CharaId))
                 {
                     costumeComboBox.Items.Add(new CostumeComboBoxItem(item));
                 }
@@ -56,9 +56,9 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
         {
             CardData? cardData = (costumeComboBox.SelectedItem as CostumeComboBoxItem)?.CardData ?? null;
 
-            selectedCharacterSystemTexts = systemTexts.Where(st => st.CharacterId == CharacterId);
+            selectedCharacterSystemTexts = systemTexts.Where(st => st.CharacterId == CharaId);
             selectedCostumeSystemTexts = selectedCharacterSystemTexts;
-            iconPinnedBitmap = UnityAssets.GetCharaIcon(CharacterId);
+            iconPinnedBitmap = UnityAssets.GetCharaIcon(CharaId);
 
             if (cardData is not null)
             {
