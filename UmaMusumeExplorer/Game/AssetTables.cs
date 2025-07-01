@@ -25,7 +25,7 @@ namespace UmaMusumeExplorer.Game
                 {
                     MethodInfo? targetMethod = (typeof(UmaDataHelper).GetMethod("GetMasterDatabaseRows")?.MakeGenericMethod(listType)) ??
                         throw new Exception("Could not find suitable method.");
-                    property.SetValue(null, targetMethod.Invoke(null, new object?[] { null }));
+                    property.SetValue(null, targetMethod.Invoke(null, [null]));
                 }
                 else
                 {
@@ -42,37 +42,37 @@ namespace UmaMusumeExplorer.Game
 
         public static ProgressUpdater? UpdateProgress { get; set; }
 
-        public static List<ManifestEntry> AudioAssetEntries { get; private set; } = new();
+        public static List<ManifestEntry> AudioAssetEntries { get; private set; } = [];
 
-        public static List<AvailableSkillSet> AvailableSkillSets { get; private set; } = new();
+        public static List<AvailableSkillSet> AvailableSkillSets { get; private set; } = [];
 
-        public static List<CardData> CardDatas { get; private set; } = new();
-        public static List<CardRarityData> CardRarityDatas { get; private set; } = new();
-        public static List<CharaData> CharaDatas { get; private set; } = new();
+        public static List<CardData> CardDatas { get; private set; } = [];
+        public static List<CardRarityData> CardRarityDatas { get; private set; } = [];
+        public static List<CharaData> CharaDatas { get; private set; } = [];
 
-        public static List<CharacterSystemText> CharacterSystemTexts { get; private set; } = new();
+        public static List<CharacterSystemText> CharacterSystemTexts { get; private set; } = [];
 
-        public static List<GachaAvailable> GachaAvailables { get; private set; } = new();
+        public static List<GachaAvailable> GachaAvailables { get; private set; } = [];
 
-        public static List<JukeboxMusicData> JukeboxMusicDatas { get; private set; } = new();
+        public static List<JukeboxMusicData> JukeboxMusicDatas { get; private set; } = [];
 
-        public static List<LiveData> LiveDatas { get; private set; } = new();
-        public static List<LivePermissionData> LivePermissionDatas { get; private set; } = new();
+        public static List<LiveData> LiveDatas { get; private set; } = [];
+        public static List<LivePermissionData> LivePermissionDatas { get; private set; } = [];
 
-        public static List<RaceBgm> RaceBgms { get; private set; } = new();
-        public static List<RaceBgmPattern> RaceBgmPatterns { get; private set; } = new();
+        public static List<RaceBgm> RaceBgms { get; private set; } = [];
+        public static List<RaceBgmPattern> RaceBgmPatterns { get; private set; } = [];
 
-        public static List<SkillSet> SkillSets { get; private set; } = new();
-        public static List<SkillData> SkillDatas { get; private set; } = new();
+        public static List<SkillSet> SkillSets { get; private set; } = [];
+        public static List<SkillData> SkillDatas { get; private set; } = [];
 
-        public static List<SingleModeSkillNeedPoint> SingleModeSkillNeedPoints { get; private set; } = new();
+        public static List<SingleModeSkillNeedPoint> SingleModeSkillNeedPoints { get; private set; } = [];
 
-        public static List<SkillUpgradeCondition> SkillUpgradeConditions { get; private set; } = new();
-        public static List<SkillUpgradeDescription> SkillUpgradeDescriptions { get; private set; } = new();
+        public static List<SkillUpgradeCondition> SkillUpgradeConditions { get; private set; } = [];
+        public static List<SkillUpgradeDescription> SkillUpgradeDescriptions { get; private set; } = [];
 
-        public static List<SupportCardData> SupportCardDatas { get; private set; } = new();
+        public static List<SupportCardData> SupportCardDatas { get; private set; } = [];
 
-        public static List<TextData> TextDatas { get; private set; } = new();
+        public static List<TextData> TextDatas { get; private set; } = [];
 
         public static string GetText(TextCategory category, int index)
         {
