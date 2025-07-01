@@ -227,9 +227,9 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
 
             AssetTypeValueField? field = GetAssetBaseField(assetsManager, fileName);
             if (field is null) return -1;
-            field = field["VoiceKeys"]["thisList"][0];
+            field = field["VoiceKeys"];
             if (!field.Any()) return -1;
-            return field[0]["frame"].AsInt;
+            return field["thisList"][0][0]["frame"].AsInt;
         }
 
         private static void LoadAsset(AssetsManager assetsManager, ManifestEntry manifestEntry)
