@@ -42,19 +42,19 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             growthRateLabel = new Label();
             cvNameLabel = new Label();
             aptitudeTableLayoutPanel = new DoubleBufferedTableLayoutPanel();
-            driveInRankedLabel = new RankedLabel();
+            endRankedLabel = new RankedLabel();
             dirtRankedLabel = new RankedLabel();
             turfRankedLabel = new RankedLabel();
-            fieldAptitudeLabel = new Label();
+            trackAptitudeLabel = new Label();
             distanceAptitudeLabel = new Label();
             runningStyleAptitudeLabel = new Label();
-            shortRankedLabel = new RankedLabel();
+            sprintRankedLabel = new RankedLabel();
             mileRankedLabel = new RankedLabel();
-            middleRankedLabel = new RankedLabel();
+            mediumRankedLabel = new RankedLabel();
             longRankedLabel = new RankedLabel();
-            escapeRankedLabel = new RankedLabel();
-            leadingRankedLabel = new RankedLabel();
-            insertRankedLabel = new RankedLabel();
+            frontRankedLabel = new RankedLabel();
+            paceRankedLabel = new RankedLabel();
+            lateRankedLabel = new RankedLabel();
             costumeComboBox = new ComboBox();
             growthRateTableLayoutPanel = new DoubleBufferedTableLayoutPanel();
             speedGrowthLabel = new Label();
@@ -69,11 +69,11 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             staminaHintLabel = new Label();
             powerHintLabel = new Label();
             gutsHintLabel = new Label();
-            wisdomHintLabel = new Label();
+            witHintLabel = new Label();
             staminaStatusDisplayLabel = new StatusDisplayLabel();
             powerStatusDisplayLabel = new StatusDisplayLabel();
             gutsStatusDisplayLabel = new StatusDisplayLabel();
-            wisdomStatusDisplayLabel = new StatusDisplayLabel();
+            witStatusDisplayLabel = new StatusDisplayLabel();
             rarityComboBox = new ComboBox();
             rarityHintLabel = new Label();
             levelHintLabel = new Label();
@@ -204,9 +204,9 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             growthRateLabel.Location = new Point(2, 424);
             growthRateLabel.Margin = new Padding(3, 9, 3, 0);
             growthRateLabel.Name = "growthRateLabel";
-            growthRateLabel.Size = new Size(69, 15);
+            growthRateLabel.Size = new Size(72, 15);
             growthRateLabel.TabIndex = 11;
-            growthRateLabel.Text = "Growth rate";
+            growthRateLabel.Text = "Growth Rate";
             // 
             // cvNameLabel
             // 
@@ -228,19 +228,19 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             aptitudeTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
             aptitudeTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
             aptitudeTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            aptitudeTableLayoutPanel.Controls.Add(driveInRankedLabel, 4, 2);
+            aptitudeTableLayoutPanel.Controls.Add(endRankedLabel, 4, 2);
             aptitudeTableLayoutPanel.Controls.Add(dirtRankedLabel, 2, 0);
             aptitudeTableLayoutPanel.Controls.Add(turfRankedLabel, 1, 0);
-            aptitudeTableLayoutPanel.Controls.Add(fieldAptitudeLabel, 0, 0);
+            aptitudeTableLayoutPanel.Controls.Add(trackAptitudeLabel, 0, 0);
             aptitudeTableLayoutPanel.Controls.Add(distanceAptitudeLabel, 0, 1);
             aptitudeTableLayoutPanel.Controls.Add(runningStyleAptitudeLabel, 0, 2);
-            aptitudeTableLayoutPanel.Controls.Add(shortRankedLabel, 1, 1);
+            aptitudeTableLayoutPanel.Controls.Add(sprintRankedLabel, 1, 1);
             aptitudeTableLayoutPanel.Controls.Add(mileRankedLabel, 2, 1);
-            aptitudeTableLayoutPanel.Controls.Add(middleRankedLabel, 3, 1);
+            aptitudeTableLayoutPanel.Controls.Add(mediumRankedLabel, 3, 1);
             aptitudeTableLayoutPanel.Controls.Add(longRankedLabel, 4, 1);
-            aptitudeTableLayoutPanel.Controls.Add(escapeRankedLabel, 1, 2);
-            aptitudeTableLayoutPanel.Controls.Add(leadingRankedLabel, 2, 2);
-            aptitudeTableLayoutPanel.Controls.Add(insertRankedLabel, 3, 2);
+            aptitudeTableLayoutPanel.Controls.Add(frontRankedLabel, 1, 2);
+            aptitudeTableLayoutPanel.Controls.Add(paceRankedLabel, 2, 2);
+            aptitudeTableLayoutPanel.Controls.Add(lateRankedLabel, 3, 2);
             aptitudeTableLayoutPanel.Location = new Point(2, 293);
             aptitudeTableLayoutPanel.Margin = new Padding(3, 4, 3, 4);
             aptitudeTableLayoutPanel.Name = "aptitudeTableLayoutPanel";
@@ -251,158 +251,161 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             aptitudeTableLayoutPanel.Size = new Size(563, 118);
             aptitudeTableLayoutPanel.TabIndex = 10;
             // 
-            // driveInRankedLabel
+            // endRankedLabel
             // 
-            driveInRankedLabel.Anchor = AnchorStyles.None;
-            driveInRankedLabel.BorderStyle = BorderStyle.FixedSingle;
-            driveInRankedLabel.Location = new Point(451, 83);
-            driveInRankedLabel.Margin = new Padding(3, 5, 3, 5);
-            driveInRankedLabel.Name = "driveInRankedLabel";
-            driveInRankedLabel.Rank = Rank.Unknown;
-            driveInRankedLabel.Size = new Size(109, 30);
-            driveInRankedLabel.TabIndex = 12;
-            driveInRankedLabel.Text = "Drive-in";
+            endRankedLabel.Anchor = AnchorStyles.None;
+            endRankedLabel.BorderStyle = BorderStyle.FixedSingle;
+            endRankedLabel.LabelText = "End";
+            endRankedLabel.Location = new Point(451, 83);
+            endRankedLabel.Margin = new Padding(3, 5, 3, 5);
+            endRankedLabel.Name = "endRankedLabel";
+            endRankedLabel.Rank = Rank.Unknown;
+            endRankedLabel.Size = new Size(109, 30);
+            endRankedLabel.TabIndex = 12;
             // 
             // dirtRankedLabel
             // 
             dirtRankedLabel.Anchor = AnchorStyles.None;
             dirtRankedLabel.BorderStyle = BorderStyle.FixedSingle;
+            dirtRankedLabel.LabelText = "Dirt";
             dirtRankedLabel.Location = new Point(227, 5);
             dirtRankedLabel.Margin = new Padding(3, 5, 3, 5);
             dirtRankedLabel.Name = "dirtRankedLabel";
             dirtRankedLabel.Rank = Rank.Unknown;
             dirtRankedLabel.Size = new Size(106, 29);
             dirtRankedLabel.TabIndex = 2;
-            dirtRankedLabel.Text = "Dirt";
             // 
             // turfRankedLabel
             // 
             turfRankedLabel.Anchor = AnchorStyles.None;
             turfRankedLabel.BorderStyle = BorderStyle.FixedSingle;
+            turfRankedLabel.LabelText = "Turf";
             turfRankedLabel.Location = new Point(115, 5);
             turfRankedLabel.Margin = new Padding(3, 5, 3, 5);
             turfRankedLabel.Name = "turfRankedLabel";
             turfRankedLabel.Rank = Rank.Unknown;
             turfRankedLabel.Size = new Size(106, 29);
             turfRankedLabel.TabIndex = 1;
-            turfRankedLabel.Text = "Turf";
             // 
-            // fieldAptitudeLabel
+            // trackAptitudeLabel
             // 
-            fieldAptitudeLabel.Anchor = AnchorStyles.Left;
-            fieldAptitudeLabel.AutoSize = true;
-            fieldAptitudeLabel.ImeMode = ImeMode.NoControl;
-            fieldAptitudeLabel.Location = new Point(3, 12);
-            fieldAptitudeLabel.Name = "fieldAptitudeLabel";
-            fieldAptitudeLabel.Size = new Size(79, 15);
-            fieldAptitudeLabel.TabIndex = 0;
-            fieldAptitudeLabel.Text = "Field aptitude";
+            trackAptitudeLabel.AutoSize = true;
+            trackAptitudeLabel.Dock = DockStyle.Fill;
+            trackAptitudeLabel.ImeMode = ImeMode.NoControl;
+            trackAptitudeLabel.Location = new Point(3, 0);
+            trackAptitudeLabel.Name = "trackAptitudeLabel";
+            trackAptitudeLabel.Size = new Size(106, 39);
+            trackAptitudeLabel.TabIndex = 0;
+            trackAptitudeLabel.Text = "Track";
+            trackAptitudeLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // distanceAptitudeLabel
             // 
-            distanceAptitudeLabel.Anchor = AnchorStyles.Left;
             distanceAptitudeLabel.AutoSize = true;
+            distanceAptitudeLabel.Dock = DockStyle.Fill;
             distanceAptitudeLabel.ImeMode = ImeMode.NoControl;
-            distanceAptitudeLabel.Location = new Point(3, 51);
+            distanceAptitudeLabel.Location = new Point(3, 39);
             distanceAptitudeLabel.Name = "distanceAptitudeLabel";
-            distanceAptitudeLabel.Size = new Size(99, 15);
+            distanceAptitudeLabel.Size = new Size(106, 39);
             distanceAptitudeLabel.TabIndex = 3;
-            distanceAptitudeLabel.Text = "Distance aptitude";
+            distanceAptitudeLabel.Text = "Distance";
+            distanceAptitudeLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // runningStyleAptitudeLabel
             // 
-            runningStyleAptitudeLabel.Anchor = AnchorStyles.Left;
             runningStyleAptitudeLabel.AutoSize = true;
+            runningStyleAptitudeLabel.Dock = DockStyle.Fill;
             runningStyleAptitudeLabel.ImeMode = ImeMode.NoControl;
-            runningStyleAptitudeLabel.Location = new Point(3, 83);
+            runningStyleAptitudeLabel.Location = new Point(3, 78);
             runningStyleAptitudeLabel.Name = "runningStyleAptitudeLabel";
-            runningStyleAptitudeLabel.Size = new Size(82, 30);
+            runningStyleAptitudeLabel.Size = new Size(106, 40);
             runningStyleAptitudeLabel.TabIndex = 8;
-            runningStyleAptitudeLabel.Text = "Running style aptitude";
+            runningStyleAptitudeLabel.Text = "Style";
+            runningStyleAptitudeLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // shortRankedLabel
+            // sprintRankedLabel
             // 
-            shortRankedLabel.Anchor = AnchorStyles.None;
-            shortRankedLabel.BorderStyle = BorderStyle.FixedSingle;
-            shortRankedLabel.Location = new Point(115, 44);
-            shortRankedLabel.Margin = new Padding(3, 5, 3, 5);
-            shortRankedLabel.Name = "shortRankedLabel";
-            shortRankedLabel.Rank = Rank.Unknown;
-            shortRankedLabel.Size = new Size(106, 29);
-            shortRankedLabel.TabIndex = 4;
-            shortRankedLabel.Text = "Short";
+            sprintRankedLabel.Anchor = AnchorStyles.None;
+            sprintRankedLabel.BorderStyle = BorderStyle.FixedSingle;
+            sprintRankedLabel.LabelText = "Sprint";
+            sprintRankedLabel.Location = new Point(115, 44);
+            sprintRankedLabel.Margin = new Padding(3, 5, 3, 5);
+            sprintRankedLabel.Name = "sprintRankedLabel";
+            sprintRankedLabel.Rank = Rank.Unknown;
+            sprintRankedLabel.Size = new Size(106, 29);
+            sprintRankedLabel.TabIndex = 4;
             // 
             // mileRankedLabel
             // 
             mileRankedLabel.Anchor = AnchorStyles.None;
             mileRankedLabel.BorderStyle = BorderStyle.FixedSingle;
+            mileRankedLabel.LabelText = "Mile";
             mileRankedLabel.Location = new Point(227, 44);
             mileRankedLabel.Margin = new Padding(3, 5, 3, 5);
             mileRankedLabel.Name = "mileRankedLabel";
             mileRankedLabel.Rank = Rank.Unknown;
             mileRankedLabel.Size = new Size(106, 29);
             mileRankedLabel.TabIndex = 5;
-            mileRankedLabel.Text = "Mile";
             // 
-            // middleRankedLabel
+            // mediumRankedLabel
             // 
-            middleRankedLabel.Anchor = AnchorStyles.None;
-            middleRankedLabel.BorderStyle = BorderStyle.FixedSingle;
-            middleRankedLabel.Location = new Point(339, 44);
-            middleRankedLabel.Margin = new Padding(3, 5, 3, 5);
-            middleRankedLabel.Name = "middleRankedLabel";
-            middleRankedLabel.Rank = Rank.Unknown;
-            middleRankedLabel.Size = new Size(106, 29);
-            middleRankedLabel.TabIndex = 6;
-            middleRankedLabel.Text = "Middle";
+            mediumRankedLabel.Anchor = AnchorStyles.None;
+            mediumRankedLabel.BorderStyle = BorderStyle.FixedSingle;
+            mediumRankedLabel.LabelText = "Medium";
+            mediumRankedLabel.Location = new Point(339, 44);
+            mediumRankedLabel.Margin = new Padding(3, 5, 3, 5);
+            mediumRankedLabel.Name = "mediumRankedLabel";
+            mediumRankedLabel.Rank = Rank.Unknown;
+            mediumRankedLabel.Size = new Size(106, 29);
+            mediumRankedLabel.TabIndex = 6;
             // 
             // longRankedLabel
             // 
             longRankedLabel.Anchor = AnchorStyles.None;
             longRankedLabel.BorderStyle = BorderStyle.FixedSingle;
+            longRankedLabel.LabelText = "Long";
             longRankedLabel.Location = new Point(451, 44);
             longRankedLabel.Margin = new Padding(3, 5, 3, 5);
             longRankedLabel.Name = "longRankedLabel";
             longRankedLabel.Rank = Rank.Unknown;
             longRankedLabel.Size = new Size(109, 29);
             longRankedLabel.TabIndex = 7;
-            longRankedLabel.Text = "Long";
             // 
-            // escapeRankedLabel
+            // frontRankedLabel
             // 
-            escapeRankedLabel.Anchor = AnchorStyles.None;
-            escapeRankedLabel.BorderStyle = BorderStyle.FixedSingle;
-            escapeRankedLabel.Location = new Point(115, 83);
-            escapeRankedLabel.Margin = new Padding(3, 5, 3, 5);
-            escapeRankedLabel.Name = "escapeRankedLabel";
-            escapeRankedLabel.Rank = Rank.Unknown;
-            escapeRankedLabel.Size = new Size(106, 30);
-            escapeRankedLabel.TabIndex = 9;
-            escapeRankedLabel.Text = "Escape";
+            frontRankedLabel.Anchor = AnchorStyles.None;
+            frontRankedLabel.BorderStyle = BorderStyle.FixedSingle;
+            frontRankedLabel.LabelText = "Front";
+            frontRankedLabel.Location = new Point(115, 83);
+            frontRankedLabel.Margin = new Padding(3, 5, 3, 5);
+            frontRankedLabel.Name = "frontRankedLabel";
+            frontRankedLabel.Rank = Rank.Unknown;
+            frontRankedLabel.Size = new Size(106, 30);
+            frontRankedLabel.TabIndex = 9;
             // 
-            // leadingRankedLabel
+            // paceRankedLabel
             // 
-            leadingRankedLabel.Anchor = AnchorStyles.None;
-            leadingRankedLabel.BorderStyle = BorderStyle.FixedSingle;
-            leadingRankedLabel.Location = new Point(227, 83);
-            leadingRankedLabel.Margin = new Padding(3, 5, 3, 5);
-            leadingRankedLabel.Name = "leadingRankedLabel";
-            leadingRankedLabel.Rank = Rank.Unknown;
-            leadingRankedLabel.Size = new Size(106, 30);
-            leadingRankedLabel.TabIndex = 10;
-            leadingRankedLabel.Text = "Leading";
+            paceRankedLabel.Anchor = AnchorStyles.None;
+            paceRankedLabel.BorderStyle = BorderStyle.FixedSingle;
+            paceRankedLabel.LabelText = "Pace";
+            paceRankedLabel.Location = new Point(227, 83);
+            paceRankedLabel.Margin = new Padding(3, 5, 3, 5);
+            paceRankedLabel.Name = "paceRankedLabel";
+            paceRankedLabel.Rank = Rank.Unknown;
+            paceRankedLabel.Size = new Size(106, 30);
+            paceRankedLabel.TabIndex = 10;
             // 
-            // insertRankedLabel
+            // lateRankedLabel
             // 
-            insertRankedLabel.Anchor = AnchorStyles.None;
-            insertRankedLabel.BorderStyle = BorderStyle.FixedSingle;
-            insertRankedLabel.Location = new Point(339, 83);
-            insertRankedLabel.Margin = new Padding(3, 5, 3, 5);
-            insertRankedLabel.Name = "insertRankedLabel";
-            insertRankedLabel.Rank = Rank.Unknown;
-            insertRankedLabel.Size = new Size(106, 30);
-            insertRankedLabel.TabIndex = 11;
-            insertRankedLabel.Text = "Insert";
+            lateRankedLabel.Anchor = AnchorStyles.None;
+            lateRankedLabel.BorderStyle = BorderStyle.FixedSingle;
+            lateRankedLabel.LabelText = "Late";
+            lateRankedLabel.Location = new Point(339, 83);
+            lateRankedLabel.Margin = new Padding(3, 5, 3, 5);
+            lateRankedLabel.Name = "lateRankedLabel";
+            lateRankedLabel.Rank = Rank.Unknown;
+            lateRankedLabel.Size = new Size(106, 30);
+            lateRankedLabel.TabIndex = 11;
             // 
             // costumeComboBox
             // 
@@ -524,11 +527,11 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             statsTablePanel.Controls.Add(staminaHintLabel, 1, 0);
             statsTablePanel.Controls.Add(powerHintLabel, 2, 0);
             statsTablePanel.Controls.Add(gutsHintLabel, 3, 0);
-            statsTablePanel.Controls.Add(wisdomHintLabel, 4, 0);
+            statsTablePanel.Controls.Add(witHintLabel, 4, 0);
             statsTablePanel.Controls.Add(staminaStatusDisplayLabel, 1, 1);
             statsTablePanel.Controls.Add(powerStatusDisplayLabel, 2, 1);
             statsTablePanel.Controls.Add(gutsStatusDisplayLabel, 3, 1);
-            statsTablePanel.Controls.Add(wisdomStatusDisplayLabel, 4, 1);
+            statsTablePanel.Controls.Add(witStatusDisplayLabel, 4, 1);
             statsTablePanel.Location = new Point(2, 191);
             statsTablePanel.Margin = new Padding(3, 4, 3, 4);
             statsTablePanel.Name = "statsTablePanel";
@@ -595,16 +598,16 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             gutsHintLabel.TabIndex = 6;
             gutsHintLabel.Text = "Guts";
             // 
-            // wisdomHintLabel
+            // witHintLabel
             // 
-            wisdomHintLabel.Anchor = AnchorStyles.None;
-            wisdomHintLabel.AutoSize = true;
-            wisdomHintLabel.ImeMode = ImeMode.NoControl;
-            wisdomHintLabel.Location = new Point(480, 1);
-            wisdomHintLabel.Name = "wisdomHintLabel";
-            wisdomHintLabel.Size = new Size(51, 15);
-            wisdomHintLabel.TabIndex = 8;
-            wisdomHintLabel.Text = "Wisdom";
+            witHintLabel.Anchor = AnchorStyles.None;
+            witHintLabel.AutoSize = true;
+            witHintLabel.ImeMode = ImeMode.NoControl;
+            witHintLabel.Location = new Point(493, 1);
+            witHintLabel.Name = "witHintLabel";
+            witHintLabel.Size = new Size(25, 15);
+            witHintLabel.TabIndex = 8;
+            witHintLabel.Text = "Wit";
             // 
             // staminaStatusDisplayLabel
             // 
@@ -645,18 +648,18 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             gutsStatusDisplayLabel.TabIndex = 7;
             gutsStatusDisplayLabel.Value = 50;
             // 
-            // wisdomStatusDisplayLabel
+            // witStatusDisplayLabel
             // 
-            wisdomStatusDisplayLabel.Anchor = AnchorStyles.None;
-            wisdomStatusDisplayLabel.AutoSize = true;
-            wisdomStatusDisplayLabel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            wisdomStatusDisplayLabel.Location = new Point(462, 25);
-            wisdomStatusDisplayLabel.Margin = new Padding(3, 5, 3, 5);
-            wisdomStatusDisplayLabel.MaxValue = 1200;
-            wisdomStatusDisplayLabel.Name = "wisdomStatusDisplayLabel";
-            wisdomStatusDisplayLabel.Size = new Size(86, 60);
-            wisdomStatusDisplayLabel.TabIndex = 9;
-            wisdomStatusDisplayLabel.Value = 50;
+            witStatusDisplayLabel.Anchor = AnchorStyles.None;
+            witStatusDisplayLabel.AutoSize = true;
+            witStatusDisplayLabel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            witStatusDisplayLabel.Location = new Point(462, 25);
+            witStatusDisplayLabel.Margin = new Padding(3, 5, 3, 5);
+            witStatusDisplayLabel.MaxValue = 1200;
+            witStatusDisplayLabel.Name = "witStatusDisplayLabel";
+            witStatusDisplayLabel.Size = new Size(86, 60);
+            witStatusDisplayLabel.TabIndex = 9;
+            witStatusDisplayLabel.Value = 50;
             // 
             // rarityComboBox
             // 
@@ -749,19 +752,19 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
         private System.Windows.Forms.Label growthRateLabel;
         private System.Windows.Forms.Label cvNameLabel;
         private DoubleBufferedTableLayoutPanel aptitudeTableLayoutPanel;
-        private RankedLabel driveInRankedLabel;
+        private RankedLabel endRankedLabel;
         private RankedLabel dirtRankedLabel;
         private RankedLabel turfRankedLabel;
-        private System.Windows.Forms.Label fieldAptitudeLabel;
+        private System.Windows.Forms.Label trackAptitudeLabel;
         private System.Windows.Forms.Label distanceAptitudeLabel;
         private System.Windows.Forms.Label runningStyleAptitudeLabel;
-        private RankedLabel shortRankedLabel;
+        private RankedLabel sprintRankedLabel;
         private RankedLabel mileRankedLabel;
-        private RankedLabel middleRankedLabel;
+        private RankedLabel mediumRankedLabel;
         private RankedLabel longRankedLabel;
-        private RankedLabel escapeRankedLabel;
-        private RankedLabel leadingRankedLabel;
-        private RankedLabel insertRankedLabel;
+        private RankedLabel frontRankedLabel;
+        private RankedLabel paceRankedLabel;
+        private RankedLabel lateRankedLabel;
         private System.Windows.Forms.ComboBox costumeComboBox;
         private DoubleBufferedTableLayoutPanel growthRateTableLayoutPanel;
         private System.Windows.Forms.Label speedGrowthLabel;
@@ -776,11 +779,11 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
         private System.Windows.Forms.Label staminaHintLabel;
         private System.Windows.Forms.Label powerHintLabel;
         private System.Windows.Forms.Label gutsHintLabel;
-        private System.Windows.Forms.Label wisdomHintLabel;
+        private System.Windows.Forms.Label witHintLabel;
         private StatusDisplayLabel staminaStatusDisplayLabel;
         private StatusDisplayLabel powerStatusDisplayLabel;
         private StatusDisplayLabel gutsStatusDisplayLabel;
-        private StatusDisplayLabel wisdomStatusDisplayLabel;
+        private StatusDisplayLabel witStatusDisplayLabel;
         private System.Windows.Forms.ComboBox rarityComboBox;
         private System.Windows.Forms.Label rarityHintLabel;
         private System.Windows.Forms.Label levelHintLabel;

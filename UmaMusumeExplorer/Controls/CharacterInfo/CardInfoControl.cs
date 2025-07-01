@@ -118,20 +118,20 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             staminaStatusDisplayLabel.Value = cardRarityData.Stamina;
             powerStatusDisplayLabel.Value = cardRarityData.Pow;
             gutsStatusDisplayLabel.Value = cardRarityData.Guts;
-            wisdomStatusDisplayLabel.Value = cardRarityData.Wiz;
+            witStatusDisplayLabel.Value = cardRarityData.Wiz;
 
             turfRankedLabel.Rank = (Rank)cardRarityData.ProperGroundTurf;
             dirtRankedLabel.Rank = (Rank)cardRarityData.ProperGroundDirt;
 
-            shortRankedLabel.Rank = (Rank)cardRarityData.ProperDistanceShort;
+            sprintRankedLabel.Rank = (Rank)cardRarityData.ProperDistanceShort;
             mileRankedLabel.Rank = (Rank)cardRarityData.ProperDistanceMile;
-            middleRankedLabel.Rank = (Rank)cardRarityData.ProperDistanceMiddle;
+            mediumRankedLabel.Rank = (Rank)cardRarityData.ProperDistanceMiddle;
             longRankedLabel.Rank = (Rank)cardRarityData.ProperDistanceLong;
 
-            escapeRankedLabel.Rank = (Rank)cardRarityData.ProperRunningStyleNige;
-            leadingRankedLabel.Rank = (Rank)cardRarityData.ProperRunningStyleSenko;
-            insertRankedLabel.Rank = (Rank)cardRarityData.ProperRunningStyleSashi;
-            driveInRankedLabel.Rank = (Rank)cardRarityData.ProperRunningStyleOikomi;
+            frontRankedLabel.Rank = (Rank)cardRarityData.ProperRunningStyleNige;
+            paceRankedLabel.Rank = (Rank)cardRarityData.ProperRunningStyleSenko;
+            lateRankedLabel.Rank = (Rank)cardRarityData.ProperRunningStyleSashi;
+            endRankedLabel.Rank = (Rank)cardRarityData.ProperRunningStyleOikomi;
 
             speedGrowthLabel.Text = cardData.TalentSpeed.ToString() + "%";
             staminaGrowthLabel.Text = cardData.TalentStamina.ToString() + "%";
