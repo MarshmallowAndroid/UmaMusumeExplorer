@@ -1,4 +1,6 @@
-﻿using UmaMusumeExplorer.Controls.CharacterInfo.Classes;
+﻿using System.ComponentModel;
+using System.ComponentModel.Design.Serialization;
+using UmaMusumeExplorer.Controls.CharacterInfo.Classes;
 using Color = System.Drawing.Color;
 
 namespace UmaMusumeExplorer.Controls.CharacterInfo
@@ -70,7 +72,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
         //public override string Text { get => base.Text; set => base.Text = value; }
 
-        public new string Text
+        public string LabelText
         {
             get
             {
