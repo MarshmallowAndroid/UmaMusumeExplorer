@@ -63,25 +63,30 @@ namespace UmaMusumeData
 
         private static List<T> GetRows<T>(string databaseFile, Func<T, bool>? condition = null) where T : new()
         {
+            List<T> rows;
+
             try
             {
                 SQLiteConnection connection = new(databaseFile, SQLiteOpenFlags.ReadOnly);
+                TableQuery<T> table = connection.Table<T>();
 
-                List<T> rows;
                 if (condition is not null)
-                    rows = connection.Table<T>().Where(condition).ToList();
+                    rows = [.. table.Where(condition)];
                 else
-                    rows = connection.Table<T>().ToList();
+                    rows = [.. table];
 
                 connection.Close();
                 connection.Dispose();
-
-                return rows;
             }
             catch (SQLiteException)
             {
-                throw;
+                // for global version with missing tables
+                // we'll just have to wait and see what breaks with this
+
+                rows = [];
             }
+
+            return rows;
         }
     }
 }
