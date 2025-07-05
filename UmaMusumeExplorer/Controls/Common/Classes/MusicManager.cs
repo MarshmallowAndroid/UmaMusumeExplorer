@@ -229,7 +229,9 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
             if (field is null) return -1;
             field = field["VoiceKeys"];
             if (!field.Any()) return -1;
-            return field["thisList"][0][0]["frame"].AsInt;
+            field = field["thisList"][0];
+            if (!field.Any()) return -1;
+            return field[0]["frame"].AsInt;
         }
 
         private static void LoadAsset(AssetsManager assetsManager, ManifestEntry manifestEntry)
