@@ -172,14 +172,12 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
             ManifestEntry? timelineEntry = UmaDataHelper.GetManifestEntries(ga => ga.Name.StartsWith($"cutt/cutt_son{musicId}/son{musicId}_camera")).FirstOrDefault();
 
             if (!musicScoreAssetEntries.Any()) return false;
-            if (timelineEntry is null) return false;
 
             AssetsManager assetsManager = new();
             foreach (var item in musicScoreAssetEntries)
             {
                 LoadAsset(assetsManager, item);
             }
-            LoadAsset(assetsManager, timelineEntry);
 
             CsvReader? lyricsCsv = GetLiveCsv(assetsManager, "lyrics");
             if (lyricsCsv is null) return false;
@@ -203,7 +201,11 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
                 PartTriggers.Add(trigger);
             }
 
-            VoiceTrigger = (int)(GetLiveTimelineData(assetsManager) / 60F * 1000F);
+            if (timelineEntry is not null)
+            {
+                LoadAsset(assetsManager, timelineEntry);
+                VoiceTrigger = (int)(GetLiveTimelineData(assetsManager) / 60F * 1000F);
+            }
 
             return musicScoreLoaded = true;
         }
