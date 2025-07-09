@@ -33,8 +33,9 @@ namespace UmaMusumeExplorer.Controls.Common
 
         private string[]? currentSingers;
         private bool[]? singersEnabled;
+        private bool[]? exEnabled;
 
-        private bool expanded = false;
+        private volatile bool expanded = false;
 
         public PlayerForm(MusicManager manager)
         {
@@ -53,7 +54,7 @@ namespace UmaMusumeExplorer.Controls.Common
             float heightFactor = AutoScaleDimensions.Height / 96F;
 
             int collapsedHeight = (int)(heightFactor * 470);
-            int expandedHeight = (int)(heightFactor * 730);
+            int expandedHeight = (int)(heightFactor * 745);
 
             if (liveManager.CharacterPositions is not null)
             {
@@ -62,7 +63,7 @@ namespace UmaMusumeExplorer.Controls.Common
                 animator = new(this, collapsedHeight, expandedHeight);
 
                 // collapsed: 470
-                // expanded: 730
+                // expanded: 745
             }
             else
             {
@@ -92,12 +93,14 @@ namespace UmaMusumeExplorer.Controls.Common
             else
                 waveOut.Init(new VolumeSampleProvider(sampleProvider) { Volume = 4.0F });
             waveOut.Play();
+            UpdatePlayIcon();
 
             lyricsThread?.Start();
             voicesThread?.Start();
             updateTimer.Enabled = true;
 
             singersEnabled = new bool[liveManager.CharacterPositions?.Length ?? 0];
+            exEnabled = new bool[liveManager.CharacterPositions?.Length ?? 0];
 
             // Update the total time and volume track bars
             totalTimeLabel.Text = $"{sampleProvider?.TotalTime:m\\:ss}";
@@ -126,6 +129,8 @@ namespace UmaMusumeExplorer.Controls.Common
             }
 
             updateTimer.Enabled = waveOut.PlaybackState == PlaybackState.Playing;
+
+            UpdatePlayIcon();
         }
 
         private void UpdateTimer_Tick(object sender, EventArgs e)
@@ -284,6 +289,9 @@ namespace UmaMusumeExplorer.Controls.Common
         private void AddCharacters()
         {
             if (liveManager.CharacterPositions is null) return;
+            if (songMixer is null) return;
+
+            bool hasEx = songMixer.CharaTracks[0].HasEx;
 
             currentSingers = new string[liveManager.CharacterPositions.Length];
 
@@ -292,12 +300,12 @@ namespace UmaMusumeExplorer.Controls.Common
             foreach (var characterPosition in liveManager.CharacterPositions)
             {
                 charaContainerPanel.Controls.Add(
-                    new CharacterPositionControl(characterPosition.Position, CharacterClick, 70)
+                    new CharacterPositionControl(characterPosition.Position, CharacterClick, ExChecked, 70)
                     {
                         CharacterId = characterPosition.CharacterId,
                         FontSize = 12F,
-                        Height = 140,
-                        Position = characterPosition.Position
+                        Position = characterPosition.Position,
+                        ShowEx = hasEx
                     });
 
                 currentSingers[characterPosition.Position] = AssetTables.GetText(TextCategory.MasterCharaName, characterPosition.CharacterId);
@@ -317,6 +325,33 @@ namespace UmaMusumeExplorer.Controls.Common
                 CharaTrack track = songMixer.CharaTracks[character.Position];
                 track.Enabled = !track.Enabled;
                 singersEnabled[character.Position] = track.Enabled;
+            }
+        }
+
+        private void ExChecked(object? sender, EventArgs e)
+        {
+            if (customVoiceControlCheckBox.Checked)
+            {
+                if (sender is not Control control) return;
+                if (control.Parent is not CharacterPositionControl character) return;
+
+                if (songMixer is null) return;
+                if (singersEnabled is null) return;
+
+                CharaTrack track = songMixer.CharaTracks[character.Position];
+                track.ForceEx = character.ExChecked;
+            }
+        }
+
+        private void UpdatePlayIcon()
+        {
+            if (waveOut.PlaybackState == PlaybackState.Playing)
+            {
+                playButton.Image = Properties.Resources.PauseIcon;
+            }
+            else
+            {
+                playButton.Image = Properties.Resources.PlayIcon;
             }
         }
 
@@ -381,6 +416,11 @@ namespace UmaMusumeExplorer.Controls.Common
                         TryInvoke(() =>
                         {
                             chara.Disabled = !songMixer.CharaTracks[chara.Position].Active && !customVoiceControlCheckBox.Checked;
+
+                            if (!customVoiceControlCheckBox.Checked)
+                            {
+                                chara.ExChecked = songMixer.CharaTracks[chara.Position].ActiveEx;
+                            }
 
                             //if (customVoiceControlCheckBox.Checked)
                             //{

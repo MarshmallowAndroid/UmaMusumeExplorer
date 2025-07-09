@@ -79,6 +79,7 @@
             // playButton
             // 
             resources.ApplyResources(playButton, "playButton");
+            playButton.Image = Properties.Resources.PlayIcon;
             playButton.Name = "playButton";
             playButton.UseVisualStyleBackColor = true;
             playButton.Click += PlayButton_Click;
@@ -86,6 +87,7 @@
             // stopButton
             // 
             resources.ApplyResources(stopButton, "stopButton");
+            stopButton.Image = Properties.Resources.StopIcon;
             stopButton.Name = "stopButton";
             stopButton.UseVisualStyleBackColor = true;
             stopButton.Click += StopButton_Click;

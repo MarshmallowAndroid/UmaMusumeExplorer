@@ -101,14 +101,16 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
             lock (readLock)
             {
                 bool[] enabledStates = new bool[charaAwbs.Length];
-                bool[] alwaysSingStates = new bool[charaAwbs.Length];
+                bool[] forceSingStates = new bool[charaAwbs.Length];
+                bool[] forceExStates = new bool[charaAwbs.Length];
 
                 for (int i = 0; i < enabledStates.Length; i++)
                 {
                     if (CharaTracks.Count == charaAwbs.Length)
                     {
                         enabledStates[i] = CharaTracks[i].Enabled;
-                        alwaysSingStates[i] = CharaTracks[i].ForceSing;
+                        forceSingStates[i] = CharaTracks[i].ForceSing;
+                        forceExStates[i] = CharaTracks[i].ForceEx;
                     }
                     else
                     {
@@ -125,7 +127,8 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
                     {
                         Position = okeWaveStream.Position,
                         Enabled = enabledStates[i],
-                        ForceSing = alwaysSingStates[i]
+                        ForceSing = forceSingStates[i],
+                        ForceEx = forceExStates[i]
                     };
 
                     CharaTracks.Add(newCharaTrack);

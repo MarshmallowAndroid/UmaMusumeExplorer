@@ -30,6 +30,7 @@
         {
             positionIndexLabel = new Label();
             characterPictureBox = new HighQualityPictureBox();
+            exCheckBox = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)characterPictureBox).BeginInit();
             SuspendLayout();
             // 
@@ -56,15 +57,27 @@
             characterPictureBox.TabIndex = 1;
             characterPictureBox.TabStop = false;
             // 
+            // exCheckBox
+            // 
+            exCheckBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            exCheckBox.Appearance = Appearance.Button;
+            exCheckBox.Location = new Point(3, 165);
+            exCheckBox.Name = "exCheckBox";
+            exCheckBox.Size = new Size(109, 25);
+            exCheckBox.TabIndex = 2;
+            exCheckBox.Text = "EX";
+            exCheckBox.TextAlign = ContentAlignment.MiddleCenter;
+            exCheckBox.UseVisualStyleBackColor = true;
+            // 
             // CharacterPositionControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            AutoSize = true;
+            Controls.Add(exCheckBox);
             Controls.Add(characterPictureBox);
             Controls.Add(positionIndexLabel);
             Name = "CharacterPositionControl";
-            Size = new Size(115, 162);
+            Size = new Size(115, 193);
             ((System.ComponentModel.ISupportInitialize)characterPictureBox).EndInit();
             ResumeLayout(false);
         }
@@ -73,5 +86,6 @@
 
         private System.Windows.Forms.Label positionIndexLabel;
         private Common.HighQualityPictureBox characterPictureBox;
+        private CheckBox exCheckBox;
     }
 }

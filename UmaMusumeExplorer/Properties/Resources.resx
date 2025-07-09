@@ -121,7 +121,28 @@
   <data name="FolderIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FolderIcon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="NextBankIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NextBankIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NextIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NextIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PauseIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PauseIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PlayIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PlayIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PrevBankIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PrevBankIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PrevIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PrevIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ProgramIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ProgramIcon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StopIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\StopIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -172,6 +172,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
 
                 InitializeWaveOut(umaWaveStream);
                 waveOut?.Play();
+                UpdatePlayIcon();
             }
 
             updateTimer.Enabled = true;
@@ -193,20 +194,27 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
 
         private void PlayButton_Click(object sender, EventArgs e)
         {
+            if (sender is not Button button) return;
             if (umaWaveStream is null) return;
 
             try
             {
                 if (waveOut.PlaybackState == PlaybackState.Playing)
+                {
                     waveOut.Pause();
+                }
                 else
+                {
                     waveOut.Play();
+                }
             }
             catch (Exception)
             {
                 InitializeWaveOut(umaWaveStream);
                 waveOut.Play();
             }
+
+            UpdatePlayIcon();
         }
 
         private void PrevTrackButton_Click(object sender, EventArgs e)
@@ -361,6 +369,18 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             waveOut.Stop();
             volumeSampleProvider = new VolumeSampleProvider(waveStream.ToSampleProvider()) { Volume = (float)amplifyUpDown.Value };
             waveOut.Init(volumeSampleProvider);
+        }
+
+        private void UpdatePlayIcon()
+        {
+            if (waveOut.PlaybackState == PlaybackState.Playing)
+            {
+                playButton.Image = Properties.Resources.PauseIcon;
+            }
+            else
+            {
+                playButton.Image = Properties.Resources.PlayIcon;
+            }
         }
 
         private void ExportBank(AudioSource[] audioSources)

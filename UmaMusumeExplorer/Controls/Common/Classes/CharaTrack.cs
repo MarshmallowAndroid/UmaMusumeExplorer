@@ -34,6 +34,8 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
             {
                 secondUmaWaveStream = new(charaAwb, 1);
                 secondSampleProvider = new(EnsureEqualSampleRate(targetWaveFormat, secondUmaWaveStream));
+
+                HasEx = true;
             }
 
             foreach (var partTrigger in partTriggers)
@@ -80,11 +82,17 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
             }
         }
 
+        public bool HasEx { get; private set; }
+
         public bool Enabled { get; set; }
 
         public bool ForceSing { get; set; }
 
+        public bool ForceEx { get; set; }
+
         public bool Active { get; private set; }
+
+        public bool ActiveEx { get; private set; }
 
         public int Read(float[] buffer, int offset, int count)
         {
@@ -142,7 +150,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
                     if (ForceSing)
                     {
                         buffer[index] = mainBuffer[index];
-                        if (secondBuffer is not null) buffer[index] += secondBuffer[index];
+                        if (secondBuffer is not null && ForceEx) buffer[index] += secondBuffer[index];
                     }
                     else if (targetBuffer is not null)
                         buffer[index] = targetBuffer[index] * volumeMultiplier;
@@ -153,6 +161,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
                         buffer[index] = 0;
 
                     Active = targetBuffer is not null;
+                    ActiveEx = Active && targetBuffer == secondBuffer;
                 }
 
                 currentSample++;

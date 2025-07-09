@@ -9,8 +9,9 @@ namespace UmaMusumeExplorer.Controls.Common
         private int characterId = 0;
         private Image? characterImage;
         private bool disabled = false;
+        private bool showEx = false;
 
-        public CharacterPositionControl(int position, EventHandler clickEventHandler, int width = -1)
+        public CharacterPositionControl(int position, EventHandler clickEventHandler, EventHandler? exCheckEventHandler, int width = -1)
         {
             InitializeComponent();
 
@@ -19,13 +20,20 @@ namespace UmaMusumeExplorer.Controls.Common
             positionIndexLabel.Text = (characterPosition + 1).ToString();
             characterPictureBox.BackgroundImage = UnityAssets.GetCharaIcon(0)?.Bitmap;
 
+            float ratio = (float)characterPictureBox.Height / characterPictureBox.Width;
+
             characterPictureBox.Click += clickEventHandler;
+            exCheckBox.CheckedChanged += exCheckEventHandler;
 
             if (width > 0)
             {
                 Width = width;
-                characterPictureBox.Height = (int)(characterPictureBox.Width * 1.1F);
             }
+
+            characterPictureBox.Height = (int)(characterPictureBox.Width * ratio);
+            exCheckBox.Top = characterPictureBox.Top + characterPictureBox.Height + 6;
+
+            exCheckBox.Visible = showEx;
         }
 
         public int Position
@@ -67,9 +75,24 @@ namespace UmaMusumeExplorer.Controls.Common
             set
             {
                 disabled = value;
-
                 characterPictureBox.BackgroundImage = disabled ? null : characterImage;
             }
+        }
+
+        public bool ShowEx
+        {
+            get => showEx;
+            set
+            {
+                showEx = value;
+                exCheckBox.Visible = showEx;
+            }
+        }
+
+        public bool ExChecked
+        {
+            get => exCheckBox.Checked;
+            set => exCheckBox.Checked = value;
         }
     }
 }

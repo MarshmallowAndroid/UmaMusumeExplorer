@@ -267,6 +267,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             // prevTrackButton
             // 
             resources.ApplyResources(prevTrackButton, "prevTrackButton");
+            prevTrackButton.Image = Properties.Resources.PrevIcon;
             prevTrackButton.Name = "prevTrackButton";
             prevTrackButton.UseVisualStyleBackColor = true;
             prevTrackButton.Click += PrevTrackButton_Click;
@@ -274,6 +275,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             // nextTrackButton
             // 
             resources.ApplyResources(nextTrackButton, "nextTrackButton");
+            nextTrackButton.Image = Properties.Resources.NextIcon;
             nextTrackButton.Name = "nextTrackButton";
             nextTrackButton.UseVisualStyleBackColor = true;
             nextTrackButton.Click += NextTrackButton_Click;
@@ -281,6 +283,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             // prevBankButton
             // 
             resources.ApplyResources(prevBankButton, "prevBankButton");
+            prevBankButton.Image = Properties.Resources.PrevBankIcon;
             prevBankButton.Name = "prevBankButton";
             prevBankButton.UseVisualStyleBackColor = true;
             prevBankButton.Click += PrevBankButton_Click;
@@ -288,6 +291,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             // nextBankButton
             // 
             resources.ApplyResources(nextBankButton, "nextBankButton");
+            nextBankButton.Image = Properties.Resources.NextBankIcon;
             nextBankButton.Name = "nextBankButton";
             nextBankButton.UseVisualStyleBackColor = true;
             nextBankButton.Click += NextBankButton_Click;
@@ -295,6 +299,7 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             // playButton
             // 
             resources.ApplyResources(playButton, "playButton");
+            playButton.Image = Properties.Resources.PlayIcon;
             playButton.Name = "playButton";
             playButton.Click += PlayButton_Click;
             // 

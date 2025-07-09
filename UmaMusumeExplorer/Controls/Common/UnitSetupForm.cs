@@ -44,7 +44,7 @@ namespace UmaMusumeExplorer.Controls.Common
                 else
                     characterId = livePermissionData.ElementAt(i).CharaId;
 
-                CharacterPositionControl characterPositionControl = new(i, CharacterPositionPictureBoxClick)
+                CharacterPositionControl characterPositionControl = new(i, CharacterPositionPictureBoxClick, null)
                 {
                     CharacterId = characterId,
                     TabIndex = i

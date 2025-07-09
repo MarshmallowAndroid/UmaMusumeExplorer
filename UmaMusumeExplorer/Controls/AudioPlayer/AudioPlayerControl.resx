@@ -139,13 +139,13 @@
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="exportSelectedToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 22</value>
+    <value>107, 22</value>
   </data>
   <data name="exportSelectedToolStripMenuItem.Text" xml:space="preserve">
     <value>Export</value>
   </data>
   <data name="multiSelectContextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>109, 26</value>
+    <value>108, 26</value>
   </data>
   <data name="multiSelectContextMenuStrip.Text" xml:space="preserve">
     <value>Save multiple...</value>
@@ -735,9 +735,6 @@
   <data name="prevTrackButton.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="prevTrackButton.Text" xml:space="preserve">
-    <value>Prev. Track</value>
-  </data>
   <data name="&gt;&gt;prevTrackButton.Name" xml:space="preserve">
     <value>prevTrackButton</value>
   </data>
@@ -764,9 +761,6 @@
   </data>
   <data name="nextTrackButton.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
-  </data>
-  <data name="nextTrackButton.Text" xml:space="preserve">
-    <value>Next Track</value>
   </data>
   <data name="&gt;&gt;nextTrackButton.Name" xml:space="preserve">
     <value>nextTrackButton</value>
@@ -795,9 +789,6 @@
   <data name="prevBankButton.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="prevBankButton.Text" xml:space="preserve">
-    <value>Prev. Bank</value>
-  </data>
   <data name="&gt;&gt;prevBankButton.Name" xml:space="preserve">
     <value>prevBankButton</value>
   </data>
@@ -825,9 +816,6 @@
   <data name="nextBankButton.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="nextBankButton.Text" xml:space="preserve">
-    <value>Next Bank</value>
-  </data>
   <data name="&gt;&gt;nextBankButton.Name" xml:space="preserve">
     <value>nextBankButton</value>
   </data>
@@ -854,9 +842,6 @@
   </data>
   <data name="playButton.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
-  </data>
-  <data name="playButton.Text" xml:space="preserve">
-    <value>Toggle Play</value>
   </data>
   <data name="&gt;&gt;playButton.Name" xml:space="preserve">
     <value>playButton</value>
