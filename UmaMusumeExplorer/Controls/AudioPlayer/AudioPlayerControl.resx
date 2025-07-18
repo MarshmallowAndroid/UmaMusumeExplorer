@@ -163,7 +163,7 @@
     <value>459, 569</value>
   </data>
   <data name="fileListView.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;fileListView.Name" xml:space="preserve">
     <value>fileListView</value>
@@ -220,7 +220,7 @@
     <value>384, 22</value>
   </data>
   <data name="loadingProgressBar.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="&gt;&gt;loadingProgressBar.Name" xml:space="preserve">
     <value>loadingProgressBar</value>
@@ -256,7 +256,7 @@
     <value>301, 23</value>
   </data>
   <data name="searchBox.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;searchBox.Name" xml:space="preserve">
     <value>searchBox</value>
@@ -286,7 +286,7 @@
     <value>75, 23</value>
   </data>
   <data name="filterButton.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="filterButton.Text" xml:space="preserve">
     <value>Filter</value>
@@ -391,7 +391,7 @@
     <value>42, 15</value>
   </data>
   <data name="searchLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="searchLabel.Text" xml:space="preserve">
     <value>Search</value>
@@ -451,7 +451,7 @@
     <value>384, 24</value>
   </data>
   <data name="loadingFileNameLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="loadingFileNameLabel.Text" xml:space="preserve">
     <value>Loading...</value>
