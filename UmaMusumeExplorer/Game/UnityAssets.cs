@@ -4,6 +4,7 @@ using AssetsTools.NET.Texture;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
+using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -22,11 +23,6 @@ namespace UmaMusumeExplorer.Game
         private static readonly AssetsManager supportCardIconAssetsManager = new();
         private static readonly AssetsManager generalAssetsManager = new();
         private static readonly Dictionary<string, ImagePointerContainer> imagePointerContainers = new();
-
-        private static bool charaIconsLoaded = false;
-        private static bool skillIconsLoaded = false;
-        private static bool jacketIconsLoaded = false;
-        private static bool supportCardIconsLoaded = false;
 
         public static Form? MainForm { get; set; }
 
@@ -47,23 +43,6 @@ namespace UmaMusumeExplorer.Game
 
         public static PinnedBitmap? GetCharaIcon(int id, int raceDressId = 0, int plate = 1)
         {
-            if (!charaIconsLoaded)
-            {
-                Regex chrIconRegex = new(@"\bchr_icon_[0-9]{4}\b");
-                Regex chrCardIconRegex = new(@"\bchr_icon_[0-9]{4}_[0-9]{6}_[0-9]{2}\b");
-
-                List<string> imagePaths = new();
-                List<ManifestEntry> charaAssetEntryRows = UmaDataHelper.GetManifestEntries(ga => ga.Name.StartsWith("chara/"));
-                charaAssetEntryRows.ForEach(c =>
-                {
-                    if (chrIconRegex.IsMatch(c.BaseName) || chrCardIconRegex.IsMatch(c.BaseName) || c.BaseName == "chr_icon_round_0000")
-                        imagePaths.Add(UmaDataHelper.GetPath(c));
-                });
-                LoadFiles(charaIconAssetsManager, imagePaths);
-
-                charaIconsLoaded = true;
-            }
-
             string idString = $"{id:d4}";
             StringBuilder imageStringBuilder = new();
             imageStringBuilder.Append($"chr_icon_{idString}");
@@ -76,27 +55,11 @@ namespace UmaMusumeExplorer.Game
                 imageStringBuilder.Append($"_{raceDressId:d6}_{plate:d2}");
             string imageName = imageStringBuilder.ToString();
 
-            if (imagePointerContainers.ContainsKey(imageName)) return PinnedBitmapFromKey(imageName);
-
-            Image<Bgra32>? image = GetImage(charaIconAssetsManager, imageName);
-            if (image is null) return null;
-
-            //int adjustedHeight = (int)(image.Height * 1.1);
-            //image.Mutate(o => o.Resize(image.Width, adjustedHeight));
-
-            AddLoadedImage(imageName, image);
-            return PinnedBitmapFromKey(imageName);
+            return LoadImage(charaIconAssetsManager, imageName);
         }
 
         public static PinnedBitmap? GetSkillIcon(int id)
         {
-            if (!skillIconsLoaded)
-            {
-                List<ManifestEntry> skillIconAssetEntryRows = UmaDataHelper.GetManifestEntries(ga => ga.Name.StartsWith("outgame/skillicon/utx_ico_skill_"));
-                LoadFiles(skillIconAssetsManager, GetFilePaths(skillIconAssetEntryRows));
-                skillIconsLoaded = true;
-            }
-
             string idString;
             if (id == 0)
                 idString = "00000";
@@ -107,90 +70,56 @@ namespace UmaMusumeExplorer.Game
             imageStringBuilder.Append($"utx_ico_skill_{idString}");
             string imageName = imageStringBuilder.ToString();
 
-            if (imagePointerContainers.ContainsKey(imageName)) return PinnedBitmapFromKey(imageName);
-
-            Image<Bgra32>? image = GetImage(skillIconAssetsManager, imageName);
-            if (image is null) return null;
-
-            AddLoadedImage(imageName, image);
-            return PinnedBitmapFromKey(imageName);
+            return LoadImage(skillIconAssetsManager, imageName);
         }
 
         public static PinnedBitmap? GetJacket(int id, char size = 'm')
         {
-            if (!jacketIconsLoaded)
-            {
-                List<ManifestEntry> liveJacketAssetEntryRows = UmaDataHelper.GetManifestEntries(ga => ga.Name.StartsWith("live/jacket/jacket_icon_l_"));
-                LoadFiles(jacketsAssetsManager, GetFilePaths(liveJacketAssetEntryRows));
-                jacketIconsLoaded = true;
-            }
-
             string idString = $"{id:d4}";
             StringBuilder imageStringBuilder = new();
             imageStringBuilder.Append($"jacket_icon_{size}_{idString}");
             string imageName = imageStringBuilder.ToString();
 
-            if (imagePointerContainers.ContainsKey(imageName)) return PinnedBitmapFromKey(imageName);
-
-            Image<Bgra32>? image = GetImage(jacketsAssetsManager, imageName);
-            image ??= GetImage(jacketsAssetsManager, $"jacket_icon_{size}_0000");
-            if (image is null) return null;
-
-            AddLoadedImage(imageName, image);
-            return PinnedBitmapFromKey(imageName);
+            return LoadImage(jacketsAssetsManager, imageName, $"jacket_icon_{size}_0000");
         }
 
         public static PinnedBitmap? GetSupportCardIcon(int id)
         {
-            if (!supportCardIconsLoaded)
-            {
-                Regex supportCardIconRegex = new(@"\bsupport_thumb_[0-9]{5}\b");
-
-                List<string> imagePaths = new();
-                List<ManifestEntry> supportCardAssetEntryRows = UmaDataHelper.GetManifestEntries(ga => ga.Name.StartsWith("supportcard/"));
-                supportCardAssetEntryRows.ForEach(c =>
-                {
-                    if (supportCardIconRegex.IsMatch(c.BaseName.ToLower()) || c.BaseName.ToLower() == "support_thumb_00000")
-                        imagePaths.Add(UmaDataHelper.GetPath(c));
-                });
-                LoadFiles(supportCardIconAssetsManager, imagePaths);
-                supportCardIconsLoaded = true;
-            }
-
             string idString = $"{id:d5}";
             StringBuilder imageStringBuilder = new();
             imageStringBuilder.Append($"support_thumb_{idString}");
             string imageName = imageStringBuilder.ToString();
 
-            if (imagePointerContainers.ContainsKey(imageName)) return PinnedBitmapFromKey(imageName);
-
-            Image<Bgra32>? image = GetImage(supportCardIconAssetsManager, imageName);
-
-            image ??= GetImage(supportCardIconAssetsManager, $"support_thumb_00000");
-
-            if (image is null) return null;
-
-            AddLoadedImage(imageName, image);
-            return PinnedBitmapFromKey(imageName);
+            return LoadImage(supportCardIconAssetsManager, imageName, "support_thumb_00000");
         }
 
-        //public static StreamReader GetLiveCsv(int musicId, string category)
-        //{
-        //    string idString = $"{musicId:d4}";
+        private static PinnedBitmap? LoadImage(AssetsManager assetsManager, string imageName, string fallbackImage = "")
+        {
+            if (!imagePointerContainers.ContainsKey(imageName))
+            {
+                lock (assetsManager)
+                {
+                    LoadFile(assetsManager, GetFilePath(imageName));
 
-        //    SerializedFile targetAsset = GetFile(generalAssetsManager, $"m{idString}_{category}", ClassIDType.TextAsset);
-        //    if (targetAsset is null) return null;
-        //    TextAsset textAsset = targetAsset.Objects.First(o => o.type == ClassIDType.TextAsset) as TextAsset;
+                    Image<Bgra32>? image = GetImage(assetsManager, imageName);
+                    if (!string.IsNullOrEmpty(fallbackImage))
+                        image ??= GetImage(assetsManager, fallbackImage);
+                    if (image is null) return null;
 
-        //    return new StreamReader(new MemoryStream(textAsset.m_Script));
-        //}
+                    AddLoadedImage(imageName, image);
+                }
+            }
+
+            return PinnedBitmapFromKey(imageName);
+        }
 
         private static void AddLoadedImage<TPixel>(string imageName, Image<TPixel> image) where TPixel : unmanaged, IPixel<TPixel>
         {
             lock (imagePointerContainers)
             {
-                imagePointerContainers.Add(imageName,
-                    new ImagePointerContainer(GCHandle.Alloc(image.ToBytes(), GCHandleType.Pinned), image.Width, image.Height));
+                if (!imagePointerContainers.ContainsKey(imageName))
+                    imagePointerContainers.Add(imageName,
+                        new ImagePointerContainer(GCHandle.Alloc(image.ToBytes(), GCHandleType.Pinned), image.Width, image.Height));
             }
         }
 
@@ -222,7 +151,7 @@ namespace UmaMusumeExplorer.Game
                 foreach (var asset in file.file.GetAssetsOfType(classId))
                 {
                     AssetTypeValueField baseField = assetsManager.GetBaseField(file, asset);
-                    if (baseField["m_Name"].AsString.ToLower() == objectName)
+                    if (baseField["m_Name"].AsString.Equals(objectName, StringComparison.CurrentCultureIgnoreCase))
                     {
                         assetsFileInstance = file;
                         return baseField;
@@ -233,28 +162,19 @@ namespace UmaMusumeExplorer.Game
             return null;
         }
 
-        private static void LoadFiles(AssetsManager assetsManager, IEnumerable<string> filePaths)
+        private static void LoadFile(AssetsManager assetsManager, string filePath)
         {
-            //foreach (var file in filePaths)
-            //{
-            //    BundleFileInstance bundle = assetsManager.LoadBundleFile(file);
-            //    foreach (var assetsFile in bundle.file.GetAllFileNames())
-            //    {
-            //        assetsManager.LoadAssetsFileFromBundle(bundle, assetsFile);
-            //    }
-            //}
-            MainForm?.Invoke(() => ControlHelpers.ShowFormDialogCenter(new LoadingForm(assetsManager, filePaths), MainForm));
+            BundleFileInstance bundle = assetsManager.LoadBundleFile(filePath);
+            foreach (var assetsFile in bundle.file.GetAllFileNames())
+            {
+                assetsManager.LoadAssetsFileFromBundle(bundle, assetsFile);
+            }
         }
 
-        private static string[] GetFilePaths(List<ManifestEntry> entries)
+        private static string GetFilePath(string entryName)
         {
-            List<string> paths = new();
-            foreach (ManifestEntry entry in entries)
-            {
-                string path = UmaDataHelper.GetPath(entry);
-                if (path != string.Empty) paths.Add(path);
-            }
-            return paths.ToArray();
+            ManifestEntry entry = UmaDataHelper.GetManifestEntries(e => e.BaseName == entryName).First();
+            return UmaDataHelper.GetPath(entry);
         }
 
         private static PinnedBitmap PinnedBitmapFromKey(string key) =>
