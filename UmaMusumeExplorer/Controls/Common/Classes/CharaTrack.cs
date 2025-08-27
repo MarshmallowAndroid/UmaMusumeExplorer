@@ -150,7 +150,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
                     if (ForceSing)
                     {
                         buffer[index] = mainBuffer[index];
-                        if (secondBuffer is not null && ForceEx) buffer[index] += secondBuffer[index];
+                        if (secondBuffer is not null && ForceEx) buffer[index] = secondBuffer[index];
                     }
                     else if (targetBuffer is not null)
                         buffer[index] = targetBuffer[index] * volumeMultiplier;
