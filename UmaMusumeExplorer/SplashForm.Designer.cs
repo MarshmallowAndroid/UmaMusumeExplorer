@@ -36,7 +36,7 @@
             // titleLabel
             // 
             titleLabel.AutoSize = true;
-            titleLabel.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            titleLabel.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
             titleLabel.Location = new Point(111, 34);
             titleLabel.Name = "titleLabel";
             titleLabel.Size = new Size(363, 45);
@@ -45,7 +45,7 @@
             // 
             // loadingLabel
             // 
-            loadingLabel.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            loadingLabel.Font = new Font("Segoe UI", 15.75F);
             loadingLabel.Location = new Point(12, 79);
             loadingLabel.Name = "loadingLabel";
             loadingLabel.Size = new Size(561, 30);
