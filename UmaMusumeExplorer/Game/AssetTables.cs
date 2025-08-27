@@ -76,7 +76,7 @@ namespace UmaMusumeExplorer.Game
 
         public static string GetText(TextCategory category, int index)
         {
-            return TextDatas.First(td => td.Category == (int)category && td.Index == index).Text;
+            return TextDatas.FirstOrDefault(td => td.Category == (int)category && td.Index == index)?.Text ?? "";
         }
     }
 }
