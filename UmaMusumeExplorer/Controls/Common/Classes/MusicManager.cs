@@ -253,8 +253,6 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
                 {
                     AssetTypeValueField baseField = assetsManager.GetBaseField(assetsManagerFile, asset);
                     AssetTypeValueField nameField = baseField["m_Name"];
-                    if (nameField.Value?.ValueType == AssetValueType.String)
-                        Debug.WriteLine(nameField.AsString);
                     if (nameField.Value?.ValueType == AssetValueType.String && nameField.AsString == name) return baseField;
                 }
             }
