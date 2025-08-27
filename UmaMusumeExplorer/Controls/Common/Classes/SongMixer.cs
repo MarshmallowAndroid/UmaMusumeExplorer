@@ -41,7 +41,10 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
                         activeSingers++;
                 }
 
-                long sample = (long)(partTrigger.TimeMs / 1000.0F * WaveFormat.SampleRate);
+                if (partTrigger.VolumeRate == 1F)
+                    activeSingers = 0;
+
+                long sample = (long)(partTrigger.TimeMs / 1000F * WaveFormat.SampleRate);
                 volumeTriggers.Add(new VolumeTrigger(sample, activeSingers));
             }
         }
@@ -213,7 +216,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
                 for (int j = 0; j < WaveFormat.Channels; j++)
                 {
                     int index = i * WaveFormat.Channels + j;
-                    buffer[index] *= CustomMode ? 1.0F / (active + 1) + 0.5F : volumeMultiplier;
+                    buffer[index] *= CustomMode ? CalculateVolume(active) : volumeMultiplier;
                     buffer[index] += MuteBgm ? 0 : okeBuffer[index];
                     buffer[index] += voiceOverBuffer[index];
                 }
@@ -265,6 +268,12 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
             return buffer;
         }
 
+        private static float CalculateVolume(int activeSources)
+        {
+            if (activeSources < 1) return 1F;
+            return 1F / (float)Math.Sqrt(activeSources);
+        }
+
         private struct VolumeTrigger
         {
             public long Sample;
@@ -273,7 +282,10 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
             public VolumeTrigger(long sample, int activeSingers)
             {
                 Sample = sample;
-                Volume = 1.0F / (activeSingers + 1) + 0.5F;
+                if (activeSingers == 0)
+                    Volume = 1F;
+                else
+                    Volume = CalculateVolume(activeSingers);
             }
         }
     }

@@ -41,8 +41,8 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
             foreach (var partTrigger in partTriggers)
             {
                 long sample = (long)(partTrigger.TimeMs / 1000.0F * mainSampleProvider.WaveFormat.SampleRate);
-                float volume = partTrigger.MemberVolumes[index] != 999.0F ? partTrigger.MemberVolumes[index] : 1.0F;
-                volume += partTrigger.VolumeRate != 999.0F ? partTrigger.VolumeRate * 0.25F : 0.0F;
+                float volume = partTrigger.MemberVolumes[index];
+                //volume += partTrigger.VolumeRate != 999.0F ? partTrigger.VolumeRate : 0.0F;
 
                 triggers.Add(
                     new Trigger(
@@ -111,16 +111,25 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
             {
                 while (currentSample >= triggers[triggerIndex].Sample)
                 {
-                    int activeTrack = triggers[triggerIndex].Track;
+                    Trigger trigger = triggers[triggerIndex];
+                    int activeTrack = trigger.Track;
+                    float volume = trigger.Volume;
+                    float pan = trigger.Pan;
+                    float volumeRate = trigger.VolumeRate;
 
                     if (activeTrack == 1)
                         targetBuffer = mainBuffer;
                     else if (activeTrack == 2)
                         targetBuffer = secondBuffer;
-                    else
-                        targetBuffer = null;
 
-                    volumeMultiplier = triggers[triggerIndex].Volume;
+                    // apparently no more nulling targetBuffer; prioritize volume over off (0) track
+
+                    if (volume != 999F && volumeRate != 0F)
+                        volumeMultiplier = volume;
+                    else if (activeTrack == 0)
+                        volumeMultiplier = 0;
+                    else
+                        volumeMultiplier = 1F;
 
                     //if (triggers[triggerIndex].VolumeRate != 999.0F)
                     //    volumeMultiplier += 0.25F * triggers[triggerIndex].VolumeRate;
@@ -128,15 +137,12 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
                     //if (triggers[triggerIndex].Pan == 999.0F)
                     //{
                     //    mainSampleProvider.Pan = 0.0F;
-
                     //    if (secondSampleProvider is not null) secondSampleProvider.Pan = 0.0F;
                     //}
                     //else
                     //{
-                    //    mainSampleProvider.Pan = triggers[triggerIndex].Pan;
-                    //    if (secondSampleProvider is not null) secondSampleProvider.Pan = triggers[triggerIndex].Pan;
-
-                    //    //volumeMultiplier *= (1.0F - triggers[triggerIndex].Pan);
+                    //    mainSampleProvider.Pan = pan;
+                    //    if (secondSampleProvider is not null) secondSampleProvider.Pan = pan;
                     //}
 
                     if (triggerIndex < triggers.Count - 1) triggerIndex++;
@@ -160,7 +166,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
                     if (!Enabled)
                         buffer[index] = 0;
 
-                    Active = targetBuffer is not null;
+                    Active = targetBuffer is not null && volumeMultiplier > 0F;
                     ActiveEx = Active && targetBuffer == secondBuffer;
                 }
 
