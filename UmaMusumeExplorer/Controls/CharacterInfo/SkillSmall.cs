@@ -11,7 +11,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
     {
         private int skillLevel;
         private SkillBackground rarity;
-        private SkillData? evolveSkill;
+        private IEnumerable<SkillData>? evolveSkill;
 
         public SkillSmall(SkillData skill)
         {
@@ -60,12 +60,12 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             }
         }
 
-        public SkillData? EvolveSkill
+        public IEnumerable<SkillData>? EvolveSkill
         {
             get => evolveSkill;
             set
             {
-                evolutionCircle.Visible = value is not null;
+                evolutionCircle.Visible = value is not null && value.Any();
                 evolveSkill = value;
                 Invalidate();
             }

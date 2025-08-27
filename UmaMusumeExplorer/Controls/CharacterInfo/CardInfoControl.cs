@@ -14,6 +14,10 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
         private CharaData? charaData;
         private PinnedBitmap? iconPinnedBitmap;
 
+        private string charaName = "";
+        private string charaNameEnglish = "";
+        private bool showEnglishName = false;
+
         public CardInfoControl()
         {
             InitializeComponent();
@@ -33,6 +37,23 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
                 charaData = value;
                 LoadCharaData();
             }
+        }
+
+        private void NameLabel_Click(object sender, EventArgs e)
+        {
+            if (charaData is null) return;
+
+            if (string.IsNullOrEmpty(charaNameEnglish)) return;
+
+            showEnglishName = !showEnglishName;
+
+            string name = charaName;
+            if (showEnglishName)
+                name = charaNameEnglish;
+
+            if (ParentForm is not null)
+                ParentForm.Text = name;
+            nameLabel.Text = name;
         }
 
         private void CostumeSelectComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -76,7 +97,8 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             if (charaData is null) return;
 
             int id = charaData.Id;
-            string charaName = AssetTables.GetText(TextCategory.MasterCharaName, id);
+            charaName = AssetTables.GetText(TextCategory.MasterCharaName, id);
+            charaNameEnglish = AssetTables.GetText(TextCategory.CharaName_En, charaData.Id);
 
             nameLabel.Text = charaName;
 
@@ -98,7 +120,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
                 cvNameLabel.ForeColor = Color.White;
 
             genderLabel.Text = charaData.Sex == 1 ? "Male" : "Female";
-            birthdayLabel.Text = $"{charaData.BirthDay}/{charaData.BirthMonth}/{charaData.BirthYear} ({DateTime.Now.Year - charaData.BirthYear} years)";
+            birthdayLabel.Text = $"{charaData.BirthYear}/{charaData.BirthMonth}/{charaData.BirthDay} ({DateTime.Now.Year - charaData.BirthYear} years)";
 
             iconPinnedBitmap = UnityAssets.GetCharaIcon(id);
             iconPictureBox.Image = iconPinnedBitmap?.Bitmap;
@@ -185,21 +207,17 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
         private SkillSmall ButtonFromSkillId(int skillId, int cardId, int level = 0)
         {
             SkillData skill = skillDatas.First(s => s.Id == skillId);
-            SkillData? evolveSkill = null;
 
-            if (skill.Rarity > 1)
-            {
-                IEnumerable<SkillData> sameConditions = skillDatas.Where(s => s.Condition1 == skill.Condition1);
-                IEnumerable<SkillUpgradeDescription> evolveSkillDescriptions = AssetTables.SkillUpgradeDescriptions.Where(s => s.CardId == cardId);
-                evolveSkill = sameConditions.Where(s => evolveSkillDescriptions.Where(es => es.SkillId == s.Id).Any()).FirstOrDefault();
-            }
+            IEnumerable<SkillData> sameDispOrder = skillDatas.Where(s => s.DispOrder == skill.DispOrder);
+            IEnumerable<SkillUpgradeDescription> evolveSkillDescriptions = AssetTables.SkillUpgradeDescriptions.Where(s => s.CardId == cardId);
+            IEnumerable<SkillData> evolveSkills = sameDispOrder.Where(s => evolveSkillDescriptions.Where(es => es.SkillId == s.Id).Any());
 
             SkillSmall skillSmall = new(skill)
             {
                 Dock = DockStyle.Fill,
                 Background = (SkillBackground)skill.Rarity,
                 SkillLevel = level,
-                EvolveSkill = evolveSkill
+                EvolveSkill = evolveSkills
             };
 
             skillSmall.SkillClick += SkillButton_Click;
@@ -213,7 +231,6 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             byte r = Convert.FromHexString(hexString[..2])[0];
             byte g = Convert.FromHexString(hexString[2..4])[0];
             byte b = Convert.FromHexString(hexString[4..6])[0];
-
             return Color.FromArgb(a, r, g, b);
         }
 

@@ -28,56 +28,70 @@
         /// </summary>
         private void InitializeComponent()
         {
-            skillDescriptionLabel = new System.Windows.Forms.Label();
-            skillNameLabel = new System.Windows.Forms.Label();
-            iconPictureBox = new Common.HighQualityPictureBox();
+            skillDescriptionLabel = new Label();
+            skillNameLabel = new Label();
+            iconPictureBox = new UmaMusumeExplorer.Controls.Common.HighQualityPictureBox();
+            evolutionInfoButton = new Button();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox).BeginInit();
             SuspendLayout();
             // 
             // skillDescriptionLabel
             // 
-            skillDescriptionLabel.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            skillDescriptionLabel.BackColor = System.Drawing.Color.Transparent;
-            skillDescriptionLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            skillDescriptionLabel.Location = new System.Drawing.Point(120, 39);
+            skillDescriptionLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            skillDescriptionLabel.BackColor = Color.Transparent;
+            skillDescriptionLabel.Font = new Font("Segoe UI", 12F);
+            skillDescriptionLabel.Location = new Point(120, 39);
             skillDescriptionLabel.Name = "skillDescriptionLabel";
-            skillDescriptionLabel.Size = new System.Drawing.Size(372, 75);
+            skillDescriptionLabel.Size = new Size(372, 75);
             skillDescriptionLabel.TabIndex = 4;
             skillDescriptionLabel.Text = "Skill description";
             // 
             // skillNameLabel
             // 
-            skillNameLabel.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            skillNameLabel.BackColor = System.Drawing.Color.Transparent;
-            skillNameLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            skillNameLabel.Location = new System.Drawing.Point(120, 18);
+            skillNameLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            skillNameLabel.BackColor = Color.Transparent;
+            skillNameLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            skillNameLabel.Location = new Point(120, 18);
             skillNameLabel.Name = "skillNameLabel";
-            skillNameLabel.Size = new System.Drawing.Size(372, 21);
+            skillNameLabel.Size = new Size(372, 21);
             skillNameLabel.TabIndex = 7;
             skillNameLabel.Text = "Skill name";
-            skillNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            skillNameLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // iconPictureBox
             // 
-            iconPictureBox.BackColor = System.Drawing.Color.Transparent;
-            iconPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            iconPictureBox.Location = new System.Drawing.Point(18, 18);
+            iconPictureBox.BackColor = Color.Transparent;
+            iconPictureBox.BackgroundImageLayout = ImageLayout.Zoom;
+            iconPictureBox.Location = new Point(18, 18);
             iconPictureBox.Name = "iconPictureBox";
-            iconPictureBox.Size = new System.Drawing.Size(96, 96);
+            iconPictureBox.Size = new Size(96, 96);
             iconPictureBox.TabIndex = 3;
             iconPictureBox.TabStop = false;
             // 
+            // evolutionInfoButton
+            // 
+            evolutionInfoButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            evolutionInfoButton.Location = new Point(417, 91);
+            evolutionInfoButton.Name = "evolutionInfoButton";
+            evolutionInfoButton.Size = new Size(75, 23);
+            evolutionInfoButton.TabIndex = 8;
+            evolutionInfoButton.Text = "Evolution";
+            evolutionInfoButton.UseVisualStyleBackColor = true;
+            evolutionInfoButton.Visible = false;
+            evolutionInfoButton.Click += EvolutionInfoButton_Click;
+            // 
             // SkillLarge
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            Controls.Add(evolutionInfoButton);
             Controls.Add(skillDescriptionLabel);
             Controls.Add(skillNameLabel);
             Controls.Add(iconPictureBox);
             Name = "SkillLarge";
-            Padding = new System.Windows.Forms.Padding(15);
-            Size = new System.Drawing.Size(510, 132);
+            Padding = new Padding(15);
+            Size = new Size(510, 132);
             ((System.ComponentModel.ISupportInitialize)iconPictureBox).EndInit();
             ResumeLayout(false);
         }
@@ -86,5 +100,6 @@
         private System.Windows.Forms.Label skillDescriptionLabel;
         private System.Windows.Forms.Label skillNameLabel;
         private Common.HighQualityPictureBox iconPictureBox;
+        private Button evolutionInfoButton;
     }
 }

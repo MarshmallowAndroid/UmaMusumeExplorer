@@ -18,7 +18,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
         private bool dragging = false;
         private Point clickPoint;
 
-        public SkillInfoForm(SkillData skill, SkillData? evolutionSkill)
+        public SkillInfoForm(SkillData skill, IEnumerable<SkillData> evolutionSkills)
         {
             InitializeComponent();
 
@@ -39,13 +39,15 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
                 skillPointNeededLabel.Text = needSkillPoint.NeedSkillPoint.ToString();
             }
 
-            if (evolutionSkill is not null)
-                evolutionButton.Visible = true;
-
-            evolutionButton.Click += (s, e) =>
+            if (evolutionSkills.Any())
             {
-                ControlHelpers.ShowFormDialogCenter(new SkillEvolutionDetailsForm(skill, evolutionSkill), this);
-            };
+                evolutionButton.Visible = true;
+                evolutionButton.Click += (s, e) =>
+                {
+                    ControlHelpers.ShowFormDialogCenter(new SkillEvolutionsForm(skill, evolutionSkills), this);
+                };
+            }
+
         }
 
         private void CloseButton_Click(object sender, EventArgs e)

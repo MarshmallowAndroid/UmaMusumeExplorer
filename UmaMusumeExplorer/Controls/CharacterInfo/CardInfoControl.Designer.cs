@@ -196,6 +196,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             nameLabel.Size = new Size(104, 37);
             nameLabel.TabIndex = 0;
             nameLabel.Text = "？？？";
+            nameLabel.Click += NameLabel_Click;
             // 
             // growthRateLabel
             // 

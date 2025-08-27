@@ -1,6 +1,6 @@
 ﻿namespace UmaMusumeExplorer.Controls.CharacterInfo
 {
-    partial class SkillEvolutionDetailsForm
+    partial class SkillEvolutionsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,12 +29,11 @@
         private void InitializeComponent()
         {
             toEvolveSkill = new SkillLarge();
-            evolvedSkill = new SkillLarge();
+            evolvedSkill1 = new SkillLarge();
             toEvolveHintLabel = new Label();
             evolvedHintLabel = new Label();
             closeButton = new Button();
-            evolveConditionsHintLabel = new Label();
-            evolveConditionsPanel = new FlowLayoutPanel();
+            evolvedSkill2 = new SkillLarge();
             SuspendLayout();
             // 
             // toEvolveSkill
@@ -48,16 +47,16 @@
             toEvolveSkill.Skill = null;
             toEvolveSkill.TabIndex = 0;
             // 
-            // evolvedSkill
+            // evolvedSkill1
             // 
-            evolvedSkill.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            evolvedSkill.Background = Classes.SkillBackground.Evolution;
-            evolvedSkill.Location = new Point(12, 195);
-            evolvedSkill.Name = "evolvedSkill";
-            evolvedSkill.Padding = new Padding(15);
-            evolvedSkill.Size = new Size(593, 132);
-            evolvedSkill.Skill = null;
-            evolvedSkill.TabIndex = 0;
+            evolvedSkill1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            evolvedSkill1.Background = Classes.SkillBackground.Evolution;
+            evolvedSkill1.Location = new Point(12, 195);
+            evolvedSkill1.Name = "evolvedSkill1";
+            evolvedSkill1.Padding = new Padding(15);
+            evolvedSkill1.Size = new Size(593, 132);
+            evolvedSkill1.Skill = null;
+            evolvedSkill1.TabIndex = 0;
             // 
             // toEvolveHintLabel
             // 
@@ -80,7 +79,8 @@
             // 
             // closeButton
             // 
-            closeButton.Location = new Point(271, 714);
+            closeButton.Anchor = AnchorStyles.Bottom;
+            closeButton.Location = new Point(271, 503);
             closeButton.Name = "closeButton";
             closeButton.Size = new Size(75, 23);
             closeButton.TabIndex = 2;
@@ -88,42 +88,33 @@
             closeButton.UseVisualStyleBackColor = true;
             closeButton.Click += CloseButton_Click;
             // 
-            // evolveConditionsHintLabel
+            // evolvedSkill2
             // 
-            evolveConditionsHintLabel.AutoSize = true;
-            evolveConditionsHintLabel.Location = new Point(12, 345);
-            evolveConditionsHintLabel.Margin = new Padding(3, 15, 3, 0);
-            evolveConditionsHintLabel.Name = "evolveConditionsHintLabel";
-            evolveConditionsHintLabel.Size = new Size(102, 15);
-            evolveConditionsHintLabel.TabIndex = 1;
-            evolveConditionsHintLabel.Text = "Evolve Conditions";
+            evolvedSkill2.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            evolvedSkill2.Background = Classes.SkillBackground.Evolution;
+            evolvedSkill2.Location = new Point(12, 333);
+            evolvedSkill2.Name = "evolvedSkill2";
+            evolvedSkill2.Padding = new Padding(15);
+            evolvedSkill2.Size = new Size(593, 132);
+            evolvedSkill2.Skill = null;
+            evolvedSkill2.TabIndex = 0;
             // 
-            // evolveConditionsPanel
-            // 
-            evolveConditionsPanel.AutoScroll = true;
-            evolveConditionsPanel.Location = new Point(12, 363);
-            evolveConditionsPanel.Name = "evolveConditionsPanel";
-            evolveConditionsPanel.Size = new Size(593, 345);
-            evolveConditionsPanel.TabIndex = 3;
-            // 
-            // SkillEvolutionDetailsForm
+            // SkillEvolutionsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(617, 749);
-            Controls.Add(evolveConditionsPanel);
+            ClientSize = new Size(617, 538);
             Controls.Add(closeButton);
-            Controls.Add(evolveConditionsHintLabel);
             Controls.Add(evolvedHintLabel);
             Controls.Add(toEvolveHintLabel);
-            Controls.Add(evolvedSkill);
+            Controls.Add(evolvedSkill2);
+            Controls.Add(evolvedSkill1);
             Controls.Add(toEvolveSkill);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
-            Name = "SkillEvolutionDetailsForm";
+            Name = "SkillEvolutionsForm";
             StartPosition = FormStartPosition.Manual;
             Text = "Evolution Details";
-            Load += SkillEvolutionDetailsForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -131,11 +122,10 @@
         #endregion
 
         private SkillLarge toEvolveSkill;
-        private SkillLarge evolvedSkill;
+        private SkillLarge evolvedSkill1;
         private System.Windows.Forms.Label toEvolveHintLabel;
         private System.Windows.Forms.Label evolvedHintLabel;
         private System.Windows.Forms.Button closeButton;
-        private System.Windows.Forms.Label evolveConditionsHintLabel;
-        private System.Windows.Forms.FlowLayoutPanel evolveConditionsPanel;
+        private SkillLarge evolvedSkill2;
     }
 }

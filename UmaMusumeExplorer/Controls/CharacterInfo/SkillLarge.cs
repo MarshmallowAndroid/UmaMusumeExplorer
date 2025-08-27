@@ -10,6 +10,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
     public partial class SkillLarge : UserControl
     {
         public SkillData? skill;
+        public SkillData? evolutionSkill;
         public SkillBackground background;
 
         public SkillLarge()
@@ -25,11 +26,22 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
                 if (value is null) return;
 
                 skill = value;
+                UpdateInfo(skill);
 
-                skillNameLabel.Text = AssetTables.GetText(TextCategory.MasterSkillName, skill.Id);
-                skillDescriptionLabel.Text = AssetTables.GetText(TextCategory.MasterSkillExplain, skill.Id)
-                    .Replace("\\n", "\n");
-                iconPictureBox.BackgroundImage = UnityAssets.GetSkillIcon(skill.IconId)?.Bitmap;
+                Refresh();
+            }
+        }
+
+        public SkillData? EvolutionSkill
+        {
+            get => evolutionSkill;
+            set
+            {
+                if (value is null) return;
+
+                evolutionSkill = value;
+                UpdateInfo(evolutionSkill);
+                evolutionInfoButton.Visible = true;
 
                 Refresh();
             }
@@ -43,6 +55,20 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
                 background = value;
                 Refresh();
             }
+        }
+
+        private void EvolutionInfoButton_Click(object sender, EventArgs e)
+        {
+            if (skill is null || evolutionSkill is null) return;
+            ControlHelpers.ShowFormDialogCenter(new SkillEvolutionDetailsForm(skill, evolutionSkill), this);
+        }
+
+        private void UpdateInfo(SkillData skillData)
+        {
+            skillNameLabel.Text = AssetTables.GetText(TextCategory.MasterSkillName, skillData.Id);
+            skillDescriptionLabel.Text = AssetTables.GetText(TextCategory.MasterSkillExplain, skillData.Id)
+                .Replace("\\n", "\n");
+            iconPictureBox.BackgroundImage = UnityAssets.GetSkillIcon(skillData.IconId)?.Bitmap;
         }
 
         protected override void OnPaint(PaintEventArgs e)
