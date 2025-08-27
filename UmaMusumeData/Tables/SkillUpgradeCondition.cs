@@ -8,6 +8,9 @@ namespace UmaMusumeData.Tables
         [Column("id"), NotNull, PrimaryKey]
         public int Id { get; set; }
 
+        [Column("upgrade_type"), NotNull]
+        public int UpgradeType { get; set; }
+
         [Column("description_id"), NotNull, Unique]
         public int DescriptionId { get; set; }
 
@@ -23,4 +26,5 @@ namespace UmaMusumeData.Tables
         [Column("count_type"), NotNull]
         public int CountType { get; set; }
     }
+
 }
