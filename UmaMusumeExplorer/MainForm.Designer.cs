@@ -32,19 +32,19 @@ namespace UmaMusumeExplorer
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             tabControl = new TabControl();
             fileBrowserTabPage = new TabPage();
-            fileBrowserControl = new UmaMusumeExplorer.Controls.FileBrowser.FileBrowserControl();
+            fileBrowserControl = new UmaMusumeExplorer.Pages.FileBrowserControl();
             audioPlayerTabPage = new TabPage();
-            audioPlayerControl = new UmaMusumeExplorer.Controls.AudioPlayer.AudioPlayerControl();
+            audioPlayerControl = new UmaMusumeExplorer.Pages.AudioPlayerControl();
             liveMusicPlayerTabPage = new TabPage();
-            liveMusicPlayerControl = new UmaMusumeExplorer.Controls.LiveMusicPlayer.LiveMusicPlayerControl();
+            liveMusicPlayerControl = new UmaMusumeExplorer.Pages.LiveMusicPlayerControl();
             jukeboxTabPage = new TabPage();
-            jukeboxControl = new UmaMusumeExplorer.Controls.Jukebox.JukeboxControl();
+            jukeboxControl = new UmaMusumeExplorer.Pages.JukeboxControl();
             characterInfoTabPage = new TabPage();
-            characterInfoControl = new UmaMusumeExplorer.Controls.CharacterInfo.CharacterInfoControl();
+            characterInfoControl = new UmaMusumeExplorer.Pages.CharacterInfoControl();
             supportCardsTabPage = new TabPage();
-            supportCardInfoControl = new UmaMusumeExplorer.Controls.SupportCardInfo.SupportCardInfoControl();
+            supportCardInfoControl = new UmaMusumeExplorer.Pages.SupportCardInfoControl();
             raceMusicTabPage = new TabPage();
-            raceMusicPlayerControl = new UmaMusumeExplorer.Controls.RaceMusicPlayer.RaceMusicPlayerControl();
+            raceMusicPlayerControl = new UmaMusumeExplorer.Pages.RaceMusicPlayerControl();
             tabControl.SuspendLayout();
             fileBrowserTabPage.SuspendLayout();
             audioPlayerTabPage.SuspendLayout();
@@ -173,19 +173,19 @@ namespace UmaMusumeExplorer
         #endregion
         private TabControl tabControl;
         private TabPage raceMusicTabPage;
-        private Controls.RaceMusicPlayer.RaceMusicPlayerControl raceMusicPlayerControl;
+        private UmaMusumeExplorer.Pages.RaceMusicPlayerControl raceMusicPlayerControl;
         private TabPage audioPlayerTabPage;
-        private Controls.AudioPlayer.AudioPlayerControl audioPlayerControl;
+        private UmaMusumeExplorer.Pages.AudioPlayerControl audioPlayerControl;
         private TabPage characterInfoTabPage;
-        private Controls.CharacterInfo.CharacterInfoControl characterInfoControl;
+        private UmaMusumeExplorer.Pages.CharacterInfoControl characterInfoControl;
         private TabPage fileBrowserTabPage;
-        private Controls.FileBrowser.FileBrowserControl fileBrowserControl;
+        private UmaMusumeExplorer.Pages.FileBrowserControl fileBrowserControl;
         private TabPage liveMusicPlayerTabPage;
-        private Controls.LiveMusicPlayer.LiveMusicPlayerControl liveMusicPlayerControl;
+        private UmaMusumeExplorer.Pages.LiveMusicPlayerControl liveMusicPlayerControl;
         private TabPage jukeboxTabPage;
-        private Controls.Jukebox.JukeboxControl jukeboxControl;
+        private UmaMusumeExplorer.Pages.JukeboxControl jukeboxControl;
         private TabPage supportCardsTabPage;
-        private Controls.SupportCardInfo.SupportCardInfoControl supportCardInfoControl;
+        private UmaMusumeExplorer.Pages.SupportCardInfoControl supportCardInfoControl;
     }
 }
 

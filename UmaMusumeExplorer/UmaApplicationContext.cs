@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UmaMusumeData;
-using UmaMusumeExplorer.Game;
+using UmaMusumeExplorer.Assets;
 
 namespace UmaMusumeExplorer
 {
@@ -72,7 +72,7 @@ namespace UmaMusumeExplorer
                 MainForm = mainForm;
                 //mainForm.FormClosed += (s, e) => ExitThread();
 
-                UnityAssets.MainForm = mainForm;
+                GameAssets.MainForm = mainForm;
             }
         }
     }

@@ -139,7 +139,7 @@
     <value>fileBrowserControl</value>
   </data>
   <data name="&gt;&gt;fileBrowserControl.Type" xml:space="preserve">
-    <value>UmaMusumeExplorer.Controls.FileBrowser.FileBrowserControl, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
+    <value>UmaMusumeExplorer.Controls.FileBrowserControl, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;fileBrowserControl.Parent" xml:space="preserve">
     <value>fileBrowserTabPage</value>
@@ -194,7 +194,7 @@
     <value>audioPlayerControl</value>
   </data>
   <data name="&gt;&gt;audioPlayerControl.Type" xml:space="preserve">
-    <value>UmaMusumeExplorer.Controls.AudioPlayer.AudioPlayerControl, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
+    <value>UmaMusumeExplorer.Controls.AudioPlayerControl, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;audioPlayerControl.Parent" xml:space="preserve">
     <value>audioPlayerTabPage</value>
@@ -245,7 +245,7 @@
     <value>liveMusicPlayerControl</value>
   </data>
   <data name="&gt;&gt;liveMusicPlayerControl.Type" xml:space="preserve">
-    <value>UmaMusumeExplorer.Controls.LiveMusicPlayer.LiveMusicPlayerControl, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
+    <value>UmaMusumeExplorer.Controls.LiveMusicPlayerControl, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;liveMusicPlayerControl.Parent" xml:space="preserve">
     <value>liveMusicPlayerTabPage</value>
@@ -293,7 +293,7 @@
     <value>jukeboxControl</value>
   </data>
   <data name="&gt;&gt;jukeboxControl.Type" xml:space="preserve">
-    <value>UmaMusumeExplorer.Controls.Jukebox.JukeboxControl, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
+    <value>UmaMusumeExplorer.Controls.JukeboxControl, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;jukeboxControl.Parent" xml:space="preserve">
     <value>jukeboxTabPage</value>
@@ -341,7 +341,7 @@
     <value>characterInfoControl</value>
   </data>
   <data name="&gt;&gt;characterInfoControl.Type" xml:space="preserve">
-    <value>UmaMusumeExplorer.Controls.CharacterInfo.CharacterInfoControl, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
+    <value>UmaMusumeExplorer.Controls.CharacterInfoControl, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;characterInfoControl.Parent" xml:space="preserve">
     <value>characterInfoTabPage</value>
@@ -389,7 +389,7 @@
     <value>supportCardInfoControl</value>
   </data>
   <data name="&gt;&gt;supportCardInfoControl.Type" xml:space="preserve">
-    <value>UmaMusumeExplorer.Controls.SupportCardInfo.SupportCardInfoControl, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
+    <value>UmaMusumeExplorer.Controls.SupportCardInfoControl, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;supportCardInfoControl.Parent" xml:space="preserve">
     <value>supportCardsTabPage</value>
@@ -440,7 +440,7 @@
     <value>raceMusicPlayerControl</value>
   </data>
   <data name="&gt;&gt;raceMusicPlayerControl.Type" xml:space="preserve">
-    <value>UmaMusumeExplorer.Controls.RaceMusicPlayer.RaceMusicPlayerControl, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
+    <value>UmaMusumeExplorer.Controls.RaceMusicPlayerControl, UmaMusumeExplorer, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;raceMusicPlayerControl.Parent" xml:space="preserve">
     <value>raceMusicTabPage</value>

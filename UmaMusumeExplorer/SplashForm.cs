@@ -1,4 +1,4 @@
-﻿using UmaMusumeExplorer.Game;
+﻿using UmaMusumeExplorer.Assets;
 
 namespace UmaMusumeExplorer
 {

@@ -1,5 +1,4 @@
 ﻿using UmaMusumeExplorer.Controls;
-using UmaMusumeExplorer.Game;
 
 namespace UmaMusumeExplorer
 {
