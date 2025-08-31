@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using System.Text;
-using UmaMusumeData.Tables;
-using UmaMusumeData;
+using UmamsumeData.Tables;
+using UmamsumeData;
 using NAudio.Wave;
 using NAudio.CoreAudioApi;
 using System;
@@ -213,7 +213,7 @@ namespace LiveMusicPlayerCli
         {
             Console.WriteLine(
                 $"""
-                Uma Musume Live Music Player CLI
+                Umamusume Live Music Player CLI
                 ================================
 
                 Usage: {Path.GetFileName(Environment.GetCommandLineArgs()[0])} [options] <song ID> [<singer1> <singer2> ...]

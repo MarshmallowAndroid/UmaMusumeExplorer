@@ -15,8 +15,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\AssetsTools.NET\AssetTools.NET\AssetsTools.NET.csproj" />
     <ProjectReference Include="..\..\ClHcaSharp\ClHcaSharp\ClHcaSharp.csproj" />
-    <ProjectReference Include="..\..\UmaMusumeAudio\UmaMusumeAudio.csproj" />
-    <ProjectReference Include="..\..\UmaMusumeData\UmaMusumeData.csproj" />
+    <ProjectReference Include="..\..\UmamusumeAudio\UmamusumeAudio.csproj" />
+    <ProjectReference Include="..\..\UmamusumeData\UmamusumeData.csproj" />
   </ItemGroup>
 
 </Project>

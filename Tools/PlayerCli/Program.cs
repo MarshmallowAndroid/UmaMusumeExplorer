@@ -34,7 +34,7 @@ namespace PlayerCli
             string umaMusumeDirectory = Path.Combine(localLow, "Cygames", "umamusume");
             string metaFile = Path.Combine(umaMusumeDirectory, "meta");
 
-            // UmaMusume meta file is just an SQLite database.
+            // Umamusume meta file is just an SQLite database.
             SQLiteConnection connection = new(metaFile);
             dataDirectory = Path.Combine(Path.GetDirectoryName(metaFile), "dat");
 
@@ -59,7 +59,7 @@ namespace PlayerCli
             //    // followed by the folder name according to the file's first two letters.
             //    //
             //    // Example: 
-            //    // 5V2DTDTE37XT6FXDZ6G4Z75DUMU6JBH6 = <UmaMusume_dir>\dat\5V\5V2DTDTE37XT6FXDZ6G4Z75DUMU6JBH6
+            //    // 5V2DTDTE37XT6FXDZ6G4Z75DUMU6JBH6 = <Umamusume_dir>\dat\5V\5V2DTDTE37XT6FXDZ6G4Z75DUMU6JBH6
             //    string dataFilePath = Path.Combine(dataDirectory, dataFileName.Substring(0, 2), dataFileName);
             //    // The real file name strings start with a '//' so remove that.
             //    string realFileName = gameFile.RealFileName.TrimStart('/');
